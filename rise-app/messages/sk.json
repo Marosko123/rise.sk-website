@@ -1,0 +1,125 @@
+{  "navigation": {
+    "about": "O nás",
+    "services": "Služby",
+    "contact": "Kontakt",
+    "getStarted": "Začať"
+  },
+  "hero": {
+    "title": "Transformujte svoju",
+    "titleHighlight": "Digitálnu Prítomnosť",
+    "subtitle": "Vytvárame výnimočné webové zážitky, ktoré podporujú rast a inovácie pre progresívne firmy",
+    "description": "Špecializujeme sa na moderný webový vývoj, digitálne riešenia a IT poradenstvo. Premeníme vašu víziu na silné, škálovateľné digitálne zážitky.",
+    "startProject": "Začať Projekt",
+    "getInTouch": "Kontaktovať Nás"
+  },  "about": {
+    "title": "O Rise",
+    "subtitle": "Váš Partner v Digitálnej Excelencii",
+    "description": "Sme dynamický tím vývojárov, dizajnérov a digitálnych stratégov s vášňou pre vytváranie špičkových riešení, ktoré posúvajú firmy vpred.",
+    "secondDescription": "S rokmi skúseností vo webovom vývoji, UI/UX dizajne a digitálnej transformácii prinášame technické odborné znalosti aj kreatívnu víziu do každého projektu, ktorý realizujeme.",
+    "experience": "Rokov Skúseností",
+    "projects": "Dokončených Projektov",
+    "clients": "Spokojných Klientov",
+    "team": "Členov Tímu",
+    "projectsDelivered": "Dokončených Projektov",
+    "yearsExperience": "Rokov Skúseností",
+    "clientSatisfaction": "Spokojnosť Klientov",
+    "quote": "Technológia je najlepšia, keď spája ľudí. Naším cieľom je vytvárať digitálne zážitky, ktoré nielen krásne vyzerajú, ale aj riešia skutočné problémy a vytvárajú zmysluplné spojenia.",
+    "founderName": "Alex Johnson",
+    "founderTitle": "Zakladateľ & Vedúci Vývojár",
+    "whatWeDoBest": "V Čom Sme Najlepší",
+    "webDevTitle": "Webový Vývoj",
+    "webDevDesc": "Moderné, responzívne webstránky vytvorené s najnovšími technológiami a osvedčenými postupmi.",
+    "designTitle": "UI/UX Dizajn",
+    "designDesc": "Krásne, intuitívne dizajny, ktoré uprednostňujú používateľský zážitok a zapojenie.",
+    "performanceTitle": "Výkon",
+    "performanceDesc": "Bleskovo rýchle, optimalizované riešenia, ktoré rastú s potrebami vašej firmy."
+  },  "services": {
+    "title": "Naše Služby",
+    "subtitle": "Komplexné Digitálne Riešenia",
+    "webDev": {
+      "title": "Webový Vývoj",
+      "description": "Vlastné webové stránky a webové aplikácie vytvorené s modernými technológiami a osvedčenými postupmi.",
+      "feature1": "Responzívny Dizajn",
+      "feature2": "Optimalizácia Výkonu",
+      "feature3": "SEO Pripravenosť",
+      "feature4": "Mobile First"
+    },
+    "ecommerce": {
+      "title": "E-Commerce Riešenia",
+      "description": "Kompletné online obchody s bezpečným spracovaním platieb a správou zásob.",
+      "feature1": "Integrácia Platieb",
+      "feature2": "Správa Zásob",
+      "feature3": "Sledovanie Objednávok",
+      "feature4": "Admin Panel"
+    },
+    "digital": {
+      "title": "Digitálna Transformácia",
+      "description": "Modernizujte svoje obchodné procesy s digitálnymi riešeniami a automatizáciou.",
+      "feature1": "Automatizácia Procesov",
+      "feature2": "Migrácia do Cloudu",
+      "feature3": "API Integrácia",
+      "feature4": "Analýza Dát"
+    },
+    "design": {
+      "title": "UI/UX Dizajn",
+      "description": "Krásne, užívateľsky orientované dizajny, ktoré zlepšujú používateľský zážitok a zapojenie.",
+      "feature1": "Výskum Používateľov",
+      "feature2": "Wireframing",
+      "feature3": "Prototypovanie",
+      "feature4": "Dizajnové Systémy"
+    },
+    "maintenance": {
+      "title": "Údržba Webstránok",
+      "description": "Priebežná podpora, aktualizácie a optimalizácia na udržanie vašej stránky v bezproblémovom chode.",
+      "feature1": "24/7 Monitoring",
+      "feature2": "Bezpečnostné Aktualizácie",
+      "feature3": "Ladenie Výkonu",
+      "feature4": "Oprava Chýb"
+    },
+    "consulting": {
+      "title": "IT Poradenstvo",
+      "description": "Strategické technologické vedenie, ktoré vám pomôže robiť informované rozhodnutia o vašej digitálnej budúcnosti.",
+      "feature1": "Technologická Stratégia",
+      "feature2": "Plánovanie Architektúry",
+      "feature3": "Code Reviews",
+      "feature4": "Školenie Tímu"
+    },
+    "discussProject": "Prediskutovať Projekt"
+  },
+  "contact": {
+    "title": "Začnite Ešte Dnes",
+    "subtitle": "Pripravení pracovať s nami? Vyplňte formulár nižšie a my sa vám ozve rýchlo.",
+    "email": "E-mailová Adresa",
+    "phone": "Telefónne Číslo",
+    "service": "Požadovaná Služba",
+    "selectService": "Vyberte službu",
+    "services": {
+      "webDevelopment": "Webový Vývoj",
+      "ecommerce": "E-Commerce Riešenia",
+      "digitalTransformation": "Digitálna Transformácia",
+      "uiUxDesign": "UI/UX Dizajn",
+      "maintenance": "Údržba Webstránok",
+      "consulting": "IT Poradenstvo",
+      "other": "Iné"
+    },
+    "submit": "Odoslať Požiadavku",
+    "sending": "Odosiela sa...",
+    "success": "Ďakujeme! Čoskoro sa vám ozveme.",
+    "error": "Niečo sa pokazilo. Skúste to prosím znova.",
+    "networkError": "Chyba siete. Skontrolujte pripojenie a skúste to znova."
+  },  "footer": {
+    "tagline": "Posilňujeme firmy prostredníctvom inovatívnych digitálnych riešení.",
+    "services": "Služby",
+    "company": "Spoločnosť",
+    "contact": "Kontakt",
+    "quickLinks": "Rýchle Odkazy",
+    "aboutUs": "O Nás",
+    "blog": "Blog",
+    "getInTouch": "Kontaktujte Nás",
+    "address": "123 Innovation Street\nTech City, TC 12345",
+    "copyright": "© 2025 Rise.",
+    "rights": "Všetky práva vyhradené.",
+    "privacyPolicy": "Zásady Ochrany Súkromia",
+    "termsOfService": "Podmienky Služby"
+  }
+}

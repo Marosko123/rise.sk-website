@@ -1,0 +1,125 @@
+{  "navigation": {
+    "about": "About",
+    "services": "Services", 
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": "Transform Your",
+    "titleHighlight": "Digital Presence",
+    "subtitle": "We craft exceptional web experiences that drive growth and innovation for forward-thinking businesses",
+    "description": "Specializing in modern web development, digital solutions, and IT consulting. We turn your vision into powerful, scalable digital experiences.",
+    "startProject": "Start Your Project",
+    "getInTouch": "Get in Touch"
+  },  "about": {
+    "title": "About Rise",
+    "subtitle": "Your Partner in Digital Excellence",
+    "description": "We are a dynamic team of developers, designers, and digital strategists passionate about creating cutting-edge solutions that propel businesses forward.",
+    "secondDescription": "With years of experience in web development, UI/UX design, and digital transformation, we bring both technical expertise and creative vision to every project we undertake.",
+    "experience": "Years of Experience",
+    "projects": "Projects Completed",
+    "clients": "Happy Clients",
+    "team": "Team Members",
+    "projectsDelivered": "Projects Delivered",
+    "yearsExperience": "Years Experience",
+    "clientSatisfaction": "Client Satisfaction",
+    "quote": "Technology is best when it brings people together. Our goal is to create digital experiences that not only look beautiful but also solve real problems and create meaningful connections.",
+    "founderName": "Alex Johnson",
+    "founderTitle": "Founder & Lead Developer",
+    "whatWeDoBest": "What We Do Best",
+    "webDevTitle": "Web Development",
+    "webDevDesc": "Modern, responsive websites built with cutting-edge technologies and best practices.",
+    "designTitle": "UI/UX Design", 
+    "designDesc": "Beautiful, intuitive designs that prioritize user experience and engagement.",
+    "performanceTitle": "Performance",
+    "performanceDesc": "Lightning-fast, optimized solutions that scale with your business needs."
+  },  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive Digital Solutions",
+    "webDev": {
+      "title": "Web Development",
+      "description": "Custom websites and web applications built with modern technologies and best practices.",
+      "feature1": "Responsive Design",
+      "feature2": "Performance Optimization", 
+      "feature3": "SEO Ready",
+      "feature4": "Mobile First"
+    },
+    "ecommerce": {
+      "title": "E-Commerce Solutions", 
+      "description": "Complete online stores with secure payment processing and inventory management.",
+      "feature1": "Payment Integration",
+      "feature2": "Inventory Management",
+      "feature3": "Order Tracking",
+      "feature4": "Admin Dashboard"
+    },
+    "digital": {
+      "title": "Digital Transformation",
+      "description": "Modernize your business processes with digital solutions and automation.",
+      "feature1": "Process Automation",
+      "feature2": "Cloud Migration",
+      "feature3": "API Integration",
+      "feature4": "Data Analytics"
+    },
+    "design": {
+      "title": "UI/UX Design",
+      "description": "Beautiful, user-centered designs that enhance user experience and engagement.",
+      "feature1": "User Research",
+      "feature2": "Wireframing",
+      "feature3": "Prototyping",
+      "feature4": "Design Systems"
+    },
+    "maintenance": {
+      "title": "Website Maintenance",
+      "description": "Ongoing support, updates, and optimization to keep your site running smoothly.",
+      "feature1": "24/7 Monitoring",
+      "feature2": "Security Updates",
+      "feature3": "Performance Tuning",
+      "feature4": "Bug Fixes"
+    },
+    "consulting": {
+      "title": "IT Consulting",
+      "description": "Strategic technology guidance to help you make informed decisions about your digital future.",
+      "feature1": "Technology Strategy",
+      "feature2": "Architecture Planning",
+      "feature3": "Code Reviews",
+      "feature4": "Team Training"
+    },
+    "discussProject": "Discuss Your Project"
+  },
+  "contact": {
+    "title": "Get Started Today",
+    "subtitle": "Ready to work with us? Fill out the form below and we'll get back to you quickly.",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "service": "Service Needed",
+    "selectService": "Select a service",
+    "services": {
+      "webDevelopment": "Web Development",
+      "ecommerce": "E-Commerce Solutions", 
+      "digitalTransformation": "Digital Transformation",
+      "uiUxDesign": "UI/UX Design",
+      "maintenance": "Website Maintenance",
+      "consulting": "IT Consulting",
+      "other": "Other"
+    },
+    "submit": "Send Request",
+    "sending": "Sending...",
+    "success": "Thank you! We'll contact you soon.",
+    "error": "Something went wrong. Please try again.",
+    "networkError": "Network error. Please check your connection and try again."
+  },  "footer": {
+    "tagline": "Empowering businesses through innovative digital solutions.",
+    "services": "Services",
+    "company": "Company", 
+    "contact": "Contact",
+    "quickLinks": "Quick Links",
+    "aboutUs": "About Us",
+    "blog": "Blog",
+    "getInTouch": "Get in Touch",
+    "address": "123 Innovation Street\nTech City, TC 12345",
+    "copyright": "© 2025 Rise.",
+    "rights": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  }
+}
