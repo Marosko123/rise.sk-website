@@ -1,0 +1,14 @@
+# Browserslist configuration for target browsers
+# Used by Autoprefixer, Babel, and other tools
+
+# Production browsers
+> 1%
+last 2 versions
+not dead
+not ie 11
+
+# Development browsers (more permissive)
+[development]
+last 1 chrome version
+last 1 firefox version
+last 1 safari version

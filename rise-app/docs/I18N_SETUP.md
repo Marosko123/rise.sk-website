@@ -10,19 +10,22 @@ The website now supports multiple languages using Next.js with next-intl.
 ## Features
 
 ### Language Switcher
+
 - Located in the navigation bar (both desktop and mobile)
 - Shows flag icons and language names
 - Seamlessly switches between languages without page reload
 - Remembers language preference
 
 ### URL Structure
+
 - English: `http://localhost:3002/` or `http://localhost:3002/en`
 - Slovak: `http://localhost:3002/sk`
 
 ### Translated Components
+
 - ✅ Navigation menu
 - ✅ Hero section
-- ✅ About section  
+- ✅ About section
 - ✅ Services section
 - ✅ Contact form
 - ✅ Footer
@@ -30,6 +33,7 @@ The website now supports multiple languages using Next.js with next-intl.
 ## Technical Implementation
 
 ### Files Structure
+
 ```
 messages/
 ├── en.json     # English translations
@@ -50,6 +54,7 @@ src/
 ```
 
 ### Configuration Files
+
 - `next.config.ts` - Next.js configuration with next-intl plugin
 - `middleware.ts` - Middleware for locale routing
 - `tsconfig.json` - TypeScript path configuration
@@ -69,7 +74,7 @@ import { useTranslations } from 'next-intl';
 
 export default function MyComponent() {
   const t = useTranslations('sectionName');
-  
+
   return (
     <div>
       <h1>{t('title')}</h1>

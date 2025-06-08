@@ -1,9 +1,9 @@
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Services from '@/components/Services';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Hero from '@/components/Hero';
+import Navigation from '@/components/Navigation';
+import Services from '@/components/Services';
 
 export default function Home() {
   return (

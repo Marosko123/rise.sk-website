@@ -7,9 +7,44 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:no-turbo": "next dev",
     "build": "next build",
+    "build:analyze": "ANALYZE=true npm run build",
     "start": "next start",
-    "lint": "next lint"
+    "prod": "npm run build && npm run start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "lint:strict": "next lint --max-warnings 0",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "rm -rf .next out node_modules/.cache",
+    "clean:all": "rm -rf .next out node_modules",
+    "reinstall": "npm run clean:all && npm install",
+    "export": "next build && next export",
+    "serve": "npx serve@latest out",
+    "test": "echo 'No tests specified yet'",
+    "test:e2e": "echo 'E2E tests not configured yet'",
+    "preview": "npm run build && npm run start",
+    "deploy:vercel": "vercel --prod",
+    "deploy:vercel:preview": "vercel",
+    "postbuild": "echo 'Build completed successfully!'",
+    "prebuild": "npm run type-check && npm run lint:strict",
+    "health": "curl -f http://localhost:3000/api/health || exit 1",
+    "bundle-analyzer": "cross-env ANALYZE=true npm run build",
+    "update-deps": "npm update && npm audit fix",
+    "setup": "npm install && npm run build",
+    "full-check": "npm run type-check && npm run lint && npm run build",
+    "commit": "cz",
+    "prepare": "husky install || echo 'Husky not installed'",
+    "git-hooks": "./scripts/install-git-hooks.sh",
+    "size-limit": "size-limit",
+    "stylelint": "stylelint 'src/**/*.{css,scss}' --fix",
+    "stylelint:check": "stylelint 'src/**/*.{css,scss}'",
+    "analyze:bundle": "cross-env ANALYZE=true npm run build",
+    "check-deps": "npm outdated",
+    "security-audit": "npm audit && npm audit fix"
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.5",
@@ -22,14 +57,49 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@size-limit/preset-app": "^11.0.0",
     "@types/node": "^20",
     "@types/react": "19.1.6",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.16",
+    "commitizen": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "postcss": "^8.4.33",
+    "prettier": "^3.1.1",
+    "size-limit": "^11.0.1",
+    "stylelint": "^16.0.2",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-tailwindcss": "^0.0.7",
+    "stylelint-order": "^6.0.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "*.{css,scss}": [
+      "stylelint --fix"
+    ]
+  },
+  "size-limit": [
+    {
+      "path": ".next/static/**/*.js",
+      "limit": "200 KB"
+    }
+  ]
 }

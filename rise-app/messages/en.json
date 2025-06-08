@@ -1,6 +1,7 @@
-{  "navigation": {
+{
+  "navigation": {
     "about": "About",
-    "services": "Services", 
+    "services": "Services",
     "contact": "Contact",
     "getStarted": "Get Started"
   },
@@ -11,7 +12,8 @@
     "description": "Specializing in modern web development, digital solutions, and IT consulting. We turn your vision into powerful, scalable digital experiences.",
     "startProject": "Start Your Project",
     "getInTouch": "Get in Touch"
-  },  "about": {
+  },
+  "about": {
     "title": "About Rise",
     "subtitle": "Your Partner in Digital Excellence",
     "description": "We are a dynamic team of developers, designers, and digital strategists passionate about creating cutting-edge solutions that propel businesses forward.",
@@ -29,23 +31,24 @@
     "whatWeDoBest": "What We Do Best",
     "webDevTitle": "Web Development",
     "webDevDesc": "Modern, responsive websites built with cutting-edge technologies and best practices.",
-    "designTitle": "UI/UX Design", 
+    "designTitle": "UI/UX Design",
     "designDesc": "Beautiful, intuitive designs that prioritize user experience and engagement.",
     "performanceTitle": "Performance",
     "performanceDesc": "Lightning-fast, optimized solutions that scale with your business needs."
-  },  "services": {
+  },
+  "services": {
     "title": "Our Services",
     "subtitle": "Comprehensive Digital Solutions",
     "webDev": {
       "title": "Web Development",
       "description": "Custom websites and web applications built with modern technologies and best practices.",
       "feature1": "Responsive Design",
-      "feature2": "Performance Optimization", 
+      "feature2": "Performance Optimization",
       "feature3": "SEO Ready",
       "feature4": "Mobile First"
     },
     "ecommerce": {
-      "title": "E-Commerce Solutions", 
+      "title": "E-Commerce Solutions",
       "description": "Complete online stores with secure payment processing and inventory management.",
       "feature1": "Payment Integration",
       "feature2": "Inventory Management",
@@ -95,7 +98,7 @@
     "selectService": "Select a service",
     "services": {
       "webDevelopment": "Web Development",
-      "ecommerce": "E-Commerce Solutions", 
+      "ecommerce": "E-Commerce Solutions",
       "digitalTransformation": "Digital Transformation",
       "uiUxDesign": "UI/UX Design",
       "maintenance": "Website Maintenance",
@@ -107,10 +110,11 @@
     "success": "Thank you! We'll contact you soon.",
     "error": "Something went wrong. Please try again.",
     "networkError": "Network error. Please check your connection and try again."
-  },  "footer": {
+  },
+  "footer": {
     "tagline": "Empowering businesses through innovative digital solutions.",
     "services": "Services",
-    "company": "Company", 
+    "company": "Company",
     "contact": "Contact",
     "quickLinks": "Quick Links",
     "aboutUs": "About Us",

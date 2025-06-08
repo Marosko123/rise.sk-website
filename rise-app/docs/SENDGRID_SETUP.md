@@ -21,12 +21,14 @@ Your website is now configured to use SendGrid for sending emails. Follow these 
 ## ✉️ Step 3: Verify Sender Email
 
 **Option A: Single Sender Verification (Easiest)**
+
 1. Go to **Settings** → **Sender Authentication**
 2. Click **Verify a Single Sender**
 3. Add your email address (the one that will send emails)
 4. Check your email and click the verification link
 
 **Option B: Domain Authentication (Recommended for production)**
+
 1. Go to **Settings** → **Sender Authentication**
 2. Click **Authenticate Your Domain**
 3. Add your domain and follow DNS setup instructions
@@ -43,6 +45,7 @@ TO_EMAIL=dadvolvarino@gmail.com
 ```
 
 **Important Notes:**
+
 - `FROM_EMAIL` must be the email you verified in SendGrid
 - `TO_EMAIL` is where contact form submissions will be sent
 - Keep your API key secret and never commit it to version control
@@ -59,14 +62,17 @@ TO_EMAIL=dadvolvarino@gmail.com
 **Common Issues:**
 
 1. **"Email service not configured"**
+
    - Make sure `SENDGRID_API_KEY` is set in `.env.local`
    - Restart your development server after adding env variables
 
 2. **"Sender email not verified"**
+
    - Verify your FROM_EMAIL address in SendGrid dashboard
    - Wait a few minutes after verification
 
 3. **"API key invalid"**
+
    - Double-check your API key in SendGrid dashboard
    - Make sure you copied the full key including "SG." prefix
 

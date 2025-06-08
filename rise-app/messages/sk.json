@@ -1,4 +1,5 @@
-{  "navigation": {
+{
+  "navigation": {
     "about": "O nás",
     "services": "Služby",
     "contact": "Kontakt",
@@ -11,7 +12,8 @@
     "description": "Špecializujeme sa na moderný webový vývoj, digitálne riešenia a IT poradenstvo. Premeníme vašu víziu na silné, škálovateľné digitálne zážitky.",
     "startProject": "Začať Projekt",
     "getInTouch": "Kontaktovať Nás"
-  },  "about": {
+  },
+  "about": {
     "title": "O Rise",
     "subtitle": "Váš Partner v Digitálnej Excelencii",
     "description": "Sme dynamický tím vývojárov, dizajnérov a digitálnych stratégov s vášňou pre vytváranie špičkových riešení, ktoré posúvajú firmy vpred.",
@@ -33,7 +35,8 @@
     "designDesc": "Krásne, intuitívne dizajny, ktoré uprednostňujú používateľský zážitok a zapojenie.",
     "performanceTitle": "Výkon",
     "performanceDesc": "Bleskovo rýchle, optimalizované riešenia, ktoré rastú s potrebami vašej firmy."
-  },  "services": {
+  },
+  "services": {
     "title": "Naše Služby",
     "subtitle": "Komplexné Digitálne Riešenia",
     "webDev": {
@@ -107,7 +110,8 @@
     "success": "Ďakujeme! Čoskoro sa vám ozveme.",
     "error": "Niečo sa pokazilo. Skúste to prosím znova.",
     "networkError": "Chyba siete. Skontrolujte pripojenie a skúste to znova."
-  },  "footer": {
+  },
+  "footer": {
     "tagline": "Posilňujeme firmy prostredníctvom inovatívnych digitálnych riešení.",
     "services": "Služby",
     "company": "Spoločnosť",
