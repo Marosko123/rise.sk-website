@@ -88,20 +88,10 @@
   },
   "contact": {
     "title": "Get Started Today",
-    "subtitle": "Ready to work with us? Fill out the form below and we'll get back to you quickly.",
-    "email": "Email Address",
+    "subtitle": "Ready to work with us? Fill out the form below and we'll get back to you quickly.",    "email": "Email Address",
     "phone": "Phone Number",
-    "service": "Service Needed",
-    "selectService": "Select a service",
-    "services": {
-      "webDevelopment": "Web Development",
-      "ecommerce": "E-Commerce Solutions", 
-      "digitalTransformation": "Digital Transformation",
-      "uiUxDesign": "UI/UX Design",
-      "maintenance": "Website Maintenance",
-      "consulting": "IT Consulting",
-      "other": "Other"
-    },
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project or how we can help you...",
     "submit": "Send Request",
     "sending": "Sending...",
     "success": "Thank you! We'll contact you soon.",

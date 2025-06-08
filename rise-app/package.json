@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@sendgrid/mail": "^8.1.5",
     "@types/nodemailer": "^6.4.17",
     "next": "15.3.3",

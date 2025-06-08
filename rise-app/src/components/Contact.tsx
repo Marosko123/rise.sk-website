@@ -2,22 +2,21 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const t = useTranslations('contact');
   const [formData, setFormData] = useState({
     email: '',
     phone: '',
-    service: ''
+    message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error' | null;
     message: string;
-  }>({ type: null, message: '' });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  }>({ type: null, message: '' });  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -29,35 +28,74 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();      if (response.ok) {
-        setSubmitStatus({
-          type: 'success',
-          message: t('success'),
-        });
-        setFormData({ email: '', phone: '', service: '' });
-      } else {
-        setSubmitStatus({
-          type: 'error',
-          message: result.error || t('error'),
-        });      }
-    } catch {
+    // Validate required fields
+    if (!formData.email || !formData.phone || !formData.message) {
       setSubmitStatus({
         type: 'error',
-        message: t('networkError'),
+        message: t('error'),
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Please enter a valid email address.',
+      });
+      setIsSubmitting(false);
+      return;
+    }    try {
+      // EmailJS configuration from environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;      if (!serviceId || !templateId || !publicKey) {
+        console.error('EmailJS configuration missing:', { serviceId, templateId, publicKey });
+        throw new Error('EmailJS configuration missing. Please check environment variables.');
+      }
+
+      console.log('EmailJS configuration:', { serviceId, templateId, publicKey: publicKey.substring(0, 10) + '...' });
+
+      // Template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.email,
+        from_email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        to_email: 'davarinskt@gmail.com',
+        reply_to: formData.email,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setSubmitStatus({
+        type: 'success',
+        message: t('success'),
+      });
+      setFormData({ email: '', phone: '', message: '' });    } catch (error) {
+      console.error('EmailJS error:', error);
+      let errorMessage = t('networkError');
+      
+      if (error instanceof Error) {
+        if (error.message.includes('Account not found') || error.message.includes('404')) {
+          errorMessage = 'EmailJS account not found. Please check your EmailJS configuration.';
+        } else if (error.message.includes('Template')) {
+          errorMessage = 'EmailJS template not found. Please check your template ID.';
+        } else if (error.message.includes('Service')) {
+          errorMessage = 'EmailJS service not found. Please check your service ID.';
+        }
+      }
+      
+      setSubmitStatus({
+        type: 'error',
+        message: errorMessage,
       });
     } finally {
       setIsSubmitting(false);
     }
-  };  return (
+  };return (
     <section id="contact" className="py-20 gradient-bg">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-6 tracking-tight">
@@ -107,27 +145,20 @@ export default function Contact() {
                 placeholder="+1 (555) 123-4567"
               />
             </div>            <div>
-              <label htmlFor="service" className="block text-base font-bold text-[var(--primary)] mb-3 tracking-wide uppercase">
-                {t('service')} *
+              <label htmlFor="message" className="block text-base font-bold text-[var(--primary)] mb-3 tracking-wide uppercase">
+                {t('message')} *
               </label>
-              <select
-                id="service"
-                name="service"
+              <textarea
+                id="message"
+                name="message"
                 required
                 disabled={isSubmitting}
-                value={formData.service}
+                value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-4 text-[var(--foreground)] bg-[var(--secondary)] border-2 border-[var(--border)] rounded-lg focus:outline-none focus:ring-4 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <option value="" className="text-[var(--accent)]">{t('selectService')}</option>
-                <option value="web-development">{t('services.webDevelopment')}</option>
-                <option value="e-commerce">{t('services.ecommerce')}</option>
-                <option value="digital-transformation">{t('services.digitalTransformation')}</option>
-                <option value="ui-ux-design">{t('services.uiUxDesign')}</option>
-                <option value="maintenance">{t('services.maintenance')}</option>
-                <option value="consulting">{t('services.consulting')}</option>
-                <option value="other">{t('services.other')}</option>
-              </select>
+                rows={5}
+                className="w-full px-4 py-4 text-[var(--foreground)] bg-[var(--secondary)] border-2 border-[var(--border)] rounded-lg focus:outline-none focus:ring-4 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed placeholder-[var(--accent)] resize-vertical"
+                placeholder={t('messagePlaceholder')}
+              />
             </div><button
               type="submit"
               disabled={isSubmitting}
