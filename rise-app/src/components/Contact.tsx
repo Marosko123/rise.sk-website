@@ -2,20 +2,20 @@
 
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
   CheckCircle,
-  AlertCircle 
+  AlertCircle
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 export default function Contact() {
   const _t = useTranslations('contact');
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -208,8 +208,8 @@ export default function Contact() {
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                Ready to transform your digital presence? Our FIIT-STU graduates team 
-                is standing by to discuss your project and provide a custom solution 
+                Ready to transform your digital presence? Our FIIT-STU graduates team
+                is standing by to discuss your project and provide a custom solution
                 that drives real results.
               </p>
             </div>
@@ -382,7 +382,7 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex items-center p-4 rounded-lg ${
-                    submitStatus.type === 'success' 
+                    submitStatus.type === 'success'
                       ? 'bg-green-500/20 border border-green-400/30 text-green-300'
                       : 'bg-red-500/20 border border-red-400/30 text-red-300'
                   }`}
