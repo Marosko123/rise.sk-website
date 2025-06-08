@@ -8,16 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': 'var(--primary)',
+        primary: 'var(--primary)',
         'primary-dark': 'var(--primary-dark)',
-        'secondary': 'var(--secondary)',
-        'accent': 'var(--accent)',
-        'foreground': 'var(--foreground)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)',
+        foreground: 'var(--foreground)',
         'neutral-dark': 'var(--neutral-dark)',
-        'border': 'var(--border)',
+        border: 'var(--border)',
       },
     },
   },
   plugins: [],
-}
-
+};

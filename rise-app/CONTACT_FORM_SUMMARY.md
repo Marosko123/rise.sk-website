@@ -3,6 +3,7 @@
 ## ✅ What's Been Done
 
 ### 1. **Updated Contact Form**
+
 - ✅ Replaced service dropdown with message textarea
 - ✅ Added proper email validation (regex pattern)
 - ✅ Added phone number validation
@@ -11,6 +12,7 @@
 - ✅ Improved form styling and user experience
 
 ### 2. **Enhanced API Route**
+
 - ✅ Updated to accept `email`, `phone`, and `message` fields
 - ✅ Added comprehensive input validation
 - ✅ Set recipient email to `davarinskt@gmail.com`
@@ -18,12 +20,14 @@
 - ✅ Added proper error handling and logging
 
 ### 3. **Email Configuration**
+
 - ✅ Configured SendGrid for email delivery
 - ✅ Set up environment variables structure
 - ✅ Created detailed setup documentation
 - ✅ Added troubleshooting guide
 
 ### 4. **Deployment**
+
 - ✅ Successfully deployed to Vercel
 - ✅ SSL certificate configured for `rise.sk`
 - ✅ Production build working correctly
@@ -32,6 +36,7 @@
 ## 🔧 How It Works
 
 1. **User fills out form** with:
+
    - Email address (validated)
    - Phone number (validated)
    - Message (required)

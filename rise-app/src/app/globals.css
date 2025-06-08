@@ -32,11 +32,20 @@ body {
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, var(--neutral-light) 0%, var(--secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--neutral-light) 0%,
+    var(--secondary) 100%
+  );
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, var(--background) 0%, var(--secondary) 50%, var(--neutral-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--background) 0%,
+    var(--secondary) 50%,
+    var(--neutral-light) 100%
+  );
 }
 
 /* Enhanced contrast utilities */

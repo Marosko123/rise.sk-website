@@ -22,7 +22,9 @@ This guide will walk you through setting up EmailJS for the Rise website contact
 5. Note down the **Service ID** (e.g., `service_abc123`)
 
 ### Gmail Setup
+
 If using Gmail for davarinskt@gmail.com:
+
 1. Select Gmail as service
 2. Click **Connect Account**
 3. Sign in to davarinskt@gmail.com
@@ -51,7 +53,9 @@ Reply to: {{reply_to}}
 4. Save the template and note the **Template ID** (e.g., `template_xyz789`)
 
 ### Template Variables
+
 The contact form sends these variables:
+
 - `from_name`: User's email address (used as name)
 - `from_email`: User's email address
 - `phone`: User's phone number
@@ -68,11 +72,13 @@ The contact form sends these variables:
 ## Step 5: Configure Environment Variables
 
 1. Copy `.env.example` to `.env.local`:
+
 ```bash
 cp .env.example .env.local
 ```
 
 2. Update `.env.local` with your EmailJS credentials:
+
 ```bash
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id_here
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id_here
@@ -84,6 +90,7 @@ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_here
 ## Step 6: Test the Setup
 
 1. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -97,14 +104,17 @@ npm run dev
 ### Common Issues
 
 1. **403 Forbidden Error**
+
    - Check if Public Key is correct
    - Verify template ID exists
 
 2. **Template Not Found**
+
    - Ensure Template ID is correct
    - Check template is published/active
 
 3. **Service Error**
+
    - Verify Service ID is correct
    - Check email service connection
 
@@ -116,6 +126,7 @@ npm run dev
 ### Testing EmailJS Directly
 
 You can test EmailJS from browser console:
+
 ```javascript
 emailjs.send(
   'your_service_id',
@@ -126,7 +137,7 @@ emailjs.send(
     phone: '+1234567890',
     message: 'Test message',
     to_email: 'davarinskt@gmail.com',
-    reply_to: 'test@example.com'
+    reply_to: 'test@example.com',
   },
   'your_public_key'
 );
@@ -137,6 +148,7 @@ emailjs.send(
 When deploying to Vercel:
 
 1. Add environment variables in Vercel dashboard:
+
    - Go to Project Settings → Environment Variables
    - Add the three EmailJS variables
 
@@ -151,6 +163,7 @@ When deploying to Vercel:
 ## Alternative: Custom Domain Email
 
 If you want emails to come from @rise.sk:
+
 1. Set up email hosting for rise.sk domain
 2. Configure EmailJS with the custom email service
 3. Update template to use rise.sk email addresses

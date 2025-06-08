@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Client-side JavaScript",
+    "path": ".next/static/chunks/**/*.js",
+    "limit": "200 KB",
+    "webpack": false
+  },
+  {
+    "name": "CSS files",
+    "path": ".next/static/css/**/*.css",
+    "limit": "50 KB"
+  },
+  {
+    "name": "Main bundle",
+    "path": ".next/static/chunks/main*.js",
+    "limit": "50 KB"
+  },
+  {
+    "name": "Framework bundle",
+    "path": ".next/static/chunks/framework*.js",
+    "limit": "100 KB"
+  }
+]
