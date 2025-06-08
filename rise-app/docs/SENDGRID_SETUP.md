@@ -1,6 +1,7 @@
 # SendGrid Email Setup Guide
 
-Your website is now configured to use SendGrid for sending emails. Follow these steps to complete the setup:
+Your website is now configured to use SendGrid for sending emails. Follow these steps to complete
+the setup:
 
 ## 🚀 Step 1: Create SendGrid Account
 

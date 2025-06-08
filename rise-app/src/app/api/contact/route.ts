@@ -1,7 +1,6 @@
 import sgMail from '@sendgrid/mail';
 import { NextRequest, NextResponse } from 'next/server';
 
-
 export async function POST(request: NextRequest) {
   try {
     const { email, phone, service } = await request.json();

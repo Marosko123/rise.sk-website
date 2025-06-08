@@ -1,10 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Users, 
-  Award, 
-  Target, 
+import {
+  Users,
+  Award,
+  Target,
   Zap,
   CheckCircle,
   TrendingUp
@@ -61,7 +61,7 @@ export default function About() {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,119,198,0.2),transparent_50%)]" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
@@ -88,8 +88,8 @@ export default function About() {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We&apos;re not just another dev shop. We&apos;re FIIT-STU graduates who understand 
-            both cutting-edge technology and business impact. Every project is built for scale, 
+            We&apos;re not just another dev shop. We&apos;re FIIT-STU graduates who understand
+            both cutting-edge technology and business impact. Every project is built for scale,
             security, and measurable results.
           </p>
         </motion.div>
@@ -155,7 +155,7 @@ export default function About() {
               Ready to Experience the Rise.sk Difference?
             </h3>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Join 50+ companies who chose quality over cheap outsourcing. 
+              Join 50+ companies who chose quality over cheap outsourcing.
               Get your dedicated team in 14 days with guaranteed results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

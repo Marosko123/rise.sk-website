@@ -94,6 +94,8 @@
     "subtitle": "Ready to work with us? Fill out the form below and we'll get back to you quickly.",
     "email": "Email Address",
     "phone": "Phone Number",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project or how we can help you...",
     "service": "Service Needed",
     "selectService": "Select a service",
     "services": {

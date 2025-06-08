@@ -1,6 +1,7 @@
 # 🚀 Rise - Next.js Business Website
 
-A modern, multilingual business website built with Next.js 15, featuring comprehensive cross-platform development tools and zero-error development environment.
+A modern, multilingual business website built with Next.js 15, featuring comprehensive
+cross-platform development tools and zero-error development environment.
 
 ## ✨ Features
 
@@ -48,19 +49,23 @@ This project follows a **clean, organized structure** designed for professional 
 - **🗂️ `src/`** - Source code only
 - **⚙️ Root level** - Configuration files and package.json
 
-> **Note for AI Assistants**: This project has specific organizational guidelines in `docs/AI_ASSISTANT_GUIDELINES.md`. Please follow these standards when making changes to maintain consistency.
+> **Note for AI Assistants**: This project has specific organizational guidelines in
+> `docs/AI_ASSISTANT_GUIDELINES.md`. Please follow these standards when making changes to maintain
+> consistency.
 
 ---
 
 ## 🚀 Quick Start
 
 ### Option 1: One-Click Setup (Recommended)
+
 ```bash
 # Complete automated setup
 ./scripts/setup-all.sh
 ```
 
 ### Option 2: Manual Setup
+
 ```bash
 # Install dependencies
 npm install
@@ -70,6 +75,7 @@ npm run dev
 ```
 
 ### Option 3: Interactive Development Menu
+
 ```bash
 # Access all development commands via interactive menu
 ./scripts/dev-scripts.sh
@@ -78,6 +84,7 @@ npm run dev
 ## 🛠️ Development Commands
 
 ### Core Development
+
 ```bash
 npm run dev          # Start development server (Turbopack)
 npm run build        # Production build
@@ -86,6 +93,7 @@ npm run preview      # Build and preview production
 ```
 
 ### Quality Assurance
+
 ```bash
 npm run lint         # ESLint check
 npm run lint:fix     # Auto-fix ESLint issues
@@ -96,6 +104,7 @@ npm run full-check   # Complete project validation
 ```
 
 ### Development Tools
+
 ```bash
 npm run size-limit   # Bundle size analysis
 npm run commit       # Conventional commits with Commitizen
@@ -104,6 +113,7 @@ npm run health       # Check server health
 ```
 
 ### Deployment
+
 ```bash
 npm run deploy:vercel        # Deploy to Vercel (production)
 npm run deploy:vercel:preview # Deploy preview to Vercel
@@ -117,29 +127,36 @@ The app supports multiple languages with automatic detection:
 - **Slovak**: `/sk/`
 
 Translation files are located in `/messages/`:
+
 - `en.json` - English translations
 - `sk.json` - Slovak translations
 
 ## 📧 Email Configuration
 
-Contact forms use SendGrid for email delivery. See `docs/SENDGRID_SETUP.md` for configuration details.
+Contact forms use SendGrid for email delivery. See `docs/SENDGRID_SETUP.md` for configuration
+details.
 
 ## 🔧 Development Environment
 
 ### Prerequisites
+
 - **Node.js 18+** (specified in `.nvmrc`)
 - **npm 9+**
 - **Git** (for hooks and version control)
 
 ### IDE Setup (VS Code Recommended)
+
 The project includes comprehensive VS Code configuration:
+
 - **Settings** - Optimized editor settings in `.vscode/settings.json`
 - **Extensions** - Recommended extensions in `.vscode/extensions.json`
 - **Tasks** - Build tasks in `.vscode/tasks.json`
 - **Debugging** - Debug configs in `.vscode/launch.json`
 
 ### Cross-Platform Support
+
 Platform-specific setup scripts available:
+
 - **Unix/macOS/Linux**: `./scripts/cross-platform-setup.sh`
 - **Windows (CMD)**: `./scripts/setup-windows.bat`
 - **Windows (PowerShell)**: `./scripts/setup-windows.ps1`
@@ -147,11 +164,13 @@ Platform-specific setup scripts available:
 ## 🧪 Quality Assurance
 
 ### Automated Quality Checks
+
 - **Pre-commit hooks** - Lint, type-check, and format validation
 - **Pre-push hooks** - Production build verification
 - **CI/CD Pipeline** - GitHub Actions for automated testing
 
 ### Code Standards
+
 - **TypeScript** - Strict mode enabled
 - **ESLint** - Comprehensive rules with auto-fix
 - **Prettier** - Consistent code formatting
@@ -159,6 +178,7 @@ Platform-specific setup scripts available:
 - **Import ordering** - Automated import organization
 
 ### Bundle Analysis
+
 - **Size-limit** - Bundle size monitoring (current: 224.24 kB)
 - **Webpack Bundle Analyzer** - Visual bundle analysis
 
@@ -182,18 +202,22 @@ All documentation is organized in the `docs/` folder:
 ## 🚢 Deployment
 
 ### Vercel (Recommended)
+
 ```bash
 npm run deploy:vercel
 ```
 
 ### Static Export
+
 ```bash
 npm run export
 npm run serve
 ```
 
 ### Environment Variables
+
 Copy `.env.example` to `.env.local` and configure:
+
 ```bash
 cp .env.example .env.local
 ```
@@ -201,12 +225,14 @@ cp .env.example .env.local
 ## 🛟 Troubleshooting
 
 ### Common Issues
+
 1. **Node.js version** - Use Node.js 18+ (check with `node --version`)
 2. **Dependencies** - Run `npm run reinstall` for clean install
 3. **Git hooks** - Run `npm run git-hooks` to reinstall hooks
 4. **Build errors** - Run `npm run full-check` for comprehensive validation
 
 ### Get Help
+
 - Check `docs/` folder for detailed guides
 - Run `./scripts/dev-scripts.sh` for interactive help
 - Review error logs in development console
@@ -224,11 +250,15 @@ This project is private and proprietary.
 
 ---
 
-**🎯 Status: Production-Ready**
-*Complete cross-platform development environment with zero-error setup across macOS, Linux, and Windows.*
+**🎯 Status: Production-Ready** _Complete cross-platform development environment with zero-error
+setup across macOS, Linux, and Windows._
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Next.js app is to use the
+[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
+from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out our
+[Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying)
+for more details.

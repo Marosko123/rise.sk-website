@@ -97,6 +97,8 @@ The translations are organized by component/section:
 
 ## Development
 
-The language switcher automatically detects the current locale and updates the UI accordingly. All components use the `useTranslations` hook to get the appropriate text for the current language.
+The language switcher automatically detects the current locale and updates the UI accordingly. All
+components use the `useTranslations` hook to get the appropriate text for the current language.
 
-The website will automatically redirect users from the root URL to their preferred language or the default English locale.
+The website will automatically redirect users from the root URL to their preferred language or the
+default English locale.
