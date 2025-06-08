@@ -47,6 +47,7 @@
     "security-audit": "npm audit && npm audit fix"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@sendgrid/mail": "^8.1.5",
     "@types/nodemailer": "^6.4.17",
     "framer-motion": "^12.16.0",

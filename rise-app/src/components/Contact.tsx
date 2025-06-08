@@ -1,5 +1,6 @@
 'use client';
 
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { 
   Mail, 
@@ -9,9 +10,12 @@ import {
   CheckCircle,
   AlertCircle 
 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 export default function Contact() {
+  const _t = useTranslations('contact');
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,32 +45,87 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        setSubmitStatus({
-          type: 'success',
-          message: 'Thank you! We&apos;ll get back to you within 24 hours.',
-        });
-        setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
-      } else {
-        setSubmitStatus({
-          type: 'error',
-          message: result.message || 'Something went wrong. Please try again.',
-        });
-      }
-    } catch {
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.service) {
       setSubmitStatus({
         type: 'error',
-        message: 'Network error. Please check your connection and try again.',
+        message: 'Please fill in all required fields.',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Please enter a valid email address.',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // EmailJS configuration from environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error(
+          'EmailJS configuration missing. Please check environment variables.'
+        );
+      }
+
+      // Template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || 'Not provided',
+        company: formData.company || 'Not specified',
+        service: formData.service,
+        message: formData.message || 'No additional message provided',
+        to_email: 'info@rise.sk',
+        reply_to: formData.email,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you! We\'ll get back to you within 24 hours.',
+      });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: '',
+        message: ''
+      });
+    } catch (error) {
+      let errorMessage = 'Network error. Please check your connection and try again.';
+
+      if (error instanceof Error) {
+        if (
+          error.message.includes('Account not found') ||
+          error.message.includes('404')
+        ) {
+          errorMessage =
+            'EmailJS account not found. Please check your EmailJS configuration.';
+        } else if (error.message.includes('Template')) {
+          errorMessage =
+            'EmailJS template not found. Please check your template ID.';
+        } else if (error.message.includes('Service')) {
+          errorMessage =
+            'EmailJS service not found. Please check your service ID.';
+        }
+      }
+
+      setSubmitStatus({
+        type: 'error',
+        message: errorMessage,
       });
     } finally {
       setIsSubmitting(false);
@@ -223,7 +282,8 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
                     placeholder="John Doe"
                   />
                 </div>
@@ -237,7 +297,8 @@ export default function Contact() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
                     placeholder="Your Company"
                   />
                 </div>
@@ -255,7 +316,8 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -269,7 +331,8 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -285,9 +348,10 @@ export default function Contact() {
                   required
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
                 >
-                  <option value="">Select a service</option>
+                  <option value="" className="bg-gray-800">Select a service</option>
                   {services.map((service, index) => (
                     <option key={index} value={service} className="bg-gray-800">
                       {service}
@@ -306,7 +370,8 @@ export default function Contact() {
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50"
                   placeholder="Tell us about your project, timeline, and goals..."
                 />
               </div>
