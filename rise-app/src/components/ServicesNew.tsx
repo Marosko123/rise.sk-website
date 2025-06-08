@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import { BentoCard, MagneticButton } from './InteractiveElements';
+
 export default function Services() {
   const _t = useTranslations('services');
 
@@ -164,93 +166,95 @@ export default function Services() {
               variants={itemVariants}
               className={`relative group ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
             >
-              <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:text-right' : ''}`}>
-                {/* Content */}
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.gradient} shadow-lg`}>
-                      <service.icon size={32} className="text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-2">
-                        {service.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="text-lg text-[var(--neutral-dark)] leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2">
-                      <Target size={16} className="text-[var(--primary)]" />
-                      What we do
-                    </h4>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-3 text-[var(--accent)]">
-                          <CheckCircle size={16} className="text-[var(--primary)] flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Benefits */}
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2">
-                      <Zap size={16} className="text-[var(--primary)]" />
-                      Why it sells
-                    </h4>
-                    <ul className="space-y-2">
-                      {service.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-[var(--accent)]">
-                          <ArrowRight size={16} className="text-[var(--primary)] flex-shrink-0 mt-0.5" />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Team Format */}
-                  <div className="p-4 bg-[var(--glass)] backdrop-blur-sm rounded-xl border border-[var(--primary)]/20">
-                    <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2 mb-2">
-                      <Users size={16} className="text-[var(--primary)]" />
-                      Team format
-                    </h4>
-                    <p className="text-[var(--accent)] text-sm">{service.team}</p>
-                  </div>
-                </div>
-
-                {/* Visual Element */}
-                <div className="relative">
-                  <div className={`relative p-8 rounded-3xl bg-gradient-to-br ${service.gradient} shadow-2xl`}>
-                    <div className="absolute inset-0 bg-black/10 rounded-3xl"></div>
-                    <div className="relative z-10">
-                      <service.icon size={120} className="text-white/80 mb-6" />
-                      <div className="space-y-4">
-                        <div className="h-3 bg-white/30 rounded-full w-3/4"></div>
-                        <div className="h-3 bg-white/20 rounded-full w-1/2"></div>
-                        <div className="h-3 bg-white/10 rounded-full w-2/3"></div>
+              <BentoCard spotlight={true} className="p-8">
+                <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:text-right' : ''}`}>
+                  {/* Content */}
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.gradient} shadow-lg`}>
+                        <service.icon size={32} className="text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-2">
+                          {service.title}
+                        </h3>
                       </div>
                     </div>
+
+                    <p className="text-lg text-[var(--neutral-dark)] leading-relaxed">
+                      {service.description}
+                    </p>
+
+                    {/* Features */}
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2">
+                        <Target size={16} className="text-[var(--primary)]" />
+                        What we do
+                      </h4>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center gap-3 text-[var(--accent)]">
+                            <CheckCircle size={16} className="text-[var(--primary)] flex-shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Benefits */}
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2">
+                        <Zap size={16} className="text-[var(--primary)]" />
+                        Why it sells
+                      </h4>
+                      <ul className="space-y-2">
+                        {service.benefits.map((benefit, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-[var(--accent)]">
+                            <ArrowRight size={16} className="text-[var(--primary)] flex-shrink-0 mt-0.5" />
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Team Format */}
+                    <div className="p-4 bg-[var(--glass)] backdrop-blur-sm rounded-xl border border-[var(--primary)]/20">
+                      <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2 mb-2">
+                        <Users size={16} className="text-[var(--primary)]" />
+                        Team format
+                      </h4>
+                      <p className="text-[var(--accent)] text-sm">{service.team}</p>
+                    </div>
                   </div>
 
-                  {/* Floating elements */}
-                  <motion.div
-                    className="absolute -top-6 -right-6 w-12 h-12 bg-[var(--primary)] rounded-full shadow-lg"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
-                  />
-                  <motion.div
-                    className="absolute -bottom-4 -left-4 w-8 h-8 bg-[var(--glow)] rounded-full shadow-lg"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-                  />
+                  {/* Visual Element */}
+                  <div className="relative">
+                    <div className={`relative p-8 rounded-3xl bg-gradient-to-br ${service.gradient} shadow-2xl`}>
+                      <div className="absolute inset-0 bg-black/10 rounded-3xl"></div>
+                      <div className="relative z-10">
+                        <service.icon size={120} className="text-white/80 mb-6" />
+                        <div className="space-y-4">
+                          <div className="h-3 bg-white/30 rounded-full w-3/4"></div>
+                          <div className="h-3 bg-white/20 rounded-full w-1/2"></div>
+                          <div className="h-3 bg-white/10 rounded-full w-2/3"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Floating elements */}
+                    <motion.div
+                      className="absolute -top-6 -right-6 w-12 h-12 bg-[var(--primary)] rounded-full shadow-lg"
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                    />
+                    <motion.div
+                      className="absolute -bottom-4 -left-4 w-8 h-8 bg-[var(--glow)] rounded-full shadow-lg"
+                      animate={{ y: [0, 10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                    />
+                  </div>
                 </div>
-              </div>
+              </BentoCard>
             </motion.div>
           ))}
         </div>

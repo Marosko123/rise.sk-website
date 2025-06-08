@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Code, Globe, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import { MagneticButton } from './InteractiveElements';
+
 export default function Hero() {
   const _t = useTranslations('hero');
 
@@ -114,26 +116,23 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
           >
-            <motion.button
-              className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 glow-hover"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+            <MagneticButton
+              href="#contact"
+              variant="primary"
+              className="text-lg shadow-lg hover:shadow-xl glow-hover"
             >
               Start Your Project
-              <ArrowRight 
-                size={20} 
-                className="group-hover:translate-x-1 transition-transform" 
-              />
-            </motion.button>
+              <ArrowRight size={20} className="ml-2" />
+            </MagneticButton>
             
-            <motion.button
-              className="group glass border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 flex items-center gap-3"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+            <MagneticButton
+              href="#contact"
+              variant="secondary"
+              className="text-lg border-2"
             >
               Free Consultation
-              <div className="w-2 h-2 bg-[var(--primary)] rounded-full group-hover:bg-white animate-pulse"></div>
-            </motion.button>
+              <div className="w-2 h-2 bg-current rounded-full ml-2 animate-pulse"></div>
+            </MagneticButton>
           </motion.div>
 
           {/* Key Metrics */}

@@ -10,6 +10,8 @@ import {
   Zap
 } from 'lucide-react';
 
+import { BentoCard } from './InteractiveElements';
+
 export default function EngagementModels() {
   const models = [
     {
@@ -115,40 +117,37 @@ export default function EngagementModels() {
               variants={itemVariants}
               className="relative group"
             >
-              <div className="h-full p-8 bg-[var(--glass)] backdrop-blur-sm rounded-3xl border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300">
+              <BentoCard spotlight={true} className="h-full">
                 {/* Icon */}
                 <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${model.gradient} shadow-lg mb-6`}>
                   <model.icon size={32} className="text-white" />
                 </div>
 
                 {/* Title & Description */}
-                <h3 className="text-2xl font-bold text-[var(--foreground)] mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {model.title}
                 </h3>
-                <p className="text-[var(--neutral-dark)] mb-6 leading-relaxed">
+                <p className="text-gray-300 mb-6 leading-relaxed">
                   {model.description}
                 </p>
 
                 {/* Features */}
                 <ul className="space-y-3 mb-6">
                   {model.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-[var(--accent)]">
-                      <CheckCircle size={16} className="text-[var(--primary)] flex-shrink-0" />
+                    <li key={idx} className="flex items-center gap-3 text-gray-300">
+                      <CheckCircle size={16} className="text-blue-400 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
 
                 {/* Ideal For */}
-                <div className="p-4 bg-[var(--secondary)]/50 rounded-xl border border-[var(--border)]">
-                  <p className="text-sm text-[var(--accent)] font-medium">
+                <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                  <p className="text-sm text-gray-300 font-medium">
                     💡 {model.ideal}
                   </p>
                 </div>
-
-                {/* Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/5 to-[var(--glow)]/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+              </BentoCard>
             </motion.div>
           ))}
         </div>
@@ -156,23 +155,24 @@ export default function EngagementModels() {
         {/* Guarantees */}
         <motion.div
           variants={itemVariants}
-          className="text-center p-8 bg-[var(--glass)] backdrop-blur-sm rounded-3xl border border-[var(--primary)]/20"
         >
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <Shield size={20} className="text-[var(--primary)]" />
-            <h3 className="text-2xl font-bold text-[var(--foreground)]">
-              All Models Include
-            </h3>
-          </div>
+          <BentoCard spotlight={true} className="text-center">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <Shield size={20} className="text-blue-400" />
+              <h3 className="text-2xl font-bold text-white">
+                All Models Include
+              </h3>
+            </div>
 
-          <div className="flex flex-wrap justify-center gap-8">
-            {guarantees.map((guarantee, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <CheckCircle size={16} className="text-[var(--primary)]" />
-                <span className="text-[var(--accent)] font-medium">{guarantee}</span>
-              </div>
-            ))}
-          </div>
+            <div className="flex flex-wrap justify-center gap-8">
+              {guarantees.map((guarantee, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle size={16} className="text-blue-400" />
+                  <span className="text-gray-300 font-medium">{guarantee}</span>
+                </div>
+              ))}
+            </div>
+          </BentoCard>
         </motion.div>
       </motion.div>
     </section>

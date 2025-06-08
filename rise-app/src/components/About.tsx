@@ -10,6 +10,8 @@ import {
   TrendingUp
 } from 'lucide-react';
 
+import { BentoCard, MagneticButton } from './InteractiveElements';
+
 export default function About() {
   const stats = [
     {
@@ -103,17 +105,17 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center group hover:bg-white/10 transition-all duration-300"
             >
-              <div className="flex justify-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-6 h-6 text-white" />
+              <BentoCard spotlight={true} className="text-center h-full">
+                <div className="flex justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <stat.icon className="w-6 h-6 text-white" />
+                  </div>
                 </div>
-              </div>
-              <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-              <div className="text-blue-400 font-semibold mb-2">{stat.label}</div>
-              <div className="text-sm text-gray-400">{stat.description}</div>
+                <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
+                <div className="text-blue-400 font-semibold mb-2">{stat.label}</div>
+                <div className="text-sm text-gray-400">{stat.description}</div>
+              </BentoCard>
             </motion.div>
           ))}
         </div>
@@ -127,9 +129,8 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group"
             >
-              <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-8 h-full hover:bg-white/10 transition-all duration-300">
+              <BentoCard spotlight={true} className="h-full">
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4">
                     <value.icon className="w-6 h-6 text-white" />
@@ -137,7 +138,7 @@ export default function About() {
                   <h3 className="text-xl font-bold text-white">{value.title}</h3>
                 </div>
                 <p className="text-gray-300 leading-relaxed">{value.description}</p>
-              </div>
+              </BentoCard>
             </motion.div>
           ))}
         </div>
@@ -159,22 +160,18 @@ export default function About() {
               Get your dedicated team in 14 days with guaranteed results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <motion.a
+              <MagneticButton
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-lg transition-all duration-300"
+                variant="primary"
               >
                 Start Your Project
-              </motion.a>
-              <motion.a
+              </MagneticButton>
+              <MagneticButton
                 href="#services"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-lg transition-all duration-300"
+                variant="secondary"
               >
                 View Our Services
-              </motion.a>
+              </MagneticButton>
             </div>
           </div>
         </motion.div>

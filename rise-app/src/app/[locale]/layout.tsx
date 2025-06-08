@@ -6,6 +6,9 @@ import { getMessages } from 'next-intl/server';
 
 import { routing } from '@/i18n/routing';
 import '../globals.css';
+import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
+import { MorphingCursor } from '@/components/InteractiveElements';
+import { ScrollProgress } from '@/components/ScrollEffects';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -47,9 +50,13 @@ export default async function LocaleLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <SmoothScrollProvider>
+          <ScrollProgress />
+          <MorphingCursor />
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   );
