@@ -4,11 +4,11 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-import { routing } from '@/i18n/routing';
 import '../globals.css';
-import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import { MorphingCursor } from '@/components/InteractiveElements';
 import { ScrollProgress } from '@/components/ScrollEffects';
+import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
+import { routing } from '@/i18n/routing';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

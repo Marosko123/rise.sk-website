@@ -1,5 +1,6 @@
 'use client';
 
+import Lenis from '@studio-freight/lenis';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
@@ -94,10 +95,10 @@ export function MagneticEffect({ children, strength = 0.3 }: {
       const rect = element.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      
+
       const deltaX = (e.clientX - centerX) * strength;
       const deltaY = (e.clientY - centerY) * strength;
-      
+
       setPosition({ x: deltaX, y: deltaY });
     };
 
@@ -128,16 +129,9 @@ export function MagneticEffect({ children, strength = 0.3 }: {
 
 export function SmoothScroll() {
   useEffect(() => {
-    const lenis = new (require('@studio-freight/lenis'))({
+    const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
     });
 
     function raf(time: number) {
@@ -169,21 +163,40 @@ export function TextReveal({ text, className = "" }: {
 
   return (
     <div ref={ref} className={className}>
-      {words.map((word, index) => {
-        const start = index / words.length;
-        const end = start + (1 / words.length);
-        const opacity = useTransform(scrollYProgress, [start, end], [0.3, 1]);
-        
-        return (
-          <motion.span
-            key={index}
-            style={{ opacity }}
-            className="inline-block mr-2"
-          >
-            {word}
-          </motion.span>
-        );
-      })}
+      {words.map((word, index) => (
+        <TextRevealWord
+          key={index}
+          word={word}
+          index={index}
+          totalWords={words.length}
+          scrollYProgress={scrollYProgress}
+        />
+      ))}
     </div>
+  );
+}
+
+function TextRevealWord({
+  word,
+  index,
+  totalWords,
+  scrollYProgress
+}: {
+  word: string;
+  index: number;
+  totalWords: number;
+  scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'];
+}) {
+  const start = index / totalWords;
+  const end = start + (1 / totalWords);
+  const opacity = useTransform(scrollYProgress, [start, end], [0.3, 1]);
+
+  return (
+    <motion.span
+      style={{ opacity }}
+      className="inline-block mr-2"
+    >
+      {word}
+    </motion.span>
   );
 }

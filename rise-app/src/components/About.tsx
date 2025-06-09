@@ -105,6 +105,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              data-cursor="hover"
             >
               <BentoCard spotlight={true} className="text-center h-full">
                 <div className="flex justify-center mb-4">
@@ -129,6 +130,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
+              data-cursor="hover"
             >
               <BentoCard spotlight={true} className="h-full">
                 <div className="flex items-center mb-6">

@@ -227,6 +227,7 @@ export default function Contact() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ x: 5 }}
                   className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300 group"
+                  data-cursor="link"
                 >
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <item.icon className="w-6 h-6 text-white" />
@@ -285,6 +286,7 @@ export default function Contact() {
                     disabled={isSubmitting}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
                     placeholder="John Doe"
+                    data-cursor="text"
                   />
                 </div>
                 <div>
@@ -350,6 +352,7 @@ export default function Contact() {
                   onChange={handleChange}
                   disabled={isSubmitting}
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
+                  data-cursor="pointer"
                 >
                   <option value="" className="bg-gray-800">Select a service</option>
                   {services.map((service, index) => (
@@ -373,6 +376,7 @@ export default function Contact() {
                   disabled={isSubmitting}
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50"
                   placeholder="Tell us about your project, timeline, and goals..."
+                  data-cursor="text"
                 />
               </div>
 

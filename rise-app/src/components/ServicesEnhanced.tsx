@@ -150,122 +150,122 @@ export default function Services() {
             <Zap size={16} className="text-[var(--primary)]" />
             <span className="text-sm font-medium text-[var(--primary)]">Our Services</span>
           </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6">
+            Complete Digital
+            <span className="gradient-text block">Solutions</span>
+          </h2>
           <CharacterReveal
-            text="Complete Digital Solutions"
-            className="text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6"
+            text="From concept to deployment, we deliver bullet-proof digital products with cutting-edge technology"
+            className="text-xl text-[var(--neutral-dark)] max-w-3xl mx-auto"
           />
-          <p className="text-xl text-[var(--neutral-dark)] max-w-3xl mx-auto">
-            From concept to deployment, we deliver bullet-proof digital products with cutting-edge technology
-          </p>
-        </motion.div>        {/* Services Grid */}
+        </motion.div>
+
+        {/* Services Grid */}
         <StaggerReveal staggerDelay={0.3}>
           {services.map((service, index) => (
             <VelocityScroll key={service.id}>
-              <motion.div
-                variants={itemVariants}
-                className={`relative group ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} mb-12`}
-                data-cursor="hover"
-              >
-                <BentoCard spotlight={true} className="p-8">
+              <div className={`relative group ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} mb-12`}>
+                <BentoCard spotlight={true} className="p-8" data-cursor="hover">
                   <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:text-right' : ''}`}>
-                      {/* Content */}
-                      <div className="space-y-6">
-                        <div className="flex items-center gap-4">
-                          <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.gradient} shadow-lg`}>
-                            <service.icon size={32} className="text-white" />
-                          </div>
-                          <div>
-                            <h3 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-2">
-                              {service.title}
-                            </h3>
-                          </div>
+                    {/* Content */}
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-4">
+                        <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.gradient} shadow-lg`}>
+                          <service.icon size={32} className="text-white" />
                         </div>
-
-                        <p className="text-lg text-[var(--neutral-dark)] leading-relaxed">
-                          {service.description}
-                        </p>
-
-                        {/* Features */}
-                        <div className="space-y-3">
-                          <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2">
-                            <Target size={16} className="text-[var(--primary)]" />
-                            What we do
-                          </h4>
-                          <ul className="space-y-2">
-                            {service.features.map((feature, idx) => (
-                              <li key={idx} className="flex items-center gap-3 text-[var(--accent)]">
-                                <CheckCircle size={16} className="text-[var(--primary)] flex-shrink-0" />
-                                {feature}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Benefits */}
-                        <div className="space-y-3">
-                          <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2">
-                            <Zap size={16} className="text-[var(--primary)]" />
-                            Why it sells
-                          </h4>
-                          <ul className="space-y-2">
-                            {service.benefits.map((benefit, idx) => (
-                              <li key={idx} className="flex items-start gap-3 text-[var(--accent)]">
-                                <ArrowRight size={16} className="text-[var(--primary)] flex-shrink-0 mt-0.5" />
-                                {benefit}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Team Format */}
-                        <div className="p-4 bg-[var(--glass)] backdrop-blur-sm rounded-xl border border-[var(--primary)]/20">
-                          <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2 mb-2">
-                            <Users size={16} className="text-[var(--primary)]" />
-                            Team format
-                          </h4>
-                          <p className="text-[var(--accent)] text-sm">{service.team}</p>
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-2">
+                            {service.title}
+                          </h3>
                         </div>
                       </div>
 
-                      {/* Visual Element */}
-                      <div className="relative">
-                        <div className={`relative p-8 rounded-3xl bg-gradient-to-br ${service.gradient} shadow-2xl`}>
-                          <div className="absolute inset-0 bg-black/10 rounded-3xl"></div>
-                          <div className="relative z-10">
-                            <service.icon size={120} className="text-white/80 mb-6" />
-                            <div className="space-y-4">
-                              <div className="h-3 bg-white/30 rounded-full w-3/4"></div>
-                              <div className="h-3 bg-white/20 rounded-full w-1/2"></div>
-                              <div className="h-3 bg-white/10 rounded-full w-2/3"></div>
-                            </div>
-                          </div>
-                        </div>
+                      <p className="text-lg text-[var(--neutral-dark)] leading-relaxed">
+                        {service.description}
+                      </p>
 
-                        {/* Floating elements */}
-                        <motion.div
-                          className="absolute -top-6 -right-6 w-12 h-12 bg-[var(--primary)] rounded-full shadow-lg"
-                          animate={{ y: [0, -10, 0] }}
-                          transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
-                        />
-                        <motion.div
-                          className="absolute -bottom-4 -left-4 w-8 h-8 bg-[var(--glow)] rounded-full shadow-lg"
-                          animate={{ y: [0, 10, 0] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-                        />
+                      {/* Features */}
+                      <div className="space-y-3">
+                        <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2">
+                          <Target size={16} className="text-[var(--primary)]" />
+                          What we do
+                        </h4>
+                        <ul className="space-y-2">
+                          {service.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-center gap-3 text-[var(--accent)]">
+                              <CheckCircle size={16} className="text-[var(--primary)] flex-shrink-0" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Benefits */}
+                      <div className="space-y-3">
+                        <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2">
+                          <Zap size={16} className="text-[var(--primary)]" />
+                          Why it sells
+                        </h4>
+                        <ul className="space-y-2">
+                          {service.benefits.map((benefit, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-[var(--accent)]">
+                              <ArrowRight size={16} className="text-[var(--primary)] flex-shrink-0 mt-0.5" />
+                              {benefit}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Team Format */}
+                      <div className="p-4 bg-[var(--glass)] backdrop-blur-sm rounded-xl border border-[var(--primary)]/20">
+                        <h4 className="font-semibold text-[var(--foreground)] flex items-center gap-2 mb-2">
+                          <Users size={16} className="text-[var(--primary)]" />
+                          Team format
+                        </h4>
+                        <p className="text-[var(--accent)] text-sm">{service.team}</p>
                       </div>
                     </div>
-                  </BentoCard>
-                </motion.div>
-              ))}
-            </div>
+
+                    {/* Visual Element */}
+                    <div className="relative">
+                      <div className={`relative p-8 rounded-3xl bg-gradient-to-br ${service.gradient} shadow-2xl`}>
+                        <div className="absolute inset-0 bg-black/10 rounded-3xl"></div>
+                        <div className="relative z-10">
+                          <service.icon size={120} className="text-white/80 mb-6" />
+                          <div className="space-y-4">
+                            <div className="h-3 bg-white/30 rounded-full w-3/4"></div>
+                            <div className="h-3 bg-white/20 rounded-full w-1/2"></div>
+                            <div className="h-3 bg-white/10 rounded-full w-2/3"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Floating elements */}
+                      <motion.div
+                        className="absolute -top-6 -right-6 w-12 h-12 bg-[var(--primary)] rounded-full shadow-lg"
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                      />
+                      <motion.div
+                        className="absolute -bottom-4 -left-4 w-8 h-8 bg-[var(--glow)] rounded-full shadow-lg"
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                      />
+                    </div>
+                  </div>
+                </BentoCard>
+              </div>
+            </VelocityScroll>
+          ))}
         </StaggerReveal>
 
         {/* Why Rise.sk Section */}
         <motion.div variants={itemVariants} className="mt-24 pt-12 border-t border-[var(--border)]">
           <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-[var(--foreground)] mb-4">
-              Why Rise.sk Beats Traditional Outsourcing
-            </h3>
+            <CharacterReveal
+              text="Why Rise.sk Beats Traditional Outsourcing"
+              className="text-3xl md:text-4xl font-bold text-[var(--foreground)] mb-4"
+            />
             <p className="text-lg text-[var(--neutral-dark)]">
               Experience the difference of working with Slovak tech talent
             </p>

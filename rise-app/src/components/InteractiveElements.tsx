@@ -15,7 +15,7 @@ export function MorphingCursor() {
     if (!hasHover) return;
 
     setIsVisible(true);
-    
+
     // Throttle mouse move updates for better performance
     let rafId: number;
     const mouseMove = (e: MouseEvent) => {
@@ -31,7 +31,7 @@ export function MorphingCursor() {
       clearTimeout(hoverTimeout);
       hoverTimeout = setTimeout(() => {
         const target = e.target as HTMLElement;
-        
+
         if (target.closest('.interactive-card') || target.closest('[data-cursor="card"]')) {
           setCursorVariant('card');
         } else if (target.tagName === 'BUTTON' || target.closest('button') || target.closest('[data-cursor="button"]')) {
@@ -83,16 +83,28 @@ export function MorphingCursor() {
   };
 
   const colors = getCursorColors();
-  const cursorSize = cursorVariant === 'default' ? 16 : 
+  const cursorSize = cursorVariant === 'default' ? 16 :
                    cursorVariant === 'text' ? 14 :
                    cursorVariant === 'button' ? 20 :
                    cursorVariant === 'link' ? 16 : 22;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999]">
+    <div
+      className="fixed inset-0 pointer-events-none morphing-cursor-container"
+      style={{
+        zIndex: 2147483647,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        pointerEvents: 'none',
+        isolation: 'isolate'
+      }}
+    >
       {/* Main cursor - highly visible with multi-layer design */}
       <motion.div
-        className="fixed cursor-layer cursor-main"
+        className="fixed cursor-main cursor-element"
         animate={{
           x: mousePosition.x - cursorSize/2,
           y: mousePosition.y - cursorSize/2,
@@ -107,19 +119,25 @@ export function MorphingCursor() {
         style={{
           width: cursorSize,
           height: cursorSize,
+          zIndex: 2147483647,
+          position: 'fixed',
+          isolation: 'isolate',
+          transform: 'translateZ(0)',
+          willChange: 'transform, opacity',
+          pointerEvents: 'none'
         }}
       >
         {/* Outer glow for visibility */}
-        <div 
+        <div
           className="absolute inset-0 rounded-full opacity-60 blur-sm"
           style={{
             background: `radial-gradient(circle, ${colors.accent}40, transparent 70%)`,
             transform: 'scale(2.5)',
           }}
         />
-        
+
         {/* Main cursor body - high contrast */}
-        <div 
+        <div
           className="absolute inset-0 rounded-full border-2 shadow-2xl backdrop-blur-sm"
           style={{
             backgroundColor: `${colors.primary}95`,
@@ -127,9 +145,9 @@ export function MorphingCursor() {
             boxShadow: `0 0 20px ${colors.primary}60, inset 0 1px 0 ${colors.secondary}40`,
           }}
         />
-        
+
         {/* Inner highlight for 3D effect */}
-        <div 
+        <div
           className="absolute inset-1 rounded-full opacity-40"
           style={{
             background: `linear-gradient(135deg, ${colors.secondary}80, transparent 50%)`,
@@ -146,7 +164,7 @@ export function MorphingCursor() {
             x: mousePosition.x + 20,
             y: mousePosition.y - 20,
             scale: isClicking ? 1.2 : 1,
-            opacity: 1 
+            opacity: 1
           }}
           transition={{
             type: "spring",
@@ -158,6 +176,7 @@ export function MorphingCursor() {
             height: 24,
             backgroundColor: colors.primary,
             boxShadow: `0 4px 12px ${colors.primary}40`,
+            zIndex: 2147483647,
           }}
         >
           {cursorVariant === 'text' && 'T'}
@@ -186,6 +205,7 @@ export function MorphingCursor() {
           height: 50,
           borderColor: colors.primary,
           borderWidth: '1px',
+          zIndex: 2147483646,
         }}
       />
 
@@ -210,6 +230,7 @@ export function MorphingCursor() {
             backgroundColor: colors.primary,
             opacity: 0.6 - (i * 0.15),
             boxShadow: `0 0 ${8 - i * 2}px ${colors.primary}60`,
+            zIndex: 2147483645 - i,
           }}
         />
       ))}
@@ -244,6 +265,7 @@ export function MorphingCursor() {
           height: 70,
           border: `1px dashed ${colors.primary}20`,
           opacity: cursorVariant !== 'default' ? 0.3 : 0,
+          zIndex: 2147483644,
         }}
       />
     </div>
@@ -258,12 +280,12 @@ export function BentoGrid({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function BentoCard({ 
-  children, 
+export function BentoCard({
+  children,
   className = "",
   spotlight = false,
-  tilt = true 
-}: { 
+  tilt = true
+}: {
   children: React.ReactNode;
   className?: string;
   spotlight?: boolean;
@@ -296,7 +318,7 @@ export function BentoCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      whileHover={{ 
+      whileHover={{
         scale: 1.01,
         z: 30
       }}
@@ -304,7 +326,7 @@ export function BentoCard({
         rotateX: tiltX,
         rotateY: tiltY,
       }}
-      transition={{ 
+      transition={{
         duration: 0.2,
         ease: "easeOut"
       }}
@@ -327,32 +349,32 @@ export function BentoCard({
           }}
         />
       )}
-      
+
       {/* Enhanced glow effect - only render when hovered */}
       {isHovered && (
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl blur-sm" />
         </div>
       )}
-      
+
       {/* Content */}
       <div className="relative z-10">
         {children}
       </div>
-      
+
       {/* Enhanced border glow - simplified */}
       <div className="absolute inset-0 rounded-2xl border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" />
     </motion.div>
   );
 }
 
-export function MagneticButton({ 
-  children, 
+export function MagneticButton({
+  children,
   className = "",
   href,
   onClick,
   variant = "primary"
-}: { 
+}: {
   children: React.ReactNode;
   className?: string;
   href?: string;
@@ -376,7 +398,7 @@ export function MagneticButton({
   };
 
   const baseClasses = "relative px-8 py-4 font-bold rounded-lg transition-all duration-300 overflow-hidden";
-  
+
   const variants = {
     primary: "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl",
     secondary: "bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-sm",
@@ -415,10 +437,10 @@ export function MagneticButton({
           transition={{ duration: 0.6 }}
         />
       )}
-      
+
       {/* Content */}
       <span className="relative z-10">{children}</span>
-      
+
       {/* Glow effect */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-lg blur-sm" />

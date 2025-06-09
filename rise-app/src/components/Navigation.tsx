@@ -26,13 +26,15 @@ export default function Navigation() {
     { href: '#services', label: 'Services' },
     { href: '#engagement', label: 'Engagement Models' },
     { href: '#contact', label: 'Contact' },
+    { href: '/scroll-demo', label: 'Scroll Demo' },
+    { href: '/test-cursor', label: 'Cursor Test' },
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' 
+        scrolled
+          ? 'bg-black/80 backdrop-blur-xl border-b border-white/10'
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -41,7 +43,7 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <motion.div 
+          <motion.div
             className="flex-shrink-0"
             whileHover={{ scale: 1.05 }}
           >
@@ -57,17 +59,24 @@ export default function Navigation() {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={index}
-                  href={link.href}
-                  className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-300 relative group"
-                  whileHover={{ y: -2 }}
-                >
-                  {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-                </motion.a>
-              ))}
+              {navLinks.map((link, index) => {
+                const isRoute = link.href.startsWith('/');
+                const Component = isRoute ? Link : motion.a;
+                const props = isRoute ? { href: link.href } : { href: link.href };
+
+                return (
+                  <Component
+                    key={index}
+                    {...props}
+                    className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-300 relative group"
+                    whileHover={{ y: -2 }}
+                    data-cursor="link"
+                  >
+                    {link.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                  </Component>
+                );
+              })}
             </div>
           </div>
 
@@ -77,6 +86,7 @@ export default function Navigation() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300"
+              data-cursor="button"
             >
               Get Started
             </motion.a>
