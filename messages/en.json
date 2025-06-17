@@ -1,101 +1,338 @@
 {
+  "landing": {
+    "title": {
+      "welcome": "Welcome to"
+    },
+    "subtitle": "Professional consulting services in education and software development",
+    "education": {
+      "title": "EDUCATION",
+      "description": "Educational consulting, curriculum development, and training programs",
+      "cta": "Explore Education"
+    },
+    "development": {
+      "title": "DEVELOPMENT",
+      "description": "Software development, technical consulting, and web development services",
+      "cta": "Explore Development"
+    },
+    "footer": "© 2025 rise.sk s.r.o. All rights reserved."
+  },
+  "education": {
+    "title": "Education Services",
+    "subtitle": "Empowering learning through innovative educational solutions",
+    "backToHome": "Back to Home",
+    "inProgress": {
+      "title": "IN PROGRESS",
+      "description": "Our education department is currently under development. We're working hard to bring you comprehensive educational consulting services."
+    },
+    "contact": {
+      "title": "Get in Touch"
+    }
+  },
   "navigation": {
     "about": "About",
     "services": "Services",
+    "engagement": "Engagement Models",
     "contact": "Contact",
+    "backToHome": "Back to Home",
     "getStarted": "Get Started"
   },
   "hero": {
-    "title": "Transform Your",
-    "titleHighlight": "Digital Presence",
-    "subtitle": "We craft exceptional web experiences that drive growth and innovation for forward-thinking businesses",
-    "description": "Specializing in modern web development, digital solutions, and IT consulting. We turn your vision into powerful, scalable digital experiences.",
+    "badge": "Executive Snapshot",
+    "title": {
+      "build": "Build",
+      "bulletProof": "Bullet-Proof",
+      "digitalProducts": "Digital Products"
+    },
+    "description": "is a Bratislava-based studio of FIIT-STU graduates who build bullet-proof digital products and teach the next generation of tech talent.",
+    "subtitle": "From custom web apps delivered on-time, every time, to skills bootcamps that empower teams.",
     "startProject": "Start Your Project",
-    "getInTouch": "Get in Touch"
+    "freeConsultation": "Free Consultation",
+    "metrics": {
+      "onTimeDelivery": {
+        "number": "92%",
+        "label": "On-Time Delivery"
+      },
+      "costSavings": {
+        "number": "20-40%",
+        "label": "Cost Savings"
+      },
+      "teamReady": {
+        "number": "14 Days",
+        "label": "Team Ready"
+      }
+    }
   },
   "about": {
-    "title": "About Rise",
-    "subtitle": "Your Partner in Digital Excellence",
-    "description": "We are a dynamic team of developers, designers, and digital strategists passionate about creating cutting-edge solutions that propel businesses forward.",
-    "secondDescription": "With years of experience in web development, UI/UX design, and digital transformation, we bring both technical expertise and creative vision to every project we undertake.",
-    "experience": "Years of Experience",
-    "projects": "Projects Completed",
-    "clients": "Happy Clients",
-    "team": "Team Members",
-    "projectsDelivered": "Projects Delivered",
-    "yearsExperience": "Years Experience",
-    "clientSatisfaction": "Client Satisfaction",
-    "quote": "Technology is best when it brings people together. Our goal is to create digital experiences that not only look beautiful but also solve real problems and create meaningful connections.",
-    "founderName": "Alex Johnson",
-    "founderTitle": "Founder & Lead Developer",
-    "whatWeDoBest": "What We Do Best",
-    "webDevTitle": "Web Development",
-    "webDevDesc": "Modern, responsive websites built with cutting-edge technologies and best practices.",
-    "designTitle": "UI/UX Design",
-    "designDesc": "Beautiful, intuitive designs that prioritize user experience and engagement.",
-    "performanceTitle": "Performance",
-    "performanceDesc": "Lightning-fast, optimized solutions that scale with your business needs."
+    "badge": "FIIT-STU Graduates Studio",
+    "title": "Why Rise.sk Beats",
+    "titleHighlight": "Traditional Outsourcing",
+    "description": "We're not just another dev shop. We're FIIT-STU graduates who understand both cutting-edge technology and business impact. Every project is built for scale, security, and measurable results.",
+    "stats": {
+      "delivery": {
+        "number": "92%",
+        "label": "On-time Delivery",
+        "description": "Projects delivered on schedule"
+      },
+      "savings": {
+        "number": "40%",
+        "label": "Cost Savings",
+        "description": "Average savings vs traditional outsourcing"
+      },
+      "ready": {
+        "number": "14 Days",
+        "label": "Team Ready",
+        "description": "From briefing to active development"
+      },
+      "grads": {
+        "number": "100%",
+        "label": "FIIT-STU Grads",
+        "description": "Top-tier Slovak technical university"
+      }
+    },
+    "values": {
+      "security": {
+        "title": "Security-First Development",
+        "description": "Every line of code follows security best practices and undergoes thorough review."
+      },
+      "teams": {
+        "title": "Cross-Functional Teams",
+        "description": "PM + 2 FE devs + 1 BE dev + QA ready in under 14 days for immediate impact."
+      },
+      "performance": {
+        "title": "Performance-Driven Results",
+        "description": "We measure success by your ROI, not just deliverables. Real results, real growth."
+      }
+    },
+    "cta": {
+      "title": "Ready to Experience the Rise.sk Difference?",
+      "description": "Join 50+ companies who chose quality over cheap outsourcing. Get your dedicated team in 14 days with guaranteed results.",
+      "startProject": "Start Your Project",
+      "viewServices": "View Our Services"
+    }
+  },
+  "engagement": {
+    "badge": "Engagement Models",
+    "title": "Flexible",
+    "titleHighlight": "Collaboration",
+    "subtitle": "Choose the engagement model that best fits your project needs and team structure",
+    "models": {
+      "dedicated": {
+        "title": "Dedicated Team",
+        "description": "Long-term squad embedded in your processes",
+        "features": ["Full team integration", "Shared processes & tools", "Direct communication", "Scalable team size"],
+        "ideal": "Perfect for ongoing projects and product development"
+      },
+      "project": {
+        "title": "Project-Based",
+        "description": "Fixed scope, fixed timeline—ideal for MVPs",
+        "features": [
+          "Clear deliverables",
+          "Fixed budget & timeline",
+          "Dedicated project manager",
+          "Quality guaranteed"
+        ],
+        "ideal": "Great for startups and defined scope projects"
+      },
+      "staff": {
+        "title": "Staff Augmentation",
+        "description": "Plug skill gaps fast without HR overhead",
+        "features": ["Immediate talent access", "Flexible duration", "No hiring overhead", "Quick team scaling"],
+        "ideal": "When you need specific skills quickly"
+      }
+    },
+    "guarantees": ["Weekly reporting", "Shared KPIs", "Zero-overhead knowledge transfer at hand-off"],
+    "guaranteesTitle": "All Models Include"
   },
   "services": {
-    "title": "Our Services",
-    "subtitle": "Comprehensive Digital Solutions",
+    "badge": "Our Services",
+    "title": "Complete Digital",
+    "titleHighlight": "Solutions",
+    "subtitle": "From concept to deployment, we deliver bullet-proof digital products with cutting-edge technology",
     "webDev": {
-      "title": "Web Development",
-      "description": "Custom websites and web applications built with modern technologies and best practices.",
-      "feature1": "Responsive Design",
-      "feature2": "Performance Optimization",
-      "feature3": "SEO Ready",
-      "feature4": "Mobile First"
+      "title": "Custom Web & Mobile Development",
+      "description": "Bespoke websites, SaaS platforms, PWAs, iOS/Android apps with modern stacks (React, Vue, Node, Laravel, Flutter)",
+      "features": ["Security-first coding", "WCAG-level accessibility", "SEO-ready architecture"],
+      "benefits": [
+        "Brand edge: Tailor-made builds boost UX, speed, and search visibility",
+        "Scalability: Codebases grow with you—no licence lock-in",
+        "Ownership: You keep the IP and future-proof your digital assets"
+      ],
+      "team": "Cross-functional pod—PM + 2 FE devs + 1 BE dev + QA—ready in under 14 days"
     },
-    "ecommerce": {
-      "title": "E-Commerce Solutions",
-      "description": "Complete online stores with secure payment processing and inventory management.",
-      "feature1": "Payment Integration",
-      "feature2": "Inventory Management",
-      "feature3": "Order Tracking",
-      "feature4": "Admin Dashboard"
-    },
-    "digital": {
-      "title": "Digital Transformation",
-      "description": "Modernize your business processes with digital solutions and automation.",
-      "feature1": "Process Automation",
-      "feature2": "Cloud Migration",
-      "feature3": "API Integration",
-      "feature4": "Data Analytics"
+    "devops": {
+      "title": "DevOps & Cloud Reliability",
+      "description": "CI/CD pipelines, container orchestration (Docker, K8s), cloud migration (AWS, Azure, GCP), 24/7 monitoring",
+      "features": ["Automated CI/CD pipelines", "Container orchestration", "SLA-driven response times"],
+      "benefits": [
+        "Faster releases mean faster ROI",
+        "50% reduction in feature wait times",
+        "Automated infra slashes outage risk"
+      ],
+      "team": "1 DevOps engineer + SRE on demand—integrated with your existing squad"
     },
     "design": {
-      "title": "UI/UX Design",
-      "description": "Beautiful, user-centered designs that enhance user experience and engagement.",
-      "feature1": "User Research",
-      "feature2": "Wireframing",
-      "feature3": "Prototyping",
-      "feature4": "Design Systems"
+      "title": "UX/UI & Front-End Guild",
+      "description": "User research, wireframes, interactive prototypes, design systems in Figma + Storybook",
+      "features": ["User research & prototypes", "Scalable design systems", "Accessibility audits (AA-AAA)"],
+      "benefits": [
+        "Intuitive design raises conversion and retention",
+        "88% of users won't return after bad experience",
+        "Consistent, scalable UI"
+      ],
+      "team": "Lead designer + UX researcher + Front-end dev(s). Perfect for brands that need polish as much as code"
     },
-    "maintenance": {
-      "title": "Website Maintenance",
-      "description": "Ongoing support, updates, and optimization to keep your site running smoothly.",
-      "feature1": "24/7 Monitoring",
-      "feature2": "Security Updates",
-      "feature3": "Performance Tuning",
-      "feature4": "Bug Fixes"
+    "qa": {
+      "title": "Quality Assurance & Test Automation",
+      "description": "Unit, integration, and end-to-end tests (Jest, Cypress, Playwright), performance and security testing",
+      "features": ["Comprehensive test suites", "Performance testing", "Security testing suites"],
+      "benefits": ["Bugs fixed pre-launch cost 6× less", "Regression test pipelines", "Automated quality gates"],
+      "team": "1 Automation QA + 1 Manual tester for each project sprint"
     },
-    "consulting": {
-      "title": "IT Consulting",
-      "description": "Strategic technology guidance to help you make informed decisions about your digital future.",
-      "feature1": "Technology Strategy",
-      "feature2": "Architecture Planning",
-      "feature3": "Code Reviews",
-      "feature4": "Team Training"
+    "education": {
+      "title": "Education & Talent-Upskilling Studio",
+      "description": "Custom training programs, technical mentorship, and skills bootcamps for your existing teams",
+      "features": ["Custom curriculum development", "Hands-on technical mentorship", "Team skills assessment"],
+      "benefits": [
+        "Skilled teams drive 30% faster delivery",
+        "Reduce external hiring costs",
+        "Future-proof your talent pipeline"
+      ],
+      "team": "Senior engineers + curriculum specialists who design programs around your tech stack"
     },
-    "discussProject": "Discuss Your Project"
+    "new": {
+      "header": {
+        "badge": "Our Services",
+        "title": "Complete Digital Solutions",
+        "subtitle": "From concept to deployment, we deliver bullet-proof digital products with cutting-edge technology"
+      },
+      "labels": {
+        "features": "What we do",
+        "benefits": "Why it sells",
+        "team": "Team format"
+      },
+      "development": {
+        "title": "Custom Web & Mobile Development",
+        "description": "Bespoke websites, SaaS platforms, PWAs, iOS/Android apps with modern stacks (React, Vue, Node, Laravel, Flutter)",
+        "features": ["Security-first coding", "WCAG-level accessibility", "SEO-ready architecture"],
+        "benefits": [
+          "Brand edge: Tailor-made builds boost UX, speed, and search visibility",
+          "Scalability: Codebases grow with you—no licence lock-in",
+          "Ownership: You keep the IP and future-proof your digital assets"
+        ],
+        "team": "Cross-functional pod—PM + 2 FE devs + 1 BE dev + QA—ready in under 14 days"
+      },
+      "devops": {
+        "title": "DevOps & Cloud Reliability",
+        "description": "CI/CD pipelines, container orchestration (Docker, K8s), cloud migration (AWS, Azure, GCP), 24/7 monitoring",
+        "features": ["Automated CI/CD pipelines", "Container orchestration", "SLA-driven response times"],
+        "benefits": [
+          "Faster releases mean faster ROI",
+          "50% reduction in feature wait times",
+          "Automated infra slashes outage risk"
+        ],
+        "team": "1 DevOps engineer + SRE on demand—integrated with your existing squad"
+      },
+      "ux": {
+        "title": "UX/UI & Front-End Guild",
+        "description": "User research, wireframes, interactive prototypes, design systems in Figma + Storybook",
+        "features": ["User research & prototypes", "Scalable design systems", "Accessibility audits (AA-AAA)"],
+        "benefits": [
+          "Intuitive design raises conversion and retention",
+          "88% of users won't return after bad experience",
+          "Consistent, scalable UI"
+        ],
+        "team": "Lead designer + UX researcher + Front-end dev(s). Perfect for brands that need polish as much as code"
+      },
+      "qa": {
+        "title": "Quality Assurance & Test Automation",
+        "description": "Unit, integration, and end-to-end tests (Jest, Cypress, Playwright), performance and security testing",
+        "features": ["Comprehensive test suites", "Performance testing", "Security testing suites"],
+        "benefits": ["Bugs fixed pre-launch cost 6× less", "Regression test pipelines", "Automated quality gates"],
+        "team": "1 Automation QA + 1 Manual tester for each project sprint"
+      },
+      "education": {
+        "title": "Education & Talent-Upskilling Studio",
+        "description": "Coding bootcamps (JavaScript, Python, DevOps), corporate workshops in AI, cloud, and cybersecurity",
+        "features": ["Certified instructors", "Corporate workshops", "Language & soft-skills programs"],
+        "benefits": [
+          "Europe's e-learning market to double to €210bn by 2033",
+          "Skills half-life is ~30 months in tech",
+          "Strategic talent development priority"
+        ],
+        "team": "Certified instructors and mentors drawn from our senior dev bench"
+      }
+    },
+    "comparison": {
+      "title": "Why Rise.sk Beats Traditional Outsourcing",
+      "subtitle": "Experience the difference of working with Slovak tech talent",
+      "risesk": {
+        "title": "Rise.sk",
+        "background": {
+          "title": "Background",
+          "description": "FIIT-STU grads from Slovakia's top tech faculty"
+        },
+        "innovation": {
+          "title": "Innovation Hot-spot",
+          "description": "Slovakia ranks 46th globally in the 2024 Global Innovation Index"
+        },
+        "delivery": {
+          "title": "On-Time Delivery",
+          "description": "92% projects ship on or before deadline"
+        },
+        "cost": {
+          "title": "Cost-Efficiency",
+          "description": "Slovak dev rates ~20–40% below Western Europe without time-zone lag"
+        }
+      },
+      "outsourcer": {
+        "title": "Generic Outsourcer",
+        "background": {
+          "title": "Background",
+          "description": "Mixed credentials"
+        },
+        "innovation": {
+          "title": "Innovation Hot-spot",
+          "description": "n/a"
+        },
+        "delivery": {
+          "title": "On-Time Delivery",
+          "description": "Deadline drift common"
+        },
+        "cost": {
+          "title": "Cost-Efficiency",
+          "description": "Higher EU rates or far-flung time zones"
+        }
+      }
+    }
   },
   "contact": {
     "title": "Get Started Today",
     "subtitle": "Ready to work with us? Fill out the form below and we'll get back to you quickly.",
+    "badge": "Ready to Start Your Project?",
+    "mainTitle": "Let's Build Something",
+    "mainTitleHighlight": "Amazing Together",
+    "getInTouch": "Get in Touch",
+    "description": "Ready to transform your digital presence? Our FIIT-STU graduates team is standing by to discuss your project and provide a custom solution that drives real results.",
+    "whyChoose": "Why Choose Rise.sk?",
+    "onTimeDelivery": "On-time Delivery",
+    "teamReady": "Team Ready",
+    "contactInfo": {
+      "email": "Email",
+      "phone": "Phone",
+      "office": "Office"
+    },
+    "fullName": "Full Name",
+    "company": "Company",
     "email": "Email Address",
     "phone": "Phone Number",
-    "message": "Message",
-    "messagePlaceholder": "Tell us about your project or how we can help you...",
+    "message": "Project Details",
+    "messagePlaceholder": "Tell us about your project, timeline, and goals...",
+    "placeholders": {
+      "name": "John Doe",
+      "email": "john@company.com",
+      "phone": "+1 (555) 123-4567",
+      "company": "Your Company"
+    },
     "service": "Service Needed",
     "selectService": "Select a service",
     "services": {
@@ -107,25 +344,34 @@
       "consulting": "IT Consulting",
       "other": "Other"
     },
-    "submit": "Send Request",
+    "submit": "Send Message",
     "sending": "Sending...",
-    "success": "Thank you! We'll contact you soon.",
+    "success": "Thank you! We'll get back to you within 24 hours.",
     "error": "Something went wrong. Please try again.",
-    "networkError": "Network error. Please check your connection and try again."
+    "networkError": "Network error. Please check your connection and try again.",
+    "requiredFields": "Please fill in all required fields.",
+    "invalidEmail": "Please enter a valid email address."
   },
   "footer": {
-    "tagline": "Empowering businesses through innovative digital solutions.",
-    "services": "Services",
-    "company": "Company",
-    "contact": "Contact",
-    "quickLinks": "Quick Links",
-    "aboutUs": "About Us",
-    "blog": "Blog",
-    "getInTouch": "Get in Touch",
-    "address": "123 Innovation Street\nTech City, TC 12345",
-    "copyright": "© 2025 Rise.",
-    "rights": "All rights reserved.",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "description": "FIIT-STU graduates studio delivering bullet-proof digital solutions. From custom development to DevOps excellence—we build products that scale.",
+    "sections": {
+      "services": "Services",
+      "company": "Company"
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location"
+    },
+    "copyright": "© {year} Rise.sk s.r.o. All rights reserved. | Bratislava-based FIIT-STU graduates studio",
+    "cta": {
+      "title": "Ready to Start Your Project?",
+      "description": "Get your dedicated team in 14 days. 92% on-time delivery. 20-40% cost savings guaranteed.",
+      "button": "Get Started Today"
+    },
+    "services": ["Custom Development", "DevOps & Cloud", "UX/UI Design", "Quality Assurance", "Education & Training"],
+    "company": ["About Us", "Our Team", "Careers", "Case Studies", "Blog"],
+    "support": ["Documentation", "API Reference", "Help Center", "Community", "Status"]
   }
 }

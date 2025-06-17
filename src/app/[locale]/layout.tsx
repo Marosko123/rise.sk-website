@@ -4,11 +4,12 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-import '../globals.css';
 import { MorphingCursor } from '@/components/InteractiveElements';
+import LanguagePreferenceHandler from '@/components/LanguagePreferenceHandler';
 import { ScrollProgress } from '@/components/ScrollEffects';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import { routing } from '@/i18n/routing';
+import '../globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,12 +39,16 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as 'en' | 'sk')) {
+  if (
+    !routing.locales.includes(
+      locale as 'en' | 'sk' | 'cs' | 'de' | 'es' | 'hu' | 'fr'
+    )
+  ) {
     notFound();
   }
 
-  // Providing all messages to the client
-  const messages = await getMessages();
+  // Providing all messages to the client for the specific locale
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
@@ -54,6 +59,7 @@ export default async function LocaleLayout({
           <ScrollProgress />
           <MorphingCursor />
           <NextIntlClientProvider messages={messages}>
+            <LanguagePreferenceHandler />
             {children}
           </NextIntlClientProvider>
         </SmoothScrollProvider>

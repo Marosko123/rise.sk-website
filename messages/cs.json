@@ -1,0 +1,106 @@
+{
+  "landing": {
+    "title": {
+      "welcome": "Vítejte v"
+    },
+    "subtitle": "Profesionální poradenské služby v oblasti vzdělávání a vývoje softwaru",
+    "education": {
+      "title": "VZDĚLÁVÁNÍ",
+      "description": "Vzdělávací poradenství, vývoj učebních osnov a školící programy",
+      "cta": "Prozkoumat Vzdělávání"
+    },
+    "development": {
+      "title": "VÝVOJ",
+      "description": "Vývoj softwaru, technické poradenství a služby webového vývoje",
+      "cta": "Prozkoumat Vývoj"
+    },
+    "footer": "© 2025 rise.sk s.r.o. Všechna práva vyhrazena."
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "title": "We build stunning web and mobile applications.",
+    "subtitle": "From idea to reality, we bring your vision to life with modern technologies and user-centric design.",
+    "cta": "Get in touch"
+  },
+  "About": {
+    "title": "About Us",
+    "p1": "We are a passionate team of developers and designers dedicated to creating exceptional digital experiences. With a focus on quality, performance, and user satisfaction, we deliver solutions that exceed expectations.",
+    "p2": "Our expertise spans across various technologies, allowing us to choose the best tools for each project. We believe in collaboration, transparency, and continuous improvement."
+  },
+  "Services": {
+    "title": "Our Services",
+    "web": "Web Development",
+    "webDesc": "Building responsive and scalable web applications using the latest frameworks.",
+    "mobile": "Mobile Development",
+    "mobileDesc": "Creating native and cross-platform mobile apps for iOS and Android.",
+    "design": "UI/UX Design",
+    "designDesc": "Designing intuitive and beautiful user interfaces that users love."
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "form_name": "Your Name",
+    "form_email": "Your Email",
+    "form_message": "Your Message",
+    "form_send": "Send Message",
+    "form_sending": "Sending...",
+    "form_success": "Message sent successfully!",
+    "form_error": "An error occurred. Please try again."
+  },
+  "Footer": {
+    "copy": "© 2025 Rise. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "EngagementModels": {
+    "title": "Engagement Models",
+    "subtitle": "Choose the model that best fits your needs.",
+    "fixed": "Fixed Price",
+    "fixedDesc": "Ideal for projects with well-defined scope and requirements.",
+    "time": "Time & Materials",
+    "timeDesc": "Perfect for projects with evolving requirements and a need for flexibility.",
+    "dedicated": "Dedicated Team",
+    "dedicatedDesc": "A dedicated team of experts working exclusively on your project."
+  },
+  "ServicesEnhanced": {
+    "title": "What We Offer",
+    "subtitle": "Our comprehensive services are designed to bring your ideas to life.",
+    "consulting": "Consulting & Strategy",
+    "consultingDesc": "From initial idea to a concrete project plan, we help you define the right strategy for your digital product. We analyze market trends, identify opportunities, and create a roadmap for success.",
+    "design": "UI/UX & Prototyping",
+    "designDesc": "We create intuitive and visually appealing designs that provide a seamless user experience. Our process includes wireframing, prototyping, and user testing to ensure the final product is both beautiful and functional.",
+    "development": "Web & Mobile Development",
+    "developmentDesc": "Our team of skilled developers builds robust and scalable applications using modern technologies. We specialize in both web and mobile platforms, delivering high-quality code that is clean, efficient, and maintainable.",
+    "support": "Maintenance & Support",
+    "supportDesc": "We provide ongoing support and maintenance to ensure your application runs smoothly after launch. From bug fixes to performance monitoring and feature enhancements, we've got you covered."
+  },
+  "ServicesNew": {
+    "title": "Our Expertise",
+    "subtitle": "We provide a wide range of services to meet your business needs.",
+    "web_development": "Web Development",
+    "web_development_desc": "We create modern, responsive, and high-performance websites and web applications using the latest technologies like Next.js, React, and Node.js.",
+    "mobile_development": "Mobile App Development",
+    "mobile_development_desc": "From native iOS and Android apps to cross-platform solutions with React Native and Flutter, we build mobile experiences that engage your users.",
+    "ui_ux_design": "UI/UX Design",
+    "ui_ux_design_desc": "Our design team focuses on creating user-centric and visually stunning interfaces that are both intuitive and enjoyable to use.",
+    "devops": "DevOps & Cloud Solutions",
+    "devops_desc": "We streamline your development and deployment processes with CI/CD pipelines, containerization, and cloud infrastructure management on AWS, Azure, and Google Cloud.",
+    "quality_assurance": "Quality Assurance",
+    "quality_assurance_desc": "Our QA engineers ensure your product is bug-free and meets the highest quality standards through manual and automated testing.",
+    "project_management": "Agile Project Management",
+    "project_management_desc": "We follow agile methodologies to deliver projects on time and within budget, ensuring transparency and collaboration throughout the entire process."
+  },
+  "LanguageSwitcher": {
+    "language": "Language",
+    "en": "English",
+    "sk": "Slovak",
+    "cs": "Czech",
+    "de": "German",
+    "es": "Spanish",
+    "hu": "Hungarian"
+  }
+}

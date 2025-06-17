@@ -1,10 +1,20 @@
 'use client';
 
-import { motion, useScroll, useTransform, useSpring, useMotionValue, useVelocity } from 'framer-motion';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useVelocity,
+} from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
 // Scroll-based section navigation with active indicators
-export function ScrollSectionNavigator({ sections }: { sections: Array<{ id: string; label: string }> }) {
+export function ScrollSectionNavigator({
+  sections,
+}: {
+  sections: Array<{ id: string; label: string }>;
+}) {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || '');
 
   useEffect(() => {
@@ -38,13 +48,13 @@ export function ScrollSectionNavigator({ sections }: { sections: Array<{ id: str
   };
 
   return (
-    <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
-      <div className="flex flex-col space-y-4">
+    <nav className='fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden lg:block'>
+      <div className='flex flex-col space-y-4'>
         {sections.map(({ id, label }) => (
           <button
             key={id}
             onClick={() => scrollToSection(id)}
-            className="group relative flex items-center"
+            className='group relative flex items-center'
           >
             <motion.div
               className={`w-3 h-3 rounded-full border-2 transition-colors duration-300 ${
@@ -58,7 +68,7 @@ export function ScrollSectionNavigator({ sections }: { sections: Array<{ id: str
             <motion.span
               initial={{ opacity: 0, x: 10 }}
               whileHover={{ opacity: 1, x: 15 }}
-              className="absolute left-5 whitespace-nowrap bg-gray-900 text-white px-2 py-1 rounded text-sm pointer-events-none"
+              className='absolute left-5 whitespace-nowrap bg-gray-900 text-white px-2 py-1 rounded text-sm pointer-events-none'
             >
               {label}
             </motion.span>
@@ -70,38 +80,44 @@ export function ScrollSectionNavigator({ sections }: { sections: Array<{ id: str
 }
 
 // Advanced parallax with multiple layers and 3D perspective
-export function MultiLayerParallax({ children }: { children: React.ReactNode }) {
+export function MultiLayerParallax({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
 
   // Different speeds for different layers
-  const yBackground = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
-  const yMidground = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-  const yForeground = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const yBackground = useTransform(scrollYProgress, [0, 1], ['-30%', '30%']);
+  const yMidground = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
+  const yForeground = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
   const rotateX = useTransform(scrollYProgress, [0, 1], [0, 5]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1]);
 
   return (
-    <div ref={ref} className="relative overflow-hidden" style={{ perspective: '1000px' }}>
+    <div
+      ref={ref}
+      className='relative overflow-hidden'
+      style={{ perspective: '1000px' }}
+    >
       {/* Background layer */}
       <motion.div
         style={{ y: yBackground, rotateX, scale }}
-        className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-indigo-900/20"
+        className='absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-indigo-900/20'
       />
 
       {/* Midground layer */}
       <motion.div
         style={{ y: yMidground }}
-        className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-purple-500/10"
+        className='absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-purple-500/10'
       />
 
       {/* Foreground content */}
-      <motion.div style={{ y: yForeground }}>
-        {children}
-      </motion.div>
+      <motion.div style={{ y: yForeground }}>{children}</motion.div>
     </div>
   );
 }
@@ -113,11 +129,15 @@ export function VelocityScroll({ children }: { children: React.ReactNode }) {
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
-    stiffness: 400
+    stiffness: 400,
   });
 
   // Transform velocity to usable values
-  const velocityFactor = useTransform(smoothVelocity, [-1000, 0, 1000], [2, 1, 2]);
+  const velocityFactor = useTransform(
+    smoothVelocity,
+    [-1000, 0, 1000],
+    [2, 1, 2]
+  );
   const scale = useTransform(velocityFactor, [1, 2], [1, 1.05]);
   const skew = useTransform(smoothVelocity, [-1000, 0, 1000], [-2, 0, 2]);
 
@@ -125,7 +145,7 @@ export function VelocityScroll({ children }: { children: React.ReactNode }) {
     <motion.div
       ref={ref}
       style={{ scale, skewY: skew }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
       {children}
     </motion.div>
@@ -133,13 +153,17 @@ export function VelocityScroll({ children }: { children: React.ReactNode }) {
 }
 
 // Direction-aware scroll animations
-export function DirectionAwareScroll({ children }: { children: React.ReactNode }) {
+export function DirectionAwareScroll({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
   const { scrollY } = useScroll();
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    return scrollY.on('change', (latest) => {
+    return scrollY.on('change', latest => {
       const direction = latest > lastScrollY ? 'down' : 'up';
       setScrollDirection(direction);
       setLastScrollY(latest);
@@ -160,11 +184,17 @@ export function DirectionAwareScroll({ children }: { children: React.ReactNode }
 }
 
 // Character-by-character text reveal
-export function CharacterReveal({ text, className = "" }: { text: string; className?: string }) {
+export function CharacterReveal({
+  text,
+  className = '',
+}: {
+  text: string;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.8", "start 0.2"]
+    offset: ['start 0.8', 'start 0.2'],
   });
 
   const characters = text.split('');
@@ -188,7 +218,7 @@ function CharacterRevealChar({
   char,
   index,
   totalChars,
-  scrollYProgress
+  scrollYProgress,
 }: {
   char: string;
   index: number;
@@ -196,15 +226,12 @@ function CharacterRevealChar({
   scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'];
 }) {
   const start = index / totalChars;
-  const end = start + (1 / totalChars);
+  const end = start + 1 / totalChars;
   const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
   const y = useTransform(scrollYProgress, [start, end], [20, 0]);
 
   return (
-    <motion.span
-      style={{ opacity, y }}
-      className="inline-block"
-    >
+    <motion.span style={{ opacity, y }} className='inline-block'>
       {char === ' ' ? '\u00A0' : char}
     </motion.span>
   );
@@ -215,7 +242,7 @@ export function ScrollMorph({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
 
   const borderRadius = useTransform(scrollYProgress, [0, 0.5, 1], [0, 50, 0]);
@@ -226,7 +253,7 @@ export function ScrollMorph({ children }: { children: React.ReactNode }) {
     <motion.div
       ref={ref}
       style={{ borderRadius, rotate, scale }}
-      className="overflow-hidden"
+      className='overflow-hidden'
     >
       {children}
     </motion.div>
@@ -237,7 +264,7 @@ export function ScrollMorph({ children }: { children: React.ReactNode }) {
 export function StaggerReveal({
   children,
   staggerDelay = 0.1,
-  threshold = 0.1
+  threshold = 0.1,
 }: {
   children: React.ReactNode;
   staggerDelay?: number;
@@ -293,17 +320,18 @@ export function StaggerReveal({
     <motion.div
       ref={ref}
       variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial='hidden'
+      animate={isInView ? 'visible' : 'hidden'}
     >
-      {Array.isArray(children)
-        ? children.map((child, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              {child}
-            </motion.div>
-          ))
-        : <motion.div variants={itemVariants}>{children}</motion.div>
-      }
+      {Array.isArray(children) ? (
+        children.map((child, index) => (
+          <motion.div key={index} variants={itemVariants}>
+            {child}
+          </motion.div>
+        ))
+      ) : (
+        <motion.div variants={itemVariants}>{children}</motion.div>
+      )}
     </motion.div>
   );
 }
@@ -320,7 +348,7 @@ export function ScrollColorTransition() {
   return (
     <motion.div
       style={{ backgroundColor }}
-      className="fixed inset-0 -z-10 transition-colors duration-1000"
+      className='fixed inset-0 -z-10 transition-colors duration-1000'
     />
   );
 }
@@ -328,7 +356,7 @@ export function ScrollColorTransition() {
 // Curtain reveal effect for images/content
 export function CurtainReveal({
   children,
-  direction = 'horizontal'
+  direction = 'horizontal',
 }: {
   children: React.ReactNode;
   direction?: 'horizontal' | 'vertical';
@@ -336,7 +364,7 @@ export function CurtainReveal({
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.8", "start 0.2"]
+    offset: ['start 0.8', 'start 0.2'],
   });
 
   const clipPath = useTransform(
@@ -348,10 +376,8 @@ export function CurtainReveal({
   );
 
   return (
-    <div ref={ref} className="overflow-hidden">
-      <motion.div style={{ clipPath }}>
-        {children}
-      </motion.div>
+    <div ref={ref} className='overflow-hidden'>
+      <motion.div style={{ clipPath }}>{children}</motion.div>
     </div>
   );
 }

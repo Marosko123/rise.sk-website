@@ -4,16 +4,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Home, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 import companyConfig from '@/config/company';
 import { Link } from '@/i18n/routing';
 
-import LanguageSwitcher from './LanguageSwitcher';
-
 export default function Navigation() {
-  const t = useTranslations('navigation');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -35,10 +31,12 @@ export default function Navigation() {
   };
 
   const navLinks = [
-    { href: '#about', label: t('about') },
-    { href: '#services', label: t('services') },
-    { href: '#engagement', label: t('engagement') },
-    { href: '#contact', label: t('contact') },
+    { href: '#about', label: 'About' },
+    { href: '#services', label: 'Services' },
+    { href: '#engagement', label: 'Engagement Models' },
+    { href: '#contact', label: 'Contact' },
+    { href: '/scroll-demo', label: 'Scroll Demo' },
+    { href: '/test-cursor', label: 'Cursor Test' },
   ];
 
   return (
@@ -72,20 +70,13 @@ export default function Navigation() {
           {/* Show different navigation based on page */}
           {isSubpage ? (
             <div className='hidden md:block'>
-              <div className='flex items-center space-x-4'>
-                <Link
-                  href='/'
-                  className='flex items-center space-x-2 text-gray-300 hover:text-white px-4 py-2 text-sm font-medium transition-colors duration-300'
-                >
-                  <Home className='w-4 h-4' />
-                  <span>{t('backToHome')}</span>
-                </Link>
-
-                {/* Language Switcher for subpages */}
-                <div className='flex items-center space-x-2 border-l border-gray-600 pl-4'>
-                  <LanguageSwitcher />
-                </div>
-              </div>
+              <Link
+                href='/'
+                className='flex items-center space-x-2 text-gray-300 hover:text-white px-4 py-2 text-sm font-medium transition-colors duration-300'
+              >
+                <Home className='w-4 h-4' />
+                <span>Back to Home</span>
+              </Link>
             </div>
           ) : (
             <div className='hidden md:block'>
@@ -125,7 +116,7 @@ export default function Navigation() {
                 className='bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300'
                 data-cursor='button'
               >
-                {t('getStarted')}
+                Get Started
               </motion.a>
             )}
           </div>
@@ -152,32 +143,20 @@ export default function Navigation() {
           >
             <div className='px-2 pt-2 pb-3 space-y-1'>
               {isSubpage ? (
-                <>
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className='px-3 py-2'
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className='px-3 py-2'
+                >
+                  <Link
+                    href='/'
+                    className='flex items-center space-x-2 text-gray-300 hover:text-white text-base font-medium transition-colors duration-300'
+                    onClick={() => setIsMenuOpen(false)}
                   >
-                    <Link
-                      href='/'
-                      className='flex items-center space-x-2 text-gray-300 hover:text-white text-base font-medium transition-colors duration-300'
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <Home className='w-4 h-4' />
-                      <span>Back to Home</span>
-                    </Link>
-                  </motion.div>
-
-                  {/* Mobile Language Switcher */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className='px-3 py-2 border-t border-gray-600 mt-2 pt-2'
-                  >
-                    <LanguageSwitcher />
-                  </motion.div>
-                </>
+                    <Home className='w-4 h-4' />
+                    <span>Back to Home</span>
+                  </Link>
+                </motion.div>
               ) : (
                 <>
                   {navLinks.map((link, index) => (
@@ -201,7 +180,7 @@ export default function Navigation() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: navLinks.length * 0.1 }}
                   >
-                    {t('getStarted')}
+                    Get Started
                   </motion.a>
                 </>
               )}

@@ -6,7 +6,9 @@ import { useState, useEffect } from 'react';
 export function MorphingCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
-  const [cursorVariant, setCursorVariant] = useState<'default' | 'text' | 'button' | 'link' | 'card'>('default');
+  const [cursorVariant, setCursorVariant] = useState<
+    'default' | 'text' | 'button' | 'link' | 'card'
+  >('default');
   const [isClicking, setIsClicking] = useState(false);
 
   useEffect(() => {
@@ -32,13 +34,30 @@ export function MorphingCursor() {
       hoverTimeout = setTimeout(() => {
         const target = e.target as HTMLElement;
 
-        if (target.closest('.interactive-card') || target.closest('[data-cursor="card"]')) {
+        if (
+          target.closest('.interactive-card') ||
+          target.closest('[data-cursor="card"]')
+        ) {
           setCursorVariant('card');
-        } else if (target.tagName === 'BUTTON' || target.closest('button') || target.closest('[data-cursor="button"]')) {
+        } else if (
+          target.tagName === 'BUTTON' ||
+          target.closest('button') ||
+          target.closest('[data-cursor="button"]')
+        ) {
           setCursorVariant('button');
-        } else if (target.tagName === 'A' || target.closest('a') || target.closest('[data-cursor="link"]')) {
+        } else if (
+          target.tagName === 'A' ||
+          target.closest('a') ||
+          target.closest('[data-cursor="link"]')
+        ) {
           setCursorVariant('link');
-        } else if (target.closest('[data-cursor="text"]') || target.tagName === 'P' || target.tagName === 'H1' || target.tagName === 'H2' || target.tagName === 'H3') {
+        } else if (
+          target.closest('[data-cursor="text"]') ||
+          target.tagName === 'P' ||
+          target.tagName === 'H1' ||
+          target.tagName === 'H2' ||
+          target.tagName === 'H3'
+        ) {
           setCursorVariant('text');
         } else {
           setCursorVariant('default');
@@ -83,14 +102,20 @@ export function MorphingCursor() {
   };
 
   const colors = getCursorColors();
-  const cursorSize = cursorVariant === 'default' ? 16 :
-                   cursorVariant === 'text' ? 14 :
-                   cursorVariant === 'button' ? 20 :
-                   cursorVariant === 'link' ? 16 : 22;
+  const cursorSize =
+    cursorVariant === 'default'
+      ? 16
+      : cursorVariant === 'text'
+        ? 14
+        : cursorVariant === 'button'
+          ? 20
+          : cursorVariant === 'link'
+            ? 16
+            : 22;
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none morphing-cursor-container"
+      className='fixed inset-0 pointer-events-none morphing-cursor-container'
       style={{
         zIndex: 2147483647,
         position: 'fixed',
@@ -99,22 +124,22 @@ export function MorphingCursor() {
         right: 0,
         bottom: 0,
         pointerEvents: 'none',
-        isolation: 'isolate'
+        isolation: 'isolate',
       }}
     >
       {/* Main cursor - highly visible with multi-layer design */}
       <motion.div
-        className="fixed cursor-main cursor-element"
+        className='fixed cursor-main cursor-element'
         animate={{
-          x: mousePosition.x - cursorSize/2,
-          y: mousePosition.y - cursorSize/2,
+          x: mousePosition.x - cursorSize / 2,
+          y: mousePosition.y - cursorSize / 2,
           scale: isClicking ? 0.8 : 1,
         }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 800,
           damping: 40,
-          mass: 0.1
+          mass: 0.1,
         }}
         style={{
           width: cursorSize,
@@ -124,12 +149,12 @@ export function MorphingCursor() {
           isolation: 'isolate',
           transform: 'translateZ(0)',
           willChange: 'transform, opacity',
-          pointerEvents: 'none'
+          pointerEvents: 'none',
         }}
       >
         {/* Outer glow for visibility */}
         <div
-          className="absolute inset-0 rounded-full opacity-60 blur-sm"
+          className='absolute inset-0 rounded-full opacity-60 blur-sm'
           style={{
             background: `radial-gradient(circle, ${colors.accent}40, transparent 70%)`,
             transform: 'scale(2.5)',
@@ -138,7 +163,7 @@ export function MorphingCursor() {
 
         {/* Main cursor body - high contrast */}
         <div
-          className="absolute inset-0 rounded-full border-2 shadow-2xl backdrop-blur-sm"
+          className='absolute inset-0 rounded-full border-2 shadow-2xl backdrop-blur-sm'
           style={{
             backgroundColor: `${colors.primary}95`,
             borderColor: colors.secondary,
@@ -148,7 +173,7 @@ export function MorphingCursor() {
 
         {/* Inner highlight for 3D effect */}
         <div
-          className="absolute inset-1 rounded-full opacity-40"
+          className='absolute inset-1 rounded-full opacity-40'
           style={{
             background: `linear-gradient(135deg, ${colors.secondary}80, transparent 50%)`,
           }}
@@ -158,16 +183,16 @@ export function MorphingCursor() {
       {/* Cursor state indicator */}
       {cursorVariant !== 'default' && (
         <motion.div
-          className="fixed flex items-center justify-center text-white text-xs font-bold rounded-full shadow-xl cursor-indicator"
+          className='fixed flex items-center justify-center text-white text-xs font-bold rounded-full shadow-xl cursor-indicator'
           initial={{ scale: 0, opacity: 0 }}
           animate={{
             x: mousePosition.x + 20,
             y: mousePosition.y - 20,
             scale: isClicking ? 1.2 : 1,
-            opacity: 1
+            opacity: 1,
           }}
           transition={{
-            type: "spring",
+            type: 'spring',
             stiffness: 400,
             damping: 25,
           }}
@@ -188,17 +213,17 @@ export function MorphingCursor() {
 
       {/* Enhanced outer ring with pulsing effect */}
       <motion.div
-        className="fixed rounded-full border opacity-30 cursor-layer"
+        className='fixed rounded-full border opacity-30 cursor-layer'
         animate={{
           x: mousePosition.x - 25,
           y: mousePosition.y - 25,
           scale: cursorVariant !== 'default' ? 1.3 : 1,
         }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 200,
           damping: 25,
-          mass: 0.5
+          mass: 0.5,
         }}
         style={{
           width: 50,
@@ -213,22 +238,22 @@ export function MorphingCursor() {
       {[...Array(3)].map((_, i) => (
         <motion.div
           key={i}
-          className="fixed rounded-full cursor-layer"
+          className='fixed rounded-full cursor-layer'
           animate={{
             x: mousePosition.x - 2,
             y: mousePosition.y - 2,
           }}
           transition={{
-            type: "spring",
-            stiffness: 120 - (i * 20),
-            damping: 20 + (i * 5),
-            mass: 0.3 + (i * 0.1)
+            type: 'spring',
+            stiffness: 120 - i * 20,
+            damping: 20 + i * 5,
+            mass: 0.3 + i * 0.1,
           }}
           style={{
             width: 4 - i,
             height: 4 - i,
             backgroundColor: colors.primary,
-            opacity: 0.6 - (i * 0.15),
+            opacity: 0.6 - i * 0.15,
             boxShadow: `0 0 ${8 - i * 2}px ${colors.primary}60`,
             zIndex: 2147483645 - i,
           }}
@@ -237,7 +262,7 @@ export function MorphingCursor() {
 
       {/* Dynamic background adaptation ring */}
       <motion.div
-        className="fixed rounded-full cursor-layer"
+        className='fixed rounded-full cursor-layer'
         animate={{
           x: mousePosition.x - 35,
           y: mousePosition.y - 35,
@@ -247,18 +272,18 @@ export function MorphingCursor() {
           rotate: {
             duration: 8,
             repeat: Infinity,
-            ease: "linear"
+            ease: 'linear',
           },
           x: {
-            type: "spring",
+            type: 'spring',
             stiffness: 150,
             damping: 20,
           },
           y: {
-            type: "spring",
+            type: 'spring',
             stiffness: 150,
             damping: 20,
-          }
+          },
         }}
         style={{
           width: 70,
@@ -274,7 +299,7 @@ export function MorphingCursor() {
 
 export function BentoGrid({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr'>
       {children}
     </div>
   );
@@ -282,9 +307,9 @@ export function BentoGrid({ children }: { children: React.ReactNode }) {
 
 export function BentoCard({
   children,
-  className = "",
+  className = '',
   spotlight = false,
-  tilt = true
+  tilt = true,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -320,7 +345,7 @@ export function BentoCard({
       onMouseLeave={handleMouseLeave}
       whileHover={{
         scale: 1.01,
-        z: 30
+        z: 30,
       }}
       animate={{
         rotateX: tiltX,
@@ -328,16 +353,16 @@ export function BentoCard({
       }}
       transition={{
         duration: 0.2,
-        ease: "easeOut"
+        ease: 'easeOut',
       }}
       style={{
-        transformStyle: "preserve-3d",
-        perspective: "1000px"
+        transformStyle: 'preserve-3d',
+        perspective: '1000px',
       }}
     >
       {spotlight && isHovered && (
         <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none"
+          className='absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none'
           style={{
             background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.15), transparent 40%)`,
           }}
@@ -352,34 +377,32 @@ export function BentoCard({
 
       {/* Enhanced glow effect - only render when hovered */}
       {isHovered && (
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl blur-sm" />
+        <div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none'>
+          <div className='absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl blur-sm' />
         </div>
       )}
 
       {/* Content */}
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className='relative z-10'>{children}</div>
 
       {/* Enhanced border glow - simplified */}
-      <div className="absolute inset-0 rounded-2xl border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" />
+      <div className='absolute inset-0 rounded-2xl border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none' />
     </motion.div>
   );
 }
 
 export function MagneticButton({
   children,
-  className = "",
+  className = '',
   href,
   onClick,
-  variant = "primary"
+  variant = 'primary',
 }: {
   children: React.ReactNode;
   className?: string;
   href?: string;
   onClick?: () => void;
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: 'primary' | 'secondary' | 'ghost';
 }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -397,12 +420,15 @@ export function MagneticButton({
     setMousePosition({ x: 0, y: 0 });
   };
 
-  const baseClasses = "relative px-8 py-4 font-bold rounded-lg transition-all duration-300 overflow-hidden";
+  const baseClasses =
+    'relative px-8 py-4 font-bold rounded-lg transition-all duration-300 overflow-hidden';
 
   const variants = {
-    primary: "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl",
-    secondary: "bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-sm",
-    ghost: "bg-transparent hover:bg-white/5 border border-white/10 text-white"
+    primary:
+      'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl',
+    secondary:
+      'bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-sm',
+    ghost: 'bg-transparent hover:bg-white/5 border border-white/10 text-white',
   };
 
   const Component = href ? motion.a : motion.button;
@@ -412,7 +438,7 @@ export function MagneticButton({
     <Component
       {...props}
       className={`${baseClasses} ${variants[variant]} ${className}`}
-      data-cursor="button"
+      data-cursor='button'
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -423,7 +449,7 @@ export function MagneticButton({
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 400,
         damping: 25,
       }}
@@ -431,7 +457,7 @@ export function MagneticButton({
       {/* Ripple effect */}
       {isHovered && (
         <motion.div
-          className="absolute inset-0 bg-white/20 rounded-lg"
+          className='absolute inset-0 bg-white/20 rounded-lg'
           initial={{ scale: 0, opacity: 0.5 }}
           animate={{ scale: 1, opacity: 0 }}
           transition={{ duration: 0.6 }}
@@ -439,11 +465,11 @@ export function MagneticButton({
       )}
 
       {/* Content */}
-      <span className="relative z-10">{children}</span>
+      <span className='relative z-10'>{children}</span>
 
       {/* Glow effect */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-lg blur-sm" />
+      <div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+        <div className='absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-lg blur-sm' />
       </div>
     </Component>
   );
@@ -460,11 +486,11 @@ export function FloatingDots() {
   }));
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {dots.map((dot) => (
+    <div className='fixed inset-0 overflow-hidden pointer-events-none z-0'>
+      {dots.map(dot => (
         <motion.div
           key={dot.id}
-          className="absolute bg-white/20 rounded-full"
+          className='absolute bg-white/20 rounded-full'
           style={{
             width: dot.size,
             height: dot.size,
@@ -479,7 +505,7 @@ export function FloatingDots() {
             duration: dot.duration,
             delay: dot.delay,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       ))}

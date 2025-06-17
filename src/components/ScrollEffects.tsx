@@ -8,17 +8,17 @@ export function ParallaxBackground() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["-50%", "50%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ['-50%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
 
   return (
-    <div ref={ref} className="absolute inset-0 overflow-hidden">
+    <div ref={ref} className='absolute inset-0 overflow-hidden'>
       <motion.div
         style={{ y, opacity }}
-        className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10"
+        className='absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10'
       />
     </div>
   );
@@ -29,18 +29,22 @@ export function ScrollProgress() {
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 origin-left z-50"
+      className='fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 origin-left z-50'
       style={{ scaleX }}
     />
   );
 }
 
-export function ScrollReveal({ children, direction = 'up', delay = 0 }: {
+export function ScrollReveal({
+  children,
+  direction = 'up',
+  delay = 0,
+}: {
   children: React.ReactNode;
   direction?: 'up' | 'down' | 'left' | 'right';
   delay?: number;
@@ -48,29 +52,38 @@ export function ScrollReveal({ children, direction = 'up', delay = 0 }: {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.8", "start 0.3"]
+    offset: ['start 0.8', 'start 0.3'],
   });
 
   const getTransform = () => {
     switch (direction) {
-      case 'up': return { y: [100, 0] };
-      case 'down': return { y: [-100, 0] };
-      case 'left': return { x: [100, 0] };
-      case 'right': return { x: [-100, 0] };
-      default: return { y: [100, 0] };
+      case 'up':
+        return { y: [100, 0] };
+      case 'down':
+        return { y: [-100, 0] };
+      case 'left':
+        return { x: [100, 0] };
+      case 'right':
+        return { x: [-100, 0] };
+      default:
+        return { y: [100, 0] };
     }
   };
 
   const transform = getTransform();
-  const animatedValue = useTransform(scrollYProgress, [0, 1], transform.y || transform.x);
+  const animatedValue = useTransform(
+    scrollYProgress,
+    [0, 1],
+    transform.y || transform.x
+  );
   const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 0.5, 1]);
 
   return (
     <div ref={ref}>
       <motion.div
         style={{
-          ...transform.y ? { y: animatedValue } : { x: animatedValue },
-          opacity
+          ...(transform.y ? { y: animatedValue } : { x: animatedValue }),
+          opacity,
         }}
         transition={{ delay }}
       >
@@ -80,7 +93,10 @@ export function ScrollReveal({ children, direction = 'up', delay = 0 }: {
   );
 }
 
-export function MagneticEffect({ children, strength = 0.3 }: {
+export function MagneticEffect({
+  children,
+  strength = 0.3,
+}: {
   children: React.ReactNode;
   strength?: number;
 }) {
@@ -119,7 +135,7 @@ export function MagneticEffect({ children, strength = 0.3 }: {
     <div ref={ref}>
       <motion.div
         animate={{ x: position.x, y: position.y }}
-        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
       >
         {children}
       </motion.div>
@@ -149,14 +165,17 @@ export function SmoothScroll() {
   return null;
 }
 
-export function TextReveal({ text, className = "" }: {
+export function TextReveal({
+  text,
+  className = '',
+}: {
   text: string;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.8", "start 0.3"]
+    offset: ['start 0.8', 'start 0.3'],
   });
 
   const words = text.split(' ');
@@ -180,7 +199,7 @@ function TextRevealWord({
   word,
   index,
   totalWords,
-  scrollYProgress
+  scrollYProgress,
 }: {
   word: string;
   index: number;
@@ -188,14 +207,11 @@ function TextRevealWord({
   scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'];
 }) {
   const start = index / totalWords;
-  const end = start + (1 / totalWords);
+  const end = start + 1 / totalWords;
   const opacity = useTransform(scrollYProgress, [start, end], [0.3, 1]);
 
   return (
-    <motion.span
-      style={{ opacity }}
-      className="inline-block mr-2"
-    >
+    <motion.span style={{ opacity }} className='inline-block mr-2'>
       {word}
     </motion.span>
   );

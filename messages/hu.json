@@ -1,0 +1,403 @@
+{
+  "landing": {
+    "title": {
+      "welcome": "Üdvözöljük a"
+    },
+    "subtitle": "Szakmai tanácsadói szolgáltatások oktatásban és szoftverfejlesztésben",
+    "education": {
+      "title": "OKTATÁS",
+      "description": "Oktatási tanácsadás, tantervfejlesztés és képzési programok",
+      "cta": "Fedezze fel az oktatást"
+    },
+    "development": {
+      "title": "FEJLESZTÉS",
+      "description": "Szoftverfejlesztés, műszaki tanácsadás és webfejlesztési szolgáltatások",
+      "cta": "Fedezze fel a fejlesztést"
+    },
+    "footer": "© 2025 rise.sk s.r.o. Minden jog fenntartva."
+  },
+  "education": {
+    "title": "Oktatási szolgáltatások",
+    "subtitle": "Innovatív oktatási megoldásokkal támogatjuk a tanulást",
+    "backToHome": "Vissza a kezdőlapra",
+    "inProgress": {
+      "title": "FEJLESZTÉS ALATT",
+      "description": "Oktatási részlegünk jelenleg fejlesztés alatt áll. Keményen dolgozunk, hogy átfogó oktatási tanácsadói szolgáltatásokat nyújtsunk."
+    },
+    "contact": {
+      "title": "Lépjen kapcsolatba velünk"
+    }
+  },
+  "navigation": {
+    "about": "Rólunk",
+    "services": "Szolgáltatások",
+    "engagement": "Együttműködési modellek",
+    "contact": "Kapcsolat",
+    "backToHome": "Vissza a kezdőlapra",
+    "getStarted": "Kezdés"
+  },
+  "hero": {
+    "badge": "Vezetői összefoglaló",
+    "title": {
+      "build": "Készítsen",
+      "bulletProof": "Törésbiztos",
+      "digitalProducts": "Digitális termékeket"
+    },
+    "description": "Bratislavai székhelyű FIIT-STU végzettekből álló stúdió, amely törésbiztos digitális termékeket készít és a következő generáció tech tehetségeit képzi.",
+    "subtitle": "Az időben leszállított egyedi webalkalmazásoktól kezdve a képességfejlesztő bootcampekig, amelyek megerősítik a csapatokat.",
+    "startProject": "Indítsa el projektjét",
+    "freeConsultation": "Ingyenes konzultáció",
+    "metrics": {
+      "onTimeDelivery": {
+        "number": "92%",
+        "label": "Határidőn belüli szállítás"
+      },
+      "costSavings": {
+        "number": "20–40%",
+        "label": "Költségmegtakarítás"
+      },
+      "teamReady": {
+        "number": "14 nap",
+        "label": "Csapat készen áll"
+      }
+    }
+  },
+  "about": {
+    "badge": "FIIT-STU végzettek stúdiója",
+    "title": "Miért veri a Rise.sk",
+    "titleHighlight": "a hagyományos kiszervezést",
+    "description": "Nem csak egy újabb fejlesztőcég vagyunk. FIIT-STU végzettek vagyunk, akik ismerik a legmodernebb technológiát és az üzleti hatást. Minden projektet skálázhatónak, biztonságosnak és mérhető eredményekre építve készítünk.",
+    "stats": {
+      "delivery": {
+        "number": "92%",
+        "label": "Határidőn belüli szállítás",
+        "description": "Időben leszállított projektek"
+      },
+      "savings": {
+        "number": "40%",
+        "label": "Költségmegtakarítás",
+        "description": "Átlagos megtakarítás a hagyományos kiszervezéshez képest"
+      },
+      "ready": {
+        "number": "14 nap",
+        "label": "Csapat készen áll",
+        "description": "A tervezéstől az aktív fejlesztésig"
+      },
+      "grads": {
+        "number": "100%",
+        "label": "FIIT-STU végzettek",
+        "description": "Szlovákia legjobb műszaki egyeteme"
+      }
+    },
+    "values": {
+      "security": {
+        "title": "Biztonságközpontú fejlesztés",
+        "description": "Minden kódsor a legjobb biztonsági gyakorlatoknak megfelelően készül és alapos felülvizsgálaton megy keresztül."
+      },
+      "teams": {
+        "title": "Többfunkciós csapatok",
+        "description": "PM + 2 FE fejlesztő + 1 BE fejlesztő + QA készen 14 napon belül az azonnali hatásért."
+      },
+      "performance": {
+        "title": "Teljesítményvezérelt eredmények",
+        "description": "Eredményességünket az Ön ROI-ja alapján mérjük, nem csak a leszállítottak alapján. Valódi eredmények, valódi növekedés."
+      }
+    },
+    "cta": {
+      "title": "Készen áll, hogy megtapasztalja a Rise.sk különbségét?",
+      "description": "Csatlakozzon több mint 50 vállalathoz, amelyek a minőséget választották az olcsó kiszervezés helyett. Szerezze meg dedikált csapatát 14 napon belül garantált eredményekkel.",
+      "startProject": "Indítsa el projektjét",
+      "viewServices": "Tekintse meg szolgáltatásainkat"
+    }
+  },
+  "engagement": {
+    "badge": "Együttműködési modellek",
+    "title": "Rugalmas",
+    "titleHighlight": "együttműködés",
+    "subtitle": "Válassza ki az Ön projektjéhez és csapatstruktúrájához leginkább illő együttműködési modellt",
+    "models": {
+      "dedicated": {
+        "title": "Dedikált csapat",
+        "description": "Hosszú távú csapat, amely beágyazódik folyamataiba",
+        "features": [
+          "Teljes csapatintegráció",
+          "Megosztott folyamatok és eszközök",
+          "Közvetlen kommunikáció",
+          "Skálázható csapatméret"
+        ],
+        "ideal": "Tökéletes folyamatos projektekhez és termékfejlesztéshez"
+      },
+      "project": {
+        "title": "Projekt alapú",
+        "description": "Fix hatókör, fix ütemterv – ideális MVP-khez",
+        "features": [
+          "Egyértelmű eredmények",
+          "Fix költségvetés és ütemterv",
+          "Dedikált projektmenedzser",
+          "Garantált minőség"
+        ],
+        "ideal": "Nagyszerű startupoknak és meghatározott hatókörű projektekhez"
+      },
+      "staff": {
+        "title": "Személyzetkiegészítés",
+        "description": "Gyorsan pótolja a képességhiányt HR-terhek nélkül",
+        "features": [
+          "Azonnali hozzáférés a szakértelemhez",
+          "Rugalmas időtartam",
+          "Nincs toborzási terhelés",
+          "Gyors csapatbővítés"
+        ],
+        "ideal": "Amikor gyorsan speciális készségekre van szükség"
+      }
+    },
+    "guaranteesTitle": "Minden modell tartalmazza",
+    "guarantees": ["Heti jelentések", "Megosztott KPI-k", "Tudásátadás átvételkor tökéletesen"]
+  },
+  "services": {
+    "badge": "Szolgáltatásaink",
+    "title": "Teljes körű digitális",
+    "titleHighlight": "megoldások",
+    "subtitle": "A koncepciótól a telepítésig biztonságos digitális termékeket szállítunk csúcstechnológiával",
+    "webDev": {
+      "title": "Testreszabott web- és mobilfejlesztés",
+      "description": "Egyedi weboldalak, SaaS platformok, PWA-k, iOS/Android alkalmazások modern stackekkel (React, Vue, Node, Laravel, Flutter)",
+      "features": ["Biztonságközpontú kódolás", "WCAG szintű akadálymentesítés", "SEO-barát architektúra"],
+      "benefits": [
+        "Márkakülönbség: a testreszabott megoldások javítják az UX-et, a sebességet és a keresőláthatóságot",
+        "Skálázhatóság: a kódbázis Önnel együtt nő – nincs licenczár",
+        "Tulajdonjog: Ön birtokolja az IP-t és jövőbiztosítja digitális eszközeit"
+      ],
+      "team": "Többfunkciós csapat – PM + 2 FE fejlesztő + 1 BE fejlesztő + QA – készen 14 napon belül"
+    },
+    "devops": {
+      "title": "DevOps és felhőmegbízhatóság",
+      "description": "CI/CD pipeline-ok, konténer-orchestráció (Docker, K8s), felhőmigráció (AWS, Azure, GCP), 24/7 felügyelet",
+      "features": ["Automatizált CI/CD pipeline-ok", "Konténer-orchestráció", "SLA alapú válaszidők"],
+      "benefits": [
+        "Gyorsabb kiadások = gyorsabb megtérülés",
+        "50% csökkenés a funkcióvárakozási időben",
+        "Automatizált infra csökkenti a kiesések kockázatát"
+      ],
+      "team": "1 DevOps mérnök + SRE igény szerint – integrálva a meglévő csapatába"
+    },
+    "design": {
+      "title": "UX/UI és front-end guild",
+      "description": "Felhasználói kutatás, drótvázak, interaktív prototípusok, tervezési rendszerek Figma + Storybook segítségével",
+      "features": [
+        "Felhasználói kutatás és prototípusok",
+        "Skálázható tervezési rendszerek",
+        "Akadálymentesítési audit (AA–AAA)"
+      ],
+      "benefits": [
+        "Az intuitív tervezés növeli a konverziót és a megtartást",
+        "A felhasználók 88%-a nem tér vissza rossz élmény után",
+        "Konzisztens, skálázható UI"
+      ],
+      "team": "Lead designer + UX kutató + front-end fejlesztő(k). Ideális márkáknak, amelyeknek ugyanúgy kell a tervezés, mint a kód"
+    },
+    "qa": {
+      "title": "Minőségbiztosítás és tesztautomatizálás",
+      "description": "Egység-, integrációs és end-to-end tesztek (Jest, Cypress, Playwright), teljesítmény- és biztonsági tesztek",
+      "features": ["Teljes tesztcsomagok", "Teljesítménytesztek", "Biztonsági tesztcsomagok"],
+      "benefits": [
+        "A hibák előzetes javítása 6× olcsóbb",
+        "Regressziós teszt pipeline-ok",
+        "Automatizált minőségi kapuk"
+      ],
+      "team": "1 automatizált QA + 1 manuális tesztelő sprintenként"
+    },
+    "education": {
+      "title": "Oktatási és tehetségfejlesztő stúdió",
+      "description": "Testreszabott képzési programok, műszaki mentorálás és bootcamp-ek meglévő csapatai számára",
+      "features": ["Egyedi tantervfejlesztés", "Gyakorlati műszaki mentorálás", "Csapattudás felmérés"],
+      "benefits": [
+        "A képzett csapatok 30%-kal gyorsabb szállítást tesznek lehetővé",
+        "Csökkenti a külső toborzási költségeket",
+        "Jövőbiztosítja a tehetségutánpótlást"
+      ],
+      "team": "Senior mérnökök + tanterv-specialisták, akik az Ön technológiai stackje köré tervezik a programokat"
+    },
+    "new": {
+      "header": {
+        "badge": "Szolgáltatásaink",
+        "title": "Teljes körű digitális megoldások",
+        "subtitle": "A koncepciótól a telepítésig biztonságos digitális termékeket szállítunk csúcstechnológiával"
+      },
+      "labels": {
+        "features": "Mit csinálunk",
+        "benefits": "Miért működik",
+        "team": "Csapatformátum"
+      },
+      "development": {
+        "title": "Testreszabott web- és mobilfejlesztés",
+        "description": "Egyedi weboldalak, SaaS platformok, PWA-k, iOS/Android alkalmazások modern stackekkel (React, Vue, Node, Laravel, Flutter)",
+        "features": ["Biztonságközpontú kódolás", "WCAG szintű akadálymentesítés", "SEO-barát architektúra"],
+        "benefits": [
+          "Márkakülönbség: a testreszabott megoldások javítják az UX-et, a sebességet és a keresőláthatóságot",
+          "Skálázhatóság: a kódbázis Önnel együtt nő – nincs licenczár",
+          "Tulajdonjog: Ön birtokolja az IP-t és jövőbiztosítja digitális eszközeit"
+        ],
+        "team": "Többfunkciós csapat – PM + 2 FE fejlesztő + 1 BE fejlesztő + QA – készen 14 napon belül"
+      },
+      "devops": {
+        "title": "DevOps és felhőmegbízhatóság",
+        "description": "CI/CD pipeline-ok, konténer-orchestráció (Docker, K8s), felhőmigráció (AWS, Azure, GCP), 24/7 felügyelet",
+        "features": ["Automatizált CI/CD pipeline-ok", "Konténer-orchestráció", "SLA alapú válaszidők"],
+        "benefits": [
+          "Gyorsabb kiadások = gyorsabb megtérülés",
+          "50% csökkenés a funkcióvárakozási időben",
+          "Automatizált infra csökkenti a kiesések kockázatát"
+        ],
+        "team": "1 DevOps mérnök + SRE igény szerint – integrálva a meglévő csapatába"
+      },
+      "ux": {
+        "title": "UX/UI és front-end guild",
+        "description": "Felhasználói kutatás, drótvázak, interaktív prototípusok, tervezési rendszerek Figma + Storybook segítségével",
+        "features": [
+          "Felhasználói kutatás és prototípusok",
+          "Skálázható tervezési rendszerek",
+          "Akadálymentesítési audit (AA–AAA)"
+        ],
+        "benefits": [
+          "Az intuitív tervezés növeli a konverziót és a megtartást",
+          "A felhasználók 88%-a nem tér vissza rossz élmény után",
+          "Konzisztens, skálázható UI"
+        ],
+        "team": "Lead designer + UX kutató + front-end fejlesztő(k). Ideális márkáknak, amelyeknek ugyanúgy kell a tervezés, mint a kód"
+      },
+      "qa": {
+        "title": "Minőségbiztosítás és tesztautomatizálás",
+        "description": "Egység-, integrációs és end-to-end tesztek (Jest, Cypress, Playwright), teljesítmény- és biztonsági tesztek",
+        "features": ["Teljes tesztcsomagok", "Teljesítménytesztek", "Biztonsági tesztcsomagok"],
+        "benefits": [
+          "A hibák előzetes javítása 6× olcsóbb",
+          "Regressziós teszt pipeline-ok",
+          "Automatizált minőségi kapuk"
+        ],
+        "team": "1 automatizált QA + 1 manuális tesztelő sprintenként"
+      },
+      "education": {
+        "title": "Oktatás és tehetségfejlesztés",
+        "description": "Programozó bootcamp-ek (JavaScript, Python, DevOps), vállalati workshopok AI, felhő és kiberbiztonság témákban",
+        "features": ["Tanúsított oktatók", "Vállalati workshopok", "Nyelvi és soft-skill programok"],
+        "benefits": [
+          "Az európai e-learning piac 2033-ra €210 milliárdra nő",
+          "A technológiai készségek élettartama ~30 hónap",
+          "Stratégiai tehetségfejlesztési prioritás"
+        ],
+        "team": "Tanúsított oktatók és mentorok szenior mérnökcsapatunkból"
+      }
+    },
+    "comparison": {
+      "title": "Miért veri a Rise.sk a hagyományos kiszervezést",
+      "subtitle": "Tapasztalja meg a különbséget a szlovák tech tehetséggel",
+      "risesk": {
+        "title": "Rise.sk",
+        "background": {
+          "title": "Háttér",
+          "description": "FIIT-STU végzettek Szlovákia legjobb műszaki karáról"
+        },
+        "innovation": {
+          "title": "Innovációs központ",
+          "description": "Szlovákia a 2024-es Globális Innovációs Indexen a 46. helyen áll"
+        },
+        "delivery": {
+          "title": "Határidőn belüli szállítás",
+          "description": "A projektek 92%-a a határidőre vagy korábban kerül leszállításra"
+        },
+        "cost": {
+          "title": "Költséghatékonyság",
+          "description": "A szlovák fejlesztői díjak 20–40%-kal alacsonyabbak Nyugat-Európához képest, időzóna-különbség nélkül"
+        }
+      },
+      "outsourcer": {
+        "title": "Átlagos kiszervező",
+        "background": {
+          "title": "Háttér",
+          "description": "Vegyes képesítések"
+        },
+        "innovation": {
+          "title": "Innovációs központ",
+          "description": "n/a"
+        },
+        "delivery": {
+          "title": "Határidőn belüli szállítás",
+          "description": "Gyakori határidőcsúszás"
+        },
+        "cost": {
+          "title": "Költséghatékonyság",
+          "description": "Magasabb EU-s díjak vagy távoli időzónák"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Kezdje még ma",
+    "subtitle": "Készen áll, hogy velünk dolgozzon? Töltse ki az alábbi űrlapot, és hamarosan felvesszük Önnel a kapcsolatot.",
+    "badge": "Készen áll a projekt indítására?",
+    "mainTitle": "Építsünk valamit",
+    "mainTitleHighlight": "Csodálatos együtt",
+    "getInTouch": "Lépjen kapcsolatba",
+    "description": "Készen áll digitális jelenlétét átalakítani? FIIT-STU végzettekből álló csapatunk készen áll, hogy megvitassuk projektjét és testreszabott megoldást kínáljunk, amely valódi eredményeket hoz.",
+    "whyChoose": "Miért válassza a Rise.sk-t?",
+    "onTimeDelivery": "Határidőn belüli szállítás",
+    "teamReady": "Csapat készen áll",
+    "contactInfo": {
+      "email": "Email",
+      "phone": "Telefon",
+      "office": "Iroda"
+    },
+    "fullName": "Teljes név",
+    "company": "Cég",
+    "email": "Email cím",
+    "phone": "Telefonszám",
+    "message": "Projekt részletei",
+    "messagePlaceholder": "Meséljen nekünk projektjéről, ütemtervéről és céljairól…",
+    "placeholders": {
+      "name": "Kiss József",
+      "email": "jozsef@ceg.hu",
+      "phone": "+36 30 123 4567",
+      "company": "Az Ön cége"
+    },
+    "service": "Szükséges szolgáltatás",
+    "selectService": "Válasszon szolgáltatást",
+    "services": {
+      "webDevelopment": "Webfejlesztés",
+      "ecommerce": "E-kereskedelmi megoldások",
+      "digitalTransformation": "Digitális transzformáció",
+      "uiUxDesign": "UI/UX tervezés",
+      "maintenance": "Weboldal karbantartás",
+      "consulting": "IT tanácsadás",
+      "other": "Egyéb"
+    },
+    "submit": "Üzenet küldése",
+    "sending": "Küldés…",
+    "success": "Köszönjük! 24 órán belül válaszolunk.",
+    "error": "Hiba történt. Kérjük, próbálja újra.",
+    "networkError": "Hálózati hiba. Ellenőrizze a kapcsolatot, majd próbálja újra.",
+    "requiredFields": "Kérjük, töltse ki az összes kötelező mezőt.",
+    "invalidEmail": "Kérjük, adjon meg érvényes email címet."
+  },
+  "footer": {
+    "description": "FIIT-STU végzettek stúdiója, amely törésbiztos digitális megoldásokat szállít. Az egyedi fejlesztéstől a DevOps kiválóságig – termékeket építünk, amelyek skálázhatók.",
+    "sections": {
+      "services": "Szolgáltatások",
+      "company": "Cég"
+    },
+    "contact": {
+      "title": "Kapcsolat",
+      "email": "Email",
+      "phone": "Telefon",
+      "location": "Helyszín"
+    },
+    "copyright": "© {year} Rise.sk s.r.o. Minden jog fenntartva. | Bratislavai székhelyű FIIT-STU végzettek stúdiója",
+    "cta": {
+      "title": "Készen áll, hogy elkezdje a projektjét?",
+      "description": "Szerezze meg dedikált csapatát 14 napon belül. 92% határidőn belüli szállítás. 20–40% költségmegtakarítás garantált.",
+      "button": "Kezdje még ma"
+    },
+    "services": ["Egyedi fejlesztés", "DevOps és felhő", "UX/UI tervezés", "Minőségbiztosítás", "Oktatás és képzés"],
+    "company": ["Rólunk", "Csapatunk", "Karrier", "Esettanulmányok", "Blog"],
+    "support": ["Dokumentáció", "API referencia", "Súgóközpont", "Közösség", "Állapot"]
+  }
+}

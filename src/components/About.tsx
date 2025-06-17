@@ -2,102 +2,106 @@
 
 import { motion } from 'framer-motion';
 import {
-  Users,
   Award,
-  Target,
-  Zap,
   CheckCircle,
-  TrendingUp
+  Target,
+  TrendingUp,
+  Users,
+  Zap,
 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { BentoCard, MagneticButton } from './InteractiveElements';
 
 export default function About() {
+  const t = useTranslations('about');
+
   const stats = [
     {
       icon: Target,
-      number: "92%",
-      label: "On-time Delivery",
-      description: "Projects delivered on schedule"
+      number: t('stats.delivery.number'),
+      label: t('stats.delivery.label'),
+      description: t('stats.delivery.description'),
     },
     {
       icon: TrendingUp,
-      number: "40%",
-      label: "Cost Savings",
-      description: "Average savings vs traditional outsourcing"
+      number: t('stats.savings.number'),
+      label: t('stats.savings.label'),
+      description: t('stats.savings.description'),
     },
     {
       icon: Zap,
-      number: "14 Days",
-      label: "Team Ready",
-      description: "From briefing to active development"
+      number: t('stats.ready.number'),
+      label: t('stats.ready.label'),
+      description: t('stats.ready.description'),
     },
     {
       icon: Award,
-      number: "100%",
-      label: "FIIT-STU Grads",
-      description: "Top-tier Slovak technical university"
-    }
+      number: t('stats.grads.number'),
+      label: t('stats.grads.label'),
+      description: t('stats.grads.description'),
+    },
   ];
 
   const values = [
     {
       icon: CheckCircle,
-      title: "Security-First Development",
-      description: "Every line of code follows security best practices and undergoes thorough review."
+      title: t('values.security.title'),
+      description: t('values.security.description'),
     },
     {
       icon: Users,
-      title: "Cross-Functional Teams",
-      description: "PM + 2 FE devs + 1 BE dev + QA ready in under 14 days for immediate impact."
+      title: t('values.teams.title'),
+      description: t('values.teams.description'),
     },
     {
       icon: Target,
-      title: "Performance-Driven Results",
-      description: "We measure success by your ROI, not just deliverables. Real results, real growth."
-    }
+      title: t('values.performance.title'),
+      description: t('values.performance.description'),
+    },
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
+    <section
+      id='about'
+      className='py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden'
+    >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,119,198,0.2),transparent_50%)]" />
+      <div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent_50%)]' />
+      <div className='absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,119,198,0.2),transparent_50%)]' />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className='text-center mb-16'
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-sm font-medium mb-6 backdrop-blur-sm"
+            className='inline-flex items-center px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-sm font-medium mb-6 backdrop-blur-sm'
           >
-            <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
-            FIIT-STU Graduates Studio
+            <span className='w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse'></span>
+            {t('badge')}
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Why Rise.sk Beats
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent block">
-              Traditional Outsourcing
+          <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
+            {t('title')}
+            <span className='bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent block'>
+              {t('titleHighlight')}
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We&apos;re not just another dev shop. We&apos;re FIIT-STU graduates who understand
-            both cutting-edge technology and business impact. Every project is built for scale,
-            security, and measurable results.
+          <p className='text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed'>
+            {t('description')}
           </p>
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20'>
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -105,24 +109,28 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              data-cursor="hover"
+              data-cursor='hover'
             >
-              <BentoCard spotlight={true} className="text-center h-full">
-                <div className="flex justify-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <stat.icon className="w-6 h-6 text-white" />
+              <BentoCard spotlight={true} className='text-center h-full'>
+                <div className='flex justify-center mb-4'>
+                  <div className='w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
+                    <stat.icon className='w-6 h-6 text-white' />
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-blue-400 font-semibold mb-2">{stat.label}</div>
-                <div className="text-sm text-gray-400">{stat.description}</div>
+                <div className='text-3xl font-bold text-white mb-2'>
+                  {stat.number}
+                </div>
+                <div className='text-blue-400 font-semibold mb-2'>
+                  {stat.label}
+                </div>
+                <div className='text-sm text-gray-400'>{stat.description}</div>
               </BentoCard>
             </motion.div>
           ))}
         </div>
 
         {/* Values Section */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className='grid lg:grid-cols-3 gap-8'>
           {values.map((value, index) => (
             <motion.div
               key={index}
@@ -130,16 +138,20 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              data-cursor="hover"
+              data-cursor='hover'
             >
-              <BentoCard spotlight={true} className="h-full">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4">
-                    <value.icon className="w-6 h-6 text-white" />
+              <BentoCard spotlight={true} className='h-full'>
+                <div className='flex items-center mb-6'>
+                  <div className='w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4'>
+                    <value.icon className='w-6 h-6 text-white' />
                   </div>
-                  <h3 className="text-xl font-bold text-white">{value.title}</h3>
+                  <h3 className='text-xl font-bold text-white'>
+                    {value.title}
+                  </h3>
                 </div>
-                <p className="text-gray-300 leading-relaxed">{value.description}</p>
+                <p className='text-gray-300 leading-relaxed'>
+                  {value.description}
+                </p>
               </BentoCard>
             </motion.div>
           ))}
@@ -151,28 +163,21 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-16"
+          className='text-center mt-16'
         >
-          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to Experience the Rise.sk Difference?
+          <div className='bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto'>
+            <h3 className='text-2xl md:text-3xl font-bold text-white mb-4'>
+              {t('cta.title')}
             </h3>
-            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Join 50+ companies who chose quality over cheap outsourcing.
-              Get your dedicated team in 14 days with guaranteed results.
+            <p className='text-gray-300 text-lg mb-8 max-w-2xl mx-auto'>
+              {t('cta.description')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <MagneticButton
-                href="#contact"
-                variant="primary"
-              >
-                Start Your Project
+            <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+              <MagneticButton href='#contact' variant='primary'>
+                {t('cta.startProject')}
               </MagneticButton>
-              <MagneticButton
-                href="#services"
-                variant="secondary"
-              >
-                View Our Services
+              <MagneticButton href='#services' variant='secondary'>
+                {t('cta.viewServices')}
               </MagneticButton>
             </div>
           </div>

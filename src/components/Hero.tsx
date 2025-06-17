@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { MagneticButton } from './InteractiveElements';
 
 export default function Hero() {
-  const _t = useTranslations('hero');
+  const t = useTranslations('hero');
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -39,13 +39,13 @@ export default function Hero() {
   ];
 
   return (
-    <section className="hero-gradient min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+    <section className='hero-gradient min-h-screen flex items-center justify-center pt-16 relative overflow-hidden'>
       {/* Floating Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         {floatingIcons.map(({ Icon, delay, x, y }, index) => (
           <motion.div
             key={index}
-            className="absolute opacity-10"
+            className='absolute opacity-10'
             initial={{ opacity: 0, x: 0, y: 0 }}
             animate={{
               opacity: [0.1, 0.3, 0.1],
@@ -56,107 +56,113 @@ export default function Hero() {
               duration: 4,
               delay,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             }}
             style={{
               left: `${20 + index * 25}%`,
               top: `${30 + index * 15}%`,
             }}
           >
-            <Icon size={120} className="text-[var(--primary)]" />
+            <Icon size={120} className='text-[var(--primary)]' />
           </motion.div>
         ))}
       </div>
 
       <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+        className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10'
         variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        initial='hidden'
+        animate='visible'
       >
-        <div className="max-w-6xl mx-auto">
+        <div className='max-w-6xl mx-auto'>
           {/* Executive Snapshot Badge */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 bg-[var(--glass)] backdrop-blur-sm border border-[var(--primary)]/20 rounded-full px-6 py-3 mb-8"
+            className='inline-flex items-center gap-2 bg-[var(--glass)] backdrop-blur-sm border border-[var(--primary)]/20 rounded-full px-6 py-3 mb-8'
           >
-            <div className="w-2 h-2 bg-[var(--primary)] rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium text-[var(--primary)]">
-              Executive Snapshot
+            <div className='w-2 h-2 bg-[var(--primary)] rounded-full animate-pulse'></div>
+            <span className='text-sm font-medium text-[var(--primary)]'>
+              {t('badge')}
             </span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight"
+            className='text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight'
           >
-            <span className="text-[var(--foreground)]">Build </span>
-            <span className="gradient-text">Bullet-Proof</span>
+            <span className='text-[var(--foreground)]'>
+              {t('title.build')}{' '}
+            </span>
+            <span className='gradient-text'>{t('title.bulletProof')}</span>
             <br />
-            <span className="text-[var(--foreground)]">Digital Products</span>
+            <span className='text-[var(--foreground)]'>
+              {t('title.digitalProducts')}
+            </span>
           </motion.h1>
 
           {/* Company Description */}
           <motion.div
             variants={itemVariants}
-            className="mb-12 max-w-4xl mx-auto"
+            className='mb-12 max-w-4xl mx-auto'
           >
-            <p className="text-xl md:text-2xl text-[var(--neutral-dark)] leading-relaxed mb-6">
-              <span className="text-[var(--primary)] font-semibold">Rise.sk s.r.o.</span> is a Bratislava-based studio of{' '}
-              <span className="text-[var(--glow)] font-medium">FIIT-STU graduates</span> who build bullet-proof digital products and teach the next generation of tech talent.
+            <p className='text-xl md:text-2xl text-[var(--neutral-dark)] leading-relaxed mb-6'>
+              <span className='text-[var(--primary)] font-semibold'>
+                Rise.sk s.r.o.
+              </span>{' '}
+              {t('description')}
             </p>
-            <p className="text-lg text-[var(--accent)] leading-relaxed">
-              From custom web apps delivered on-time, every time, to skills bootcamps that empower teams.
+            <p className='text-lg text-[var(--accent)] leading-relaxed'>
+              {t('subtitle')}
             </p>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+            className='flex flex-col sm:flex-row gap-6 justify-center items-center mb-16'
           >
             <MagneticButton
-              href="#contact"
-              variant="primary"
-              className="text-lg shadow-lg hover:shadow-xl glow-hover"
+              href='#contact'
+              variant='primary'
+              className='text-lg shadow-lg hover:shadow-xl glow-hover'
             >
-              Start Your Project
-              <ArrowRight size={20} className="ml-2" />
+              {t('startProject')}
+              <ArrowRight size={20} className='ml-2' />
             </MagneticButton>
-            
+
             <MagneticButton
-              href="#contact"
-              variant="secondary"
-              className="text-lg border-2"
+              href='#contact'
+              variant='secondary'
+              className='text-lg border-2'
             >
-              Free Consultation
-              <div className="w-2 h-2 bg-current rounded-full ml-2 animate-pulse"></div>
+              {t('freeConsultation')}
+              <div className='w-2 h-2 bg-current rounded-full ml-2 animate-pulse'></div>
             </MagneticButton>
           </motion.div>
 
           {/* Key Metrics */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
+            className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto'
           >
             {[
-              { number: "92%", label: "On-Time Delivery" },
-              { number: "20-40%", label: "Cost Savings" },
-              { number: "14 Days", label: "Team Ready" },
+              { key: 'onTimeDelivery' },
+              { key: 'costSavings' },
+              { key: 'teamReady' },
             ].map((metric, index) => (
               <motion.div
                 key={index}
-                className="text-center"
+                className='text-center'
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1 + index * 0.2, duration: 0.6 }}
               >
-                <div className="text-3xl md:text-4xl font-bold text-[var(--primary)] mb-2">
-                  {metric.number}
+                <div className='text-3xl md:text-4xl font-bold text-[var(--primary)] mb-2'>
+                  {t(`metrics.${metric.key}.number`)}
                 </div>
-                <div className="text-[var(--accent)] text-sm uppercase tracking-wide">
-                  {metric.label}
+                <div className='text-[var(--accent)] text-sm uppercase tracking-wide'>
+                  {t(`metrics.${metric.key}.label`)}
                 </div>
               </motion.div>
             ))}
@@ -166,7 +172,7 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className='absolute bottom-8 left-1/2 transform -translate-x-1/2'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
@@ -174,12 +180,12 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-[var(--primary)] rounded-full flex justify-center"
+          className='w-6 h-10 border-2 border-[var(--primary)] rounded-full flex justify-center'
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-[var(--primary)] rounded-full mt-2"
+            className='w-1 h-3 bg-[var(--primary)] rounded-full mt-2'
           />
         </motion.div>
       </motion.div>
