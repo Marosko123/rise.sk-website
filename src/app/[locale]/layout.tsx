@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 import LanguagePreferenceHandler from '@/components/LanguagePreferenceHandler';
 import { ScrollProgress } from '@/components/ScrollEffects';
@@ -13,11 +13,15 @@ import '../globals.css';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  display: 'swap', // Optimize font loading
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap', // Optimize font loading
+  preload: false, // Only preload main font
 });
 
 export const metadata: Metadata = {
@@ -26,6 +30,21 @@ export const metadata: Metadata = {
     'Transform your digital presence with our expert web development and IT services. We create modern, scalable solutions for businesses of all sizes.',
   keywords:
     'web development, IT solutions, modern websites, digital transformation, professional services',
+  authors: [{ name: 'Rise Team' }],
+  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    title: 'Rise - Professional Web Development & IT Solutions',
+    description: 'Transform your digital presence with our expert web development and IT services.',
+    siteName: 'Rise',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rise - Professional Web Development & IT Solutions',
+    description: 'Transform your digital presence with our expert web development and IT services.',
+  },
 };
 
 export default async function LocaleLayout({

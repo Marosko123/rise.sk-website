@@ -1,7 +1,7 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 
 import companyConfig from '@/config/company';
@@ -37,13 +37,13 @@ export default function LandingPage() {
   const [mounted, setMounted] = useState(false);
   const [animationTime, setAnimationTime] = useState(0);
   const [floatingShapes] = useState<FloatingShape[]>(() =>
-    Array.from({ length: 8 }, (_, i) => ({
+    Array.from({ length: 6 }, (_, i) => ({
       id: i,
-      x: 50 + (i * 12.5), // More predictable positioning
-      y: 20 + (i * 10),
-      size: 40 + (i * 5),
-      rotation: i * 45,
-      speed: 0.3 + (i * 0.1),
+      x: 20 + (i * 15), // More spaced out
+      y: 30 + (i * 12),
+      size: 30 + (i * 8),
+      rotation: i * 60,
+      speed: 0.2 + (i * 0.1),
     }))
   );
 
@@ -54,47 +54,61 @@ export default function LandingPage() {
   useEffect(() => {
     setMounted(true);
 
+    let animationId: number;
     const updateAnimationTime = () => {
       setAnimationTime(Date.now());
-      requestAnimationFrame(updateAnimationTime);
+      animationId = requestAnimationFrame(updateAnimationTime);
     };
 
-    updateAnimationTime();
+    animationId = requestAnimationFrame(updateAnimationTime);
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   }, []);
 
   useEffect(() => {
+    let lastUpdate = 0;
+    const throttleDelay = 16; // ~60fps
+
     const handleMouseMove = (e: MouseEvent) => {
+      const now = Date.now();
+      if (now - lastUpdate < throttleDelay) return;
+      lastUpdate = now;
+
       const x = (e.clientX / window.innerWidth) * 100;
       const y = (e.clientY / window.innerHeight) * 100;
 
       setMousePosition({ x, y });
       setCursorPosition({ x: e.clientX, y: e.clientY });
 
-      // Update mouse trail
+      // Update mouse trail (limit to 10 points for performance)
       setMouseTrail(prev => {
-        const newTrail = [{ x: e.clientX, y: e.clientY, opacity: 1 }, ...prev.slice(0, 15)];
+        const newTrail = [{ x: e.clientX, y: e.clientY, opacity: 1 }, ...prev.slice(0, 9)];
         return newTrail.map((point, index) => ({
           ...point,
-          opacity: Math.max(0, 1 - index * 0.15)
+          opacity: Math.max(0, 1 - index * 0.2)
         }));
       });
     };
 
     const handleClick = (e: MouseEvent) => {
-      // Create particle explosion
+      // Create particle explosion (reduced particles for performance)
       const newParticles: Particle[] = [];
-      for (let i = 0; i < 12; i++) {
+      for (let i = 0; i < 6; i++) {
         newParticles.push({
           id: particleIdRef.current++,
           x: e.clientX,
           y: e.clientY,
-          vx: (Math.random() - 0.5) * 8,
-          vy: (Math.random() - 0.5) * 8,
-          life: 60,
-          maxLife: 60,
+          vx: (Math.random() - 0.5) * 6,
+          vy: (Math.random() - 0.5) * 6,
+          life: 40,
+          maxLife: 40,
         });
       }
-      setParticles(prev => [...prev, ...newParticles]);
+      setParticles(prev => [...prev.slice(-20), ...newParticles]); // Limit total particles
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -155,13 +169,22 @@ export default function LandingPage() {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
+    let resizeTimeout: NodeJS.Timeout;
+    
     const updateWindowSize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+      }, 100); // Debounce resize events
     };
 
     updateWindowSize();
     window.addEventListener('resize', updateWindowSize);
-    return () => window.removeEventListener('resize', updateWindowSize);
+    
+    return () => {
+      window.removeEventListener('resize', updateWindowSize);
+      clearTimeout(resizeTimeout);
+    };
   }, []);
 
   // Don't render animations until mounted to prevent hydration issues
@@ -268,36 +291,39 @@ export default function LandingPage() {
         {floatingShapes.map((shape) => (
           <div
             key={shape.id}
-            className='absolute opacity-10 transition-all duration-1000 ease-out select-none pointer-events-none'
+            className='absolute opacity-10 select-none pointer-events-none will-change-transform'
             style={{
-              left: `${shape.x + (mousePosition.x - 50) * 0.02}%`,
-              top: `${shape.y + (mousePosition.y - 50) * 0.02}%`,
+              left: `${shape.x}%`,
+              top: `${shape.y}%`,
               width: `${shape.size}px`,
               height: `${shape.size}px`,
-              transform: `rotate(${shape.rotation + mousePosition.x * 0.5}deg)`,
+              transform: `translate3d(${(mousePosition.x - 50) * 0.01}px, ${(mousePosition.y - 50) * 0.01}px, 0) rotate(${shape.rotation + mousePosition.x * 0.2}deg)`,
               backgroundColor: '#B09155',
               borderRadius: shape.id % 3 === 0 ? '50%' : shape.id % 2 === 0 ? '0%' : '20%',
+              transition: 'transform 0.2s ease-out',
             }}
           />
         ))}
 
         {/* Large background logo with morphing effect */}
         <div
-          className='absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out'
+          className='absolute inset-0 flex items-center justify-center will-change-transform'
           style={{
-            transform: `translate(${(mousePosition.x - 50) * 0.3}px, ${(mousePosition.y - 50) * 0.3}px) scale(${1 + Math.sin(animationTime * 0.001) * 0.05})`,
+            transform: `translate3d(${(mousePosition.x - 50) * 0.2}px, ${(mousePosition.y - 50) * 0.2}px, 0) scale(${1 + Math.sin(animationTime * 0.0005) * 0.03})`,
+            transition: 'transform 0.3s ease-out',
           }}
         >
           <Image
             src={companyConfig.website.logo.logoGoldTransparent}
             alt={companyConfig.company.name}
-            width={1000}
-            height={1000}
-            className='select-none pointer-events-none transition-opacity duration-300'
+            width={800}
+            height={800}
+            className='select-none pointer-events-none'
             style={{
-              opacity: 0.08 + Math.sin(animationTime * 0.002) * 0.02,
-              filter: `hue-rotate(${mousePosition.x * 0.5}deg) saturate(${1 + mousePosition.y * 0.01})`,
+              opacity: 0.06 + Math.sin(animationTime * 0.001) * 0.01,
+              filter: `hue-rotate(${mousePosition.x * 0.2}deg)`,
             }}
+            priority={false}
           />
         </div>
 
@@ -305,14 +331,11 @@ export default function LandingPage() {
         {mouseTrail.map((point, index) => (
           <div
             key={index}
-            className='absolute w-3 h-3 rounded-full pointer-events-none select-none'
+            className='absolute w-2 h-2 rounded-full pointer-events-none select-none will-change-transform'
             style={{
-              left: point.x - 6,
-              top: point.y - 6,
+              transform: `translate3d(${point.x - 4}px, ${point.y - 4}px, 0) scale(${point.opacity})`,
               backgroundColor: '#B09155',
-              opacity: point.opacity * 0.6,
-              transform: `scale(${point.opacity})`,
-              transition: 'opacity 0.3s ease-out, transform 0.3s ease-out',
+              opacity: point.opacity * 0.5,
             }}
           />
         ))}
@@ -321,13 +344,11 @@ export default function LandingPage() {
         {particles.map((particle) => (
           <div
             key={particle.id}
-            className='absolute w-2 h-2 rounded-full pointer-events-none select-none'
+            className='absolute w-1.5 h-1.5 rounded-full pointer-events-none select-none will-change-transform'
             style={{
-              left: particle.x,
-              top: particle.y,
+              transform: `translate3d(${particle.x}px, ${particle.y}px, 0) scale(${particle.life / particle.maxLife})`,
               backgroundColor: '#B09155',
               opacity: particle.life / particle.maxLife,
-              transform: `scale(${particle.life / particle.maxLife})`,
             }}
           />
         ))}
