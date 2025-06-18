@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { Geist, Geist_Mono } from 'next/font/google';
+import { notFound } from 'next/navigation';
 
-import { MorphingCursor } from '@/components/InteractiveElements';
 import LanguagePreferenceHandler from '@/components/LanguagePreferenceHandler';
 import { ScrollProgress } from '@/components/ScrollEffects';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
@@ -57,7 +56,6 @@ export default async function LocaleLayout({
       >
         <SmoothScrollProvider>
           <ScrollProgress />
-          <MorphingCursor />
           <NextIntlClientProvider messages={messages}>
             <LanguagePreferenceHandler />
             {children}

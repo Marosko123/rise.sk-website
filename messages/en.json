@@ -4,6 +4,11 @@
       "welcome": "Welcome to"
     },
     "subtitle": "Professional consulting services in education and software development",
+    "tagline": {
+      "weAre": "We Are",
+      "innovativeSolutions": "Innovative Solutions"
+    },
+    "description": "Empowering growth through cutting-edge education and development",
     "education": {
       "title": "EDUCATION",
       "description": "Educational consulting, curriculum development, and training programs",

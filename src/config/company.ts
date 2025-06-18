@@ -161,6 +161,8 @@ export const companyConfig = {
       main: '/rise/logo-text-rectangle.png',
       circle: '/rise/logo-circle-white-bg.png',
       circleBronze: '/rise/logo-circle-bronze-bg.png',
+      logoBronzeTransparent: '/rise/logo-bronze-transparent.png',
+      logoGoldTransparent: '/rise/logo-bronze-transparent.png',
       stamp: '/rise/stamp.png',
     },
 

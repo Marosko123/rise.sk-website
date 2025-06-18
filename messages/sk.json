@@ -4,6 +4,11 @@
       "welcome": "Vitajte v"
     },
     "subtitle": "Profesionálne poradenské služby v oblasti vzdelávania a vývoja softvéru",
+    "tagline": {
+      "weAre": "Sme",
+      "innovativeSolutions": "Inovatívne Riešenia"
+    },
+    "description": "Podporujeme rast prostredníctvom najmodernejšieho vzdelávania a vývoja",
     "education": {
       "title": "VZDELÁVANIE",
       "description": "Vzdelávacie poradenstvo, vývoj učebných osnov a školiace programy",

@@ -1,7 +1,7 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 const languages = [
@@ -119,7 +119,7 @@ export default function LanguageSwitcher() {
   // Don't render until mounted to avoid hydration issues
   if (!mounted) {
     return (
-      <div className='relative'>
+      <div className='relative z-50'>
         <div className='flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm'>
           <span className='text-lg'>🇺🇸</span>
           <span className='text-sm font-medium text-white hidden sm:block'>
@@ -145,7 +145,7 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <div className='relative'>
+    <div className='relative z-50'>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className='flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg'
@@ -176,21 +176,26 @@ export default function LanguageSwitcher() {
       {isOpen && (
         <>
           <div
-            className='fixed inset-0 z-10'
+            className='fixed inset-0 z-40'
             onClick={() => setIsOpen(false)}
           />
-          <div className='absolute right-0 mt-2 w-52 bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-white/20 z-20 overflow-hidden'>
+          <div className='absolute right-0 mt-2 w-52 bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-white/20 z-[9999] overflow-hidden'>
             {languages.map((language, index) => (
               <button
                 key={language.code}
-                onClick={() => handleLanguageChange(language.code)}
-                className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-blue-50 transition-all duration-200 ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleLanguageChange(language.code);
+                }}
+                className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-blue-50 transition-all duration-200 cursor-pointer ${
                   index === 0 ? 'rounded-t-xl' : ''
                 } ${index === languages.length - 1 ? 'rounded-b-xl' : ''} ${
                   language.code === currentLocale
                     ? 'bg-blue-100 text-blue-700 shadow-sm'
                     : 'text-gray-700 hover:text-blue-700'
                 }`}
+                type="button"
               >
                 <span className='text-lg'>{language.flag}</span>
                 <div className='flex-1'>

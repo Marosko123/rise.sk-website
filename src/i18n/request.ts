@@ -22,8 +22,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     console.warn(
       `Failed to load messages for locale ${locale}, falling back to English`
     );
-    messages = (await import(`../../messages/en.json`)).default;
-    locale = 'en';
+    messages = (await import(`../../messages/sk.json`)).default;
+    locale = 'sk';
   }
 
   return {
