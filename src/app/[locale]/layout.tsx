@@ -33,6 +33,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'Rise Team' }],
   viewport: 'width=device-width, initial-scale=1',
   robots: 'index, follow',
+  icons: {
+    icon: '/rise/logo-bronze-transparent.png',
+    shortcut: '/rise/logo-bronze-transparent.png',
+    apple: '/rise/logo-bronze-transparent.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

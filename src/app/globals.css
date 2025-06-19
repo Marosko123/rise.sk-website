@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
+  --background: #1a1a1a;
   --foreground: #fff;
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
+  --primary: #b09155;
+  --primary-dark: #9a7f4b;
   --secondary: #1e293b;
   --accent: #64748b;
   --neutral-light: #f1f5f9;
   --neutral-dark: #94a3b8;
   --border: #334155;
   --glass: rgb(255 255 255 / 10%);
-  --glow: #60a5fa;
+  --glow: #b09155;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1a1a1a;
     --foreground: #fff;
     --secondary: #1e293b;
     --border: #334155;
@@ -65,10 +65,10 @@ body {
 
 .hero-gradient {
   background:
-    radial-gradient(ellipse at top, rgb(59 130 246 / 15%) 0%, transparent 50%),
+    radial-gradient(ellipse at top, rgb(176 145 85 / 15%) 0%, transparent 50%),
     radial-gradient(
       ellipse at bottom,
-      rgb(139 92 246 / 10%) 0%,
+      rgb(154 127 75 / 10%) 0%,
       transparent 50%
     ),
     var(--background);
@@ -83,11 +83,11 @@ body {
 
 /* Glow effects */
 .glow {
-  box-shadow: 0 0 20px rgb(59 130 246 / 30%);
+  box-shadow: 0 0 20px rgb(176 145 85 / 30%);
 }
 
 .glow-hover:hover {
-  box-shadow: 0 0 30px rgb(59 130 246 / 50%);
+  box-shadow: 0 0 30px rgb(176 145 85 / 50%);
 }
 
 /* Modern animations */
@@ -132,7 +132,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+  background: linear-gradient(-45deg, #b09155, #d4af37, #b8860b, #daa520);
   background-size: 400% 400%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -223,7 +223,7 @@ body {
 
 /* Gradient text animations */
 .gradient-text-animated {
-  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+  background: linear-gradient(45deg, #b09155, #d4af37, #b8860b, #b09155);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;

@@ -29,7 +29,7 @@ export default function EngagementModels() {
         t('models.dedicated.features.3'),
       ],
       ideal: t('models.dedicated.ideal'),
-      gradient: 'from-blue-500 to-indigo-500',
+      gradient: 'from-[#b09155] to-[#d4af37]',
     },
     {
       id: 2,
@@ -57,7 +57,7 @@ export default function EngagementModels() {
         t('models.staff.features.3'),
       ],
       ideal: t('models.staff.ideal'),
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-[#9a7f4b] to-[#b8860b]',
     },
   ];
 
@@ -146,7 +146,7 @@ export default function EngagementModels() {
                     >
                       <CheckCircle
                         size={16}
-                        className='text-blue-400 flex-shrink-0'
+                        className='text-[#b09155] flex-shrink-0'
                       />
                       {feature}
                     </li>
@@ -168,7 +168,7 @@ export default function EngagementModels() {
         <motion.div variants={itemVariants}>
           <BentoCard spotlight={true} className='text-center'>
             <div className='flex items-center justify-center gap-2 mb-6'>
-              <Shield size={20} className='text-blue-400' />
+              <Shield size={20} className='text-[#b09155]' />
               <h3 className='text-2xl font-bold text-white'>
                 All Models Include
               </h3>
@@ -177,7 +177,7 @@ export default function EngagementModels() {
             <div className='flex flex-wrap justify-center gap-8'>
               {guarantees.map((guarantee, index) => (
                 <div key={index} className='flex items-center gap-3'>
-                  <CheckCircle size={16} className='text-blue-400' />
+                  <CheckCircle size={16} className='text-[#b09155]' />
                   <span className='text-gray-300 font-medium'>{guarantee}</span>
                 </div>
               ))}

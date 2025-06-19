@@ -64,7 +64,7 @@ export default function About() {
   return (
     <section
       id='about'
-      className='py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden'
+      className='py-20 bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden'
     >
       {/* Background Effects */}
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent_50%)]' />
@@ -84,14 +84,14 @@ export default function About() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className='inline-flex items-center px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-sm font-medium mb-6 backdrop-blur-sm'
+            className='inline-flex items-center px-4 py-2 bg-[#b09155]/20 border border-[#b09155]/30 rounded-full text-[#b09155] text-sm font-medium mb-6 backdrop-blur-sm'
           >
-            <span className='w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse'></span>
+            <span className='w-2 h-2 bg-[#b09155] rounded-full mr-2 animate-pulse'></span>
             {t('badge')}
           </motion.div>
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('title')}
-            <span className='bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent block'>
+            <span className='bg-gradient-to-r from-[#b09155] via-[#d4af37] to-[#b8860b] bg-clip-text text-transparent block'>
               {t('titleHighlight')}
             </span>
           </h2>
@@ -113,14 +113,14 @@ export default function About() {
             >
               <BentoCard spotlight={true} className='text-center h-full'>
                 <div className='flex justify-center mb-4'>
-                  <div className='w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
+                  <div className='w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
                     <stat.icon className='w-6 h-6 text-white' />
                   </div>
                 </div>
                 <div className='text-3xl font-bold text-white mb-2'>
                   {stat.number}
                 </div>
-                <div className='text-blue-400 font-semibold mb-2'>
+                <div className='text-[#b09155] font-semibold mb-2'>
                   {stat.label}
                 </div>
                 <div className='text-sm text-gray-400'>{stat.description}</div>
@@ -142,7 +142,7 @@ export default function About() {
             >
               <BentoCard spotlight={true} className='h-full'>
                 <div className='flex items-center mb-6'>
-                  <div className='w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4'>
+                  <div className='w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4'>
                     <value.icon className='w-6 h-6 text-white' />
                   </div>
                   <h3 className='text-xl font-bold text-white'>
@@ -165,7 +165,7 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className='text-center mt-16'
         >
-          <div className='bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto'>
+          <div className='bg-gradient-to-r from-[#b09155]/20 to-[#9a7f4b]/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto'>
             <h3 className='text-2xl md:text-3xl font-bold text-white mb-4'>
               {t('cta.title')}
             </h3>

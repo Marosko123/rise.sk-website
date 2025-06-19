@@ -120,12 +120,9 @@ export default function LanguageSwitcher() {
   if (!mounted) {
     return (
       <div className='relative z-50'>
-        <div className='flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm'>
-          <span className='text-lg'>🇺🇸</span>
-          <span className='text-sm font-medium text-white hidden sm:block'>
-            English
-          </span>
-          <span className='text-sm font-medium text-white sm:hidden'>EN</span>
+        <div className='flex items-center space-x-1 px-2 py-1 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm'>
+          <span className='text-sm'>🇺🇸</span>
+          <span className='text-xs font-medium text-white'>EN</span>
           <svg
             className='w-4 h-4 text-white/80'
             fill='none'
@@ -148,18 +145,15 @@ export default function LanguageSwitcher() {
     <div className='relative z-50'>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className='flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg'
+        className='flex items-center space-x-1 px-2 py-1 rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg'
         aria-label='Select language'
       >
-        <span className='text-lg'>{currentLanguage.flag}</span>
-        <span className='text-sm font-medium text-white hidden sm:block'>
-          {currentLanguage.nativeName}
-        </span>
-        <span className='text-sm font-medium text-white sm:hidden'>
+        <span className='text-sm'>{currentLanguage.flag}</span>
+        <span className='text-xs font-medium text-white'>
           {currentLanguage.code.toUpperCase()}
         </span>
         <svg
-          className={`w-4 h-4 text-white/80 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-3 h-3 text-white/80 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
           fill='none'
           stroke='currentColor'
           viewBox='0 0 24 24'
@@ -188,12 +182,12 @@ export default function LanguageSwitcher() {
                   e.stopPropagation();
                   handleLanguageChange(language.code);
                 }}
-                className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-blue-50 transition-all duration-200 cursor-pointer ${
+                className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-[#b09155]/10 transition-all duration-200 cursor-pointer ${
                   index === 0 ? 'rounded-t-xl' : ''
                 } ${index === languages.length - 1 ? 'rounded-b-xl' : ''} ${
                   language.code === currentLocale
-                    ? 'bg-blue-100 text-blue-700 shadow-sm'
-                    : 'text-gray-700 hover:text-blue-700'
+                    ? 'bg-[#b09155]/20 text-[#b09155] shadow-sm'
+                    : 'text-gray-700 hover:text-[#b09155]'
                 }`}
                 type="button"
               >
@@ -208,7 +202,7 @@ export default function LanguageSwitcher() {
                 </div>
                 {language.code === currentLocale && (
                   <svg
-                    className='w-4 h-4 text-blue-600'
+                    className='w-4 h-4 text-[#b09155]'
                     fill='currentColor'
                     viewBox='0 0 20 20'
                   >

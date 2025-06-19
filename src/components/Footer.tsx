@@ -57,7 +57,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-gradient-to-br from-gray-900 via-slate-900 to-black text-white relative overflow-hidden'>
+    <footer className='bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] text-white relative overflow-hidden'>
       {/* Background Effects */}
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(120,119,198,0.1),transparent_50%)]' />
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,119,198,0.1),transparent_50%)]' />
@@ -75,7 +75,7 @@ export default function Footer() {
             <Link href='/' className='inline-block mb-6'>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className='text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'
+                className='text-3xl font-bold bg-gradient-to-r from-[#b09155] to-[#d4af37] bg-clip-text text-transparent'
               >
                 Rise.sk
               </motion.div>
@@ -101,7 +101,7 @@ export default function Footer() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ x: 5 }}
-                  className='flex items-center text-gray-300 hover:text-blue-400 transition-all duration-300 group'
+                  className='flex items-center text-gray-300 hover:text-[#b09155] transition-all duration-300 group'
                 >
                   <div className='w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300'>
                     <item.icon className='w-5 h-5' />
@@ -136,7 +136,7 @@ export default function Footer() {
                 >
                   <Link
                     href='#services'
-                    className='text-gray-300 hover:text-blue-400 transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
+                    className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
                   >
                     {service}
                   </Link>
@@ -166,7 +166,7 @@ export default function Footer() {
                 >
                   <Link
                     href='#'
-                    className='text-gray-300 hover:text-blue-400 transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
+                    className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
                   >
                     {item}
                   </Link>
@@ -193,7 +193,7 @@ export default function Footer() {
                 <Link
                   key={index}
                   href='#'
-                  className='text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm'
+                  className='text-gray-400 hover:text-[#b09155] transition-colors duration-300 text-sm'
                 >
                   {item}
                 </Link>
@@ -208,7 +208,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className='mt-12 p-8 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm border border-white/10 rounded-2xl text-center'
+          className='mt-12 p-8 bg-gradient-to-r from-[#b09155]/20 to-[#9a7f4b]/20 backdrop-blur-sm border border-white/10 rounded-2xl text-center'
         >
           <h3 className='text-2xl font-bold text-white mb-4'>
             {t('cta.title')}
@@ -220,7 +220,7 @@ export default function Footer() {
             href='#contact'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className='inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-lg transition-all duration-300'
+            className='inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold rounded-lg transition-all duration-300'
           >
             {t('cta.button')}
             <ExternalLink className='w-5 h-5 ml-2' />

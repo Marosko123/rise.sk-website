@@ -11,7 +11,7 @@ import {
   Send,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -30,6 +30,48 @@ export default function Contact() {
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
+
+  // Read localStorage and prefill form
+  useEffect(() => {
+    const loadStoredData = () => {
+      const storedData = localStorage.getItem('contactFormData');
+      if (storedData) {
+        try {
+          const { service, message } = JSON.parse(storedData);
+          if (service || message) {
+            setFormData((prev) => ({
+              ...prev,
+              ...(service && { service }),
+              ...(message && { message }),
+            }));
+
+            // Clear stored data after setting form data
+            localStorage.removeItem('contactFormData');
+          }
+        } catch {
+          // Silently handle parsing errors and clear invalid data
+          localStorage.removeItem('contactFormData');
+        }
+      }
+    };
+
+    // Load initial data
+    loadStoredData();
+
+    // Listen for storage events (when localStorage changes)
+    const handleStorageChange = () => {
+      loadStoredData();
+    };
+
+    // Add custom event listener for localStorage updates
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('contactFormUpdate', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('contactFormUpdate', handleStorageChange);
+    };
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -154,18 +196,19 @@ export default function Contact() {
 
   const services = [
     t('services.webDevelopment'),
+    t('services.mobileApps'),
+    t('services.customSoftware'),
     t('services.ecommerce'),
-    t('services.digitalTransformation'),
-    t('services.uiUxDesign'),
-    t('services.maintenance'),
-    t('services.consulting'),
+    t('services.aiAnalytics'),
+    t('services.digitalMarketing'),
+    t('services.specialRequests'),
     t('services.other'),
   ];
 
   return (
     <section
       id='contact'
-      className='py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 relative overflow-hidden'
+      className='py-20 bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden'
     >
       {/* Background Effects */}
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%)]' />
@@ -186,14 +229,14 @@ export default function Contact() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className='inline-flex items-center px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-sm font-medium mb-6 backdrop-blur-sm'
+            className='inline-flex items-center px-4 py-2 bg-[#b09155]/20 border border-[#b09155]/30 rounded-full text-[#b09155] text-sm font-medium mb-6 backdrop-blur-sm'
           >
-            <span className='w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse'></span>
+            <span className='w-2 h-2 bg-[#b09155] rounded-full mr-2 animate-pulse'></span>
             {t('badge')}
           </motion.div>
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('mainTitle')}
-            <span className='bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent block'>
+            <span className='bg-gradient-to-r from-[#b09155] via-[#d4af37] to-[#b8860b] bg-clip-text text-transparent block'>
               {t('mainTitleHighlight')}
             </span>
           </h2>
@@ -236,7 +279,7 @@ export default function Contact() {
                   className='flex items-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300 group'
                   data-cursor='link'
                 >
-                  <div className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
+                  <div className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
                     <item.icon className='w-6 h-6 text-white' />
                   </div>
                   <div className='ml-4'>
@@ -255,18 +298,18 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className='bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/10 rounded-xl p-6 mt-8'
+              className='bg-gradient-to-r from-[#b09155]/20 to-[#9a7f4b]/20 backdrop-blur-sm border border-white/10 rounded-xl p-6 mt-8'
             >
               <h4 className='text-white font-bold mb-4'>{t('whyChoose')}</h4>
               <div className='grid grid-cols-2 gap-4 text-center'>
                 <div>
-                  <div className='text-2xl font-bold text-blue-400'>92%</div>
+                  <div className='text-2xl font-bold text-[#b09155]'>92%</div>
                   <div className='text-sm text-gray-300'>
                     {t('onTimeDelivery')}
                   </div>
                 </div>
                 <div>
-                  <div className='text-2xl font-bold text-purple-400'>
+                  <div className='text-2xl font-bold text-[#b09155]'>
                     14 Days
                   </div>
                   <div className='text-sm text-gray-300'>{t('teamReady')}</div>
@@ -300,7 +343,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
                     placeholder={t('placeholders.name')}
                     data-cursor='text'
                   />
@@ -319,7 +362,7 @@ export default function Contact() {
                     value={formData.company}
                     onChange={handleChange}
                     disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
                     placeholder={t('placeholders.company')}
                   />
                 </div>
@@ -341,7 +384,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
                     placeholder={t('placeholders.email')}
                   />
                 </div>
@@ -359,7 +402,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
                     placeholder={t('placeholders.phone')}
                   />
                 </div>
@@ -379,7 +422,7 @@ export default function Contact() {
                   value={formData.service}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                  className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
                   data-cursor='pointer'
                 >
                   <option value='' className='bg-gray-800'>
@@ -407,7 +450,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50'
+                  className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50'
                   placeholder={t('messagePlaceholder')}
                   data-cursor='text'
                 />
@@ -438,7 +481,7 @@ export default function Contact() {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className='w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center'
+                className='w-full bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center'
                 data-cursor='button'
               >
                 {isSubmitting ? (
