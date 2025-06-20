@@ -3,12 +3,12 @@
     "title": {
       "welcome": "Vitajte v"
     },
-    "subtitle": "Profesionálne poradenské služby v oblasti vzdelávania a vývoja softvéru",
+    "subtitle": "Profesionálne služby v oblasti softvérového vývoja a digitálnej transformácie",
     "tagline": {
       "weAre": "Sme",
       "innovativeSolutions": "Inovatívne Riešenia"
     },
-    "description": "Podporujeme rast prostredníctvom najmodernejšieho vzdelávania a vývoja",
+    "description": "Podporujeme váš rast prostredníctvom špičkových technologických riešení.",
     "education": {
       "title": "VZDELÁVANIE",
       "description": "Vzdelávacie poradenstvo, vývoj učebných osnov a školiace programy",
@@ -37,18 +37,19 @@
     "about": "O nás",
     "services": "Služby",
     "engagement": "Modely Spolupráce",
+    "portfolio": "Portfólio",
     "contact": "Kontakt",
     "backToHome": "Späť na Domov",
     "getStarted": "Začať"
   },
   "hero": {
-    "badge": "Výkonnostný Prehľad",
+    "badge": "Výkonnosť a Inovácie",
     "title": {
-      "build": "Vytvárame",
+      "build": "Tvoríme",
       "bulletProof": "Inovatívne",
       "digitalProducts": "Digitálne Produkty"
     },
-    "description": "Zažite odbornú spoluprácu a doveďte svoj projekt k úspechu.",
+    "description": "Spojte sa s expertmi a premeňte vaše vízie na úspešné digitálne produkty.",
     "subtitle": "Tvoríme digitálne riešenia, ktoré rastú s vami.",
     "startProject": "Začať Projekt",
     "freeConsultation": "Bezplatná Konzultácia",
@@ -68,10 +69,10 @@
     }
   },
   "about": {
-    "badge": "FIIT-STU Absolventské Štúdio",
-    "title": "Prečo Rise.sk Prekonáva",
-    "titleHighlight": "Tradičný Outsourcing",
-    "description": "Nie sme len ďalšia vývojárska firma. Sme absolventi FIIT-STU, ktorí rozumejú moderným technológiám aj obchodnému dopadu. Každý projekt je postavený pre škálovateľnosť, bezpečnosť a merateľné výsledky.",
+    "badge": "Inovácie a Technológie",
+    "title": "V Čom Sme Iní",
+    "titleHighlight": "Ako Tradičný Outsourcing",
+    "description": "Sme viac než len vývojárska firma. Sme partneri, ktorí spájajú hlboké technologické znalosti s obchodným myslením. Každý projekt navrhujeme pre maximálnu škálovateľnosť, bezpečnosť a merateľný úspech.",
     "stats": {
       "delivery": {
         "number": "100%",
@@ -87,11 +88,6 @@
         "number": "7 dní",
         "label": "Tím Pripravený",
         "description": "Od briefingu po aktívny vývoj"
-      },
-      "grads": {
-        "number": "100%",
-        "label": "FIIT-STU Absolventi",
-        "description": "Špičková slovenská technická univerzita"
       }
     },
     "values": {
@@ -104,13 +100,13 @@
         "description": "PM + 2 FE vývojári + 1 BE vývojár + QA pripravený za menej ako 7 dní pre okamžitý dopad."
       },
       "performance": {
-        "title": "Výkonnostne-Orientované Výsledky",
-        "description": "Úspech meriame podľa vášho ROI, nie len dodávok. Skutočné výsledky, skutočný rast."
+        "title": "Výsledky, Ktoré Hovoria Samy za Seba",
+        "description": "Náš úspech je váš úspech. Zameriavame sa na ROI a reálne obchodné výsledky, nielen na dodanie kódu."
       }
     },
     "cta": {
-      "title": "Pripravený Zažiť Rise.sk Rozdiel?",
-      "description": "Pridajte sa k 50+ spoločnostiam, ktoré si vybrali kvalitu pred lacným outsourcingom. Získajte váš dedikovaný tím za 7 dní so zaručenými výsledkami.",
+      "title": "Ste Pripravení na Zmenu?",
+      "description": "Pridajte sa k desiatkam spokojných klientov, ktorí si vybrali kvalitu a odbornosť. Získajte dedikovaný tím expertov do 7 dní a garantované výsledky.",
       "startProject": "Začať Váš Projekt",
       "viewServices": "Pozrieť Naše Služby"
     }
@@ -295,12 +291,12 @@
   },
   "contact": {
     "title": "Začnite Ešte Dnes",
-    "subtitle": "Pripravení pracovať s nami? Vyplňte formulár nižšie a my sa vám ozve rýchlo.",
+    "subtitle": "Máte projekt alebo nápad? Vyplňte formulár a my sa vám ozveme obratom.",
     "badge": "Pripravení Začať Váš Projekt?",
     "mainTitle": "Vytvorme Spoločne",
-    "mainTitleHighlight": "Niečo Úžasné",
+    "mainTitleHighlight": "Niečo Výnimočné",
     "getInTouch": "Kontaktujte Nás",
-    "description": "Pripravení transformovať svoju digitálnu prítomnosť? Náš tím absolventov FIIT-STU je pripravený prediskutovať váš projekt a poskytnúť vlastné riešenie, ktoré prináša skutočné výsledky.",
+    "description": "Ste pripravení transformovať svoju digitálnu prítomnosť? Náš tím expertov je tu, aby s vami prediskutoval váš projekt a navrhol riešenie na mieru, ktoré prinesie reálne výsledky.",
     "whyChoose": "Prečo Si Vybrať Rise.sk?",
     "onTimeDelivery": "Dodanie Na Čas",
     "teamReady": "Tím Pripravený",
@@ -360,6 +356,7 @@
     "name": "rise.sk s.r.o.",
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
+    "taxId": "2122465094",
     "registration": "Obchodný register Mestského súdu Bratislava III, oddiel: Sro, vložka č. 188634/B",
     "executives": "Bc. Maroš Bednár a Michael Matejčík",
     "phone": "+421 911 670 188",
@@ -367,13 +364,14 @@
       "name": "Názov spoločnosti",
       "address": "Adresa",
       "businessId": "IČO",
+      "taxId": "DIČ",
       "registration": "Zápis",
       "executives": "Konatelia",
       "phone": "Telefón"
     }
   },
   "footer": {
-    "description": "Štúdio absolventov FIIT-STU, ktorí vytvárajú inovatívne digitálne riešenia. Od vlastného vývoja až po DevOps excelentnosť—budujeme produkty, ktoré sa škálujú.",
+    "description": "Tvoríme inovatívne digitálne riešenia, ktoré posúvajú hranice. Od na mieru šitého vývoja až po DevOps excelentnosť – budujeme produkty, ktoré rastú s vami.",
     "sections": {
       "services": "Služby",
       "company": "Spoločnosť"
@@ -390,14 +388,64 @@
         "address": "Karpatské námestie 7770/10A, 831 06 Bratislava"
       }
     },
-    "copyright": "© {year} Rise.sk s.r.o. Všetky práva vyhradené. | Bratislavské štúdio absolventov FIIT-STU",
+    "copyright": "© {year} Rise.sk s.r.o. Všetky práva vyhradené.",
     "cta": {
-      "title": "Pripravení Začať Váš Projekt?",
-      "description": "Získajte váš dedikovaný tím za 7 dní. 100% dodanie načas. 20-40% úspory nákladov zaručené.",
+      "title": "Ste Pripravení Začať?",
+      "description": "Získajte dedikovaný tím do 7 dní. Garantujeme 100% dodanie načas a úsporu nákladov 20-40%.",
       "button": "Začať Dnes"
     },
     "services": ["Vlastný Vývoj", "DevOps & Cloud", "UX/UI Dizajn", "Zabezpečenie Kvality", "Vzdelávanie & Školenie"],
     "company": ["O Nás", "Náš Tím", "Kariéry", "Prípadové Štúdie", "Blog"],
     "support": ["Dokumentácia", "API Referencia", "Centrum Pomoci", "Komunita", "Stav"]
+  },
+  "portfolio": {
+    "badge": "Naše Práce",
+    "title": "Úspešné",
+    "titleHighlight": "Projekty",
+    "subtitle": "Prezrite si vzorky našich najúspešnejších projektov a technologických riešení",
+    "projects": {
+      "featured": {
+        "title": "Hlavné Projekty",
+        "description": "Naše najvýznamnejšie a najúspešnejšie realizácie"
+      },
+      "categories": {
+        "webApps": "Webové Aplikácie",
+        "webapp": "Webové Aplikácie",
+        "mobileApps": "Mobilné Aplikácie",
+        "ecommerce": "E-commerce",
+        "saas": "SaaS Platformy",
+        "corporate": "Firemné Weby",
+        "startup": "Startup MVP"
+      },
+      "cta": {
+        "viewProject": "Prezrieť Projekt",
+        "liveDemo": "Živá Ukážka",
+        "caseStudy": "Prípadová Štúdia"
+      }
+    },
+    "stats": {
+      "projectsCompleted": {
+        "number": "15+",
+        "label": "Dokončených Projektov"
+      },
+      "clientSatisfaction": {
+        "number": "100%",
+        "label": "Spokojnosť Klientov"
+      },
+      "avgDeliveryTime": {
+        "number": "45 dní",
+        "label": "Priemerný Čas Dodania"
+      }
+    },
+    "testimonials": {
+      "title": "Čo Hovoria Naši Klienti",
+      "subtitle": "Reálne skúsenosti od skutočných klientov"
+    },
+    "cta": {
+      "title": "Pripravení na Váš Vlastný Úspešný Projekt?",
+      "description": "Poďte vytvoriť niečo úžasné spoločne. Kontaktujte nás a prediskutujme vaše potreby.",
+      "startProject": "Začať Projekt",
+      "viewMore": "Zobraziť Viac Projektov"
+    }
   }
 }

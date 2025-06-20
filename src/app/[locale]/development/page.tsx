@@ -6,6 +6,7 @@ import EngagementModels from '@/components/EngagementModels';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
+import Portfolio from '@/components/Portfolio';
 import ScrollToTop from '@/components/ScrollToTop';
 import ServicesEnhanced from '@/components/ServicesEnhanced';
 
@@ -23,6 +24,9 @@ export default function DevelopmentPage() {
         </div>
         <div id='services'>
           <ServicesEnhanced />
+        </div>
+        <div id='portfolio'>
+          <Portfolio />
         </div>
         <div id='engagement'>
           <EngagementModels />

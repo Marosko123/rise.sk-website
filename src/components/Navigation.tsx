@@ -91,7 +91,7 @@ export default function Navigation() {
   const navLinks = [
     { href: '#about', label: t('about') },
     { href: '#services', label: t('services') },
-    { href: '#portfolio', label: 'Naše práce' }, // TODO: Add to translations
+    { href: '#portfolio', label: t('portfolio') },
     { href: '#contact', label: t('contact') },
   ];
 

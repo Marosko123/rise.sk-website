@@ -37,6 +37,7 @@
     "about": "About",
     "services": "Services",
     "engagement": "Engagement Models",
+    "portfolio": "Portfolio",
     "contact": "Contact",
     "backToHome": "Back to Home",
     "getStarted": "Get Started"
@@ -147,6 +148,56 @@
     },
     "guarantees": ["Weekly reporting", "Shared KPIs", "Zero-overhead knowledge transfer at hand-off"],
     "guaranteesTitle": "All Models Include"
+  },
+  "portfolio": {
+    "badge": "Our Work",
+    "title": "Successful",
+    "titleHighlight": "Projects",
+    "subtitle": "Explore samples of our most successful projects and technology solutions",
+    "projects": {
+      "featured": {
+        "title": "Featured Projects",
+        "description": "Our most significant and successful implementations"
+      },
+      "categories": {
+        "webApps": "Web Applications",
+        "webapp": "Web Applications",
+        "mobileApps": "Mobile Apps",
+        "ecommerce": "E-commerce",
+        "saas": "SaaS Platforms",
+        "corporate": "Corporate Websites",
+        "startup": "Startup MVPs"
+      },
+      "cta": {
+        "viewProject": "View Project",
+        "liveDemo": "Live Demo",
+        "caseStudy": "Case Study"
+      }
+    },
+    "stats": {
+      "projectsCompleted": {
+        "number": "15+",
+        "label": "Projects Completed"
+      },
+      "clientSatisfaction": {
+        "number": "100%",
+        "label": "Client Satisfaction"
+      },
+      "avgDeliveryTime": {
+        "number": "45 days",
+        "label": "Average Delivery Time"
+      }
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Real experiences from real clients"
+    },
+    "cta": {
+      "title": "Ready for Your Own Success Story?",
+      "description": "Let's create something amazing together. Contact us and let's discuss your needs.",
+      "startProject": "Start Project",
+      "viewMore": "View More Projects"
+    }
   },
   "services": {
     "badge": "Our Services",
@@ -378,6 +429,7 @@
     "name": "rise.sk s.r.o.",
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
+    "taxId": "2122465094",
     "registration": "Commercial Register of the Municipal Court Bratislava III, section: Sro, insert no. 188634/B",
     "executives": "Bc. Maroš Bednár and Michael Matejčík",
     "phone": "+421 911 670 188",
@@ -385,6 +437,7 @@
       "name": "Company Name",
       "address": "Address",
       "businessId": "Business ID",
+      "taxId": "Tax ID",
       "registration": "Registration",
       "executives": "Executives",
       "phone": "Phone"
