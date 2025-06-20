@@ -44,17 +44,17 @@
   "hero": {
     "badge": "Výkonnostný Prehľad",
     "title": {
-      "build": "Vytvárajte",
-      "bulletProof": "Neporaziteľné",
+      "build": "Vytvárame",
+      "bulletProof": "Inovatívne",
       "digitalProducts": "Digitálne Produkty"
     },
-    "description": "je bratislavské štúdio absolventov FIIT-STU, ktorí vytvárajú neporaziteľné digitálne produkty a učia novú generáciu technických talentov.",
-    "subtitle": "Od vlastných webových aplikácií dodávaných načas, vždy, až po školiace bootcampy, ktoré posilňujú tímy.",
+    "description": "Zažite odbornú spoluprácu a doveďte svoj projekt k úspechu.",
+    "subtitle": "Tvoríme digitálne riešenia, ktoré rastú s vami.",
     "startProject": "Začať Projekt",
     "freeConsultation": "Bezplatná Konzultácia",
     "metrics": {
       "onTimeDelivery": {
-        "number": "92%",
+        "number": "100%",
         "label": "Dodanie Na Čas"
       },
       "costSavings": {
@@ -62,7 +62,7 @@
         "label": "Úspora Nákladov"
       },
       "teamReady": {
-        "number": "14 Dní",
+        "number": "7 dní",
         "label": "Tím Pripravený"
       }
     }
@@ -74,7 +74,7 @@
     "description": "Nie sme len ďalšia vývojárska firma. Sme absolventi FIIT-STU, ktorí rozumejú moderným technológiám aj obchodnému dopadu. Každý projekt je postavený pre škálovateľnosť, bezpečnosť a merateľné výsledky.",
     "stats": {
       "delivery": {
-        "number": "92%",
+        "number": "100%",
         "label": "Dodanie Na Čas",
         "description": "Projekty dodané podľa harmonogramu"
       },
@@ -84,7 +84,7 @@
         "description": "Priemerné úspory vs tradičný outsourcing"
       },
       "ready": {
-        "number": "14 Dní",
+        "number": "7 dní",
         "label": "Tím Pripravený",
         "description": "Od briefingu po aktívny vývoj"
       },
@@ -101,7 +101,7 @@
       },
       "teams": {
         "title": "Cross-Funkčné Tímy",
-        "description": "PM + 2 FE vývojári + 1 BE vývojár + QA pripravený za menej ako 14 dní pre okamžitý dopad."
+        "description": "PM + 2 FE vývojári + 1 BE vývojár + QA pripravený za menej ako 7 dní pre okamžitý dopad."
       },
       "performance": {
         "title": "Výkonnostne-Orientované Výsledky",
@@ -110,7 +110,7 @@
     },
     "cta": {
       "title": "Pripravený Zažiť Rise.sk Rozdiel?",
-      "description": "Pridajte sa k 50+ spoločnostiam, ktoré si vybrali kvalitu pred lacným outsourcingom. Získajte váš dedikovaný tím za 14 dní so zaručenými výsledkami.",
+      "description": "Pridajte sa k 50+ spoločnostiam, ktoré si vybrali kvalitu pred lacným outsourcingom. Získajte váš dedikovaný tím za 7 dní so zaručenými výsledkami.",
       "startProject": "Začať Váš Projekt",
       "viewServices": "Pozrieť Naše Služby"
     }
@@ -161,7 +161,7 @@
     "badge": "Naše Služby",
     "title": "Kompletné Digitálne",
     "titleHighlight": "Riešenia",
-    "subtitle": "Od konceptu po nasadenie dodávame neporaziteľné digitálne produkty s najmodernejšími technológiami",
+    "subtitle": "Od konceptu po nasadenie dodávame inovatívne digitálne produkty s najmodernejšími technológiami",
     "webDev": {
       "title": "Vlastný Webový a Mobilný Vývoj",
       "description": "Vlastné webstránky, SaaS platformy, PWA, iOS/Android aplikácie s modernými stackmi (React, Vue, Node, Laravel, Flutter)",
@@ -171,7 +171,7 @@
         "Škálovateľnosť: Kódbázy rastú s vami—bez licenčných obmedzení",
         "Vlastníctvo: Zachováte si IP a zabezpečíte budúcnosť svojich digitálnych aktív"
       ],
-      "team": "Cross-funkčný tím—PM + 2 FE vývojári + 1 BE vývojár + QA—pripravený za menej ako 14 dní"
+      "team": "Cross-funkčný tím—PM + 2 FE vývojári + 1 BE vývojár + QA—pripravený za menej ako 7 dní"
     },
     "devops": {
       "title": "DevOps a Cloudová Spoľahlivosť",
@@ -221,7 +221,7 @@
       "header": {
         "badge": "Naše Služby",
         "title": "Kompletné Digitálne Riešenia",
-        "subtitle": "Od konceptu po nasadenie dodávame neporaziteľné digitálne produkty s najmodernejšími technológiami"
+        "subtitle": "Od konceptu po nasadenie dodávame inovatívne digitálne produkty s najmodernejšími technológiami"
       },
       "labels": {
         "features": "Čo robíme",
@@ -237,7 +237,7 @@
           "Škálovateľnosť: Kódbázy rastú s vami—bez licenčných obmedzení",
           "Vlastníctvo: Zachováte si IP a zabezpečíte budúcnosť svojich digitálnych aktív"
         ],
-        "team": "Cross-funkčný tím—PM + 2 FE vývojári + 1 BE vývojár + QA—pripravený za menej ako 14 dní"
+        "team": "Cross-funkčný tím—PM + 2 FE vývojári + 1 BE vývojár + QA—pripravený za menej ako 7 dní"
       },
       "devops": {
         "title": "DevOps a Cloudová Spoľahlivosť",
@@ -307,7 +307,12 @@
     "contactInfo": {
       "email": "E-mail",
       "phone": "Telefón",
-      "office": "Kancelária"
+      "office": "Kancelária",
+      "values": {
+        "email": "info@rise.sk",
+        "phone": "+421 911 670 188",
+        "office": "Karpatské námestie 7770/10A, 831 06 Bratislava"
+      }
     },
     "fullName": "Celé Meno",
     "company": "Spoločnosť",
@@ -325,7 +330,7 @@
     "selectService": "Vyberte službu",
     "services": {
       "webDevelopment": "Moderné Weby",
-      "mobileApps": "Mobilné Aplikácie", 
+      "mobileApps": "Mobilné Aplikácie",
       "customSoftware": "Softvér na Mieru",
       "ecommerce": "E-commerce Riešenia",
       "aiAnalytics": "AI & Data Analytics",
@@ -351,8 +356,24 @@
     "requiredFields": "Vyplňte prosím všetky povinné polia.",
     "invalidEmail": "Zadajte prosím platnú e-mailovú adresu."
   },
+  "companyInfo": {
+    "name": "rise.sk s.r.o.",
+    "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
+    "businessId": "56911157",
+    "registration": "Obchodný register Mestského súdu Bratislava III, oddiel: Sro, vložka č. 188634/B",
+    "executives": "Bc. Maroš Bednár a Michael Matejčík",
+    "phone": "+421 911 670 188",
+    "labels": {
+      "name": "Názov spoločnosti",
+      "address": "Adresa",
+      "businessId": "IČO",
+      "registration": "Zápis",
+      "executives": "Konatelia",
+      "phone": "Telefón"
+    }
+  },
   "footer": {
-    "description": "Štúdio absolventov FIIT-STU, ktorí vytvárajú neporaziteľné digitálne riešenia. Od vlastného vývoja až po DevOps excelentnosť—budujeme produkty, ktoré sa škálujú.",
+    "description": "Štúdio absolventov FIIT-STU, ktorí vytvárajú inovatívne digitálne riešenia. Od vlastného vývoja až po DevOps excelentnosť—budujeme produkty, ktoré sa škálujú.",
     "sections": {
       "services": "Služby",
       "company": "Spoločnosť"
@@ -361,12 +382,18 @@
       "title": "Kontakt",
       "email": "E-mail",
       "phone": "Telefón",
-      "location": "Lokalita"
+      "location": "Lokalita",
+      "values": {
+        "email": "info@rise.sk",
+        "phone": "+421 911 670 188",
+        "location": "Karpatské námestie 7770/10A, 831 06 Bratislava",
+        "address": "Karpatské námestie 7770/10A, 831 06 Bratislava"
+      }
     },
     "copyright": "© {year} Rise.sk s.r.o. Všetky práva vyhradené. | Bratislavské štúdio absolventov FIIT-STU",
     "cta": {
       "title": "Pripravení Začať Váš Projekt?",
-      "description": "Získajte váš dedikovaný tím za 14 dní. 92% dodanie načas. 20-40% úspory nákladov zaručené.",
+      "description": "Získajte váš dedikovaný tím za 7 dní. 100% dodanie načas. 20-40% úspory nákladov zaručené.",
       "button": "Začať Dnes"
     },
     "services": ["Vlastný Vývoj", "DevOps & Cloud", "UX/UI Dizajn", "Zabezpečenie Kvality", "Vzdelávanie & Školenie"],

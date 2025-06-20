@@ -49,7 +49,7 @@
     "freeConsultation": "Ingyenes konzultáció",
     "metrics": {
       "onTimeDelivery": {
-        "number": "92%",
+        "number": "100%",
         "label": "Határidőn belüli szállítás"
       },
       "costSavings": {
@@ -69,7 +69,7 @@
     "description": "Nem csak egy újabb fejlesztőcég vagyunk. FIIT-STU végzettek vagyunk, akik ismerik a legmodernebb technológiát és az üzleti hatást. Minden projektet skálázhatónak, biztonságosnak és mérhető eredményekre építve készítünk.",
     "stats": {
       "delivery": {
-        "number": "92%",
+        "number": "100%",
         "label": "Határidőn belüli szállítás",
         "description": "Időben leszállított projektek"
       },
@@ -303,7 +303,7 @@
         },
         "delivery": {
           "title": "Határidőn belüli szállítás",
-          "description": "A projektek 92%-a a határidőre vagy korábban kerül leszállításra"
+          "description": "A projektek 100%-a a határidőre vagy korábban kerül leszállításra"
         },
         "cost": {
           "title": "Költséghatékonyság",
@@ -393,7 +393,7 @@
     "copyright": "© {year} Rise.sk s.r.o. Minden jog fenntartva. | Bratislavai székhelyű FIIT-STU végzettek stúdiója",
     "cta": {
       "title": "Készen áll, hogy elkezdje a projektjét?",
-      "description": "Szerezze meg dedikált csapatát 14 napon belül. 92% határidőn belüli szállítás. 20–40% költségmegtakarítás garantált.",
+      "description": "Szerezze meg dedikált csapatát 14 napon belül. 100% határidőn belüli szállítás. 20–40% költségmegtakarítás garantált.",
       "button": "Kezdje még ma"
     },
     "services": ["Egyedi fejlesztés", "DevOps és felhő", "UX/UI tervezés", "Minőségbiztosítás", "Oktatás és képzés"],

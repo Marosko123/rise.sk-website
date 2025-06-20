@@ -95,7 +95,7 @@ export const companyConfig = {
   // =====================================
   address: {
     street: 'Karpatské námestie 7770/10A',
-    city: 'Bratislava - mestská časť Rača',
+    city: 'Bratislava',
     postalCode: '831 06',
     region: 'Bratislava',
     country: 'Slovakia',

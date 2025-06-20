@@ -96,9 +96,6 @@ export default function Hero() {
             className='mb-12 max-w-4xl mx-auto'
           >
             <p className='text-xl md:text-2xl text-[var(--neutral-dark)] leading-relaxed mb-6'>
-              <span className='text-[var(--primary)] font-semibold'>
-                Rise.sk s.r.o.
-              </span>{' '}
               {t('description')}
             </p>
             <p className='text-lg text-[var(--accent)] leading-relaxed'>

@@ -5,8 +5,6 @@ import { ExternalLink, Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import companyConfig from '@/config/company';
-
 export default function Footer() {
   const t = useTranslations('footer');
   const currentYear = new Date().getFullYear();
@@ -39,20 +37,20 @@ export default function Footer() {
     {
       icon: Mail,
       label: t('contact.email'),
-      value: companyConfig.contact.email,
-      href: `mailto:${companyConfig.contact.email}`,
+      value: t('contact.values.email'),
+      href: `mailto:${t('contact.values.email')}`,
     },
     {
       icon: Phone,
       label: t('contact.phone'),
-      value: '+421 911 670 188',
-      href: 'tel:+421911670188',
+      value: t('contact.values.phone'),
+      href: `tel:${t('contact.values.phone').replace(/\s/g, '')}`,
     },
     {
       icon: MapPin,
       label: t('contact.location'),
-      value: 'Bratislava, Slovakia',
-      href: 'https://maps.google.com/?q=Bratislava,Slovakia',
+      value: t('contact.values.location'),
+      href: `https://maps.google.com/?q=${encodeURIComponent(t('contact.values.address'))}`,
     },
   ];
 

@@ -44,17 +44,17 @@
   "hero": {
     "badge": "Executive Snapshot",
     "title": {
-      "build": "Build",
-      "bulletProof": "Bullet-Proof",
+      "build": "We Deliver",
+      "bulletProof": "Innovative",
       "digitalProducts": "Digital Products"
     },
-    "description": "is a Bratislava-based studio of FIIT-STU graduates who build bullet-proof digital products and teach the next generation of tech talent.",
+    "description": "is a Bratislava-based studio of FIIT-STU graduates who build innovative digital products and teach the next generation of tech talent.",
     "subtitle": "From custom web apps delivered on-time, every time, to skills bootcamps that empower teams.",
     "startProject": "Start Your Project",
     "freeConsultation": "Free Consultation",
     "metrics": {
       "onTimeDelivery": {
-        "number": "92%",
+        "number": "100%",
         "label": "On-Time Delivery"
       },
       "costSavings": {
@@ -62,7 +62,7 @@
         "label": "Cost Savings"
       },
       "teamReady": {
-        "number": "14 Days",
+        "number": "7 Days",
         "label": "Team Ready"
       }
     }
@@ -74,7 +74,7 @@
     "description": "We're not just another dev shop. We're FIIT-STU graduates who understand both cutting-edge technology and business impact. Every project is built for scale, security, and measurable results.",
     "stats": {
       "delivery": {
-        "number": "92%",
+        "number": "100%",
         "label": "On-time Delivery",
         "description": "Projects delivered on schedule"
       },
@@ -84,7 +84,7 @@
         "description": "Average savings vs traditional outsourcing"
       },
       "ready": {
-        "number": "14 Days",
+        "number": "7 Days",
         "label": "Team Ready",
         "description": "From briefing to active development"
       },
@@ -101,7 +101,7 @@
       },
       "teams": {
         "title": "Cross-Functional Teams",
-        "description": "PM + 2 FE devs + 1 BE dev + QA ready in under 14 days for immediate impact."
+        "description": "PM + 2 FE devs + 1 BE dev + QA ready in under 7 days for immediate impact."
       },
       "performance": {
         "title": "Performance-Driven Results",
@@ -110,7 +110,7 @@
     },
     "cta": {
       "title": "Ready to Experience the Rise.sk Difference?",
-      "description": "Join 50+ companies who chose quality over cheap outsourcing. Get your dedicated team in 14 days with guaranteed results.",
+      "description": "Join 50+ companies who chose quality over cheap outsourcing. Get your dedicated team in 7 days with guaranteed results.",
       "startProject": "Start Your Project",
       "viewServices": "View Our Services"
     }
@@ -152,7 +152,7 @@
     "badge": "Our Services",
     "title": "Complete Digital",
     "titleHighlight": "Solutions",
-    "subtitle": "From concept to deployment, we deliver bullet-proof digital products with cutting-edge technology",
+    "subtitle": "From concept to deployment, we deliver innovative digital products with cutting-edge technology",
     "webDev": {
       "title": "Custom Web & Mobile Development",
       "description": "Bespoke websites, SaaS platforms, PWAs, iOS/Android apps with modern stacks (React, Vue, Node, Laravel, Flutter)",
@@ -162,7 +162,7 @@
         "Scalability: Codebases grow with you—no licence lock-in",
         "Ownership: You keep the IP and future-proof your digital assets"
       ],
-      "team": "Cross-functional pod—PM + 2 FE devs + 1 BE dev + QA—ready in under 14 days"
+      "team": "Cross-functional pod—PM + 2 FE devs + 1 BE dev + QA—ready in under 7 days"
     },
     "devops": {
       "title": "DevOps & Cloud Reliability",
@@ -208,7 +208,7 @@
       "header": {
         "badge": "Our Services",
         "title": "Complete Digital Solutions",
-        "subtitle": "From concept to deployment, we deliver bullet-proof digital products with cutting-edge technology"
+        "subtitle": "From concept to deployment, we deliver innovative digital products with cutting-edge technology"
       },
       "labels": {
         "features": "What we do",
@@ -224,7 +224,7 @@
           "Scalability: Codebases grow with you—no licence lock-in",
           "Ownership: You keep the IP and future-proof your digital assets"
         ],
-        "team": "Cross-functional pod—PM + 2 FE devs + 1 BE dev + QA—ready in under 14 days"
+        "team": "Cross-functional pod—PM + 2 FE devs + 1 BE dev + QA—ready in under 7 days"
       },
       "devops": {
         "title": "DevOps & Cloud Reliability",
@@ -282,7 +282,7 @@
         },
         "delivery": {
           "title": "On-Time Delivery",
-          "description": "92% projects ship on or before deadline"
+          "description": "100% projects ship on or before deadline"
         },
         "cost": {
           "title": "Cost-Efficiency",
@@ -324,7 +324,13 @@
     "contactInfo": {
       "email": "Email",
       "phone": "Phone",
-      "office": "Office"
+      "office": "Office",
+      "values": {
+        "email": "info@rise.sk",
+        "phone": "+421 911 670 188",
+        "office": "Karpatské nám. 7770/10A, Bratislava",
+        "officeFull": "Karpatské námestie 7770/10A, 831 06 Bratislava"
+      }
     },
     "fullName": "Full Name",
     "company": "Company",
@@ -345,7 +351,7 @@
       "mobileApps": "Mobile Applications",
       "customSoftware": "Custom Software",
       "ecommerce": "E-commerce Solutions",
-      "aiAnalytics": "AI & Data Analytics", 
+      "aiAnalytics": "AI & Data Analytics",
       "digitalMarketing": "Digital Marketing Tech",
       "specialRequests": "Special Requirements",
       "other": "Other"
@@ -360,7 +366,7 @@
       "specialRequests": "Hello,\n\nI have specific requirements for a technological solution that I would like to discuss. I believe you can find a suitable solution.\n\nThank you.",
       "other": "Hello,\n\nI would like to discuss collaboration opportunities. Could we connect and go over the details of my project?\n\nThank you."
     },
-    "submit": "Send Message",
+    "submit": "Send",
     "sending": "Sending...",
     "success": "Thank you! We'll get back to you within 24 hours.",
     "error": "Something went wrong. Please try again.",
@@ -368,8 +374,24 @@
     "requiredFields": "Please fill in all required fields.",
     "invalidEmail": "Please enter a valid email address."
   },
+  "companyInfo": {
+    "name": "rise.sk s.r.o.",
+    "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
+    "businessId": "56911157",
+    "registration": "Commercial Register of the Municipal Court Bratislava III, section: Sro, insert no. 188634/B",
+    "executives": "Bc. Maroš Bednár and Michael Matejčík",
+    "phone": "+421 911 670 188",
+    "labels": {
+      "name": "Company Name",
+      "address": "Address",
+      "businessId": "Business ID",
+      "registration": "Registration",
+      "executives": "Executives",
+      "phone": "Phone"
+    }
+  },
   "footer": {
-    "description": "FIIT-STU graduates studio delivering bullet-proof digital solutions. From custom development to DevOps excellence—we build products that scale.",
+    "description": "FIIT-STU graduates studio delivering innovative digital solutions. From custom development to DevOps excellence—we build products that scale.",
     "sections": {
       "services": "Services",
       "company": "Company"
@@ -378,13 +400,20 @@
       "title": "Contact",
       "email": "Email",
       "phone": "Phone",
-      "location": "Location"
+      "location": "Location",
+      "values": {
+        "email": "info@rise.sk",
+        "phone": "+421 911 670 188",
+        "location": "Karpatské nám. 7770/10A, Bratislava",
+        "locationFull": "Karpatské námestie 7770/10A, 831 06 Bratislava",
+        "address": "Karpatské námestie 7770/10A, 831 06 Bratislava"
+      }
     },
     "copyright": "© {year} Rise.sk s.r.o. All rights reserved. | Bratislava-based FIIT-STU graduates studio",
     "cta": {
       "title": "Ready to Start Your Project?",
-      "description": "Get your dedicated team in 14 days. 92% on-time delivery. 20-40% cost savings guaranteed.",
-      "button": "Get Started Today"
+      "description": "Get your dedicated team in 7 days. 100% on-time delivery. 20-40% cost savings guaranteed.",
+      "button": "Get Started"
     },
     "services": ["Custom Development", "DevOps & Cloud", "UX/UI Design", "Quality Assurance", "Education & Training"],
     "company": ["About Us", "Our Team", "Careers", "Case Studies", "Blog"],

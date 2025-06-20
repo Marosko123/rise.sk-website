@@ -49,7 +49,7 @@
     "freeConsultation": "Consulta Gratuita",
     "metrics": {
       "onTimeDelivery": {
-        "number": "92%",
+        "number": "100%",
         "label": "Entregas a Tiempo"
       },
       "costSavings": {
@@ -69,7 +69,7 @@
     "description": "No somos solo otra empresa de desarrollo. Somos graduados de FIIT-STU que entendemos tanto la tecnología de vanguardia como el impacto empresarial. Cada proyecto se construye para escalar, ser seguro y ofrecer resultados medibles.",
     "stats": {
       "delivery": {
-        "number": "92%",
+        "number": "100%",
         "label": "Entregas a Tiempo",
         "description": "Proyectos entregados según lo programado"
       },
@@ -323,7 +323,7 @@
         },
         "delivery": {
           "title": "Entregas a Tiempo",
-          "description": "El 92% de los proyectos se entregan en o antes del plazo"
+          "description": "El 100% de los proyectos se entregan en o antes del plazo"
         },
         "cost": {
           "title": "Eficiencia de Costos",
@@ -413,7 +413,7 @@
     "copyright": "© {year} Rise.sk s.r.o. Todos los derechos reservados. | Estudio de graduados de FIIT-STU con sede en Bratislava",
     "cta": {
       "title": "¿Listo para Comenzar Tu Proyecto?",
-      "description": "Obtén tu equipo dedicado en 14 días. 92% de entregas a tiempo. Ahorro de costos del 20-40% garantizado.",
+      "description": "Obtén tu equipo dedicado en 14 días. 100% de entregas a tiempo. Ahorro de costos del 20-40% garantizado.",
       "button": "Comienza Hoy"
     },
     "services": [

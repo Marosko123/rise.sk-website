@@ -11,7 +11,7 @@ import {
   Send,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -177,20 +177,22 @@ export default function Contact() {
     {
       icon: Mail,
       label: t('contactInfo.email'),
-      value: 'info@rise.sk',
-      href: 'mailto:info@rise.sk',
+      value: t('contactInfo.values.email'),
+      href: `mailto:${t('contactInfo.values.email')}`,
     },
     {
       icon: Phone,
       label: t('contactInfo.phone'),
-      value: '+421 911 670 188',
-      href: 'tel:+421911670188',
+      value: t('contactInfo.values.phone'),
+      href: `tel:${t('contactInfo.values.phone').replace(/\s/g, '')}`,
     },
     {
       icon: MapPin,
       label: t('contactInfo.office'),
-      value: 'Pionierska 15, 831 02 Bratislava, Slovakia',
-      href: 'https://maps.google.com/?q=Pionierska+15,+831+02+Bratislava,+Slovakia',
+      value: t('contactInfo.values.office'),
+      href: `https://maps.google.com/?q=${encodeURIComponent(
+        t('contactInfo.values.office')
+      )}`,
     },
   ];
 
@@ -303,14 +305,14 @@ export default function Contact() {
               <h4 className='text-white font-bold mb-4'>{t('whyChoose')}</h4>
               <div className='grid grid-cols-2 gap-4 text-center'>
                 <div>
-                  <div className='text-2xl font-bold text-[#b09155]'>92%</div>
+                  <div className='text-2xl font-bold text-[#b09155]'>100%</div>
                   <div className='text-sm text-gray-300'>
                     {t('onTimeDelivery')}
                   </div>
                 </div>
                 <div>
                   <div className='text-2xl font-bold text-[#b09155]'>
-                    14 Days
+                    7 days
                   </div>
                   <div className='text-sm text-gray-300'>{t('teamReady')}</div>
                 </div>
