@@ -11,7 +11,8 @@ import {
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { BentoCard } from './InteractiveElements';
+import { Card } from './ui/Card';
+import { Section } from './ui/Section';
 
 export default function EngagementModels() {
   const t = useTranslations('engagement');
@@ -85,9 +86,9 @@ export default function EngagementModels() {
   };
 
   return (
-    <section
-      id='engagement'
-      className='py-24 bg-gradient-to-b from-[var(--secondary)] to-[var(--background)]'
+    <Section 
+      id="engagement"
+      className="bg-gradient-to-b from-[var(--secondary)] to-[var(--background)]"
     >
       <motion.div
         className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'
@@ -121,7 +122,7 @@ export default function EngagementModels() {
               variants={itemVariants}
               className='relative group'
             >
-              <BentoCard spotlight={true} className='h-full'>
+              <Card className='h-full bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300'>
                 {/* Icon */}
                 <div
                   className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${model.gradient} shadow-lg mb-6`}
@@ -159,14 +160,14 @@ export default function EngagementModels() {
                     💡 {model.ideal}
                   </p>
                 </div>
-              </BentoCard>
+              </Card>
             </motion.div>
           ))}
         </div>
 
         {/* Guarantees */}
         <motion.div variants={itemVariants}>
-          <BentoCard spotlight={true} className='text-center'>
+          <Card className='text-center bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm'>
             <div className='flex items-center justify-center gap-2 mb-6'>
               <Shield size={20} className='text-[#b09155]' />
               <h3 className='text-2xl font-bold text-white'>
@@ -182,9 +183,9 @@ export default function EngagementModels() {
                 </div>
               ))}
             </div>
-          </BentoCard>
+          </Card>
         </motion.div>
       </motion.div>
-    </section>
+    </Section>
   );
 }

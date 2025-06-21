@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Code, Globe, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { MagneticButton } from './InteractiveElements';
+import { Button } from './ui/Button';
 
 export default function Hero() {
   const t = useTranslations('hero');
@@ -108,23 +108,23 @@ export default function Hero() {
             variants={itemVariants}
             className='flex flex-col sm:flex-row gap-6 justify-center items-center mb-16'
           >
-            <MagneticButton
+            <Button
               href='#contact'
               variant='primary'
-              className='text-lg shadow-lg hover:shadow-xl glow-hover'
+              className='text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] transition-all duration-300'
             >
               {t('startProject')}
               <ArrowRight size={20} className='ml-2' />
-            </MagneticButton>
+            </Button>
 
-            <MagneticButton
+            <Button
               href='#contact'
-              variant='secondary'
-              className='text-lg border-2'
+              variant='outline'
+              className='text-lg border-2 border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white transition-all duration-300'
             >
               {t('freeConsultation')}
               <div className='w-2 h-2 bg-current rounded-full ml-2 animate-pulse'></div>
-            </MagneticButton>
+            </Button>
           </motion.div>
 
           {/* Key Metrics */}

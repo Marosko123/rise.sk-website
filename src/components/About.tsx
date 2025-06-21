@@ -11,7 +11,9 @@ import {
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { BentoCard, MagneticButton } from './InteractiveElements';
+import { Button } from './ui/Button';
+import { Card } from './ui/Card';
+import { Section } from './ui/Section';
 
 export default function About() {
   const t = useTranslations('about');
@@ -62,9 +64,9 @@ export default function About() {
   ];
 
   return (
-    <section
-      id='about'
-      className='py-20 bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden'
+    <Section 
+      id="about"
+      className="bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden"
     >
       {/* Background Effects */}
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent_50%)]' />
@@ -111,7 +113,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               data-cursor='hover'
             >
-              <BentoCard spotlight={true} className='text-center h-full'>
+              <Card className='text-center h-full bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300'>
                 <div className='flex justify-center mb-4'>
                   <div className='w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
                     <stat.icon className='w-6 h-6 text-white' />
@@ -124,7 +126,7 @@ export default function About() {
                   {stat.label}
                 </div>
                 <div className='text-sm text-gray-400'>{stat.description}</div>
-              </BentoCard>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -140,7 +142,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               data-cursor='hover'
             >
-              <BentoCard spotlight={true} className='h-full'>
+              <Card className='h-full bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300'>
                 <div className='flex items-center mb-6'>
                   <div className='w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4'>
                     <value.icon className='w-6 h-6 text-white' />
@@ -152,7 +154,7 @@ export default function About() {
                 <p className='text-gray-300 leading-relaxed'>
                   {value.description}
                 </p>
-              </BentoCard>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -173,16 +175,16 @@ export default function About() {
               {t('cta.description')}
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-              <MagneticButton href='#contact' variant='primary'>
+              <Button href='#contact' variant='primary' className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#8b7355] transition-all duration-300'>
                 {t('cta.startProject')}
-              </MagneticButton>
-              <MagneticButton href='#services' variant='secondary'>
+              </Button>
+              <Button href='#services' variant='outline' className='border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white transition-all duration-300'>
                 {t('cta.viewServices')}
-              </MagneticButton>
+              </Button>
             </div>
           </div>
         </motion.div>
       </div>
-    </section>
+    </Section>
   );
 }

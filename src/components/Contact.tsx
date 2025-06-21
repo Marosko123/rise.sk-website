@@ -13,6 +13,10 @@ import {
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
+import { Button } from './ui/Button';
+import { Card } from './ui/Card';
+import { Section } from './ui/Section';
+
 export default function Contact() {
   const t = useTranslations('contact');
 
@@ -208,9 +212,9 @@ export default function Contact() {
   ];
 
   return (
-    <section
-      id='contact'
-      className='py-20 bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden'
+    <Section 
+      id="contact"
+      className="bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden"
     >
       {/* Background Effects */}
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%)]' />
@@ -326,182 +330,181 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className='bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8'
           >
-            <form onSubmit={handleSubmit} className='space-y-6'>
-              <div className='grid md:grid-cols-2 gap-6'>
+            <Card className='bg-white/5 backdrop-blur-sm border-white/10 p-8'>
+              <form onSubmit={handleSubmit} className='space-y-6'>
+                <div className='grid md:grid-cols-2 gap-6'>
+                  <div>
+                    <label
+                      htmlFor='name'
+                      className='block text-white font-semibold mb-2'
+                    >
+                      {t('fullName')} *
+                    </label>
+                    <input
+                      type='text'
+                      id='name'
+                      name='name'
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                      placeholder={t('placeholders.name')}
+                      data-cursor='text'
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor='company'
+                      className='block text-white font-semibold mb-2'
+                    >
+                      {t('company')}
+                    </label>
+                    <input
+                      type='text'
+                      id='company'
+                      name='company'
+                      value={formData.company}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                      placeholder={t('placeholders.company')}
+                    />
+                  </div>
+                </div>
+
+                <div className='grid md:grid-cols-2 gap-6'>
+                  <div>
+                    <label
+                      htmlFor='email'
+                      className='block text-white font-semibold mb-2'
+                    >
+                      {t('email')} *
+                    </label>
+                    <input
+                      type='email'
+                      id='email'
+                      name='email'
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                      placeholder={t('placeholders.email')}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor='phone'
+                      className='block text-white font-semibold mb-2'
+                    >
+                      {t('phone')}
+                    </label>
+                    <input
+                      type='tel'
+                      id='phone'
+                      name='phone'
+                      value={formData.phone}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                      placeholder={t('placeholders.phone')}
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label
-                    htmlFor='name'
+                    htmlFor='service'
                     className='block text-white font-semibold mb-2'
                   >
-                    {t('fullName')} *
+                    {t('service')} *
                   </label>
-                  <input
-                    type='text'
-                    id='name'
-                    name='name'
+                  <select
+                    id='service'
+                    name='service'
                     required
-                    value={formData.name}
+                    value={formData.service}
                     onChange={handleChange}
                     disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
-                    placeholder={t('placeholders.name')}
+                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                    data-cursor='pointer'
+                  >
+                    <option value='' className='bg-gray-800'>
+                      {t('selectService')}
+                    </option>
+                    {services.map((service, index) => (
+                      <option key={index} value={service} className='bg-gray-800'>
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor='message'
+                    className='block text-white font-semibold mb-2'
+                  >
+                    {t('message')}
+                  </label>
+                  <textarea
+                    id='message'
+                    name='message'
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50'
+                    placeholder={t('messagePlaceholder')}
                     data-cursor='text'
                   />
                 </div>
-                <div>
-                  <label
-                    htmlFor='company'
-                    className='block text-white font-semibold mb-2'
+
+                {/* Status Message */}
+                {submitStatus.type && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`flex items-center p-4 rounded-lg ${
+                      submitStatus.type === 'success'
+                        ? 'bg-green-500/20 border border-green-400/30 text-green-300'
+                        : 'bg-red-500/20 border border-red-400/30 text-red-300'
+                    }`}
                   >
-                    {t('company')}
-                  </label>
-                  <input
-                    type='text'
-                    id='company'
-                    name='company'
-                    value={formData.company}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
-                    placeholder={t('placeholders.company')}
-                  />
-                </div>
-              </div>
-
-              <div className='grid md:grid-cols-2 gap-6'>
-                <div>
-                  <label
-                    htmlFor='email'
-                    className='block text-white font-semibold mb-2'
-                  >
-                    {t('email')} *
-                  </label>
-                  <input
-                    type='email'
-                    id='email'
-                    name='email'
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
-                    placeholder={t('placeholders.email')}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor='phone'
-                    className='block text-white font-semibold mb-2'
-                  >
-                    {t('phone')}
-                  </label>
-                  <input
-                    type='tel'
-                    id='phone'
-                    name='phone'
-                    value={formData.phone}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
-                    placeholder={t('placeholders.phone')}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor='service'
-                  className='block text-white font-semibold mb-2'
-                >
-                  {t('service')} *
-                </label>
-                <select
-                  id='service'
-                  name='service'
-                  required
-                  value={formData.service}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
-                  data-cursor='pointer'
-                >
-                  <option value='' className='bg-gray-800'>
-                    {t('selectService')}
-                  </option>
-                  {services.map((service, index) => (
-                    <option key={index} value={service} className='bg-gray-800'>
-                      {service}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor='message'
-                  className='block text-white font-semibold mb-2'
-                >
-                  {t('message')}
-                </label>
-                <textarea
-                  id='message'
-                  name='message'
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50'
-                  placeholder={t('messagePlaceholder')}
-                  data-cursor='text'
-                />
-              </div>
-
-              {/* Status Message */}
-              {submitStatus.type && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex items-center p-4 rounded-lg ${
-                    submitStatus.type === 'success'
-                      ? 'bg-green-500/20 border border-green-400/30 text-green-300'
-                      : 'bg-red-500/20 border border-red-400/30 text-red-300'
-                  }`}
-                >
-                  {submitStatus.type === 'success' ? (
-                    <CheckCircle className='w-5 h-5 mr-3 flex-shrink-0' />
-                  ) : (
-                    <AlertCircle className='w-5 h-5 mr-3 flex-shrink-0' />
-                  )}
-                  <span>{submitStatus.message}</span>
-                </motion.div>
-              )}
-
-              <motion.button
-                type='submit'
-                disabled={isSubmitting}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className='w-full bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center'
-                data-cursor='button'
-              >
-                {isSubmitting ? (
-                  <div className='flex items-center'>
-                    <div className='w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3' />
-                    {t('sending')}
-                  </div>
-                ) : (
-                  <div className='flex items-center'>
-                    <Send className='w-5 h-5 mr-2' />
-                    {t('submit')}
-                  </div>
+                    {submitStatus.type === 'success' ? (
+                      <CheckCircle className='w-5 h-5 mr-3 flex-shrink-0' />
+                    ) : (
+                      <AlertCircle className='w-5 h-5 mr-3 flex-shrink-0' />
+                    )}
+                    <span>{submitStatus.message}</span>
+                  </motion.div>
                 )}
-              </motion.button>
-            </form>
+
+                <Button
+                  type='submit'
+                  disabled={isSubmitting}
+                  className='w-full bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold py-4 px-8 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center'
+                  data-cursor='button'
+                >
+                  {isSubmitting ? (
+                    <div className='flex items-center'>
+                      <div className='w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3' />
+                      {t('sending')}
+                    </div>
+                  ) : (
+                    <div className='flex items-center'>
+                      <Send className='w-5 h-5 mr-2' />
+                      {t('submit')}
+                    </div>
+                  )}
+                </Button>
+              </form>
+            </Card>
           </motion.div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
