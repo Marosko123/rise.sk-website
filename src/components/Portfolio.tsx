@@ -29,7 +29,7 @@ const portfolioProjects = [
     title: 'RUNology',
     description: 'React Native mobilná aplikácia pre iOS a Android. Bežecká aplikácia so sledovaním tréningov, štatistík a komunitou bežcov.',
     category: 'mobileApps',
-    image: '/runology.png',
+    image: '/runology.jpg',
     tags: ['React Native', 'iOS', 'Android', 'GPS', 'Analytics'],
     liveUrl: 'https://runology.app/',
     githubUrl: null,
@@ -251,6 +251,8 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                           fill
                           className="object-cover opacity-80"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          loading="lazy"
+                          quality={85}
                           onError={() => {
                             // Fallback handled by Next.js
                           }}
@@ -289,7 +291,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                               className="btn-modern flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium"
                             >
                               <Eye className="h-4 w-4" />
-                              <span>Demo</span>
+                              <span>{t('projects.actions.demo')}</span>
                             </motion.a>
                           )}
                           {project.githubUrl && (
@@ -302,7 +304,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                               className="glass flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-colors"
                             >
                               <Github className="h-4 w-4" />
-                              <span>Kód</span>
+                              <span>{t('projects.actions.code')}</span>
                             </motion.a>
                           )}
                           {!project.liveUrl && !project.githubUrl && (
@@ -310,7 +312,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                               whileHover={{ scale: 1.1 }}
                               className="glass flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium text-white/60"
                             >
-                              <span>Privátny projekt</span>
+                              <span>{t('projects.actions.privateProject')}</span>
                             </motion.div>
                           )}
                         </div>

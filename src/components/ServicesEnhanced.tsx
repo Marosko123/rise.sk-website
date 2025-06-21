@@ -15,48 +15,45 @@ import {
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-export default function Services() {
-  const t = useTranslations('contact');
+export default function ServicesEnhanced() {
+  const t = useTranslations('servicesEnhanced');
+  const tContact = useTranslations('contact');
 
-  // Function to map service titles to dropdown categories
+  // Function to map service titles to dropdown categories for contact form
   const mapServiceToCategory = (serviceTitle: string) => {
     const mapping = {
-      'Moderné Weby': 'webDevelopment',
-      'Mobilné Aplikácie': 'mobileApps', 
-      'Softvér na Mieru': 'customSoftware',
-      'E-commerce Riešenia': 'ecommerce',
-      'AI & Data Analytics': 'aiAnalytics',
-      'Digital Marketing Tech': 'digitalMarketing',
-      'Špeciálne Požiadavky': 'specialRequests'
+      [t('services.0.title')]: 'webDevelopment',
+      [t('services.1.title')]: 'mobileApps', 
+      [t('services.2.title')]: 'customSoftware',
+      [t('services.3.title')]: 'ecommerce',
+      [t('services.4.title')]: 'aiAnalytics',
+      [t('services.5.title')]: 'digitalMarketing'
     };
-    return mapping[serviceTitle as keyof typeof mapping] || 'other';
+    return mapping[serviceTitle as keyof typeof mapping] || 'specialRequests';
   };
 
   // Function to get localized service name for dropdown (same as Contact component)
   const getLocalizedServiceName = (serviceTitle: string) => {
     const categoryKey = mapServiceToCategory(serviceTitle);
-    
-    // Use the same translation keys as Contact component
     const translationKey = `services.${categoryKey}`;
-    return t(translationKey);
+    return tContact(translationKey);
   };
 
   // Function to generate pre-filled message based on service and locale using translations
   const generateServiceMessage = (serviceTitle: string) => {
     const categoryKey = mapServiceToCategory(serviceTitle);
     const translationKey = `templateMessages.${categoryKey}`;
-    return t(translationKey);
+    return tContact(translationKey);
   };
 
   // Function to scroll to contact with pre-filled form
   const handleServiceInquiry = (serviceTitle: string) => {
     const message = generateServiceMessage(serviceTitle);
-    // Get the exact same service name that will be in the dropdown
     const localizedServiceName = getLocalizedServiceName(serviceTitle);
     
     // Store form data in localStorage
     localStorage.setItem('contactFormData', JSON.stringify({
-      service: localizedServiceName, // This should match dropdown option values
+      service: localizedServiceName,
       message
     }));
 
@@ -65,7 +62,6 @@ export default function Services() {
     
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      // Scroll to contact section without changing URL
       contactSection.scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
@@ -73,117 +69,51 @@ export default function Services() {
     }
   };
 
-  const services = [
-    {
-      id: 1,
-      icon: Code,
-      title: 'Moderné Weby',
-      description: 'Vytvárame profesionálne webové stránky, ktoré oslovujú zákazníkov a posilňujú vašu značku.',
-      features: [
-        'Responzívny dizajn pre všetky zariadenia',
-        'SEO optimalizácia pre lepšiu viditeľnosť',
-        'Rýchle načítanie a bezpečnosť',
-        'Integrácia s modernými nástrojmi',
-        'CMS systémy pre jednoduchú správu'
-      ],
-      gradient: 'from-[#b09155] to-[#d4af37]',
-      experience: '10+ rokov skúseností',
-    },
-    {
-      id: 2,
-      icon: Smartphone,
-      title: 'Mobilné Aplikácie',
-      description: 'Vyvíjame iOS a Android aplikácie, ktoré zjednodušujú procesy a zvyšujú spokojnosť používateľov.',
-      features: [
-        'Native vývoj pre iOS a Android',
-        'Offline funkcionalita a synchronizácia',
-        'Push notifikácie a real-time funkcie',
-        'Integrácia s existujúcimi systémami',
-        'App Store optimalizácia'
-      ],
-      gradient: 'from-[#9a7f4b] to-[#b8860b]',
-      experience: 'Preverené na trhu',
-    },
-    {
-      id: 3,
-      icon: Settings,
-      title: 'Softvér na Mieru',
-      description: 'Navrhujeme a implementujeme komplexné riešenia šité presne na mieru vašich potrieb.',
-      features: [
-        'Detailná analýza procesov',
-        'Automatizácia rutinných úloh',
-        'Integrácia s existujúcimi systémami',
-        'Školenie tímu a dokumentácia',
-        'Dlhodobá podpora a údržba'
-      ],
-      gradient: 'from-[#d4af37] to-[#b09155]',
-      experience: 'Komplexné projekty',
-    },
-    {
-      id: 4,
-      icon: ShoppingCart,
-      title: 'E-commerce Riešenia',
-      description: 'Budujeme online obchody s pokročilými funkciami pre maximalizáciu predaja a spokojnosti zákazníkov.',
-      features: [
-        'Moderný UX/UI dizajn obchodu',
-        'Platobné brány a logistické riešenia',
-        'Správa produktov a objednávok',
-        'Marketing automation nástroje',
-        'Analytika a reportovanie'
-      ],
-      gradient: 'from-[#b8860b] to-[#9a7f4b]',
-      experience: 'Úspešné obchody',
-    },
-    {
-      id: 5,
-      icon: Database,
-      title: 'AI & Data Analytics',
-      description: 'Implementujeme inteligentné riešenia pre lepšie rozhodovanie a prediktívnu analýzu vašich dát.',
-      features: [
-        'Prediktívne modely a forecasting',
-        'Automatizácia rozhodovacích procesov',
-        'Real-time dashboardy a vizualizácie',
-        'Machine learning algoritmy',
-        'Big Data spracovanie'
-      ],
-      gradient: 'from-[#d4af37] to-[#b8860b]',
-      experience: 'Pokročilé technológie',
-    },
-    {
-      id: 6,
-      icon: Sparkles,
-      title: 'Špeciálne Požiadavky',
-      description: 'Máte jedinečný projekt alebo špecifické potreby? Sme všestranní a dokážeme realizovať aj netradičné riešenia.',
-      features: [
-        'Konzultácie a analýza požiadaviek',
-        'Prototypovanie a testovanie',
-        'Kombinovanie rôznych technológií',
-        'Inovatívne prístupy k problémom',
-        'Flexibilita v implementácii'
-      ],
-      gradient: 'from-[#d4af37] to-[#b09155]',
-      experience: 'Riešime aj to neriešiteľné',
-    }
+  // Service icons mapping
+  const serviceIcons = [Code, Smartphone, Database, ShoppingCart, Settings, TrendingUp];
+  
+  // Service gradients
+  const serviceGradients = [
+    'from-[#b09155] to-[#d4af37]',
+    'from-blue-500 to-cyan-500',
+    'from-purple-500 to-pink-500',
+    'from-green-500 to-emerald-500',
+    'from-orange-500 to-red-500',
+    'from-indigo-500 to-purple-500'
   ];
+
+  // Get services data from translations
+  const services = Array.from({ length: 6 }, (_, index) => ({
+    id: index + 1,
+    icon: serviceIcons[index],
+    title: t(`services.${index}.title`),
+    description: t(`services.${index}.description`),
+    features: Array.from({ length: 5 }, (_, featIndex) => 
+      t(`services.${index}.features.${featIndex}`)
+    ),
+    gradient: serviceGradients[index],
+    experience: t(`services.${index}.experience`),
+  }));
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.8,
+        ease: [0.25, 0.25, 0.25, 0.75],
       },
     },
   };
@@ -205,15 +135,15 @@ export default function Services() {
           <div className='inline-flex items-center gap-2 bg-[var(--glass)] backdrop-blur-sm border border-[var(--primary)]/20 rounded-full px-6 py-3 mb-6'>
             <Sparkles size={16} className='text-[var(--primary)]' />
             <span className='text-sm font-medium text-[var(--primary)]'>
-              Naše Služby
+              {t('badge')}
             </span>
           </div>
           <h2 className='text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6'>
-            Čo pre vás
-            <span className='gradient-text block'>dokážeme vytvoriť</span>
+            {t('title')}
+            <span className='gradient-text block'>{t('titleHighlight')}</span>
           </h2>
           <p className='text-xl text-[var(--neutral-dark)] max-w-3xl mx-auto leading-relaxed'>
-            Sme technologickí experti s dlhoročnými skúsenosťami. Vytvárame riešenia, ktoré fungují a prinášajú výsledky.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -257,7 +187,7 @@ export default function Services() {
                 {/* Experience Badge */}
                 <div className='flex items-center justify-center p-4 bg-[var(--secondary)]/50 rounded-xl mb-6'>
                   <div className='text-center'>
-                    <div className='text-sm text-[var(--accent)] mb-1'>Naša expertíza</div>
+                    <div className='text-sm text-[var(--accent)] mb-1'>{t('labels.expertise')}</div>
                     <div className='text-lg font-bold text-[var(--primary)]'>{service.experience}</div>
                   </div>
                 </div>
@@ -267,7 +197,7 @@ export default function Services() {
                   onClick={() => handleServiceInquiry(service.title)}
                   className='w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 group-hover:scale-105'
                 >
-                  Prediskutujme projekt
+                  {t('buttons.discuss')}
                   <ArrowRight size={16} className='group-hover:translate-x-1 transition-transform duration-300' />
                 </button>
               </div>
@@ -281,31 +211,30 @@ export default function Services() {
           className='text-center mt-20 p-8 bg-gradient-to-r from-[var(--primary)]/10 to-[var(--primary-dark)]/10 rounded-3xl border border-[var(--primary)]/20'
         >
           <h3 className='text-3xl font-bold text-[var(--foreground)] mb-4'>
-            Chcete prediskutovať váš projekt?
+            {t('cta.title')}
           </h3>
           <p className='text-lg text-[var(--neutral-dark)] mb-8 max-w-2xl mx-auto'>
-            Radi sa s vami porozprávame o vašich potrebách. Máme skúsenosti s rôznymi typmi projektov a dokážeme nájsť riešenie aj pre zložité požiadavky.
+            {t('cta.description')}
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
             <button 
-              onClick={() => handleServiceInquiry('Špeciálne Požiadavky')}
+              onClick={() => handleServiceInquiry(t('services.2.title'))} // Custom Software service
               className='flex items-center gap-2 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold py-4 px-8 rounded-xl hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-105'
             >
               <Target size={20} />
-              Kontaktujte nás
+              {t('buttons.contact')}
             </button>
             <button 
               onClick={() => {
-                // Scroll to engagement or portfolio section
-                const engagementSection = document.getElementById('engagement');
-                if (engagementSection) {
-                  engagementSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const portfolioSection = document.getElementById('portfolio');
+                if (portfolioSection) {
+                  portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
               className='flex items-center gap-2 border-2 border-[var(--primary)] text-[var(--primary)] font-semibold py-4 px-8 rounded-xl hover:bg-[var(--primary)] hover:text-white transition-all duration-300'
             >
               <TrendingUp size={20} />
-              Naše referencie
+              {t('buttons.references')}
             </button>
           </div>
         </motion.div>

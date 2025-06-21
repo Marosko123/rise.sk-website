@@ -31,7 +31,6 @@ export const metadata: Metadata = {
   keywords:
     'web development, IT solutions, modern websites, digital transformation, professional services',
   authors: [{ name: 'Rise Team' }],
-  viewport: 'width=device-width, initial-scale=1',
   robots: 'index, follow',
   icons: {
     icon: '/rise/logo-bronze-transparent.png',
@@ -50,6 +49,11 @@ export const metadata: Metadata = {
     title: 'Rise - Professional Web Development & IT Solutions',
     description: 'Transform your digital presence with our expert web development and IT services.',
   },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default async function LocaleLayout({

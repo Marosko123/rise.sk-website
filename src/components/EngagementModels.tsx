@@ -170,7 +170,7 @@ export default function EngagementModels() {
             <div className='flex items-center justify-center gap-2 mb-6'>
               <Shield size={20} className='text-[#b09155]' />
               <h3 className='text-2xl font-bold text-white'>
-                All Models Include
+                {t('guaranteesTitle')}
               </h3>
             </div>
 

@@ -124,6 +124,7 @@ export default function Navigation() {
                   alt={companyConfig.company.name}
                   width={50}
                   height={50}
+                  priority
                   className='transition-all duration-300 hover:scale-110 cursor-pointer select-none'
                   style={{
                     transform: `rotate(${Math.sin(animationTime * 0.002) * 5}deg) scale(${1 + Math.sin(animationTime * 0.003) * 0.1})`,

@@ -804,11 +804,11 @@ export default function LandingPage() {
             alt={companyConfig.company.name}
             width={600}
             height={600}
+            priority
             className='select-none pointer-events-none'
             style={{
               opacity: 0.04,
             }}
-            priority={false}
           />
         </div>
 
