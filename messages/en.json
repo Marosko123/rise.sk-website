@@ -1,11 +1,44 @@
 {
   "landing": {
     "title": {
-      "welcome": "Welcome to"
+        "about": "About",
+    "services": "Services",
+    "development": "Development",
+    "education": "Education",
+    "engagement": "Engagement Models",
+    "portfolio": "Portfolio",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "backToHome": "Back to Home",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Expert Technology Solutions",
+    "title": {
+      "build": "We Build",
+      "bulletProof": "Bulletproof",
+      "digitalProducts": "Digital Products"
     },
-    "subtitle": "Senior technology consultants delivering enterprise-grade solutions",
-    "tagline": {
-      "weAre": "We Are",
+    "description": "is a Bratislava-based technology consulting firm of senior experts who architect scalable digital solutions and deliver enterprise-grade software development.",
+    "subtitle": "Trusted partners for mission-critical applications, delivered with proven expertise and zero compromises on quality.",
+    "startProject": "Start Project",
+    "freeConsultation": "Free Consultation",
+    "metrics": {
+      "onTimeDelivery": {
+        "number": "100%",
+        "label": "On-Time Delivery"
+      },
+      "costSavings": {
+        "number": "20-40%",
+        "label": "Cost Savings"
+      },
+      "teamReady": {
+        "number": "7 days",
+        "label": "Team Ready"
+      }
+    }
+  },
+  "about": {
       "innovativeSolutions": "Technology Experts"
     },
     "description": "Trusted by businesses for mission-critical software development and digital transformation",
@@ -36,6 +69,7 @@
   "navigation": {
     "about": "About",
     "services": "Services",
+    "reviews": "Reviews",
     "development": "Development",
     "education": "Education",
     "engagement": "Engagement Models",
@@ -307,6 +341,16 @@
     "badge": "Client Reviews",
     "viewAll": "View All Reviews",
     "rating": "Rating",
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "cta": {
+      "title": "Ready to Join Our Success Stories?",
+      "description": "Let's create something amazing together. Contact us and let's discuss your needs.",
+      "startProject": "Start Your Project",
+      "viewServices": "View Our Services"
+    },
     "reviews": [
       {
         "id": "michael-j",

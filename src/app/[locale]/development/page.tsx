@@ -7,9 +7,9 @@ import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
 import Portfolio from '@/components/Portfolio';
+import Reviews from '@/components/Reviews';
 import ScrollToTop from '@/components/ScrollToTop';
 import ServicesEnhanced from '@/components/ServicesEnhanced';
-import Testimonials from '@/components/Testimonials';
 
 export default function DevelopmentPage() {
   return (
@@ -29,8 +29,8 @@ export default function DevelopmentPage() {
         <div id='portfolio'>
           <Portfolio />
         </div>
-        <div id='testimonials'>
-          <Testimonials />
+        <div id='reviews'>
+          <Reviews />
         </div>
         <div id='engagement'>
           <EngagementModels />

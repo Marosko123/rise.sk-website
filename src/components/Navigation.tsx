@@ -2,9 +2,9 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useEffect, useMemo, useState } from 'react';
 
 import companyConfig from '@/config/company';
@@ -106,6 +106,7 @@ export default function Navigation() {
         { href: '#about', label: t('about'), section: 'about' },
         { href: '#services', label: t('services'), section: 'services' },
         { href: '#portfolio', label: t('portfolio'), section: 'portfolio' },
+        { href: '#reviews', label: t('reviews'), section: 'reviews' },
         { href: '#contact', label: t('contact'), section: 'contact' },
       ];
     } else {
@@ -114,6 +115,7 @@ export default function Navigation() {
         { href: '/development#about', label: t('about'), section: 'about' },
         { href: '/development#services', label: t('services'), section: 'services' },
         { href: '/development#portfolio', label: t('portfolio'), section: 'portfolio' },
+        { href: '/development#reviews', label: t('reviews'), section: 'reviews' },
         { href: '/development#contact', label: t('contact'), section: 'contact' },
       ];
     }
@@ -144,7 +146,7 @@ export default function Navigation() {
     };
 
     const handleScrollBasedSection = () => {
-      const sections = ['about', 'services', 'portfolio', 'contact'];
+      const sections = ['about', 'services', 'portfolio', 'reviews', 'contact'];
       const sectionElements = sections.map(section => document.getElementById(section));
 
       // Find which section is currently in view
@@ -193,11 +195,6 @@ export default function Navigation() {
       transition={{ duration: 0.5 }}
     >
       <div className='w-full px-0 relative'>
-        {/* Language Switcher - top right corner */}
-        <div className='absolute top-3 right-4 z-10'>
-          <LanguageSwitcher />
-        </div>
-
         <div className='flex items-center justify-between h-20 px-0'>
           {/* Left Side - Logo & Company Name (absolutely flush left) */}
           <div className='flex items-center space-x-3 pl-8'>
@@ -330,8 +327,13 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Right Side - Contact Button & CTA Button */}
-          <div className='hidden md:flex items-center space-x-4 pr-32'>
+          {/* Right Side - Language Switcher, Contact Button & CTA Button */}
+          <div className='hidden md:flex items-center space-x-4 pr-8'>
+            {/* Language Switcher - vertically centered */}
+            <div className='flex items-center'>
+              <LanguageSwitcher />
+            </div>
+            
             <motion.a
               href='#contact'
               whileHover={{ scale: 1.05 }}
@@ -355,7 +357,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className='md:hidden'>
+          <div className='md:hidden pr-4'>
             <motion.button
               onClick={toggleMenu}
               className='text-gray-300 hover:text-white p-2'
@@ -425,8 +427,9 @@ export default function Navigation() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
-                className='px-3 py-2 border-t border-gray-600 mt-2 pt-2'
+                className='px-3 py-3 border-t border-gray-600 mt-4 pt-4'
               >
+                <div className='text-gray-400 text-sm font-medium mb-2'>Language</div>
                 <LanguageSwitcher />
               </motion.div>
             </div>

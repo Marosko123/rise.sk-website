@@ -37,9 +37,10 @@
     "about": "O nás",
     "services": "Služby",
     "development": "Vývoj",
-    "education": "Vzdelávanie", 
+    "education": "Vzdelávanie",
     "engagement": "Modely Spolupráce",
     "portfolio": "Portfólio",
+    "reviews": "Recenzie",
     "contact": "Kontakt",
     "backToHome": "Späť na Domov",
     "getStarted": "Začať"
@@ -552,18 +553,28 @@
     },
     "actions": {
       "demo": "Demo",
-      "code": "Kód", 
+      "code": "Kód",
       "privateProject": "Privátny projekt",
       "viewProject": "Zobraziť Projekt",
       "liveDemo": "Živá Ukážka"
     }
   },
-  "testimonials": {
+  "reviews": {
     "title": "Čo Hovoria Naši Klienti",
     "subtitle": "Reálne skúsenosti od skutočných klientov",
     "badge": "Recenzie Klientov",
     "viewAll": "Zobraziť Všetky Recenzie",
     "rating": "Hodnotenie",
+    "navigation": {
+      "previous": "Predchádzajúce",
+      "next": "Ďalšie"
+    },
+    "cta": {
+      "title": "Pripravení Pripojiť sa k Našim Úspešným Príbehom?",
+      "description": "Poďte vytvoriť niečo úžasné spoločne. Kontaktujte nás a prediskutujme vaše potreby.",
+      "startProject": "Začať Váš Projekt",
+      "viewServices": "Zobraziť Naše Služby"
+    },
     "reviews": [
       {
         "id": "michael-j",
@@ -749,5 +760,69 @@
       "title": "Chcete prediskutovať váš projekt?",
       "description": "Radi sa s vami porozprávame o vašich potrebách. Máme skúsenosti s rôznymi typmi projektov a dokážeme nájsť riešenie aj pre zložité požiadavky."
     }
+  },
+  "testimonials": {
+    "title": "Čo Hovoria Naši Klienti",
+    "subtitle": "Reálne skúsenosti od skutočných klientov",
+    "badge": "Recenzie Klientov",
+    "viewAll": "Zobraziť Všetky Recenzie",
+    "rating": "Hodnotenie",
+    "navigation": {
+      "previous": "Predchádzajúce",
+      "next": "Ďalšie"
+    },
+    "cta": {
+      "title": "Pripravení na Váš Vlastný Úspešný Príbeh?",
+      "description": "Pridajte sa k našim spokoným klientom a zažite rozdiel práce s odhodlanými technologickými expertmi. Prediskutujme váš projekt ešte dnes.",
+      "startProject": "Začať Váš Projekt",
+      "viewServices": "Zobraziť Naše Služby"
+    },
+    "reviews": [
+      {
+        "id": "michael-j",
+        "name": "Michael J.",
+        "role": "Projektový manažér",
+        "company": "IT spoločnosť",
+        "content": "RISE.SK je spoľahlivý developer. Na projekte som im prideľoval úlohy priamo z Kanban boardu a tím ich efektívne plnil. Vrelo odporúčam každému, kto hľadá zodpovedného partnera.",
+        "rating": 5,
+        "tags": ["Vývoj", "Projektové riadenie", "Spoľahlivosť"]
+      },
+      {
+        "id": "matej-s",
+        "name": "Matej Š.",
+        "role": "Majiteľ firmy",
+        "company": "Digitálna agentúra",
+        "content": "Ďakujem za rýchle dohodnutie konzultácie. RISE.SK mi pomohli vypracovať nástroj na analýzu webovej stránky – konečne sa projekt posunul. 5/5!",
+        "rating": 5,
+        "tags": ["Konzultácie", "Webová analýza", "Rýchla odozva"]
+      },
+      {
+        "id": "tomas-v",
+        "name": "Tomáš V.",
+        "role": "Dátový analytik",
+        "company": "FinTech startup",
+        "content": "Tréning SQL databáz s RISE.SK bol pútavý a praktický. Jasne vysvetlili aj pokročilé techniky, odpovedali na všetky otázky a krok za krokom vyriešili zložité problémy. Teraz sa pri práci s SQL cítim omnoho istejšie.",
+        "rating": 5,
+        "tags": ["SQL školenie", "Databázy", "Vzdelávanie"]
+      },
+      {
+        "id": "timotej-l",
+        "name": "Timotej L.",
+        "role": "Junior developer",
+        "company": "Softvérová spoločnosť",
+        "content": "S Pythonom som začínal úplne od nuly. RISE.SK mi v priateľskej atmosfére rýchlo objasnili problém, kód zrazu fungoval a pokroky boli okamžité. Odporúčam každému, kto chce zvládnuť Python rýchlo a efektívne.",
+        "rating": 5,
+        "tags": ["Python", "Školenie", "Pre začiatočníkov"]
+      },
+      {
+        "id": "pavel-k",
+        "name": "Pavel K.",
+        "role": "Softvérový inžinier",
+        "company": "Hardvérová spoločnosť",
+        "content": "RISE.SK mi veľmi pomohli s projektom v C. Profesionálny prístup, jasné vysvetlenie, výsledok na jednotku. Odporúčam 5/5 ★.",
+        "rating": 5,
+        "tags": ["C programovanie", "Profesionalita", "Riešenie problémov"]
+      }
+    ]
   }
 }

@@ -2,9 +2,9 @@
 
 import { motion, useInView } from 'framer-motion';
 import { ExternalLink, Eye, Github } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import React, { useRef } from 'react';
 
 // Portfolio projects data - real projects from rise.sk
 const portfolioProjects = [
@@ -64,43 +64,30 @@ interface PortfolioProps {
 
 const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
   const t = useTranslations('portfolio');
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  // Simplified animation variants for better performance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.25, 0.25, 0.25, 0.75],
-      },
-    },
-  };
-
-  const projectVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 50 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.25, 0.25, 0.75],
+        duration: 0.4,
+        ease: "easeOut",
       },
     },
   };
@@ -145,8 +132,8 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
         color: 'var(--foreground)'
       }}
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 hero-gradient opacity-50" />
+      {/* Simplified background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--primary)]/5 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
@@ -185,21 +172,19 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
             { key: 'projectsCompleted', icon: '📊', color: 'from-blue-500 to-cyan-500' },
             { key: 'clientSatisfaction', icon: '⭐', color: 'from-yellow-500 to-orange-500' },
             { key: 'avgDeliveryTime', icon: '🚀', color: 'from-green-500 to-emerald-500' }
-          ].map((stat, index) => (
+          ].map((stat) => (
             <motion.div
               key={stat.key}
               variants={itemVariants}
-              className="glass-effect rounded-2xl p-8 text-center group hover:glow-hover transition-all duration-500 magnetic"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 text-center group hover:bg-white/10 transition-all duration-300"
             >
-              <div className="text-5xl mb-4 float-animation">{stat.icon}</div>
+              <div className="text-4xl mb-4">{stat.icon}</div>
               <div className="text-4xl font-bold mb-2" style={{ color: 'var(--primary)' }}>
                 {t(`stats.${stat.key}.number`)}
               </div>
               <div className="text-white/60 font-medium">
                 {t(`stats.${stat.key}.label`)}
               </div>
-              <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`} />
             </motion.div>
           ))}
         </motion.div>
@@ -221,18 +206,14 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {portfolioProjects.map((project, index) => (
+            {portfolioProjects.map((project) => (
               <motion.div
                 key={project.id}
-                variants={projectVariants}
-                whileHover={{ scale: 1.05, y: -10 }}
-                onHoverStart={() => setHoveredProject(project.id)}
-                onHoverEnd={() => setHoveredProject(null)}
+                variants={itemVariants}
                 className="group relative"
-                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                {/* Project Card */}
-                <div className="glass-effect rounded-3xl overflow-hidden h-full transition-all duration-500 hover:glow-hover">
+                {/* Simplified Project Card */}
+                <div className="bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden h-full transition-transform duration-300 hover:scale-105 hover:bg-white/10">
                   {/* Project Image/Preview */}
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <div className={`h-full w-full bg-gradient-to-br ${getCategoryGradient(project.category)} flex items-center justify-center relative`}>
@@ -266,50 +247,37 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                         </h4>
                       </div>
 
-                      {/* Overlay on hover */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
-                        className="absolute inset-0 bg-black/70 flex items-center justify-center z-20"
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="flex space-x-4">
-                          {project.liveUrl && (
-                            <motion.a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              className="btn-modern flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium"
-                            >
-                              <Eye className="h-4 w-4" />
-                              <span>{t('projects.actions.demo')}</span>
-                            </motion.a>
-                          )}
-                          {project.githubUrl && (
-                            <motion.a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              className="glass flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-colors"
-                            >
-                              <Github className="h-4 w-4" />
-                              <span>{t('projects.actions.code')}</span>
-                            </motion.a>
-                          )}
-                          {!project.liveUrl && !project.githubUrl && (
-                            <motion.div
-                              whileHover={{ scale: 1.1 }}
-                              className="glass flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium text-white/60"
-                            >
-                              <span>{t('projects.actions.privateProject')}</span>
-                            </motion.div>
-                          )}
-                        </div>
-                      </motion.div>
+                      {/* Action buttons - Always visible, simpler design */}
+                      <div className="absolute top-4 right-4 flex space-x-2">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white/20 backdrop-blur-sm flex items-center space-x-2 px-3 py-2 rounded-full text-sm font-medium text-white hover:bg-white/30 transition-colors"
+                          >
+                            <Eye className="h-4 w-4" />
+                            <span>{t('projects.actions.demo')}</span>
+                          </a>
+                        )}
+                        
+                        {project.githubUrl ? (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white/20 backdrop-blur-sm flex items-center space-x-2 px-3 py-2 rounded-full text-sm font-medium text-white hover:bg-white/30 transition-colors"
+                          >
+                            <Github className="h-4 w-4" />
+                            <span>{t('projects.actions.code')}</span>
+                          </a>
+                        ) : (
+                          <div className="bg-white/10 backdrop-blur-sm flex items-center space-x-2 px-3 py-2 rounded-full text-sm font-medium text-white/50">
+                            <Github className="h-4 w-4" />
+                            <span>{t('projects.actions.privateProject')}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -382,20 +350,12 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                 {t('cta.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="btn-modern px-8 py-4 rounded-full text-lg font-semibold text-white shadow-2xl"
-                >
+                <button className="bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-8 py-4 rounded-full text-lg font-semibold text-white shadow-2xl transition-colors duration-300">
                   {t('cta.startProject')}
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="glass border-2 border-[var(--primary)]/50 px-8 py-4 rounded-full text-lg font-semibold text-white hover:bg-[var(--primary)]/10 transition-all"
-                >
+                </button>
+                <button className="bg-white/10 border-2 border-[var(--primary)]/50 px-8 py-4 rounded-full text-lg font-semibold text-white hover:bg-[var(--primary)]/10 transition-all duration-300">
                   {t('cta.viewMore')}
-                </motion.button>
+                </button>
               </div>
             </div>
 
