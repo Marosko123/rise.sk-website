@@ -212,7 +212,7 @@ export default function Contact() {
   ];
 
   return (
-    <Section 
+    <Section
       id="contact"
       className="bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden"
     >
@@ -230,16 +230,6 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className='text-center mb-16'
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className='inline-flex items-center px-4 py-2 bg-[#b09155]/20 border border-[#b09155]/30 rounded-full text-[#b09155] text-sm font-medium mb-6 backdrop-blur-sm'
-          >
-            <span className='w-2 h-2 bg-[#b09155] rounded-full mr-2 animate-pulse'></span>
-            {t('badge')}
-          </motion.div>
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('mainTitle')}
             <span className='bg-gradient-to-r from-[#b09155] via-[#d4af37] to-[#b8860b] bg-clip-text text-transparent block'>

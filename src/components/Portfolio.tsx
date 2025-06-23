@@ -1,10 +1,10 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { ExternalLink, Github, Eye } from 'lucide-react';
-import Image from 'next/image';
+import { ExternalLink, Eye, Github } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import React, { useState, useRef } from 'react';
+import Image from 'next/image';
+import React, { useRef, useState } from 'react';
 
 // Portfolio projects data - real projects from rise.sk
 const portfolioProjects = [
@@ -65,7 +65,7 @@ interface PortfolioProps {
 const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
   const t = useTranslations('portfolio');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -147,7 +147,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
     >
       {/* Background gradient */}
       <div className="absolute inset-0 hero-gradient opacity-50" />
-      
+
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -156,13 +156,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
           variants={containerVariants}
           className="text-center mb-20"
         >
-          <motion.div variants={itemVariants}>
-            <span className="inline-flex items-center rounded-full glass px-6 py-3 text-sm font-medium text-white/90 mb-6">
-              <span className="text-2xl mr-2">🎨</span>
-              {t('badge')}
-            </span>
-          </motion.div>
-          
           <motion.h2
             variants={itemVariants}
             className="text-5xl md:text-6xl font-bold mb-6"
@@ -172,7 +165,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
               {t('titleHighlight')}
             </span>
           </motion.h2>
-          
+
           <motion.p
             variants={itemVariants}
             className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
@@ -245,8 +238,8 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                     <div className={`h-full w-full bg-gradient-to-br ${getCategoryGradient(project.category)} flex items-center justify-center relative`}>
                       {/* Background image */}
                       {project.image ? (
-                        <Image 
-                          src={project.image} 
+                        <Image
+                          src={project.image}
                           alt={project.title}
                           fill
                           className="object-cover opacity-80"
@@ -262,17 +255,17 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                           {getCategoryIcon(project.category)}
                         </div>
                       )}
-                      
+
                       {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      
+
                       {/* Project title overlay */}
                       <div className="absolute bottom-4 left-4 right-4 z-10">
                         <h4 className="text-white font-bold text-lg drop-shadow-lg">
                           {project.title}
                         </h4>
                       </div>
-                      
+
                       {/* Overlay on hover */}
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -330,7 +323,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                         <ExternalLink className="h-5 w-5 text-white/40 group-hover:text-[var(--primary)] transition-colors" />
                       )}
                     </div>
-                    
+
                     <p className="text-white/70 mb-6 leading-relaxed">
                       {project.description}
                     </p>
@@ -405,7 +398,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                 </motion.button>
               </div>
             </div>
-            
+
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="h-full w-full" style={{

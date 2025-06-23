@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -9,20 +8,6 @@ import { ScrollProgress } from '@/components/ScrollEffects';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-  display: 'swap', // Optimize font loading
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  display: 'swap', // Optimize font loading
-  preload: false, // Only preload main font
-});
 
 export const metadata: Metadata = {
   title: 'Rise - Professional Web Development & IT Solutions',
@@ -80,7 +65,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="antialiased font-sans"
       >
         <SmoothScrollProvider>
           <ScrollProgress />

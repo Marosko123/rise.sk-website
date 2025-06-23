@@ -3,12 +3,12 @@
     "title": {
       "welcome": "Vitajte v"
     },
-    "subtitle": "Profesionálne služby v oblasti softvérového vývoja a digitálnej transformácie",
+    "subtitle": "Seniori technologickí konzultanti dodávajúci enterprise riešenia",
     "tagline": {
       "weAre": "Sme",
-      "innovativeSolutions": "Inovatívne Riešenia"
+      "innovativeSolutions": "Technologickí Experti"
     },
-    "description": "Podporujeme váš rast prostredníctvom špičkových technologických riešení.",
+    "description": "Dôveryhodní partneri pre kritické softvérové projekty a digitálnu transformáciu.",
     "education": {
       "title": "VZDELÁVANIE",
       "description": "Vzdelávacie poradenstvo, vývoj učebných osnov a školiace programy",
@@ -36,6 +36,8 @@
   "navigation": {
     "about": "O nás",
     "services": "Služby",
+    "development": "Vývoj",
+    "education": "Vzdelávanie", 
     "engagement": "Modely Spolupráce",
     "portfolio": "Portfólio",
     "contact": "Kontakt",
@@ -43,14 +45,14 @@
     "getStarted": "Začať"
   },
   "hero": {
-    "badge": "Výkonnosť a Inovácie",
+    "badge": "Expertné Technologické Riešenia",
     "title": {
       "build": "Tvoríme",
       "bulletProof": "Inovatívne",
       "digitalProducts": "Digitálne Produkty"
     },
-    "description": "Spojte sa s expertmi a premeňte vaše vízie na úspešné digitálne produkty.",
-    "subtitle": "Tvoríme digitálne riešenia, ktoré rastú s vami.",
+    "description": "je bratislavská technologická konzultačná firma seniorských expertov, ktorí navrhujú škálovateľné digitálne riešenia a dodávajú enterprise-grade softvérový vývoj.",
+    "subtitle": "Dôveryhodní partneri pre kritické aplikácie, dodávané s dokázanou expertízou a bez kompromisov v kvalite.",
     "startProject": "Začať Projekt",
     "freeConsultation": "Bezplatná Konzultácia",
     "metrics": {
@@ -69,7 +71,7 @@
     }
   },
   "about": {
-    "badge": "Inovácie a Technológie",
+    "badge": "Seniori Technologickí Experti",
     "title": "V Čom Sme Iní",
     "titleHighlight": "Ako Tradičný Outsourcing",
     "description": "Sme viac než len vývojárska firma. Sme partneri, ktorí spájajú hlboké technologické znalosti s obchodným myslením. Každý projekt navrhujeme pre maximálnu škálovateľnosť, bezpečnosť a merateľný úspech.",
@@ -88,6 +90,11 @@
         "number": "7 dní",
         "label": "Tím Pripravený",
         "description": "Od briefingu po aktívny vývoj"
+      },
+      "expertise": {
+        "number": "10+",
+        "label": "Rokov Skúseností",
+        "description": "Seniorská expertíza v enterprise riešeniach"
       }
     },
     "values": {
@@ -297,7 +304,7 @@
     "mainTitle": "Vytvorme Spoločne",
     "mainTitleHighlight": "Niečo Výnimočné",
     "getInTouch": "Kontaktujte Nás",
-    "description": "Ste pripravení transformovať svoju digitálnu prítomnosť? Náš tím expertov je tu, aby s vami prediskutoval váš projekt a navrhol riešenie na mieru, ktoré prinesie reálne výsledky.",
+    "description": "Ste pripravení transformovať svoju digitálnu prítomnosť? Náš tím seniorských technologických expertov je tu, aby s vami prediskutoval váš projekt a navrhol riešenie na mieru, ktoré prinesie reálne výsledky.",
     "whyChoose": "Prečo Si Vybrať Rise.sk?",
     "onTimeDelivery": "Dodanie Na Čas",
     "teamReady": "Tím Pripravený",
@@ -440,7 +447,102 @@
     },
     "testimonials": {
       "title": "Čo Hovoria Naši Klienti",
-      "subtitle": "Reálne skúsenosti od skutočných klientov"
+      "subtitle": "Reálne skúsenosti od skutočných klientov",
+      "badge": "Recenzie Klientov",
+      "viewAll": "Zobraziť Všetky Recenzie",
+      "rating": "Hodnotenie",
+      "reviews": [
+        {
+          "id": "michael-j",
+          "name": "Michael J.",
+          "role": "Projektový manažér",
+          "company": "IT spoločnosť",
+          "content": "RISE.SK je spoľahlivý developer. Na projekte som im prideľoval úlohy priamo z Kanban boardu a tím ich efektívne plnil. Vrelo odporúčam každému, kto hľadá zodpovedného partnera.",
+          "rating": 5,
+          "tags": ["Vývoj", "Projektové riadenie", "Spoľahlivosť"]
+        },
+        {
+          "id": "matej-s",
+          "name": "Matej Š.",
+          "role": "Majiteľ firmy",
+          "company": "Digitálna agentúra",
+          "content": "Ďakujem za rýchle dohodnutie konzultácie. RISE.SK mi pomohli vypracovať nástroj na analýzu webovej stránky – konečne sa projekt posunul. 5/5!",
+          "rating": 5,
+          "tags": ["Konzultácie", "Webová analýza", "Rýchla odozva"]
+        },
+        {
+          "id": "tomas-v",
+          "name": "Tomáš V.",
+          "role": "Dátový analytik",
+          "company": "FinTech startup",
+          "content": "Tréning SQL databáz s RISE.SK bol pútavý a praktický. Jasne vysvetlili aj pokročilé techniky, odpovedali na všetky otázky a krok za krokom vyriešili zložité problémy. Teraz sa pri práci s SQL cítim omnoho istejšie.",
+          "rating": 5,
+          "tags": ["SQL školenie", "Databázy", "Vzdelávanie"]
+        },
+        {
+          "id": "timotej-l",
+          "name": "Timotej L.",
+          "role": "Junior developer",
+          "company": "Softvérová spoločnosť",
+          "content": "S Pythonom som začínal úplne od nuly. RISE.SK mi v priateľskej atmosfére rýchlo objasnili problém, kód zrazu fungoval a pokroky boli okamžité. Odporúčam každému, kto chce zvládnuť Python rýchlo a efektívne.",
+          "rating": 5,
+          "tags": ["Python", "Školenie", "Pre začiatočníkov"]
+        },
+        {
+          "id": "pavel-k",
+          "name": "Pavel K.",
+          "role": "Softvérový inžinier",
+          "company": "Hardvérová spoločnosť",
+          "content": "RISE.SK mi veľmi pomohli s projektom v C. Profesionálny prístup, jasné vysvetlenie, výsledok na jednotku. Odporúčam 5/5 ★.",
+          "rating": 5,
+          "tags": ["C programovanie", "Profesionalita", "Riešenie problémov"]
+        },
+        {
+          "id": "rene",
+          "name": "René",
+          "role": "Developer",
+          "company": "Firemný projekt",
+          "content": "Potreboval som v práci pomoc s Pythonom. RISE.SK nastavili jasný plán a lekcie boli zrozumiteľné aj praktické. Spoluprácu môžem len odporučiť.",
+          "rating": 5,
+          "tags": ["Python", "Firemné školenie", "Profesionálny rozvoj"]
+        },
+        {
+          "id": "jana-g",
+          "name": "Jana G.",
+          "role": "Rodič",
+          "company": "Vzdelávanie",
+          "content": "RISE.SK viedli môjho syna k programovaniu v angličtine. Lekcie boli vždy pripravené, zamerané na jeho ciele, a pokrok bol viditeľný pri každej hodine. Oceňujem aj profesionálnu angličtinu tímu.",
+          "rating": 5,
+          "tags": ["Vzdelávanie", "Programovanie pre mladých", "Angličtina"]
+        },
+        {
+          "id": "zuzana-p",
+          "name": "Zuzana P.",
+          "role": "Študentka",
+          "company": "Univerzita",
+          "content": "S RISE.SK mám doučovanie programovania. Komunikácia je bezproblémová, časovo sa prispôsobia, všetko vysvetlia a dbajú na to, aby som si riešenia vyskúšala sama. Skvelá podpora pri rozvoji praktických zručností.",
+          "rating": 5,
+          "tags": ["Doučovanie", "Programovanie", "Praktické zručnosti"]
+        },
+        {
+          "id": "roman-s",
+          "name": "Roman S.",
+          "role": "Vysokoškolský študent",
+          "company": "Prvý ročník VŠ",
+          "content": "Som v prvom ročníku VŠ a RISE.SK ma doučujú programovanie. Všetko super vysvetlia, sú spoľahliví a v tom, čo robia, sa naozaj vyznajú.",
+          "rating": 5,
+          "tags": ["Univerzita", "Programovanie", "Mentoring"]
+        },
+        {
+          "id": "daniel-k",
+          "name": "Daniel K.",
+          "role": "Študent",
+          "company": "Vzdelávanie",
+          "content": "Profesionalita na každom kroku – RISE.SK dokázali zrozumiteľne vysvetliť každý koncept a odpovedať na všetky otázky. Super doučovanie, odporúčam.",
+          "rating": 5,
+          "tags": ["Vzdelávanie", "Profesionalita", "Jasné vysvetlenie"]
+        }
+      ]
     },
     "cta": {
       "title": "Pripravení na Váš Vlastný Úspešný Projekt?",
@@ -455,6 +557,105 @@
       "viewProject": "Zobraziť Projekt",
       "liveDemo": "Živá Ukážka"
     }
+  },
+  "testimonials": {
+    "title": "Čo Hovoria Naši Klienti",
+    "subtitle": "Reálne skúsenosti od skutočných klientov",
+    "badge": "Recenzie Klientov",
+    "viewAll": "Zobraziť Všetky Recenzie",
+    "rating": "Hodnotenie",
+    "reviews": [
+      {
+        "id": "michael-j",
+        "name": "Michael J.",
+        "role": "Projektový manažér",
+        "company": "IT spoločnosť",
+        "content": "RISE.SK je spoľahlivý developer. Na projekte som im prideľoval úlohy priamo z Kanban boardu a tím ich efektívne plnil. Vrelo odporúčam každému, kto hľadá zodpovedného partnera.",
+        "rating": 5,
+        "tags": ["Vývoj", "Projektové riadenie", "Spoľahlivosť"]
+      },
+      {
+        "id": "matej-s",
+        "name": "Matej Š.",
+        "role": "Majiteľ firmy",
+        "company": "Digitálna agentúra",
+        "content": "Ďakujem za rýchle dohodnutie konzultácie. RISE.SK mi pomohli vypracovať nástroj na analýzu webovej stránky – konečne sa projekt posunul. 5/5!",
+        "rating": 5,
+        "tags": ["Konzultácie", "Webová analýza", "Rýchla odozva"]
+      },
+      {
+        "id": "tomas-v",
+        "name": "Tomáš V.",
+        "role": "Dátový analytik",
+        "company": "FinTech startup",
+        "content": "Tréning SQL databáz s RISE.SK bol pútavý a praktický. Jasne vysvetlili aj pokročilé techniky, odpovedali na všetky otázky a krok za krokom vyriešili zložité problémy. Teraz sa pri práci s SQL cítim omnoho istejšie.",
+        "rating": 5,
+        "tags": ["SQL školenie", "Databázy", "Vzdelávanie"]
+      },
+      {
+        "id": "timotej-l",
+        "name": "Timotej L.",
+        "role": "Junior developer",
+        "company": "Softvérová spoločnosť",
+        "content": "S Pythonom som začínal úplne od nuly. RISE.SK mi v priateľskej atmosfére rýchlo objasnili problém, kód zrazu fungoval a pokroky boli okamžité. Odporúčam každému, kto chce zvládnuť Python rýchlo a efektívne.",
+        "rating": 5,
+        "tags": ["Python", "Školenie", "Pre začiatočníkov"]
+      },
+      {
+        "id": "pavel-k",
+        "name": "Pavel K.",
+        "role": "Softvérový inžinier",
+        "company": "Hardvérová spoločnosť",
+        "content": "RISE.SK mi veľmi pomohli s projektom v C. Profesionálny prístup, jasné vysvetlenie, výsledok na jednotku. Odporúčam 5/5 ★.",
+        "rating": 5,
+        "tags": ["C programovanie", "Profesionalita", "Riešenie problémov"]
+      },
+      {
+        "id": "rene",
+        "name": "René",
+        "role": "Developer",
+        "company": "Firemný projekt",
+        "content": "Potreboval som v práci pomoc s Pythonom. RISE.SK nastavili jasný plán a lekcie boli zrozumiteľné aj praktické. Spoluprácu môžem len odporučiť.",
+        "rating": 5,
+        "tags": ["Python", "Firemné školenie", "Profesionálny rozvoj"]
+      },
+      {
+        "id": "jana-g",
+        "name": "Jana G.",
+        "role": "Rodič",
+        "company": "Vzdelávanie",
+        "content": "RISE.SK viedli môjho syna k programovaniu v angličtine. Lekcie boli vždy pripravené, zamerané na jeho ciele, a pokrok bol viditeľný pri každej hodine. Oceňujem aj profesionálnu angličtinu tímu.",
+        "rating": 5,
+        "tags": ["Vzdelávanie", "Programovanie pre mladých", "Angličtina"]
+      },
+      {
+        "id": "zuzana-p",
+        "name": "Zuzana P.",
+        "role": "Študentka",
+        "company": "Univerzita",
+        "content": "Mám programovacie doučovanie s RISE.SK. Komunikácia je bezproblémová, časovo sa prispôsobia, všetko vysvetlia a dbajú na to, aby som si riešenia skúsila sama. Super podpora pre rozvoj praktických zručností.",
+        "rating": 5,
+        "tags": ["Doučovanie", "Programovacie vzdelávanie", "Praktické zručnosti"]
+      },
+      {
+        "id": "roman-s",
+        "name": "Roman S.",
+        "role": "Študent VŠ",
+        "company": "Prvý ročník VŠ",
+        "content": "Som v prvom ročníku VŠ a RISE.SK ma doučujú programovanie. Všetko super vysvetlia, sú spoľahliví a v tom, čo robia, sa naozaj vyznajú.",
+        "rating": 5,
+        "tags": ["Univerzita", "Programovanie", "Mentoring"]
+      },
+      {
+        "id": "daniel-k",
+        "name": "Daniel K.",
+        "role": "Študent",
+        "company": "Vzdelávanie",
+        "content": "Profesionalita na každom kroku – RISE.SK dokázali zrozumiteľne vysvetliť každý koncept a odpovedať na všetky otázky. Super doučovanie, odporúčam.",
+        "rating": 5,
+        "tags": ["Vzdelávanie", "Profesionalita", "Jasné vysvetlenie"]
+      }
+    ]
   },
   "servicesEnhanced": {
     "badge": "Naše Služby",

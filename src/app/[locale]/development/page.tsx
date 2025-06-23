@@ -9,6 +9,7 @@ import Navigation from '@/components/Navigation';
 import Portfolio from '@/components/Portfolio';
 import ScrollToTop from '@/components/ScrollToTop';
 import ServicesEnhanced from '@/components/ServicesEnhanced';
+import Testimonials from '@/components/Testimonials';
 
 export default function DevelopmentPage() {
   return (
@@ -27,6 +28,9 @@ export default function DevelopmentPage() {
         </div>
         <div id='portfolio'>
           <Portfolio />
+        </div>
+        <div id='testimonials'>
+          <Testimonials />
         </div>
         <div id='engagement'>
           <EngagementModels />

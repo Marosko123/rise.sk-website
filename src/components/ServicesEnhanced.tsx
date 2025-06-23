@@ -9,7 +9,6 @@ import {
   Settings,
   ShoppingCart,
   Smartphone,
-  Sparkles,
   Target,
   TrendingUp
 } from 'lucide-react';
@@ -23,7 +22,7 @@ export default function ServicesEnhanced() {
   const mapServiceToCategory = (serviceTitle: string) => {
     const mapping = {
       [t('services.0.title')]: 'webDevelopment',
-      [t('services.1.title')]: 'mobileApps', 
+      [t('services.1.title')]: 'mobileApps',
       [t('services.2.title')]: 'customSoftware',
       [t('services.3.title')]: 'ecommerce',
       [t('services.4.title')]: 'aiAnalytics',
@@ -50,7 +49,7 @@ export default function ServicesEnhanced() {
   const handleServiceInquiry = (serviceTitle: string) => {
     const message = generateServiceMessage(serviceTitle);
     const localizedServiceName = getLocalizedServiceName(serviceTitle);
-    
+
     // Store form data in localStorage
     localStorage.setItem('contactFormData', JSON.stringify({
       service: localizedServiceName,
@@ -59,10 +58,10 @@ export default function ServicesEnhanced() {
 
     // Dispatch custom event to notify Contact component
     window.dispatchEvent(new Event('contactFormUpdate'));
-    
+
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ 
+      contactSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -71,7 +70,7 @@ export default function ServicesEnhanced() {
 
   // Service icons mapping
   const serviceIcons = [Code, Smartphone, Database, ShoppingCart, Settings, TrendingUp];
-  
+
   // Service gradients
   const serviceGradients = [
     'from-[#b09155] to-[#d4af37]',
@@ -88,7 +87,7 @@ export default function ServicesEnhanced() {
     icon: serviceIcons[index],
     title: t(`services.${index}.title`),
     description: t(`services.${index}.description`),
-    features: Array.from({ length: 5 }, (_, featIndex) => 
+    features: Array.from({ length: 5 }, (_, featIndex) =>
       t(`services.${index}.features.${featIndex}`)
     ),
     gradient: serviceGradients[index],
@@ -132,12 +131,6 @@ export default function ServicesEnhanced() {
       >
         {/* Header */}
         <motion.div variants={itemVariants} className='text-center mb-20'>
-          <div className='inline-flex items-center gap-2 bg-[var(--glass)] backdrop-blur-sm border border-[var(--primary)]/20 rounded-full px-6 py-3 mb-6'>
-            <Sparkles size={16} className='text-[var(--primary)]' />
-            <span className='text-sm font-medium text-[var(--primary)]'>
-              {t('badge')}
-            </span>
-          </div>
           <h2 className='text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6'>
             {t('title')}
             <span className='gradient-text block'>{t('titleHighlight')}</span>
@@ -217,14 +210,14 @@ export default function ServicesEnhanced() {
             {t('cta.description')}
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-            <button 
+            <button
               onClick={() => handleServiceInquiry(t('services.2.title'))} // Custom Software service
               className='flex items-center gap-2 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold py-4 px-8 rounded-xl hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-105'
             >
               <Target size={20} />
               {t('buttons.contact')}
             </button>
-            <button 
+            <button
               onClick={() => {
                 const portfolioSection = document.getElementById('portfolio');
                 if (portfolioSection) {

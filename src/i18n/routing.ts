@@ -7,6 +7,56 @@ export const routing = defineRouting({
 
   // Used when no locale matches
   defaultLocale: 'en',
+
+  // Localized pathnames
+  pathnames: {
+    '/': '/',
+    '/development': {
+      en: '/development',
+      sk: '/vyvoj',
+      cs: '/vyvoj',
+      de: '/entwicklung',
+      es: '/desarrollo',
+      hu: '/fejlesztes',
+      fr: '/developpement'
+    },
+    '/education': {
+      en: '/education',
+      sk: '/vzdelavanie',
+      cs: '/vzdelavani',
+      de: '/bildung',
+      es: '/educacion',
+      hu: '/oktatas',
+      fr: '/education'
+    },
+    '/services': {
+      en: '/services',
+      sk: '/sluzby',
+      cs: '/sluzby',
+      de: '/dienstleistungen',
+      es: '/servicios',
+      hu: '/szolgaltatasok',
+      fr: '/services'
+    },
+    '/portfolio': {
+      en: '/portfolio',
+      sk: '/portfolio',
+      cs: '/portfolio',
+      de: '/portfolio',
+      es: '/portafolio',
+      hu: '/portfolio',
+      fr: '/portfolio'
+    },
+    '/contact': {
+      en: '/contact',
+      sk: '/kontakt',
+      cs: '/kontakt',
+      de: '/kontakt',
+      es: '/contacto',
+      hu: '/kapcsolat',
+      fr: '/contact'
+    }
+  }
 });
 
 // Lightweight wrappers around Next.js' navigation APIs

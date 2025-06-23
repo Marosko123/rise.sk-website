@@ -14,7 +14,7 @@ export const companyConfig = {
     vatNumber: '', // Fill with VAT number when available
 
     // Business classification
-    industry: 'Professional Consulting Services',
+    industry: 'Senior Technology Consulting & Software Development',
   },
 
   // =====================================
@@ -23,30 +23,30 @@ export const companyConfig = {
   founders: {
     maros: {
       name: 'Maroš Bednár',
-      title: 'Founder & Lead Developer',
+      title: 'Founder & Senior Technology Architect',
       email: 'maros@rise.sk',
       phone: '+421 911 670 188',
       photo: '/maros/maros-photo-signature-circle.png',
       signature: '/maros/podpis-tenky-transparentne-pozadie-2.png',
       linkedin: '', // Fill with LinkedIn URL
       specializations: [
-        'Software Development',
-        'Technical Consulting',
-        'Web Development',
+        'Enterprise Software Architecture',
+        'Senior Technical Consulting',
+        'Full-Stack Development Leadership',
       ],
       department: 'development',
     },
     michael: {
       name: 'Michael Matejčík',
-      title: 'Co-Founder & Head of Education',
+      title: 'Co-Founder & Senior Education Consultant',
       email: 'michael@rise.sk',
       phone: '', // Fill with Michael's phone
       photo: '', // Fill with photo path
       linkedin: '', // Fill with LinkedIn URL
       specializations: [
-        'Educational Consulting',
-        'Curriculum Development',
-        'Training Programs',
+        'Senior Educational Strategy',
+        'Enterprise Training Solutions',
+        'Advanced Curriculum Architecture',
       ],
       department: 'education',
     },

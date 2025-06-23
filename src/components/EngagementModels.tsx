@@ -6,8 +6,7 @@ import {
   Shield,
   Target,
   UserPlus,
-  Users,
-  Zap,
+  Users
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -86,7 +85,7 @@ export default function EngagementModels() {
   };
 
   return (
-    <Section 
+    <Section
       id="engagement"
       className="bg-gradient-to-b from-[var(--secondary)] to-[var(--background)]"
     >
@@ -99,12 +98,6 @@ export default function EngagementModels() {
       >
         {/* Header */}
         <motion.div variants={itemVariants} className='text-center mb-16'>
-          <div className='inline-flex items-center gap-2 bg-[var(--glass)] backdrop-blur-sm border border-[var(--primary)]/20 rounded-full px-6 py-3 mb-6'>
-            <Zap size={16} className='text-[var(--primary)]' />
-            <span className='text-sm font-medium text-[var(--primary)]'>
-              {t('badge')}
-            </span>
-          </div>
           <h2 className='text-4xl md:text-6xl font-bold text-[var(--foreground)] mb-6'>
             {t('title')}
             <span className='gradient-text block'>{t('titleHighlight')}</span>

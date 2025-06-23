@@ -2,10 +2,10 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import companyConfig from '@/config/company';
 import { Link } from '@/i18n/routing';
@@ -18,11 +18,12 @@ export default function Navigation() {
   const [mounted, setMounted] = useState(false);
   const [animationTime, setAnimationTime] = useState(0);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [activeSection, setActiveSection] = useState('');
   const pathname = usePathname();
 
   // Check if we're on a subpage (not the main landing page)
   const isSubpage =
-    pathname.includes('/development') || pathname.includes('/education');
+    pathname.includes('/development');
 
   useEffect(() => {
     setMounted(true);
@@ -88,12 +89,101 @@ export default function Navigation() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const navLinks = [
-    { href: '#about', label: t('about') },
-    { href: '#services', label: t('services') },
-    { href: '#portfolio', label: t('portfolio') },
-    { href: '#contact', label: t('contact') },
-  ];
+  const navLinks = useMemo(() => {
+    // Check current page context to determine navigation behavior
+    const getCurrentPageType = () => {
+      if (pathname.includes('/development') || pathname.includes('/vyvoj')) {
+        return 'development'; // Has sections
+      }
+      return 'main'; // No sections, navigate to pages
+    };
+
+    const pageType = getCurrentPageType();
+
+    if (pageType === 'development') {
+      // On development page, link to sections within the page
+      return [
+        { href: '#about', label: t('about'), section: 'about' },
+        { href: '#services', label: t('services'), section: 'services' },
+        { href: '#portfolio', label: t('portfolio'), section: 'portfolio' },
+        { href: '#contact', label: t('contact'), section: 'contact' },
+      ];
+    } else {
+
+      return [
+        { href: '/development#about', label: t('about'), section: 'about' },
+        { href: '/development#services', label: t('services'), section: 'services' },
+        { href: '/development#portfolio', label: t('portfolio'), section: 'portfolio' },
+        { href: '/development#contact', label: t('contact'), section: 'contact' },
+      ];
+    }
+  }, [t, pathname]);
+
+  // Scroll tracking effect to highlight active section
+  useEffect(() => {
+    if (!mounted) return;
+
+    // Check if we're on a page route first
+    const checkActivePage = () => {
+      const path = pathname.toLowerCase();
+
+      if (path.includes('/development') || path.includes('/vyvoj')) {
+        // On development page, use scroll-based detection for sections
+        handleScrollBasedSection();
+        return;
+      }
+
+      // If we're on the main page, use scroll-based detection
+      if (path === '/' || path.match(/^\/[a-z]{2}$/)) {
+        handleScrollBasedSection();
+        return;
+      }
+
+      // Default: no active section
+      setActiveSection('');
+    };
+
+    const handleScrollBasedSection = () => {
+      const sections = ['about', 'services', 'portfolio', 'contact'];
+      const sectionElements = sections.map(section => document.getElementById(section));
+
+      // Find which section is currently in view
+      let currentSection = '';
+      const scrollPosition = window.scrollY + 100; // Offset for header height
+
+      sectionElements.forEach((element, index) => {
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            currentSection = sections[index];
+          }
+        }
+      });
+
+      // Update active section
+      if (currentSection !== activeSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    // Initial check
+    checkActivePage();
+
+    // For pages with sections, add scroll listener
+    const hasScrollableSections = pathname === '/' || pathname.match(/^\/[a-z]{2}$/) ||
+                                  pathname.includes('/development') || pathname.includes('/vyvoj');
+
+    if (hasScrollableSections) {
+      window.addEventListener('scroll', handleScrollBasedSection);
+
+      return () => window.removeEventListener('scroll', handleScrollBasedSection);
+    }
+  }, [mounted, activeSection, pathname]);
+
+  // Function to check if a nav link is active
+  const isLinkActive = (section: string) => {
+    return activeSection === section;
+  };
 
   return (
     <motion.nav
@@ -210,22 +300,31 @@ export default function Navigation() {
           <div className='hidden md:flex absolute left-1/2 transform -translate-x-1/2'>
             <div className='flex items-center space-x-8'>
               {navLinks.map((link, index) => {
-                const isRoute = link.href.startsWith('/');
-                const Component = isRoute ? Link : motion.a;
-                const props = isRoute
-                  ? { href: link.href }
-                  : { href: link.href };
+                const isActive = isLinkActive(link.section);
 
                 return (
-                  <Component
+                  <motion.div
                     key={index}
-                    {...props}
-                    className='text-gray-300 hover:text-[#b09155] px-3 py-2 text-lg font-bold transition-all duration-300 relative group'
+                    className={`px-3 py-2 text-lg font-bold transition-all duration-300 relative group ${
+                      isActive
+                        ? 'text-[#b09155]'
+                        : 'text-gray-300 hover:text-[#b09155]'
+                    }`}
                     data-cursor='link'
                   >
-                    {link.label}
-                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#b09155] to-[#d4af37] group-hover:w-full transition-all duration-300'></span>
-                  </Component>
+                    {link.href.includes('#') ? (
+                      <a href={link.href} className="block w-full h-full">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href as '/development'} className="block w-full h-full">
+                        {link.label}
+                      </Link>
+                    )}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#b09155] to-[#d4af37] transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
+                  </motion.div>
                 );
               })}
             </div>
@@ -278,19 +377,34 @@ export default function Navigation() {
           >
             <div className='px-2 pt-2 pb-3 space-y-1'>
               {/* Navigation Links for mobile */}
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={index}
-                  href={link.href}
-                  className='text-gray-300 hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-300'
-                  onClick={() => setIsMenuOpen(false)}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
+              {navLinks.map((link, index) => {
+                const isActive = isLinkActive(link.section);
+
+                return (
+                  <motion.div
+                    key={index}
+                    className={`block px-3 py-2 text-base font-medium transition-colors duration-300 ${
+                      isActive
+                        ? 'text-[#b09155] bg-[#b09155]/10'
+                        : 'text-gray-300 hover:text-white hover:bg-white/5'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {link.href.includes('#') ? (
+                      <a href={link.href} className="block w-full h-full">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href as '/development'} className="block w-full h-full">
+                        {link.label}
+                      </Link>
+                    )}
+                  </motion.div>
+                );
+              })}
 
               {/* CTA Button for main page only */}
               {!isSubpage && (

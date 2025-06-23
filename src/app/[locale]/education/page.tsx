@@ -1,8 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
+import Testimonials from '@/components/Testimonials';
 import companyConfig from '@/config/company';
 import { Link } from '@/i18n/routing';
 
@@ -25,13 +26,6 @@ export default function EducationPage() {
             <span className='text-2xl font-bold text-white'>
               {companyConfig.company.domain}
             </span>
-          </Link>
-
-          <Link
-            href='/'
-            className='px-4 py-2 text-white border border-white/30 rounded-lg hover:bg-white/10 transition-colors'
-          >
-            ← {t('backToHome')}
           </Link>
         </div>
       </header>
@@ -98,6 +92,9 @@ export default function EducationPage() {
           </div>
         </div>
       </main>
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* Footer */}
       <footer className='relative z-10 px-6 py-8 mt-16'>

@@ -3,12 +3,12 @@
     "title": {
       "welcome": "Welcome to"
     },
-    "subtitle": "Professional consulting services in education and software development",
+    "subtitle": "Senior technology consultants delivering enterprise-grade solutions",
     "tagline": {
       "weAre": "We Are",
-      "innovativeSolutions": "Innovative Solutions"
+      "innovativeSolutions": "Technology Experts"
     },
-    "description": "Empowering growth through cutting-edge education and development",
+    "description": "Trusted by businesses for mission-critical software development and digital transformation",
     "education": {
       "title": "EDUCATION",
       "description": "Educational consulting, curriculum development, and training programs",
@@ -36,6 +36,8 @@
   "navigation": {
     "about": "About",
     "services": "Services",
+    "development": "Development",
+    "education": "Education",
     "engagement": "Engagement Models",
     "portfolio": "Portfolio",
     "contact": "Contact",
@@ -43,14 +45,14 @@
     "getStarted": "Get Started"
   },
   "hero": {
-    "badge": "Executive Snapshot",
+    "badge": "Expert Technology Solutions",
     "title": {
       "build": "We Deliver",
       "bulletProof": "Innovative",
       "digitalProducts": "Digital Products"
     },
-    "description": "is a Bratislava-based studio of FIIT-STU graduates who build innovative digital products and teach the next generation of tech talent.",
-    "subtitle": "From custom web apps delivered on-time, every time, to skills bootcamps that empower teams.",
+    "description": "is a Bratislava-based technology consultancy of senior experts who architect scalable digital solutions and deliver enterprise-grade software development.",
+    "subtitle": "Trusted by businesses for mission-critical applications, delivered with proven expertise and zero compromise on quality.",
     "startProject": "Start Your Project",
     "freeConsultation": "Free Consultation",
     "metrics": {
@@ -69,10 +71,10 @@
     }
   },
   "about": {
-    "badge": "FIIT-STU Graduates Studio",
+    "badge": "Technology Experts",
     "title": "Why Rise.sk Beats",
     "titleHighlight": "Traditional Outsourcing",
-    "description": "We're not just another dev shop. We're FIIT-STU graduates who understand both cutting-edge technology and business impact. Every project is built for scale, security, and measurable results.",
+    "description": "We're not just another dev shop. We're technology experts who understand both cutting-edge technology and business impact. Every project is built for scale, security, and measurable results.",
     "stats": {
       "delivery": {
         "number": "100%",
@@ -89,10 +91,10 @@
         "label": "Team Ready",
         "description": "From briefing to active development"
       },
-      "grads": {
-        "number": "100%",
-        "label": "FIIT-STU Grads",
-        "description": "Top-tier Slovak technical university"
+      "expertise": {
+        "number": "10+",
+        "label": "Years Experience",
+        "description": "Senior-level expertise in enterprise solutions"
       }
     },
     "values": {
@@ -102,7 +104,7 @@
       },
       "teams": {
         "title": "Cross-Functional Teams",
-        "description": "PM + 2 FE devs + 1 BE dev + QA ready in under 7 days for immediate impact."
+        "description": "PM + devs ready in under 7 days for immediate impact."
       },
       "performance": {
         "title": "Performance-Driven Results",
@@ -111,7 +113,7 @@
     },
     "cta": {
       "title": "Ready to Experience the Rise.sk Difference?",
-      "description": "Join 50+ companies who chose quality over cheap outsourcing. Get your dedicated team in 7 days with guaranteed results.",
+      "description": "Join 13+ companies who chose quality over cheap outsourcing. Get your dedicated team in 7 days with guaranteed results.",
       "startProject": "Start Your Project",
       "viewServices": "View Our Services"
     }
@@ -195,7 +197,102 @@
     },
     "testimonials": {
       "title": "What Our Clients Say",
-      "subtitle": "Real experiences from real clients"
+      "subtitle": "Real experiences from real clients",
+      "badge": "Client Reviews",
+      "viewAll": "View All Reviews",
+      "rating": "Rating",
+      "reviews": [
+        {
+          "id": "michael-j",
+          "name": "Michael J.",
+          "role": "Project Manager",
+          "company": "Tech Company",
+          "content": "RISE.SK is a reliable developer. I assigned tasks directly from the Kanban board and the team completed them efficiently. I highly recommend them to anyone looking for a responsible partner.",
+          "rating": 5,
+          "tags": ["Development", "Project Management", "Reliability"]
+        },
+        {
+          "id": "matej-s",
+          "name": "Matej Š.",
+          "role": "Business Owner",
+          "company": "Digital Agency",
+          "content": "Thanks for quickly arranging the consultation. RISE.SK helped me develop a website analysis tool - the project finally moved forward. 5/5!",
+          "rating": 5,
+          "tags": ["Consultation", "Web Analysis", "Fast Response"]
+        },
+        {
+          "id": "tomas-v",
+          "name": "Tomáš V.",
+          "role": "Data Analyst",
+          "company": "FinTech Startup",
+          "content": "SQL database training with RISE.SK was engaging and practical. They clearly explained advanced techniques, answered all questions and solved complex problems step by step. Now I feel much more confident working with SQL.",
+          "rating": 5,
+          "tags": ["SQL Training", "Database", "Education"]
+        },
+        {
+          "id": "timotej-l",
+          "name": "Timotej L.",
+          "role": "Junior Developer",
+          "company": "Software Company",
+          "content": "I started Python completely from scratch. RISE.SK quickly explained the problem in a friendly atmosphere, the code suddenly worked and progress was immediate. I recommend to anyone who wants to master Python quickly and effectively.",
+          "rating": 5,
+          "tags": ["Python", "Training", "Beginner Friendly"]
+        },
+        {
+          "id": "pavel-k",
+          "name": "Pavel K.",
+          "role": "Software Engineer",
+          "company": "Hardware Company",
+          "content": "RISE.SK helped me a lot with the C project. Professional approach, clear explanation, perfect result. I recommend 5/5 ★.",
+          "rating": 5,
+          "tags": ["C Programming", "Professional", "Problem Solving"]
+        },
+        {
+          "id": "rene",
+          "name": "René",
+          "role": "Developer",
+          "company": "Corporate Project",
+          "content": "I needed help with Python at work. RISE.SK set up a clear plan and the lessons were both understandable and practical. I can only recommend the cooperation.",
+          "rating": 5,
+          "tags": ["Python", "Corporate Training", "Professional Development"]
+        },
+        {
+          "id": "jana-g",
+          "name": "Jana G.",
+          "role": "Parent",
+          "company": "Education",
+          "content": "RISE.SK guided my son to programming in English. The lessons were always prepared, focused on his goals, and progress was visible at every lesson. I also appreciate the team's professional English.",
+          "rating": 5,
+          "tags": ["Education", "Youth Programming", "English"]
+        },
+        {
+          "id": "zuzana-p",
+          "name": "Zuzana P.",
+          "role": "Student",
+          "company": "University",
+          "content": "I have programming tutoring with RISE.SK. Communication is problem-free, they adapt time-wise, explain everything and make sure I try the solutions myself. Great support for developing practical skills.",
+          "rating": 5,
+          "tags": ["Tutoring", "Programming Education", "Practical Skills"]
+        },
+        {
+          "id": "roman-s",
+          "name": "Roman S.",
+          "role": "University Student",
+          "company": "First Year University",
+          "content": "I'm in my first year of university and RISE.SK tutors me in programming. They explain everything great, they are reliable and they really know what they do.",
+          "rating": 5,
+          "tags": ["University", "Programming", "Mentoring"]
+        },
+        {
+          "id": "daniel-k",
+          "name": "Daniel K.",
+          "role": "Student",
+          "company": "Education",
+          "content": "Professionalism at every step - RISE.SK was able to clearly explain every concept and answer all questions. Great tutoring, I recommend.",
+          "rating": 5,
+          "tags": ["Education", "Professional", "Clear Explanation"]
+        }
+      ]
     },
     "cta": {
       "title": "Ready for Your Own Success Story?",
@@ -203,6 +300,105 @@
       "startProject": "Start Project",
       "viewMore": "View More Projects"
     }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real experiences from real clients",
+    "badge": "Client Reviews",
+    "viewAll": "View All Reviews",
+    "rating": "Rating",
+    "reviews": [
+      {
+        "id": "michael-j",
+        "name": "Michael J.",
+        "role": "Project Manager",
+        "company": "Tech Company",
+        "content": "RISE.SK is a reliable developer. I assigned tasks directly from the Kanban board and the team completed them efficiently. I highly recommend them to anyone looking for a responsible partner.",
+        "rating": 5,
+        "tags": ["Development", "Project Management", "Reliability"]
+      },
+      {
+        "id": "matej-s",
+        "name": "Matej Š.",
+        "role": "Business Owner",
+        "company": "Digital Agency",
+        "content": "Thanks for quickly arranging the consultation. RISE.SK helped me develop a website analysis tool - the project finally moved forward. 5/5!",
+        "rating": 5,
+        "tags": ["Consultation", "Web Analysis", "Fast Response"]
+      },
+      {
+        "id": "tomas-v",
+        "name": "Tomáš V.",
+        "role": "Data Analyst",
+        "company": "FinTech Startup",
+        "content": "SQL database training with RISE.SK was engaging and practical. They clearly explained advanced techniques, answered all questions and solved complex problems step by step. Now I feel much more confident working with SQL.",
+        "rating": 5,
+        "tags": ["SQL Training", "Database", "Education"]
+      },
+      {
+        "id": "timotej-l",
+        "name": "Timotej L.",
+        "role": "Junior Developer",
+        "company": "Software Company",
+        "content": "I started Python completely from scratch. RISE.SK quickly explained the problem in a friendly atmosphere, the code suddenly worked and progress was immediate. I recommend to anyone who wants to master Python quickly and effectively.",
+        "rating": 5,
+        "tags": ["Python", "Training", "Beginner Friendly"]
+      },
+      {
+        "id": "pavel-k",
+        "name": "Pavel K.",
+        "role": "Software Engineer",
+        "company": "Hardware Company",
+        "content": "RISE.SK helped me a lot with the C project. Professional approach, clear explanation, perfect result. I recommend 5/5 ★.",
+        "rating": 5,
+        "tags": ["C Programming", "Professional", "Problem Solving"]
+      },
+      {
+        "id": "rene",
+        "name": "René",
+        "role": "Developer",
+        "company": "Corporate Project",
+        "content": "I needed help with Python at work. RISE.SK set up a clear plan and the lessons were both understandable and practical. I can only recommend the cooperation.",
+        "rating": 5,
+        "tags": ["Python", "Corporate Training", "Professional Development"]
+      },
+      {
+        "id": "jana-g",
+        "name": "Jana G.",
+        "role": "Parent",
+        "company": "Education",
+        "content": "RISE.SK guided my son to programming in English. The lessons were always prepared, focused on his goals, and progress was visible at every lesson. I also appreciate the team's professional English.",
+        "rating": 5,
+        "tags": ["Education", "Youth Programming", "English"]
+      },
+      {
+        "id": "zuzana-p",
+        "name": "Zuzana P.",
+        "role": "Student",
+        "company": "University",
+        "content": "I have programming tutoring with RISE.SK. Communication is problem-free, they adapt time-wise, explain everything and make sure I try the solutions myself. Great support for developing practical skills.",
+        "rating": 5,
+        "tags": ["Tutoring", "Programming Education", "Practical Skills"]
+      },
+      {
+        "id": "roman-s",
+        "name": "Roman S.",
+        "role": "University Student",
+        "company": "First Year University",
+        "content": "I'm in my first year of university and RISE.SK tutors me in programming. They explain everything great, they are reliable and they really know what they do.",
+        "rating": 5,
+        "tags": ["University", "Programming", "Mentoring"]
+      },
+      {
+        "id": "daniel-k",
+        "name": "Daniel K.",
+        "role": "Student",
+        "company": "Education",
+        "content": "Professionalism at every step - RISE.SK was able to clearly explain every concept and answer all questions. Great tutoring, I recommend.",
+        "rating": 5,
+        "tags": ["Education", "Professional", "Clear Explanation"]
+      }
+    ]
   },
   "services": {
     "badge": "Our Services",
@@ -218,7 +414,7 @@
         "Scalability: Codebases grow with you—no licence lock-in",
         "Ownership: You keep the IP and future-proof your digital assets"
       ],
-      "team": "Cross-functional pod—PM + 2 FE devs + 1 BE dev + QA—ready in under 7 days"
+      "team": "Cross-functional pod — PM devs ready in under 7 days"
     },
     "devops": {
       "title": "DevOps & Cloud Reliability",
@@ -280,7 +476,7 @@
           "Scalability: Codebases grow with you—no licence lock-in",
           "Ownership: You keep the IP and future-proof your digital assets"
         ],
-        "team": "Cross-functional pod—PM + 2 FE devs + 1 BE dev + QA—ready in under 7 days"
+        "team": "Cross-functional pod — PM devs ready in under 7 days"
       },
       "devops": {
         "title": "DevOps & Cloud Reliability",
@@ -373,7 +569,7 @@
     "mainTitle": "Let's Build Something",
     "mainTitleHighlight": "Amazing Together",
     "getInTouch": "Get in Touch",
-    "description": "Ready to transform your digital presence? Our FIIT-STU graduates team is standing by to discuss your project and provide a custom solution that drives real results.",
+    "description": "Ready to transform your digital presence? Our technology experts team is standing by to discuss your project and provide a custom solution that drives real results.",
     "whyChoose": "Why Choose Rise.sk?",
     "onTimeDelivery": "On-time Delivery",
     "teamReady": "Team Ready",
@@ -449,7 +645,7 @@
     }
   },
   "footer": {
-    "description": "FIIT-STU graduates studio delivering innovative digital solutions. From custom development to DevOps excellence—we build products that scale.",
+    "description": "Expert technology consultancy delivering enterprise-grade digital solutions. From strategic development to DevOps excellence—we build products that scale with proven industry expertise.",
     "sections": {
       "services": "Services",
       "company": "Company"
@@ -467,7 +663,7 @@
         "address": "Karpatské námestie 7770/10A, 831 06 Bratislava"
       }
     },
-    "copyright": "© {year} Rise.sk s.r.o. All rights reserved. | Bratislava-based FIIT-STU graduates studio",
+    "copyright": "© {year} Rise.sk s.r.o. All rights reserved. | Bratislava-based technology experts",
     "cta": {
       "title": "Ready to Start Your Project?",
       "description": "Get your dedicated team in 7 days. 100% on-time delivery. 20-40% cost savings guaranteed.",
