@@ -1,9 +1,9 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
-import Testimonials from '@/components/Testimonials';
+import Reviews from '@/components/Reviews';
 import companyConfig from '@/config/company';
 import { Link } from '@/i18n/routing';
 
@@ -93,8 +93,8 @@ export default function EducationPage() {
         </div>
       </main>
 
-      {/* Testimonials Section */}
-      <Testimonials />
+      {/* Reviews Section */}
+      <Reviews />
 
       {/* Footer */}
       <footer className='relative z-10 px-6 py-8 mt-16'>

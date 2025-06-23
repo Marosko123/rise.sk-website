@@ -1,54 +1,21 @@
 {
   "landing": {
     "title": {
-        "about": "About",
-    "services": "Services",
-    "development": "Development",
-    "education": "Education",
-    "engagement": "Engagement Models",
-    "portfolio": "Portfolio",
-    "reviews": "Reviews",
-    "contact": "Contact",
-    "backToHome": "Back to Home",
-    "getStarted": "Get Started"
-  },
-  "hero": {
-    "badge": "Expert Technology Solutions",
-    "title": {
-      "build": "We Build",
-      "bulletProof": "Bulletproof",
-      "digitalProducts": "Digital Products"
+      "welcome": "Welcome to"
     },
-    "description": "is a Bratislava-based technology consulting firm of senior experts who architect scalable digital solutions and deliver enterprise-grade software development.",
-    "subtitle": "Trusted partners for mission-critical applications, delivered with proven expertise and zero compromises on quality.",
-    "startProject": "Start Project",
-    "freeConsultation": "Free Consultation",
-    "metrics": {
-      "onTimeDelivery": {
-        "number": "100%",
-        "label": "On-Time Delivery"
-      },
-      "costSavings": {
-        "number": "20-40%",
-        "label": "Cost Savings"
-      },
-      "teamReady": {
-        "number": "7 days",
-        "label": "Team Ready"
-      }
-    }
-  },
-  "about": {
+    "subtitle": "Senior technology consultants delivering enterprise solutions",
+    "tagline": {
+      "weAre": "We Are",
       "innovativeSolutions": "Technology Experts"
     },
-    "description": "Trusted by businesses for mission-critical software development and digital transformation",
+    "description": "Trusted partners for mission-critical software projects and digital transformation.",
     "education": {
       "title": "EDUCATION",
       "description": "Educational consulting, curriculum development, and training programs",
       "cta": "Explore Education"
     },
     "development": {
-      "title": "DEVELOPMENT",
+      "title": "DEVELOPMENT", 
       "description": "Software development, technical consulting, and web development services",
       "cta": "Explore Development"
     },
@@ -69,11 +36,11 @@
   "navigation": {
     "about": "About",
     "services": "Services",
-    "reviews": "Reviews",
-    "development": "Development",
+    "development": "Development", 
     "education": "Education",
     "engagement": "Engagement Models",
     "portfolio": "Portfolio",
+    "reviews": "Reviews",
     "contact": "Contact",
     "backToHome": "Back to Home",
     "getStarted": "Get Started"
@@ -121,35 +88,39 @@
         "description": "Average savings vs traditional outsourcing"
       },
       "ready": {
-        "number": "7 Days",
+        "number": "7 days",
         "label": "Team Ready",
         "description": "From briefing to active development"
       },
       "expertise": {
         "number": "10+",
         "label": "Years Experience",
-        "description": "Senior-level expertise in enterprise solutions"
+        "description": "Senior expertise in enterprise solutions"
       }
     },
-    "values": {
-      "security": {
-        "title": "Security-First Development",
-        "description": "Every line of code follows security best practices and undergoes thorough review."
+    "features": {
+      "seniority": {
+        "title": "Senior-Only Teams",
+        "description": "No junior developers learning on your dime. Every team member has 5+ years of enterprise experience."
       },
-      "teams": {
-        "title": "Cross-Functional Teams",
-        "description": "PM + devs ready in under 7 days for immediate impact."
+      "communication": {
+        "title": "Perfect English",
+        "description": "Fluent English communication eliminates miscommunication and enables seamless collaboration."
       },
-      "performance": {
-        "title": "Performance-Driven Results",
-        "description": "We measure success by your ROI, not just deliverables. Real results, real growth."
+      "timezone": {
+        "title": "European Timezone",
+        "description": "Real-time collaboration without the pain of offshore time zone delays."
+      },
+      "expertise": {
+        "title": "Deep Technical Expertise",
+        "description": "FIIT-STU graduates with proven track record in complex, mission-critical systems."
       }
     },
     "cta": {
-      "title": "Ready to Experience the Rise.sk Difference?",
-      "description": "Join 13+ companies who chose quality over cheap outsourcing. Get your dedicated team in 7 days with guaranteed results.",
+      "title": "Ready to Experience the Difference?",
+      "description": "Join companies that chose excellence. Get your dedicated senior team in just 7 days.",
       "startProject": "Start Your Project",
-      "viewServices": "View Our Services"
+      "learnMore": "Learn More"
     }
   },
   "engagement": {
