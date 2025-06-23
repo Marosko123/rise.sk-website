@@ -2,7 +2,6 @@
 
 import About from '@/components/About';
 import Contact from '@/components/Contact';
-import EngagementModels from '@/components/EngagementModels';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
@@ -31,9 +30,6 @@ export default function DevelopmentPage() {
         </div>
         <div id='reviews'>
           <Reviews />
-        </div>
-        <div id='engagement'>
-          <EngagementModels />
         </div>
         <div id='contact'>
           <Contact />

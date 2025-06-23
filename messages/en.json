@@ -1,42 +1,38 @@
 {
   "landing": {
-    "title": {
-      "welcome": "Welcome to"
-    },
-    "subtitle": "Senior technology consultants delivering enterprise solutions",
     "tagline": {
-      "weAre": "We Are",
+      "weAre": "We are",
       "innovativeSolutions": "Technology Experts"
     },
-    "description": "Trusted partners for mission-critical software projects and digital transformation.",
+    "description": "Trusted partners for critical software projects and digital transformation.",
     "education": {
       "title": "EDUCATION",
       "description": "Educational consulting, curriculum development, and training programs",
       "cta": "Explore Education"
     },
     "development": {
-      "title": "DEVELOPMENT", 
+      "title": "DEVELOPMENT",
       "description": "Software development, technical consulting, and web development services",
       "cta": "Explore Development"
     },
     "footer": "© 2025 rise.sk s.r.o. All rights reserved."
   },
   "education": {
-    "title": "Education Services",
-    "subtitle": "Empowering learning through innovative educational solutions",
+    "title": "Educational Services",
+    "subtitle": "Empowering education through innovative educational solutions",
     "backToHome": "Back to Home",
     "inProgress": {
-      "title": "IN PROGRESS",
-      "description": "Our education department is currently under development. We're working hard to bring you comprehensive educational consulting services."
+      "title": "IN DEVELOPMENT",
+      "description": "Our education department is currently under development. We are working hard to bring you comprehensive educational consulting services."
     },
     "contact": {
-      "title": "Get in Touch"
+      "title": "Contact Us"
     }
   },
   "navigation": {
     "about": "About",
     "services": "Services",
-    "development": "Development", 
+    "development": "Development",
     "education": "Education",
     "engagement": "Engagement Models",
     "portfolio": "Portfolio",
@@ -48,13 +44,13 @@
   "hero": {
     "badge": "Expert Technology Solutions",
     "title": {
-      "build": "We Deliver",
-      "bulletProof": "Innovative",
+      "build": "We Build",
+      "bulletProof": "Bulletproof",
       "digitalProducts": "Digital Products"
     },
-    "description": "is a Bratislava-based technology consultancy of senior experts who architect scalable digital solutions and deliver enterprise-grade software development.",
-    "subtitle": "Trusted by businesses for mission-critical applications, delivered with proven expertise and zero compromise on quality.",
-    "startProject": "Start Your Project",
+    "description": "is a Bratislava-based technology consulting firm of senior experts who architect scalable digital solutions and deliver enterprise-grade software development.",
+    "subtitle": "Trusted partners for mission-critical applications, delivered with proven expertise and zero compromises on quality.",
+    "startProject": "Start Project",
     "freeConsultation": "Free Consultation",
     "metrics": {
       "onTimeDelivery": {
@@ -66,20 +62,20 @@
         "label": "Cost Savings"
       },
       "teamReady": {
-        "number": "7 Days",
+        "number": "7 days",
         "label": "Team Ready"
       }
     }
   },
   "about": {
-    "badge": "Technology Experts",
-    "title": "Why Rise.sk Beats",
-    "titleHighlight": "Traditional Outsourcing",
-    "description": "We're not just another dev shop. We're technology experts who understand both cutting-edge technology and business impact. Every project is built for scale, security, and measurable results.",
+    "badge": "About rise.sk",
+    "title": "What Makes Us Different",
+    "titleHighlight": "From Traditional Outsourcing",
+    "description": "We are more than just a development company. We are partners who combine deep technological knowledge with business thinking. We design every project for maximum scalability, security, and measurable success.",
     "stats": {
       "delivery": {
         "number": "100%",
-        "label": "On-time Delivery",
+        "label": "On-Time Delivery",
         "description": "Projects delivered on schedule"
       },
       "savings": {
@@ -98,63 +94,125 @@
         "description": "Senior expertise in enterprise solutions"
       }
     },
-    "features": {
-      "seniority": {
-        "title": "Senior-Only Teams",
-        "description": "No junior developers learning on your dime. Every team member has 5+ years of enterprise experience."
+    "values": {
+      "security": {
+        "title": "Security-First Development",
+        "description": "Every line of code follows security best practices and undergoes thorough review."
       },
-      "communication": {
-        "title": "Perfect English",
-        "description": "Fluent English communication eliminates miscommunication and enables seamless collaboration."
+      "teams": {
+        "title": "Cross-Functional Teams",
+        "description": "PM + 2 FE developers + 1 BE developer + QA ready in less than 7 days for immediate impact."
       },
-      "timezone": {
-        "title": "European Timezone",
-        "description": "Real-time collaboration without the pain of offshore time zone delays."
-      },
-      "expertise": {
-        "title": "Deep Technical Expertise",
-        "description": "FIIT-STU graduates with proven track record in complex, mission-critical systems."
+      "performance": {
+        "title": "Results That Speak for Themselves",
+        "description": "Our success is your success. We focus on ROI and real business results, not just code delivery."
       }
     },
     "cta": {
-      "title": "Ready to Experience the Difference?",
-      "description": "Join companies that chose excellence. Get your dedicated senior team in just 7 days.",
+      "title": "Ready for Change?",
+      "description": "Join dozens of satisfied clients who chose quality and expertise. Get a dedicated team of experts in 7 days and guaranteed results.",
       "startProject": "Start Your Project",
-      "learnMore": "Learn More"
+      "viewServices": "View Our Services"
     }
   },
-  "engagement": {
-    "badge": "Engagement Models",
-    "title": "Flexible",
-    "titleHighlight": "Collaboration",
-    "subtitle": "Choose the engagement model that best fits your project needs and team structure",
-    "models": {
-      "dedicated": {
-        "title": "Dedicated Team",
-        "description": "Long-term squad embedded in your processes",
-        "features": ["Full team integration", "Shared processes & tools", "Direct communication", "Scalable team size"],
-        "ideal": "Perfect for ongoing projects and product development"
-      },
-      "project": {
-        "title": "Project-Based",
-        "description": "Fixed scope, fixed timeline—ideal for MVPs",
+  "services": {
+    "badge": "Our Services",
+    "title": "Complete Digital",
+    "titleHighlight": "Solutions",
+    "subtitle": "From concept to deployment, we deliver end-to-end technology solutions with cutting-edge technologies"
+  },
+  "servicesEnhanced": {
+    "badge": "Our Services",
+    "title": "What we can",
+    "titleHighlight": "create for you",
+    "subtitle": "We are technology experts with years of experience. We create solutions that work and deliver results.",
+    "services": [
+      {
+        "title": "Modern Websites",
+        "description": "We create professional websites that attract customers and strengthen your brand.",
         "features": [
-          "Clear deliverables",
-          "Fixed budget & timeline",
-          "Dedicated project manager",
-          "Quality guaranteed"
+          "Responsive design for all devices",
+          "SEO optimization for better visibility",
+          "Fast loading and security",
+          "Integration with modern tools",
+          "CMS systems for easy management"
         ],
-        "ideal": "Great for startups and defined scope projects"
+        "experience": "10+ years experience"
       },
-      "staff": {
-        "title": "Staff Augmentation",
-        "description": "Plug skill gaps fast without HR overhead",
-        "features": ["Immediate talent access", "Flexible duration", "No hiring overhead", "Quick team scaling"],
-        "ideal": "When you need specific skills quickly"
+      {
+        "title": "Mobile Applications",
+        "description": "We develop iOS and Android applications that simplify processes and increase user satisfaction.",
+        "features": [
+          "Native development for iOS and Android",
+          "Offline functionality and synchronization",
+          "Push notifications and real-time features",
+          "Optimized for speed and battery",
+          "Integration with cloud services"
+        ],
+        "experience": "8+ years experience"
+      },
+      {
+        "title": "Custom Software",
+        "description": "We design and implement comprehensive software solutions exactly according to your needs.",
+        "features": [
+          "Process analysis and architecture design",
+          "Scalable and secure solutions",
+          "API integrations and microservices",
+          "Database design and optimization",
+          "Maintenance and long-term support"
+        ],
+        "experience": "12+ years experience"
+      },
+      {
+        "title": "E-commerce Solutions",
+        "description": "Complete online stores with modern design and advanced features for maximum conversions.",
+        "features": [
+          "Optimized for conversions",
+          "Payment gateways and security",
+          "Inventory management systems",
+          "Analytics and reporting tools",
+          "Multi-platform integrations"
+        ],
+        "experience": "6+ years experience"
+      },
+      {
+        "title": "AI & Data Analytics",
+        "description": "We use artificial intelligence and advanced analytics to transform your data into competitive advantage.",
+        "features": [
+          "Machine learning models",
+          "Predictive analytics",
+          "Process automation with AI",
+          "Real-time dashboards",
+          "Big data processing"
+        ],
+        "experience": "5+ years experience"
+      },
+      {
+        "title": "Digital Marketing Tech",
+        "description": "Technical solutions for effective digital marketing and marketing process automation.",
+        "features": [
+          "Marketing automation tools",
+          "CRM integrations and workflows",
+          "A/B testing platforms",
+          "Social media management",
+          "Performance tracking systems"
+        ],
+        "experience": "7+ years experience"
       }
+    ],
+    "labels": {
+      "expertise": "Our expertise",
+      "features": "What we include"
     },
-    "guarantees": ["Weekly reporting", "Shared KPIs", "Zero-overhead knowledge transfer at hand-off"],
-    "guaranteesTitle": "All Models Include"
+    "buttons": {
+      "discuss": "Let's discuss the project",
+      "contact": "Contact us",
+      "references": "Our references"
+    },
+    "cta": {
+      "title": "Want to discuss your project?",
+      "description": "We'd love to talk with you about your needs. We have experience with various types of projects and can find solutions for complex requirements."
+    }
   },
   "portfolio": {
     "badge": "Our Work",
@@ -169,11 +227,11 @@
       "categories": {
         "webApps": "Web Applications",
         "webapp": "Web Applications",
-        "mobileApps": "Mobile Apps",
+        "mobileApps": "Mobile Applications",
         "ecommerce": "E-commerce",
         "saas": "SaaS Platforms",
         "corporate": "Corporate Websites",
-        "startup": "Startup MVPs"
+        "startup": "Startup MVP"
       },
       "cta": {
         "viewProject": "View Project",
@@ -183,13 +241,15 @@
       "actions": {
         "demo": "Demo",
         "code": "Code",
-        "privateProject": "Private Project"
+        "privateProject": "Private project",
+        "viewProject": "View Project",
+        "liveDemo": "Live Demo"
       }
     },
     "stats": {
       "projectsCompleted": {
         "number": "15+",
-        "label": "Projects Completed"
+        "label": "Completed Projects"
       },
       "clientSatisfaction": {
         "number": "100%",
@@ -200,113 +260,14 @@
         "label": "Average Delivery Time"
       }
     },
-    "testimonials": {
-      "title": "What Our Clients Say",
-      "subtitle": "Real experiences from real clients",
-      "badge": "Client Reviews",
-      "viewAll": "View All Reviews",
-      "rating": "Rating",
-      "reviews": [
-        {
-          "id": "michael-j",
-          "name": "Michael J.",
-          "role": "Project Manager",
-          "company": "Tech Company",
-          "content": "RISE.SK is a reliable developer. I assigned tasks directly from the Kanban board and the team completed them efficiently. I highly recommend them to anyone looking for a responsible partner.",
-          "rating": 5,
-          "tags": ["Development", "Project Management", "Reliability"]
-        },
-        {
-          "id": "matej-s",
-          "name": "Matej Š.",
-          "role": "Business Owner",
-          "company": "Digital Agency",
-          "content": "Thanks for quickly arranging the consultation. RISE.SK helped me develop a website analysis tool - the project finally moved forward. 5/5!",
-          "rating": 5,
-          "tags": ["Consultation", "Web Analysis", "Fast Response"]
-        },
-        {
-          "id": "tomas-v",
-          "name": "Tomáš V.",
-          "role": "Data Analyst",
-          "company": "FinTech Startup",
-          "content": "SQL database training with RISE.SK was engaging and practical. They clearly explained advanced techniques, answered all questions and solved complex problems step by step. Now I feel much more confident working with SQL.",
-          "rating": 5,
-          "tags": ["SQL Training", "Database", "Education"]
-        },
-        {
-          "id": "timotej-l",
-          "name": "Timotej L.",
-          "role": "Junior Developer",
-          "company": "Software Company",
-          "content": "I started Python completely from scratch. RISE.SK quickly explained the problem in a friendly atmosphere, the code suddenly worked and progress was immediate. I recommend to anyone who wants to master Python quickly and effectively.",
-          "rating": 5,
-          "tags": ["Python", "Training", "Beginner Friendly"]
-        },
-        {
-          "id": "pavel-k",
-          "name": "Pavel K.",
-          "role": "Software Engineer",
-          "company": "Hardware Company",
-          "content": "RISE.SK helped me a lot with the C project. Professional approach, clear explanation, perfect result. I recommend 5/5 ★.",
-          "rating": 5,
-          "tags": ["C Programming", "Professional", "Problem Solving"]
-        },
-        {
-          "id": "rene",
-          "name": "René",
-          "role": "Developer",
-          "company": "Corporate Project",
-          "content": "I needed help with Python at work. RISE.SK set up a clear plan and the lessons were both understandable and practical. I can only recommend the cooperation.",
-          "rating": 5,
-          "tags": ["Python", "Corporate Training", "Professional Development"]
-        },
-        {
-          "id": "jana-g",
-          "name": "Jana G.",
-          "role": "Parent",
-          "company": "Education",
-          "content": "RISE.SK guided my son to programming in English. The lessons were always prepared, focused on his goals, and progress was visible at every lesson. I also appreciate the team's professional English.",
-          "rating": 5,
-          "tags": ["Education", "Youth Programming", "English"]
-        },
-        {
-          "id": "zuzana-p",
-          "name": "Zuzana P.",
-          "role": "Student",
-          "company": "University",
-          "content": "I have programming tutoring with RISE.SK. Communication is problem-free, they adapt time-wise, explain everything and make sure I try the solutions myself. Great support for developing practical skills.",
-          "rating": 5,
-          "tags": ["Tutoring", "Programming Education", "Practical Skills"]
-        },
-        {
-          "id": "roman-s",
-          "name": "Roman S.",
-          "role": "University Student",
-          "company": "First Year University",
-          "content": "I'm in my first year of university and RISE.SK tutors me in programming. They explain everything great, they are reliable and they really know what they do.",
-          "rating": 5,
-          "tags": ["University", "Programming", "Mentoring"]
-        },
-        {
-          "id": "daniel-k",
-          "name": "Daniel K.",
-          "role": "Student",
-          "company": "Education",
-          "content": "Professionalism at every step - RISE.SK was able to clearly explain every concept and answer all questions. Great tutoring, I recommend.",
-          "rating": 5,
-          "tags": ["Education", "Professional", "Clear Explanation"]
-        }
-      ]
-    },
     "cta": {
-      "title": "Ready for Your Own Success Story?",
+      "title": "Ready for Your Own Successful Project?",
       "description": "Let's create something amazing together. Contact us and let's discuss your needs.",
       "startProject": "Start Project",
       "viewMore": "View More Projects"
     }
   },
-  "testimonials": {
+  "reviews": {
     "title": "What Our Clients Say",
     "subtitle": "Real experiences from real clients",
     "badge": "Client Reviews",
@@ -327,8 +288,8 @@
         "id": "michael-j",
         "name": "Michael J.",
         "role": "Project Manager",
-        "company": "Tech Company",
-        "content": "RISE.SK is a reliable developer. I assigned tasks directly from the Kanban board and the team completed them efficiently. I highly recommend them to anyone looking for a responsible partner.",
+        "company": "IT Company",
+        "content": "RISE.SK is a reliable developer. I assigned tasks directly from the Kanban board and the team efficiently completed them. I highly recommend to anyone looking for a responsible partner.",
         "rating": 5,
         "tags": ["Development", "Project Management", "Reliability"]
       },
@@ -337,9 +298,9 @@
         "name": "Matej Š.",
         "role": "Business Owner",
         "company": "Digital Agency",
-        "content": "Thanks for quickly arranging the consultation. RISE.SK helped me develop a website analysis tool - the project finally moved forward. 5/5!",
+        "content": "Thank you for quickly scheduling a consultation. RISE.SK helped me develop a website analysis tool – finally the project moved forward. 5/5!",
         "rating": 5,
-        "tags": ["Consultation", "Web Analysis", "Fast Response"]
+        "tags": ["Consulting", "Web Analysis", "Quick Response"]
       },
       {
         "id": "tomas-v",
@@ -348,245 +309,81 @@
         "company": "FinTech Startup",
         "content": "SQL database training with RISE.SK was engaging and practical. They clearly explained advanced techniques, answered all questions and solved complex problems step by step. Now I feel much more confident working with SQL.",
         "rating": 5,
-        "tags": ["SQL Training", "Database", "Education"]
+        "tags": ["SQL Training", "Databases", "Education"]
       },
       {
         "id": "timotej-l",
         "name": "Timotej L.",
         "role": "Junior Developer",
         "company": "Software Company",
-        "content": "I started Python completely from scratch. RISE.SK quickly explained the problem in a friendly atmosphere, the code suddenly worked and progress was immediate. I recommend to anyone who wants to master Python quickly and effectively.",
+        "content": "I started with Python from scratch. RISE.SK quickly clarified the problem in a friendly atmosphere, the code suddenly worked and progress was immediate. I recommend to anyone who wants to master Python quickly and effectively.",
         "rating": 5,
-        "tags": ["Python", "Training", "Beginner Friendly"]
+        "tags": ["Python", "Training", "For Beginners"]
       },
       {
         "id": "pavel-k",
         "name": "Pavel K.",
         "role": "Software Engineer",
         "company": "Hardware Company",
-        "content": "RISE.SK helped me a lot with the C project. Professional approach, clear explanation, perfect result. I recommend 5/5 ★.",
+        "content": "RISE.SK helped me a lot with a C project. Professional approach, clear explanation, perfect result. I recommend 5/5 ★.",
         "rating": 5,
-        "tags": ["C Programming", "Professional", "Problem Solving"]
-      },
-      {
-        "id": "rene",
-        "name": "René",
-        "role": "Developer",
-        "company": "Corporate Project",
-        "content": "I needed help with Python at work. RISE.SK set up a clear plan and the lessons were both understandable and practical. I can only recommend the cooperation.",
-        "rating": 5,
-        "tags": ["Python", "Corporate Training", "Professional Development"]
-      },
-      {
-        "id": "jana-g",
-        "name": "Jana G.",
-        "role": "Parent",
-        "company": "Education",
-        "content": "RISE.SK guided my son to programming in English. The lessons were always prepared, focused on his goals, and progress was visible at every lesson. I also appreciate the team's professional English.",
-        "rating": 5,
-        "tags": ["Education", "Youth Programming", "English"]
-      },
-      {
-        "id": "zuzana-p",
-        "name": "Zuzana P.",
-        "role": "Student",
-        "company": "University",
-        "content": "I have programming tutoring with RISE.SK. Communication is problem-free, they adapt time-wise, explain everything and make sure I try the solutions myself. Great support for developing practical skills.",
-        "rating": 5,
-        "tags": ["Tutoring", "Programming Education", "Practical Skills"]
-      },
-      {
-        "id": "roman-s",
-        "name": "Roman S.",
-        "role": "University Student",
-        "company": "First Year University",
-        "content": "I'm in my first year of university and RISE.SK tutors me in programming. They explain everything great, they are reliable and they really know what they do.",
-        "rating": 5,
-        "tags": ["University", "Programming", "Mentoring"]
-      },
-      {
-        "id": "daniel-k",
-        "name": "Daniel K.",
-        "role": "Student",
-        "company": "Education",
-        "content": "Professionalism at every step - RISE.SK was able to clearly explain every concept and answer all questions. Great tutoring, I recommend.",
-        "rating": 5,
-        "tags": ["Education", "Professional", "Clear Explanation"]
+        "tags": ["C Programming", "Professionalism", "Problem Solving"]
       }
     ]
   },
-  "services": {
-    "badge": "Our Services",
-    "title": "Complete Digital",
-    "titleHighlight": "Solutions",
-    "subtitle": "From concept to deployment, we deliver innovative digital products with cutting-edge technology",
-    "webDev": {
-      "title": "Custom Web & Mobile Development",
-      "description": "Bespoke websites, SaaS platforms, PWAs, iOS/Android apps with modern stacks (React, Vue, Node, Laravel, Flutter)",
-      "features": ["Security-first coding", "WCAG-level accessibility", "SEO-ready architecture"],
-      "benefits": [
-        "Brand edge: Tailor-made builds boost UX, speed, and search visibility",
-        "Scalability: Codebases grow with you—no licence lock-in",
-        "Ownership: You keep the IP and future-proof your digital assets"
-      ],
-      "team": "Cross-functional pod — PM devs ready in under 7 days"
-    },
-    "devops": {
-      "title": "DevOps & Cloud Reliability",
-      "description": "CI/CD pipelines, container orchestration (Docker, K8s), cloud migration (AWS, Azure, GCP), 24/7 monitoring",
-      "features": ["Automated CI/CD pipelines", "Container orchestration", "SLA-driven response times"],
-      "benefits": [
-        "Faster releases mean faster ROI",
-        "50% reduction in feature wait times",
-        "Automated infra slashes outage risk"
-      ],
-      "team": "1 DevOps engineer + SRE on demand—integrated with your existing squad"
-    },
-    "design": {
-      "title": "UX/UI & Front-End Guild",
-      "description": "User research, wireframes, interactive prototypes, design systems in Figma + Storybook",
-      "features": ["User research & prototypes", "Scalable design systems", "Accessibility audits (AA-AAA)"],
-      "benefits": [
-        "Intuitive design raises conversion and retention",
-        "88% of users won't return after bad experience",
-        "Consistent, scalable UI"
-      ],
-      "team": "Lead designer + UX researcher + Front-end dev(s). Perfect for brands that need polish as much as code"
-    },
-    "qa": {
-      "title": "Quality Assurance & Test Automation",
-      "description": "Unit, integration, and end-to-end tests (Jest, Cypress, Playwright), performance and security testing",
-      "features": ["Comprehensive test suites", "Performance testing", "Security testing suites"],
-      "benefits": ["Bugs fixed pre-launch cost 6× less", "Regression test pipelines", "Automated quality gates"],
-      "team": "1 Automation QA + 1 Manual tester for each project sprint"
-    },
-    "education": {
-      "title": "Education & Talent-Upskilling Studio",
-      "description": "Custom training programs, technical mentorship, and skills bootcamps for your existing teams",
-      "features": ["Custom curriculum development", "Hands-on technical mentorship", "Team skills assessment"],
-      "benefits": [
-        "Skilled teams drive 30% faster delivery",
-        "Reduce external hiring costs",
-        "Future-proof your talent pipeline"
-      ],
-      "team": "Senior engineers + curriculum specialists who design programs around your tech stack"
-    },
-    "new": {
-      "header": {
-        "badge": "Our Services",
-        "title": "Complete Digital Solutions",
-        "subtitle": "From concept to deployment, we deliver innovative digital products with cutting-edge technology"
-      },
-      "labels": {
-        "features": "What we do",
-        "benefits": "Why it sells",
-        "team": "Team format"
-      },
-      "development": {
-        "title": "Custom Web & Mobile Development",
-        "description": "Bespoke websites, SaaS platforms, PWAs, iOS/Android apps with modern stacks (React, Vue, Node, Laravel, Flutter)",
-        "features": ["Security-first coding", "WCAG-level accessibility", "SEO-ready architecture"],
-        "benefits": [
-          "Brand edge: Tailor-made builds boost UX, speed, and search visibility",
-          "Scalability: Codebases grow with you—no licence lock-in",
-          "Ownership: You keep the IP and future-proof your digital assets"
+  "engagement": {
+    "badge": "Engagement Models",
+    "title": "Flexible",
+    "titleHighlight": "Collaboration",
+    "subtitle": "Choose the collaboration model that best fits your project needs and team structure",
+    "models": {
+      "dedicated": {
+        "title": "Dedicated Team",
+        "description": "Long-term team integrated in your processes",
+        "features": [
+          "Full team integration",
+          "Shared processes and tools",
+          "Direct communication",
+          "Scalable team size"
         ],
-        "team": "Cross-functional pod — PM devs ready in under 7 days"
+        "ideal": "Ideal for ongoing projects and product development"
       },
-      "devops": {
-        "title": "DevOps & Cloud Reliability",
-        "description": "CI/CD pipelines, container orchestration (Docker, K8s), cloud migration (AWS, Azure, GCP), 24/7 monitoring",
-        "features": ["Automated CI/CD pipelines", "Container orchestration", "SLA-driven response times"],
-        "benefits": [
-          "Faster releases mean faster ROI",
-          "50% reduction in feature wait times",
-          "Automated infra slashes outage risk"
+      "project": {
+        "title": "Project-Based",
+        "description": "Fixed scope, fixed timeline—ideal for MVP",
+        "features": [
+          "Clear deliverables",
+          "Fixed budget and timeline",
+          "Dedicated project manager",
+          "Quality assurance"
         ],
-        "team": "1 DevOps engineer + SRE on demand—integrated with your existing squad"
+        "ideal": "Great for startups and defined scope projects"
       },
-      "ux": {
-        "title": "UX/UI & Front-End Guild",
-        "description": "User research, wireframes, interactive prototypes, design systems in Figma + Storybook",
-        "features": ["User research & prototypes", "Scalable design systems", "Accessibility audits (AA-AAA)"],
-        "benefits": [
-          "Intuitive design raises conversion and retention",
-          "88% of users won't return after bad experience",
-          "Consistent, scalable UI"
+      "staff": {
+        "title": "Staff Augmentation",
+        "description": "Quickly fill skill gaps without HR costs",
+        "features": [
+          "Immediate talent access",
+          "Flexible duration",
+          "No hiring overhead",
+          "Quick team scaling"
         ],
-        "team": "Lead designer + UX researcher + Front-end dev(s). Perfect for brands that need polish as much as code"
-      },
-      "qa": {
-        "title": "Quality Assurance & Test Automation",
-        "description": "Unit, integration, and end-to-end tests (Jest, Cypress, Playwright), performance and security testing",
-        "features": ["Comprehensive test suites", "Performance testing", "Security testing suites"],
-        "benefits": ["Bugs fixed pre-launch cost 6× less", "Regression test pipelines", "Automated quality gates"],
-        "team": "1 Automation QA + 1 Manual tester for each project sprint"
-      },
-      "education": {
-        "title": "Education & Talent-Upskilling Studio",
-        "description": "Coding bootcamps (JavaScript, Python, DevOps), corporate workshops in AI, cloud, and cybersecurity",
-        "features": ["Certified instructors", "Corporate workshops", "Language & soft-skills programs"],
-        "benefits": [
-          "Europe's e-learning market to double to €210bn by 2033",
-          "Skills half-life is ~30 months in tech",
-          "Strategic talent development priority"
-        ],
-        "team": "Certified instructors and mentors drawn from our senior dev bench"
+        "ideal": "When you need specific skills quickly"
       }
     },
-    "comparison": {
-      "title": "Why Rise.sk Beats Traditional Outsourcing",
-      "subtitle": "Experience the difference of working with Slovak tech talent",
-      "risesk": {
-        "title": "Rise.sk",
-        "background": {
-          "title": "Background",
-          "description": "FIIT-STU grads from Slovakia's top tech faculty"
-        },
-        "innovation": {
-          "title": "Innovation Hot-spot",
-          "description": "Slovakia ranks 46th globally in the 2024 Global Innovation Index"
-        },
-        "delivery": {
-          "title": "On-Time Delivery",
-          "description": "100% projects ship on or before deadline"
-        },
-        "cost": {
-          "title": "Cost-Efficiency",
-          "description": "Slovak dev rates ~20–40% below Western Europe without time-zone lag"
-        }
-      },
-      "outsourcer": {
-        "title": "Generic Outsourcer",
-        "background": {
-          "title": "Background",
-          "description": "Mixed credentials"
-        },
-        "innovation": {
-          "title": "Innovation Hot-spot",
-          "description": "n/a"
-        },
-        "delivery": {
-          "title": "On-Time Delivery",
-          "description": "Deadline drift common"
-        },
-        "cost": {
-          "title": "Cost-Efficiency",
-          "description": "Higher EU rates or far-flung time zones"
-        }
-      }
-    }
+    "guarantees": ["Weekly reporting", "Shared KPIs", "Seamless knowledge transfer at handoff"],
+    "guaranteesTitle": "All Models Include"
   },
   "contact": {
-    "title": "Get Started Today",
-    "subtitle": "Ready to work with us? Fill out the form below and we'll get back to you quickly.",
+    "title": "Start Today",
+    "subtitle": "Have a project or idea? Fill out the form and we'll get back to you right away.",
     "badge": "Ready to Start Your Project?",
-    "mainTitle": "Let's Build Something",
-    "mainTitleHighlight": "Amazing Together",
+    "mainTitle": "Let's Create",
+    "mainTitleHighlight": "Something Exceptional",
     "getInTouch": "Get in Touch",
-    "description": "Ready to transform your digital presence? Our technology experts team is standing by to discuss your project and provide a custom solution that drives real results.",
+    "description": "Ready to transform your digital presence? Our team of senior technology experts is here to discuss your project and propose a tailored solution that delivers real results.",
     "whyChoose": "Why Choose Rise.sk?",
-    "onTimeDelivery": "On-time Delivery",
+    "onTimeDelivery": "On-Time Delivery",
     "teamReady": "Team Ready",
     "contactInfo": {
       "email": "Email",
@@ -595,8 +392,7 @@
       "values": {
         "email": "info@rise.sk",
         "phone": "+421 911 670 188",
-        "office": "Karpatské nám. 7770/10A, Bratislava",
-        "officeFull": "Karpatské námestie 7770/10A, 831 06 Bratislava"
+        "office": "Karpatské námestie 7770/10A, 831 06 Bratislava"
       }
     },
     "fullName": "Full Name",
@@ -606,13 +402,13 @@
     "message": "Project Details",
     "messagePlaceholder": "Tell us about your project, timeline, and goals...",
     "placeholders": {
-      "name": "John Doe",
+      "name": "John Smith",
       "email": "john@company.com",
-      "phone": "+1 (555) 123-4567",
+      "phone": "+421 911 123 456",
       "company": "Your Company"
     },
-    "service": "Service Needed",
-    "selectService": "Select a service",
+    "service": "Required Service",
+    "selectService": "Select service",
     "services": {
       "webDevelopment": "Modern Websites",
       "mobileApps": "Mobile Applications",
@@ -620,24 +416,24 @@
       "ecommerce": "E-commerce Solutions",
       "aiAnalytics": "AI & Data Analytics",
       "digitalMarketing": "Digital Marketing Tech",
-      "specialRequests": "Special Requirements",
+      "specialRequests": "Special Requests",
       "other": "Other"
     },
     "templateMessages": {
-      "webDevelopment": "Hello,\n\nI am interested in creating a modern website for my company. I would like to discuss the possibilities and get more information about your services.\n\nThank you.",
-      "mobileApps": "Hello,\n\nI am considering mobile app development. I would like to learn more about your approach to iOS and Android app development.\n\nThank you.",
-      "customSoftware": "Hello,\n\nI need a custom software solution for my company. I would like to discuss our needs and implementation possibilities.\n\nThank you.",
-      "ecommerce": "Hello,\n\nI am planning to launch an online store and I am interested in your e-commerce solutions. I would like to get more information.\n\nThank you.",
-      "aiAnalytics": "Hello,\n\nI am interested in implementing AI and data analytics solutions in our company. I would like to discuss the possibilities.\n\nThank you.",
-      "digitalMarketing": "Hello,\n\nI am looking for technological solutions for digital marketing. I would like to learn more about your services in this area.\n\nThank you.",
-      "specialRequests": "Hello,\n\nI have specific requirements for a technological solution that I would like to discuss. I believe you can find a suitable solution.\n\nThank you.",
-      "other": "Hello,\n\nI would like to discuss collaboration opportunities. Could we connect and go over the details of my project?\n\nThank you."
+      "webDevelopment": "Hello,\n\nI'm interested in creating a modern website for my company. I'd like to discuss options and get more information about your services.\n\nThank you.",
+      "mobileApps": "Hello,\n\nI'm considering developing a mobile application. I'd like to learn more about your approach to iOS and Android app development.\n\nThank you.",
+      "customSoftware": "Hello,\n\nI need a custom software solution for my business. I'd like to discuss our needs and implementation possibilities.\n\nThank you.",
+      "ecommerce": "Hello,\n\nI'm planning to launch an online store and I'm interested in your e-commerce solutions. I'd like to get more information.\n\nThank you.",
+      "aiAnalytics": "Hello,\n\nI'm interested in implementing AI and data analytics solutions in our company. I'd like to discuss possibilities.\n\nThank you.",
+      "digitalMarketing": "Hello,\n\nI'm looking for technology solutions for digital marketing. I'd like to learn more about your services in this area.\n\nThank you.",
+      "specialRequests": "Hello,\n\nI have specific requirements for a technology solution that I'd like to discuss. I believe you can find a suitable solution.\n\nThank you.",
+      "other": "Hello,\n\nI'd like to discuss collaboration possibilities. Can we connect and go over the details of my project?\n\nThank you."
     },
-    "submit": "Send",
+    "submit": "Send Message",
     "sending": "Sending...",
     "success": "Thank you! We'll get back to you within 24 hours.",
     "error": "Something went wrong. Please try again.",
-    "networkError": "Network error. Please check your connection and try again.",
+    "networkError": "Network error. Check your connection and try again.",
     "requiredFields": "Please fill in all required fields.",
     "invalidEmail": "Please enter a valid email address."
   },
@@ -646,11 +442,11 @@
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
     "taxId": "2122465094",
-    "registration": "Commercial Register of the Municipal Court Bratislava III, section: Sro, insert no. 188634/B",
+    "registration": "Commercial Register of District Court Bratislava III, Section: Sro, Insert No. 188634/B",
     "executives": "Bc. Maroš Bednár and Michael Matejčík",
     "phone": "+421 911 670 188",
     "labels": {
-      "name": "Company Name",
+      "name": "Company name",
       "address": "Address",
       "businessId": "Business ID",
       "taxId": "Tax ID",
@@ -660,7 +456,7 @@
     }
   },
   "footer": {
-    "description": "Expert technology consultancy delivering enterprise-grade digital solutions. From strategic development to DevOps excellence—we build products that scale with proven industry expertise.",
+    "description": "We create innovative digital solutions that push boundaries. From custom development to DevOps excellence – we build products that grow with you.",
     "sections": {
       "services": "Services",
       "company": "Company"
@@ -673,112 +469,75 @@
       "values": {
         "email": "info@rise.sk",
         "phone": "+421 911 670 188",
-        "location": "Karpatské nám. 7770/10A, Bratislava",
-        "locationFull": "Karpatské námestie 7770/10A, 831 06 Bratislava",
+        "location": "Karpatské námestie 7770/10A, 831 06 Bratislava",
         "address": "Karpatské námestie 7770/10A, 831 06 Bratislava"
       }
     },
-    "copyright": "© {year} Rise.sk s.r.o. All rights reserved. | Bratislava-based technology experts",
+    "copyright": "© {year} Rise.sk s.r.o. All rights reserved.",
     "cta": {
-      "title": "Ready to Start Your Project?",
-      "description": "Get your dedicated team in 7 days. 100% on-time delivery. 20-40% cost savings guaranteed.",
-      "button": "Get Started"
+      "title": "Ready to Start?",
+      "description": "Get a dedicated team in 7 days. We guarantee 100% on-time delivery and 20-40% cost savings.",
+      "button": "Start Today"
     },
     "services": ["Custom Development", "DevOps & Cloud", "UX/UI Design", "Quality Assurance", "Education & Training"],
     "company": ["About Us", "Our Team", "Careers", "Case Studies", "Blog"],
     "support": ["Documentation", "API Reference", "Help Center", "Community", "Status"]
   },
-  "servicesEnhanced": {
-    "badge": "Our Services",
-    "title": "What We Can",
-    "titleHighlight": "Create for You",
-    "subtitle": "We are technology experts with years of experience. We create solutions that work and deliver results.",
-    "services": [
-      {
-        "title": "Modern Websites",
-        "description": "We create professional websites that engage customers and strengthen your brand.",
-        "features": [
-          "Responsive design for all devices",
-          "SEO optimization for better visibility",
-          "Fast loading and security",
-          "Integration with modern tools",
-          "CMS systems for easy management"
-        ],
-        "experience": "10+ years of experience"
+  "hiring": {
+    "badge": "Join Our Team",
+    "title": "We're Looking for",
+    "titleHighlight": "Talent",
+    "subtitle": "We're seeking innovative minds with a passion for technology, creativity, and making real impact. Join our team of experts and help shape the future of digital solutions.",
+    "skillsNeeded": "Required Skills",
+    "positions": {
+      "programming": {
+        "title": "Software Development",
+        "description": "Build cutting-edge applications and scalable systems that power businesses worldwide.",
+        "skills": ["React/Next.js", "Node.js", "TypeScript", "Python", "Cloud Services", "DevOps"]
       },
-      {
-        "title": "Mobile Applications",
-        "description": "We develop iOS and Android applications that simplify processes and increase user satisfaction.",
-        "features": [
-          "Native development for iOS and Android",
-          "Offline functionality and synchronization",
-          "Push notifications and real-time features",
-          "Optimized for speed and battery",
-          "Integration with cloud services"
-        ],
-        "experience": "8+ years of experience"
+      "marketing": {
+        "title": "Digital Marketing",
+        "description": "Drive growth through innovative marketing strategies and data-driven campaigns.",
+        "skills": ["Content Strategy", "SEO/SEM", "Analytics", "Brand Management", "Growth Hacking", "Marketing Automation"]
       },
-      {
-        "title": "Custom Software",
-        "description": "We design and implement comprehensive software solutions precisely according to your needs.",
-        "features": [
-          "Process analysis and architecture design",
-          "Scalable and secure solutions",
-          "API integrations and microservices",
-          "Database design and optimization",
-          "Maintenance and long-term support"
-        ],
-        "experience": "12+ years of experience"
+      "ai": {
+        "title": "AI & Machine Learning",
+        "description": "Develop intelligent solutions that transform how businesses operate and compete.",
+        "skills": ["Machine Learning", "Data Science", "Neural Networks", "NLP", "Computer Vision", "AI Ethics"]
       },
-      {
-        "title": "E-commerce Solutions",
-        "description": "Comprehensive online stores with modern design and advanced features for maximum conversions.",
-        "features": [
-          "Optimized for conversions",
-          "Payment gateways and security",
-          "Inventory management systems",
-          "Analytics and reporting tools",
-          "Multi-platform integrations"
-        ],
-        "experience": "6+ years of experience"
-      },
-      {
-        "title": "AI & Data Analytics",
-        "description": "We leverage artificial intelligence and advanced analytics to transform your data into competitive advantage.",
-        "features": [
-          "Machine learning models",
-          "Predictive analytics",
-          "Process automation with AI",
-          "Real-time dashboards",
-          "Big data processing"
-        ],
-        "experience": "5+ years of experience"
-      },
-      {
-        "title": "Digital Marketing Tech",
-        "description": "Technical solutions for effective digital marketing and automation of marketing processes.",
-        "features": [
-          "Marketing automation tools",
-          "CRM integrations and workflows",
-          "A/B testing platforms",
-          "Social media management",
-          "Performance tracking systems"
-        ],
-        "experience": "7+ years of experience"
+      "socialMedia": {
+        "title": "Social Media & Content",
+        "description": "Create engaging content and build communities that connect brands with their audiences.",
+        "skills": ["Content Creation", "Community Management", "Visual Design", "Video Production", "Influencer Relations", "Social Analytics"]
       }
-    ],
-    "labels": {
-      "expertise": "Our expertise",
-      "features": "What we include"
     },
-    "buttons": {
-      "discuss": "Let's discuss project",
-      "contact": "Contact us",
-      "references": "Our references"
+    "whyJoinUs": {
+      "title": "Why Join Rise.sk?",
+      "perks": {
+        "innovation": {
+          "title": "Innovation First",
+          "description": "Work on cutting-edge projects with the latest technologies and methodologies"
+        },
+        "team": {
+          "title": "Amazing Team",
+          "description": "Collaborate with senior experts who are passionate about excellence and growth"
+        },
+        "culture": {
+          "title": "Great Culture",
+          "description": "Flexible work environment that values creativity, learning, and work-life balance"
+        },
+        "growth": {
+          "title": "Career Growth",
+          "description": "Continuous learning opportunities and clear paths for professional advancement"
+        }
+      }
     },
     "cta": {
-      "title": "Want to discuss your project?",
-      "description": "We'd love to talk with you about your needs. We have experience with various types of projects and can find solutions for complex requirements."
+      "title": "Ready to Make an Impact?",
+      "description": "Send us your portfolio, tell us your story, and let's create something amazing together.",
+      "applyNow": "Apply Now",
+      "emailDirect": "careers@rise.sk",
+      "note": "We personally review all applications and will get back to you within 48 hours."
     }
   }
 }

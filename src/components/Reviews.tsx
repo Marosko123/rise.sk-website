@@ -21,7 +21,7 @@ interface Review {
 }
 
 export default function Reviews() {
-  const t = useTranslations('testimonials');
+  const t = useTranslations('reviews');
   const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);

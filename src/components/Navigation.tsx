@@ -202,9 +202,9 @@ export default function Navigation() {
               <Link href='/' className='flex items-center space-x-3'>
               <div
                 className='transition-transform duration-300 ease-out relative'
-                style={{
+                style={mounted ? {
                   transform: `translate(${getMagneticOffset(100, 50).x}px, ${getMagneticOffset(100, 50).y}px)`,
-                }}
+                } : {}}
               >
                 <Image
                   src={companyConfig.website.logo.logoGoldTransparent}
@@ -213,66 +213,83 @@ export default function Navigation() {
                   height={50}
                   priority
                   className='transition-all duration-300 hover:scale-110 cursor-pointer select-none'
-                  style={{
+                  style={mounted ? {
                     transform: `rotate(${Math.sin(animationTime * 0.002) * 5}deg) scale(${1 + Math.sin(animationTime * 0.003) * 0.1})`,
                     filter: `drop-shadow(0 0 10px rgba(176, 145, 85, ${0.5 + Math.sin(animationTime * 0.004) * 0.3})) hue-rotate(${Math.sin(animationTime * 0.001) * 15}deg)`,
+                  } : {
+                    transform: 'rotate(0deg) scale(1)',
+                    filter: 'drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform += ' scale(1.2) rotate(15deg)';
+                    if (mounted) {
+                      e.currentTarget.style.transform += ' scale(1.2) rotate(15deg)';
+                    }
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = `rotate(${Math.sin(animationTime * 0.002) * 5}deg) scale(${1 + Math.sin(animationTime * 0.003) * 0.1})`;
+                    if (mounted) {
+                      e.currentTarget.style.transform = `rotate(${Math.sin(animationTime * 0.002) * 5}deg) scale(${1 + Math.sin(animationTime * 0.003) * 0.1})`;
+                    }
                   }}
                   draggable={false}
                 />
                 {/* Floating particles around logo */}
-                <div
-                  className='absolute w-1 h-1 bg-yellow-400 rounded-full opacity-60 select-none pointer-events-none'
-                  style={{
-                    top: '10%',
-                    right: '10%',
-                    transform: `translate(${Math.sin(animationTime * 0.005) * 3}px, ${Math.cos(animationTime * 0.005) * 3}px)`,
-                  }}
-                />
-                <div
-                  className='absolute w-0.5 h-0.5 bg-yellow-300 rounded-full opacity-40 select-none pointer-events-none'
-                  style={{
-                    bottom: '15%',
-                    left: '15%',
-                    transform: `translate(${Math.cos(animationTime * 0.007) * 2}px, ${Math.sin(animationTime * 0.007) * 2}px)`,
-                  }}
-                />
+                {mounted && (
+                  <>
+                    <div
+                      className='absolute w-1 h-1 bg-yellow-400 rounded-full opacity-60 select-none pointer-events-none'
+                      style={{
+                        top: '10%',
+                        right: '10%',
+                        transform: `translate(${Math.sin(animationTime * 0.005) * 3}px, ${Math.cos(animationTime * 0.005) * 3}px)`,
+                      }}
+                    />
+                    <div
+                      className='absolute w-0.5 h-0.5 bg-yellow-300 rounded-full opacity-40 select-none pointer-events-none'
+                      style={{
+                        bottom: '15%',
+                        left: '15%',
+                        transform: `translate(${Math.cos(animationTime * 0.007) * 2}px, ${Math.sin(animationTime * 0.007) * 2}px)`,
+                      }}
+                    />
+                  </>
+                )}
               </div>
               <div className='relative'>
                 <span
                   className='text-2xl font-bold text-white cursor-pointer inline-block transition-all duration-300 hover:scale-105 select-none'
-                  style={{
+                  style={mounted ? {
                     transform: `translateY(${Math.sin(animationTime * 0.002) * 1}px)`,
                     textShadow: `0 0 15px rgba(176, 145, 85, ${0.4 + Math.sin(animationTime * 0.003) * 0.3})`,
-                  }}
+                  } : {}}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#B09155';
                     e.currentTarget.style.textShadow = '0 0 25px rgba(176, 145, 85, 0.8)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = 'white';
-                    e.currentTarget.style.textShadow = `0 0 15px rgba(176, 145, 85, ${0.4 + Math.sin(animationTime * 0.003) * 0.3})`;
+                    if (mounted) {
+                      e.currentTarget.style.textShadow = `0 0 15px rgba(176, 145, 85, ${0.4 + Math.sin(animationTime * 0.003) * 0.3})`;
+                    }
                   }}
                 >
                   {companyConfig.company.domain.split('').map((letter, index) => (
                     <span
                       key={index}
                       className='inline-block transition-all duration-200 select-none'
-                      style={{
+                      style={mounted ? {
                         transform: `translateY(${Math.sin(animationTime * 0.004 + index * 0.5) * 1}px)`,
                         animationDelay: `${index * 100}ms`,
-                      }}
+                      } : {}}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'translateY(-3px) scale(1.2)';
                         e.currentTarget.style.color = '#B09155';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = `translateY(${Math.sin(animationTime * 0.004 + index * 0.5) * 1}px)`;
+                        if (mounted) {
+                          e.currentTarget.style.transform = `translateY(${Math.sin(animationTime * 0.004 + index * 0.5) * 1}px)`;
+                        } else {
+                          e.currentTarget.style.transform = '';
+                        }
                         e.currentTarget.style.color = 'inherit';
                       }}
                     >
@@ -281,13 +298,15 @@ export default function Navigation() {
                   ))}
                 </span>
                 {/* Subtle underline animation */}
-                <div
-                  className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-60 select-none pointer-events-none'
-                  style={{
-                    width: `${50 + Math.sin(animationTime * 0.003) * 30}%`,
-                    transform: `translateX(${Math.sin(animationTime * 0.002) * 20}px)`,
-                  }}
-                />
+                {mounted && (
+                  <div
+                    className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-60 select-none pointer-events-none'
+                    style={{
+                      width: `${50 + Math.sin(animationTime * 0.003) * 30}%`,
+                      transform: `translateX(${Math.sin(animationTime * 0.002) * 20}px)`,
+                    }}
+                  />
+                )}
               </div>
             </Link>
             </motion.div>
