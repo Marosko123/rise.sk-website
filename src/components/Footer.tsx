@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Check, Copy, CreditCard, ExternalLink, FileText, Hash, Mail, MapPin, Phone, Users } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 export default function Footer() {

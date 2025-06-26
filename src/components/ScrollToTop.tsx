@@ -1,10 +1,10 @@
 'use client';
 
 import { ArrowUp } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function ScrollToTop() {
-  const [isVisible, setIsVisible] = useState(true); // Set to true to always show for testing
+  const [_isVisible] = useState(true); // Set to true to always show for testing
 
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -34,7 +34,7 @@ export default function ScrollToTop() {
 
   return (
     <>
-      {isVisible && (
+      {_isVisible && (
         <button
           onClick={scrollToTop}
           className='p-4 bg-[#B09155] hover:bg-[#9A7F4B] text-white rounded-full shadow-2xl hover:shadow-xl transition-all duration-300 hover:scale-110'
