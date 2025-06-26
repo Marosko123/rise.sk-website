@@ -9,7 +9,6 @@ import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
 import Portfolio from '@/components/Portfolio';
 import Reviews from '@/components/Reviews';
-import ScrollToTop from '@/components/ScrollToTop';
 
 export const metadata: Metadata = {
   title: 'Custom Software Development Services | Programming Teams Slovakia',
@@ -63,7 +62,6 @@ export default async function DevelopmentPage({
       <Reviews />
       <Contact />
       <Footer />
-      <ScrollToTop />
     </div>
   );
 }

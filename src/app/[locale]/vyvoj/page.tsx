@@ -8,7 +8,6 @@ import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
 import Portfolio from '@/components/Portfolio';
 import Reviews from '@/components/Reviews';
-import ScrollToTop from '@/components/ScrollToTop';
 import ServicesEnhanced from '@/components/ServicesEnhanced';
 
 export const metadata: Metadata = {
@@ -57,7 +56,6 @@ export default async function DevelopmentPageSK({
     <div className='min-h-screen'>
       <BreadcrumbSchema items={breadcrumbs} page="vyvoj" />
       <Navigation />
-      <ScrollToTop />
       <main>
         <div id='hero'>
           <Hero />

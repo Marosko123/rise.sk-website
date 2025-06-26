@@ -1,10 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Mail, MapPin, Phone, Hash, CreditCard, Users, FileText, Copy, Check } from 'lucide-react';
-import Link from 'next/link';
+import { Check, Copy, CreditCard, ExternalLink, FileText, Hash, Mail, MapPin, Phone, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import React, { useState } from 'react';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -73,7 +73,7 @@ export default function Footer() {
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(180,145,85,0.15),transparent_50%)]' />
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(212,175,55,0.1),transparent_50%)]' />
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_40%_20%,rgba(120,119,198,0.08),transparent_50%)]' />
-      
+
       {/* Animated grid pattern */}
       <div className='absolute inset-0 opacity-5'>
         <div className='h-full w-full bg-[linear-gradient(rgba(180,145,85,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(180,145,85,0.1)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]'></div>
@@ -199,239 +199,198 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className='mb-12'
+          className='mb-8'
         >
-          <div className='text-center mb-8'>
-            <h3 className='text-2xl font-bold bg-gradient-to-r from-[#b09155] to-[#d4af37] bg-clip-text text-transparent mb-2'>
+          <div className='text-center mb-6'>
+            <h3 className='text-xl font-bold bg-gradient-to-r from-[#b09155] to-[#d4af37] bg-clip-text text-transparent mb-2'>
               {companyInfo('name')}
             </h3>
-            <div className='w-20 h-1 bg-gradient-to-r from-[#b09155] to-[#d4af37] mx-auto rounded-full'></div>
+            <div className='w-16 h-0.5 bg-gradient-to-r from-[#b09155] to-[#d4af37] mx-auto rounded-full'></div>
           </div>
-          
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            {/* Business ID Card */}
-            <motion.div
-              whileHover={{ y: -5, scale: 1.02 }}
-              className='group relative p-6 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#b09155]/50 transition-all duration-300'
-            >
-              <div className='absolute inset-0 bg-gradient-to-br from-[#b09155]/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300'></div>
-              <div className='relative z-10'>
-                <div className='flex items-center justify-between mb-3'>
-                  <div className='flex items-center'>
-                    <div className='w-10 h-10 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center mr-3'>
-                      <Hash className='w-5 h-5 text-[#b09155]' />
-                    </div>
-                    <span className='text-[#b09155] font-semibold text-sm'>
-                      {companyInfo('labels.businessId')}
-                    </span>
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => copyToClipboard(companyInfo('businessId'), 'businessId')}
-                    className='p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200'
-                    title='Copy to clipboard'
-                  >
-                    {copiedField === 'businessId' ? (
-                      <Check className='w-4 h-4 text-green-400' />
-                    ) : (
-                      <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
-                    )}
-                  </motion.button>
-                </div>
-                <div className='text-white font-mono text-lg select-all'>
-                  {companyInfo('businessId')}
-                </div>
-              </div>
-            </motion.div>
 
-            {/* Tax ID Card */}
-            <motion.div
-              whileHover={{ y: -5, scale: 1.02 }}
-              className='group relative p-6 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#b09155]/50 transition-all duration-300'
-            >
-              <div className='absolute inset-0 bg-gradient-to-br from-[#b09155]/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300'></div>
-              <div className='relative z-10'>
-                <div className='flex items-center justify-between mb-3'>
-                  <div className='flex items-center'>
-                    <div className='w-10 h-10 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center mr-3'>
-                      <CreditCard className='w-5 h-5 text-[#b09155]' />
-                    </div>
-                    <span className='text-[#b09155] font-semibold text-sm'>
-                      {companyInfo('labels.taxId')}
-                    </span>
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => copyToClipboard(companyInfo('taxId'), 'taxId')}
-                    className='p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200'
-                    title='Copy to clipboard'
-                  >
-                    {copiedField === 'taxId' ? (
-                      <Check className='w-4 h-4 text-green-400' />
-                    ) : (
-                      <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
-                    )}
-                  </motion.button>
-                </div>
-                <div className='text-white font-mono text-lg select-all'>
-                  {companyInfo('taxId')}
-                </div>
-              </div>
-            </motion.div>
+          {/* Compact Company Info Grid */}
+          <div className='bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 
-            {/* Phone Card */}
-            <motion.div
-              whileHover={{ y: -5, scale: 1.02 }}
-              className='group relative p-6 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#b09155]/50 transition-all duration-300'
-            >
-              <div className='absolute inset-0 bg-gradient-to-br from-[#b09155]/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300'></div>
-              <div className='relative z-10'>
-                <div className='flex items-center justify-between mb-3'>
-                  <div className='flex items-center'>
-                    <div className='w-10 h-10 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center mr-3'>
-                      <Phone className='w-5 h-5 text-[#b09155]' />
-                    </div>
-                    <span className='text-[#b09155] font-semibold text-sm'>
+              {/* Contact Info Column */}
+              <div className='space-y-4'>
+                <div className='flex items-center space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Phone className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.phone')}
-                    </span>
+                    </div>
+                    <a
+                      href={`tel:${companyInfo('phone').replace(/\s/g, '')}`}
+                      className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-sm'
+                    >
+                      {companyInfo('phone')}
+                    </a>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('phone'), 'phone')}
-                    className='p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'phone' ? (
-                      <Check className='w-4 h-4 text-green-400' />
+                      <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
                     )}
                   </motion.button>
                 </div>
-                <a
-                  href={`tel:${companyInfo('phone').replace(/\s/g, '')}`}
-                  className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-lg group-hover:underline select-all'
-                >
-                  {companyInfo('phone')}
-                </a>
-              </div>
-            </motion.div>
 
-            {/* Address Card */}
-            <motion.div
-              whileHover={{ y: -5, scale: 1.02 }}
-              className='group relative p-6 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#b09155]/50 transition-all duration-300 md:col-span-2 lg:col-span-1'
-            >
-              <div className='absolute inset-0 bg-gradient-to-br from-[#b09155]/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300'></div>
-              <div className='relative z-10'>
-                <div className='flex items-center justify-between mb-3'>
-                  <div className='flex items-center'>
-                    <div className='w-10 h-10 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center mr-3'>
-                      <MapPin className='w-5 h-5 text-[#b09155]' />
-                    </div>
-                    <span className='text-[#b09155] font-semibold text-sm'>
+                <div className='flex items-start space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
+                    <MapPin className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.address')}
-                    </span>
+                    </div>
+                    <a
+                      href={`https://maps.google.com/?q=${encodeURIComponent(companyInfo('address'))}`}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-sm leading-relaxed'
+                    >
+                      {companyInfo('address')}
+                    </a>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('address'), 'address')}
-                    className='p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'address' ? (
-                      <Check className='w-4 h-4 text-green-400' />
+                      <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
                     )}
                   </motion.button>
                 </div>
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(companyInfo('address'))}`}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-base leading-relaxed group-hover:underline select-all'
-                >
-                  {companyInfo('address')}
-                </a>
               </div>
-            </motion.div>
 
-            {/* Executives Card */}
-            <motion.div
-              whileHover={{ y: -5, scale: 1.02 }}
-              className='group relative p-6 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#b09155]/50 transition-all duration-300'
-            >
-              <div className='absolute inset-0 bg-gradient-to-br from-[#b09155]/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300'></div>
-              <div className='relative z-10'>
-                <div className='flex items-center justify-between mb-3'>
-                  <div className='flex items-center'>
-                    <div className='w-10 h-10 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center mr-3'>
-                      <Users className='w-5 h-5 text-[#b09155]' />
+              {/* Business Details Column */}
+              <div className='space-y-4'>
+                <div className='flex items-center space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Hash className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                      {companyInfo('labels.businessId')}
                     </div>
-                    <span className='text-[#b09155] font-semibold text-sm'>
+                    <div className='text-white font-mono text-sm'>
+                      {companyInfo('businessId')}
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => copyToClipboard(companyInfo('businessId'), 'businessId')}
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    title='Copy to clipboard'
+                  >
+                    {copiedField === 'businessId' ? (
+                      <Check className='w-3 h-3 text-green-400' />
+                    ) : (
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                    )}
+                  </motion.button>
+                </div>
+
+                <div className='flex items-center space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <CreditCard className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                      {companyInfo('labels.taxId')}
+                    </div>
+                    <div className='text-white font-mono text-sm'>
+                      {companyInfo('taxId')}
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => copyToClipboard(companyInfo('taxId'), 'taxId')}
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    title='Copy to clipboard'
+                  >
+                    {copiedField === 'taxId' ? (
+                      <Check className='w-3 h-3 text-green-400' />
+                    ) : (
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                    )}
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Legal Info Column */}
+              <div className='space-y-4 md:col-span-2 lg:col-span-1'>
+                <div className='flex items-center space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Users className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.executives')}
-                    </span>
+                    </div>
+                    <div className='text-white text-sm font-medium'>
+                      {companyInfo('executives')}
+                    </div>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('executives'), 'executives')}
-                    className='p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'executives' ? (
-                      <Check className='w-4 h-4 text-green-400' />
+                      <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
                     )}
                   </motion.button>
                 </div>
-                <div className='text-white font-medium text-base leading-relaxed select-all'>
-                  {companyInfo('executives')}
-                </div>
-              </div>
-            </motion.div>
 
-            {/* Registration Card */}
-            <motion.div
-              whileHover={{ y: -5, scale: 1.02 }}
-              className='group relative p-6 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#b09155]/50 transition-all duration-300 md:col-span-2 lg:col-span-1'
-            >
-              <div className='absolute inset-0 bg-gradient-to-br from-[#b09155]/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300'></div>
-              <div className='relative z-10'>
-                <div className='flex items-center justify-between mb-3'>
-                  <div className='flex items-center'>
-                    <div className='w-10 h-10 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center mr-3'>
-                      <FileText className='w-5 h-5 text-[#b09155]' />
-                    </div>
-                    <span className='text-[#b09155] font-semibold text-sm'>
+                <div className='flex items-start space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
+                    <FileText className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.registration')}
-                    </span>
+                    </div>
+                    <div className='text-gray-300 text-xs leading-relaxed'>
+                      {companyInfo('registration')}
+                    </div>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('registration'), 'registration')}
-                    className='p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'registration' ? (
-                      <Check className='w-4 h-4 text-green-400' />
+                      <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
                     )}
                   </motion.button>
                 </div>
-                <div className='text-gray-300 text-sm leading-relaxed select-all'>
-                  {companyInfo('registration')}
-                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
 
