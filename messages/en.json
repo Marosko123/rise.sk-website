@@ -328,6 +328,51 @@
         "content": "RISE.SK helped me a lot with a C project. Professional approach, clear explanation, perfect result. I recommend 5/5 ★.",
         "rating": 5,
         "tags": ["C Programming", "Professionalism", "Problem Solving"]
+      },
+      {
+        "id": "rene-corporate",
+        "name": "René",
+        "role": "Corporate Developer",
+        "company": "Corporate Project",
+        "content": "I needed help with Python at work. RISE.SK set up a clear plan and the lessons were understandable and practical. I can only recommend the collaboration.",
+        "rating": 5,
+        "tags": ["Python", "Corporate Training", "Practical Learning"]
+      },
+      {
+        "id": "jana-g",
+        "name": "Jana G.",
+        "role": "Parent",
+        "company": "Family",
+        "content": "RISE.SK guided my son into programming in English. The lessons were always prepared, focused on his goals, and progress was visible with every session. I also appreciate the team's professional English.",
+        "rating": 5,
+        "tags": ["Youth Programming", "English Instruction", "Mentoring"]
+      },
+      {
+        "id": "zuzana-p",
+        "name": "Zuzana P.",
+        "role": "Student",
+        "company": "University",
+        "content": "I have programming tutoring with RISE.SK. Communication is seamless, they adapt to my schedule, explain everything, and make sure I try the solutions myself. Great support for developing practical skills.",
+        "rating": 5,
+        "tags": ["Programming Tutoring", "Practical Skills", "Flexible Schedule"]
+      },
+      {
+        "id": "roman-s",
+        "name": "Roman S.",
+        "role": "University Student",
+        "company": "First Year Student",
+        "content": "I'm in my first year of university and RISE.SK tutors me in programming. They explain everything perfectly, are reliable and really know what they're doing.",
+        "rating": 5,
+        "tags": ["University Support", "Programming Basics", "Reliability"]
+      },
+      {
+        "id": "daniel-k",
+        "name": "Daniel K.",
+        "role": "Student",
+        "company": "Education",
+        "content": "Professionalism at every step – RISE.SK managed to clearly explain every concept and answer all questions. Great tutoring, I recommend it.",
+        "rating": 5,
+        "tags": ["Professional Tutoring", "Clear Explanations", "Educational Excellence"]
       }
     ]
   },

@@ -1,36 +1,32 @@
 {
   "landing": {
-    "title": {
-      "welcome": "Vitajte v"
-    },
-    "subtitle": "Seniori technologickí konzultanti dodávajúci enterprise riešenia",
     "tagline": {
       "weAre": "Sme",
-      "innovativeSolutions": "Technologickí Experti"
+      "innovativeSolutions": "Technologickí experti"
     },
     "description": "Dôveryhodní partneri pre kritické softvérové projekty a digitálnu transformáciu.",
     "education": {
       "title": "VZDELÁVANIE",
-      "description": "Vzdelávacie poradenstvo, vývoj učebných osnov a školiace programy",
-      "cta": "Preskúmať Vzdelávanie"
+      "description": "Vzdelávacie poradenstvo, tvorba osnov a tréningové programy",
+      "cta": "Preskúmať vzdelávanie"
     },
     "development": {
       "title": "VÝVOJ",
       "description": "Vývoj softvéru, technické poradenstvo a služby webového vývoja",
-      "cta": "Preskúmať Vývoj"
+      "cta": "Preskúmať vývoj"
     },
     "footer": "© 2025 rise.sk s.r.o. Všetky práva vyhradené."
   },
   "education": {
-    "title": "Vzdelávacie Služby",
-    "subtitle": "Posilňujeme vzdelávanie prostredníctvom inovatívnych vzdelávacích riešení",
-    "backToHome": "Späť na Domov",
+    "title": "Vzdelávacie služby",
+    "subtitle": "Posilňujeme vzdelávanie prostredníctvom inovatívnych riešení",
+    "backToHome": "Späť na hlavnú",
     "inProgress": {
-      "title": "PREBIEHA VÝVOJ",
-      "description": "Naše vzdelávacie oddelenie je momentálne vo vývoji. Tvrdo pracujeme na tom, aby sme vám priniesli komplexné vzdelávacie poradenské služby."
+      "title": "VO VÝVOJI",
+      "description": "Naše vzdelávacie oddelenie je momentálne vo vývoji. Usilovne pracujeme na poskytovaní komplexného vzdelávacieho poradenstva."
     },
     "contact": {
-      "title": "Kontaktujte Nás"
+      "title": "Kontaktujte nás"
     }
   },
   "navigation": {
@@ -38,279 +34,404 @@
     "services": "Služby",
     "development": "Vývoj",
     "education": "Vzdelávanie",
-    "engagement": "Modely Spolupráce",
+    "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
-    "reviews": "Recenzie",
+    "reviews": "Referencie",
     "contact": "Kontakt",
-    "backToHome": "Späť na Domov",
+    "backToHome": "Späť na hlavnú",
     "getStarted": "Začať"
   },
   "hero": {
-    "badge": "Expertné Technologické Riešenia",
+    "badge": "Odborné technologické riešenia",
     "title": {
-      "build": "Tvoríme",
+      "build": "Vytvárame",
       "bulletProof": "Inovatívne",
-      "digitalProducts": "Digitálne Produkty"
+      "digitalProducts": "digitálne produkty"
     },
-    "description": "je bratislavská technologická konzultačná firma seniorských expertov, ktorí navrhujú škálovateľné digitálne riešenia a dodávajú enterprise-grade softvérový vývoj.",
-    "subtitle": "Dôveryhodní partneri pre kritické aplikácie, dodávané s dokázanou expertízou a bez kompromisov v kvalite.",
-    "startProject": "Začať Projekt",
-    "freeConsultation": "Bezplatná Konzultácia",
+    "description": "sídliaca v Bratislave technologická poradenská firma senior expertov, ktorí navrhujú škálovateľné digitálne riešenia a dodávajú softvér na úrovni podniku.",
+    "subtitle": "Dôveryhodní partneri pre aplikácie kľúčové pre misiu, dodávané s overenými expertízami a bez kompromisov v kvalite.",
+    "startProject": "Spustiť projekt",
+    "freeConsultation": "Bezplatná konzultácia",
     "metrics": {
       "onTimeDelivery": {
-        "number": "100%",
-        "label": "Dodanie Na Čas"
+        "number": "100 %",
+        "label": "Dodanie načas"
       },
       "costSavings": {
-        "number": "20-40%",
-        "label": "Úspora Nákladov"
+        "number": "20–40 %",
+        "label": "Úspora nákladov"
       },
       "teamReady": {
         "number": "7 dní",
-        "label": "Tím Pripravený"
+        "label": "Tím pripravený"
       }
     }
   },
   "about": {
-    "badge": "Seniori Technologickí Experti",
-    "title": "V Čom Sme Iní",
-    "titleHighlight": "Ako Tradičný Outsourcing",
-    "description": "Sme viac než len vývojárska firma. Sme partneri, ktorí spájajú hlboké technologické znalosti s obchodným myslením. Každý projekt navrhujeme pre maximálnu škálovateľnosť, bezpečnosť a merateľný úspech.",
+    "badge": "O rise.sk",
+    "title": "Čo nás odlišuje",
+    "titleHighlight": "od tradičného outsourcingu",
+    "description": "Nie sme iba vývojová firma. Sme partneri, ktorí kombinujú hlboké technologické znalosti s obchodným myslením. Každý projekt navrhujeme pre maximálnu škálovateľnosť, bezpečnosť a merateľný úspech.",
     "stats": {
       "delivery": {
-        "number": "100%",
-        "label": "Dodanie Na Čas",
-        "description": "Projekty dodané podľa harmonogramu"
+        "number": "100 %",
+        "label": "Dodanie načas",
+        "description": "Projekty dodané podľa plánu"
       },
       "savings": {
-        "number": "40%",
-        "label": "Úspora Nákladov",
-        "description": "Priemerné úspory vs tradičný outsourcing"
+        "number": "40 %",
+        "label": "Úspora nákladov",
+        "description": "Priemerná úspora oproti tradičnému outsourcingu"
       },
       "ready": {
         "number": "7 dní",
-        "label": "Tím Pripravený",
-        "description": "Od briefingu po aktívny vývoj"
+        "label": "Tím pripravený",
+        "description": "Od briefu po aktívny vývoj"
       },
       "expertise": {
         "number": "10+",
-        "label": "Rokov Skúseností",
-        "description": "Seniorská expertíza v enterprise riešeniach"
+        "label": "Rokov skúseností",
+        "description": "Senior expertíza v podnikových riešeniach"
       }
     },
     "values": {
       "security": {
-        "title": "Bezpečnosť-Orientovaný Vývoj",
-        "description": "Každý riadok kódu dodržuje bezpečnostné best practices a prechádza dôkladnou kontrolou."
+        "title": "Vývoj s dôrazom na bezpečnosť",
+        "description": "Každý riadok kódu dodržiava bezpečnostné postupy a prechádza dôkladnou kontrolou."
       },
       "teams": {
-        "title": "Cross-Funkčné Tímy",
-        "description": "PM + 2 FE vývojári + 1 BE vývojár + QA pripravený za menej ako 7 dní pre okamžitý dopad."
+        "title": "Multifunkčné tímy",
+        "description": "PM + 2 FE vývojári + 1 BE vývojár + QA pripravení do 7 dní pre okamžitý efekt."
       },
       "performance": {
-        "title": "Výsledky, Ktoré Hovoria Samy za Seba",
+        "title": "Výsledky, ktoré hovoria samy za seba",
         "description": "Náš úspech je váš úspech. Zameriavame sa na ROI a reálne obchodné výsledky, nielen na dodanie kódu."
       }
     },
     "cta": {
-      "title": "Ste Pripravení na Zmenu?",
-      "description": "Pridajte sa k desiatkam spokojných klientov, ktorí si vybrali kvalitu a odbornosť. Získajte dedikovaný tím expertov do 7 dní a garantované výsledky.",
-      "startProject": "Začať Váš Projekt",
-      "viewServices": "Pozrieť Naše Služby"
+      "title": "Pripravení na zmenu?",
+      "description": "Pridajte sa k desiatkam spokojných klientov, ktorí si vybrali kvalitu a odbornosť. Získajte tím expertov do 7 dní a garantované výsledky.",
+      "startProject": "Začnite svoj projekt",
+      "viewServices": "Pozrite si naše služby"
     }
   },
+  "services": {
+    "badge": "Naše služby",
+    "title": "Komplexné digitálne",
+    "titleHighlight": "riešenia",
+    "subtitle": "Od konceptu po nasadenie – dodávame koncové technologické riešenia s najmodernejšími technológiami"
+  },
+  "servicesEnhanced": {
+    "badge": "Naše služby",
+    "title": "Čo vieme",
+    "titleHighlight": "vytvoriť pre vás",
+    "subtitle": "Sme technologickí experti s ročnými skúsenosťami. Vytvárame riešenia, ktoré fungujú a prinášajú výsledky.",
+    "services": [
+      {
+        "title": "Moderné weby",
+        "description": "Vytvárame profesionálne webstránky, ktoré priťahujú zákazníkov a posilňujú vašu značku.",
+        "features": [
+          "Responzívny dizajn pre všetky zariadenia",
+          "SEO optimalizácia pre lepšiu viditeľnosť",
+          "Rýchle načítanie a bezpečnosť",
+          "Integrácia s modernými nástrojmi",
+          "CMS systémy pre jednoduchú správu"
+        ],
+        "experience": "10+ rokov skúseností"
+      },
+      {
+        "title": "Mobilné aplikácie",
+        "description": "Vyvíjame iOS a Android aplikácie, ktoré zjednodušujú procesy a zvyšujú spokojnosť používateľov.",
+        "features": [
+          "Nativny vývoj pre iOS a Android",
+          "Offline funkčnosť a synchronizácia",
+          "Push notifikácie a real‑time funkcie",
+          "Optimalizované pre rýchlosť a batériu",
+          "Integrácia s cloudovými službami"
+        ],
+        "experience": "8+ rokov skúseností"
+      },
+      {
+        "title": "Vlastný softvér",
+        "description": "Navrhujeme a implementujeme komplexné softvérové riešenia presne podľa vašich potrieb.",
+        "features": [
+          "Analýza procesov a návrh architektúry",
+          "Škálovateľné a bezpečné riešenia",
+          "API integrácie a mikroservisy",
+          "Návrh databáz a optimalizácia",
+          "Údržba a dlhodobá podpora"
+        ],
+        "experience": "12+ rokov skúseností"
+      },
+      {
+        "title": "E‑commerce riešenia",
+        "description": "Kompletné online obchody s moderným dizajnom a pokročilými funkciami pre maximálne konverzie.",
+        "features": [
+          "Optimalizované pre konverzie",
+          "Platobné brány a bezpečnosť",
+          "Systémy správy zásob",
+          "Analytika a reportovacie nástroje",
+          "Multiplatformové integrácie"
+        ],
+        "experience": "6+ rokov skúseností"
+      },
+      {
+        "title": "AI & Data Analytics",
+        "description": "Využívame umelú inteligenciu a pokročilnú analytiku na transformáciu vašich dát na konkurenčnú výhodu.",
+        "features": [
+          "Modely strojového učenia",
+          "Prediktívna analytika",
+          "Automatizácia procesov pomocou AI",
+          "Real‑time dashboardy",
+          "Spracovanie veľkých dát"
+        ],
+        "experience": "5+ rokov skúseností"
+      },
+      {
+        "title": "Technológie pre digitálny marketing",
+        "description": "Technické riešenia pre efektívny digitálny marketing a automatizáciu marketingových procesov.",
+        "features": [
+          "Nástroje pre marketingovú automatizáciu",
+          "CRM integrácie a workflowy",
+          "Platformy A/B testovania",
+          "Správa sociálnych sietí",
+          "Systémy sledovania výkonu"
+        ],
+        "experience": "7+ rokov skúseností"
+      }
+    ],
+    "labels": {
+      "expertise": "Naša expertíza",
+      "features": "Čo zahŕňame"
+    },
+    "buttons": {
+      "discuss": "Preberme projekt",
+      "contact": "Kontaktujte nás",
+      "references": "Naše referencie"
+    },
+    "cta": {
+      "title": "Chcete prediskutovať svoj projekt?",
+      "description": "Radi si s vami pohovoríme o vašich potrebách. Máme skúsenosti s rôznymi typmi projektov a nájdeme riešenia pre komplexné požiadavky."
+    }
+  },
+  "portfolio": {
+    "badge": "Naša práca",
+    "title": "Úspešné",
+    "titleHighlight": "projekty",
+    "subtitle": "Prezrite si ukážky našich najúspešnejších projektov a technologických riešení",
+    "projects": {
+      "featured": {
+        "title": "Hlavné projekty",
+        "description": "Naše najvýznamnejšie a najúspešnejšie realizácie"
+      },
+      "categories": {
+        "webApps": "Webové aplikácie",
+        "webapp": "Webové aplikácie",
+        "mobileApps": "Mobilné aplikácie",
+        "ecommerce": "E‑commerce",
+        "saas": "SaaS platformy",
+        "corporate": "Korporátne weby",
+        "startup": "Startup MVP"
+      },
+      "cta": {
+        "viewProject": "Zobraziť projekt",
+        "liveDemo": "Živé demo",
+        "caseStudy": "Prípadová štúdia"
+      },
+      "actions": {
+        "demo": "Demo",
+        "code": "Kód",
+        "privateProject": "Súkromný projekt",
+        "viewProject": "Zobraziť projekt",
+        "liveDemo": "Živé demo"
+      }
+    },
+    "stats": {
+      "projectsCompleted": {
+        "number": "15+",
+        "label": "Dokončených projektov"
+      },
+      "clientSatisfaction": {
+        "number": "100 %",
+        "label": "Spokojnosť klientov"
+      },
+      "avgDeliveryTime": {
+        "number": "45 dní",
+        "label": "Priemerný čas dodania"
+      }
+    },
+    "cta": {
+      "title": "Pripravení na váš vlastný úspešný projekt?",
+      "description": "Vytvorme spolu niečo úžasné. Kontaktujte nás a prediskutujme vaše potreby.",
+      "startProject": "Spustiť projekt",
+      "viewMore": "Zobraziť viac projektov"
+    }
+  },
+  "reviews": {
+    "title": "Čo hovoria naši klienti",
+    "subtitle": "Skutočné skúsenosti od skutočných klientov",
+    "badge": "Recenzie klientov",
+    "viewAll": "Zobraziť všetky recenzie",
+    "rating": "Hodnotenie",
+    "navigation": {
+      "previous": "Predchádzajúca",
+      "next": "Nasledujúca"
+    },
+    "cta": {
+      "title": "Pripravení pridať sa k našim úspešným príbehom?",
+      "description": "Vytvorme niečo úžasné spolu. Kontaktujte nás a prediskutujme vaše potreby.",
+      "startProject": "Spustiť projekt",
+      "viewServices": "Pozrieť služby"
+    },
+    "reviews": [
+      {
+        "id": "michael-j",
+        "name": "Michael J.",
+        "role": "Projektový manažér",
+        "company": "IT spoločnosť",
+        "content": "RISE.SK je spoľahlivý vývojár. Zadával som úlohy priamo cez Kanban board a tím ich efektívne splnil. Určite odporúčam každému, kto hľadá zodpovedného partnera.",
+        "rating": 5,
+        "tags": ["Vývoj", "Projektový manažment", "Spoľahlivosť"]
+      },
+      {
+        "id": "matej-s",
+        "name": "Matej Š.",
+        "role": "Majiteľ firmy",
+        "company": "Digitálna agentúra",
+        "content": "Ďakujem za rýchle naplánovanie konzultácie. RISE.SK mi pomohol vyvinúť nástroj na analýzu webu – projekt konečne napredoval. 5/5!",
+        "rating": 5,
+        "tags": ["Poradenstvo", "Webová analytika", "Rýchla reakcia"]
+      },
+      {
+        "id": "tomas-v",
+        "name": "Tomáš V.",
+        "role": "Dátový analytik",
+        "company": "FinTech startup",
+        "content": "SQL školenie od RISE.SK bolo pútavé a praktické. Jasne vysvetľovali pokročilé techniky, odpovedali na všetky otázky a vyriešili komplexné problémy krok za krokom. Teraz sa cítim oveľa istejšie pri práci so SQL.",
+        "rating": 5,
+        "tags": ["SQL školenie", "Databázy", "Vzdelávanie"]
+      },
+      {
+        "id": "timotej-l",
+        "name": "Timotej L.",
+        "role": "Junior vývojár",
+        "company": "Softvérová spoločnosť",
+        "content": "Začínal som s Pythonom od nuly. RISE.SK rýchlo objasnil problém v priateľskej atmosfére, kód zrazu fungoval a pokrok prišiel okamžite. Odporúčam každému, kto chce Python zvládnuť rýchlo a efektívne.",
+        "rating": 5,
+        "tags": ["Python", "Školenie", "Pre začiatočníkov"]
+      },
+      {
+        "id": "pavel-k",
+        "name": "Pavel K.",
+        "role": "Softvérový inžinier",
+        "company": "Hardvérová spoločnosť",
+        "content": "RISE.SK mi veľmi pomohol s projektom v jazyku C. Profesionálny prístup, jasné vysvetlenie, perfektný výsledok. Odporúčam 5/5 ★.",
+        "rating": 5,
+        "tags": ["C programovanie", "Profesionalita", "Riešenie problémov"]
+      },
+      {
+        "id": "rene-corporate",
+        "name": "René",
+        "role": "Korporátny vývojár",
+        "company": "Firemný projekt",
+        "content": "Potreboval som v práci pomoc s Pythonom. RISE.SK nastavili jasný plán a lekcie boli zrozumiteľné aj praktické. Spoluprácu môžem len odporučiť.",
+        "rating": 5,
+        "tags": ["Python", "Korporátne školenie", "Praktické učenie"]
+      },
+      {
+        "id": "jana-g",
+        "name": "Jana G.",
+        "role": "Rodič",
+        "company": "Rodina",
+        "content": "RISE.SK viedli môjho syna k programovaniu v angličtine. Lekcie boli vždy pripravené, zamerané na jeho ciele, a pokrok bol viditeľný pri každej hodine. Oceňujem aj profesionálnu angličtinu tímu.",
+        "rating": 5,
+        "tags": ["Programovanie pre mladých", "Výuka v angličtine", "Mentoring"]
+      },
+      {
+        "id": "zuzana-p",
+        "name": "Zuzana P.",
+        "role": "Študentka",
+        "company": "Univerzita",
+        "content": "S RISE.SK mám doučovanie programovania. Komunikácia je bezproblémová, časovo sa prispôsobia, všetko vysvetlia a dbajú na to, aby som si riešenia vyskúšala sama. Skvelá podpora pri rozvoji praktických zručností.",
+        "rating": 5,
+        "tags": ["Doučovanie programovania", "Praktické zručnosti", "Flexibilný rozvrh"]
+      },
+      {
+        "id": "roman-s",
+        "name": "Roman S.",
+        "role": "Univerzitný študent",
+        "company": "Prvák",
+        "content": "Som v prvom ročníku VŠ a RISE.SK ma doučujú programovanie. Všetko super vysvetlia, sú spoľahliví a v tom, čo robia, sa naozaj vyznajú.",
+        "rating": 5,
+        "tags": ["Univerzitná podpora", "Základy programovania", "Spoľahlivosť"]
+      },
+      {
+        "id": "daniel-k",
+        "name": "Daniel K.",
+        "role": "Študent",
+        "company": "Vzdelávanie",
+        "content": "Profesionalita na každom kroku – RISE.SK dokázali zrozumiteľne vysvetliť každý koncept a odpovedať na všetky otázky. Super doučovanie, odporúčam.",
+        "rating": 5,
+        "tags": ["Profesionálne doučovanie", "Jasné vysvetlenia", "Vzdelávacia excelencia"]
+      }
+    ]
+  },
   "engagement": {
-    "badge": "Modely Spolupráce",
+    "badge": "Modely spolupráce",
     "title": "Flexibilná",
-    "titleHighlight": "Spolupráca",
-    "subtitle": "Vyberte si model spolupráce, ktorý najlepšie vyhovuje potrebám vášho projektu a štruktúre tímu",
+    "titleHighlight": "spolupráca",
+    "subtitle": "Vyberte model spolupráce, ktorý najlepšie vyhovuje vašim potrebám a štruktúre tímu",
     "models": {
       "dedicated": {
-        "title": "Dedikovaný Tím",
-        "description": "Dlhodobý tím integrovaný vo vašich procesoch",
+        "title": "Vyhradený tím",
+        "description": "Dlhodobý tím integrovaný do vašich procesov",
         "features": [
           "Plná integrácia tímu",
           "Zdieľané procesy a nástroje",
           "Priama komunikácia",
           "Škálovateľná veľkosť tímu"
         ],
-        "ideal": "Ideálne pre pokračujúce projekty a vývoj produktov"
+        "ideal": "Ideálne pre prebiehajúce projekty a vývoj produktu"
       },
       "project": {
-        "title": "Projektový",
-        "description": "Pevný rozsah, pevný harmonogram—ideálne pre MVP",
+        "title": "Projektovo založené",
+        "description": "Fixný rozsah, fixný časový rámec – ideálne pre MVP",
         "features": [
-          "Jasné dodávky",
-          "Pevný rozpočet a harmonogram",
-          "Dedikovaný projektový manažér",
-          "Zaručená kvalita"
+          "Jasné výstupy",
+          "Fixný rozpočet a časový harmonogram",
+          "Vyhradený projektový manažér",
+          "Zabezpečenie kvality"
         ],
         "ideal": "Skvelé pre startupy a projekty s definovaným rozsahom"
       },
       "staff": {
-        "title": "Rozšírenie Personálu",
-        "description": "Rýchlo vyplňte medzery v zručnostiach bez HR nákladov",
+        "title": "Dopĺňanie tímu",
+        "description": "Rýchle vyplnenie chýbajúcich zručností bez HR nákladov",
         "features": [
           "Okamžitý prístup k talentom",
-          "Flexibilné trvanie",
-          "Žiadne náklady na nábor",
+          "Flexibilná dĺžka",
+          "Bez nákladov na nábor",
           "Rýchle škálovanie tímu"
         ],
-        "ideal": "Keď potrebujete špecifické zručnosti rýchlo"
+        "ideal": "Keď potrebujete určité zručnosti rýchlo"
       }
     },
-    "guarantees": ["Týždenné reportovanie", "Zdieľané KPI", "Bezproblémový transfer znalostí pri odovzdaní"],
-    "guaranteesTitle": "Všetky Modely Zahŕňajú"
-  },
-  "services": {
-    "badge": "Naše Služby",
-    "title": "Kompletné Digitálne",
-    "titleHighlight": "Riešenia",
-    "subtitle": "Od konceptu po nasadenie dodávame inovatívne digitálne produkty s najmodernejšími technológiami",
-    "webDev": {
-      "title": "Vlastný Webový a Mobilný Vývoj",
-      "description": "Vlastné webstránky, SaaS platformy, PWA, iOS/Android aplikácie s modernými stackmi (React, Vue, Node, Laravel, Flutter)",
-      "features": ["Kódovanie orientované na bezpečnosť", "WCAG-úrovňová prístupnosť", "SEO-pripravená architektúra"],
-      "benefits": [
-        "Značková výhoda: Vlastné riešenia zlepšujú UX, rýchlosť a vyhľadateľnosť",
-        "Škálovateľnosť: Kódbázy rastú s vami—bez licenčných obmedzení",
-        "Vlastníctvo: Zachováte si IP a zabezpečíte budúcnosť svojich digitálnych aktív"
-      ],
-      "team": "Cross-funkčný tím—PM + 2 FE vývojári + 1 BE vývojár + QA—pripravený za menej ako 7 dní"
-    },
-    "devops": {
-      "title": "DevOps a Cloudová Spoľahlivosť",
-      "description": "CI/CD pipelines, container orchestrácia (Docker, K8s), cloudová migrácia (AWS, Azure, GCP), 24/7 monitoring",
-      "features": ["Automatizované CI/CD pipelines", "Container orchestrácia", "SLA-riadené časy odozvy"],
-      "benefits": [
-        "Rýchlejšie vydania znamenajú rýchlejší ROI",
-        "50% zníženie čakacích čias na funkcie",
-        "Automatizovaná infraštruktúra znižuje riziko výpadkov"
-      ],
-      "team": "1 DevOps inžinier + SRE na požiadanie—integrovaný s vaším existujúcim tímom"
-    },
-    "design": {
-      "title": "UX/UI a Front-End Cechy",
-      "description": "Výskum používateľov, wireframy, interaktívne prototypy, dizajnové systémy vo Figma + Storybook",
-      "features": ["Výskum používateľov a prototypy", "Škálovateľné dizajnové systémy", "Audity prístupnosti (AA-AAA)"],
-      "benefits": [
-        "Intuitívny dizajn zvyšuje konverziu a udržanie",
-        "88% používateľov sa nevráti po zlej skúsenosti",
-        "Konzistentné, škálovateľné UI"
-      ],
-      "team": "Lead designer + UX výskumník + Front-end vývojár(i). Ideálne pre značky, ktoré potrebujú lesk rovnako ako kód"
-    },
-    "qa": {
-      "title": "Zabezpečenie Kvality a Automatizácia Testov",
-      "description": "Unit, integračné a end-to-end testy (Jest, Cypress, Playwright), testovanie výkonu a bezpečnosti",
-      "features": ["Komplexné testovacie sady", "Testovanie výkonu", "Bezpečnostné testovacie sady"],
-      "benefits": [
-        "Chyby opravené pred spustením stoja 6× menej",
-        "Regresné testovacie pipelines",
-        "Automatizované kvalitné brány"
-      ],
-      "team": "1 Automatizačný QA + 1 Manuálny tester pre každý projektový sprint"
-    },
-    "education": {
-      "title": "Vzdelávanie a Štúdio Rozvoja Talentov",
-      "description": "Vlastné školiace programy, technické mentorstvo a zručnostné bootcampy pre vaše existujúce tímy",
-      "features": ["Vývoj vlastných učebných osnov", "Praktické technické mentorstvo", "Hodnotenie zručností tímu"],
-      "benefits": [
-        "Kvalifikované tímy zabezpečujú 30% rýchlejšie dodanie",
-        "Znížte náklady na externý nábor",
-        "Zabezpečte budúcnosť svojho talentového potrubia"
-      ],
-      "team": "Senior inžinieri + špecialisti na učebné osnovy, ktorí navrhujú programy okolo vášho tech stacku"
-    },
-    "new": {
-      "header": {
-        "badge": "Naše Služby",
-        "title": "Kompletné Digitálne Riešenia",
-        "subtitle": "Od konceptu po nasadenie dodávame inovatívne digitálne produkty s najmodernejšími technológiami"
-      },
-      "labels": {
-        "features": "Čo robíme",
-        "benefits": "Prečo sa to predáva",
-        "team": "Formát tímu"
-      },
-      "development": {
-        "title": "Vlastný Webový a Mobilný Vývoj",
-        "description": "Vlastné webstránky, SaaS platformy, PWA, iOS/Android aplikácie s modernými stackmi (React, Vue, Node, Laravel, Flutter)",
-        "features": ["Kódovanie orientované na bezpečnosť", "WCAG-úrovňová prístupnosť", "SEO-pripravená architektúra"],
-        "benefits": [
-          "Značková výhoda: Vlastné riešenia zlepšujú UX, rýchlosť a vyhľadateľnosť",
-          "Škálovateľnosť: Kódbázy rastú s vami—bez licenčných obmedzení",
-          "Vlastníctvo: Zachováte si IP a zabezpečíte budúcnosť svojich digitálnych aktív"
-        ],
-        "team": "Cross-funkčný tím—PM + 2 FE vývojári + 1 BE vývojár + QA—pripravený za menej ako 7 dní"
-      },
-      "devops": {
-        "title": "DevOps a Cloudová Spoľahlivosť",
-        "description": "CI/CD pipelines, container orchestrácia (Docker, K8s), cloudová migrácia (AWS, Azure, GCP), 24/7 monitoring",
-        "features": ["Automatizované CI/CD pipelines", "Container orchestrácia", "SLA-riadené časy odozvy"],
-        "benefits": [
-          "Rýchlejšie vydania znamenajú rýchlejší ROI",
-          "50% zníženie čakacích čias na funkcie",
-          "Automatizovaná infraštruktúra znižuje riziko výpadkov"
-        ],
-        "team": "1 DevOps inžinier + SRE na požiadanie—integrovaný s vaším existujúcim tímom"
-      },
-      "ux": {
-        "title": "UX/UI a Front-End Cechy",
-        "description": "Výskum používateľov, wireframy, interaktívne prototypy, dizajnové systémy vo Figma + Storybook",
-        "features": [
-          "Výskum používateľov a prototypy",
-          "Škálovateľné dizajnové systémy",
-          "Audity prístupnosti (AA-AAA)"
-        ],
-        "benefits": [
-          "Intuitívny dizajn zvyšuje konverziu a udržanie",
-          "88% používateľov sa nevráti po zlej skúsenosti",
-          "Konzistentné, škálovateľné UI"
-        ],
-        "team": "Hlavný dizajnér + UX výskumník + Front-end vývojári. Perfektné pre značky, ktoré potrebujú lesk aj kód"
-      },
-      "qa": {
-        "title": "Zabezpečenie Kvality a Automatizácia Testov",
-        "description": "Unit, integračné a end-to-end testy (Jest, Cypress, Playwright), výkonnostné a bezpečnostné testovanie",
-        "features": ["Komplexné testovacie suity", "Výkonnostné testovanie", "Bezpečnostné testovacie suity"],
-        "benefits": [
-          "Chyby opravené pred spustením stoja 6× menej",
-          "Regresné testovacie pipelines",
-          "Automatizované kvalitné brány"
-        ],
-        "team": "1 Automatizačný QA + 1 Manuálny tester pre každý projektový sprint"
-      },
-      "education": {
-        "title": "Vzdelávanie a Štúdio Rozvoja Talentov",
-        "description": "Kódovacie bootcampy (JavaScript, Python, DevOps), firemné workshopy v AI, cloud a kybernetickej bezpečnosti",
-        "features": ["Certifikovaní inštruktori", "Firemné workshopy", "Jazykové a soft-skills programy"],
-        "benefits": [
-          "Európsky trh e-learningu sa zdvojnásobí na €210bn do roku 2033",
-          "Polčas znalostí je ~30 mesiacov v technológiách",
-          "Strategická priorita rozvoja talentov"
-        ],
-        "team": "Certifikovaní inštruktori a mentori čerpaní z našej senior dev lavice"
-      }
-    },
-    "comparison": {
-      "title": "Prečo Rise.sk Bije Tradičný Outsourcing",
-      "subtitle": "Zažite rozdiel práce so slovenským technickým talentom"
-    }
+    "guarantees": ["Týždenné reportovanie", "Zdieľané KPI", "Plynulý transfer poznatkov pri odovzdaní"],
+    "guaranteesTitle": "Všetky modely zahŕňajú"
   },
   "contact": {
-    "title": "Začnite Ešte Dnes",
-    "subtitle": "Máte projekt alebo nápad? Vyplňte formulár a my sa vám ozveme obratom.",
-    "badge": "Pripravení Začať Váš Projekt?",
-    "mainTitle": "Vytvorme Spoločne",
-    "mainTitleHighlight": "Niečo Výnimočné",
-    "getInTouch": "Kontaktujte Nás",
-    "description": "Ste pripravení transformovať svoju digitálnu prítomnosť? Náš tím seniorských technologických expertov je tu, aby s vami prediskutoval váš projekt a navrhol riešenie na mieru, ktoré prinesie reálne výsledky.",
-    "whyChoose": "Prečo Si Vybrať Rise.sk?",
-    "onTimeDelivery": "Dodanie Na Čas",
-    "teamReady": "Tím Pripravený",
+    "title": "Začnite dnes",
+    "subtitle": "Máte projekt alebo nápad? Vyplňte formulár a ozveme sa vám okamžite.",
+    "badge": "Pripravení začať svoj projekt?",
+    "mainTitle": "Vytvorme",
+    "mainTitleHighlight": "niečo výnimočné",
+    "getInTouch": "Spojte sa s nami",
+    "description": "Pripravení transformovať svoju digitálnu prítomnosť? Náš tím senior technologických expertov je tu, aby prediskutoval váš projekt a navrhol šité riešenie prinášajúce reálne výsledky.",
+    "whyChoose": "Prečo si vybrať Rise.sk?",
+    "onTimeDelivery": "Dodanie načas",
+    "teamReady": "Tím pripravený",
     "contactInfo": {
-      "email": "E-mail",
+      "email": "Email",
       "phone": "Telefón",
       "office": "Kancelária",
       "values": {
@@ -319,54 +440,54 @@
         "office": "Karpatské námestie 7770/10A, 831 06 Bratislava"
       }
     },
-    "fullName": "Celé Meno",
+    "fullName": "Celé meno",
     "company": "Spoločnosť",
-    "email": "E-mailová Adresa",
-    "phone": "Telefónne Číslo",
-    "message": "Podrobnosti Projektu",
-    "messagePlaceholder": "Povedzte nám o vašom projekte, časovom harmonograme a cieľoch...",
+    "email": "Emailová adresa",
+    "phone": "Telefónne číslo",
+    "message": "Detaily projektu",
+    "messagePlaceholder": "Povedzte nám o vašom projekte, časovej os a cieľoch...",
     "placeholders": {
-      "name": "Ján Novák",
-      "email": "jan@firma.sk",
+      "name": "John Smith",
+      "email": "john@company.com",
       "phone": "+421 911 123 456",
-      "company": "Vaša Spoločnosť"
+      "company": "Vaša spoločnosť"
     },
-    "service": "Potrebná Služba",
+    "service": "Požadovaná služba",
     "selectService": "Vyberte službu",
     "services": {
-      "webDevelopment": "Moderné Weby",
-      "mobileApps": "Mobilné Aplikácie",
-      "customSoftware": "Softvér na Mieru",
-      "ecommerce": "E-commerce Riešenia",
+      "webDevelopment": "Moderné weby",
+      "mobileApps": "Mobilné aplikácie",
+      "customSoftware": "Vlastný softvér",
+      "ecommerce": "E‑commerce riešenia",
       "aiAnalytics": "AI & Data Analytics",
-      "digitalMarketing": "Digital Marketing Tech",
-      "specialRequests": "Špeciálne Požiadavky",
+      "digitalMarketing": "Technológie pre digitálny marketing",
+      "specialRequests": "Špeciálne požiadavky",
       "other": "Iné"
     },
     "templateMessages": {
-      "webDevelopment": "Dobrý deň,\n\nzaujíma ma vytvorenie moderného webu pre moju spoločnosť. Rád by som prediskutoval možnosti a získal viac informácií o vašich službách.\n\nĎakujem.",
-      "mobileApps": "Dobrý deň,\n\nuvažujem o vývoji mobilnej aplikácie. Chcel by som sa dozvedieť viac o vašom prístupe k vývoju iOS a Android aplikácií.\n\nĎakujem.",
-      "customSoftware": "Dobrý deň,\n\npotrebujem softvérové riešenie na mieru pre moju firmu. Rád by som prediskutoval naše potreby a možnosti implementácie.\n\nĎakujem.",
-      "ecommerce": "Dobrý deň,\n\nplánujem spustenie online obchodu a zaujímajú ma vaše e-commerce riešenia. Chcel by som získať viac informácií.\n\nĎakujem.",
-      "aiAnalytics": "Dobrý deň,\n\nzaujíma ma implementácia AI a dátových analytických riešení v našej spoločnosti. Rád by som prediskutoval možnosti.\n\nĎakujem.",
-      "digitalMarketing": "Dobrý deň,\n\nhľadám technologické riešenia pre digitálny marketing. Chcel by som sa dozvedieť viac o vašich službách v tejto oblasti.\n\nĎakujem.",
-      "specialRequests": "Dobrý deň,\n\nmám špecifické požiadavky na technologické riešenie, ktoré by som rád prediskutoval. Verím, že dokážete nájsť vhodné riešenie.\n\nĎakujem.",
-      "other": "Dobrý deň,\n\nrád by som prediskutoval možnosti spolupráce. Môžeme sa spojiť a prebrať detaily môjho projektu?\n\nĎakujem."
+      "webDevelopment": "Dobrý deň,\n\nmám záujem o vytvorenie modernej webstránky pre moju spoločnosť. Rád by som prediskutoval možnosti a získal viac informácií o vašich službách.\n\nĎakujem.",
+      "mobileApps": "Dobrý deň,\n\nuvažujem o vývoji mobilnej aplikácie. Rád by som sa dozvedel viac o vašom prístupe k vývoju pre iOS a Android.\n\nĎakujem.",
+      "customSoftware": "Dobrý deň,\n\npotrebujem vlastné softvérové riešenie pre moju firmu. Rád by som prediskutoval naše potreby a možnosti implementácie.\n\nĎakujem.",
+      "ecommerce": "Dobrý deň,\n\nplánujem spustenie online obchodu a mám záujem o vaše e‑commerce riešenia. Rád by som získal viac informácií.\n\nĎakujem.",
+      "aiAnalytics": "Dobrý deň,\n\nmám záujem o implementáciu AI a dátovej analytiky vo firme. Rád by som prediskutoval možnosti.\n\nĎakujem.",
+      "digitalMarketing": "Dobrý deň,\n\nhľadám technologické riešenia pre digitálny marketing. Rád by som sa dozvedel viac o vašich službách v tejto oblasti.\n\nĎakujem.",
+      "specialRequests": "Dobrý deň,\n\nmám špecifické požiadavky na technologické riešenie, ktoré by som chcel prediskutovať. Verím, že nájdete vhodné riešenie.\n\nĎakujem.",
+      "other": "Dobrý deň,\n\nrád by som prediskutoval možnosti spolupráce. Môžeme sa spojiť a prejsť si detaily môjho projektu?\n\nĎakujem."
     },
-    "submit": "Odoslať Správu",
-    "sending": "Odosiela sa...",
+    "submit": "Odoslať správu",
+    "sending": "Odosielanie...",
     "success": "Ďakujeme! Ozveme sa vám do 24 hodín.",
-    "error": "Niečo sa pokazilo. Skúste to prosím znova.",
+    "error": "Niečo sa pokazilo. Prosím skúste to znova.",
     "networkError": "Chyba siete. Skontrolujte pripojenie a skúste to znova.",
-    "requiredFields": "Vyplňte prosím všetky povinné polia.",
-    "invalidEmail": "Zadajte prosím platnú e-mailovú adresu."
+    "requiredFields": "Vyplňte všetky povinné polia.",
+    "invalidEmail": "Zadajte platnú emailovú adresu."
   },
   "companyInfo": {
     "name": "rise.sk s.r.o.",
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
     "taxId": "2122465094",
-    "registration": "Obchodný register Mestského súdu Bratislava III, oddiel: Sro, vložka č. 188634/B",
+    "registration": "Obchodný register Okresného súdu Bratislava III, Oddiel: Sro, Vložka č. 188634/B",
     "executives": "Bc. Maroš Bednár a Michael Matejčík",
     "phone": "+421 911 670 188",
     "labels": {
@@ -374,20 +495,20 @@
       "address": "Adresa",
       "businessId": "IČO",
       "taxId": "DIČ",
-      "registration": "Zápis",
-      "executives": "Konatelia",
+      "registration": "Registrácia",
+      "executives": "Zodpovední zástupcovia",
       "phone": "Telefón"
     }
   },
   "footer": {
-    "description": "Tvoríme inovatívne digitálne riešenia, ktoré posúvajú hranice. Od na mieru šitého vývoja až po DevOps excelentnosť – budujeme produkty, ktoré rastú s vami.",
+    "description": "Vytvárame inovatívne digitálne riešenia, ktoré posúvajú hranice. Od vlastného vývoja po DevOps výnimočnosť – staviame produkty, ktoré rastú s vami.",
     "sections": {
       "services": "Služby",
       "company": "Spoločnosť"
     },
     "contact": {
       "title": "Kontakt",
-      "email": "E-mail",
+      "email": "Email",
       "phone": "Telefón",
       "location": "Lokalita",
       "values": {
@@ -399,430 +520,69 @@
     },
     "copyright": "© {year} Rise.sk s.r.o. Všetky práva vyhradené.",
     "cta": {
-      "title": "Ste Pripravení Začať?",
-      "description": "Získajte dedikovaný tím do 7 dní. Garantujeme 100% dodanie načas a úsporu nákladov 20-40%.",
-      "button": "Začať Dnes"
+      "title": "Pripravení začať?",
+      "description": "Získajte vyhradený tím do 7 dní. Garantujeme 100 % dodanie načas a 20–40 % úsporu nákladov.",
+      "button": "Začnite dnes"
     },
-    "services": ["Vlastný Vývoj", "DevOps & Cloud", "UX/UI Dizajn", "Zabezpečenie Kvality", "Vzdelávanie & Školenie"],
-    "company": ["O Nás", "Náš Tím", "Kariéry", "Prípadové Štúdie", "Blog"],
-    "support": ["Dokumentácia", "API Referencia", "Centrum Pomoci", "Komunita", "Stav"]
+    "services": ["Vlastný vývoj", "DevOps & Cloud", "UX/UI dizajn", "Zabezpečenie kvality", "Vzdelávanie & školenia"],
+    "company": ["O nás", "Náš tím", "Kariéra", "Prípadové štúdie", "Blog"],
+    "support": ["Dokumentácia", "API referencie", "Help centrum", "Komunita", "Stav služby"]
   },
-  "portfolio": {
-    "badge": "Naše Práce",
-    "title": "Úspešné",
-    "titleHighlight": "Projekty",
-    "subtitle": "Prezrite si vzorky našich najúspešnejších projektov a technologických riešení",
-    "projects": {
-      "featured": {
-        "title": "Hlavné Projekty",
-        "description": "Naše najvýznamnejšie a najúspešnejšie realizácie"
+  "hiring": {
+    "badge": "Pridajte sa k nám",
+    "title": "Hľadáme",
+    "titleHighlight": "talenty",
+    "subtitle": "Hľadáme inovatívne mysle s vášňou pre technológie, tvorivosť a skutočný dopad. Pridajte sa k nášmu tímu expertov a pomôžte formovať budúcnosť digitálnych riešení.",
+    "skillsNeeded": "Požadované zručnosti",
+    "positions": {
+      "programming": {
+        "title": "Softvérový vývoj",
+        "description": "Budujte špičkové aplikácie a škálovateľné systémy pre podniky na celom svete.",
+        "skills": ["React/Next.js", "Node.js", "TypeScript", "Python", "Cloud služby", "DevOps"]
       },
-      "categories": {
-        "webApps": "Webové Aplikácie",
-        "webapp": "Webové Aplikácie",
-        "mobileApps": "Mobilné Aplikácie",
-        "ecommerce": "E-commerce",
-        "saas": "SaaS Platformy",
-        "corporate": "Firemné Weby",
-        "startup": "Startup MVP"
+      "marketing": {
+        "title": "Digitálny marketing",
+        "description": "Rast poháňajte inovatívnymi marketingovými stratégiami a dátovo riadenými kampaňami.",
+        "skills": ["Content stratégia", "SEO/SEM", "Analytika", "Brand management", "Growth hacking", "Marketingová automatizácia"]
       },
-      "cta": {
-        "viewProject": "Prezrieť Projekt",
-        "liveDemo": "Živá Ukážka",
-        "caseStudy": "Prípadová Štúdia"
+      "ai": {
+        "title": "AI & strojové učenie",
+        "description": "Vyvíjajte inteligentné riešenia, ktoré transformujú spôsob, akým podniky pôsobia a konkurujú.",
+        "skills": ["Strojové učenie", "Data science", "Neuronové siete", "NLP", "Počítačové videnie", "AI etika"]
+      },
+      "socialMedia": {
+        "title": "Sociálne siete & obsah",
+        "description": "Tvoríte pútavý obsah a budujete komunity, ktoré prepájajú značky s publikom.",
+        "skills": ["Tvorba obsahu", "Správa komunity", "Vizuálny dizajn", "Tvorba videí", "Vzťahy s influencermi", "Sociálna analytika"]
       }
     },
-    "stats": {
-      "projectsCompleted": {
-        "number": "15+",
-        "label": "Dokončených Projektov"
-      },
-      "clientSatisfaction": {
-        "number": "100%",
-        "label": "Spokojnosť Klientov"
-      },
-      "avgDeliveryTime": {
-        "number": "45 dní",
-        "label": "Priemerný Čas Dodania"
-      }
-    },
-    "testimonials": {
-      "title": "Čo Hovoria Naši Klienti",
-      "subtitle": "Reálne skúsenosti od skutočných klientov",
-      "badge": "Recenzie Klientov",
-      "viewAll": "Zobraziť Všetky Recenzie",
-      "rating": "Hodnotenie",
-      "reviews": [
-        {
-          "id": "michael-j",
-          "name": "Michael J.",
-          "role": "Projektový manažér",
-          "company": "IT spoločnosť",
-          "content": "RISE.SK je spoľahlivý developer. Na projekte som im prideľoval úlohy priamo z Kanban boardu a tím ich efektívne plnil. Vrelo odporúčam každému, kto hľadá zodpovedného partnera.",
-          "rating": 5,
-          "tags": ["Vývoj", "Projektové riadenie", "Spoľahlivosť"]
+    "whyJoinUs": {
+      "title": "Prečo sa pridať k Rise.sk?",
+      "perks": {
+        "innovation": {
+          "title": "Inovácia na prvom mieste",
+          "description": "Pracujte na špičkových projektoch s najnovšími technológiami a metódami."
         },
-        {
-          "id": "matej-s",
-          "name": "Matej Š.",
-          "role": "Majiteľ firmy",
-          "company": "Digitálna agentúra",
-          "content": "Ďakujem za rýchle dohodnutie konzultácie. RISE.SK mi pomohli vypracovať nástroj na analýzu webovej stránky – konečne sa projekt posunul. 5/5!",
-          "rating": 5,
-          "tags": ["Konzultácie", "Webová analýza", "Rýchla odozva"]
+        "team": {
+          "title": "Úžasný tím",
+          "description": "Spolupracujte so senior expertmi, ktorí sa vášnivo venujú kvalite a rastu."
         },
-        {
-          "id": "tomas-v",
-          "name": "Tomáš V.",
-          "role": "Dátový analytik",
-          "company": "FinTech startup",
-          "content": "Tréning SQL databáz s RISE.SK bol pútavý a praktický. Jasne vysvetlili aj pokročilé techniky, odpovedali na všetky otázky a krok za krokom vyriešili zložité problémy. Teraz sa pri práci s SQL cítim omnoho istejšie.",
-          "rating": 5,
-          "tags": ["SQL školenie", "Databázy", "Vzdelávanie"]
+        "culture": {
+          "title": "Skvelá kultúra",
+          "description": "Flexibilné pracovné prostredie, ktoré oceňuje tvorivosť, učenie a rovnováhu medzi prácou a životom."
         },
-        {
-          "id": "timotej-l",
-          "name": "Timotej L.",
-          "role": "Junior developer",
-          "company": "Softvérová spoločnosť",
-          "content": "S Pythonom som začínal úplne od nuly. RISE.SK mi v priateľskej atmosfére rýchlo objasnili problém, kód zrazu fungoval a pokroky boli okamžité. Odporúčam každému, kto chce zvládnuť Python rýchlo a efektívne.",
-          "rating": 5,
-          "tags": ["Python", "Školenie", "Pre začiatočníkov"]
-        },
-        {
-          "id": "pavel-k",
-          "name": "Pavel K.",
-          "role": "Softvérový inžinier",
-          "company": "Hardvérová spoločnosť",
-          "content": "RISE.SK mi veľmi pomohli s projektom v C. Profesionálny prístup, jasné vysvetlenie, výsledok na jednotku. Odporúčam 5/5 ★.",
-          "rating": 5,
-          "tags": ["C programovanie", "Profesionalita", "Riešenie problémov"]
-        },
-        {
-          "id": "rene",
-          "name": "René",
-          "role": "Developer",
-          "company": "Firemný projekt",
-          "content": "Potreboval som v práci pomoc s Pythonom. RISE.SK nastavili jasný plán a lekcie boli zrozumiteľné aj praktické. Spoluprácu môžem len odporučiť.",
-          "rating": 5,
-          "tags": ["Python", "Firemné školenie", "Profesionálny rozvoj"]
-        },
-        {
-          "id": "jana-g",
-          "name": "Jana G.",
-          "role": "Rodič",
-          "company": "Vzdelávanie",
-          "content": "RISE.SK viedli môjho syna k programovaniu v angličtine. Lekcie boli vždy pripravené, zamerané na jeho ciele, a pokrok bol viditeľný pri každej hodine. Oceňujem aj profesionálnu angličtinu tímu.",
-          "rating": 5,
-          "tags": ["Vzdelávanie", "Programovanie pre mladých", "Angličtina"]
-        },
-        {
-          "id": "zuzana-p",
-          "name": "Zuzana P.",
-          "role": "Študentka",
-          "company": "Univerzita",
-          "content": "S RISE.SK mám doučovanie programovania. Komunikácia je bezproblémová, časovo sa prispôsobia, všetko vysvetlia a dbajú na to, aby som si riešenia vyskúšala sama. Skvelá podpora pri rozvoji praktických zručností.",
-          "rating": 5,
-          "tags": ["Doučovanie", "Programovanie", "Praktické zručnosti"]
-        },
-        {
-          "id": "roman-s",
-          "name": "Roman S.",
-          "role": "Vysokoškolský študent",
-          "company": "Prvý ročník VŠ",
-          "content": "Som v prvom ročníku VŠ a RISE.SK ma doučujú programovanie. Všetko super vysvetlia, sú spoľahliví a v tom, čo robia, sa naozaj vyznajú.",
-          "rating": 5,
-          "tags": ["Univerzita", "Programovanie", "Mentoring"]
-        },
-        {
-          "id": "daniel-k",
-          "name": "Daniel K.",
-          "role": "Študent",
-          "company": "Vzdelávanie",
-          "content": "Profesionalita na každom kroku – RISE.SK dokázali zrozumiteľne vysvetliť každý koncept a odpovedať na všetky otázky. Super doučovanie, odporúčam.",
-          "rating": 5,
-          "tags": ["Vzdelávanie", "Profesionalita", "Jasné vysvetlenie"]
+        "growth": {
+          "title": "Kariérny rast",
+          "description": "Neustále možnosti vzdelávania a jasné cesty profesionálneho rozvoja."
         }
-      ]
+      }
     },
     "cta": {
-      "title": "Pripravení na Váš Vlastný Úspešný Projekt?",
-      "description": "Poďte vytvoriť niečo úžasné spoločne. Kontaktujte nás a prediskutujme vaše potreby.",
-      "startProject": "Začať Projekt",
-      "viewMore": "Zobraziť Viac Projektov"
-    },
-    "actions": {
-      "demo": "Demo",
-      "code": "Kód",
-      "privateProject": "Privátny projekt",
-      "viewProject": "Zobraziť Projekt",
-      "liveDemo": "Živá Ukážka"
+      "title": "Pripravení urobiť zmenu?",
+      "description": "Pošlite nám svoje portfólio, povedzte nám svoj príbeh a vytvorme spolu niečo úžasné.",
+      "applyNow": "Prihlásiť sa",
+      "emailDirect": "careers@rise.sk",
+      "note": "Všetky žiadosti osobne prehodnocujeme a ozveme sa do 48 hodín."
     }
-  },
-  "reviews": {
-    "title": "Čo Hovoria Naši Klienti",
-    "subtitle": "Reálne skúsenosti od skutočných klientov",
-    "badge": "Recenzie Klientov",
-    "viewAll": "Zobraziť Všetky Recenzie",
-    "rating": "Hodnotenie",
-    "navigation": {
-      "previous": "Predchádzajúce",
-      "next": "Ďalšie"
-    },
-    "cta": {
-      "title": "Pripravení Pripojiť sa k Našim Úspešným Príbehom?",
-      "description": "Poďte vytvoriť niečo úžasné spoločne. Kontaktujte nás a prediskutujme vaše potreby.",
-      "startProject": "Začať Váš Projekt",
-      "viewServices": "Zobraziť Naše Služby"
-    },
-    "reviews": [
-      {
-        "id": "michael-j",
-        "name": "Michael J.",
-        "role": "Projektový manažér",
-        "company": "IT spoločnosť",
-        "content": "RISE.SK je spoľahlivý developer. Na projekte som im prideľoval úlohy priamo z Kanban boardu a tím ich efektívne plnil. Vrelo odporúčam každému, kto hľadá zodpovedného partnera.",
-        "rating": 5,
-        "tags": ["Vývoj", "Projektové riadenie", "Spoľahlivosť"]
-      },
-      {
-        "id": "matej-s",
-        "name": "Matej Š.",
-        "role": "Majiteľ firmy",
-        "company": "Digitálna agentúra",
-        "content": "Ďakujem za rýchle dohodnutie konzultácie. RISE.SK mi pomohli vypracovať nástroj na analýzu webovej stránky – konečne sa projekt posunul. 5/5!",
-        "rating": 5,
-        "tags": ["Konzultácie", "Webová analýza", "Rýchla odozva"]
-      },
-      {
-        "id": "tomas-v",
-        "name": "Tomáš V.",
-        "role": "Dátový analytik",
-        "company": "FinTech startup",
-        "content": "Tréning SQL databáz s RISE.SK bol pútavý a praktický. Jasne vysvetlili aj pokročilé techniky, odpovedali na všetky otázky a krok za krokom vyriešili zložité problémy. Teraz sa pri práci s SQL cítim omnoho istejšie.",
-        "rating": 5,
-        "tags": ["SQL školenie", "Databázy", "Vzdelávanie"]
-      },
-      {
-        "id": "timotej-l",
-        "name": "Timotej L.",
-        "role": "Junior developer",
-        "company": "Softvérová spoločnosť",
-        "content": "S Pythonom som začínal úplne od nuly. RISE.SK mi v priateľskej atmosfére rýchlo objasnili problém, kód zrazu fungoval a pokroky boli okamžité. Odporúčam každému, kto chce zvládnuť Python rýchlo a efektívne.",
-        "rating": 5,
-        "tags": ["Python", "Školenie", "Pre začiatočníkov"]
-      },
-      {
-        "id": "pavel-k",
-        "name": "Pavel K.",
-        "role": "Softvérový inžinier",
-        "company": "Hardvérová spoločnosť",
-        "content": "RISE.SK mi veľmi pomohli s projektom v C. Profesionálny prístup, jasné vysvetlenie, výsledok na jednotku. Odporúčam 5/5 ★.",
-        "rating": 5,
-        "tags": ["C programovanie", "Profesionalita", "Riešenie problémov"]
-      },
-      {
-        "id": "rene",
-        "name": "René",
-        "role": "Developer",
-        "company": "Firemný projekt",
-        "content": "Potreboval som v práci pomoc s Pythonom. RISE.SK nastavili jasný plán a lekcie boli zrozumiteľné aj praktické. Spoluprácu môžem len odporučiť.",
-        "rating": 5,
-        "tags": ["Python", "Firemné školenie", "Profesionálny rozvoj"]
-      },
-      {
-        "id": "jana-g",
-        "name": "Jana G.",
-        "role": "Rodič",
-        "company": "Vzdelávanie",
-        "content": "RISE.SK viedli môjho syna k programovaniu v angličtine. Lekcie boli vždy pripravené, zamerané na jeho ciele, a pokrok bol viditeľný pri každej hodine. Oceňujem aj profesionálnu angličtinu tímu.",
-        "rating": 5,
-        "tags": ["Vzdelávanie", "Programovanie pre mladých", "Angličtina"]
-      },
-      {
-        "id": "zuzana-p",
-        "name": "Zuzana P.",
-        "role": "Študentka",
-        "company": "Univerzita",
-        "content": "Mám programovacie doučovanie s RISE.SK. Komunikácia je bezproblémová, časovo sa prispôsobia, všetko vysvetlia a dbajú na to, aby som si riešenia skúsila sama. Super podpora pre rozvoj praktických zručností.",
-        "rating": 5,
-        "tags": ["Doučovanie", "Programovacie vzdelávanie", "Praktické zručnosti"]
-      },
-      {
-        "id": "roman-s",
-        "name": "Roman S.",
-        "role": "Študent VŠ",
-        "company": "Prvý ročník VŠ",
-        "content": "Som v prvom ročníku VŠ a RISE.SK ma doučujú programovanie. Všetko super vysvetlia, sú spoľahliví a v tom, čo robia, sa naozaj vyznajú.",
-        "rating": 5,
-        "tags": ["Univerzita", "Programovanie", "Mentoring"]
-      },
-      {
-        "id": "daniel-k",
-        "name": "Daniel K.",
-        "role": "Študent",
-        "company": "Vzdelávanie",
-        "content": "Profesionalita na každom kroku – RISE.SK dokázali zrozumiteľne vysvetliť každý koncept a odpovedať na všetky otázky. Super doučovanie, odporúčam.",
-        "rating": 5,
-        "tags": ["Vzdelávanie", "Profesionalita", "Jasné vysvetlenie"]
-      }
-    ]
-  },
-  "servicesEnhanced": {
-    "badge": "Naše Služby",
-    "title": "Čo pre vás",
-    "titleHighlight": "dokážeme vytvoriť",
-    "subtitle": "Sme technologickí experti s dlhoročnými skúsenosťami. Vytvárame riešenia, ktoré fungujú a prinášajú výsledky.",
-    "services": [
-      {
-        "title": "Moderné Weby",
-        "description": "Vytvárame profesionálne webové stránky, ktoré oslovujú zákazníkov a posilňujú vašu značku.",
-        "features": [
-          "Responzívny dizajn pre všetky zariadenia",
-          "SEO optimalizácia pre lepšiu viditeľnosť",
-          "Rýchle načítanie a bezpečnosť",
-          "Integrácia s modernými nástrojmi",
-          "CMS systémy pre jednoduchú správu"
-        ],
-        "experience": "10+ rokov skúseností"
-      },
-      {
-        "title": "Mobilné Aplikácie",
-        "description": "Vyvíjame iOS a Android aplikácie, ktoré zjednodušujú procesy a zvyšujú spokojnosť používateľov.",
-        "features": [
-          "Native vývoj pre iOS a Android",
-          "Offline funkcionalita a synchronizácia",
-          "Push notifikácie a real-time funkcie",
-          "Optimalizované pre rýchlosť a batériu",
-          "Integrácia s cloudovými službami"
-        ],
-        "experience": "8+ rokov skúseností"
-      },
-      {
-        "title": "Softvér na Mieru",
-        "description": "Navrhujeme a implementujeme komplexné softvérové riešenia presne podľa vašich potrieb.",
-        "features": [
-          "Analýza procesov a návrh architektúry",
-          "Škálovateľné a bezpečné riešenia",
-          "API integrácie a mikroslužby",
-          "Databázový dizajn a optimalizácia",
-          "Údržba a dlhodobá podpora"
-        ],
-        "experience": "12+ rokov skúseností"
-      },
-      {
-        "title": "E-commerce Riešenia",
-        "description": "Komplexné online obchody s moderným dizajnom a pokročilými funkciami pre maximálne konverzie.",
-        "features": [
-          "Optimalizované pre konverzie",
-          "Platobné brány a bezpečnosť",
-          "Inventory management systémy",
-          "Analytics a reporting nástroje",
-          "Multi-platform integrácie"
-        ],
-        "experience": "6+ rokov skúseností"
-      },
-      {
-        "title": "AI & Data Analytics",
-        "description": "Využívame umelú inteligenciu a pokročilú analytiku na transformáciu vašich dát na konkurenčnú výhodu.",
-        "features": [
-          "Machine learning modely",
-          "Prediktívna analytika",
-          "Automatizácia procesov s AI",
-          "Real-time dashboardy",
-          "Big data spracovanie"
-        ],
-        "experience": "5+ rokov skúseností"
-      },
-      {
-        "title": "Digital Marketing Tech",
-        "description": "Technické riešenia pre efektívny digitálny marketing a automatizáciu marketingových procesov.",
-        "features": [
-          "Marketing automation nástroje",
-          "CRM integrácie a workflows",
-          "A/B testing platformy",
-          "Social media management",
-          "Performance tracking systémy"
-        ],
-        "experience": "7+ rokov skúseností"
-      }
-    ],
-    "labels": {
-      "expertise": "Naša expertíza",
-      "features": "Čo zahŕňame"
-    },
-    "buttons": {
-      "discuss": "Prediskutujme projekt",
-      "contact": "Kontaktujte nás",
-      "references": "Naše referencie"
-    },
-    "cta": {
-      "title": "Chcete prediskutovať váš projekt?",
-      "description": "Radi sa s vami porozprávame o vašich potrebách. Máme skúsenosti s rôznymi typmi projektov a dokážeme nájsť riešenie aj pre zložité požiadavky."
-    }
-  },
-  "testimonials": {
-    "title": "Čo Hovoria Naši Klienti",
-    "subtitle": "Reálne skúsenosti od skutočných klientov",
-    "badge": "Recenzie Klientov",
-    "viewAll": "Zobraziť Všetky Recenzie",
-    "rating": "Hodnotenie",
-    "navigation": {
-      "previous": "Predchádzajúce",
-      "next": "Ďalšie"
-    },
-    "cta": {
-      "title": "Pripravení na Váš Vlastný Úspešný Príbeh?",
-      "description": "Pridajte sa k našim spokoným klientom a zažite rozdiel práce s odhodlanými technologickými expertmi. Prediskutujme váš projekt ešte dnes.",
-      "startProject": "Začať Váš Projekt",
-      "viewServices": "Zobraziť Naše Služby"
-    },
-    "reviews": [
-      {
-        "id": "michael-j",
-        "name": "Michael J.",
-        "role": "Projektový manažér",
-        "company": "IT spoločnosť",
-        "content": "RISE.SK je spoľahlivý developer. Na projekte som im prideľoval úlohy priamo z Kanban boardu a tím ich efektívne plnil. Vrelo odporúčam každému, kto hľadá zodpovedného partnera.",
-        "rating": 5,
-        "tags": ["Vývoj", "Projektové riadenie", "Spoľahlivosť"]
-      },
-      {
-        "id": "matej-s",
-        "name": "Matej Š.",
-        "role": "Majiteľ firmy",
-        "company": "Digitálna agentúra",
-        "content": "Ďakujem za rýchle dohodnutie konzultácie. RISE.SK mi pomohli vypracovať nástroj na analýzu webovej stránky – konečne sa projekt posunul. 5/5!",
-        "rating": 5,
-        "tags": ["Konzultácie", "Webová analýza", "Rýchla odozva"]
-      },
-      {
-        "id": "tomas-v",
-        "name": "Tomáš V.",
-        "role": "Dátový analytik",
-        "company": "FinTech startup",
-        "content": "Tréning SQL databáz s RISE.SK bol pútavý a praktický. Jasne vysvetlili aj pokročilé techniky, odpovedali na všetky otázky a krok za krokom vyriešili zložité problémy. Teraz sa pri práci s SQL cítim omnoho istejšie.",
-        "rating": 5,
-        "tags": ["SQL školenie", "Databázy", "Vzdelávanie"]
-      },
-      {
-        "id": "timotej-l",
-        "name": "Timotej L.",
-        "role": "Junior developer",
-        "company": "Softvérová spoločnosť",
-        "content": "S Pythonom som začínal úplne od nuly. RISE.SK mi v priateľskej atmosfére rýchlo objasnili problém, kód zrazu fungoval a pokroky boli okamžité. Odporúčam každému, kto chce zvládnuť Python rýchlo a efektívne.",
-        "rating": 5,
-        "tags": ["Python", "Školenie", "Pre začiatočníkov"]
-      },
-      {
-        "id": "pavel-k",
-        "name": "Pavel K.",
-        "role": "Softvérový inžinier",
-        "company": "Hardvérová spoločnosť",
-        "content": "RISE.SK mi veľmi pomohli s projektom v C. Profesionálny prístup, jasné vysvetlenie, výsledok na jednotku. Odporúčam 5/5 ★.",
-        "rating": 5,
-        "tags": ["C programovanie", "Profesionalita", "Riešenie problémov"]
-      }
-    ]
   }
 }
