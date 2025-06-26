@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/BreadcrumbSchema';
+import Footer from '@/components/Footer';
+import Navigation from '@/components/Navigation';
 import ServicesEnhanced from '@/components/ServicesEnhanced';
 
 export const metadata: Metadata = {
@@ -44,11 +46,15 @@ export default async function ServicesPageSK({
 }) {
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'sluzby');
-  
+
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen">
       <BreadcrumbSchema items={breadcrumbs} page="sluzby" />
-      <ServicesEnhanced />
+      <Navigation />
+      <main>
+        <ServicesEnhanced />
+      </main>
+      <Footer />
     </div>
   );
 }

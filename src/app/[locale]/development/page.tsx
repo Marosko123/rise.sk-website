@@ -9,6 +9,7 @@ import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
 import Portfolio from '@/components/Portfolio';
 import Reviews from '@/components/Reviews';
+import ServicesEnhanced from '@/components/ServicesEnhanced';
 
 export const metadata: Metadata = {
   title: 'Custom Software Development Services | Programming Teams Slovakia',
@@ -50,7 +51,7 @@ export default async function DevelopmentPage({
 }) {
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'development');
-  
+
   return (
     <div className="min-h-screen bg-black">
       <BreadcrumbSchema items={breadcrumbs} page="development" />
@@ -58,6 +59,7 @@ export default async function DevelopmentPage({
       <Navigation />
       <Hero />
       <About />
+      <ServicesEnhanced />
       <Portfolio />
       <Reviews />
       <Contact />

@@ -15,7 +15,7 @@
       "description": "Software development, technical consulting, and web development services",
       "cta": "Explore Development"
     },
-    "footer": "© 2025 rise.sk s.r.o. All rights reserved."
+    "footer": "© 2025 Rise.sk s.r.o. All rights reserved."
   },
   "education": {
     "title": "Educational Services",
@@ -48,8 +48,8 @@
       "bulletProof": "Bulletproof",
       "digitalProducts": "Digital Products"
     },
-    "description": "is a Bratislava-based technology consulting firm of senior experts who architect scalable digital solutions and deliver enterprise-grade software development.",
-    "subtitle": "Trusted partners for mission-critical applications, delivered with proven expertise and zero compromises on quality.",
+    "description": "We are a comprehensive technology solutions company specializing in web development, mobile applications, and custom software.",
+    "subtitle": "If you're looking for a reliable partner for your digital project, you're in the right place!",
     "startProject": "Start Project",
     "freeConsultation": "Free Consultation",
     "metrics": {
@@ -68,10 +68,10 @@
     }
   },
   "about": {
-    "badge": "About rise.sk",
+    "badge": "About Rise.sk",
     "title": "What Makes Us Different",
-    "titleHighlight": "From Traditional Outsourcing",
-    "description": "We are more than just a development company. We are partners who combine deep technological knowledge with business thinking. We design every project for maximum scalability, security, and measurable success.",
+    "titleHighlight": "From Other Companies",
+    "description": "We are more than just a development company. We are partners who combine technological knowledge with business thinking. We design every project for maximum scalability, security, and measurable success.",
     "stats": {
       "delivery": {
         "number": "100%",
@@ -89,7 +89,7 @@
         "description": "From briefing to active development"
       },
       "expertise": {
-        "number": "10+",
+        "number": "6+",
         "label": "Years Experience",
         "description": "Senior expertise in enterprise solutions"
       }
@@ -101,7 +101,7 @@
       },
       "teams": {
         "title": "Cross-Functional Teams",
-        "description": "PM + 2 FE developers + 1 BE developer + QA ready in less than 7 days for immediate impact."
+        "description": "PM developers ready in 7 days for immediate impact."
       },
       "performance": {
         "title": "Results That Speak for Themselves",
@@ -137,7 +137,7 @@
           "Integration with modern tools",
           "CMS systems for easy management"
         ],
-        "experience": "10+ years experience"
+        "experience": "6+ years experience"
       },
       {
         "title": "Mobile Applications",
@@ -149,7 +149,7 @@
           "Optimized for speed and battery",
           "Integration with cloud services"
         ],
-        "experience": "8+ years experience"
+        "experience": "3+ years experience"
       },
       {
         "title": "Custom Software",
@@ -161,7 +161,7 @@
           "Database design and optimization",
           "Maintenance and long-term support"
         ],
-        "experience": "12+ years experience"
+        "experience": "6+ years experience"
       },
       {
         "title": "E-commerce Solutions",
@@ -197,7 +197,7 @@
           "Social media management",
           "Performance tracking systems"
         ],
-        "experience": "7+ years experience"
+        "experience": "2+ years experience"
       }
     ],
     "labels": {
@@ -269,7 +269,7 @@
   },
   "reviews": {
     "title": "What Our Clients Say",
-    "subtitle": "Real experiences from real clients",
+    "subtitle": "Experiences from our clients",
     "badge": "Client Reviews",
     "viewAll": "View All Reviews",
     "rating": "Rating",
@@ -426,7 +426,7 @@
     "mainTitle": "Let's Create",
     "mainTitleHighlight": "Something Exceptional",
     "getInTouch": "Get in Touch",
-    "description": "Ready to transform your digital presence? Our team of senior technology experts is here to discuss your project and propose a tailored solution that delivers real results.",
+    "description": "Ready to collaborate? Contact us and let's discuss your project. Our team is ready to help you achieve your goals.",
     "whyChoose": "Why Choose Rise.sk?",
     "onTimeDelivery": "On-Time Delivery",
     "teamReady": "Team Ready",
@@ -483,7 +483,7 @@
     "invalidEmail": "Please enter a valid email address."
   },
   "companyInfo": {
-    "name": "rise.sk s.r.o.",
+    "name": "Rise.sk s.r.o.",
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
     "taxId": "2122465094",
@@ -501,7 +501,7 @@
     }
   },
   "footer": {
-    "description": "We create innovative digital solutions that push boundaries. From custom development to DevOps excellence – we build products that grow with you.",
+    "description": "We create innovative digital solutions that push boundaries. From faster development to comprehensive software solutions. We're here for you!",
     "sections": {
       "services": "Services",
       "company": "Company"

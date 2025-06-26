@@ -15,7 +15,7 @@
       "description": "Vývoj softvéru, technické poradenstvo a služby webového vývoja",
       "cta": "Preskúmať vývoj"
     },
-    "footer": "© 2025 rise.sk s.r.o. Všetky práva vyhradené."
+    "footer": "© 2025 Rise.sk s.r.o. Všetky práva vyhradené."
   },
   "education": {
     "title": "Vzdelávacie služby",
@@ -48,8 +48,8 @@
       "bulletProof": "Inovatívne",
       "digitalProducts": "digitálne produkty"
     },
-    "description": "sídliaca v Bratislave technologická poradenská firma senior expertov, ktorí navrhujú škálovateľné digitálne riešenia a dodávajú softvér na úrovni podniku.",
-    "subtitle": "Dôveryhodní partneri pre aplikácie kľúčové pre misiu, dodávané s overenými expertízami a bez kompromisov v kvalite.",
+    "description": "Sme spoločnosť poskytujúca komplexné technologické riešenia, ktorá sa špecializuje na vývoj webov, mobilných aplikácií a softvéru na mieru.",
+    "subtitle": "Ak hľadáte spoľahlivého partnera pre Váš digitálny projekt, ste na správnom mieste!",
     "startProject": "Spustiť projekt",
     "freeConsultation": "Bezplatná konzultácia",
     "metrics": {
@@ -68,10 +68,10 @@
     }
   },
   "about": {
-    "badge": "O rise.sk",
+    "badge": "O Rise.sk",
     "title": "Čo nás odlišuje",
-    "titleHighlight": "od tradičného outsourcingu",
-    "description": "Nie sme iba vývojová firma. Sme partneri, ktorí kombinujú hlboké technologické znalosti s obchodným myslením. Každý projekt navrhujeme pre maximálnu škálovateľnosť, bezpečnosť a merateľný úspech.",
+    "titleHighlight": "od ostatných firiem",
+    "description": "Nie sme iba vývojová firma. Sme partneri, ktorí kombinujú technologické znalosti s obchodným myslením. Každý projekt navrhujeme pre maximálnu škálovateľnosť, bezpečnosť a merateľný úspech.",
     "stats": {
       "delivery": {
         "number": "100 %",
@@ -89,7 +89,7 @@
         "description": "Od briefu po aktívny vývoj"
       },
       "expertise": {
-        "number": "10+",
+        "number": "6+",
         "label": "Rokov skúseností",
         "description": "Senior expertíza v podnikových riešeniach"
       }
@@ -101,7 +101,7 @@
       },
       "teams": {
         "title": "Multifunkčné tímy",
-        "description": "PM + 2 FE vývojári + 1 BE vývojár + QA pripravení do 7 dní pre okamžitý efekt."
+        "description": "PM vývojári pripravení do 7 dní pre okamžitý efekt."
       },
       "performance": {
         "title": "Výsledky, ktoré hovoria samy za seba",
@@ -137,7 +137,7 @@
           "Integrácia s modernými nástrojmi",
           "CMS systémy pre jednoduchú správu"
         ],
-        "experience": "10+ rokov skúseností"
+        "experience": "6+ rokov skúseností"
       },
       {
         "title": "Mobilné aplikácie",
@@ -149,7 +149,7 @@
           "Optimalizované pre rýchlosť a batériu",
           "Integrácia s cloudovými službami"
         ],
-        "experience": "8+ rokov skúseností"
+        "experience": "3+ rokov skúseností"
       },
       {
         "title": "Vlastný softvér",
@@ -161,7 +161,7 @@
           "Návrh databáz a optimalizácia",
           "Údržba a dlhodobá podpora"
         ],
-        "experience": "12+ rokov skúseností"
+        "experience": "6+ rokov skúseností"
       },
       {
         "title": "E‑commerce riešenia",
@@ -197,7 +197,7 @@
           "Správa sociálnych sietí",
           "Systémy sledovania výkonu"
         ],
-        "experience": "7+ rokov skúseností"
+        "experience": "2+ rokov skúseností"
       }
     ],
     "labels": {
@@ -269,7 +269,7 @@
   },
   "reviews": {
     "title": "Čo hovoria naši klienti",
-    "subtitle": "Skutočné skúsenosti od skutočných klientov",
+    "subtitle": "Skúsenosti od našich klientov",
     "badge": "Recenzie klientov",
     "viewAll": "Zobraziť všetky recenzie",
     "rating": "Hodnotenie",
@@ -426,7 +426,7 @@
     "mainTitle": "Vytvorme",
     "mainTitleHighlight": "niečo výnimočné",
     "getInTouch": "Spojte sa s nami",
-    "description": "Pripravení transformovať svoju digitálnu prítomnosť? Náš tím senior technologických expertov je tu, aby prediskutoval váš projekt a navrhol šité riešenie prinášajúce reálne výsledky.",
+    "description": "Pripravení na spoluprácu? Kontaktujte nás a prediskutujme váš projekt. Náš tím je pripravený pomôcť vám dosiahnuť vaše ciele.",
     "whyChoose": "Prečo si vybrať Rise.sk?",
     "onTimeDelivery": "Dodanie načas",
     "teamReady": "Tím pripravený",
@@ -483,7 +483,7 @@
     "invalidEmail": "Zadajte platnú emailovú adresu."
   },
   "companyInfo": {
-    "name": "rise.sk s.r.o.",
+    "name": "Rise.sk s.r.o.",
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
     "taxId": "2122465094",
@@ -501,7 +501,7 @@
     }
   },
   "footer": {
-    "description": "Vytvárame inovatívne digitálne riešenia, ktoré posúvajú hranice. Od vlastného vývoja po DevOps výnimočnosť – staviame produkty, ktoré rastú s vami.",
+    "description": "Vytvárame inovatívne digitálne riešenia, ktoré posúvajú hranice. Od rýchlejšieho vývoja po komplexné softvérové riešenia. Sme tu pre vás!",
     "sections": {
       "services": "Služby",
       "company": "Spoločnosť"

@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/BreadcrumbSchema';
 import FAQSchema, { getFAQsForPage } from '@/components/FAQSchema';
+import Footer from '@/components/Footer';
+import Navigation from '@/components/Navigation';
 import ServicesEnhanced from '@/components/ServicesEnhanced';
 
 export const metadata: Metadata = {
@@ -44,12 +46,16 @@ export default async function ServicesPage({
 }) {
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'services');
-  
+
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen">
       <BreadcrumbSchema items={breadcrumbs} page="services" />
       <FAQSchema faqs={getFAQsForPage('services')} page="services" />
-      <ServicesEnhanced />
+      <Navigation />
+      <main>
+        <ServicesEnhanced />
+      </main>
+      <Footer />
     </div>
   );
 }

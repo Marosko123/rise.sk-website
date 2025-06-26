@@ -51,7 +51,7 @@ export default async function DevelopmentPageSK({
 }) {
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'vyvoj');
-  
+
   return (
     <div className='min-h-screen'>
       <BreadcrumbSchema items={breadcrumbs} page="vyvoj" />
