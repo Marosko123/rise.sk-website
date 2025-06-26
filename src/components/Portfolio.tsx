@@ -349,12 +349,17 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
               <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
                 {t('cta.description')}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-8 py-4 rounded-full text-lg font-semibold text-white shadow-2xl transition-colors duration-300">
+              <div className="flex justify-center">
+                <button 
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  className="bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-8 py-4 rounded-full text-lg font-semibold text-white shadow-2xl transition-colors duration-300"
+                >
                   {t('cta.startProject')}
-                </button>
-                <button className="bg-white/10 border-2 border-[var(--primary)]/50 px-8 py-4 rounded-full text-lg font-semibold text-white hover:bg-[var(--primary)]/10 transition-all duration-300">
-                  {t('cta.viewMore')}
                 </button>
               </div>
             </div>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import {
   AlertCircle,
   CheckCircle,
+  Copy,
   Mail,
   MapPin,
   Phone,
@@ -34,6 +35,20 @@ export default function Contact() {
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
+
+  // Copy functionality state
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  // Copy to clipboard function
+  const copyToClipboard = async (text: string, fieldName: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(fieldName);
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch {
+      // Silently fail if clipboard API is not available
+    }
+  };
 
   // Read localStorage and prefill form
   useEffect(() => {
@@ -288,6 +303,20 @@ export default function Contact() {
                         {item.value}
                       </div>
                     </div>
+                    {/* Copy Button */}
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => copyToClipboard(item.value, `contact-${index}`)}
+                      className='ml-3 p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                      title='Copy to clipboard'
+                    >
+                      {copiedField === `contact-${index}` ? (
+                        <CheckCircle className='w-4 h-4 text-green-400' />
+                      ) : (
+                        <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
+                      )}
+                    </motion.button>
                   </div>
                 </motion.div>
               ))}
