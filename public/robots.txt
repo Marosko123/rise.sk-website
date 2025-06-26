@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rise.sk/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Block unnecessary paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# TODO: Consider adding specific crawl instructions for different user agents
+# TODO: Add Host directive once primary domain is confirmed
+# TODO: Consider adding disallow for admin areas and private content

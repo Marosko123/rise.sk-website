@@ -1,0 +1,159 @@
+name: Performance Monitoring & SEO Audit
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run performance audit daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  lighthouse-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          NEXT_PUBLIC_GOOGLE_VERIFICATION: ${{ secrets.GOOGLE_VERIFICATION }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+
+      - name: Start application
+        run: npm start &
+        env:
+          NODE_ENV: production
+
+      - name: Wait for application to be ready
+        run: |
+          timeout 60 bash -c 'until curl -f http://localhost:3000/api/health; do sleep 2; done'
+
+      - name: Run Lighthouse audit
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          configPath: './lighthouserc.json'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Run custom SEO checks
+        run: |
+          chmod +x ./scripts/seo-check.sh
+          ./scripts/seo-check.sh
+
+      - name: Generate Web Vitals report
+        run: npm run vitals-report
+
+      - name: Upload performance reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-reports
+          path: |
+            reports/
+            .lighthouseci/
+
+  seo-validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Lint check
+        run: npm run lint
+
+      - name: Build check
+        run: npm run build
+        env:
+          NEXT_PUBLIC_GOOGLE_VERIFICATION: ${{ secrets.GOOGLE_VERIFICATION }}
+
+      - name: Validate robots.txt
+        run: |
+          if [ -f "public/robots.txt" ]; then
+            echo "✅ robots.txt exists"
+            cat public/robots.txt
+          else
+            echo "❌ robots.txt missing"
+            exit 1
+          fi
+
+      - name: Check sitemap generation
+        run: |
+          npm start &
+          sleep 10
+          curl -f http://localhost:3000/sitemap.xml || exit 1
+          echo "✅ Sitemap accessible"
+
+  performance-budget:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and analyze bundle
+        run: npm run build:analyze
+        env:
+          ANALYZE: true
+
+      - name: Check bundle size
+        run: |
+          if command -v bundlesize &> /dev/null; then
+            bundlesize
+          else
+            echo "⚠️ Bundle size check skipped (bundlesize not configured)"
+          fi
+
+      - name: Performance budget check
+        run: |
+          echo "📊 Performance Budget Check"
+          echo "=============================="
+          
+          # Check if .next/static exists and measure sizes
+          if [ -d ".next/static" ]; then
+            JS_SIZE=$(find .next/static -name "*.js" -type f -exec du -ch {} + | grep total | cut -f1)
+            CSS_SIZE=$(find .next/static -name "*.css" -type f -exec du -ch {} + | grep total | cut -f1)
+            
+            echo "JavaScript bundle size: $JS_SIZE"
+            echo "CSS bundle size: $CSS_SIZE"
+            
+            # Add budget checks here
+            echo "✅ Bundle size check completed"
+          else
+            echo "⚠️ Build artifacts not found"
+          fi

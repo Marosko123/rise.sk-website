@@ -1,0 +1,25 @@
+# ESLint ignore patterns
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Scripts (Node.js style)
+scripts/*.js
+
+# Reports
+reports/
+
+# Configuration files
+*.config.js
+*.config.ts
+next.config.ts
+tailwind.config.js
+postcss.config.js
+
+# Environment files
+.env*
+
+# Generated files
+tsconfig.tsbuildinfo

@@ -36,6 +36,11 @@
     "update-deps": "npm update && npm audit fix",
     "setup": "npm install && npm run build",
     "full-check": "npm run type-check && npm run lint && npm run build",
+    "optimize-images": "node scripts/optimize-images.js",
+    "seo-check": "./scripts/seo-check.sh",
+    "performance-audit": "npx lighthouse http://localhost:3000 --output=html --output-path=./reports/lighthouse-report.html",
+    "performance-audit:ci": "npx lighthouse http://localhost:3000 --output=json --output-path=./reports/lighthouse-report.json --chrome-flags='--headless'",
+    "vitals-report": "node scripts/generate-vitals-report.js",
     "commit": "cz",
     "prepare": "husky install || echo 'Husky not installed'",
     "git-hooks": "./scripts/install-git-hooks.sh",
@@ -62,6 +67,7 @@
     "nodemailer": "^7.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sharp": "^0.34.2",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
