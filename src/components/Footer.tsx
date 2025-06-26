@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Check, Copy, CreditCard, ExternalLink, FileText, Hash, Mail, MapPin, Phone, Users } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 export default function Footer() {
@@ -216,11 +216,41 @@ export default function Footer() {
               <div className='space-y-4'>
                 <div className='flex items-center space-x-3'>
                   <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Mail className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                      EMAIL
+                    </div>
+                    <a
+                      href={`mailto:${t('contact.values.email')}`}
+                      className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-sm'
+                    >
+                      {t('contact.values.email')}
+                    </a>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => copyToClipboard(t('contact.values.email'), 'email')}
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    title='Copy to clipboard'
+                  >
+                    {copiedField === 'email' ? (
+                      <Check className='w-3 h-3 text-green-400' />
+                    ) : (
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                    )}
+                  </motion.button>
+                </div>
+
+                <div className='flex items-center space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
                     <Phone className='w-4 h-4 text-[#b09155]' />
                   </div>
                   <div className='min-w-0 flex-1'>
                     <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
-                      {companyInfo('labels.phone')}
+                      PHONE
                     </div>
                     <a
                       href={`tel:${companyInfo('phone').replace(/\s/g, '')}`}
@@ -250,7 +280,7 @@ export default function Footer() {
                   </div>
                   <div className='min-w-0 flex-1'>
                     <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
-                      {companyInfo('labels.address')}
+                      OFFICE
                     </div>
                     <a
                       href={`https://maps.google.com/?q=${encodeURIComponent(companyInfo('address'))}`}

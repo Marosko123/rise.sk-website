@@ -6,7 +6,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useIsMobile } from '@/hooks/useIsMobile';
 
-import { Button } from './ui/Button';
 import { Card } from './ui/Card';
 import { Section } from './ui/Section';
 
@@ -202,34 +201,6 @@ export default function Reviews() {
               ))}
             </div>
           )}
-        </div>
-
-        {/* CTA Section - Simplified for performance */}
-        <div className="text-center mt-16">
-          <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] mb-4">
-              {t('cta.title')}
-            </h3>
-            <p className="text-[var(--foreground-muted)] text-lg mb-8 max-w-2xl mx-auto">
-              {t('cta.description')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                href="#contact"
-                variant="primary"
-                className="bg-[var(--primary)] hover:bg-[var(--primary-dark)] transition-colors duration-200"
-              >
-                {t('cta.startProject')}
-              </Button>
-              <Button
-                href="#services"
-                variant="outline"
-                className="border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-colors duration-200"
-              >
-                {t('cta.viewServices')}
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </Section>

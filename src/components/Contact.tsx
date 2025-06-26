@@ -258,33 +258,38 @@ export default function Contact() {
 
             <div className='space-y-6'>
               {contactInfo.map((item, index) => (
-                <motion.a
+                <motion.div
                   key={index}
-                  href={item.href}
-                  target={item.href.startsWith('http') ? '_blank' : undefined}
-                  rel={
-                    item.href.startsWith('http')
-                      ? 'noopener noreferrer'
-                      : undefined
-                  }
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className='flex items-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300 group'
-                  data-cursor='link'
+                  className='p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300 group'
                 >
-                  <div className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
-                    <item.icon className='w-6 h-6 text-white' />
-                  </div>
-                  <div className='ml-4'>
-                    <div className='text-sm text-gray-400 uppercase tracking-wide'>
-                      {item.label}
+                  <div className='flex items-center'>
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={
+                        item.href.startsWith('http')
+                          ? 'noopener noreferrer'
+                          : undefined
+                      }
+                      className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:shadow-lg'
+                      data-cursor='link'
+                    >
+                      <item.icon className='w-6 h-6 text-white' />
+                    </a>
+                    <div className='ml-4 flex-1'>
+                      <div className='text-sm text-gray-400 uppercase tracking-wide select-none'>
+                        {item.label}
+                      </div>
+                      <div className='text-white font-semibold select-text cursor-text'>
+                        {item.value}
+                      </div>
                     </div>
-                    <div className='text-white font-semibold'>{item.value}</div>
                   </div>
-                </motion.a>
+                </motion.div>
               ))}
             </div>
 
