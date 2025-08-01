@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-require-imports */
 
 /**
  * Web Vitals Report Generator for Rise.sk
@@ -271,8 +273,24 @@ function generateHTMLReport(data) {
 
 // Generate the report
 try {
-  const reportHtml = generateHTMLReport(mockVitalsData);
-  const reportPath = path.join(__dirname, '../reports/web-vitals-report.html');
+  console.log('🔧 Generating Web Vitals report...');
+  
+  // Validate data before processing
+  const validatedData = mockVitalsData.map(item => ({
+    ...item,
+    value: isNaN(item.value) ? 0 : item.value,
+    target: isNaN(item.target) ? 0 : item.target
+  }));
+  
+  const reportHtml = generateHTMLReport(validatedData);
+  const reportsDir = path.join(__dirname, '../reports');
+  
+  // Ensure reports directory exists
+  if (!fs.existsSync(reportsDir)) {
+    fs.mkdirSync(reportsDir, { recursive: true });
+  }
+  
+  const reportPath = path.join(reportsDir, 'web-vitals-report.html');
   
   fs.writeFileSync(reportPath, reportHtml);
   
@@ -281,6 +299,7 @@ try {
   console.log('🔗 Open the file in your browser to view the report');
   
 } catch (error) {
-  console.error('❌ Error generating Web Vitals report:', error);
+  console.error('❌ Error generating Web Vitals report:', error.message);
+  console.error('Stack trace:', error.stack);
   process.exit(1);
 }
