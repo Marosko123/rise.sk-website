@@ -91,7 +91,7 @@ export default function OptimizedImage({
 
   const imageProps = {
     src: imageSrc,
-    alt,
+    alt: alt || '',
     onError: handleError,
     quality,
     priority,
@@ -110,5 +110,5 @@ export default function OptimizedImage({
     Object.assign(imageProps, { fill: true, sizes });
   }
 
-  return <Image {...imageProps} />;
+  return <Image {...imageProps} alt={alt || ''} />;
 }
