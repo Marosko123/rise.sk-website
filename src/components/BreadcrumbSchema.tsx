@@ -39,11 +39,11 @@ export default function BreadcrumbSchema({ items, page = 'general' }: Breadcrumb
 
 // Helper function to generate breadcrumbs for different pages
 export function getBreadcrumbsForPage(
-  locale: 'en' | 'sk', 
+  locale: 'en' | 'sk',
   page: string
 ): BreadcrumbItem[] {
   const baseUrl = 'https://rise.sk';
-  
+
   const breadcrumbs: BreadcrumbItem[] = [
     {
       name: locale === 'en' ? 'Home' : 'Domov',
@@ -59,7 +59,7 @@ export function getBreadcrumbsForPage(
         url: `${baseUrl}/${locale}/${page}`
       });
       break;
-    
+
     case 'services':
     case 'sluzby':
       breadcrumbs.push({
@@ -67,7 +67,7 @@ export function getBreadcrumbsForPage(
         url: `${baseUrl}/${locale}/${page}`
       });
       break;
-    
+
     case 'contact':
     case 'kontakt':
       breadcrumbs.push({
@@ -75,22 +75,14 @@ export function getBreadcrumbsForPage(
         url: `${baseUrl}/${locale}/${page}`
       });
       break;
-    
+
     case 'portfolio':
       breadcrumbs.push({
         name: locale === 'en' ? 'Portfolio' : 'Portfólio',
         url: `${baseUrl}/${locale}/${page}`
       });
       break;
-    
-    case 'education':
-    case 'vzdelavanie':
-      breadcrumbs.push({
-        name: locale === 'en' ? 'Education' : 'Vzdelávanie',
-        url: `${baseUrl}/${locale}/${page}`
-      });
-      break;
-    
+
     default:
       // For unknown pages, don't add additional breadcrumb
       break;

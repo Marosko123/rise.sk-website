@@ -5,11 +5,6 @@
       "innovativeSolutions": "Technologickí experti"
     },
     "description": "Dôveryhodní partneri pre kritické softvérové projekty a digitálnu transformáciu.",
-    "education": {
-      "title": "VZDELÁVANIE",
-      "description": "Vzdelávacie poradenstvo, tvorba osnov a tréningové programy",
-      "cta": "Preskúmať vzdelávanie"
-    },
     "development": {
       "title": "VÝVOJ",
       "description": "Vývoj softvéru, technické poradenstvo a služby webového vývoja",
@@ -17,23 +12,10 @@
     },
     "footer": "© 2025 Rise.sk s.r.o. Všetky práva vyhradené."
   },
-  "education": {
-    "title": "Vzdelávacie služby",
-    "subtitle": "Posilňujeme vzdelávanie prostredníctvom inovatívnych riešení",
-    "backToHome": "Späť na hlavnú",
-    "inProgress": {
-      "title": "VO VÝVOJI",
-      "description": "Naše vzdelávacie oddelenie je momentálne vo vývoji. Usilovne pracujeme na poskytovaní komplexného vzdelávacieho poradenstva."
-    },
-    "contact": {
-      "title": "Kontaktujte nás"
-    }
-  },
   "navigation": {
     "about": "O nás",
     "services": "Služby",
     "development": "Vývoj",
-    "education": "Vzdelávanie",
     "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
     "reviews": "Referencie",

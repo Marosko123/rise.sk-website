@@ -5,7 +5,6 @@ import { getMessages } from 'next-intl/server';
 
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import LanguagePreferenceHandler from '@/components/LanguagePreferenceHandler';
-import PerformanceMonitor from '@/components/PerformanceMonitor';
 import { ScrollProgress } from '@/components/ScrollEffects';
 import ScrollToTop from '@/components/ScrollToTop';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
@@ -162,7 +161,6 @@ export default async function LocaleLayout({
           </NextIntlClientProvider>
         </SmoothScrollProvider>
         <ScrollToTop />
-        <PerformanceMonitor showInDevelopment={true} />
       </body>
     </html>
   );

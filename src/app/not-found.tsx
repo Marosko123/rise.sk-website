@@ -35,7 +35,7 @@ export default function NotFound() {
         <h2 className="text-3xl font-bold mb-4">
           Page Not Found
         </h2>
-        
+
         <p className="text-lg text-gray-300 mb-8">
           The page you are looking for might have been moved, deleted, or doesn&apos;t exist.
           Let&apos;s get you back on track with our professional software development services.
@@ -88,11 +88,6 @@ export default function NotFound() {
             <li>
               <Link href="/en/portfolio" className="hover:text-yellow-400 transition-colors">
                 → Portfolio & Case Studies
-              </Link>
-            </li>
-            <li>
-              <Link href="/en/education" className="hover:text-yellow-400 transition-colors">
-                → Programming Education & Training
               </Link>
             </li>
             <li>

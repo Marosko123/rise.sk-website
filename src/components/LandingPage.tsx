@@ -715,22 +715,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className='flex flex-col sm:flex-row gap-6 justify-center'>
-              <Link href='/education'>
-                <button
-                  className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105'
-                  style={{
-                    borderColor: '#B09155',
-                    backgroundColor: 'transparent'
-                  }}
-                >
-                  <span className='flex items-center justify-center space-x-3 select-none'>
-                    <span>🎓</span>
-                    <span>{t('education.title')}</span>
-                  </span>
-                </button>
-              </Link>
-
+            <div className='flex justify-center'>
               <Link href='/development'>
                 <button
                   className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105'
@@ -1009,45 +994,13 @@ export default function LandingPage() {
             </p>
           </div>
 
-          {/* Main Buttons with magnetic attraction */}
-          <div className='flex flex-col sm:flex-row gap-6 justify-center'>
-            <Link href='/education'>
-              <div
-                className='transition-transform duration-300 ease-out'
-                style={{
-                  transform: `translate(${getMagneticOffset(windowSize.width / 2 - 100, windowSize.height / 2 + 100).x}px, ${getMagneticOffset(windowSize.width / 2 - 100, windowSize.height / 2 + 100).y}px)`,
-                }}
-              >
-                <button
-                  className='relative px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden group'
-                  style={{
-                    borderColor: '#B09155',
-                    backgroundColor: 'transparent'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#B09155';
-                    e.currentTarget.style.boxShadow = '0 10px 25px rgba(176, 145, 85, 0.4)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  {/* Ripple effect */}
-                  <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 select-none pointer-events-none'></div>
-                  <span className='relative flex items-center justify-center space-x-3 select-none'>
-                    <span>🎓</span>
-                    <span>{t('education.title')}</span>
-                  </span>
-                </button>
-              </div>
-            </Link>
-
+          {/* Main Button with magnetic attraction */}
+          <div className='flex justify-center'>
             <Link href='/development'>
               <div
                 className='transition-transform duration-300 ease-out'
                 style={{
-                  transform: `translate(${getMagneticOffset(windowSize.width / 2 + 100, windowSize.height / 2 + 100).x}px, ${getMagneticOffset(windowSize.width / 2 + 100, windowSize.height / 2 + 100).y}px)`,
+                  transform: `translate(${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).x}px, ${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).y}px)`,
                 }}
               >
                 <button

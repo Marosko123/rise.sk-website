@@ -20,15 +20,6 @@ export const routing = defineRouting({
       hu: '/fejlesztes',
       fr: '/developpement'
     },
-    '/education': {
-      en: '/education',
-      sk: '/vzdelavanie',
-      cs: '/vzdelavani',
-      de: '/bildung',
-      es: '/educacion',
-      hu: '/oktatas',
-      fr: '/education'
-    },
     '/services': {
       en: '/services',
       sk: '/sluzby',

@@ -36,20 +36,6 @@ export const companyConfig = {
       ],
       department: 'development',
     },
-    michael: {
-      name: 'Michael Matejčík',
-      title: 'Co-Founder & Senior Education Consultant',
-      email: 'michael@rise.sk',
-      phone: '', // Fill with Michael's phone
-      photo: '', // Fill with photo path
-      linkedin: '', // Fill with LinkedIn URL
-      specializations: [
-        'Senior Educational Strategy',
-        'Enterprise Training Solutions',
-        'Advanced Curriculum Architecture',
-      ],
-      department: 'education',
-    },
   },
 
   // =====================================
@@ -63,7 +49,6 @@ export const companyConfig = {
 
     // Department emails
     development: 'development@rise.sk',
-    education: 'education@rise.sk',
     support: 'support@rise.sk',
     sales: 'sales@rise.sk',
 
@@ -147,10 +132,9 @@ export const companyConfig = {
     // SEO and meta
     defaultTitle: 'rise - Professional Consulting Services',
     defaultDescription:
-      'Expert consulting in education and software development',
+      'Expert consulting in software development',
     keywords: [
       'consulting',
-      'education',
       'software development',
       'Slovakia',
       'Bratislava',
@@ -197,14 +181,14 @@ export const companyConfig = {
 // =====================================
 export const getContactEmail = () => companyConfig.contact.email;
 export const getCompanyName = () => companyConfig.company.name;
-export const getFounder = (name: 'maros' | 'michael') =>
+export const getFounder = (name: 'maros') =>
   companyConfig.founders[name];
 export const getBusinessHours = () => companyConfig.contact.businessHours;
 export const getAddress = () => companyConfig.address;
 export const getBankDetails = () => companyConfig.billing.bank;
 export const getSocialLinks = () => companyConfig.social;
 export const getDepartmentEmail = (
-  dept: 'development' | 'education' | 'support' | 'sales'
+  dept: 'development' | 'support' | 'sales'
 ) => companyConfig.contact[dept];
 
 export default companyConfig;

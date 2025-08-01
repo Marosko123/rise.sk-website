@@ -142,27 +142,6 @@ export const metaDescriptions = {
       },
     ],
   },
-
-  education: {
-    en: [
-      {
-        id: 'education_en_v1',
-        content: 'Professional programming education and IT training courses in Slovakia. Learn web development, mobile app development, and software engineering from industry experts at Rise.sk.',
-        target: 'engagement',
-        ctr_expected: 2.8,
-        test_variant: 'A',
-      },
-    ],
-    sk: [
-      {
-        id: 'education_sk_v1',
-        content: 'Profesionálne programátorské vzdelávanie a IT školenia na Slovensku. Naučte sa webový vývoj, vývoj mobilných aplikácií a softvérové inžinierstvo od odborníkov z praxe v Rise.sk.',
-        target: 'engagement',
-        ctr_expected: 2.6,
-        test_variant: 'A',
-      },
-    ],
-  },
 };
 
 // Function to get the best performing meta description

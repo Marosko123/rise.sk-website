@@ -5,11 +5,6 @@
       "innovativeSolutions": "Technology Experts"
     },
     "description": "Trusted partners for critical software projects and digital transformation.",
-    "education": {
-      "title": "EDUCATION",
-      "description": "Educational consulting, curriculum development, and training programs",
-      "cta": "Explore Education"
-    },
     "development": {
       "title": "DEVELOPMENT",
       "description": "Software development, technical consulting, and web development services",
@@ -17,23 +12,10 @@
     },
     "footer": "© 2025 Rise.sk s.r.o. All rights reserved."
   },
-  "education": {
-    "title": "Educational Services",
-    "subtitle": "Empowering education through innovative educational solutions",
-    "backToHome": "Back to Home",
-    "inProgress": {
-      "title": "IN DEVELOPMENT",
-      "description": "Our education department is currently under development. We are working hard to bring you comprehensive educational consulting services."
-    },
-    "contact": {
-      "title": "Contact Us"
-    }
-  },
   "navigation": {
     "about": "About",
     "services": "Services",
     "development": "Development",
-    "education": "Education",
     "engagement": "Engagement Models",
     "portfolio": "Portfolio",
     "reviews": "Reviews",
