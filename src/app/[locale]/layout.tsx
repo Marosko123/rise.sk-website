@@ -74,8 +74,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    alternateLocale: ['sk_SK'],
+    locale: 'sk_SK',
+    alternateLocale: ['en_US'],
     title: 'Rise.sk - Expert Programming Teams | Custom Software Development',
     description: 'Hire expert programming teams in Slovakia. Quick delivery, reliable code, 100% on-time projects. Get your development team in 7 days.',
     siteName: 'Rise.sk',
@@ -98,8 +98,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://rise.sk',
     languages: {
+      'sk': 'https://rise.sk',
       'en': 'https://rise.sk/en',
-      'sk': 'https://rise.sk/sk',
     },
   },
   verification: {
@@ -144,7 +144,7 @@ export default async function LocaleLayout({
       <head>
         <link rel="alternate" hrefLang="en" href="https://rise.sk/en" />
         <link rel="alternate" hrefLang="sk" href="https://rise.sk/sk" />
-        <link rel="alternate" hrefLang="x-default" href="https://rise.sk/en" />
+        <link rel="alternate" hrefLang="x-default" href="https://rise.sk" />
       </head>
       <body
         className="antialiased font-sans"
@@ -158,9 +158,9 @@ export default async function LocaleLayout({
           <NextIntlClientProvider messages={messages}>
             <LanguagePreferenceHandler />
             {children}
+            <ScrollToTop />
           </NextIntlClientProvider>
         </SmoothScrollProvider>
-        <ScrollToTop />
       </body>
     </html>
   );

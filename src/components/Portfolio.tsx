@@ -6,54 +6,56 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import React, { useRef } from 'react';
 
+import OptimizedImage from './OptimizedImage';
+
 // Portfolio projects data - real projects from rise.sk
-const portfolioProjects = [
+const getPortfolioProjects = (t: (key: string) => string) => [
   {
     id: 1,
     title: 'Viac Ako Ni(c)K',
-    description: 'Flutter mobilná aplikácia pre chat detskej linky pomoci. Bezpečná komunikácia pre deti a mladých ľudí.',
+    descriptionKey: 'viacAkoNick',
     category: 'mobileApps',
     image: '/viac_ako_nick.svg',
-    tags: ['Flutter', 'Dart', 'Firebase', 'Chat', 'Security'],
+    tags: [t('tags.flutter'), t('tags.dart'), t('tags.firebase'), t('tags.chat'), t('tags.security')],
     liveUrl: 'https://viacakonick.gov.sk/mam-viac-ako-12-rokov/',
     githubUrl: null,
     featured: true,
     metrics: {
-      platform: 'Gov.sk',
-      impact: 'Detská pomoc',
-      security: 'Enterprise'
+      platform: t('metrics.govsk'),
+      impact: t('metrics.impact'),
+      security: t('metrics.security')
     }
   },
   {
     id: 2,
-    title: 'RUNology',
-    description: 'React Native mobilná aplikácia pre iOS a Android. Bežecká aplikácia so sledovaním tréningov, štatistík a komunitou bežcov.',
-    category: 'mobileApps',
-    image: '/runology.jpg',
-    tags: ['React Native', 'iOS', 'Android', 'GPS', 'Analytics'],
-    liveUrl: 'https://runology.app/',
-    githubUrl: null,
-    featured: true,
-    metrics: {
-      platform: 'App Store',
-      users: 'Active',
-      rating: '4.5/5'
-    }
-  },
-  {
-    id: 3,
     title: '2 Ring Slovensko',
-    description: 'Dlhodobá individuálna spolupráca s 2 Ring na vývoji komplexných business aplikácií.',
+    descriptionKey: 'twoRing',
     category: 'webapp',
     image: '/2ring.svg',
-    tags: ['Vue.js', 'C#', 'SQL', 'Aurelia', 'Enterprise'],
+    tags: [t('tags.vuejs'), t('tags.csharp'), t('tags.sql'), t('tags.aurelia'), t('tags.enterprise')],
     liveUrl: null,
     githubUrl: null,
     featured: true,
     metrics: {
-      duration: '2+ roky',
-      type: 'Spolupráca',
-      status: 'Aktívne'
+      duration: t('metrics.duration'),
+      type: t('metrics.type'),
+      status: t('metrics.status')
+    }
+  },
+  {
+    id: 3,
+    title: 'Horilla Payroll',
+    descriptionKey: 'horilla',
+    category: 'webapp',
+    image: '/horilla.png',
+    tags: [t('tags.django'), t('tags.python'), t('tags.postgresql'), t('tags.hr'), t('tags.payroll')],
+    liveUrl: 'https://demo.horilla.com/',
+    githubUrl: 'https://github.com/horilla-opensource/horilla',
+    featured: true,
+    metrics: {
+      platform: t('metrics.github'),
+      users: t('metrics.users'),
+      rating: t('metrics.rating')
     }
   }
 ];
@@ -64,6 +66,7 @@ interface PortfolioProps {
 
 const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
   const t = useTranslations('portfolio');
+  const portfolioProjects = getPortfolioProjects((key: string) => t(`projects.${key}`));
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -219,18 +222,30 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                     <div className={`h-full w-full bg-gradient-to-br ${getCategoryGradient(project.category)} flex items-center justify-center relative`}>
                       {/* Background image */}
                       {project.image ? (
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover opacity-80"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          loading="lazy"
-                          quality={85}
-                          onError={() => {
-                            // Fallback handled by Next.js
-                          }}
-                        />
+                        project.title === 'HORILLA PAYROLL' ? (
+                          <OptimizedImage
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            className="object-cover opacity-80"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority={false}
+                            quality={85}
+                          />
+                        ) : (
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            className="object-cover opacity-80"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            loading="lazy"
+                            quality={85}
+                            onError={() => {
+                              // Fallback handled by Next.js
+                            }}
+                          />
+                        )
                       ) : (
                         <div className="text-8xl opacity-30">
                           {getCategoryIcon(project.category)}
@@ -260,7 +275,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                             <span>{t('projects.actions.demo')}</span>
                           </a>
                         )}
-                        
+
                         {project.githubUrl ? (
                           <a
                             href={project.githubUrl}
@@ -293,7 +308,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                     </div>
 
                     <p className="text-white/70 mb-6 leading-relaxed">
-                      {project.description}
+                      {t(`projects.descriptions.${project.descriptionKey}`)}
                     </p>
 
                     {/* Tags */}
@@ -350,7 +365,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                 {t('cta.description')}
               </p>
               <div className="flex justify-center">
-                <button 
+                <button
                   onClick={() => {
                     const contactSection = document.getElementById('contact');
                     if (contactSection) {

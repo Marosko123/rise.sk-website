@@ -6,5 +6,6 @@ export default createMiddleware(routing);
 
 export const config = {
   // Match only internationalized pathnames
+  // Note: Root path serves Slovak (default), /en serves English
   matcher: ['/', '/(en|sk|cs|de|es|hu|fr)/:path*'],
 };

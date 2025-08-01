@@ -6,7 +6,7 @@
     },
     "description": "Dôveryhodní partneri pre kritické softvérové projekty a digitálnu transformáciu.",
     "development": {
-      "title": "VÝVOJ",
+      "title": "Chcem zistiť viac",
       "description": "Vývoj softvéru, technické poradenstvo a služby webového vývoja",
       "cta": "Preskúmať vývoj"
     },
@@ -206,6 +206,11 @@
         "title": "Hlavné projekty",
         "description": "Naše najvýznamnejšie a najúspešnejšie realizácie"
       },
+      "descriptions": {
+        "viacAkoNick": "Flutter mobilná aplikácia pre chat platformu detskej linky pomoci. Vyvinuli sme bezpečné komunikačné funkcie pre deti a mladých ľudí s enterprise úrovňou zabezpečenia.",
+        "horilla": "Open-source HR softvér pre správu ľudských zdrojov s pokročilými funkciami. Vyvinuli sme špecializovaný mzdový modul pre automatické slovenské mzdové výpočty podľa slovenskej legislatívy.",
+        "twoRing": "Dlhodobá individuálna spolupráca s 2 Ring na vývoji komplexných business aplikácií. Viacročné partnerstvo dodávajúce riešenia na enterprise úrovni."
+      },
       "categories": {
         "webApps": "Webové aplikácie",
         "webapp": "Webové aplikácie",
@@ -226,6 +231,35 @@
         "privateProject": "Súkromný projekt",
         "viewProject": "Zobraziť projekt",
         "liveDemo": "Živé demo"
+      },
+      "tags": {
+        "flutter": "Flutter",
+        "dart": "Dart",
+        "firebase": "Firebase",
+        "chat": "Chat",
+        "security": "Zabezpečenie",
+        "vuejs": "Vue.js",
+        "csharp": "C#",
+        "sql": "SQL",
+        "aurelia": "Aurelia",
+        "enterprise": "Enterprise",
+        "django": "Django",
+        "python": "Python",
+        "postgresql": "PostgreSQL",
+        "hr": "HR",
+        "payroll": "Mzdy"
+      },
+      "metrics": {
+        "platform": "Platforma",
+        "impact": "Detská pomoc",
+        "security": "Enterprise",
+        "duration": "2+ roky",
+        "type": "Spolupráca",
+        "status": "Aktívne",
+        "users": "Open Source",
+        "rating": "Enterprise",
+        "github": "GitHub",
+        "govsk": "Gov.sk"
       }
     },
     "stats": {
@@ -462,6 +496,12 @@
     "networkError": "Chyba siete. Skontrolujte pripojenie a skúste to znova.",
     "requiredFields": "Vyplňte všetky povinné polia.",
     "invalidEmail": "Zadajte platnú emailovú adresu."
+  },
+  "common": {
+    "imageNotAvailable": "Obrázok nie je dostupný",
+    "loading": "Načítava sa...",
+    "error": "Chyba",
+    "scrollToTop": "Prejsť na začiatok"
   },
   "companyInfo": {
     "name": "Rise.sk s.r.o.",

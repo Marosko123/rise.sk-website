@@ -14,6 +14,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navigation() {
   const t = useTranslations('navigation');
+  const tServices = useTranslations('servicesEnhanced');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [animationTime, setAnimationTime] = useState(0);
@@ -360,7 +361,7 @@ export default function Navigation() {
               className='border border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300'
               data-cursor='button'
             >
-              Kontaktujte nás
+              {tServices('buttons.contact')}
             </motion.a>
             {!isSubpage && (
               <motion.a

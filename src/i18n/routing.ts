@@ -6,7 +6,7 @@ export const routing = defineRouting({
   locales: ['en', 'sk', 'cs', 'de', 'es', 'hu', 'fr'],
 
   // Used when no locale matches
-  defaultLocale: 'en',
+  defaultLocale: 'sk',
 
   // Localized pathnames
   pathnames: {

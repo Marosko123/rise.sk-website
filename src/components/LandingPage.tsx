@@ -718,14 +718,27 @@ export default function LandingPage() {
             <div className='flex justify-center'>
               <Link href='/development'>
                 <button
-                  className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105'
+                  className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 shadow-lg'
                   style={{
-                    borderColor: '#B09155',
-                    backgroundColor: 'transparent'
+                    borderColor: '#D4AF37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#D4AF37';
+                    e.currentTarget.style.borderColor = '#F4E07A';
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 175, 55, 0.4)';
+                    e.currentTarget.style.color = '#1a1a1a';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                    e.currentTarget.style.borderColor = '#D4AF37';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
+                    e.currentTarget.style.color = 'white';
                   }}
                 >
                   <span className='flex items-center justify-center space-x-3 select-none'>
-                    <span>&lt;/&gt;</span>
+                    <span>👉</span>
                     <span>{t('development.title')}</span>
                   </span>
                 </button>
@@ -1004,24 +1017,29 @@ export default function LandingPage() {
                 }}
               >
                 <button
-                  className='relative px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden group'
+                  className='relative px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden group shadow-lg'
                   style={{
-                    borderColor: '#B09155',
-                    backgroundColor: 'transparent'
+                    borderColor: '#D4AF37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#B09155';
-                    e.currentTarget.style.boxShadow = '0 10px 25px rgba(176, 145, 85, 0.4)';
+                    e.currentTarget.style.backgroundColor = '#D4AF37';
+                    e.currentTarget.style.borderColor = '#F4E07A';
+                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 175, 55, 0.5)';
+                    e.currentTarget.style.color = '#1a1a1a';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                    e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                    e.currentTarget.style.borderColor = '#D4AF37';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
+                    e.currentTarget.style.color = 'white';
                   }}
                 >
                   {/* Ripple effect */}
-                  <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 select-none pointer-events-none'></div>
+                  <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 select-none pointer-events-none'></div>
                   <span className='relative flex items-center justify-center space-x-3 select-none'>
-                    <span>&lt;/&gt;</span>
+                    <span>👉</span>
                     <span>{t('development.title')}</span>
                   </span>
                 </button>

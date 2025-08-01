@@ -13,17 +13,17 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale;
   }
 
-  // Try to load the messages for the locale, fallback to English if not found
+  // Try to load the messages for the locale, fallback to Slovak if not found
   let messages;
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch {
     // eslint-disable-next-line no-console
     console.warn(
-      `Failed to load messages for locale ${locale}, falling back to English`
+      `Failed to load messages for locale ${locale}, falling back to Slovak`
     );
-    messages = (await import(`../../messages/en.json`)).default;
-    locale = 'en';
+    messages = (await import(`../../messages/sk.json`)).default;
+    locale = 'sk';
   }
 
   return {

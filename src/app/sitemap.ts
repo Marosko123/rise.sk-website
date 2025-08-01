@@ -22,33 +22,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const sitemap: MetadataRoute.Sitemap = []
 
-  // Add English pages
+  // Add default Slovak pages (without language prefix)
+  pages.forEach(page => {
+    sitemap.push({
+      url: `${baseUrl}${page.path}`,
+      lastModified,
+      changeFrequency: page.changeFreq,
+      priority: page.priority,
+    })
+  })
+
+  // Add Slovak-specific localized routes (without language prefix)
+  slovakPages.forEach(page => {
+    sitemap.push({
+      url: `${baseUrl}${page.path}`,
+      lastModified,
+      changeFrequency: page.changeFreq,
+      priority: page.priority,
+    })
+  })
+
+  // Add English pages (with /en prefix)
   pages.forEach(page => {
     sitemap.push({
       url: `${baseUrl}/en${page.path}`,
       lastModified,
       changeFrequency: page.changeFreq,
-      priority: page.priority,
+      priority: page.priority * 0.9, // Slightly lower priority for English pages
     })
   })
 
-  // Add Slovak pages (both standard and localized routes)
+  // Add Slovak pages with explicit /sk prefix (for compatibility)
   pages.forEach(page => {
     sitemap.push({
       url: `${baseUrl}/sk${page.path}`,
       lastModified,
       changeFrequency: page.changeFreq,
-      priority: page.priority,
+      priority: page.priority * 0.8, // Lower priority as these redirect to root
     })
   })
 
-  // Add Slovak-specific localized routes
+  // Add Slovak-specific localized routes with /sk prefix
   slovakPages.forEach(page => {
     sitemap.push({
       url: `${baseUrl}/sk${page.path}`,
       lastModified,
       changeFrequency: page.changeFreq,
-      priority: page.priority,
+      priority: page.priority * 0.8,
     })
   })
 
