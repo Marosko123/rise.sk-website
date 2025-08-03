@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import LanguagePreferenceHandler from '@/components/LanguagePreferenceHandler';
 import { ScrollProgress } from '@/components/ScrollEffects';
-import ScrollToTop from '@/components/ScrollToTop';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import StructuredData from '@/components/StructuredData';
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
     'web development Slovakia',
     'mobile app development',
     'IT solutions Slovakia',
-    
+
     // Secondary keywords
     'software development company',
     'programming services',
@@ -38,13 +37,13 @@ export const metadata: Metadata = {
     'React developers Slovakia',
     'Node.js developers',
     'Python developers',
-    
+
     // Location-based
     'programmers Bratislava',
     'IT company Slovakia',
     'software development Bratislava',
     'tech company Slovakia',
-    
+
     // Service-specific
     'quick software development',
     'reliable programming',
@@ -158,7 +157,6 @@ export default async function LocaleLayout({
           <NextIntlClientProvider messages={messages}>
             <LanguagePreferenceHandler />
             {children}
-            <ScrollToTop />
           </NextIntlClientProvider>
         </SmoothScrollProvider>
       </body>

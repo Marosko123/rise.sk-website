@@ -5,6 +5,7 @@ import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/Breadcrumb
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import Hiring from '@/components/Hiring';
 import Navigation from '@/components/Navigation';
 import Portfolio from '@/components/Portfolio';
 import Reviews from '@/components/Reviews';
@@ -71,6 +72,9 @@ export default async function DevelopmentPageSK({
         </div>
         <div id='reviews'>
           <Reviews />
+        </div>
+        <div id='hiring'>
+          <Hiring />
         </div>
         <div id='contact'>
           <Contact />

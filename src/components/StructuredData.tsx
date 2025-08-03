@@ -13,7 +13,7 @@ export default function StructuredData() {
       "@type": "PostalAddress",
       "streetAddress": "Karpatské námestie 7770/10A",
       "addressLocality": "Bratislava",
-      "addressRegion": "Bratislava Region", 
+      "addressRegion": "Bratislava Region",
       "postalCode": "831 06",
       "addressCountry": "SK"
     },
@@ -27,7 +27,7 @@ export default function StructuredData() {
         "@type": "ContactPoint",
         "telephone": "+421-911-670-188",
         "contactType": "customer service",
-        "email": "info@rise.sk",
+        "email": "rise@rise.sk",
         "areaServed": ["SK", "CZ", "EU", "US"],
         "availableLanguage": ["English", "Slovak"],
         "hoursAvailable": {
@@ -40,7 +40,7 @@ export default function StructuredData() {
       {
         "@type": "ContactPoint",
         "contactType": "sales",
-        "email": "info@rise.sk",
+        "email": "rise@rise.sk",
         "telephone": "+421-911-670-188"
       }
     ],
@@ -67,7 +67,7 @@ export default function StructuredData() {
     "slogan": "Expert Programming Teams | Quick Delivery | Reliable Code",
     "knowsAbout": [
       "Software Development",
-      "Web Development", 
+      "Web Development",
       "Mobile App Development",
       "JavaScript",
       "TypeScript",
@@ -84,7 +84,7 @@ export default function StructuredData() {
         "name": "Slovakia"
       },
       {
-        "@type": "Country", 
+        "@type": "Country",
         "name": "Czech Republic"
       },
       {
@@ -177,7 +177,7 @@ export default function StructuredData() {
             }
           },
           {
-            "@type": "Offer", 
+            "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
               "name": "Mobile App Development",
@@ -187,7 +187,7 @@ export default function StructuredData() {
           {
             "@type": "Offer",
             "itemOffered": {
-              "@type": "Service", 
+              "@type": "Service",
               "name": "Enterprise Software Solutions",
               "description": "Scalable enterprise software solutions and system integrations"
             }

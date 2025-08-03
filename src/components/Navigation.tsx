@@ -18,7 +18,6 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [animationTime, setAnimationTime] = useState(0);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [activeSection, setActiveSection] = useState('');
   const pathname = usePathname();
 
@@ -39,8 +38,8 @@ export default function Navigation() {
 
     const updateAnimationTime = () => {
       const now = Date.now();
-      // Only update if enough time has passed (60fps throttling)
-      if (now - lastTime >= 16) {
+      // Reduce frequency significantly to improve performance (20fps)
+      if (now - lastTime >= 50) {
         setAnimationTime(now);
         lastTime = now;
       }
@@ -56,35 +55,22 @@ export default function Navigation() {
     };
   }, [mounted]);
 
-  // Mouse tracking for magnetic effects
-  useEffect(() => {
-    if (!mounted) return;
+  // Mouse tracking for magnetic effects (disabled for performance)
+  // useEffect(() => {
+  //   if (!mounted) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-    };
+  //   const handleMouseMove = (e: MouseEvent) => {
+  //     setCursorPosition({ x: e.clientX, y: e.clientY });
+  //   };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mounted]);
+  //   window.addEventListener('mousemove', handleMouseMove);
+  //   return () => window.removeEventListener('mousemove', handleMouseMove);
+  // }, [mounted]);
 
-  const getMagneticOffset = (elementX: number, elementY: number, strength: number = 30) => {
-    if (typeof window === 'undefined') return { x: 0, y: 0 };
-
-    const deltaX = cursorPosition.x - elementX;
-    const deltaY = cursorPosition.y - elementY;
-    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-    const maxDistance = 150;
-
-    if (distance < maxDistance) {
-      const force = (maxDistance - distance) / maxDistance;
-      return {
-        x: (deltaX * force * strength) / maxDistance,
-        y: (deltaY * force * strength) / maxDistance,
-      };
-    }
-    return { x: 0, y: 0 };
-  };
+  // Magnetic effect disabled for performance
+  // const getMagneticOffset = (elementX: number, elementY: number, strength: number = 30) => {
+  //   return { x: 0, y: 0 };
+  // };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -108,6 +94,7 @@ export default function Navigation() {
         { href: '#services', label: t('services'), section: 'services' },
         { href: '#portfolio', label: t('portfolio'), section: 'portfolio' },
         { href: '#reviews', label: t('reviews'), section: 'reviews' },
+        { href: '#hiring', label: t('hiring'), section: 'hiring' },
         { href: '#contact', label: t('contact'), section: 'contact' },
       ];
     } else {
@@ -117,6 +104,7 @@ export default function Navigation() {
         { href: '/development#services', label: t('services'), section: 'services' },
         { href: '/development#portfolio', label: t('portfolio'), section: 'portfolio' },
         { href: '/development#reviews', label: t('reviews'), section: 'reviews' },
+        { href: '/development#hiring', label: t('hiring'), section: 'hiring' },
         { href: '/development#contact', label: t('contact'), section: 'contact' },
       ];
     }
@@ -147,7 +135,7 @@ export default function Navigation() {
     };
 
     const handleScrollBasedSection = () => {
-      const sections = ['about', 'services', 'portfolio', 'reviews', 'contact'];
+      const sections = ['about', 'services', 'portfolio', 'reviews', 'hiring', 'contact'];
       const sectionElements = sections.map(section => document.getElementById(section));
 
       // Find which section is currently in view
@@ -198,14 +186,11 @@ export default function Navigation() {
       <div className='w-full px-0 relative'>
         <div className='flex items-center justify-between h-20 px-0'>
           {/* Left Side - Logo & Company Name (absolutely flush left) */}
-          <div className='flex items-center space-x-3 pl-8'>
+          <div className='flex items-center space-x-3 pl-6'>
             <motion.div className='flex-shrink-0' whileHover={{ scale: 1.05 }}>
               <Link href='/' className='flex items-center space-x-3'>
               <div
                 className='transition-transform duration-300 ease-out relative'
-                style={mounted ? {
-                  transform: `translate(${getMagneticOffset(100, 50).x}px, ${getMagneticOffset(100, 50).y}px)`,
-                } : {}}
               >
                 <Image
                   src={companyConfig.website.logo.logoGoldTransparent}
@@ -215,8 +200,8 @@ export default function Navigation() {
                   priority
                   className='transition-all duration-300 hover:scale-110 cursor-pointer select-none'
                   style={mounted ? {
-                    transform: `rotate(${Math.sin(animationTime * 0.002) * 5}deg) scale(${1 + Math.sin(animationTime * 0.003) * 0.1})`,
-                    filter: `drop-shadow(0 0 10px rgba(176, 145, 85, ${0.5 + Math.sin(animationTime * 0.004) * 0.3})) hue-rotate(${Math.sin(animationTime * 0.001) * 15}deg)`,
+                    transform: `rotate(${Math.sin(animationTime * 0.001) * 2}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.05})`,
+                    filter: `drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))`,
                   } : {
                     transform: 'rotate(0deg) scale(1)',
                     filter: 'drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))',
@@ -228,28 +213,20 @@ export default function Navigation() {
                   }}
                   onMouseLeave={(e) => {
                     if (mounted) {
-                      e.currentTarget.style.transform = `rotate(${Math.sin(animationTime * 0.002) * 5}deg) scale(${1 + Math.sin(animationTime * 0.003) * 0.1})`;
+                      e.currentTarget.style.transform = `rotate(${Math.sin(animationTime * 0.001) * 2}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.05})`;
                     }
                   }}
                   draggable={false}
                 />
-                {/* Floating particles around logo */}
+                {/* Simplified floating elements */}
                 {mounted && (
                   <>
                     <div
-                      className='absolute w-1 h-1 bg-yellow-400 rounded-full opacity-60 select-none pointer-events-none'
+                      className='absolute w-1 h-1 bg-yellow-400 rounded-full opacity-40 select-none pointer-events-none'
                       style={{
                         top: '10%',
                         right: '10%',
-                        transform: `translate(${Math.sin(animationTime * 0.005) * 3}px, ${Math.cos(animationTime * 0.005) * 3}px)`,
-                      }}
-                    />
-                    <div
-                      className='absolute w-0.5 h-0.5 bg-yellow-300 rounded-full opacity-40 select-none pointer-events-none'
-                      style={{
-                        bottom: '15%',
-                        left: '15%',
-                        transform: `translate(${Math.cos(animationTime * 0.007) * 2}px, ${Math.sin(animationTime * 0.007) * 2}px)`,
+                        transform: `translate(${Math.sin(animationTime * 0.002) * 1.5}px, ${Math.cos(animationTime * 0.002) * 1.5}px)`,
                       }}
                     />
                   </>
@@ -259,8 +236,7 @@ export default function Navigation() {
                 <span
                   className='text-2xl font-bold text-white cursor-pointer inline-block transition-all duration-300 hover:scale-105 select-none'
                   style={mounted ? {
-                    transform: `translateY(${Math.sin(animationTime * 0.002) * 1}px)`,
-                    textShadow: `0 0 15px rgba(176, 145, 85, ${0.4 + Math.sin(animationTime * 0.003) * 0.3})`,
+                    textShadow: `0 0 15px rgba(176, 145, 85, 0.4)`,
                   } : {}}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#B09155';
@@ -269,7 +245,7 @@ export default function Navigation() {
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = 'white';
                     if (mounted) {
-                      e.currentTarget.style.textShadow = `0 0 15px rgba(176, 145, 85, ${0.4 + Math.sin(animationTime * 0.003) * 0.3})`;
+                      e.currentTarget.style.textShadow = `0 0 15px rgba(176, 145, 85, 0.4)`;
                     }
                   }}
                 >
@@ -286,11 +262,7 @@ export default function Navigation() {
                         e.currentTarget.style.color = '#B09155';
                       }}
                       onMouseLeave={(e) => {
-                        if (mounted) {
-                          e.currentTarget.style.transform = `translateY(${Math.sin(animationTime * 0.004 + index * 0.5) * 1}px)`;
-                        } else {
-                          e.currentTarget.style.transform = '';
-                        }
+                        e.currentTarget.style.transform = '';
                         e.currentTarget.style.color = 'inherit';
                       }}
                     >
@@ -298,13 +270,12 @@ export default function Navigation() {
                     </span>
                   ))}
                 </span>
-                {/* Subtle underline animation */}
+                {/* Static underline */}
                 {mounted && (
                   <div
                     className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-60 select-none pointer-events-none'
                     style={{
-                      width: `${50 + Math.sin(animationTime * 0.003) * 30}%`,
-                      transform: `translateX(${Math.sin(animationTime * 0.002) * 20}px)`,
+                      width: '60%',
                     }}
                   />
                 )}
@@ -315,14 +286,14 @@ export default function Navigation() {
 
           {/* Navigation Links - Center */}
           <div className='hidden md:flex absolute left-1/2 transform -translate-x-1/2'>
-            <div className='flex items-center space-x-8'>
+            <div className='flex items-center space-x-6'>
               {navLinks.map((link, index) => {
                 const isActive = isLinkActive(link.section);
 
                 return (
                   <motion.div
                     key={index}
-                    className={`px-3 py-2 text-lg font-bold transition-all duration-300 relative group ${
+                    className={`px-2 py-2 text-base font-bold transition-all duration-300 relative group ${
                       isActive
                         ? 'text-[#b09155]'
                         : 'text-gray-300 hover:text-[#b09155]'
@@ -348,7 +319,7 @@ export default function Navigation() {
           </div>
 
           {/* Right Side - Language Switcher, Contact Button & CTA Button */}
-          <div className='hidden md:flex items-center space-x-4 pr-8'>
+          <div className='hidden md:flex items-center space-x-3 pr-6'>
             {/* Language Switcher - vertically centered */}
             <div className='flex items-center'>
               <LanguageSwitcher />
@@ -358,7 +329,7 @@ export default function Navigation() {
               href='#contact'
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='border border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300'
+              className='border border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-300'
               data-cursor='button'
             >
               {tServices('buttons.contact')}

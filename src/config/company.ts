@@ -43,7 +43,7 @@ export const companyConfig = {
   // =====================================
   contact: {
     // Primary contact
-    email: 'info@rise.sk',
+    email: 'rise@rise.sk',
     phone: '+421 911 670 188',
     whatsapp: '+421 911 670 188',
 

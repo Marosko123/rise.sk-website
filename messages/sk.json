@@ -19,6 +19,7 @@
     "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
     "reviews": "Referencie",
+    "hiring": "Hľadáme talenty",
     "contact": "Kontakt",
     "backToHome": "Späť na hlavnú",
     "getStarted": "Začať"
@@ -442,6 +443,9 @@
     "mainTitleHighlight": "niečo výnimočné",
     "getInTouch": "Spojte sa s nami",
     "description": "Pripravení na spoluprácu? Kontaktujte nás a prediskutujme váš projekt. Náš tím je pripravený pomôcť vám dosiahnuť vaše ciele.",
+    "bookMeeting": "Rezervovať bezplatnú schôdzku",
+    "meetingDescription": "Rezervujte si bezplatné krátke online stretnutie s nami na prediskutovanie vášho projektu:",
+    "meetingCta": "Naplánovať stretnutie",
     "whyChoose": "Prečo si vybrať Rise.sk?",
     "onTimeDelivery": "Dodanie načas",
     "teamReady": "Tím pripravený",
@@ -450,7 +454,7 @@
       "phone": "Telefón",
       "office": "Kancelária",
       "values": {
-        "email": "info@rise.sk",
+        "email": "rise@rise.sk",
         "phone": "+421 911 670 188",
         "office": "Karpatské námestie 7770/10A, 831 06 Bratislava"
       }
@@ -477,6 +481,7 @@
       "aiAnalytics": "AI & Data Analytics",
       "digitalMarketing": "Technológie pre digitálny marketing",
       "specialRequests": "Špeciálne požiadavky",
+      "jobApplication": "Pracovná ponuka",
       "other": "Iné"
     },
     "templateMessages": {
@@ -509,7 +514,7 @@
     "businessId": "56911157",
     "taxId": "2122465094",
     "registration": "Obchodný register Okresného súdu Bratislava III, Oddiel: Sro, Vložka č. 188634/B",
-    "executives": "Bc. Maroš Bednár a Michael Matejčík",
+    "executives": "Bc. Maroš Bednár",
     "phone": "+421 911 670 188",
     "labels": {
       "name": "Názov spoločnosti",
@@ -533,7 +538,7 @@
       "phone": "Telefón",
       "location": "Lokalita",
       "values": {
-        "email": "info@rise.sk",
+        "email": "rise@rise.sk",
         "phone": "+421 911 670 188",
         "location": "Karpatské námestie 7770/10A, 831 06 Bratislava",
         "address": "Karpatské námestie 7770/10A, 831 06 Bratislava"
@@ -554,27 +559,28 @@
     "title": "Hľadáme",
     "titleHighlight": "talenty",
     "subtitle": "Hľadáme inovatívne mysle s vášňou pre technológie, tvorivosť a skutočný dopad. Pridajte sa k nášmu tímu expertov a pomôžte formovať budúcnosť digitálnych riešení.",
+    "openPositions": "Otvorené pozície",
     "skillsNeeded": "Požadované zručnosti",
     "positions": {
       "programming": {
         "title": "Softvérový vývoj",
         "description": "Budujte špičkové aplikácie a škálovateľné systémy pre podniky na celom svete.",
-        "skills": ["React/Next.js", "Node.js", "TypeScript", "Python", "Cloud služby", "DevOps"]
+        "skills": "React/Next.js, Node.js, TypeScript, Python, Cloud služby, DevOps"
       },
       "marketing": {
         "title": "Digitálny marketing",
         "description": "Rast poháňajte inovatívnymi marketingovými stratégiami a dátovo riadenými kampaňami.",
-        "skills": ["Content stratégia", "SEO/SEM", "Analytika", "Brand management", "Growth hacking", "Marketingová automatizácia"]
+        "skills": "Content stratégia, SEO/SEM, Analytika, Brand management, Growth hacking, Marketingová automatizácia"
       },
       "ai": {
         "title": "AI & strojové učenie",
         "description": "Vyvíjajte inteligentné riešenia, ktoré transformujú spôsob, akým podniky pôsobia a konkurujú.",
-        "skills": ["Strojové učenie", "Data science", "Neuronové siete", "NLP", "Počítačové videnie", "AI etika"]
+        "skills": "Strojové učenie, Data science, Neuronové siete, NLP, Počítačové videnie, AI etika"
       },
       "socialMedia": {
         "title": "Sociálne siete & obsah",
         "description": "Tvoríte pútavý obsah a budujete komunity, ktoré prepájajú značky s publikom.",
-        "skills": ["Tvorba obsahu", "Správa komunity", "Vizuálny dizajn", "Tvorba videí", "Vzťahy s influencermi", "Sociálna analytika"]
+        "skills": "Tvorba obsahu, Správa komunity, Vizuálny dizajn, Tvorba videí, Vzťahy s influencermi, Sociálna analytika"
       }
     },
     "whyJoinUs": {
@@ -601,8 +607,20 @@
     "cta": {
       "title": "Pripravení urobiť zmenu?",
       "description": "Pošlite nám svoje portfólio, povedzte nám svoj príbeh a vytvorme spolu niečo úžasné.",
-      "applyNow": "Prihlásiť sa",
-      "emailDirect": "careers@rise.sk",
+      "actions": {
+        "fillForm": {
+          "title": "Vyplniť formulár",
+          "description": "Vyplňte náš podrobný formulár s vaším portfóliom a skúsenosťami"
+        },
+        "discord": {
+          "title": "Pridajte sa na Discord",
+          "description": "Spojte sa s naším tímom a komunitou na našom Discord serveri"
+        },
+        "contact": {
+          "title": "Kontaktujte nás",
+          "description": "Pošlite nám správu cez náš kontaktný formulár pre otázky alebo požiadavky"
+        }
+      },
       "note": "Všetky žiadosti osobne prehodnocujeme a ozveme sa do 48 hodín."
     }
   }

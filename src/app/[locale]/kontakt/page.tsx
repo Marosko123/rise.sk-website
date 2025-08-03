@@ -5,11 +5,11 @@ import Contact from '@/components/Contact';
 
 export const metadata: Metadata = {
   title: 'Kontakt | Rise.sk - Profesionálne Programátorské Tímy Slovensko',
-  description: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: info@rise.sk, Telefón: +421-911-670-188. Kancelária v Bratislave.',
+  description: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: rise@rise.sk, Telefón: +421-911-670-188. Kancelária v Bratislave.',
   keywords: 'kontakt Rise.sk, kontakt programátorské tímy, najať vývojárov Slovensko, kontakt vývoj softvéru, Bratislava programátorská spoločnosť',
   openGraph: {
     title: 'Kontakt | Rise.sk - Profesionálne Programátorské Tímy Slovensko',
-    description: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: info@rise.sk, Telefón: +421-911-670-188.',
+    description: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: rise@rise.sk, Telefón: +421-911-670-188.',
     url: 'https://rise.sk/sk/kontakt',
     siteName: 'Rise.sk',
     locale: 'sk_SK',
@@ -44,7 +44,7 @@ export default async function ContactPageSK({
 }) {
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'kontakt');
-  
+
   return (
     <div className="min-h-screen bg-black">
       <BreadcrumbSchema items={breadcrumbs} page="kontakt" />

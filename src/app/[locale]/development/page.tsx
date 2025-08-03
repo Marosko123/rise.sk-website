@@ -6,6 +6,7 @@ import Contact from '@/components/Contact';
 import FAQSchema, { getFAQsForPage } from '@/components/FAQSchema';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import Hiring from '@/components/Hiring';
 import Navigation from '@/components/Navigation';
 import Portfolio from '@/components/Portfolio';
 import Reviews from '@/components/Reviews';
@@ -62,6 +63,7 @@ export default async function DevelopmentPage({
       <ServicesEnhanced />
       <Portfolio />
       <Reviews />
+      <Hiring />
       <Contact />
       <Footer />
     </div>

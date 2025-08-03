@@ -133,6 +133,7 @@ export default function Contact() {
       // EmailJS configuration from environment variables
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const autoReplyTemplateId = process.env.NEXT_PUBLIC_EMAILJS_AUTO_REPLY_TEMPLATE_ID;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
@@ -145,15 +146,41 @@ export default function Contact() {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
+        name: formData.name,
+        email: formData.email,
         phone: formData.phone || 'Not provided',
         company: formData.company || 'Not specified',
         service: formData.service,
+        subject: formData.service,
         message: formData.message || 'No additional message provided',
-        to_email: 'info@rise.sk',
+        to_email: 'rise@rise.sk',
+        to_name: 'Rise.sk Team',
         reply_to: formData.email,
       };
 
+      // Send main notification email to you
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      // Send auto-reply email to user (if template ID is configured)
+      if (autoReplyTemplateId) {
+        try {
+          const autoReplyParams = {
+            from_name: 'Rise.sk Team',
+            from_email: 'rise@rise.sk',
+            to_name: formData.name,
+            to_email: formData.email,
+            service: formData.service,
+            company: formData.company || 'Not specified',
+            message: formData.message || 'No additional message provided',
+            reply_to: 'rise@rise.sk',
+          };
+
+          await emailjs.send(serviceId, autoReplyTemplateId, autoReplyParams, publicKey);
+        } catch {
+          // Don't fail the whole form if auto-reply fails
+          // Auto-reply email failed, but main email was sent
+        }
+      }
 
       setSubmitStatus({
         type: 'success',
@@ -223,6 +250,7 @@ export default function Contact() {
     t('services.aiAnalytics'),
     t('services.digitalMarketing'),
     t('services.specialRequests'),
+    t('services.jobApplication'),
     t('services.other'),
   ];
 
@@ -278,8 +306,8 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className='p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300 group'
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className='p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/8 transition-colors duration-200'
                 >
                   <div className='flex items-center'>
                     <a
@@ -290,25 +318,23 @@ export default function Contact() {
                           ? 'noopener noreferrer'
                           : undefined
                       }
-                      className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:shadow-lg'
+                      className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-200'
                       data-cursor='link'
                     >
                       <item.icon className='w-6 h-6 text-white' />
                     </a>
                     <div className='ml-4 flex-1'>
-                      <div className='text-sm text-gray-400 uppercase tracking-wide select-none'>
+                      <div className='text-sm text-gray-400 uppercase tracking-wide'>
                         {item.label}
                       </div>
-                      <div className='text-white font-semibold select-text cursor-text'>
+                      <div className='text-white font-semibold'>
                         {item.value}
                       </div>
                     </div>
                     {/* Copy Button */}
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
+                    <button
                       onClick={() => copyToClipboard(item.value, `contact-${index}`)}
-                      className='ml-3 p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                      className='ml-3 p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200'
                       title='Copy to clipboard'
                     >
                       {copiedField === `contact-${index}` ? (
@@ -316,33 +342,49 @@ export default function Contact() {
                       ) : (
                         <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
                       )}
-                    </motion.button>
+                    </button>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* Quick Stats */}
+            {/* Calendar Booking Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className='bg-gradient-to-r from-[#b09155]/20 to-[#9a7f4b]/20 backdrop-blur-sm border border-white/10 rounded-xl p-6 mt-8'
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className='p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/8 transition-colors duration-200'
             >
-              <h4 className='text-white font-bold mb-4'>{t('whyChoose')}</h4>
-              <div className='grid grid-cols-2 gap-4 text-center'>
-                <div>
-                  <div className='text-2xl font-bold text-[#b09155]'>100%</div>
-                  <div className='text-sm text-gray-300'>
-                    {t('onTimeDelivery')}
-                  </div>
+              <div className='flex items-center'>
+                <div className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center'>
+                  <svg
+                    className='w-6 h-6 text-white'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
+                    />
+                  </svg>
                 </div>
-                <div>
-                  <div className='text-2xl font-bold text-[#b09155]'>
-                    7 days
+                <div className='ml-4 flex-1'>
+                  <div className='text-sm text-gray-400 uppercase tracking-wide mb-1'>
+                    {t('bookMeeting')}
                   </div>
-                  <div className='text-sm text-gray-300'>{t('teamReady')}</div>
+                  <div className='text-white font-semibold mb-3'>
+                    {t('meetingDescription')}
+                  </div>
+                  <button
+                    onClick={() => window.open('https://calendar.app.google/NWkLNFqSZffB36of6', '_blank')}
+                    className='inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white text-sm font-medium rounded-lg transition-colors duration-200'
+                  >
+                    {t('meetingCta')}
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -373,7 +415,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       disabled={isSubmitting}
-                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                       placeholder={t('placeholders.name')}
                       data-cursor='text'
                     />
@@ -392,7 +434,7 @@ export default function Contact() {
                       value={formData.company}
                       onChange={handleChange}
                       disabled={isSubmitting}
-                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                       placeholder={t('placeholders.company')}
                     />
                   </div>
@@ -414,7 +456,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       disabled={isSubmitting}
-                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                       placeholder={t('placeholders.email')}
                     />
                   </div>
@@ -432,7 +474,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       disabled={isSubmitting}
-                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                      className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                       placeholder={t('placeholders.phone')}
                     />
                   </div>
@@ -452,7 +494,7 @@ export default function Contact() {
                     value={formData.service}
                     onChange={handleChange}
                     disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 disabled:opacity-50'
+                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                     data-cursor='pointer'
                   >
                     <option value='' className='bg-gray-800'>
@@ -480,7 +522,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     disabled={isSubmitting}
-                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50'
+                    className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 resize-none disabled:opacity-50'
                     placeholder={t('messagePlaceholder')}
                     data-cursor='text'
                   />
@@ -509,7 +551,7 @@ export default function Contact() {
                 <Button
                   type='submit'
                   disabled={isSubmitting}
-                  className='w-full bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold py-4 px-8 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center'
+                  className='w-full bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold py-4 px-8 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center'
                   data-cursor='button'
                 >
                   {isSubmitting ? (

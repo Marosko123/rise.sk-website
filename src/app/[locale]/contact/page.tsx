@@ -6,11 +6,11 @@ import FAQSchema, { getFAQsForPage } from '@/components/FAQSchema';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Rise.sk - Professional Programming Teams Slovakia',
-  description: 'Contact Rise.sk for professional programming services in Slovakia. Get your development team in 7 days. Email: info@rise.sk, Phone: +421-911-670-188. Bratislava office.',
+  description: 'Contact Rise.sk for professional programming services in Slovakia. Get your development team in 7 days. Email: rise@rise.sk, Phone: +421-911-670-188. Bratislava office.',
   keywords: 'contact Rise.sk, programming teams contact, hire developers Slovakia, software development contact, Bratislava programming company',
   openGraph: {
     title: 'Contact Us | Rise.sk - Professional Programming Teams Slovakia',
-    description: 'Contact Rise.sk for professional programming services in Slovakia. Get your development team in 7 days. Email: info@rise.sk, Phone: +421-911-670-188.',
+    description: 'Contact Rise.sk for professional programming services in Slovakia. Get your development team in 7 days. Email: rise@rise.sk, Phone: +421-911-670-188.',
     url: 'https://rise.sk/en/contact',
     siteName: 'Rise.sk',
     images: [
@@ -44,7 +44,7 @@ export default async function ContactPage({
 }) {
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'contact');
-  
+
   return (
     <div className="min-h-screen bg-black">
       <BreadcrumbSchema items={breadcrumbs} page="contact" />

@@ -63,7 +63,7 @@ export const commonFAQs = {
       answer: "We follow best practices including code reviews, automated testing, continuous integration, and agile methodology. Every project includes regular demos, progress updates, and quality assurance testing before delivery."
     }
   ],
-  
+
   services: [
     {
       question: "What types of IT services does Rise.sk provide?",
@@ -86,7 +86,7 @@ export const commonFAQs = {
   contact: [
     {
       question: "How can I get started with Rise.sk?",
-      answer: "Simply contact us via email at info@rise.sk or call +421-911-670-188. We'll schedule a free consultation to discuss your project requirements and provide a detailed proposal within 24 hours."
+      answer: "Simply contact us via email at rise@rise.sk or call +421-911-670-188. We'll schedule a free consultation to discuss your project requirements and provide a detailed proposal within 24 hours."
     },
     {
       question: "Where is Rise.sk located?",

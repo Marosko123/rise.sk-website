@@ -102,7 +102,7 @@ export default function NotFound() {
         <div className="mt-8 pt-6 border-t border-gray-700 text-gray-400">
           <p>Need immediate assistance?</p>
           <p className="font-semibold text-white">
-            📧 info@rise.sk | 📞 +421-911-670-188
+            📧 rise@rise.sk | 📞 +421-911-670-188
           </p>
         </div>
       </div>

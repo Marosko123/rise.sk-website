@@ -1,11 +1,10 @@
 'use client';
 
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import companyConfig from '@/config/company';
-import { Link } from '@/i18n/routing';
 
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -89,6 +88,8 @@ interface FloatingShape {
 
 export default function LandingPage() {
   const t = useTranslations('landing');
+  const locale = useLocale();
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -716,33 +717,35 @@ export default function LandingPage() {
             </div>
 
             <div className='flex justify-center'>
-              <Link href='/development'>
-                <button
-                  className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 shadow-lg'
-                  style={{
-                    borderColor: '#D4AF37',
-                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                    boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#D4AF37';
-                    e.currentTarget.style.borderColor = '#F4E07A';
-                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 175, 55, 0.4)';
-                    e.currentTarget.style.color = '#1a1a1a';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
-                    e.currentTarget.style.borderColor = '#D4AF37';
-                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
-                    e.currentTarget.style.color = 'white';
-                  }}
-                >
-                  <span className='flex items-center justify-center space-x-3 select-none'>
-                    <span>👉</span>
-                    <span>{t('development.title')}</span>
-                  </span>
-                </button>
-              </Link>
+              <button
+                className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 shadow-lg'
+                style={{
+                  borderColor: '#D4AF37',
+                  backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                  boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
+                }}
+                onClick={() => {
+                  // Fallback button navigation
+                  window.location.href = `/${locale}/development`;
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#D4AF37';
+                  e.currentTarget.style.borderColor = '#F4E07A';
+                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 175, 55, 0.4)';
+                  e.currentTarget.style.color = '#1a1a1a';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                  e.currentTarget.style.borderColor = '#D4AF37';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
+                  e.currentTarget.style.color = 'white';
+                }}
+              >
+                <span className='flex items-center justify-center space-x-3 select-none'>
+                  <span>👉</span>
+                  <span>{t('development.title')}</span>
+                </span>
+              </button>
             </div>
           </div>
         </main>
@@ -1009,42 +1012,44 @@ export default function LandingPage() {
 
           {/* Main Button with magnetic attraction */}
           <div className='flex justify-center'>
-            <Link href='/development'>
-              <div
-                className='transition-transform duration-300 ease-out'
+            <div
+              className='transition-transform duration-300 ease-out'
+              style={{
+                transform: `translate(${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).x}px, ${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).y}px)`,
+              }}
+            >
+              <button
+                className='relative px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden group shadow-lg'
                 style={{
-                  transform: `translate(${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).x}px, ${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).y}px)`,
+                  borderColor: '#D4AF37',
+                  backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                  boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
+                }}
+                onClick={() => {
+                  // Main button navigation with current locale
+                  window.location.href = `/${locale}/development`;
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#D4AF37';
+                  e.currentTarget.style.borderColor = '#F4E07A';
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 175, 55, 0.5)';
+                  e.currentTarget.style.color = '#1a1a1a';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                  e.currentTarget.style.borderColor = '#D4AF37';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
+                  e.currentTarget.style.color = 'white';
                 }}
               >
-                <button
-                  className='relative px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden group shadow-lg'
-                  style={{
-                    borderColor: '#D4AF37',
-                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                    boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#D4AF37';
-                    e.currentTarget.style.borderColor = '#F4E07A';
-                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 175, 55, 0.5)';
-                    e.currentTarget.style.color = '#1a1a1a';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
-                    e.currentTarget.style.borderColor = '#D4AF37';
-                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
-                    e.currentTarget.style.color = 'white';
-                  }}
-                >
-                  {/* Ripple effect */}
-                  <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 select-none pointer-events-none'></div>
-                  <span className='relative flex items-center justify-center space-x-3 select-none'>
-                    <span>👉</span>
-                    <span>{t('development.title')}</span>
-                  </span>
-                </button>
-              </div>
-            </Link>
+                {/* Ripple effect */}
+                <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 select-none pointer-events-none'></div>
+                <span className='relative flex items-center justify-center space-x-3 select-none'>
+                  <span>👉</span>
+                  <span>{t('development.title')}</span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </main>
