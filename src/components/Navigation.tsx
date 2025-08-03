@@ -2,9 +2,9 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
 import { useEffect, useMemo, useState } from 'react';
 
 import companyConfig from '@/config/company';
@@ -353,7 +353,7 @@ export default function Navigation() {
             <div className='flex items-center'>
               <LanguageSwitcher />
             </div>
-            
+
             <motion.a
               href='#contact'
               whileHover={{ scale: 1.05 }}
@@ -363,17 +363,6 @@ export default function Navigation() {
             >
               {tServices('buttons.contact')}
             </motion.a>
-            {!isSubpage && (
-              <motion.a
-                href='#contact'
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300'
-                data-cursor='button'
-              >
-                {t('getStarted')}
-              </motion.a>
-            )}
           </div>
 
           {/* Mobile Menu Button */}
