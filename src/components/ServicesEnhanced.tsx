@@ -92,12 +92,12 @@ const ServicesEnhanced: React.FC = () => {
 
   const getServiceGradient = (index: number) => {
     const gradients = [
-      'from-blue-500/20 via-indigo-500/20 to-purple-500/20',
-      'from-pink-500/20 via-rose-500/20 to-orange-500/20',
-      'from-emerald-500/20 via-teal-500/20 to-cyan-500/20',
-      'from-orange-500/20 via-red-500/20 to-pink-500/20',
-      'from-purple-500/20 via-indigo-500/20 to-blue-500/20',
-      'from-green-500/20 via-emerald-500/20 to-teal-500/20'
+      'from-[#b09155]/30 via-[#9a7f4b]/30 to-[#d4af37]/30',
+      'from-[#9a7f4b]/30 via-[#b09155]/30 to-[#8b6914]/30',
+      'from-[#d4af37]/30 via-[#b09155]/30 to-[#9a7f4b]/30',
+      'from-[#8b6914]/30 via-[#d4af37]/30 to-[#b09155]/30',
+      'from-[#b09155]/30 via-[#d4af37]/30 to-[#9a7f4b]/30',
+      'from-[#9a7f4b]/30 via-[#8b6914]/30 to-[#b09155]/30'
     ];
     return gradients[index] || gradients[0];
   };
@@ -106,13 +106,13 @@ const ServicesEnhanced: React.FC = () => {
     <section 
       id="services"
       ref={ref}
-      className="relative py-20 overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black"
+      className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/5 via-transparent to-[var(--secondary)]/5" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/10 via-transparent to-[var(--primary-dark)]/10" />
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[var(--primary)]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[var(--secondary)]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[var(--primary)]/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[var(--primary-dark)]/15 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -157,7 +157,7 @@ const ServicesEnhanced: React.FC = () => {
                   }}
                   variants={itemVariants}
                 >
-                  <div className="relative h-[600px] bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-[var(--primary)]/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[var(--primary)]/20 flex flex-col">
+                  <div className="relative h-[600px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:border-[var(--primary)]/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[var(--primary)]/30 flex flex-col">
                     {/* Service Icon */}
                     <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${getServiceGradient(index)} flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       {getServiceIcon(index)}
@@ -191,13 +191,13 @@ const ServicesEnhanced: React.FC = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <button className="w-full bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 mt-auto">
+                    <button className="w-full bg-gradient-to-r from-[var(--primary)] to-[#d4af37] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 mt-auto">
                       <MessageCircle className="w-5 h-5" />
                       {t('buttons.discuss')}
                     </button>
 
                     {/* Hover Glow Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/10 to-[var(--secondary)]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/10 to-[#d4af37]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   </div>
                 </motion.div>
               ))}
@@ -235,7 +235,7 @@ const ServicesEnhanced: React.FC = () => {
               {t('cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white py-4 px-8 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-105">
+              <button className="bg-gradient-to-r from-[var(--primary)] to-[#d4af37] text-white py-4 px-8 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-105">
                 {t('buttons.contact')}
               </button>
               <button className="border border-[var(--primary)] text-[var(--primary)] py-4 px-8 rounded-xl font-semibold hover:bg-[var(--primary)] hover:text-white transition-all duration-300 hover:scale-105">

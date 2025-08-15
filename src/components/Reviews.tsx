@@ -87,17 +87,7 @@ export default function Reviews() {
       className="bg-gradient-to-b from-slate-900/50 via-slate-800/30 to-slate-900/50 relative py-24"
     >
       {/* Distinct background for Reviews */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-transparent to-teal-900/20" />
-      <div className="absolute inset-0 opacity-20">
-        <div className="h-full w-full" style={{
-          backgroundImage: `linear-gradient(45deg, rgba(34, 197, 94, 0.1) 25%, transparent 25%), 
-                           linear-gradient(-45deg, rgba(20, 184, 166, 0.1) 25%, transparent 25%), 
-                           linear-gradient(45deg, transparent 75%, rgba(34, 197, 94, 0.1) 75%), 
-                           linear-gradient(-45deg, transparent 75%, rgba(20, 184, 166, 0.1) 75%)`,
-          backgroundSize: '30px 30px',
-          backgroundPosition: '0 0, 0 15px, 15px -15px, -15px 0px'
-        }} />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#b09155]/20 via-transparent to-[#9a7f4b]/20" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header - Simplified for performance */}
@@ -251,7 +241,7 @@ export default function Reviews() {
       </div>
 
       {/* Bottom border for visual separation */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--primary)]/30 to-transparent"></div>
     </Section>
   );
 }

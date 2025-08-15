@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import LanguagePreferenceHandler from '@/components/LanguagePreferenceHandler';
+import RiseIconRain from '@/components/RiseIconRain';
 import { ScrollProgress } from '@/components/ScrollEffects';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
@@ -154,6 +155,7 @@ export default async function LocaleLayout({
         <StructuredData />
         <SmoothScrollProvider>
           <ScrollProgress />
+          <RiseIconRain />
           <NextIntlClientProvider messages={messages}>
             <LanguagePreferenceHandler />
             {children}
