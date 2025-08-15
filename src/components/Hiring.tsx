@@ -27,7 +27,7 @@ export default function Hiring() {
       bgGradient: 'from-blue-500/10 to-indigo-600/10',
     },
     {
-      key: 'marketing',
+      key: 'digitalMarketing',
       icon: Megaphone,
       color: 'from-green-500 to-emerald-600',
       bgGradient: 'from-green-500/10 to-emerald-600/10',
@@ -37,12 +37,6 @@ export default function Hiring() {
       icon: Bot,
       color: 'from-purple-500 to-violet-600',
       bgGradient: 'from-purple-500/10 to-violet-600/10',
-    },
-    {
-      key: 'socialMedia',
-      icon: Palette,
-      color: 'from-pink-500 to-rose-600',
-      bgGradient: 'from-pink-500/10 to-rose-600/10',
     },
   ];
 
@@ -107,7 +101,7 @@ export default function Hiring() {
             {t('openPositions')}
           </h3>
 
-          <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {positions.map((position, index) => (
               <motion.div
                 key={position.key}

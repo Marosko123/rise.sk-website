@@ -185,7 +185,8 @@
     ],
     "labels": {
       "expertise": "Our expertise",
-      "features": "What we include"
+      "features": "What we include",
+      "scrollToSeeMore": "Scroll to see all services"
     },
     "buttons": {
       "discuss": "Let's discuss the project",
@@ -207,10 +208,79 @@
         "title": "Featured Projects",
         "description": "Our most significant and successful implementations"
       },
+      "twoRing": {
+        "metrics": {
+          "status": "Completed",
+          "duration": "24 months",
+          "satisfaction": "10/10"
+        }
+      },
+      "viacAkoNick": {
+        "metrics": {
+          "status": "Completed",
+          "duration": "6 months",
+          "satisfaction": "10/10"
+        }
+      },
+      "pixelCorporation": {
+        "metrics": {
+          "status": "Ongoing",
+          "duration": "8 months",
+          "satisfaction": "9/10"
+        }
+      },
+      "lumturi": {
+        "metrics": {
+          "status": "Completed",
+          "duration": "4 months",
+          "satisfaction": "10/10"
+        }
+      },
+      "riseWeb": {
+        "metrics": {
+          "status": "Completed",
+          "duration": "3 months",
+          "satisfaction": "10/10"
+        }
+      },
+      "doucma": {
+        "metrics": {
+          "status": "Ongoing",
+          "duration": "36 months",
+          "satisfaction": "10/10"
+        }
+      },
+      "trulee": {
+        "metrics": {
+          "status": "Ongoing",
+          "duration": "12 months",
+          "satisfaction": "9/10"
+        }
+      },
+      "horilla": {
+        "metrics": {
+          "status": "Completed",
+          "duration": "8 months",
+          "satisfaction": "10/10"
+        }
+      },
+      "rozvojDopravy": {
+        "metrics": {
+          "status": "Completed",
+          "duration": "6 months",
+          "satisfaction": "10/10"
+        }
+      },
       "descriptions": {
-        "viacAkoNick": "Flutter mobile application for children's helpline chat platform. We developed secure communication features for children and young people with enterprise-level security.",
-        "horilla": "Open-source HR management software with advanced features. We developed a specialized payroll module for automatic Slovak employee payroll calculations according to Slovak legislation.",
-        "twoRing": "Long-term individual collaboration with 2 Ring on development of complex business applications. Multi-year partnership delivering enterprise-grade solutions."
+        "horilla": "Modern open-source HR management system built with Python Django framework and advanced economic module integration. We specialize in comprehensive human resource management, automated payroll calculations, and advanced reporting. Our team created a specialized Slovak payroll module that precisely adheres to Slovak legislative requirements and automates the entire payroll accounting process.",
+        "viacAkoNick": "Mobile application for children's helpline developed with cutting-edge technologies - Flutter, Dart, PHP backend with native iOS and Android support. We created a secure communication platform where children and young people can seek help in difficult life situations. The application includes advanced security features, message encryption, and compliance with European child protection standards.",
+        "lumturi": "Sophisticated online auction platform built on WordPress framework with extended PHP backend. We created a complete ecosystem for auction trading with advanced features like real-time bidding, automatic notifications, secure payments, and detailed transaction history. The platform supports multiple product categories and provides intuitive user interface for both buyers and sellers.",
+        "pixelCorporation": "Advanced mobile application for iOS and Android developed in Expo and React Native with TypeScript architecture. Focused on the running community, the application includes GPS tracking, performance analysis, social features, and advanced statistics. We integrated machine learning algorithms for personalized training plans and created an engaging social platform for athletes of all levels.",
+        "trulee": "Modern progressive web application for online dating built with Next.js framework and mobile responsiveness. We created an intuitive algorithm for user matching, real-time chat system, video calls, and advanced security features. The application emphasizes quality connections over quantity and provides a safe environment for meeting new people.",
+        "riseWeb": "Full-featured corporate website for IT company developed in Next.js framework with modern design and advanced functionality. Features SEO optimization, fast loading, responsive design, CRM system integration, and advanced analytics tools. The website presents IT company professionalism and serves as an effective marketing tool for acquiring new clients.",
+        "doucma": "For six years, we taught computer science on this educational platform and utilized various IT technologies to improve the educational process. Our activities brought many satisfied students and clients who expanded their knowledge in computer science. We applied modern pedagogical approaches combined with technological solutions for more effective education.",
+        "rozvojDopravy": "Sophisticated web application for urban transportation optimization developed in Vue.js and Node.js with advanced visualization tools. The system analyzes traffic flows, generates intelligent charts and reports, and helps the city of Trnava optimize transportation infrastructure. Features real-time monitoring, predictive algorithms, and interactive dashboard for urban planners.",
+        "twoRing": "Long-term enterprise partnership for developing complex business applications in C#, SQL databases, and Vue.js frontend. We create scalable solutions for large corporations with emphasis on security, performance, and user-friendliness. Our collaboration includes continuous development, maintenance, and functionality expansion of enterprise systems for international markets."
       },
       "categories": {
         "webApps": "Web Applications",
@@ -231,7 +301,9 @@
         "code": "Code",
         "privateProject": "Private project",
         "viewProject": "View Project",
-        "liveDemo": "Live Demo"
+        "liveDemo": "Live Demo",
+        "showMore": "Show More",
+        "showLess": "Show Less"
       },
       "tags": {
         "flutter": "Flutter",
@@ -240,6 +312,7 @@
         "chat": "Chat",
         "security": "Security",
         "vuejs": "Vue.js",
+        "vue3": "Vue.js",
         "csharp": "C#",
         "sql": "SQL",
         "aurelia": "Aurelia",
@@ -248,7 +321,48 @@
         "python": "Python",
         "postgresql": "PostgreSQL",
         "hr": "HR",
-        "payroll": "Payroll"
+        "payroll": "Payroll",
+        "php": "PHP",
+        "ios": "iOS",
+        "android": "Android",
+        "mobile": "Mobile",
+        "reactnative": "React Native",
+        "wordpress": "WordPress",
+        "nextjs": "Next.js",
+        "education": "Education",
+        "nodejs": "Node.js",
+        "webapp": "Website",
+        "optimization": "Optimization",
+        "visualization": "Visualization",
+        "government": "Government",
+        "auction": "Auction",
+        "dating": "Dating",
+        "pwa": "PWA",
+        "transportation": "Transportation",
+        "status": "Status",
+        "completed": "Completed",
+        "duration": "Duration",
+        "months": "months",
+        "satisfaction": "Satisfaction",
+        "type": "Type",
+        "platform": "Platform",
+        "impact": "Impact",
+        "users": "Users",
+        "rating": "Rating",
+        "partner": "Partner",
+        "category": "Category",
+        "city": "City",
+        "reviews": "Reviews",
+        "expo": "Expo",
+        "typescript": "TypeScript",
+        "mobileApps": "Mobile App",
+        "running": "Running",
+        "economy": "Economy",
+        "charts": "Charts",
+        "transport": "Transport",
+        "tutoring": "Tutoring",
+        "itCompany": "IT Company",
+        "website": "Website"
       },
       "metrics": {
         "platform": "Platform",
@@ -513,24 +627,39 @@
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
     "taxId": "2122465094",
+    "vatId": "2122531840",
+    "vatStatus": "Not VAT payers",
     "registration": "Commercial Register of District Court Bratislava III, Section: Sro, Insert No. 188634/B",
     "executives": "Bc. Maroš Bednár",
     "phone": "+421 911 670 188",
+    "banking": {
+      "bank": "Tatra banka, a.s.",
+      "swift": "TATRSKBX",
+      "iban": "SK83 1100 0000 0029 4326 7391"
+    },
     "labels": {
       "name": "Company name",
       "address": "Address",
       "businessId": "Business ID",
       "taxId": "Tax ID",
+      "vatId": "VAT ID",
+      "vatStatus": "VAT Status",
       "registration": "Registration",
       "executives": "Executives",
-      "phone": "Phone"
+      "phone": "Phone",
+      "banking": "Banking Details",
+      "bank": "Bank",
+      "swift": "SWIFT",
+      "iban": "IBAN"
     }
   },
   "footer": {
     "description": "We create innovative digital solutions that push boundaries. From faster development to comprehensive software solutions. We're here for you!",
     "sections": {
       "services": "Services",
-      "company": "Company"
+      "company": "Company",
+      "billing": "Billing Information",
+      "banking": "Banking Details"
     },
     "contact": {
       "title": "Contact",
@@ -545,14 +674,18 @@
       }
     },
     "copyright": "© {year} Rise.sk s.r.o. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "sitemap": "Sitemap"
+    },
     "cta": {
       "title": "Ready to Start?",
       "description": "Get a dedicated team in 7 days. We guarantee 100% on-time delivery and 20-40% cost savings.",
       "button": "Start Today"
     },
     "services": ["Custom Development", "DevOps & Cloud", "UX/UI Design", "Quality Assurance", "Education & Training"],
-    "company": ["About Us", "Our Team", "Careers", "Case Studies", "Blog"],
-    "support": ["Documentation", "API Reference", "Help Center", "Community", "Status"]
+    "company": ["About Us", "Our Team", "Careers", "Case Studies", "Contact Us"]
   },
   "hiring": {
     "badge": "Join Our Team",
@@ -560,27 +693,22 @@
     "titleHighlight": "Talent",
     "subtitle": "We're seeking innovative minds with a passion for technology, creativity, and making real impact. Join our team of experts and help shape the future of digital solutions.",
     "openPositions": "Open Positions",
-    "skillsNeeded": "Required Skills",
+    "skillsNeeded": "Searched Skills",
     "positions": {
       "programming": {
         "title": "Software Development",
-        "description": "Build cutting-edge applications and scalable systems that power businesses worldwide.",
-        "skills": "React/Next.js, Node.js, TypeScript, Python, Cloud Services, DevOps"
+        "description": "Build cutting-edge applications and scalable systems that power businesses worldwide. Create solutions that change how companies operate and grow.",
+        "skills": "React/Next.js, Node.js, TypeScript, Python, Cloud Services, DevOps, Microservices, Databases, API Design, Testing"
       },
-      "marketing": {
-        "title": "Digital Marketing",
-        "description": "Drive growth through innovative marketing strategies and data-driven campaigns.",
-        "skills": "Content Strategy, SEO/SEM, Analytics, Brand Management, Growth Hacking, Marketing Automation"
+      "digitalMarketing": {
+        "title": "Digital Marketing & Content",
+        "description": "Combine marketing strategies with content creation and community management. Build campaigns that engage audiences and create strong digital brands.",
+        "skills": "Content Strategy, SEO/SEM, Social Media, Video Production, Analytics, Brand Management, Growth Hacking, Marketing Automation, Community Management, Influencer Marketing, Visual Design, Copywriting"
       },
       "ai": {
         "title": "AI & Machine Learning",
-        "description": "Develop intelligent solutions that transform how businesses operate and compete.",
-        "skills": "Machine Learning, Data Science, Neural Networks, NLP, Computer Vision, AI Ethics"
-      },
-      "socialMedia": {
-        "title": "Social Media & Content",
-        "description": "Create engaging content and build communities that connect brands with their audiences.",
-        "skills": "Content Creation, Community Management, Visual Design, Video Production, Influencer Relations, Social Analytics"
+        "description": "Develop intelligent solutions using cutting-edge AI technologies. Transform data into actionable insights and automate complex business processes.",
+        "skills": "Machine Learning, Data Science, Neural Networks, NLP, Computer Vision, AI Ethics, TensorFlow, PyTorch, Generative AI, Predictive Analytics"
       }
     },
     "whyJoinUs": {

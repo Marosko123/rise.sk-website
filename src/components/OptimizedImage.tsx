@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -30,7 +32,7 @@ export default function OptimizedImage({
   ...props 
 }: OptimizedImageProps) {
   const t = useTranslations('common');
-  const [currentFormat, setCurrentFormat] = useState<string>('webp');
+  const [currentFormat, setCurrentFormat] = useState<string>('avif');
   const [imageError, setImageError] = useState(false);
 
   // Get optimized source based on format
@@ -66,9 +68,9 @@ export default function OptimizedImage({
 
   // Handle image load errors
   const handleError = () => {
-    if (currentFormat === 'webp') {
-      setCurrentFormat('avif');
-    } else if (currentFormat === 'avif') {
+    if (currentFormat === 'avif') {
+      setCurrentFormat('webp');
+    } else if (currentFormat === 'webp') {
       setCurrentFormat('original');
     } else {
       setImageError(true);

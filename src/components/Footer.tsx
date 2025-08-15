@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check, Copy, CreditCard, ExternalLink, FileText, Hash, Mail, MapPin, Phone, Users } from 'lucide-react';
-import Link from 'next/link';
+import { Banknote, Check, Copy, CreditCard, ExternalLink, FileText, Hash, Mail, MapPin, Phone, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Footer() {
@@ -36,13 +36,6 @@ export default function Footer() {
       t('company.2'),
       t('company.3'),
       t('company.4'),
-    ],
-    support: [
-      t('support.0'),
-      t('support.1'),
-      t('support.2'),
-      t('support.3'),
-      t('support.4'),
     ],
   };
 
@@ -143,22 +136,26 @@ export default function Footer() {
               {t('sections.services')}
             </h3>
             <ul className='space-y-3'>
-              {footerLinks.services.map((service, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                >
-                  <Link
-                    href='#services'
-                    className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
+              {footerLinks.services.map((service, index) => {
+                // Map service index to appropriate anchor
+                const serviceLinks = ['#services', '#services', '#services', '#services', '#services'];
+                return (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
                   >
-                    {service}
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={serviceLinks[index]}
+                      className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
+                    >
+                      {service}
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
           </motion.div>
 
@@ -173,27 +170,31 @@ export default function Footer() {
               {t('sections.company')}
             </h3>
             <ul className='space-y-3'>
-              {footerLinks.company.map((item, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                >
-                  <Link
-                    href='#'
-                    className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
+              {footerLinks.company.map((item, index) => {
+                // Map company links to appropriate pages/sections
+                const companyLinks = ['#about', '#about', '#hiring', '#portfolio', '#contact'];
+                return (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
                   >
-                    {item}
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={companyLinks[index]}
+                      className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
+                    >
+                      {item}
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
           </motion.div>
         </div>
 
-        {/* Company Legal Information Section */}
+        {/* Company Legal Information Section - 3 Columns */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -208,35 +209,38 @@ export default function Footer() {
             <div className='w-16 h-0.5 bg-gradient-to-r from-[#b09155] to-[#d4af37] mx-auto rounded-full'></div>
           </div>
 
-          {/* Compact Company Info Grid */}
+          {/* 3 Column Layout */}
           <div className='bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6'>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
 
-              {/* Contact Info Column */}
+              {/* Kontakt Column */}
               <div className='space-y-4'>
-                <div className='flex items-center space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <Mail className='w-4 h-4 text-[#b09155]' />
+                <h4 className='text-lg font-semibold text-[#b09155] mb-4 flex items-center'>
+                  <Mail className='w-5 h-5 mr-2' />
+                  {t('contact.title')}
+                </h4>
+
+                {/* Zodpovedný zástupca */}
+                <div className='flex items-start space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
+                    <Users className='w-4 h-4 text-[#b09155]' />
                   </div>
                   <div className='min-w-0 flex-1'>
                     <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
-                      EMAIL
+                      {companyInfo('labels.executives')}
                     </div>
-                    <a
-                      href={`mailto:${t('contact.values.email')}`}
-                      className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-sm'
-                    >
-                      {t('contact.values.email')}
-                    </a>
+                    <div className='text-white font-medium text-sm'>
+                      {companyInfo('executives')}
+                    </div>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => copyToClipboard(t('contact.values.email'), 'email')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    onClick={() => copyToClipboard(companyInfo('executives'), 'representative')}
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
                     title='Copy to clipboard'
                   >
-                    {copiedField === 'email' ? (
+                    {copiedField === 'representative' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
                       <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
@@ -244,13 +248,14 @@ export default function Footer() {
                   </motion.button>
                 </div>
 
+                {/* Phone */}
                 <div className='flex items-center space-x-3'>
                   <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
                     <Phone className='w-4 h-4 text-[#b09155]' />
                   </div>
                   <div className='min-w-0 flex-1'>
                     <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
-                      PHONE
+                      {t('contact.phone')}
                     </div>
                     <a
                       href={`tel:${companyInfo('phone').replace(/\s/g, '')}`}
@@ -274,13 +279,45 @@ export default function Footer() {
                   </motion.button>
                 </div>
 
+                {/* Email */}
+                <div className='flex items-center space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Mail className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                      {t('contact.email')}
+                    </div>
+                    <a
+                      href={`mailto:${t('contact.values.email')}`}
+                      className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-sm'
+                    >
+                      {t('contact.values.email')}
+                    </a>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => copyToClipboard(t('contact.values.email'), 'email')}
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    title='Copy to clipboard'
+                  >
+                    {copiedField === 'email' ? (
+                      <Check className='w-3 h-3 text-green-400' />
+                    ) : (
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                    )}
+                  </motion.button>
+                </div>
+
+                {/* Address */}
                 <div className='flex items-start space-x-3'>
                   <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
                     <MapPin className='w-4 h-4 text-[#b09155]' />
                   </div>
                   <div className='min-w-0 flex-1'>
                     <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
-                      OFFICE
+                      {companyInfo('labels.address')}
                     </div>
                     <a
                       href={`https://maps.google.com/?q=${encodeURIComponent(companyInfo('address'))}`}
@@ -307,8 +344,14 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Business Details Column */}
+              {/* Fakturačné údaje Column */}
               <div className='space-y-4'>
+                <h4 className='text-lg font-semibold text-[#b09155] mb-4 flex items-center'>
+                  <FileText className='w-5 h-5 mr-2' />
+                  {t('sections.billing')}
+                </h4>
+
+                {/* IČO */}
                 <div className='flex items-center space-x-3'>
                   <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
                     <Hash className='w-4 h-4 text-[#b09155]' />
@@ -336,56 +379,55 @@ export default function Footer() {
                   </motion.button>
                 </div>
 
+                {/* DIČ */}
                 <div className='flex items-center space-x-3'>
                   <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
                     <CreditCard className='w-4 h-4 text-[#b09155]' />
                   </div>
                   <div className='min-w-0 flex-1'>
                     <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
-                      {companyInfo('labels.taxId')}
+                      {companyInfo('labels.vatId')}
                     </div>
                     <div className='text-white font-mono text-sm'>
-                      {companyInfo('taxId')}
+                      {companyInfo('vatId')}
                     </div>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => copyToClipboard(companyInfo('taxId'), 'taxId')}
+                    onClick={() => copyToClipboard(companyInfo('vatId'), 'vatId')}
                     className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
-                    {copiedField === 'taxId' ? (
+                    {copiedField === 'vatId' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
                       <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
                     )}
                   </motion.button>
                 </div>
-              </div>
 
-              {/* Legal Info Column */}
-              <div className='space-y-4 md:col-span-2 lg:col-span-1'>
+                {/* VAT Status */}
                 <div className='flex items-center space-x-3'>
                   <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <Users className='w-4 h-4 text-[#b09155]' />
+                    <CreditCard className='w-4 h-4 text-[#b09155]' />
                   </div>
                   <div className='min-w-0 flex-1'>
                     <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
-                      {companyInfo('labels.executives')}
+                      {companyInfo('labels.vatStatus')}
                     </div>
                     <div className='text-white text-sm font-medium'>
-                      {companyInfo('executives')}
+                      {companyInfo('vatStatus')}
                     </div>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => copyToClipboard(companyInfo('executives'), 'executives')}
+                    onClick={() => copyToClipboard(companyInfo('vatStatus'), 'vatStatus')}
                     className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
-                    {copiedField === 'executives' ? (
+                    {copiedField === 'vatStatus' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
                       <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
@@ -393,6 +435,7 @@ export default function Footer() {
                   </motion.button>
                 </div>
 
+                {/* ORSR */}
                 <div className='flex items-start space-x-3'>
                   <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
                     <FileText className='w-4 h-4 text-[#b09155]' />
@@ -401,18 +444,110 @@ export default function Footer() {
                     <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.registration')}
                     </div>
-                    <div className='text-gray-300 text-xs leading-relaxed'>
+                    <div className='text-white text-sm leading-relaxed'>
                       {companyInfo('registration')}
                     </div>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => copyToClipboard(companyInfo('registration'), 'registration')}
+                    onClick={() => copyToClipboard(companyInfo('registration'), 'orsr')}
                     className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
                     title='Copy to clipboard'
                   >
-                    {copiedField === 'registration' ? (
+                    {copiedField === 'orsr' ? (
+                      <Check className='w-3 h-3 text-green-400' />
+                    ) : (
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                    )}
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Bankové spojenie Column */}
+              <div className='space-y-4'>
+                <h4 className='text-lg font-semibold text-[#b09155] mb-4 flex items-center'>
+                  <Banknote className='w-5 h-5 mr-2' />
+                  {t('sections.banking')}
+                </h4>
+
+                {/* Banka */}
+                <div className='flex items-start space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
+                    <Banknote className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                      {companyInfo('labels.bank')}
+                    </div>
+                    <div className='text-white font-medium text-sm'>
+                      {companyInfo('banking.bank')}
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => copyToClipboard(companyInfo('banking.bank'), 'bank')}
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
+                    title='Copy to clipboard'
+                  >
+                    {copiedField === 'bank' ? (
+                      <Check className='w-3 h-3 text-green-400' />
+                    ) : (
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                    )}
+                  </motion.button>
+                </div>
+
+                {/* SWIFT */}
+                <div className='flex items-center space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <CreditCard className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                      {companyInfo('labels.swift')}
+                    </div>
+                    <div className='text-white font-mono text-sm'>
+                      {companyInfo('banking.swift')}
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => copyToClipboard(companyInfo('banking.swift'), 'swift')}
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    title='Copy to clipboard'
+                  >
+                    {copiedField === 'swift' ? (
+                      <Check className='w-3 h-3 text-green-400' />
+                    ) : (
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                    )}
+                  </motion.button>
+                </div>
+
+                {/* IBAN */}
+                <div className='flex items-center space-x-3'>
+                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Hash className='w-4 h-4 text-[#b09155]' />
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                      {companyInfo('labels.iban')}
+                    </div>
+                    <div className='text-white font-mono text-sm'>
+                      {companyInfo('banking.iban')}
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => copyToClipboard(companyInfo('banking.iban'), 'iban')}
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    title='Copy to clipboard'
+                  >
+                    {copiedField === 'iban' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
                       <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
@@ -432,47 +567,11 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className='border-t border-gray-800 pt-8'
         >
-          <div className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
-            <div className='text-gray-400 text-sm'>
+          <div className='flex flex-col md:flex-row justify-center items-center text-gray-400'>
+            <p className='text-sm'>
               {t('copyright', { year: currentYear })}
-            </div>
-            <div className='flex space-x-6'>
-              {footerLinks.support.slice(2).map((item, index) => (
-                <Link
-                  key={index}
-                  href='#'
-                  className='text-gray-400 hover:text-[#b09155] transition-colors duration-300 text-sm'
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
+            </p>
           </div>
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className='mt-12 p-8 bg-gradient-to-r from-[#b09155]/20 to-[#9a7f4b]/20 backdrop-blur-sm border border-white/10 rounded-2xl text-center'
-        >
-          <h3 className='text-2xl font-bold text-white mb-4'>
-            {t('cta.title')}
-          </h3>
-          <p className='text-gray-300 mb-6 max-w-2xl mx-auto'>
-            {t('cta.description')}
-          </p>
-          <motion.a
-            href='#contact'
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className='inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold rounded-lg transition-all duration-300'
-          >
-            {t('cta.button')}
-            <ExternalLink className='w-5 h-5 ml-2' />
-          </motion.a>
         </motion.div>
       </div>
     </footer>

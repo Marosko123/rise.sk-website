@@ -1,10 +1,10 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { ExternalLink, Eye, Github } from 'lucide-react';
-import Image from 'next/image';
+import { ChevronLeft, ChevronRight, Eye, Github, Lock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import React, { useRef } from 'react';
+import Image from 'next/image';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import OptimizedImage from './OptimizedImage';
 
@@ -12,66 +12,194 @@ import OptimizedImage from './OptimizedImage';
 const getPortfolioProjects = (t: (key: string) => string) => [
   {
     id: 1,
-    title: 'Viac Ako Ni(c)K',
-    descriptionKey: 'viacAkoNick',
-    category: 'mobileApps',
-    image: '/viac_ako_nick.svg',
-    tags: [t('tags.flutter'), t('tags.dart'), t('tags.firebase'), t('tags.chat'), t('tags.security')],
-    liveUrl: 'https://viacakonick.gov.sk/mam-viac-ako-12-rokov/',
-    githubUrl: null,
-    featured: true,
-    metrics: {
-      platform: t('metrics.govsk'),
-      impact: t('metrics.impact'),
-      security: t('metrics.security')
-    }
-  },
-  {
-    id: 2,
-    title: '2 Ring Slovensko',
-    descriptionKey: 'twoRing',
-    category: 'webapp',
-    image: '/2ring.svg',
-    tags: [t('tags.vuejs'), t('tags.csharp'), t('tags.sql'), t('tags.aurelia'), t('tags.enterprise')],
-    liveUrl: null,
-    githubUrl: null,
-    featured: true,
-    metrics: {
-      duration: t('metrics.duration'),
-      type: t('metrics.type'),
-      status: t('metrics.status')
-    }
-  },
-  {
-    id: 3,
     title: 'Horilla Payroll',
     descriptionKey: 'horilla',
     category: 'webapp',
-    image: '/horilla.png',
-    tags: [t('tags.django'), t('tags.python'), t('tags.postgresql'), t('tags.hr'), t('tags.payroll')],
+    image: '/portfolio/horilla.svg',
+    tags: ['Python', 'Django', 'Economy'],
     liveUrl: 'https://demo.horilla.com/',
     githubUrl: 'https://github.com/horilla-opensource/horilla',
     featured: true,
     metrics: {
-      platform: t('metrics.github'),
-      users: t('metrics.users'),
-      rating: t('metrics.rating')
+      status: t('projects.horilla.metrics.status'),
+      duration: t('projects.horilla.metrics.duration'),
+      satisfaction: t('projects.horilla.metrics.satisfaction')
     }
-  }
+  },
+  {
+    id: 2,
+    title: 'Viac Ako Ni(c)K',
+    descriptionKey: 'viacAkoNick',
+    category: 'mobileApps',
+    image: '/viac_ako_nick.svg',
+    tags: ['PHP', 'Flutter', 'Dart', 'iOS', 'Android'],
+    liveUrl: 'https://viacakonick.gov.sk',
+    githubUrl: null,
+    featured: true,
+    metrics: {
+      status: t('projects.viacAkoNick.metrics.status'),
+      duration: t('projects.viacAkoNick.metrics.duration'),
+      satisfaction: t('projects.viacAkoNick.metrics.satisfaction')
+    }
+  },
+  {
+    id: 3,
+    title: 'Lumturi Auction',
+    descriptionKey: 'lumturi',
+    category: 'webapp',
+    image: '/portfolio/lumturi_favicon.png',
+    tags: ['WordPress', 'PHP', 'Auction'],
+    liveUrl: 'https://www.lumturi.com',
+    githubUrl: null,
+    featured: true,
+    metrics: {
+      status: t('projects.lumturi.metrics.status'),
+      duration: t('projects.lumturi.metrics.duration'),
+      satisfaction: t('projects.lumturi.metrics.satisfaction')
+    }
+  },
+  {
+    id: 4,
+    title: 'Pixel Corporation',
+    descriptionKey: 'pixelCorporation',
+    category: 'mobileApps',
+    image: '/portfolio/pixel-corporation-logo.png',
+    tags: ['Expo', 'React Native', 'Mobile App', 'Running'],
+    liveUrl: 'https://www.pixelcorporation.sk',
+    githubUrl: null,
+    featured: true,
+    metrics: {
+      status: t('projects.pixelCorporation.metrics.status'),
+      duration: t('projects.pixelCorporation.metrics.duration'),
+      satisfaction: t('projects.pixelCorporation.metrics.satisfaction')
+    }
+  },
+  {
+    id: 5,
+    title: 'Trulee Dating',
+    descriptionKey: 'trulee',
+    category: 'webapp',
+    image: '/portfolio/trulee.webp',
+    tags: ['Next.js', 'Mobile App', 'Dating'],
+    liveUrl: null,
+    githubUrl: null,
+    featured: true,
+    metrics: {
+      status: t('projects.trulee.metrics.status'),
+      duration: t('projects.trulee.metrics.duration'),
+      satisfaction: t('projects.trulee.metrics.satisfaction')
+    }
+  },
+  {
+    id: 6,
+    title: 'Rise.sk',
+    descriptionKey: 'riseWeb',
+    category: 'corporate',
+    image: '/rise/logo-bronze-transparent.png',
+    tags: ['Next.js', 'Website', 'IT Company'],
+    liveUrl: 'https://www.rise.sk',
+    githubUrl: null,
+    featured: true,
+    metrics: {
+      status: t('projects.riseWeb.metrics.status'),
+      duration: t('projects.riseWeb.metrics.duration'),
+      satisfaction: t('projects.riseWeb.metrics.satisfaction')
+    }
+  },
+  {
+    id: 7,
+    title: 'Doucma Education',
+    descriptionKey: 'doucma',
+    category: 'education',
+    image: '/portfolio/doucma.svg',
+    tags: ['Tutoring', 'Education'],
+    liveUrl: 'https://www.doucma.sk/272129-doucovanie-posun-svoje-matematicke-a-it-zrucnosti-na-novy-level',
+    githubUrl: null,
+    featured: false,
+    metrics: {
+      status: t('projects.doucma.metrics.status'),
+      duration: t('projects.doucma.metrics.duration'),
+      satisfaction: t('projects.doucma.metrics.satisfaction')
+    }
+  },
+  {
+    id: 8,
+    title: 'Rozvoj dopravy Trnava',
+    descriptionKey: 'rozvojDopravy',
+    category: 'webapp',
+    image: '/portfolio/trnava.jpg',
+    tags: ['Vue.js', 'Node.js', 'Charts', 'Transport'],
+    liveUrl: null,
+    githubUrl: null,
+    featured: false,
+    metrics: {
+      status: t('projects.rozvojDopravy.metrics.status'),
+      duration: t('projects.rozvojDopravy.metrics.duration'),
+      satisfaction: t('projects.rozvojDopravy.metrics.satisfaction')
+    }
+  },
+  {
+    id: 9,
+    title: '2 Ring',
+    descriptionKey: 'twoRing',
+    category: 'webapp',
+    image: '/portfolio/2ring.svg',
+    tags: ['C#', 'SQL', 'Vue.js', 'Enterprise'],
+    liveUrl: 'https://www.2ring.com',
+    githubUrl: null,
+    featured: true,
+    metrics: {
+      status: t('projects.twoRing.metrics.status'),
+      duration: t('projects.twoRing.metrics.duration'),
+      satisfaction: t('projects.twoRing.metrics.satisfaction')
+    }
+  },
 ];
 
-interface PortfolioProps {
-  className?: string;
-}
-
-const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
+const Portfolio: React.FC = () => {
   const t = useTranslations('portfolio');
-  const portfolioProjects = getPortfolioProjects((key: string) => t(`projects.${key}`));
-
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  // Simplified animation variants for better performance
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(3);
+  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
+  const [isHovered, setIsHovered] = useState(false);
+
+  const portfolioProjects = getPortfolioProjects(t);  // Calculate items per view based on screen size
+  React.useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(3);
+      }
+    };
+
+    updateItemsPerView();
+    window.addEventListener('resize', updateItemsPerView);
+    return () => window.removeEventListener('resize', updateItemsPerView);
+  }, []);
+
+  const maxIndex = Math.max(0, portfolioProjects.length - itemsPerView);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  }, [maxIndex]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  }, [maxIndex]);
+
+  // Auto-slide functionality - pause on hover
+  useEffect(() => {
+    if (isHovered) return; // Don't auto-slide when hovering
+
+    const interval = setInterval(nextSlide, 5000); // Auto slide every 5 seconds
+    return () => clearInterval(interval);
+  }, [nextSlide, isHovered]);  // Simplified animation variants for better performance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -129,14 +257,22 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
     <section
       id="portfolio"
       ref={ref}
-      className={`py-24 relative overflow-hidden ${className}`}
+      className="py-16 relative overflow-hidden"
       style={{
-        background: 'var(--background)',
+        background: 'linear-gradient(135deg, var(--background) 0%, rgba(15, 23, 42, 0.8) 50%, var(--background) 100%)',
         color: 'var(--foreground)'
       }}
     >
-      {/* Simplified background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--primary)]/5 to-transparent" />
+      {/* Different background pattern for Portfolio */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-transparent to-purple-900/10" />
+      <div className="absolute inset-0 opacity-30">
+        <div className="h-full w-full" style={{
+          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%), 
+                           radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%)`,
+          backgroundSize: '800px 800px'
+        }} />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
@@ -144,11 +280,11 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <motion.h2
             variants={itemVariants}
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6"
           >
             {t('title')}{' '}
             <span className="gradient-text-animated">
@@ -158,7 +294,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed"
           >
             {t('subtitle')}
           </motion.p>
@@ -169,7 +305,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         >
           {[
             { key: 'projectsCompleted', icon: '📊', color: 'from-blue-500 to-cyan-500' },
@@ -197,9 +333,9 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="mb-20"
+          className="mb-12"
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-12">
             <h3 className="text-3xl font-bold mb-4 gradient-text-animated">
               {t('projects.featured.title')}
             </h3>
@@ -208,36 +344,68 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {portfolioProjects.map((project) => (
+          {/* Carousel Container */}
+          <div className="relative">
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            >
+              <ChevronLeft className="h-6 w-6 text-[var(--primary)]" />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            >
+              <ChevronRight className="h-6 w-6 text-[var(--primary)]" />
+            </button>
+
+            {/* Carousel Content */}
+            <div className="overflow-hidden mx-16">
               <motion.div
-                key={project.id}
-                variants={itemVariants}
-                className="group relative"
+                className="flex transition-transform duration-500 ease-in-out items-start"
+                style={{
+                  transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`
+                }}
               >
-                {/* Simplified Project Card */}
-                <div className="bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden h-full transition-transform duration-300 hover:scale-105 hover:bg-white/10">
+                {portfolioProjects.map((project) => (
+                  <motion.div
+                    key={project.id}
+                    className="group relative flex-shrink-0 px-4"
+                    style={{
+                      width: `${100 / itemsPerView}%`
+                    }}
+                    variants={itemVariants}
+                  >
+                {/* Compact Project Card */}
+                <div
+                  className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden h-[500px] flex flex-col transition-all duration-500 hover:scale-105 hover:bg-white/10"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
                   {/* Project Image/Preview */}
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  <div className="relative aspect-[16/9] overflow-hidden flex-shrink-0">
                     <div className={`h-full w-full bg-gradient-to-br ${getCategoryGradient(project.category)} flex items-center justify-center relative`}>
                       {/* Background image */}
                       {project.image ? (
-                        project.title === 'HORILLA PAYROLL' ? (
+                        project.title === 'Horilla Payroll' ? (
                           <OptimizedImage
                             src={project.image}
                             alt={project.title}
                             fill
-                            className="object-cover opacity-80"
+                            className="object-cover"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             priority={false}
                             quality={85}
+                            placeholder="empty"
                           />
                         ) : (
                           <Image
                             src={project.image}
                             alt={project.title}
                             fill
-                            className="object-cover opacity-80"
+                            className="object-cover"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             loading="lazy"
                             quality={85}
@@ -247,33 +415,33 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                           />
                         )
                       ) : (
-                        <div className="text-8xl opacity-30">
+                        <div className="text-6xl opacity-30">
                           {getCategoryIcon(project.category)}
                         </div>
                       )}
 
                       {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 
-                      {/* Project title overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 z-10">
-                        <h4 className="text-white font-bold text-lg drop-shadow-lg">
-                          {project.title}
-                        </h4>
-                      </div>
-
-                      {/* Action buttons - Always visible, simpler design */}
-                      <div className="absolute top-4 right-4 flex space-x-2">
-                        {project.liveUrl && (
+                      {/* Action buttons - icons only */}
+                      <div className="absolute top-3 right-3 flex space-x-1">
+                        {project.liveUrl ? (
                           <a
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-white/20 backdrop-blur-sm flex items-center space-x-2 px-3 py-2 rounded-full text-sm font-medium text-white hover:bg-white/30 transition-colors"
+                            className="bg-[var(--primary)]/30 backdrop-blur-sm p-2 rounded-full text-[var(--primary)] hover:bg-[var(--primary)]/50 transition-colors hover:scale-110"
+                            title={t('projects.actions.demo')}
                           >
-                            <Eye className="h-4 w-4" />
-                            <span>{t('projects.actions.demo')}</span>
+                            <Eye className="h-3 w-3" />
                           </a>
+                        ) : (
+                          <div
+                            className="bg-gray-500/40 backdrop-blur-md p-2 rounded-full text-gray-400/90 cursor-not-allowed opacity-80"
+                            title="Demo nie je dostupné"
+                          >
+                            <Eye className="h-3 w-3" />
+                          </div>
                         )}
 
                         {project.githubUrl ? (
@@ -281,15 +449,17 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-white/20 backdrop-blur-sm flex items-center space-x-2 px-3 py-2 rounded-full text-sm font-medium text-white hover:bg-white/30 transition-colors"
+                            className="bg-[var(--primary)]/30 backdrop-blur-sm p-2 rounded-full text-[var(--primary)] hover:bg-[var(--primary)]/50 transition-colors hover:scale-110"
+                            title={t('projects.actions.code')}
                           >
-                            <Github className="h-4 w-4" />
-                            <span>{t('projects.actions.code')}</span>
+                            <Github className="h-3 w-3" />
                           </a>
                         ) : (
-                          <div className="bg-white/10 backdrop-blur-sm flex items-center space-x-2 px-3 py-2 rounded-full text-sm font-medium text-white/50">
-                            <Github className="h-4 w-4" />
-                            <span>{t('projects.actions.privateProject')}</span>
+                          <div
+                            className="bg-gray-500/40 backdrop-blur-md p-2 rounded-full text-gray-400/90 cursor-not-allowed opacity-80 group relative"
+                            title="Privátny projekt - kód nie je verejne dostupný"
+                          >
+                            <Lock className="h-3 w-3" />
                           </div>
                         )}
                       </div>
@@ -297,44 +467,107 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                   </div>
 
                   {/* Project Content */}
-                  <div className="p-8">
-                    <div className="flex items-start justify-between mb-4">
-                      <h4 className="text-xl font-bold text-white group-hover:text-[var(--primary)] transition-colors">
-                        {project.title}
-                      </h4>
-                      {project.liveUrl && (
-                        <ExternalLink className="h-5 w-5 text-white/40 group-hover:text-[var(--primary)] transition-colors" />
-                      )}
+                  <div className="p-4 flex flex-col h-full">
+                    {/* Title */}
+                    <h4 className="text-lg font-bold text-white mb-2 group-hover:text-[var(--primary)] transition-colors">
+                      {project.title}
+                    </h4>
+
+                    {/* Technology Tags */}
+                    <div className="mb-3">
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags && project.tags.length > 0 && (
+                          project.tags.map((tag, index) => (
+                            <span
+                              key={index}
+                              className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-yellow-500/20 to-amber-500/20 text-yellow-400 border border-yellow-400/30 hover:bg-yellow-500/30 transition-all duration-200"
+                            >
+                              {tag}
+                            </span>
+                          ))
+                        )}
+                      </div>
                     </div>
 
-                    <p className="text-white/70 mb-6 leading-relaxed">
-                      {t(`projects.descriptions.${project.descriptionKey}`)}
-                    </p>
+                    {/* Description section with fixed button position */}
+                    <div className="mb-2 flex-grow flex flex-col">
+                      {/* Text content with controlled scrolling */}
+                      <div
+                        className={`transition-all duration-500 ${
+                          expandedCards.has(project.id)
+                            ? 'max-h-[100px] overflow-y-auto scrollbar-thin'
+                            : 'h-[4rem] overflow-hidden'
+                        }`}
+                        onWheel={(e) => {
+                          // Allow wheel scrolling only within the text area when expanded
+                          if (expandedCards.has(project.id)) {
+                            e.stopPropagation();
+                          }
+                        }}
+                      >
+                        <p className={`text-white/70 text-sm leading-relaxed ${
+                          !expandedCards.has(project.id) ? 'line-clamp-5' : ''
+                        }`}>
+                          {t(`projects.descriptions.${project.descriptionKey}`)}
+                        </p>
+                      </div>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="glass px-3 py-1 rounded-full text-xs font-medium text-white/80"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                      {/* Fixed button area - always visible */}
+                      <div className="mt-1 flex-shrink-0">
+                        {!expandedCards.has(project.id) && (
+                          <button
+                            onClick={() => {
+                              const newExpanded = new Set(expandedCards);
+                              newExpanded.add(project.id);
+                              setExpandedCards(newExpanded);
+                            }}
+                            className="text-[var(--primary)] hover:text-yellow-300 text-sm font-medium transition-colors underline hover:no-underline"
+                          >
+                            {t('projects.actions.showMore')}
+                          </button>
+                        )}
+
+                        {expandedCards.has(project.id) && (
+                          <button
+                            onClick={() => {
+                              const newExpanded = new Set(expandedCards);
+                              newExpanded.delete(project.id);
+                              setExpandedCards(newExpanded);
+                            }}
+                            className="text-[var(--primary)] hover:text-yellow-300 text-sm font-medium transition-colors underline hover:no-underline"
+                          >
+                            {t('projects.actions.showLess')}
+                          </button>
+                        )}
+                      </div>
                     </div>
 
-                    {/* Metrics */}
-                    <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
-                      {Object.entries(project.metrics).map(([key, value]) => (
-                        <div key={key} className="text-center">
-                          <div className="text-lg font-bold" style={{ color: 'var(--primary)' }}>
-                            {value}
-                          </div>
-                          <div className="text-xs text-white/50 capitalize">
-                            {key}
-                          </div>
-                        </div>
-                      ))}
+                    {/* Status Tags - Always visible at bottom with less margin */}
+                    <div className="mt-1">
+                      <div className="flex flex-nowrap gap-1 justify-center">
+                        {Object.entries(project.metrics).map(([key, value]) => {
+                          // Map metric keys to translated labels
+                          const getMetricLabel = (metricKey: string) => {
+                            const labelMap: { [key: string]: string } = {
+                              'status': t('projects.tags.status'),
+                              'duration': t('projects.tags.duration'),
+                              'satisfaction': t('projects.tags.satisfaction')
+                            };
+                            return labelMap[metricKey] || metricKey;
+                          };
+
+                          return (
+                            <div key={key} className="bg-white/5 rounded-lg px-2 py-2 text-center flex-1 min-w-0">
+                              <span className="text-white/50 text-xs uppercase tracking-wide block mb-1">
+                                {getMetricLabel(key)}
+                              </span>
+                              <span className="text-sm font-bold whitespace-nowrap" style={{ color: '#d4af37' }}>
+                                {value}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -343,52 +576,29 @@ const Portfolio: React.FC<PortfolioProps> = ({ className = '' }) => {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[var(--primary)]/20 to-[var(--primary-dark)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10" />
               </motion.div>
             ))}
+              </motion.div>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentIndex === index
+                      ? 'bg-[var(--primary)] w-8'
+                      : 'bg-[var(--primary)]/30 hover:bg-[var(--primary)]/50'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="text-center"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="glass-effect rounded-3xl p-12 relative overflow-hidden"
-          >
-            <div className="relative z-10">
-              <h3 className="text-3xl font-bold mb-4 gradient-text-animated">
-                {t('cta.title')}
-              </h3>
-              <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
-                {t('cta.description')}
-              </p>
-              <div className="flex justify-center">
-                <button
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }}
-                  className="bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-8 py-4 rounded-full text-lg font-semibold text-white shadow-2xl transition-colors duration-300"
-                >
-                  {t('cta.startProject')}
-                </button>
-              </div>
-            </div>
-
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="h-full w-full" style={{
-                backgroundImage: `radial-gradient(circle at 25% 25%, var(--primary) 1px, transparent 1px), radial-gradient(circle at 75% 75%, var(--primary) 1px, transparent 1px)`,
-                backgroundSize: '50px 50px'
-              }} />
-            </div>
-          </motion.div>
-        </motion.div>
       </div>
+
+      {/* Bottom border for visual separation */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
     </section>
   );
 };

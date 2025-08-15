@@ -21,6 +21,7 @@ interface Review {
 
 export default function Reviews() {
   const t = useTranslations('reviews');
+  const portfolioT = useTranslations('portfolio'); // Add portfolio translations for CTA
   const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -83,18 +84,28 @@ export default function Reviews() {
   return (
     <Section
       id="reviews"
-      className="bg-[var(--background)] relative"
+      className="bg-gradient-to-b from-slate-900/50 via-slate-800/30 to-slate-900/50 relative py-24"
     >
-      {/* Simple background effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--primary)]/5 to-transparent" />
+      {/* Distinct background for Reviews */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-transparent to-teal-900/20" />
+      <div className="absolute inset-0 opacity-20">
+        <div className="h-full w-full" style={{
+          backgroundImage: `linear-gradient(45deg, rgba(34, 197, 94, 0.1) 25%, transparent 25%), 
+                           linear-gradient(-45deg, rgba(20, 184, 166, 0.1) 25%, transparent 25%), 
+                           linear-gradient(45deg, transparent 75%, rgba(34, 197, 94, 0.1) 75%), 
+                           linear-gradient(-45deg, transparent 75%, rgba(20, 184, 166, 0.1) 75%)`,
+          backgroundSize: '30px 30px',
+          backgroundPosition: '0 0, 0 15px, 15px -15px, -15px 0px'
+        }} />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header - Simplified for performance */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-6">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold text-[var(--foreground)] mb-6">
             {t('title')}
           </h2>
-          <p className="text-lg md:text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-[var(--foreground-muted)] max-w-3xl mx-auto leading-relaxed">
             {t('subtitle')}
           </p>
         </div>
@@ -202,7 +213,45 @@ export default function Reviews() {
             </div>
           )}
         </div>
+
+        {/* CTA Section - Moved from Portfolio */}
+        <div className="text-center mt-20">
+          <div className="glass-effect rounded-3xl p-12 relative overflow-hidden">
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold mb-4 gradient-text-animated">
+                {portfolioT('cta.title')}
+              </h3>
+              <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+                {portfolioT('cta.description')}
+              </p>
+              <div className="flex justify-center">
+                <button
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  className="bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-8 py-4 rounded-full text-lg font-semibold text-white shadow-2xl transition-colors duration-300"
+                >
+                  {portfolioT('cta.startProject')}
+                </button>
+              </div>
+            </div>
+
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="h-full w-full" style={{
+                backgroundImage: `radial-gradient(circle at 25% 25%, var(--primary) 1px, transparent 1px), radial-gradient(circle at 75% 75%, var(--primary) 1px, transparent 1px)`,
+                backgroundSize: '50px 50px'
+              }} />
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Bottom border for visual separation */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"></div>
     </Section>
   );
 }

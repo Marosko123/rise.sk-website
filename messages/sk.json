@@ -185,7 +185,8 @@
     ],
     "labels": {
       "expertise": "Naša expertíza",
-      "features": "Čo zahŕňame"
+      "features": "Čo zahŕňame",
+      "scrollToSeeMore": "Posúvajte pre zobrazenie všetkých služieb"
     },
     "buttons": {
       "discuss": "Preberme projekt",
@@ -207,10 +208,79 @@
         "title": "Hlavné projekty",
         "description": "Naše najvýznamnejšie a najúspešnejšie realizácie"
       },
+      "twoRing": {
+        "metrics": {
+          "status": "Ukončené",
+          "duration": "24 mesiacov",
+          "satisfaction": "10/10"
+        }
+      },
+      "viacAkoNick": {
+        "metrics": {
+          "status": "Ukončené",
+          "duration": "6 mesiacov",
+          "satisfaction": "10/10"
+        }
+      },
+      "pixelCorporation": {
+        "metrics": {
+          "status": "Prebieha",
+          "duration": "8 mesiacov",
+          "satisfaction": "9/10"
+        }
+      },
+      "lumturi": {
+        "metrics": {
+          "status": "Ukončené",
+          "duration": "4 mesiace",
+          "satisfaction": "10/10"
+        }
+      },
+      "riseWeb": {
+        "metrics": {
+          "status": "Ukončené",
+          "duration": "3 mesiace",
+          "satisfaction": "10/10"
+        }
+      },
+      "doucma": {
+        "metrics": {
+          "status": "Prebieha",
+          "duration": "36 mesiacov",
+          "satisfaction": "10/10"
+        }
+      },
+      "trulee": {
+        "metrics": {
+          "status": "Prebieha",
+          "duration": "12 mesiacov",
+          "satisfaction": "9/10"
+        }
+      },
+      "horilla": {
+        "metrics": {
+          "status": "Ukončené",
+          "duration": "8 mesiacov",
+          "satisfaction": "10/10"
+        }
+      },
+      "rozvojDopravy": {
+        "metrics": {
+          "status": "Ukončené",
+          "duration": "6 mesiacov",
+          "satisfaction": "10/10"
+        }
+      },
       "descriptions": {
-        "viacAkoNick": "Flutter mobilná aplikácia pre chat platformu detskej linky pomoci. Vyvinuli sme bezpečné komunikačné funkcie pre deti a mladých ľudí s enterprise úrovňou zabezpečenia.",
-        "horilla": "Open-source HR softvér pre správu ľudských zdrojov s pokročilými funkciami. Vyvinuli sme špecializovaný mzdový modul pre automatické slovenské mzdové výpočty podľa slovenskej legislatívy.",
-        "twoRing": "Dlhodobá individuálna spolupráca s 2 Ring na vývoji komplexných business aplikácií. Viacročné partnerstvo dodávajúce riešenia na enterprise úrovni."
+        "horilla": "Moderný open-source HR systém vyvinutý v Python Django frameworku s pokročilou integráciou ekonomických modulov. Špecializujeme sa na komplexnú správu ľudských zdrojov, automatizované mzdové výpočty a pokročilé reportovanie. Náš tím vytvoril špecializovaný slovenský mzdový modul, ktorý presne dodržiava slovenské legislatívne požiadavky a automatizuje celý proces mzdového účtovníctva.",
+        "viacAkoNick": "Mobilná aplikácia pre detskú linku pomoci vyvinutá v najmodernejších technológiách - Flutter, Dart, PHP backend s natívnou iOS a Android podporou. Vytvorili sme bezpečnú komunikačnú platformu, kde deti a mladí ľudia môžu vyhľadať pomoc v ťažkých životných situáciách. Aplikácia obsahuje pokročilé bezpečnostné funkcie, šifrovanie správ a compliance s európskymi štandardmi ochrany detí.",
+        "lumturi": "Sofistikovaná online aukčná platforma postavená na WordPress frameworku s rozšíreným PHP backendom. Vytvorili sme kompletný ekosystém pre aukčné obchodovanie s pokročilými funkciami ako real-time bidding, automatické notifikácie, bezpečné platby a detailnú históriu transakcií. Platforma podporuje množstvo kategórií produktov a poskytuje intuítívne používateľské rozhranie pre kupujúcich aj predávajúcich.",
+        "pixelCorporation": "Pokročilá mobilná aplikácia pre iOS a Android vyvinutá v Expo a React Native s TypeScript architektúrou. Zameraná na komunitu bežcov, aplikácia obsahuje GPS tracking, analýzu výkonu, sociálne funkcie a pokročilé štatistiky. Integrovali sme machine learning algoritmy pre personalizované tréningové plány a vytvorili engaging sociálnu platformu pre športovcov všetkých úrovní.",
+        "trulee": "Moderná progressive web aplikácia pre online zoznamovanie vyvinutá v Next.js frameworku s mobilnou responzívnosťou. Vytvorili sme intuitívny algoritmus pre párovanie používateľov, real-time chat systém, video hovory a pokročilé bezpečnostné funkcie. Aplikácia kladie dôraz na kvalitné spojenia namiesto kvantity a poskytuje bezpečné prostredie pre spoznávanie nových ľudí.",
+        "riseWeb": "Plnohodnotná firemná webstránka pre IT spoločnosť vyvinutá v Next.js frameworku s moderným designom a pokročilými funkciami. Obsahuje SEO optimalizáciu, rýchle načítavanie, responsive design, integráciu s CRM systémami a pokročilé analytické nástroje. Webstránka prezentuje profesionalitu IT spoločnosti a slúži ako efektívny marketingový nástroj pre získavanie nových klientov.",
+        "doucma": "Šesť rokov sme na tejto vzdelávacej platforme vyučovali informatiku a využívali rôzne IT technológie na zlepšenie vzdelávacieho procesu. Naša činnosť priniesla množstvo spokojných študentov a klientov, ktorí si rozšírili svoje znalosti v oblasti informatiky. Aplikovali sme moderné pedagogické prístupy kombinované s technologickými riešeniami pre efektívnejšie vzdelávanie.",
+        "rozvojDopravy": "Webová aplikácia pre optimalizáciu mestskej dopravy vyvinutá vo Vue.js a Node.js s pokročilými vizualizačnými nástrojmi. Systém analyzuje dopravné toky, generuje inteligentné grafy a reporty, a pomáha mestu Trnava optimalizovať dopravnú infrastruktúru. Obsahuje real-time monitoring, prediktívne algoritmy a interaktívne dashboard pre mestských plánovačov.",
+        "twoRing": "Dlhodobé enterprise partnerstvo na vývoji komplexných business aplikácií v C#, SQL databázach a Vue.js frontendu. Vytvárame škálovateľné riešenia pre veľké korporácie s dôrazom na bezpečnosť, výkon a používateľskú prívetivosť. Naša spolupráca zahŕňa kontinuálny vývoj, údržbu a rozširovanie funkcionality enterprise systémov pre medzinárodné trhy."
       },
       "categories": {
         "webApps": "Webové aplikácie",
@@ -231,7 +301,9 @@
         "code": "Kód",
         "privateProject": "Súkromný projekt",
         "viewProject": "Zobraziť projekt",
-        "liveDemo": "Živé demo"
+        "liveDemo": "Živé demo",
+        "showMore": "Viac...",
+        "showLess": "Menej..."
       },
       "tags": {
         "flutter": "Flutter",
@@ -240,6 +312,7 @@
         "chat": "Chat",
         "security": "Zabezpečenie",
         "vuejs": "Vue.js",
+        "vue3": "Vue.js",
         "csharp": "C#",
         "sql": "SQL",
         "aurelia": "Aurelia",
@@ -248,19 +321,48 @@
         "python": "Python",
         "postgresql": "PostgreSQL",
         "hr": "HR",
-        "payroll": "Mzdy"
-      },
-      "metrics": {
+        "payroll": "Mzdy",
+        "php": "PHP",
+        "ios": "iOS",
+        "android": "Android",
+        "mobile": "Mobil",
+        "reactnative": "React Native",
+        "wordpress": "WordPress",
+        "nextjs": "Next.js",
+        "education": "Vzdelávanie",
+        "nodejs": "Node.js",
+        "webapp": "Webstránka",
+        "optimization": "Optimalizácia",
+        "visualization": "Vizualizácia",
+        "government": "Vládne",
+        "auction": "Aukcie",
+        "dating": "Zoznamka",
+        "pwa": "PWA",
+        "transportation": "Doprava",
+        "status": "Stav",
+        "completed": "Dokončené",
+        "duration": "Trvanie",
+        "months": "mesiacov",
+        "satisfaction": "Spokojnosť",
+        "type": "Typ",
         "platform": "Platforma",
-        "impact": "Detská pomoc",
-        "security": "Enterprise",
-        "duration": "2+ roky",
-        "type": "Spolupráca",
-        "status": "Aktívne",
-        "users": "Open Source",
-        "rating": "Enterprise",
-        "github": "GitHub",
-        "govsk": "Gov.sk"
+        "impact": "Účel",
+        "users": "Používatelia",
+        "rating": "Hodnotenie",
+        "partner": "Partner",
+        "category": "Kategória",
+        "city": "Mesto",
+        "reviews": "Recenzie",
+        "expo": "Expo",
+        "typescript": "TypeScript",
+        "mobileApps": "Mobilné aplikácie",
+        "running": "Bežiaci",
+        "economy": "Ekonomika",
+        "charts": "Grafy",
+        "transport": "Doprava",
+        "tutoring": "Doučovanie",
+        "itCompany": "IT spoločnosť",
+        "website": "Webstránka"
       }
     },
     "stats": {
@@ -513,24 +615,39 @@
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
     "taxId": "2122465094",
-    "registration": "Obchodný register Okresného súdu Bratislava III, Oddiel: Sro, Vložka č. 188634/B",
+    "vatId": "2122531840",
+    "vatStatus": "Nie sme platitelia DPH",
+    "registration": "Obchodný register Mestského súdu Bratislava III, oddiel: Sro, vložka č. 188634/B",
     "executives": "Bc. Maroš Bednár",
     "phone": "+421 911 670 188",
+    "banking": {
+      "bank": "Tatra banka, a.s.",
+      "swift": "TATRSKBX",
+      "iban": "SK83 1100 0000 0029 4326 7391"
+    },
     "labels": {
       "name": "Názov spoločnosti",
       "address": "Adresa",
       "businessId": "IČO",
       "taxId": "DIČ",
-      "registration": "Registrácia",
+      "vatId": "DIČ",
+      "vatStatus": "DPH Status",
+      "registration": "Zápis v ORSR",
       "executives": "Zodpovední zástupcovia",
-      "phone": "Telefón"
+      "phone": "Telefón",
+      "banking": "Bankové údaje",
+      "bank": "Banka",
+      "swift": "SWIFT",
+      "iban": "IBAN"
     }
   },
   "footer": {
     "description": "Vytvárame inovatívne digitálne riešenia, ktoré posúvajú hranice. Od rýchlejšieho vývoja po komplexné softvérové riešenia. Sme tu pre vás!",
     "sections": {
       "services": "Služby",
-      "company": "Spoločnosť"
+      "company": "Spoločnosť",
+      "billing": "Fakturačné údaje",
+      "banking": "Bankové spojenie"
     },
     "contact": {
       "title": "Kontakt",
@@ -545,14 +662,18 @@
       }
     },
     "copyright": "© {year} Rise.sk s.r.o. Všetky práva vyhradené.",
+    "links": {
+      "privacy": "Ochrana súkromia",
+      "terms": "Podmienky používania",
+      "sitemap": "Mapa stránky"
+    },
     "cta": {
       "title": "Pripravení začať?",
       "description": "Získajte vyhradený tím do 7 dní. Garantujeme 100 % dodanie načas a 20–40 % úsporu nákladov.",
       "button": "Začnite dnes"
     },
     "services": ["Vlastný vývoj", "DevOps & Cloud", "UX/UI dizajn", "Zabezpečenie kvality", "Vzdelávanie & školenia"],
-    "company": ["O nás", "Náš tím", "Kariéra", "Prípadové štúdie", "Blog"],
-    "support": ["Dokumentácia", "API referencie", "Help centrum", "Komunita", "Stav služby"]
+    "company": ["O nás", "Náš tím", "Kariéra", "Prípadové štúdie", "Kontaktujte nás"]
   },
   "hiring": {
     "badge": "Pridajte sa k nám",
@@ -560,27 +681,22 @@
     "titleHighlight": "talenty",
     "subtitle": "Hľadáme inovatívne mysle s vášňou pre technológie, tvorivosť a skutočný dopad. Pridajte sa k nášmu tímu expertov a pomôžte formovať budúcnosť digitálnych riešení.",
     "openPositions": "Otvorené pozície",
-    "skillsNeeded": "Požadované zručnosti",
+    "skillsNeeded": "Hľadané zručnosti",
     "positions": {
       "programming": {
         "title": "Softvérový vývoj",
-        "description": "Budujte špičkové aplikácie a škálovateľné systémy pre podniky na celom svete.",
-        "skills": "React/Next.js, Node.js, TypeScript, Python, Cloud služby, DevOps"
+        "description": "Budujte špičkové aplikácie a škálovateľné systémy pre podniky na celom svete. Vytvárame riešenia, ktoré zmeňujú spôsob, akým firmy pôsobia a rastú.",
+        "skills": "React/Next.js, Node.js, TypeScript, Python, Cloud služby, DevOps, Mikroservisy, Databázy, API dizajn, Testovanie"
       },
-      "marketing": {
-        "title": "Digitálny marketing",
-        "description": "Rast poháňajte inovatívnymi marketingovými stratégiami a dátovo riadenými kampaňami.",
-        "skills": "Content stratégia, SEO/SEM, Analytika, Brand management, Growth hacking, Marketingová automatizácia"
+      "digitalMarketing": {
+        "title": "Digitálny marketing & Obsah",
+        "description": "Kombinujte marketingové stratégie s tvorbou obsahu a správou komunít. Vytvárajte kampane, ktoré angažujú publikum a budujú silné digitálne značky.",
+        "skills": "Content stratégia, SEO/SEM, Sociálne siete, Tvorba videí, Analytika, Brand management, Growth hacking, Marketingová automatizácia, Správa komunity, Influencer marketing, Vizuálny dizajn, Copywriting"
       },
       "ai": {
         "title": "AI & strojové učenie",
-        "description": "Vyvíjajte inteligentné riešenia, ktoré transformujú spôsob, akým podniky pôsobia a konkurujú.",
-        "skills": "Strojové učenie, Data science, Neuronové siete, NLP, Počítačové videnie, AI etika"
-      },
-      "socialMedia": {
-        "title": "Sociálne siete & obsah",
-        "description": "Tvoríte pútavý obsah a budujete komunity, ktoré prepájajú značky s publikom.",
-        "skills": "Tvorba obsahu, Správa komunity, Vizuálny dizajn, Tvorba videí, Vzťahy s influencermi, Sociálna analytika"
+        "description": "Vyvíjajte inteligentné riešenia využívajúce najnovšie technológie AI. Transformujte dáta na praktické poznatky a automatizujte komplexné procesy.",
+        "skills": "Strojové učenie, Data science, Neuronové siete, NLP, Počítačové videnie, AI etika, TensorFlow, PyTorch, Generatívna AI, Prediktívna analytika"
       }
     },
     "whyJoinUs": {
