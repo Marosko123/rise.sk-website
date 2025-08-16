@@ -10,6 +10,7 @@ import { useEffect, useMemo, useState } from 'react';
 import companyConfig from '@/config/company';
 import { Link } from '@/i18n/routing';
 
+import { GameCounter } from './InteractiveRiseIcons';
 import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navigation() {
@@ -293,7 +294,7 @@ export default function Navigation() {
                 return (
                   <motion.div
                     key={index}
-                    className={`px-2 py-2 text-base font-bold transition-all duration-300 relative group ${
+                    className={`px-2 py-2 text-base font-bold transition-all duration-300 relative group select-none ${
                       isActive
                         ? 'text-[#b09155]'
                         : 'text-gray-300 hover:text-[#b09155]'
@@ -318,8 +319,11 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Right Side - Language Switcher, Contact Button & CTA Button */}
+          {/* Right Side - Game Counter, Language Switcher, Contact Button & CTA Button */}
           <div className='hidden md:flex items-center space-x-3 pr-6'>
+            {/* Game Counter */}
+            <GameCounter />
+
             {/* Language Switcher - vertically centered */}
             <div className='flex items-center'>
               <LanguageSwitcher />
@@ -329,7 +333,7 @@ export default function Navigation() {
               href='#contact'
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='border border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-300'
+              className='border border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-300 select-none'
               data-cursor='button'
             >
               {tServices('buttons.contact')}
@@ -340,7 +344,7 @@ export default function Navigation() {
           <div className='md:hidden pr-4'>
             <motion.button
               onClick={toggleMenu}
-              className='text-gray-300 hover:text-white p-2'
+              className='text-gray-300 hover:text-white p-2 select-none'
               whileTap={{ scale: 0.95 }}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -365,7 +369,7 @@ export default function Navigation() {
                 return (
                   <motion.div
                     key={index}
-                    className={`block px-3 py-2 text-base font-medium transition-colors duration-300 ${
+                    className={`block px-3 py-2 text-base font-medium transition-colors duration-300 select-none ${
                       isActive
                         ? 'text-[#b09155] bg-[#b09155]/10'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -392,7 +396,7 @@ export default function Navigation() {
               {!isSubpage && (
                 <motion.a
                   href='#contact'
-                  className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] text-white block px-3 py-2 text-base font-medium rounded-lg mt-4'
+                  className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] text-white block px-3 py-2 text-base font-medium rounded-lg mt-4 select-none'
                   onClick={() => setIsMenuOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}

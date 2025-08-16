@@ -4,6 +4,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import InteractiveRiseIcons from '@/components/InteractiveRiseIcons';
 import LanguagePreferenceHandler from '@/components/LanguagePreferenceHandler';
 import RiseIconRain from '@/components/RiseIconRain';
 import { ScrollProgress } from '@/components/ScrollEffects';
@@ -156,6 +157,7 @@ export default async function LocaleLayout({
         <SmoothScrollProvider>
           <ScrollProgress />
           <RiseIconRain />
+          <InteractiveRiseIcons />
           <NextIntlClientProvider messages={messages}>
             <LanguagePreferenceHandler />
             {children}

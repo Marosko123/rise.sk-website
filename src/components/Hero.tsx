@@ -78,7 +78,7 @@ export default function Hero() {
           {/* Main Headline */}
           <motion.h1
             variants={itemVariants}
-            className='text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight'
+            className='text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight select-none'
           >
             <span className='text-[var(--foreground)]'>
               {t('title.build')}{' '}
@@ -111,7 +111,7 @@ export default function Hero() {
             <Button
               href='#contact'
               variant='primary'
-              className='text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] transition-all duration-300'
+              className='text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] transition-all duration-300 select-none'
             >
               {t('startProject')}
               <ArrowRight size={20} className='ml-2' />
@@ -120,7 +120,7 @@ export default function Hero() {
             <Button
               href='#contact'
               variant='outline'
-              className='text-lg border-2 border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white transition-all duration-300'
+              className='text-lg border-2 border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white transition-all duration-300 select-none'
             >
               {t('freeConsultation')}
               <div className='w-2 h-2 bg-current rounded-full ml-2 animate-pulse'></div>
@@ -139,7 +139,7 @@ export default function Hero() {
             ].map((metric, index) => (
               <motion.div
                 key={index}
-                className='text-center'
+                className='text-center select-none'
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1 + index * 0.2, duration: 0.6 }}

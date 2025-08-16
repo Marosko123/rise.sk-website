@@ -37,27 +37,27 @@ export default function RiseIconRain() {
     if (intensity === 'light') {
       // Gradually increase size/speed within light rain period (30-40s)
       const lightProgress = Math.min((elapsed - 30000) / 10000, 1); // 0-1 over 10 seconds
-      sizeMultiplier = 1 + lightProgress * 0.3; // 30% size increase
-      speedMultiplier = 1 + lightProgress * 0.2; // 20% speed increase
+      sizeMultiplier = 1 + lightProgress * 0.15; // Reduced to 15% size increase
+      speedMultiplier = 1 + lightProgress * 0.1; // Reduced to 10% speed increase
     } else if (intensity === 'medium') {
       // Gradually increase within medium rain period (40-50s)
       const mediumProgress = Math.min((elapsed - 40000) / 10000, 1); // 0-1 over 10 seconds
-      sizeMultiplier = 1 + mediumProgress * 0.5; // 50% size increase
-      speedMultiplier = 1 + mediumProgress * 0.4; // 40% speed increase
+      sizeMultiplier = 1 + mediumProgress * 0.25; // Reduced to 25% size increase
+      speedMultiplier = 1 + mediumProgress * 0.2; // Reduced to 20% speed increase
     } else if (intensity === 'heavy') {
-      // More gentle heavy rain progression - less disruptive
+      // More gentle heavy rain progression - much less disruptive
       const heavyProgress = Math.min((elapsed - 50000) / 15000, 1); // 0-1 over 15 seconds
-      sizeMultiplier = 1.2 + heavyProgress * 0.3; // 120% to 150% size (more gentle)
-      speedMultiplier = 1.3 + heavyProgress * 0.2; // 130% to 150% speed increase (less disruptive)
+      sizeMultiplier = 1.1 + heavyProgress * 0.2; // 110% to 130% size (very gentle)
+      speedMultiplier = 1.1 + heavyProgress * 0.15; // 110% to 125% speed increase (very gentle)
     }
 
-    const baseSize = intensity === 'light' ? 15 + Math.random() * 15 :
-                     intensity === 'medium' ? 20 + Math.random() * 20 :
-                     25 + Math.random() * 20; // More reasonable base size for heavy rain
+    const baseSize = intensity === 'light' ? 8 + Math.random() * 8 :
+                     intensity === 'medium' ? 12 + Math.random() * 10 :
+                     16 + Math.random() * 12; // Much smaller and more gentle sizes
 
-    const baseSpeed = intensity === 'light' ? 3 + Math.random() * 1.5 :
-                      intensity === 'medium' ? 2.5 + Math.random() * 1.5 :
-                      2.2 + Math.random() * 1.3; // More moderate speed for heavy rain
+    const baseSpeed = intensity === 'light' ? 4 + Math.random() * 2 :
+                      intensity === 'medium' ? 3.5 + Math.random() * 2 :
+                      3 + Math.random() * 1.5; // Slightly slower for gentle effect
 
     return {
       id: now + Math.random(), // Unique ID
@@ -117,21 +117,21 @@ export default function RiseIconRain() {
 
       if (elapsed >= 50000) { // 50+ seconds - heavy rain (20s after start)
         currentIntensity = 'heavy';
-        // Slower frequency for heavy rain to be less disruptive - from 400ms to 250ms
+        // Much slower frequency for gentle heavy rain - from 600ms to 400ms
         const heavyProgress = Math.min((elapsed - 50000) / 15000, 1);
-        frequency = 400 - (heavyProgress * 150); // 400ms down to 250ms (slower and less disruptive)
+        frequency = 600 - (heavyProgress * 200); // 600ms down to 400ms (much gentler)
         if (rainIntensity !== 'heavy') setRainIntensity('heavy');
       } else if (elapsed >= 40000) { // 40-50 seconds - medium rain (10-20s after start)
         currentIntensity = 'medium';
-        // Gradually increase frequency from 700ms to 400ms
+        // Gradually increase frequency from 900ms to 600ms
         const mediumProgress = (elapsed - 40000) / 10000;
-        frequency = 700 - (mediumProgress * 300); // 700ms down to 400ms
+        frequency = 900 - (mediumProgress * 300); // 900ms down to 600ms
         if (rainIntensity !== 'medium') setRainIntensity('medium');
       } else { // 30-40 seconds - light rain (0-10s after start)
         currentIntensity = 'light';
-        // Gradually increase frequency from 1200ms to 700ms
+        // Gradually increase frequency from 1500ms to 900ms
         const lightProgress = Math.max((elapsed - 30000) / 10000, 0);
-        frequency = 1200 - (lightProgress * 500); // 1200ms down to 700ms
+        frequency = 1500 - (lightProgress * 600); // 1500ms down to 900ms
         if (rainIntensity !== 'light') setRainIntensity('light');
       }
 
@@ -155,8 +155,8 @@ export default function RiseIconRain() {
 
     const cleanupInterval = setInterval(() => {
       setRainIcons(prev => {
-        // More reasonable icon limits
-        const maxIcons = rainIntensity === 'heavy' ? 80 : rainIntensity === 'medium' ? 60 : 30;
+        // Reduced icon limits for gentler effect
+        const maxIcons = rainIntensity === 'heavy' ? 40 : rainIntensity === 'medium' ? 30 : 20;
         return prev.slice(-maxIcons);
       });
     }, 2000); // Clean up every 2 seconds
@@ -291,25 +291,25 @@ export default function RiseIconRain() {
                   draggable={false}
                   priority={false}
                 />
-                {/* Glow effect - more subtle intensity progression */}
+                {/* Glow effect - much more subtle intensity progression */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-r ${
-                    rainIntensity === 'heavy' ? 'from-amber-400/25 to-yellow-400/25' :
-                    rainIntensity === 'medium' ? 'from-amber-400/20 to-yellow-400/20' :
-                    'from-amber-400/15 to-yellow-400/15'
+                    rainIntensity === 'heavy' ? 'from-amber-400/15 to-yellow-400/15' :
+                    rainIntensity === 'medium' ? 'from-amber-400/10 to-yellow-400/10' :
+                    'from-amber-400/8 to-yellow-400/8'
                   } rounded-full blur-sm`}
                   style={{
                     animation: `pulse ${icon.speed * 0.5}s ease-in-out infinite alternate`
                   }}
                 />
 
-                {/* Subtle extra glow for heavy rain */}
+                {/* Very subtle extra glow for heavy rain */}
                 {rainIntensity === 'heavy' && (
                   <div
-                    className="absolute inset-0 bg-gradient-to-r from-amber-300/10 to-yellow-300/10 rounded-full blur-md"
+                    className="absolute inset-0 bg-gradient-to-r from-amber-300/5 to-yellow-300/5 rounded-full blur-md"
                     style={{
                       animation: `pulse ${icon.speed * 0.4}s ease-in-out infinite alternate`,
-                      transform: 'scale(1.2)'
+                      transform: 'scale(1.1)'
                     }}
                   />
                 )}
@@ -317,10 +317,10 @@ export default function RiseIconRain() {
             </motion.div>
           ))}
 
-          {/* Background overlay for dramatic effect - intensity based */}
+          {/* Background overlay for very subtle effect - much reduced intensity */}
           <motion.div
             className={`absolute inset-0 bg-gradient-to-b from-transparent via-amber-900/${
-              rainIntensity === 'light' ? '3' : rainIntensity === 'medium' ? '6' : '10'
+              rainIntensity === 'light' ? '1' : rainIntensity === 'medium' ? '2' : '4'
             } to-transparent`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -328,35 +328,15 @@ export default function RiseIconRain() {
             transition={{ duration: 0.5 }}
           />
 
-          {/* Additional subtle overlay for heavy rain */}
+          {/* Very subtle overlay for heavy rain */}
           {rainIntensity === 'heavy' && (
             <motion.div
-              className="absolute inset-0 bg-gradient-radial from-amber-800/5 via-yellow-700/3 to-transparent"
+              className="absolute inset-0 bg-gradient-radial from-amber-800/2 via-yellow-700/1 to-transparent"
               initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.8, 0.5, 0.8] }}
-              transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+              animate={{ opacity: [0, 0.4, 0.2, 0.4] }}
+              transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
             />
           )}
-
-          {/* Celebration text */}
-          <motion.div
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            initial={{ opacity: 0, scale: 0.5, y: 50 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.5, y: -50 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <div className="text-center">
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent drop-shadow-lg">
-                �️ RISE RAIN �️
-              </h2>
-              <p className="text-amber-300 text-lg md:text-xl mt-2 drop-shadow-md">
-                {rainIntensity === 'light' ? 'Light rain starting...' :
-                 rainIntensity === 'medium' ? 'Rain getting heavier...' :
-                 'Heavy rain! Move to stop!'}
-              </p>
-            </div>
-          </motion.div>
         </div>
       )}
     </AnimatePresence>

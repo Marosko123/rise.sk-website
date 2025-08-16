@@ -145,7 +145,7 @@ export default function LanguageSwitcher() {
     <div className='relative z-50'>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className='flex items-center space-x-1 px-2 py-1 rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg'
+        className='flex items-center space-x-1 px-2 py-1 rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg select-none'
         aria-label='Select language'
       >
         <span className='text-sm'>{currentLanguage.flag}</span>
@@ -182,7 +182,7 @@ export default function LanguageSwitcher() {
                   e.stopPropagation();
                   handleLanguageChange(language.code);
                 }}
-                className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-[#b09155]/10 transition-all duration-200 cursor-pointer ${
+                className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-[#b09155]/10 transition-all duration-200 cursor-pointer select-none ${
                   index === 0 ? 'rounded-t-xl' : ''
                 } ${index === languages.length - 1 ? 'rounded-b-xl' : ''} ${
                   language.code === currentLocale

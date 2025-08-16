@@ -46,7 +46,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseClasses = `
     inline-flex items-center justify-center gap-2 rounded-xl font-semibold
-    transition-all duration-300 transform
+    transition-all duration-300 transform select-none
     disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
     ${buttonVariants[variant]} ${sizeVariants[size]} ${className}
   `.trim().replace(/\s+/g, ' ');

@@ -111,7 +111,7 @@ export default function Footer() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ x: 5 }}
-                  className='flex items-center text-gray-300 hover:text-[#b09155] transition-all duration-300 group'
+                  className='flex items-center text-gray-300 hover:text-[#b09155] transition-all duration-300 group select-none'
                 >
                   <div className='w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300'>
                     <item.icon className='w-5 h-5' />
@@ -149,7 +149,7 @@ export default function Footer() {
                   >
                     <Link
                       href={serviceLinks[index]}
-                      className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
+                      className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform select-none'
                     >
                       {service}
                     </Link>
@@ -183,7 +183,7 @@ export default function Footer() {
                   >
                     <Link
                       href={companyLinks[index]}
-                      className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform'
+                      className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform select-none'
                     >
                       {item}
                     </Link>

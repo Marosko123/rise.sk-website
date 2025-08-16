@@ -107,14 +107,14 @@ export default function Reviews() {
             <>
               <button
                 onClick={prevReview}
-                className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-colors duration-200 flex items-center justify-center"
+                className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-colors duration-200 flex items-center justify-center select-none"
                 aria-label="Previous review"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={nextReview}
-                className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-colors duration-200 flex items-center justify-center"
+                className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-colors duration-200 flex items-center justify-center select-none"
                 aria-label="Next review"
               >
                 <ChevronRight className="w-6 h-6" />

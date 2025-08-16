@@ -128,14 +128,14 @@ const ServicesEnhanced: React.FC = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110 select-none"
           >
             <ChevronLeft className="h-6 w-6 text-[var(--primary)]" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110 select-none"
           >
             <ChevronRight className="h-6 w-6 text-[var(--primary)]" />
           </button>
@@ -191,7 +191,7 @@ const ServicesEnhanced: React.FC = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <button className="w-full bg-gradient-to-r from-[var(--primary)] to-[#d4af37] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 mt-auto">
+                    <button className="w-full bg-gradient-to-r from-[var(--primary)] to-[#d4af37] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 mt-auto select-none">
                       <MessageCircle className="w-5 h-5" />
                       {t('buttons.discuss')}
                     </button>
@@ -235,10 +235,10 @@ const ServicesEnhanced: React.FC = () => {
               {t('cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-[var(--primary)] to-[#d4af37] text-white py-4 px-8 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-105">
+              <button className="bg-gradient-to-r from-[var(--primary)] to-[#d4af37] text-white py-4 px-8 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-105 select-none">
                 {t('buttons.contact')}
               </button>
-              <button className="border border-[var(--primary)] text-[var(--primary)] py-4 px-8 rounded-xl font-semibold hover:bg-[var(--primary)] hover:text-white transition-all duration-300 hover:scale-105">
+              <button className="border border-[var(--primary)] text-[var(--primary)] py-4 px-8 rounded-xl font-semibold hover:bg-[var(--primary)] hover:text-white transition-all duration-300 hover:scale-105 select-none">
                 {t('buttons.references')}
               </button>
             </div>
