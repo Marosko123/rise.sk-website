@@ -4,9 +4,9 @@ import { useLocale, useTranslations } from '@/hooks/useTranslations';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import companyConfig from '@/config/company';
 import { useAnimation } from './AnimationProvider';
 import LogoAndText from './LogoAndText';
-import companyConfig from '@/config/company';
 
 // Import all the components we'll need for the full page
 import About from './About';
@@ -116,7 +116,7 @@ export default function LandingPage() {
   const [explosionStartTime, setExplosionStartTime] = useState(0);
   const [shiverCycleStart, setShiverCycleStart] = useState(0);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
-  
+
   // Check if we should show full website (when hash is present)
   const [showFullWebsite, setShowFullWebsite] = useState(false);
 
@@ -125,7 +125,7 @@ export default function LandingPage() {
     if (lang === 'sk') {
       return {
         development: 'vyvoj',
-        about: 'o-nas', 
+        about: 'o-nas',
         services: 'sluzby',
         portfolio: 'portfolio',
         reviews: 'recenzie',
@@ -136,7 +136,7 @@ export default function LandingPage() {
       return {
         development: 'development',
         about: 'about',
-        services: 'services', 
+        services: 'services',
         portfolio: 'portfolio',
         reviews: 'reviews',
         hiring: 'hiring',
@@ -154,7 +154,7 @@ export default function LandingPage() {
     const checkHash = () => {
       const hasHash = window.location.hash.length > 0;
       setShowFullWebsite(hasHash);
-      
+
       // Hide body scrollbar when on landing page
       if (hasHash) {
         document.body.style.overflow = 'auto';
@@ -168,7 +168,7 @@ export default function LandingPage() {
 
     // Listen for hash changes
     window.addEventListener('hashchange', checkHash);
-    
+
     return () => {
       window.removeEventListener('hashchange', checkHash);
       // Reset body overflow when component unmounts
@@ -319,11 +319,11 @@ export default function LandingPage() {
   }, []);
 
   // Collision detection function with performance optimization
-  const detectAndResolveCollisions = useCallback((shapes: FloatingShape[], windowWidth: number, windowHeight: number) => {
+  const detectAndResolveCollisions = useCallback((shapes: FloatingShape[], windowWidth: number, windowHeight: number, frameCount: number) => {
     if (!SHAPE_CONFIG.COLLISION_ENABLED) return shapes;
 
     // Skip collision detection occasionally for better performance
-    const skipFrame = Math.floor(animationTime / 100) % 2; // Only run collision detection every other frame (~15fps for collisions)
+    const skipFrame = frameCount % 2; // Only run collision detection every other frame (~30fps for collisions)
     if (skipFrame !== 0) return shapes;
 
     const updatedShapes = [...shapes];
@@ -415,15 +415,20 @@ export default function LandingPage() {
     }
 
     return updatedShapes;
-  }, [animationTime]);
+  }, []);
 
-  // Animate floating shapes with gravity and mouse interaction using shared animation context
+  // Animate floating shapes with gravity and mouse interaction - dedicated 60fps loop
   useEffect(() => {
     if (!mounted || floatingShapes.length === 0 || !windowSize.width || !windowSize.height) {
       return;
     }
 
+    let animationId: number;
+    let frameCount = 0;
+
     const animateShapes = () => {
+      frameCount++;
+
       setFloatingShapes(prev => {
         // First, update all shapes with physics
         const updatedShapes = prev.map(shape => {
@@ -485,8 +490,8 @@ export default function LandingPage() {
           shape.x += shape.vx * velocityScaleX;
           shape.y += shape.vy * velocityScaleY;
 
-          // Add subtle floating animation using shared animation time
-          const floatTime = animationTime * SHAPE_CONFIG.FLOAT_SPEED;
+          // Add subtle floating animation using current time
+          const floatTime = Date.now() * SHAPE_CONFIG.FLOAT_SPEED;
           const floatOffsetX = Math.sin(floatTime + shape.id) * SHAPE_CONFIG.FLOAT_AMPLITUDE;
           const floatOffsetY = Math.cos(floatTime * 1.3 + shape.id) * SHAPE_CONFIG.FLOAT_AMPLITUDE * 0.7;
 
@@ -504,13 +509,22 @@ export default function LandingPage() {
         }
 
         // Then apply collision detection and resolution (only when not exploding)
-        return detectAndResolveCollisions(updatedShapes, windowSize.width, windowSize.height);
+        return detectAndResolveCollisions(updatedShapes, windowSize.width, windowSize.height, frameCount);
       });
+
+      // Continue the animation loop at 60fps
+      animationId = requestAnimationFrame(animateShapes);
     };
 
-    // Use shared animation context instead of separate requestAnimationFrame
-    animateShapes();
-  }, [animationTime, mounted, cursorPosition.x, cursorPosition.y, windowSize.width, windowSize.height, floatingShapes.length, isExploding, detectAndResolveCollisions]);
+    // Start the animation loop
+    animationId = requestAnimationFrame(animateShapes);
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [mounted, cursorPosition.x, cursorPosition.y, windowSize.width, windowSize.height, floatingShapes.length, isExploding, detectAndResolveCollisions]);
 
   // Function to create a new floating shape
   const createFloatingShape = (id: number, totalCount: number, isInitial: boolean = false): FloatingShape => {
@@ -806,13 +820,13 @@ export default function LandingPage() {
   }
 
   return (
-    <div 
-      className={`min-h-screen ${!showFullWebsite ? 'overflow-hidden' : ''}`} 
+    <div
+      className={`min-h-screen ${!showFullWebsite ? 'overflow-hidden' : ''}`}
       style={{ backgroundColor: '#1a1a1a' }}
     >
       {/* Show Navigation only when hash is present */}
       {showFullWebsite && <Navigation />}
-      
+
       {!showFullWebsite ? (
         // Pure landing page with animated squares only
         <div className="relative overflow-hidden min-h-screen">
@@ -820,7 +834,7 @@ export default function LandingPage() {
           <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-6">
             {/* Logo in top left - using LogoAndText component */}
             <LogoAndText />
-            
+
             {/* Language switcher in top right */}
             <div className="flex items-center">
               <LanguageSwitcher />
@@ -1034,27 +1048,27 @@ export default function LandingPage() {
           <div id={sectionMap.development}>
             <Hero />
           </div>
-          
+
           <div id={sectionMap.about}>
             <About />
           </div>
-          
+
           <div id={sectionMap.services}>
             <ServicesEnhanced />
           </div>
-          
+
           <div id={sectionMap.portfolio}>
             <Portfolio />
           </div>
-          
+
           <div id={sectionMap.reviews}>
             <Reviews />
           </div>
-          
+
           <div id={sectionMap.hiring}>
             <Hiring />
           </div>
-          
+
           <div id={sectionMap.contact}>
             <Contact />
           </div>
