@@ -260,9 +260,6 @@ export default function LandingPage() {
 
   // Animate particles using shared animation context
   useEffect(() => {
-    // Temporarily disable particle animation for performance testing
-    return;
-    
     const animate = () => {
       setParticles(prev =>
         prev
@@ -325,8 +322,8 @@ export default function LandingPage() {
   const detectAndResolveCollisions = useCallback((shapes: FloatingShape[], windowWidth: number, windowHeight: number) => {
     if (!SHAPE_CONFIG.COLLISION_ENABLED) return shapes;
 
-    // Skip collision detection on some frames for better performance
-    const skipFrame = Math.floor(animationTime / 500) % 3; // Only run collision detection every 3rd update (~2fps for collisions)
+    // Skip collision detection occasionally for better performance
+    const skipFrame = Math.floor(animationTime / 100) % 2; // Only run collision detection every other frame (~15fps for collisions)
     if (skipFrame !== 0) return shapes;
 
     const updatedShapes = [...shapes];
@@ -422,9 +419,6 @@ export default function LandingPage() {
 
   // Animate floating shapes with gravity and mouse interaction using shared animation context
   useEffect(() => {
-    // Temporarily disable floating shapes animation for performance testing
-    return;
-    
     if (!mounted || floatingShapes.length === 0 || !windowSize.width || !windowSize.height) {
       return;
     }

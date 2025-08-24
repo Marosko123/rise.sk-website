@@ -32,7 +32,7 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     setMounted(true);
   }, []);
 
-  // Single animation loop for the entire application - extremely low frequency
+  // Single animation loop for the entire application - optimized but smooth
   useEffect(() => {
     if (!mounted) return;
 
@@ -41,8 +41,8 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
 
     const updateAnimationTime = () => {
       const now = Date.now();
-      // Reduce to 3fps for maximum performance
-      if (now - lastTime >= 333) {
+      // 30fps for smooth animations while maintaining performance
+      if (now - lastTime >= 33) {
         setAnimationTime(now);
         lastTime = now;
       }
