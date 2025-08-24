@@ -14,7 +14,6 @@ import { Link } from './LocalizedLink';
 
 export default function Navigation() {
   const t = useTranslations('navigation');
-  const tServices = useTranslations('services');
   const locale = useLocale();
   
   const [mounted, setMounted] = useState(false);
@@ -260,7 +259,7 @@ export default function Navigation() {
               className='border border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-300 select-none'
               data-cursor='button'
             >
-              {tServices('buttons.contact')}
+              {t('getStarted')}
             </motion.a>
           </div>
 
