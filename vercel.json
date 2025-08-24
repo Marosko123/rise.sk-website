@@ -1,16 +1,3 @@
 {
-  "framework": "nextjs",
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.rise.sk"
-        }
-      ],
-      "destination": "https://rise.sk/$1",
-      "permanent": true
-    }
-  ]
+  "framework": "nextjs"
 }
