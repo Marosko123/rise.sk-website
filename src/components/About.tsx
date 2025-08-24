@@ -9,7 +9,7 @@ import {
   Users,
   Zap,
 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/hooks/useTranslations';
 
 import { Button } from './ui/Button';
 import { Card } from './ui/Card';

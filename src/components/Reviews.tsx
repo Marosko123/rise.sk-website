@@ -1,7 +1,7 @@
 'use client';
 
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/hooks/useTranslations';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useIsMobile } from '@/hooks/useIsMobile';

@@ -1,8 +1,11 @@
-import { redirect } from 'next/navigation';
+import LandingPage from '@/components/LandingPage';
+import { AnimationProvider } from '@/components/AnimationProvider';
 
-import { routing } from '@/i18n/routing';
-
-// This page only renders when the app is built statically (output: 'export')
+// This is the main Slovak homepage - no redirect needed
 export default function RootPage() {
-  redirect(`/${routing.defaultLocale}`);
+  return (
+    <AnimationProvider>
+      <LandingPage />
+    </AnimationProvider>
+  );
 }

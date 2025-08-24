@@ -2,59 +2,54 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 
-import companyConfig from '@/config/company';
-import { Link } from '@/i18n/routing';
+import { useTranslations, useLocale } from '@/hooks/useTranslations';
 
+import LogoAndText from './LogoAndText';
 import { GameCounter } from './InteractiveRiseIcons';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from './LanguageSwitcherNew';
+import { Link } from './LocalizedLink';
 
 export default function Navigation() {
   const t = useTranslations('navigation');
-  const tServices = useTranslations('servicesEnhanced');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const tServices = useTranslations('services');
+  const locale = useLocale();
+  
   const [mounted, setMounted] = useState(false);
-  const [animationTime, setAnimationTime] = useState(0);
   const [activeSection, setActiveSection] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  // Check if we're on a subpage (not the main landing page)
-  const isSubpage =
-    pathname.includes('/development');
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Animation loop for smooth effects
-  useEffect(() => {
-    if (!mounted) return;
-
-    let animationId: number;
-    let lastTime = Date.now();
-
-    const updateAnimationTime = () => {
-      const now = Date.now();
-      // Reduce frequency significantly to improve performance (20fps)
-      if (now - lastTime >= 50) {
-        setAnimationTime(now);
-        lastTime = now;
-      }
-      animationId = requestAnimationFrame(updateAnimationTime);
-    };
-
-    animationId = requestAnimationFrame(updateAnimationTime);
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [mounted]);
+  // Dynamic section mappings based on language
+  const getSectionMappings = useCallback((lang: string) => {
+    if (lang === 'sk') {
+      return {
+        development: 'vyvoj',
+        about: 'o-nas', 
+        services: 'sluzby',
+        portfolio: 'portfolio',
+        reviews: 'recenzie',
+        hiring: 'kariera',
+        contact: 'kontakt'
+      };
+    } else {
+      return {
+        development: 'development',
+        about: 'about',
+        services: 'services', 
+        portfolio: 'portfolio',
+        reviews: 'reviews',
+        hiring: 'hiring',
+        contact: 'contact'
+      };
+    }
+  }, []);
 
   // Mouse tracking for magnetic effects (disabled for performance)
   // useEffect(() => {
@@ -78,38 +73,19 @@ export default function Navigation() {
   };
 
   const navLinks = useMemo(() => {
-    // Check current page context to determine navigation behavior
-    const getCurrentPageType = () => {
-      if (pathname.includes('/development') || pathname.includes('/vyvoj')) {
-        return 'development'; // Has sections
-      }
-      return 'main'; // No sections, navigate to pages
-    };
-
-    const pageType = getCurrentPageType();
-
-    if (pageType === 'development') {
-      // On development page, link to sections within the page
-      return [
-        { href: '#about', label: t('about'), section: 'about' },
-        { href: '#services', label: t('services'), section: 'services' },
-        { href: '#portfolio', label: t('portfolio'), section: 'portfolio' },
-        { href: '#reviews', label: t('reviews'), section: 'reviews' },
-        { href: '#hiring', label: t('hiring'), section: 'hiring' },
-        { href: '#contact', label: t('contact'), section: 'contact' },
-      ];
-    } else {
-
-      return [
-        { href: '/development#about', label: t('about'), section: 'about' },
-        { href: '/development#services', label: t('services'), section: 'services' },
-        { href: '/development#portfolio', label: t('portfolio'), section: 'portfolio' },
-        { href: '/development#reviews', label: t('reviews'), section: 'reviews' },
-        { href: '/development#hiring', label: t('hiring'), section: 'hiring' },
-        { href: '/development#contact', label: t('contact'), section: 'contact' },
-      ];
-    }
-  }, [t, pathname]);
+    // Use dynamic section names based on language
+    const sectionMap = getSectionMappings(locale);
+    
+    return [
+      { href: `#${sectionMap.development}`, label: t('development'), section: sectionMap.development },
+      { href: `#${sectionMap.about}`, label: t('about'), section: sectionMap.about },
+      { href: `#${sectionMap.services}`, label: t('services'), section: sectionMap.services },
+      { href: `#${sectionMap.portfolio}`, label: t('portfolio'), section: sectionMap.portfolio },
+      { href: `#${sectionMap.reviews}`, label: t('reviews'), section: sectionMap.reviews },
+      { href: `#${sectionMap.hiring}`, label: t('hiring'), section: sectionMap.hiring },
+      { href: `#${sectionMap.contact}`, label: t('contact'), section: sectionMap.contact },
+    ];
+  }, [t, locale, getSectionMappings]);
 
   // Scroll tracking effect to highlight active section
   useEffect(() => {
@@ -136,41 +112,73 @@ export default function Navigation() {
     };
 
     const handleScrollBasedSection = () => {
-      const sections = ['about', 'services', 'portfolio', 'reviews', 'hiring', 'contact'];
+      const sectionMap = getSectionMappings(locale);
+      const sections = [
+        sectionMap.development,
+        sectionMap.about,
+        sectionMap.services,
+        sectionMap.portfolio,
+        sectionMap.reviews,
+        sectionMap.hiring,
+        sectionMap.contact
+      ];
       const sectionElements = sections.map(section => document.getElementById(section));
 
       // Find which section is currently in view
       let currentSection = '';
-      const scrollPosition = window.scrollY + 100; // Offset for header height
+      const scrollPosition = window.scrollY + 200; // Offset for better detection
 
-      sectionElements.forEach((element, index) => {
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            currentSection = sections[index];
+      // Check if we're at the very top (landing area)
+      if (window.scrollY < 100) {
+        currentSection = 'vyvoj'; // Default to vyvoj when at top
+      } else {
+        sectionElements.forEach((element, index) => {
+          if (element) {
+            const { offsetTop, offsetHeight } = element;
+            
+            // Use center-based detection for better accuracy
+            if (scrollPosition >= offsetTop - 100 && scrollPosition < offsetTop + offsetHeight - 100) {
+              currentSection = sections[index];
+            }
           }
-        }
-      });
+        });
+      }
 
-      // Update active section
+      // Update active section and URL hash
       if (currentSection !== activeSection) {
         setActiveSection(currentSection);
+        
+        // Update URL hash without triggering page reload
+        if (currentSection && window.location.hash !== `#${currentSection}`) {
+          window.history.replaceState(null, '', `#${currentSection}`);
+        }
       }
     };
 
     // Initial check
     checkActivePage();
 
-    // For pages with sections, add scroll listener
-    const hasScrollableSections = pathname === '/' || pathname.match(/^\/[a-z]{2}$/) ||
-                                  pathname.includes('/development') || pathname.includes('/vyvoj');
+    // Add hash change listener to re-enable scroll detection
+    const handleHashChange = () => {
+      checkActivePage();
+    };
+
+    // For main page with hash (full website mode), add scroll listener
+    const hasHash = window.location.hash.length > 0;
+    const hasScrollableSections = (pathname === '/' || pathname.match(/^\/[a-z]{2}$/)) && hasHash;
 
     if (hasScrollableSections) {
       window.addEventListener('scroll', handleScrollBasedSection);
-
-      return () => window.removeEventListener('scroll', handleScrollBasedSection);
     }
-  }, [mounted, activeSection, pathname]);
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollBasedSection);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, [mounted, activeSection, pathname, locale, getSectionMappings]);
 
   // Function to check if a nav link is active
   const isLinkActive = (section: string) => {
@@ -180,6 +188,7 @@ export default function Navigation() {
   return (
     <motion.nav
       className='sticky top-0 left-0 right-0 z-[100] bg-black/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300'
+      style={{ position: 'sticky', top: 0 }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -189,99 +198,14 @@ export default function Navigation() {
           {/* Left Side - Logo & Company Name (absolutely flush left) */}
           <div className='flex items-center space-x-3 pl-6'>
             <motion.div className='flex-shrink-0' whileHover={{ scale: 1.05 }}>
-              <Link href='/' className='flex items-center space-x-3'>
-              <div
-                className='transition-transform duration-300 ease-out relative'
-              >
-                <Image
-                  src={companyConfig.website.logo.logoGoldTransparent}
-                  alt={companyConfig.company.name}
-                  width={50}
-                  height={50}
-                  priority
-                  className='transition-all duration-300 hover:scale-110 cursor-pointer select-none'
-                  style={mounted ? {
-                    transform: `rotate(${Math.sin(animationTime * 0.001) * 2}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.05})`,
-                    filter: `drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))`,
-                  } : {
-                    transform: 'rotate(0deg) scale(1)',
-                    filter: 'drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))',
-                  }}
-                  onMouseEnter={(e) => {
-                    if (mounted) {
-                      e.currentTarget.style.transform += ' scale(1.2) rotate(15deg)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (mounted) {
-                      e.currentTarget.style.transform = `rotate(${Math.sin(animationTime * 0.001) * 2}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.05})`;
-                    }
-                  }}
-                  draggable={false}
-                />
-                {/* Simplified floating elements */}
-                {mounted && (
-                  <>
-                    <div
-                      className='absolute w-1 h-1 bg-yellow-400 rounded-full opacity-40 select-none pointer-events-none'
-                      style={{
-                        top: '10%',
-                        right: '10%',
-                        transform: `translate(${Math.sin(animationTime * 0.002) * 1.5}px, ${Math.cos(animationTime * 0.002) * 1.5}px)`,
-                      }}
-                    />
-                  </>
-                )}
-              </div>
-              <div className='relative'>
-                <span
-                  className='text-2xl font-bold text-white cursor-pointer inline-block transition-all duration-300 hover:scale-105 select-none'
-                  style={mounted ? {
-                    textShadow: `0 0 15px rgba(176, 145, 85, 0.4)`,
-                  } : {}}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#B09155';
-                    e.currentTarget.style.textShadow = '0 0 25px rgba(176, 145, 85, 0.8)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'white';
-                    if (mounted) {
-                      e.currentTarget.style.textShadow = `0 0 15px rgba(176, 145, 85, 0.4)`;
-                    }
-                  }}
-                >
-                  {companyConfig.company.domain.split('').map((letter, index) => (
-                    <span
-                      key={index}
-                      className='inline-block transition-all duration-200 select-none'
-                      style={mounted ? {
-                        transform: `translateY(${Math.sin(animationTime * 0.004 + index * 0.5) * 1}px)`,
-                        animationDelay: `${index * 100}ms`,
-                      } : {}}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateY(-3px) scale(1.2)';
-                        e.currentTarget.style.color = '#B09155';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = '';
-                        e.currentTarget.style.color = 'inherit';
-                      }}
-                    >
-                      {letter}
-                    </span>
-                  ))}
-                </span>
-                {/* Static underline */}
-                {mounted && (
-                  <div
-                    className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-60 select-none pointer-events-none'
-                    style={{
-                      width: '60%',
-                    }}
-                  />
-                )}
-              </div>
-            </Link>
+              <LogoAndText 
+                onClick={() => {
+                  // Clear hash to return to landing page
+                  window.history.pushState(null, '', '/');
+                  // Trigger a page reload to ensure clean state
+                  window.location.reload();
+                }}
+              />
             </motion.div>
           </div>
 
@@ -330,7 +254,7 @@ export default function Navigation() {
             </div>
 
             <motion.a
-              href='#contact'
+              href={`#${getSectionMappings(locale).contact}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className='border border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-300 select-none'
@@ -392,19 +316,17 @@ export default function Navigation() {
                 );
               })}
 
-              {/* CTA Button for main page only */}
-              {!isSubpage && (
-                <motion.a
-                  href='#contact'
-                  className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] text-white block px-3 py-2 text-base font-medium rounded-lg mt-4 select-none'
-                  onClick={() => setIsMenuOpen(false)}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.1 }}
-                >
-                  {t('getStarted')}
-                </motion.a>
-              )}
+              {/* CTA Button - always show */}
+              <motion.a
+                href={`#${getSectionMappings(locale).contact}`}
+                className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] text-white block px-3 py-2 text-base font-medium rounded-lg mt-4 select-none'
+                onClick={() => setIsMenuOpen(false)}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+              >
+                {t('getStarted')}
+              </motion.a>
 
               {/* Mobile Language Switcher */}
               <motion.div

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import LandingPage from '@/components/LandingPage';
+import { AnimationProvider } from '@/components/AnimationProvider';
 
 export const metadata: Metadata = {
   title: 'Rise.sk - Expert Programming Teams | Custom Software Development Slovakia',
@@ -31,8 +32,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <AnimationProvider>
       <LandingPage />
-    </>
+    </AnimationProvider>
   );
 }

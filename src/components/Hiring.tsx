@@ -10,7 +10,7 @@ import {
   Palette,
   Users,
 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/hooks/useTranslations';
 import Image from 'next/image';
 
 import { Card } from './ui/Card';

@@ -18,6 +18,49 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      // Redirect www to non-www
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.rise.sk',
+          },
+        ],
+        destination: 'https://rise.sk/:path*',
+        permanent: true,
+      },
+      // Redirect /sk/* to /* (remove Slovak prefix)
+      {
+        source: '/sk',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/sk/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
+      // Redirect English paths to Slovak for better SEO
+      {
+        source: '/development',
+        destination: '/vyvoj',
+        permanent: true,
+      },
+      {
+        source: '/services',
+        destination: '/sluzby',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/kontakt',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

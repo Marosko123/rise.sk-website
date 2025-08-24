@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Banknote, Check, Copy, CreditCard, ExternalLink, FileText, Hash, Mail, MapPin, Phone, Users } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/hooks/useTranslations';
 import Link from 'next/link';
 import { useState } from 'react';
 

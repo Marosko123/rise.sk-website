@@ -1,12 +1,26 @@
 'use client';
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from '@/hooks/useTranslations';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import { useAnimation } from './AnimationProvider';
+import LogoAndText from './LogoAndText';
 import companyConfig from '@/config/company';
 
-import LanguageSwitcher from './LanguageSwitcher';
+// Import all the components we'll need for the full page
+import About from './About';
+import Contact from './Contact';
+import Footer from './Footer';
+import Hero from './Hero';
+import Hiring from './Hiring';
+import InteractiveRiseIcons from './InteractiveRiseIcons';
+import Navigation from './Navigation';
+import Portfolio from './Portfolio';
+import Reviews from './Reviews';
+import ServicesEnhanced from './ServicesEnhanced';
+
+import LanguageSwitcher from './LanguageSwitcherNew';
 
 // Configuration variables for floating shapes physics
 const SHAPE_CONFIG = {
@@ -23,7 +37,7 @@ const SHAPE_CONFIG = {
   HOVER_RADIUS: 100, // Hover detection radius in pixels
 
   // Collision physics
-  COLLISION_ENABLED: true, // Disable collision detection for better performance
+  COLLISION_ENABLED: false, // Disable collision detection for better performance
   COLLISION_DAMPING: 0.8, // How much velocity is retained after collision (0-1)
   COLLISION_REPULSION: 0.5, // How much shapes repel each other during collision
 
@@ -94,17 +108,73 @@ export default function LandingPage() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState<Particle[]>([]);
   const [mouseTrail, setMouseTrail] = useState<Array<{ x: number; y: number; opacity: number }>>([]);
+  const { animationTime } = useAnimation();
   const [mounted, setMounted] = useState(false);
-  const [animationTime, setAnimationTime] = useState(0);
   const [shapeCount, setShapeCount] = useState(SHAPE_CONFIG.INITIAL_COUNT);
   const [floatingShapes, setFloatingShapes] = useState<FloatingShape[]>([]);
   const [isExploding, setIsExploding] = useState(false);
   const [explosionStartTime, setExplosionStartTime] = useState(0);
   const [shiverCycleStart, setShiverCycleStart] = useState(0);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
+  
+  // Check if we should show full website (when hash is present)
+  const [showFullWebsite, setShowFullWebsite] = useState(false);
+
+  // Dynamic section mappings based on language
+  const getSectionMappings = (lang: string) => {
+    if (lang === 'sk') {
+      return {
+        development: 'vyvoj',
+        about: 'o-nas', 
+        services: 'sluzby',
+        portfolio: 'portfolio',
+        reviews: 'recenzie',
+        hiring: 'kariera',
+        contact: 'kontakt'
+      };
+    } else {
+      return {
+        development: 'development',
+        about: 'about',
+        services: 'services', 
+        portfolio: 'portfolio',
+        reviews: 'reviews',
+        hiring: 'hiring',
+        contact: 'contact'
+      };
+    }
+  };
+
+  const sectionMap = getSectionMappings(locale);
 
   const particleIdRef = useRef(0);
-  const animationFrameRef = useRef<number>(0);
+
+  // Check hash changes to switch between landing and full website
+  useEffect(() => {
+    const checkHash = () => {
+      const hasHash = window.location.hash.length > 0;
+      setShowFullWebsite(hasHash);
+      
+      // Hide body scrollbar when on landing page
+      if (hasHash) {
+        document.body.style.overflow = 'auto';
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    // Check initially
+    checkHash();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', checkHash);
+    
+    return () => {
+      window.removeEventListener('hashchange', checkHash);
+      // Reset body overflow when component unmounts
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   // Function to determine if logo should be shivering
   const isShivering = useCallback(() => {
@@ -135,27 +205,6 @@ export default function LandingPage() {
   useEffect(() => {
     setMounted(true);
     setShiverCycleStart(Date.now()); // Initialize shiver cycle timing
-
-    let animationId: number;
-    let lastTime = Date.now();
-
-    const updateAnimationTime = () => {
-      const now = Date.now();
-      // Only update if enough time has passed (60fps throttling)
-      if (now - lastTime >= 16) {
-        setAnimationTime(now);
-        lastTime = now;
-      }
-      animationId = requestAnimationFrame(updateAnimationTime);
-    };
-
-    animationId = requestAnimationFrame(updateAnimationTime);
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
   }, []);
 
   useEffect(() => {
@@ -209,8 +258,11 @@ export default function LandingPage() {
     };
   }, []);
 
-  // Animate particles
+  // Animate particles using shared animation context
   useEffect(() => {
+    // Temporarily disable particle animation for performance testing
+    return;
+    
     const animate = () => {
       setParticles(prev =>
         prev
@@ -224,18 +276,11 @@ export default function LandingPage() {
           }))
           .filter(particle => particle.life > 0)
       );
-
-      animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    animationFrameRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, []);
+    // Use shared animation context instead of separate requestAnimationFrame
+    animate();
+  }, [animationTime]);
 
   const getMagneticOffset = (elementX: number, elementY: number, strength: number = 30) => {
     if (typeof window === 'undefined') return { x: 0, y: 0 };
@@ -276,13 +321,113 @@ export default function LandingPage() {
     };
   }, []);
 
-  // Animate floating shapes with gravity and mouse interaction
+  // Collision detection function with performance optimization
+  const detectAndResolveCollisions = useCallback((shapes: FloatingShape[], windowWidth: number, windowHeight: number) => {
+    if (!SHAPE_CONFIG.COLLISION_ENABLED) return shapes;
+
+    // Skip collision detection on some frames for better performance
+    const skipFrame = Math.floor(animationTime / 500) % 3; // Only run collision detection every 3rd update (~2fps for collisions)
+    if (skipFrame !== 0) return shapes;
+
+    const updatedShapes = [...shapes];
+
+    for (let i = 0; i < updatedShapes.length; i++) {
+      for (let j = i + 1; j < updatedShapes.length; j++) {
+        const shape1 = updatedShapes[i];
+        const shape2 = updatedShapes[j];
+
+        // Quick distance check - skip expensive calculations if shapes are far apart
+        const roughDistance = Math.abs(shape1.x - shape2.x) + Math.abs(shape1.y - shape2.y);
+        if (roughDistance > 20) continue; // Skip if roughly more than 20% screen distance apart
+
+        // Convert percentage positions to screen coordinates
+        const shape1X = (shape1.x / 100) * windowWidth;
+        const shape1Y = (shape1.y / 100) * windowHeight;
+        const shape2X = (shape2.x / 100) * windowWidth;
+        const shape2Y = (shape2.y / 100) * windowHeight;
+
+        // Calculate distance between shape centers
+        const deltaX = shape2X - shape1X;
+        const deltaY = shape2Y - shape1Y;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        // Calculate minimum distance for collision (sum of radii)
+        const minDistance = (shape1.size + shape2.size) / 2;
+
+        // Check for collision
+        if (distance < minDistance && distance > 0) {
+          // Calculate collision normal (unit vector from shape1 to shape2)
+          const normalX = deltaX / distance;
+          const normalY = deltaY / distance;
+
+          // Calculate overlap amount
+          const overlap = minDistance - distance;
+
+          // Separate the shapes by moving them apart
+          const separationX = (overlap / 2) * normalX;
+          const separationY = (overlap / 2) * normalY;
+
+          // Convert back to percentage coordinates for separation
+          const separationPercentX1 = -(separationX / windowWidth) * 100;
+          const separationPercentY1 = -(separationY / windowHeight) * 100;
+          const separationPercentX2 = (separationX / windowWidth) * 100;
+          const separationPercentY2 = (separationY / windowHeight) * 100;
+
+          updatedShapes[i] = {
+            ...shape1,
+            x: shape1.x + separationPercentX1,
+            y: shape1.y + separationPercentY1
+          };
+
+          updatedShapes[j] = {
+            ...shape2,
+            x: shape2.x + separationPercentX2,
+            y: shape2.y + separationPercentY2
+          };
+
+          // Calculate relative velocity in collision normal direction
+          const relativeVelX = shape2.vx - shape1.vx;
+          const relativeVelY = shape2.vy - shape1.vy;
+          const velocityAlongNormal = relativeVelX * normalX + relativeVelY * normalY;
+
+          // Don't resolve if velocities are separating
+          if (velocityAlongNormal > 0) {
+            continue;
+          }
+
+          // Calculate restitution (bounciness)
+          const restitution = 0.8;
+
+          // Calculate impulse scalar
+          const impulse = -(1 + restitution) * velocityAlongNormal;
+
+          // Apply impulse to velocities
+          updatedShapes[i] = {
+            ...updatedShapes[i],
+            vx: shape1.vx - impulse * normalX,
+            vy: shape1.vy - impulse * normalY
+          };
+
+          updatedShapes[j] = {
+            ...updatedShapes[j],
+            vx: shape2.vx + impulse * normalX,
+            vy: shape2.vy + impulse * normalY
+          };
+        }
+      }
+    }
+
+    return updatedShapes;
+  }, [animationTime]);
+
+  // Animate floating shapes with gravity and mouse interaction using shared animation context
   useEffect(() => {
+    // Temporarily disable floating shapes animation for performance testing
+    return;
+    
     if (!mounted || floatingShapes.length === 0 || !windowSize.width || !windowSize.height) {
       return;
     }
-
-    let animationId: number;
 
     const animateShapes = () => {
       setFloatingShapes(prev => {
@@ -346,8 +491,8 @@ export default function LandingPage() {
           shape.x += shape.vx * velocityScaleX;
           shape.y += shape.vy * velocityScaleY;
 
-          // Add subtle floating animation
-          const floatTime = Date.now() * SHAPE_CONFIG.FLOAT_SPEED;
+          // Add subtle floating animation using shared animation time
+          const floatTime = animationTime * SHAPE_CONFIG.FLOAT_SPEED;
           const floatOffsetX = Math.sin(floatTime + shape.id) * SHAPE_CONFIG.FLOAT_AMPLITUDE;
           const floatOffsetY = Math.cos(floatTime * 1.3 + shape.id) * SHAPE_CONFIG.FLOAT_AMPLITUDE * 0.7;
 
@@ -367,106 +512,11 @@ export default function LandingPage() {
         // Then apply collision detection and resolution (only when not exploding)
         return detectAndResolveCollisions(updatedShapes, windowSize.width, windowSize.height);
       });
-
-      animationId = requestAnimationFrame(animateShapes);
     };
 
-    animationId = requestAnimationFrame(animateShapes);
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [mounted, cursorPosition.x, cursorPosition.y, windowSize.width, windowSize.height, floatingShapes.length, isExploding]);
-
-  // Collision detection function
-  const detectAndResolveCollisions = (shapes: FloatingShape[], windowWidth: number, windowHeight: number) => {
-    if (!SHAPE_CONFIG.COLLISION_ENABLED) return shapes;
-
-    const updatedShapes = [...shapes];
-
-    for (let i = 0; i < updatedShapes.length; i++) {
-      for (let j = i + 1; j < updatedShapes.length; j++) {
-        const shape1 = updatedShapes[i];
-        const shape2 = updatedShapes[j];
-
-        // Convert percentage positions to screen coordinates
-        const shape1X = (shape1.x / 100) * windowWidth;
-        const shape1Y = (shape1.y / 100) * windowHeight;
-        const shape2X = (shape2.x / 100) * windowWidth;
-        const shape2Y = (shape2.y / 100) * windowHeight;
-
-        // Calculate distance between shape centers
-        const deltaX = shape2X - shape1X;
-        const deltaY = shape2Y - shape1Y;
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-        // Calculate minimum distance for collision (sum of radii)
-        const minDistance = (shape1.size + shape2.size) / 2;
-
-        // Check for collision
-        if (distance < minDistance && distance > 0) {
-          // Calculate collision normal (unit vector from shape1 to shape2)
-          const normalX = deltaX / distance;
-          const normalY = deltaY / distance;
-
-          // Calculate overlap amount
-          const overlap = minDistance - distance;
-
-          // Separate the shapes by moving them apart
-          const separationX = (overlap / 2) * normalX;
-          const separationY = (overlap / 2) * normalY;
-
-          // Convert back to percentage coordinates for separation
-          const separationPercentX1 = -(separationX / windowWidth) * 100;
-          const separationPercentY1 = -(separationY / windowHeight) * 100;
-          const separationPercentX2 = (separationX / windowWidth) * 100;
-          const separationPercentY2 = (separationY / windowHeight) * 100;
-
-          updatedShapes[i] = {
-            ...shape1,
-            x: shape1.x + separationPercentX1,
-            y: shape1.y + separationPercentY1
-          };
-
-          updatedShapes[j] = {
-            ...shape2,
-            x: shape2.x + separationPercentX2,
-            y: shape2.y + separationPercentY2
-          };
-
-          // Calculate relative velocity in collision normal direction
-          const relativeVelX = shape2.vx - shape1.vx;
-          const relativeVelY = shape2.vy - shape1.vy;
-          const velocityAlongNormal = relativeVelX * normalX + relativeVelY * normalY;
-
-          // Don't resolve if velocities are separating
-          if (velocityAlongNormal > 0) {
-            continue;
-          }
-
-          // Calculate collision impulse
-          const impulse = -velocityAlongNormal * SHAPE_CONFIG.COLLISION_DAMPING;
-
-          // Apply impulse to velocities
-          updatedShapes[i] = {
-            ...updatedShapes[i],
-            vx: shape1.vx - impulse * normalX + normalX * SHAPE_CONFIG.COLLISION_REPULSION,
-            vy: shape1.vy - impulse * normalY + normalY * SHAPE_CONFIG.COLLISION_REPULSION
-          };
-
-          updatedShapes[j] = {
-            ...updatedShapes[j],
-            vx: shape2.vx + impulse * normalX - normalX * SHAPE_CONFIG.COLLISION_REPULSION,
-            vy: shape2.vy + impulse * normalY - normalY * SHAPE_CONFIG.COLLISION_REPULSION
-          };
-        }
-      }
-    }
-
-    return updatedShapes;
-  };
+    // Use shared animation context instead of separate requestAnimationFrame
+    animateShapes();
+  }, [animationTime, mounted, cursorPosition.x, cursorPosition.y, windowSize.width, windowSize.height, floatingShapes.length, isExploding, detectAndResolveCollisions]);
 
   // Function to create a new floating shape
   const createFloatingShape = (id: number, totalCount: number, isInitial: boolean = false): FloatingShape => {
@@ -762,51 +812,71 @@ export default function LandingPage() {
   }
 
   return (
-    <div className='min-h-screen relative overflow-hidden flex flex-col' style={{ backgroundColor: '#1a1a1a' }}>
-      {/* Interactive Background with Large Logo */}
-      <div className='absolute inset-0'>
-        {/* Floating Geometric Shapes */}
-        {floatingShapes.map((shape) => (
-          <div
-            key={shape.id}
-            className='absolute select-none will-change-transform transition-opacity duration-300 hover:opacity-40 cursor-pointer'
-            style={{
-              left: `${shape.x}%`,
-              top: `${shape.y}%`,
-              width: `${shape.size}px`,
-              height: `${shape.size}px`,
-              opacity: SHAPE_CONFIG.BASE_OPACITY,
-              transform: `translate3d(-50%, -50%, 0) rotate(${shape.rotation}deg)`,
-              backgroundColor: '#B09155',
-              borderRadius: shape.id % 4 === 0 ? '50%' :
-                           shape.id % 3 === 0 ? '0%' :
-                           shape.id % 2 === 0 ? '20%' : '10%',
-              transition: 'opacity 0.3s ease-out',
-              boxShadow: `0 4px 20px rgba(176, 145, 85, ${SHAPE_CONFIG.GLOW_INTENSITY})`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = SHAPE_CONFIG.HOVER_OPACITY.toString();
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = SHAPE_CONFIG.BASE_OPACITY.toString();
-            }}
-          />
-        ))}
+    <div 
+      className={`min-h-screen ${!showFullWebsite ? 'overflow-hidden' : ''}`} 
+      style={{ backgroundColor: '#1a1a1a' }}
+    >
+      {/* Show Navigation only when hash is present */}
+      {showFullWebsite && <Navigation />}
+      
+      {!showFullWebsite ? (
+        // Pure landing page with animated squares only
+        <div className="relative overflow-hidden min-h-screen">
+          {/* Top Navigation Elements */}
+          <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-6">
+            {/* Logo in top left - using LogoAndText component */}
+            <LogoAndText />
+            
+            {/* Language switcher in top right */}
+            <div className="flex items-center">
+              <LanguageSwitcher />
+            </div>
+          </div>
 
-        {/* Large background logo with minimal effects for performance */}
-        <div
-          className='absolute inset-0 flex items-center justify-center'
-          style={{
-            transform: `translate3d(${(mousePosition.x - 50) * 0.1}px, ${(mousePosition.y - 50) * 0.1}px, 0)`,
-          }}
-        >
-          <Image
-            src={companyConfig.website.logo.logoGoldTransparent}
-            alt={companyConfig.company.name}
-            width={600}
-            height={600}
-            priority
-            className='select-none pointer-events-none'
+          {/* Interactive Background with Large Logo */}
+          <div className='absolute inset-0'>
+            {/* Floating Geometric Shapes */}
+            {floatingShapes.map((shape) => (
+              <div
+                key={shape.id}
+                className='absolute select-none will-change-transform transition-opacity duration-300 hover:opacity-40 cursor-pointer'
+                style={{
+                  left: `${shape.x}%`,
+                  top: `${shape.y}%`,
+                  width: `${shape.size}px`,
+                  height: `${shape.size}px`,
+                  opacity: SHAPE_CONFIG.BASE_OPACITY,
+                  transform: `translate3d(-50%, -50%, 0) rotate(${shape.rotation}deg)`,
+                  backgroundColor: '#B09155',
+                  borderRadius: shape.id % 4 === 0 ? '50%' :
+                               shape.id % 3 === 0 ? '0%' :
+                               shape.id % 2 === 0 ? '20%' : '10%',
+                  transition: 'opacity 0.3s ease-out',
+                  boxShadow: `0 4px 20px rgba(176, 145, 85, ${SHAPE_CONFIG.GLOW_INTENSITY})`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = SHAPE_CONFIG.HOVER_OPACITY.toString();
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = SHAPE_CONFIG.BASE_OPACITY.toString();
+                }}
+              />
+            ))}
+
+            {/* Large background logo with minimal effects for performance */}
+            <div
+              className='absolute inset-0 flex items-center justify-center'
+              style={{
+                transform: `translate3d(${(mousePosition.x - 50) * 0.1}px, ${(mousePosition.y - 50) * 0.1}px, 0)`,
+              }}
+            >
+              <Image
+                src={companyConfig.website.logo.logoGoldTransparent}
+                alt={companyConfig.company.name}
+                width={600}
+                height={600}
+                priority
+                className='select-none pointer-events-none'
             style={{
               opacity: 0.04,
             }}
@@ -843,107 +913,8 @@ export default function LandingPage() {
         <div className='absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/20'></div>
       </div>
 
-      {/* Header */}
-      <header className='relative z-50 px-6 py-6'>
-        <div className='max-w-7xl mx-auto flex justify-between items-center'>
-          <div className='flex items-center space-x-3'>
-            <div
-              className='transition-transform duration-300 ease-out relative'
-              style={{
-                transform: `translate(${getMagneticOffset(100, 50).x}px, ${getMagneticOffset(100, 50).y}px)`,
-              }}
-            >
-              <Image
-                src={companyConfig.website.logo.logoGoldTransparent}
-                alt={companyConfig.company.name}
-                width={50}
-                height={50}
-                className='transition-all duration-300 hover:scale-110 cursor-pointer select-none'
-                style={{
-                  transform: `rotate(${Math.sin(animationTime * 0.002) * 5}deg) scale(${1 + Math.sin(animationTime * 0.003) * 0.1})`,
-                  filter: `drop-shadow(0 0 10px rgba(176, 145, 85, ${0.5 + Math.sin(animationTime * 0.004) * 0.3})) hue-rotate(${Math.sin(animationTime * 0.001) * 15}deg)`,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform += ' scale(1.2) rotate(15deg)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = `rotate(${Math.sin(animationTime * 0.002) * 5}deg) scale(${1 + Math.sin(animationTime * 0.003) * 0.1})`;
-                }}
-                draggable={false}
-              />
-              {/* Floating particles around logo */}
-              <div
-                className='absolute w-1 h-1 bg-yellow-400 rounded-full opacity-60 select-none pointer-events-none'
-                style={{
-                  top: '10%',
-                  right: '10%',
-                  transform: `translate(${Math.sin(animationTime * 0.005) * 3}px, ${Math.cos(animationTime * 0.005) * 3}px)`,
-                }}
-              />
-              <div
-                className='absolute w-0.5 h-0.5 bg-yellow-300 rounded-full opacity-40 select-none pointer-events-none'
-                style={{
-                  bottom: '15%',
-                  left: '15%',
-                  transform: `translate(${Math.cos(animationTime * 0.007) * 2}px, ${Math.sin(animationTime * 0.007) * 2}px)`,
-                }}
-              />
-            </div>
-            <div className='relative'>
-              <span
-                className='text-2xl font-bold text-white cursor-pointer inline-block transition-all duration-300 hover:scale-105 select-none'
-                style={{
-                  transform: `translateY(${Math.sin(animationTime * 0.002) * 1}px)`,
-                  textShadow: `0 0 15px rgba(176, 145, 85, ${0.4 + Math.sin(animationTime * 0.003) * 0.3})`,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#B09155';
-                  e.currentTarget.style.textShadow = '0 0 25px rgba(176, 145, 85, 0.8)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'white';
-                  e.currentTarget.style.textShadow = `0 0 15px rgba(176, 145, 85, ${0.4 + Math.sin(animationTime * 0.003) * 0.3})`;
-                }}
-              >
-                {companyConfig.company.domain.split('').map((letter, index) => (
-                  <span
-                    key={index}
-                    className='inline-block transition-all duration-200 select-none'
-                    style={{
-                      transform: `translateY(${Math.sin(animationTime * 0.004 + index * 0.5) * 1}px)`,
-                      animationDelay: `${index * 100}ms`,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-3px) scale(1.2)';
-                      e.currentTarget.style.color = '#B09155';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = `translateY(${Math.sin(animationTime * 0.004 + index * 0.5) * 1}px)`;
-                      e.currentTarget.style.color = 'inherit';
-                    }}
-                  >
-                    {letter}
-                  </span>
-                ))}
-              </span>
-              {/* Subtle underline animation */}
-              <div
-                className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-60 select-none pointer-events-none'
-                style={{
-                  width: `${50 + Math.sin(animationTime * 0.003) * 30}%`,
-                  transform: `translateX(${Math.sin(animationTime * 0.002) * 20}px)`,
-                }}
-              />
-            </div>
-          </div>
-          <div className="relative z-50">
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content - Centered */}
-      <main className='relative z-10 flex-1 flex items-center justify-center px-6'>
+      {/* Hero Section */}
+      <section id="hero" className='relative z-10 flex items-center justify-center px-6 min-h-screen'>
         <div className='text-center max-w-3xl'>
           {/* Logo with enhanced glow and scaling effects */}
           <div className='mb-8'>
@@ -975,7 +946,8 @@ export default function LandingPage() {
                   `,
                   transition: 'transform 0.2s ease-out, filter 0.2s ease-out', // Smooth transitions
                 }}
-                draggable={false}                onMouseEnter={() => {
+                draggable={false}
+                onMouseEnter={() => {
                   // Set hover state and reset shiver cycle
                   setIsLogoHovered(true);
                   resetShiverCycle();
@@ -1018,16 +990,13 @@ export default function LandingPage() {
                 transform: `translate(${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).x}px, ${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).y}px)`,
               }}
             >
-              <button
-                className='relative px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden group shadow-lg'
+              <a
+                href={`#${sectionMap.development}`}
+                className='relative px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden group shadow-lg inline-block'
                 style={{
                   borderColor: '#D4AF37',
                   backgroundColor: 'rgba(212, 175, 55, 0.1)',
                   boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
-                }}
-                onClick={() => {
-                  // Main button navigation with current locale
-                  window.location.href = `/${locale}/development`;
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#D4AF37';
@@ -1048,20 +1017,60 @@ export default function LandingPage() {
                   <span>👉</span>
                   <span>{t('development.title')}</span>
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
-      </main>
+      </section>
 
-      {/* Footer */}
-      <footer className='relative z-10 px-6 py-6'>
-        <div className='text-center'>
-          <p className='text-white/60 text-sm select-none'>
-            {t('footer')}
-          </p>
+      {/* Copyright at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 p-6 text-center">
+        <p className="text-white/60 text-sm select-none">
+          © 2025 Rise.sk s.r.o. Všetky práva vyhradené.
+        </p>
+      </div>
+
+      {/* Interactive Rise Components - Landing Page */}
+      <InteractiveRiseIcons />
         </div>
-      </footer>
+      ) : (
+        // Full website with all sections
+        <div className="relative">
+          {/* All sections as full page sections */}
+          <div id={sectionMap.development}>
+            <Hero />
+          </div>
+          
+          <div id={sectionMap.about}>
+            <About />
+          </div>
+          
+          <div id={sectionMap.services}>
+            <ServicesEnhanced />
+          </div>
+          
+          <div id={sectionMap.portfolio}>
+            <Portfolio />
+          </div>
+          
+          <div id={sectionMap.reviews}>
+            <Reviews />
+          </div>
+          
+          <div id={sectionMap.hiring}>
+            <Hiring />
+          </div>
+          
+          <div id={sectionMap.contact}>
+            <Contact />
+          </div>
+
+          <Footer />
+
+          {/* Interactive Rise Components - Full Website */}
+          <InteractiveRiseIcons />
+        </div>
+      )}
     </div>
   );
 }

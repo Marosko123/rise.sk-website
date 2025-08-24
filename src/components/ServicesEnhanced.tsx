@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { Check, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/hooks/useTranslations';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 const ServicesEnhanced: React.FC = () => {

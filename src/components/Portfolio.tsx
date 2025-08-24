@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Eye, Github, Lock } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/hooks/useTranslations';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 

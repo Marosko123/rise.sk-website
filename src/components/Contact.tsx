@@ -11,7 +11,7 @@ import {
   Phone,
   Send,
 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/hooks/useTranslations';
 import { useEffect, useState } from 'react';
 
 import { Button } from './ui/Button';

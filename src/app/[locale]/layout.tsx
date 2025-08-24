@@ -130,9 +130,7 @@ export default async function LocaleLayout({
 
   // Ensure that the incoming `locale` is valid
   if (
-    !routing.locales.includes(
-      locale as 'en' | 'sk' | 'cs' | 'de' | 'es' | 'hu' | 'fr'
-    )
+    !routing.locales.includes(locale as typeof routing.locales[number])
   ) {
     notFound();
   }
@@ -154,10 +152,10 @@ export default async function LocaleLayout({
         <WebVitalsReporter />
         <ServiceWorkerRegistration />
         <StructuredData />
+        <RiseIconRain />
+        <InteractiveRiseIcons />
         <SmoothScrollProvider>
           <ScrollProgress />
-          <RiseIconRain />
-          <InteractiveRiseIcons />
           <NextIntlClientProvider messages={messages}>
             <LanguagePreferenceHandler />
             {children}

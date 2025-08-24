@@ -250,7 +250,7 @@ export default function RiseIconRain() {
   return (
     <AnimatePresence>
       {isRaining && (
-        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+        <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
           {rainIcons.map((icon) => (
             <motion.div
               key={icon.id}

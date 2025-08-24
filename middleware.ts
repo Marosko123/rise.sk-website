@@ -1,11 +1,12 @@
-import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
 
-import { routing } from './src/i18n/routing';
-
-export default createMiddleware(routing);
+export default function middleware(_request: NextRequest) {
+  // Simple middleware - no locale prefixes, just serve pages directly
+  return NextResponse.next();
+}
 
 export const config = {
-  // Match only internationalized pathnames
-  // Note: Root path serves Slovak (default), /en serves English
-  matcher: ['/', '/(en|sk|cs|de|es|hu|fr)/:path*'],
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)',
+  ],
 };
