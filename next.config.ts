@@ -20,27 +20,25 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
-      // Redirect www to non-www
+      // Redirect /sk/* to /* (remove Slovak prefix) - only for specific paths to avoid loops
       {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.rise.sk',
-          },
-        ],
-        destination: 'https://rise.sk/:path*',
-        permanent: true,
-      },
-      // Redirect /sk/* to /* (remove Slovak prefix)
-      {
-        source: '/sk',
-        destination: '/',
+        source: '/sk/vyvoj',
+        destination: '/vyvoj',
         permanent: true,
       },
       {
-        source: '/sk/:path*',
-        destination: '/:path*',
+        source: '/sk/sluzby',
+        destination: '/sluzby',
+        permanent: true,
+      },
+      {
+        source: '/sk/portfolio',
+        destination: '/portfolio',
+        permanent: true,
+      },
+      {
+        source: '/sk/kontakt',
+        destination: '/kontakt',
         permanent: true,
       },
       // Redirect English paths to Slovak for better SEO
