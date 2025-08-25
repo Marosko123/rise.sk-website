@@ -106,13 +106,13 @@ const ServicesEnhanced: React.FC = () => {
     <section
       id="services"
       ref={ref}
-      className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+      className="relative py-20 overflow-hidden bg-gradient-to-br from-gray-950 via-slate-950 to-black"
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/10 via-transparent to-[var(--primary-dark)]/10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/5 via-transparent to-[var(--primary-dark)]/5" />
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[var(--primary)]/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[var(--primary-dark)]/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[var(--primary)]/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[var(--primary-dark)]/8 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -186,9 +186,33 @@ const ServicesEnhanced: React.FC = () => {
                   }}
                   variants={itemVariants}
                 >
-                  <div className="relative h-[600px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:border-[var(--primary)]/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[var(--primary)]/30 flex flex-col">
+                  <div className="relative h-[600px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:border-[var(--primary)]/60 transition-all duration-1500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[var(--primary)]/30 flex flex-col overflow-hidden">
+                    {/* Large Background Emoji */}
+                    <div 
+                      className="absolute top-4 right-4 text-[12rem] opacity-10 blur-[2px] group-hover:opacity-20 group-hover:blur-[1px] group-hover:scale-110 transition-all duration-1500 pointer-events-none select-none transform rotate-12 group-hover:rotate-6" 
+                      style={{ 
+                        animation: 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                      }}
+                    >
+                      {getServiceIcon(index)}
+                    </div>
+
+                    {/* Secondary Background Emoji - Smaller and more blurred */}
+                    <div 
+                      className="absolute bottom-8 left-4 text-[8rem] opacity-5 blur-[4px] group-hover:opacity-15 group-hover:blur-[2px] transition-all duration-1500 pointer-events-none select-none transform -rotate-12 group-hover:-rotate-6" 
+                      style={{ 
+                        animation: 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        animationDelay: '3s'
+                      }}
+                    >
+                      {getServiceIcon(index)}
+                    </div>
+
+                    {/* Gradient overlay to enhance readability */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${getServiceGradient(index)} opacity-0 group-hover:opacity-10 transition-opacity duration-1500 rounded-2xl pointer-events-none`} />
+
                     {/* Service Icon */}
-                    <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${getServiceGradient(index)} flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`relative z-10 w-16 h-16 rounded-full bg-gradient-to-br ${getServiceGradient(index)} flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-1500 shadow-lg`}>
                       {getServiceIcon(index)}
                     </div>
 

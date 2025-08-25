@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import About from '@/components/About';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/BreadcrumbSchema';
-import Contact from '@/components/Contact';
+import Contact from '@/components/MultiStepContactForm';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Hiring from '@/components/Hiring';

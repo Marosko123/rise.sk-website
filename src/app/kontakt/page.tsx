@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/BreadcrumbSchema';
-import Contact from '@/components/Contact';
+import Contact from '@/components/MultiStepContactForm';
 
 export const metadata: Metadata = {
   title: 'Kontakt | Rise.sk - Profesionálne Programátorské Tímy Slovensko',
