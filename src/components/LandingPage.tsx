@@ -10,17 +10,18 @@ import LogoAndText from './LogoAndText';
 
 // Import all the components we'll need for the full page
 import About from './About';
-import Contact from './Contact';
+import FAQ from './FAQ';
 import Footer from './Footer';
 import Hero from './Hero';
 import Hiring from './Hiring';
 import InteractiveRiseIcons from './InteractiveRiseIcons';
+import MultiStepContactForm from './MultiStepContactForm';
 import Navigation from './Navigation';
 import Portfolio from './Portfolio';
 import Reviews from './Reviews';
 import ServicesEnhanced from './ServicesEnhanced';
 
-import LanguageSwitcher from './LanguageSwitcherNew';
+import LanguageSwitcher from './LanguageSwitcher';
 
 // Configuration variables for floating shapes physics
 const SHAPE_CONFIG = {
@@ -129,6 +130,7 @@ export default function LandingPage() {
         services: 'sluzby',
         portfolio: 'portfolio',
         reviews: 'recenzie',
+        faq: 'faq',
         hiring: 'kariera',
         contact: 'kontakt'
       };
@@ -139,6 +141,7 @@ export default function LandingPage() {
         services: 'services',
         portfolio: 'portfolio',
         reviews: 'reviews',
+        faq: 'faq',
         hiring: 'hiring',
         contact: 'contact'
       };
@@ -175,6 +178,22 @@ export default function LandingPage() {
       document.body.style.overflow = 'auto';
     };
   }, []);
+
+  // Handle initial hash scroll when full website is shown
+  useEffect(() => {
+    if (showFullWebsite && window.location.hash) {
+      // Small delay to ensure the DOM is ready
+      const timer = setTimeout(() => {
+        const hash = window.location.hash.substring(1);
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showFullWebsite]);
 
   // Function to determine if logo should be shivering
   const isShivering = useCallback(() => {
@@ -1065,12 +1084,16 @@ export default function LandingPage() {
             <Reviews />
           </div>
 
+          <div id={sectionMap.faq}>
+            <FAQ />
+          </div>
+
           <div id={sectionMap.hiring}>
             <Hiring />
           </div>
 
           <div id={sectionMap.contact}>
-            <Contact />
+            <MultiStepContactForm />
           </div>
 
           <Footer />

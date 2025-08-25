@@ -1,3 +1,5 @@
+import EnhancedSchema from './EnhancedSchema';
+
 interface SEOHeadProps {
   canonical?: string;
 }
@@ -29,33 +31,50 @@ export default function SEOHead({ canonical }: SEOHeadProps) {
       <meta name="geo.region" content="SK" />
       <meta name="geo.placename" content="Bratislava" />
       
-      {/* Schema.org structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Rise.sk s.r.o.",
-            "url": baseUrl,
-            "logo": `${baseUrl}/rise/logo-circle-bronze-bg.png`,
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+421-911-670-188",
-              "contactType": "customer service",
-              "email": "rise@rise.sk"
-            },
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Karpatské námestie 7770/10A",
-              "addressLocality": "Bratislava",
-              "postalCode": "831 06",
-              "addressCountry": "SK"
-            },
-            "sameAs": []
-          })
-        }}
-      />
+      {/* Open Graph meta tags */}
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Rise.sk" />
+      <meta property="og:url" content={currentUrl} />
+      <meta property="og:title" content="Rise.sk - Expert Programming Teams | Custom Software Development Slovakia" />
+      <meta property="og:description" content="Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps. Quick delivery, reliable code, 100% on-time projects." />
+      <meta property="og:image" content={`${baseUrl}/rise/logo-circle-bronze-bg.png`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Rise.sk Logo - Expert Programming Teams" />
+      <meta property="og:locale" content="sk_SK" />
+      <meta property="og:locale:alternate" content="en_US" />
+      
+      {/* Twitter Card meta tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@rise_sk" />
+      <meta name="twitter:creator" content="@rise_sk" />
+      <meta name="twitter:title" content="Rise.sk - Expert Programming Teams | Custom Software Development Slovakia" />
+      <meta name="twitter:description" content="Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps. Quick delivery, reliable code, 100% on-time projects." />
+      <meta name="twitter:image" content={`${baseUrl}/rise/logo-circle-bronze-bg.png`} />
+      <meta name="twitter:image:alt" content="Rise.sk Logo - Expert Programming Teams" />
+      
+      {/* Additional SEO meta tags */}
+      <meta name="theme-color" content="#b09155" />
+      <meta name="msapplication-TileColor" content="#b09155" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="Rise.sk" />
+      
+      {/* Business verification meta tags */}
+      <meta name="business:contact_data:locality" content="Bratislava" />
+      <meta name="business:contact_data:region" content="Bratislava Region" />
+      <meta name="business:contact_data:postal_code" content="831 06" />
+      <meta name="business:contact_data:country_name" content="Slovakia" />
+      
+      {/* Enhanced Schema Markup */}
+      <EnhancedSchema type="Organization" />
+      <EnhancedSchema type="LocalBusiness" />
+      <EnhancedSchema type="WebSite" />
+      <EnhancedSchema type="Service" data={{
+        name: "Web Development Services",
+        description: "Professional web development and design services in Slovakia",
+        serviceType: "Custom Software Development"
+      }} />
     </>
   );
 }

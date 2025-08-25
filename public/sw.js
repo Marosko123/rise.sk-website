@@ -1,7 +1,8 @@
-const CACHE_NAME = 'rise-sk-v1';
-const STATIC_CACHE = 'rise-sk-static-v1';
-const DYNAMIC_CACHE = 'rise-sk-dynamic-v1';
-const IMAGE_CACHE = 'rise-sk-images-v1';
+const CACHE_NAME = 'rise-sk-v2';
+const STATIC_CACHE = 'rise-sk-static-v2';
+const DYNAMIC_CACHE = 'rise-sk-dynamic-v2';
+const IMAGE_CACHE = 'rise-sk-images-v2';
+const FONT_CACHE = 'rise-sk-fonts-v1';
 
 // Assets to cache on install
 const STATIC_ASSETS = [
@@ -9,9 +10,20 @@ const STATIC_ASSETS = [
   '/en',
   '/sk',
   '/manifest.json',
+  '/robots.txt',
+  '/sitemap.xml',
   '/rise/logo-circle-bronze-bg.png',
   '/rise/logo-circle-white-bg.png',
   '/rise/logo-bronze-transparent.png',
+  '/rise/logo-text-rectangle.png',
+  '/favicon.ico'
+];
+
+// Critical CSS and JS files to cache
+const CRITICAL_RESOURCES = [
+  '/_next/static/css/',
+  '/_next/static/chunks/',
+  '/_next/static/media/'
 ];
 
 // Install event

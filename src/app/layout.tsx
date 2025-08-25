@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import GDPRConsent from '@/components/GDPRConsent';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import WebVitalsReporter from '@/components/WebVitalsReporter';
 import SEOHead from '@/components/SEOHead';
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: Props) {
         {children}
         <ServiceWorkerRegistration />
         <WebVitalsReporter />
+        <GDPRConsent />
       </body>
     </html>
   );

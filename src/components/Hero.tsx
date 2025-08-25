@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowRight, Code, Globe, Zap } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
+import { motion } from 'framer-motion';
+import { ArrowRight, Award, CheckCircle, Clock, Code, Globe, MapPin, Shield, Star, Zap } from 'lucide-react';
 
 import { Button } from './ui/Button';
 
@@ -39,7 +39,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className='hero-gradient min-h-screen flex items-center justify-center pt-16 relative overflow-hidden'>
+    <section className='hero-gradient min-h-screen flex items-center justify-center pt-16 relative overflow-hidden lg:-mt-12'>
       {/* Floating Background Elements */}
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         {floatingIcons.map(({ Icon, delay, x, y }, index) => (
@@ -127,31 +127,71 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          {/* Key Metrics */}
+          {/* Trust Badges */}
           <motion.div
             variants={itemVariants}
-            className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto'
+            className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-4xl mx-auto opacity-60'
           >
             {[
-              { key: 'onTimeDelivery' },
-              { key: 'costSavings' },
-              { key: 'teamReady' },
-            ].map((metric, index) => (
-              <motion.div
-                key={index}
-                className='text-center select-none'
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 + index * 0.2, duration: 0.6 }}
-              >
-                <div className='text-3xl md:text-4xl font-bold text-[var(--primary)] mb-2'>
-                  {t(`metrics.${metric.key}.number`)}
-                </div>
-                <div className='text-[var(--accent)] text-sm uppercase tracking-wide'>
-                  {t(`metrics.${metric.key}.label`)}
-                </div>
-              </motion.div>
-            ))}
+              {
+                icon: Shield,
+                title: t('badges.ssl'),
+                color: 'text-gray-400',
+                bgColor: 'bg-gray-500/5'
+              },
+              {
+                icon: Clock,
+                title: t('badges.response'),
+                color: 'text-gray-400',
+                bgColor: 'bg-gray-500/5'
+              },
+              {
+                icon: MapPin,
+                title: t('badges.slovakia'),
+                color: 'text-gray-400',
+                bgColor: 'bg-gray-500/5'
+              },
+              {
+                icon: Award,
+                title: t('badges.established'),
+                color: 'text-gray-400',
+                bgColor: 'bg-gray-500/5'
+              },
+              {
+                icon: CheckCircle,
+                title: t('badges.success'),
+                color: 'text-gray-400',
+                bgColor: 'bg-gray-500/5'
+              },
+              {
+                icon: Star,
+                title: t('badges.quality'),
+                color: 'text-gray-400',
+                bgColor: 'bg-gray-500/5'
+              }
+            ].map((badge, index) => {
+              const IconComponent = badge.icon;
+              return (
+                <motion.div
+                  key={index}
+                  className={`
+                    ${badge.bgColor} ${badge.color}
+                    p-2 rounded-lg border border-white/5
+                    flex flex-col items-center text-center
+                    hover:opacity-80 transition-all duration-300
+                    select-none
+                  `}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.5 + index * 0.05, duration: 0.8 }}
+                >
+                  <IconComponent className="w-4 h-4 mb-1" />
+                  <h4 className="font-medium text-[12px] text-white/60">
+                    {badge.title}
+                  </h4>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </motion.div>

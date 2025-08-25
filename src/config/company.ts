@@ -168,9 +168,9 @@ export const companyConfig = {
   // 📄 LEGAL & COMPLIANCE
   // =====================================
   legal: {
-    privacyPolicyUrl: '/privacy-policy',
-    termsOfServiceUrl: '/terms-of-service',
-    cookiePolicyUrl: '/cookie-policy',
+    privacyPolicyUrl: '/ochrana-osobnych-udajov',
+    termsOfServiceUrl: '/obchodne-podmienky',
+    cookiePolicyUrl: '/ochrana-osobnych-udajov',
     gdprCompliant: true,
     dataRetentionPeriod: '2 years',
   },

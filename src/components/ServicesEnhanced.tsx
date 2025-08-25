@@ -1,8 +1,8 @@
 'use client';
 
+import { useTranslations } from '@/hooks/useTranslations';
 import { motion, useInView } from 'framer-motion';
 import { Check, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
-import { useTranslations } from '@/hooks/useTranslations';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 const ServicesEnhanced: React.FC = () => {
@@ -20,7 +20,7 @@ const ServicesEnhanced: React.FC = () => {
     id: index,
     title: t(`services.${index}.title`),
     description: t(`services.${index}.description`),
-    features: Array.from({ length: 5 }, (_, featIndex) => 
+    features: Array.from({ length: 5 }, (_, featIndex) =>
       t(`services.${index}.features.${featIndex}`)
     ),
   }));
@@ -103,7 +103,7 @@ const ServicesEnhanced: React.FC = () => {
   };
 
   return (
-    <section 
+    <section
       id="services"
       ref={ref}
       className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
@@ -116,6 +116,35 @@ const ServicesEnhanced: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+          >
+            {t('title')}{' '}
+            <span className="bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] bg-clip-text text-transparent">
+              {t('titleHighlight')}
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+          >
+            {t('subtitle')}
+          </motion.p>
+        </motion.div>
+
         {/* Services Carousel */}
         <motion.div
           initial="hidden"
@@ -211,8 +240,8 @@ const ServicesEnhanced: React.FC = () => {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-[var(--primary)] scale-125' 
+                  index === currentIndex
+                    ? 'bg-[var(--primary)] scale-125'
                     : 'bg-white/30 hover:bg-white/50'
                 }`}
               />

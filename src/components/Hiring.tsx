@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import {
   Bot,
@@ -10,7 +11,6 @@ import {
   Palette,
   Users,
 } from 'lucide-react';
-import { useTranslations } from '@/hooks/useTranslations';
 import Image from 'next/image';
 
 import { Card } from './ui/Card';
@@ -62,6 +62,7 @@ export default function Hiring() {
   return (
     <Section
       id="hiring"
+      padding="sm"
       className="bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] relative overflow-hidden"
     >
       {/* Simplified Background Effects */}
@@ -75,7 +76,7 @@ export default function Hiring() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-5%" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className='text-center mb-16'
+          className='text-center mb-12'
         >
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('title')}
@@ -95,9 +96,9 @@ export default function Hiring() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-5%" }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-          className='mb-16'
+          className='mb-12'
         >
-          <h3 className='text-2xl font-bold text-white mb-8 text-center'>
+          <h3 className='text-2xl font-bold text-white mb-6 text-center'>
             {t('openPositions')}
           </h3>
 
@@ -157,9 +158,9 @@ export default function Hiring() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-5%" }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className='mb-16'
+          className='mb-12'
         >
-          <h3 className='text-2xl font-bold text-white mb-8 text-center'>
+          <h3 className='text-2xl font-bold text-white mb-6 text-center'>
             {t('whyJoinUs.title')}
           </h3>
 

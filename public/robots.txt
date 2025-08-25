@@ -11,7 +11,26 @@ Crawl-delay: 1
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /*.json$
 
-# TODO: Consider adding specific crawl instructions for different user agents
-# TODO: Add Host directive once primary domain is confirmed
-# TODO: Consider adding disallow for admin areas and private content
+# Allow important assets
+Allow: /favicon.ico
+Allow: /robots.txt
+Allow: /sitemap.xml
+
+# Specific user agents optimization
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+# Block problematic bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Host directive
+Host: https://rise.sk

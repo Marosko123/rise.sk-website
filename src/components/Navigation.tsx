@@ -3,22 +3,23 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { useEffect, useMemo, useState, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { useTranslations, useLocale } from '@/hooks/useTranslations';
+import { useLocale, useTranslations } from '@/hooks/useTranslations';
 
-import LogoAndText from './LogoAndText';
 import { GameCounter } from './InteractiveRiseIcons';
-import LanguageSwitcher from './LanguageSwitcherNew';
+import LanguageSwitcher from './LanguageSwitcher';
 import { Link } from './LocalizedLink';
+import LogoAndText from './LogoAndText';
 
 export default function Navigation() {
   const t = useTranslations('navigation');
   const locale = useLocale();
-  
+
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [initialHashHandled, setInitialHashHandled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -30,10 +31,11 @@ export default function Navigation() {
     if (lang === 'sk') {
       return {
         development: 'vyvoj',
-        about: 'o-nas', 
+        about: 'o-nas',
         services: 'sluzby',
         portfolio: 'portfolio',
         reviews: 'recenzie',
+        faq: 'faq',
         hiring: 'kariera',
         contact: 'kontakt'
       };
@@ -41,9 +43,10 @@ export default function Navigation() {
       return {
         development: 'development',
         about: 'about',
-        services: 'services', 
+        services: 'services',
         portfolio: 'portfolio',
         reviews: 'reviews',
+        faq: 'faq',
         hiring: 'hiring',
         contact: 'contact'
       };
@@ -74,13 +77,14 @@ export default function Navigation() {
   const navLinks = useMemo(() => {
     // Use dynamic section names based on language
     const sectionMap = getSectionMappings(locale);
-    
+
     return [
       { href: `#${sectionMap.development}`, label: t('development'), section: sectionMap.development },
       { href: `#${sectionMap.about}`, label: t('about'), section: sectionMap.about },
       { href: `#${sectionMap.services}`, label: t('services'), section: sectionMap.services },
       { href: `#${sectionMap.portfolio}`, label: t('portfolio'), section: sectionMap.portfolio },
       { href: `#${sectionMap.reviews}`, label: t('reviews'), section: sectionMap.reviews },
+      { href: `#${sectionMap.faq}`, label: t('faq'), section: sectionMap.faq },
       { href: `#${sectionMap.hiring}`, label: t('hiring'), section: sectionMap.hiring },
       { href: `#${sectionMap.contact}`, label: t('contact'), section: sectionMap.contact },
     ];
@@ -118,6 +122,7 @@ export default function Navigation() {
         sectionMap.services,
         sectionMap.portfolio,
         sectionMap.reviews,
+        sectionMap.faq,
         sectionMap.hiring,
         sectionMap.contact
       ];
@@ -125,18 +130,24 @@ export default function Navigation() {
 
       // Find which section is currently in view
       let currentSection = '';
-      const scrollPosition = window.scrollY + 200; // Offset for better detection
+      // Use navigation bar height (80px) plus small buffer for detection
+      const navOffset = 100;
+      const scrollPosition = window.scrollY + navOffset;
 
       // Check if we're at the very top (landing area)
-      if (window.scrollY < 100) {
-        currentSection = 'vyvoj'; // Default to vyvoj when at top
+      if (window.scrollY < 50) {
+        // Only default to development if no initial hash was provided
+        if (initialHashHandled) {
+          currentSection = sectionMap.development;
+        }
       } else {
         sectionElements.forEach((element, index) => {
           if (element) {
             const { offsetTop, offsetHeight } = element;
-            
-            // Use center-based detection for better accuracy
-            if (scrollPosition >= offsetTop - 100 && scrollPosition < offsetTop + offsetHeight - 100) {
+
+            // Better section detection: section is active when we're past its start
+            // and before the next section's start
+            if (scrollPosition >= offsetTop - 50 && scrollPosition < offsetTop + offsetHeight - 50) {
               currentSection = sections[index];
             }
           }
@@ -146,9 +157,9 @@ export default function Navigation() {
       // Update active section and URL hash
       if (currentSection !== activeSection) {
         setActiveSection(currentSection);
-        
-        // Update URL hash without triggering page reload
-        if (currentSection && window.location.hash !== `#${currentSection}`) {
+
+        // Update URL hash without triggering page reload (only if initial hash has been handled)
+        if (currentSection && window.location.hash !== `#${currentSection}` && initialHashHandled) {
           window.history.replaceState(null, '', `#${currentSection}`);
         }
       }
@@ -160,6 +171,10 @@ export default function Navigation() {
     // Add hash change listener to re-enable scroll detection
     const handleHashChange = () => {
       checkActivePage();
+      // Mark that we've handled the initial hash
+      if (!initialHashHandled) {
+        setTimeout(() => setInitialHashHandled(true), 1000); // Allow 1 second for scrolling
+      }
     };
 
     // For main page with hash (full website mode), add scroll listener
@@ -168,6 +183,11 @@ export default function Navigation() {
 
     if (hasScrollableSections) {
       window.addEventListener('scroll', handleScrollBasedSection);
+
+      // Handle initial hash if not yet handled
+      if (!initialHashHandled && hasHash) {
+        setTimeout(() => setInitialHashHandled(true), 1000); // Allow 1 second for initial scrolling
+      }
     }
 
     // Listen for hash changes
@@ -177,7 +197,7 @@ export default function Navigation() {
       window.removeEventListener('scroll', handleScrollBasedSection);
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [mounted, activeSection, pathname, locale, getSectionMappings]);
+  }, [mounted, activeSection, pathname, locale, getSectionMappings, initialHashHandled]);
 
   // Function to check if a nav link is active
   const isLinkActive = (section: string) => {
@@ -197,7 +217,7 @@ export default function Navigation() {
           {/* Left Side - Logo & Company Name (absolutely flush left) */}
           <div className='flex items-center space-x-3 pl-6'>
             <motion.div className='flex-shrink-0' whileHover={{ scale: 1.05 }}>
-              <LogoAndText 
+              <LogoAndText
                 onClick={() => {
                   // Clear hash to return to landing page
                   window.history.pushState(null, '', '/');
@@ -210,14 +230,14 @@ export default function Navigation() {
 
           {/* Navigation Links - Center */}
           <div className='hidden md:flex absolute left-1/2 transform -translate-x-1/2'>
-            <div className='flex items-center space-x-6'>
+            <div className='flex items-center space-x-3 xl:space-x-5 whitespace-nowrap'>
               {navLinks.map((link, index) => {
                 const isActive = isLinkActive(link.section);
 
                 return (
                   <motion.div
                     key={index}
-                    className={`px-2 py-2 text-base font-bold transition-all duration-300 relative group select-none ${
+                    className={`px-1 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative group select-none whitespace-nowrap ${
                       isActive
                         ? 'text-[#b09155]'
                         : 'text-gray-300 hover:text-[#b09155]'

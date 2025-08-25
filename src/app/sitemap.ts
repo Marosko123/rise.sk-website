@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/vyvoj', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/sluzby', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/kontakt', priority: 0.8, changeFreq: 'monthly' as const },
+    { path: '/ochrana-osobnych-udajov', priority: 0.6, changeFreq: 'yearly' as const },
+    { path: '/obchodne-podmienky', priority: 0.6, changeFreq: 'yearly' as const },
   ]
 
   const sitemap: MetadataRoute.Sitemap = []

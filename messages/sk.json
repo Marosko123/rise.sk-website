@@ -19,6 +19,7 @@
     "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
     "reviews": "Referencie",
+    "faq": "FAQ",
     "hiring": "Hľadáme talenty",
     "contact": "Kontakt",
     "backToHome": "Späť na hlavnú",
@@ -48,6 +49,14 @@
         "number": "7 dní",
         "label": "Tím pripravený"
       }
+    },
+    "badges": {
+      "ssl": "SSL Zabezpečené",
+      "response": "< 2h Odpoveď",
+      "slovakia": "100% Slovensko",
+      "established": "Est. 2025",
+      "success": "100% Úspešnosť",
+      "quality": "Garantovaná Kvalita"
     }
   },
   "about": {
@@ -602,7 +611,54 @@
     "error": "Niečo sa pokazilo. Prosím skúste to znova.",
     "networkError": "Chyba siete. Skontrolujte pripojenie a skúste to znova.",
     "requiredFields": "Vyplňte všetky povinné polia.",
-    "invalidEmail": "Zadajte platnú emailovú adresu."
+    "invalidEmail": "Zadajte platnú emailovú adresu.",
+    "multistep": {
+      "steps": {
+        "personalInfo": "Osobné údaje",
+        "serviceDetails": "Detaily služby",
+        "projectSpecifics": "Špecifiká projektu",
+        "reviewSend": "Kontrola a odoslanie"
+      },
+      "step": "Krok",
+      "of": "z",
+      "previous": "Predchádzajúci",
+      "next": "Ďalší",
+      "reviewTitle": "Skontrolujte svoje údaje",
+      "projectType": "Typ projektu",
+      "selectProjectType": "Vyberte typ projektu",
+      "projectTypes": {
+        "newProject": "Nový projekt",
+        "existingUpdate": "Aktualizácia existujúceho projektu",
+        "maintenance": "Údržba a podpora",
+        "consultation": "Iba konzultácia",
+        "partnership": "Dlhodobé partnerstvo"
+      },
+      "budget": "Rozpočet",
+      "selectBudget": "Vyberte rozpočet",
+      "budgetRanges": {
+        "under5k": "Pod €5,000",
+        "5k15k": "€5,000 - €15,000",
+        "15k50k": "€15,000 - €50,000",
+        "50k100k": "€50,000 - €100,000",
+        "over100k": "Nad €100,000",
+        "discuss": "Prediskutovať detailne"
+      },
+      "timeline": "Časová os",
+      "selectTimeline": "Vyberte časovú os",
+      "timelineOptions": {
+        "asap": "Čo najskôr",
+        "1to3months": "1-3 mesiace",
+        "3to6months": "3-6 mesiacov",
+        "6plusmonths": "6+ mesiacov",
+        "flexible": "Flexibilne"
+      }
+    },
+    "copyToClipboard": "Kopírovať do schránky",
+    "fallbackValues": {
+      "notProvided": "Neuvedené",
+      "notSpecified": "Nešpecifikované",
+      "noMessage": "Žiadna dodatočná správa nebola poskytnutá"
+    }
   },
   "common": {
     "imageNotAvailable": "Obrázok nie je dostupný",
@@ -739,5 +795,100 @@
       },
       "note": "Všetky žiadosti osobne prehodnocujeme a ozveme sa do 48 hodín."
     }
+  },
+  "gdpr": {
+    "title": "Rešpektujeme vaše súkromie",
+    "message": "Používame súbory cookie na zlepšenie vašej skúsenosti, analýzu návštevnosti a personalizáciu obsahu. Vaše údaje spracovávame v súlade s GDPR.",
+    "privacyPolicy": "Ochrana súkromia",
+    "terms": "Podmienky používania",
+    "accept": "Prijať všetko",
+    "reject": "Odmietnuť všetko",
+    "settings": "Nastavenia",
+    "saveSettings": "Uložiť nastavenia",
+    "settingsTitle": "Nastavenia súborov cookie",
+    "footerNote": "Nastavenia môžete kedykoľvek zmeniť v pätičke stránky.",
+    "moreInfo": "Viac informácií o spracovaní osobných údajov nájdete v našej",
+    "and": "a",
+    "categories": {
+      "necessary": {
+        "title": "Nevyhnutné súbory cookie",
+        "description": "Tieto súbory cookie sú nevyhnutné pre základnú funkcionalitu webovej stránky a nedajú sa zakázať.",
+        "required": "Povinné"
+      },
+      "analytics": {
+        "title": "Analytické súbory cookie",
+        "description": "Pomáhajú nám pochopiť, ako návštevníci používajú naš web, aby sme ho mohli zlepšovať."
+      },
+      "functional": {
+        "title": "Funkčné súbory cookie",
+        "description": "Umožňujú rozšírené funkcie ako chatbot, jazykové nastavenia a preferencie."
+      },
+      "marketing": {
+        "title": "Marketingové súbory cookie",
+        "description": "Používajú sa na sledovanie návštevníkov naprieč webovými stránkami pre marketingové účely."
+      }
+    }
+  },
+  "faq": {
+    "showAll": "Zobraziť všetky FAQ",
+    "showLess": "Zobraziť menej",
+    "items": [
+      {
+        "question": "Aké služby poskytujete?",
+        "answer": "Poskytujeme komplexné softvérové riešenia na podnikovej úrovni: moderné webové aplikácie (React, Next.js 15, Nuxt.js), natívne a multiplatformové mobilné aplikácie (React Native, Flutter, Swift, Kotlin), e-commerce riešenia, softvér na mieru, AI/ML integrácie, blockchain vývoj, IoT riešenia, API integrácie a strategické technologické poradenstvo. Špecializujeme sa na najnovšie technológie a momentálne pracujeme na ISO 27001 a ISO 9001 certifikátoch pre zabezpečenie najvyšších štandardov kvality."
+      },
+      {
+        "question": "Ako dlho trvá typický projekt?",
+        "answer": "Doba trvania projektu závisí od zložitosti. Jednoduché webové stránky trvajú 2-4 týždne, aplikácie strednej zložitosti 6-12 týždňov a komplexné riešenia 3-6 mesiacov. Po analýze vašich požiadaviek vám poskytneme presný časový harmonogram."
+      },
+      {
+        "question": "S akými technológiami pracujete?",
+        "answer": "Pracujeme s najnovšími trendovými technológiami: Frontend (React 18+, Next.js 15, Vue.js 3, Svelte, TypeScript, Tailwind CSS, Shadcn/ui), Backend (Node.js, Python, Go, Rust, Bun.js), Databázy (PostgreSQL, MongoDB, Redis, Supabase, PlanetScale), Mobile (React Native, Expo, Flutter, Swift, Kotlin), AI/ML (OpenAI, LangChain, TensorFlow, PyTorch), Cloud (Vercel, AWS, Azure, Google Cloud), DevOps (Docker, Kubernetes, GitHub Actions, Terraform) a Blockchain (Ethereum, Solana, Web3). Neustále sledujeme najnovšie technologické trendy a priebežne osvojujeme nové technológie, ktoré prinášajú hodnotu našim klientom."
+      },
+      {
+        "question": "Ako určujete ceny projektov?",
+        "answer": "Ceny kalkulujeme na základe zložitosti projektu, počtu funkcionalít, použitých technológií a časových požiadaviek. Poskytujeme transparentné cenové ponuky s rozpisom nákladov. Ponúkame aj fixné ceny pre jasne definované projekty."
+      },
+      {
+        "question": "Čo je zahrnuté v cene?",
+        "answer": "V cene je zahrnutý kompletný vývoj, testovanie, nasadenie aplikácie, základné školenie, dokumentácia a 30-dňová bezplatná podpora po spustení. Údržba a rozšírenia sa riešia samostatne podľa dohody."
+      },
+      {
+        "question": "Aké sú vaše platobné podmienky?",
+        "answer": "Akceptujeme platby vo forme záloh (30% pri podpise zmluvy, 40% v polovici projektu, 30% pri dokončení) alebo mesačné platby pre dlhodobé projekty. Faktúry sú splatné do 14 dní."
+      },
+      {
+        "question": "Pracujete s existujúcimi systémami?",
+        "answer": "Áno, máme rozsiahle skúsenosti s integráciou do existujúcich systémov, migráciou údajov, modernizáciou legacy aplikácií a integráciami third-party API."
+      },
+      {
+        "question": "Ako riešite bezpečnosť údajov?",
+        "answer": "Bezpečnosť je naša najvyššia priorita. Implementujeme bezpečnostné opatrenia na podnikovej úrovni: HTTPS s modernými TLS protokolmi, zero-trust architektúru, viacfaktorovú autentifikáciu, end-to-end šifrovanie, bezpečné API s rate limitingom, GDPR a CCPA compliance, pravidelné penetračné testovanie, bezpečnostné audity a SOC 2 compliance procesy. Aktívne pracujeme na ISO 27001 certifikácii pre zabezpečenie najvyšších medzinárodných bezpečnostných štandardov. Všetci naši vývojári dodržiavajú bezpečné kódovacie praktiky a absolvujú pravidelné bezpečnostné školenia."
+      },
+      {
+        "question": "Viete škálovať naše riešenie?",
+        "answer": "Absolútne! Všetky aplikácie navrhujeme so škálovateľnosťou v ich jadre pomocou moderných cloud-natívnych architektúr. Naše riešenia využívajú mikroslužby, serverless funkcie, auto-scaling infraštruktúru, CDN, pokročilé caching stratégie, optimalizáciu databáz a monitorovacie systémy. Implementujeme horizontálne a vertikálne škálovacie stratégie, ktoré dokážu zvládnuť milióny používateľov. Naše skúsenosti zahŕňajú aplikácie obsluhujúce 100 000+ súčasných používateľov so zárukami 99,9% uptime."
+      },
+      {
+        "question": "Ako prebieha komunikácia počas projektu?",
+        "answer": "Komunikujeme pravidelne cez email, Slack alebo Teams. Organizujeme týždenné status meetingy, poskytujeme prístup k projektovým nástrojom a pravidelné demo verzie."
+      },
+      {
+        "question": "Poskytujete údržbu po dokončení?",
+        "answer": "Áno, ponúkame komplexné balíčky údržby prispôsobené vašim potrebám: základnú technickú podporu, kompletný servis s novými funkciami, monitorovanie výkonu, bezpečnostné aktualizácie, správu záloh, 24/7 monitoring, opravy chýb a vylepšenia funkcií. Naša údržba zahŕňa proaktívne monitorovanie, automatizované zálohy, bezpečnostné záplaty, optimalizáciu výkonu a mesačné reporty. Poskytujeme aj emergency podporu a SLA záruky."
+      },
+      {
+        "question": "Pracujete s AI a strojovým učením?",
+        "answer": "Áno! Sme v popredí AI/ML vývoja. Vytvárame vlastné AI riešenia pomocou OpenAI GPT modelov, LangChain, TensorFlow, PyTorch a Hugging Face. Naše AI služby zahŕňajú chatboty, generovanie obsahu, analýzu údajov, počítačové videnie, spracovanie prirodzeného jazyka, odporúčacie systémy a AI-powered automatizáciu. Takisto integrujeme s populárnymi AI API a vytvárame vlastné modely strojového učenia prispôsobené vašim obchodným potrebám."
+      },
+      {
+        "question": "Čo ISO certifikáty a štandardy kvality?",
+        "answer": "Aktívne usilujeme o ISO 27001 (Information Security Management) a ISO 9001 (Quality Management) certifikáty pre zabezpečenie medzinárodných štandardov kvality a bezpečnosti. Naše vývojové procesy dodržiavajú najlepšie praktiky vrátane GDPR compliance, SOC 2 frameworkov a secure development lifecycle (SDLC). Udržiavame detailnú dokumentáciu, procesy zabezpečenia kvality a pravidelné audity tretích strán pre zabezpečenie najvyšších štandardov."
+      },
+      {
+        "question": "Viete pomôcť s digitálnou transformáciou?",
+        "answer": "Absolútne! Špecializujeme sa na komplexné iniciatívy digitálnej transformácie. To zahŕňa modernizáciu legacy systémov, migráciu do cloudu, automatizáciu procesov, vývoj API, migráciu údajov, systémové integrácie, optimalizáciu workflow a školenie personálu. Pomáhame firmám prejsť od zastaraných systémov k moderným, škálovateľným a efektívnym digitálnym riešeniam, ktoré zlepšujú produktivitu a znižujú náklady."
+      }
+    ]
   }
 }
