@@ -233,22 +233,22 @@
       },
       "pixelCorporation": {
         "metrics": {
-          "status": "Ongoing",
-          "duration": "8 months",
-          "satisfaction": "9/10"
+          "status": "In Progress",
+          "duration": "3 months with Pixel Corporation s.r.o.",
+          "satisfaction": "7/10"
         }
       },
       "lumturi": {
         "metrics": {
-          "status": "Completed",
-          "duration": "4 months",
-          "satisfaction": "10/10"
+          "status": "In Progress",
+          "duration": "Collaboration with Try Art",
+          "satisfaction": "Ongoing"
         }
       },
       "riseWeb": {
         "metrics": {
           "status": "Completed",
-          "duration": "3 months",
+          "duration": "1 month",
           "satisfaction": "10/10"
         }
       },
@@ -261,16 +261,16 @@
       },
       "trulee": {
         "metrics": {
-          "status": "Ongoing",
-          "duration": "12 months",
-          "satisfaction": "9/10"
+          "status": "In Progress",
+          "duration": "1 month with Vanc s.r.o.",
+          "satisfaction": "Ongoing"
         }
       },
       "horilla": {
         "metrics": {
-          "status": "Completed",
-          "duration": "8 months",
-          "satisfaction": "10/10"
+          "status": "In Progress",
+          "duration": "3 months with HexaTech s.r.o.",
+          "satisfaction": "8/10"
         }
       },
       "rozvojDopravy": {
@@ -281,12 +281,12 @@
         }
       },
       "descriptions": {
-        "horilla": "Modern open-source HR management system built with Python Django framework and advanced economic module integration. We specialize in comprehensive human resource management, automated payroll calculations, and advanced reporting. Our team created a specialized Slovak payroll module that precisely adheres to Slovak legislative requirements and automates the entire payroll accounting process.",
+        "horilla": "Modern open-source HR management system with advanced payroll tool developed in collaboration with HexaTech s.r.o. We have been working for 3 months on a very smart payroll tool built with Python Django framework. We specialize in comprehensive human resource management and automated payroll calculations. Our team, in collaboration, is creating a specialized Slovak payroll module that precisely adheres to Slovak legislative requirements.",
         "viacAkoNick": "Mobile application for children's helpline developed with cutting-edge technologies - Flutter, Dart, PHP backend with native iOS and Android support. We created a secure communication platform where children and young people can seek help in difficult life situations. The application includes advanced security features, message encryption, and compliance with European child protection standards.",
-        "lumturi": "Sophisticated online auction platform built on WordPress framework with extended PHP backend. We created a complete ecosystem for auction trading with advanced features like real-time bidding, automatic notifications, secure payments, and detailed transaction history. The platform supports multiple product categories and provides intuitive user interface for both buyers and sellers.",
-        "pixelCorporation": "Advanced mobile application for iOS and Android developed in Expo and React Native with TypeScript architecture. Focused on the running community, the application includes GPS tracking, performance analysis, social features, and advanced statistics. We integrated machine learning algorithms for personalized training plans and created an engaging social platform for athletes of all levels.",
-        "trulee": "Modern progressive web application for online dating built with Next.js framework and mobile responsiveness. We created an intuitive algorithm for user matching, real-time chat system, video calls, and advanced security features. The application emphasizes quality connections over quantity and provides a safe environment for meeting new people.",
-        "riseWeb": "Full-featured corporate website for IT company developed in Next.js framework with modern design and advanced functionality. Features SEO optimization, fast loading, responsive design, CRM system integration, and advanced analytics tools. The website presents IT company professionalism and serves as an effective marketing tool for acquiring new clients.",
+        "lumturi": "Sophisticated online auction platform built on WordPress framework with extended PHP backend. The project is currently in development in collaboration with Try Art company. We are working on expanding the functionality of the existing platform, adding advanced features like real-time bidding, automatic notifications, secure payments, and detailed transaction history. Our collaboration brings technical improvements and modernization of the user interface.",
+        "pixelCorporation": "Advanced mobile application for iOS and Android in collaboration with Pixel Corporation s.r.o. We have been working with them for 3 months on a running app developed in Expo and React Native with TypeScript architecture. We did not create it from scratch, but improved the existing application and performed major dependency updates. The application includes GPS tracking, performance analysis, social features, and advanced statistics for the running community.",
+        "trulee": "Modern progressive web application for online dating in collaboration with client Vanc s.r.o. The project has been in development for 1 month, built with Next.js framework and mobile responsiveness. We are creating an intuitive algorithm for user matching, real-time chat system, video calls, and advanced security features. The application emphasizes quality connections and provides a safe environment for meeting new people.",
+        "riseWeb": "Full-featured corporate website for IT company completely created by our team in 1 month. We developed the entire design, wrote all texts, and programmed the complete code in Next.js framework with modern design and advanced functionality. Features SEO optimization, fast loading, responsive design, and advanced analytics tools. The project is 100% ours - from concept to implementation.",
         "doucma": "For six years, we taught computer science on this educational platform and utilized various IT technologies to improve the educational process. Our activities brought many satisfied students and clients who expanded their knowledge in computer science. We applied modern pedagogical approaches combined with technological solutions for more effective education.",
         "rozvojDopravy": "Sophisticated web application for urban transportation optimization developed in Vue.js and Node.js with advanced visualization tools. The system analyzes traffic flows, generates intelligent charts and reports, and helps the city of Trnava optimize transportation infrastructure. Features real-time monitoring, predictive algorithms, and interactive dashboard for urban planners.",
         "twoRing": "Long-term enterprise partnership for developing complex business applications in C#, SQL databases, and Vue.js frontend. We create scalable solutions for large corporations with emphasis on security, performance, and user-friendliness. Our collaboration includes continuous development, maintenance, and functionality expansion of enterprise systems for international markets."

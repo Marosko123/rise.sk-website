@@ -233,22 +233,22 @@
       },
       "pixelCorporation": {
         "metrics": {
-          "status": "Prebieha",
-          "duration": "8 mesiacov",
-          "satisfaction": "9/10"
+          "status": "V procese",
+          "duration": "3 mesiace s Pixel Corporation s.r.o.",
+          "satisfaction": "7/10"
         }
       },
       "lumturi": {
         "metrics": {
-          "status": "Ukončené",
-          "duration": "4 mesiace",
-          "satisfaction": "10/10"
+          "status": "V procese",
+          "duration": "Spolupráca s Try Art",
+          "satisfaction": "Pokračuje"
         }
       },
       "riseWeb": {
         "metrics": {
           "status": "Ukončené",
-          "duration": "3 mesiace",
+          "duration": "1 mesiac",
           "satisfaction": "10/10"
         }
       },
@@ -261,16 +261,16 @@
       },
       "trulee": {
         "metrics": {
-          "status": "Prebieha",
-          "duration": "12 mesiacov",
-          "satisfaction": "9/10"
+          "status": "V procese",
+          "duration": "1 mesiac s Vanc s.r.o.",
+          "satisfaction": "Pokračuje"
         }
       },
       "horilla": {
         "metrics": {
-          "status": "Ukončené",
-          "duration": "8 mesiacov",
-          "satisfaction": "10/10"
+          "status": "V procese",
+          "duration": "3 mesiace s HexaTech s.r.o.",
+          "satisfaction": "8/10"
         }
       },
       "rozvojDopravy": {
@@ -281,12 +281,12 @@
         }
       },
       "descriptions": {
-        "horilla": "Moderný open-source HR systém vyvinutý v Python Django frameworku s pokročilou integráciou ekonomických modulov. Špecializujeme sa na komplexnú správu ľudských zdrojov, automatizované mzdové výpočty a pokročilé reportovanie. Náš tím vytvoril špecializovaný slovenský mzdový modul, ktorý presne dodržiava slovenské legislatívne požiadavky a automatizuje celý proces mzdového účtovníctva.",
+        "horilla": "Moderný open-source HR systém s pokročilým mzdovým nástrojom vyvinutým v spolupráci s HexaTech s.r.o. Pracujeme 3 mesiace na veľmi inteligentnom mzdovom nástroji postavenom na Python Django frameworku. Špecializujeme sa na komplexnú správu ľudských zdrojov a automatizované mzdové výpočty. Náš tím v spolupráci vytvára špecializovaný slovenský mzdový modul, ktorý presne dodržiava slovenské legislatívne požiadavky.",
         "viacAkoNick": "Mobilná aplikácia pre detskú linku pomoci vyvinutá v najmodernejších technológiách - Flutter, Dart, PHP backend s natívnou iOS a Android podporou. Vytvorili sme bezpečnú komunikačnú platformu, kde deti a mladí ľudia môžu vyhľadať pomoc v ťažkých životných situáciách. Aplikácia obsahuje pokročilé bezpečnostné funkcie, šifrovanie správ a compliance s európskymi štandardmi ochrany detí.",
-        "lumturi": "Sofistikovaná online aukčná platforma postavená na WordPress frameworku s rozšíreným PHP backendom. Vytvorili sme kompletný ekosystém pre aukčné obchodovanie s pokročilými funkciami ako real-time bidding, automatické notifikácie, bezpečné platby a detailnú históriu transakcií. Platforma podporuje množstvo kategórií produktov a poskytuje intuítívne používateľské rozhranie pre kupujúcich aj predávajúcich.",
-        "pixelCorporation": "Pokročilá mobilná aplikácia pre iOS a Android vyvinutá v Expo a React Native s TypeScript architektúrou. Zameraná na komunitu bežcov, aplikácia obsahuje GPS tracking, analýzu výkonu, sociálne funkcie a pokročilé štatistiky. Integrovali sme machine learning algoritmy pre personalizované tréningové plány a vytvorili engaging sociálnu platformu pre športovcov všetkých úrovní.",
-        "trulee": "Moderná progressive web aplikácia pre online zoznamovanie vyvinutá v Next.js frameworku s mobilnou responzívnosťou. Vytvorili sme intuitívny algoritmus pre párovanie používateľov, real-time chat systém, video hovory a pokročilé bezpečnostné funkcie. Aplikácia kladie dôraz na kvalitné spojenia namiesto kvantity a poskytuje bezpečné prostredie pre spoznávanie nových ľudí.",
-        "riseWeb": "Plnohodnotná firemná webstránka pre IT spoločnosť vyvinutá v Next.js frameworku s moderným designom a pokročilými funkciami. Obsahuje SEO optimalizáciu, rýchle načítavanie, responsive design, integráciu s CRM systémami a pokročilé analytické nástroje. Webstránka prezentuje profesionalitu IT spoločnosti a slúži ako efektívny marketingový nástroj pre získavanie nových klientov.",
+        "lumturi": "Sofistikovaná online aukčná platforma postavená na WordPress frameworku s rozšíreným PHP backendom. Projekt je v procese vývoja v spolupráci s firmou Try Art. Pracujeme na rozšírení funkcionalít existujúcej platformy, pridávame pokročilé funkcie ako real-time bidding, automatické notifikácie, bezpečné platby a detailnú históriu transakcií. Naša spolupráca prináša technické vylepšenia a modernizáciu používateľského rozhrania.",
+        "pixelCorporation": "Pokročilá mobilná aplikácia pre iOS a Android v spolupráci s Pixel Corporation s.r.o. Pracujeme s nimi 3 mesiace na bežeckej aplikácii vyvinutej v Expo a React Native s TypeScript architektúrou. Nevytvorili sme ju od nuly, ale vylepšili sme existujúcu aplikáciu a vykonali sme významné aktualizácie závislostí. Aplikácia obsahuje GPS tracking, analýzu výkonu, sociálne funkcie a pokročilé štatistiky pre komunitu bežcov.",
+        "trulee": "Moderná progressive web aplikácia pre online zoznamovanie v spolupráci s klientom Vanc s.r.o. Projekt je v procese vývoja už 1 mesiac, vyvinutá v Next.js frameworku s mobilnou responzívnosťou. Vytvárame intuitívny algoritmus pre párovanie používateľov, real-time chat systém, video hovory a pokročilé bezpečnostné funkcie. Aplikácia kladie dôraz na kvalitné spojenia a poskytuje bezpečné prostredie pre spoznávanie nových ľudí.",
+        "riseWeb": "Plnohodnotná firemná webstránka pre IT spoločnosť kompletne vytvorená naším tímom za 1 mesiac. Vyvinuli sme celý design, napísali všetky texty a naprogramovali kompletný kód v Next.js frameworku s moderným designom a pokročilými funkciami. Obsahuje SEO optimalizáciu, rýchle načítavanie, responsive design a pokročilé analytické nástroje. Projekt je 100% náš - od konceptu po implementáciu.",
         "doucma": "Šesť rokov sme na tejto vzdelávacej platforme vyučovali informatiku a využívali rôzne IT technológie na zlepšenie vzdelávacieho procesu. Naša činnosť priniesla množstvo spokojných študentov a klientov, ktorí si rozšírili svoje znalosti v oblasti informatiky. Aplikovali sme moderné pedagogické prístupy kombinované s technologickými riešeniami pre efektívnejšie vzdelávanie.",
         "rozvojDopravy": "Webová aplikácia pre optimalizáciu mestskej dopravy vyvinutá vo Vue.js a Node.js s pokročilými vizualizačnými nástrojmi. Systém analyzuje dopravné toky, generuje inteligentné grafy a reporty, a pomáha mestu Trnava optimalizovať dopravnú infrastruktúru. Obsahuje real-time monitoring, prediktívne algoritmy a interaktívne dashboard pre mestských plánovačov.",
         "twoRing": "Dlhodobé enterprise partnerstvo na vývoji komplexných business aplikácií v C#, SQL databázach a Vue.js frontendu. Vytvárame škálovateľné riešenia pre veľké korporácie s dôrazom na bezpečnosť, výkon a používateľskú prívetivosť. Naša spolupráca zahŕňa kontinuálny vývoj, údržbu a rozširovanie funkcionality enterprise systémov pre medzinárodné trhy."
