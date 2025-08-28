@@ -16,6 +16,9 @@ export default function SEOHead({ canonical }: SEOHeadProps) {
 
   return (
     <>
+      {/* Viewport for mobile responsiveness with safe area support */}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+      
       {/* Language alternates */}
       <link rel="alternate" hrefLang="sk" href={alternates.sk} />
       <link rel="alternate" hrefLang="en" href={alternates.en} />

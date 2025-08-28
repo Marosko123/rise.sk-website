@@ -142,8 +142,12 @@ const GDPRConsent = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-t border-white/10"
+          style={{ 
+            paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))',
+            marginBottom: 'env(safe-area-inset-bottom)'
+          }}
         >
-          <div className="max-w-7xl mx-auto p-6">
+          <div className="max-w-7xl mx-auto p-4 pb-6 sm:p-6 sm:pb-2">
             {!showSettings ? (
               // Main banner
               <div className="flex flex-col lg:flex-row items-center gap-6">
@@ -159,23 +163,26 @@ const GDPRConsent = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col gap-3 w-full sm:flex-row sm:w-auto sm:gap-3">
                   <button
                     onClick={() => setShowSettings(true)}
-                    className="px-4 py-2 text-white border border-white/20 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2"
+                    className="min-h-[48px] px-4 py-3 text-white border border-white/20 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors flex items-center justify-center gap-2 text-sm font-medium touch-manipulation"
+                    style={{ minHeight: '48px' }}
                   >
                     <Settings className="w-4 h-4" />
                     {t('settings')}
                   </button>
                   <button
                     onClick={handleRejectAll}
-                    className="px-6 py-2 text-white bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors"
+                    className="min-h-[48px] px-6 py-3 text-white bg-slate-700 rounded-lg hover:bg-slate-600 active:bg-slate-500 transition-colors text-sm font-medium touch-manipulation"
+                    style={{ minHeight: '48px' }}
                   >
                     {t('reject')}
                   </button>
                   <button
                     onClick={handleAcceptAll}
-                    className="px-6 py-2 text-white bg-[#b09155] rounded-lg hover:bg-[#9a7f4b] transition-colors"
+                    className="min-h-[48px] px-6 py-3 text-white bg-[#b09155] rounded-lg hover:bg-[#9a7f4b] active:bg-[#8b6914] transition-colors text-sm font-medium touch-manipulation"
+                    style={{ minHeight: '48px' }}
                   >
                     {t('accept')}
                   </button>
@@ -255,16 +262,18 @@ const GDPRConsent = () => {
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 justify-end">
+                <div className="flex flex-col gap-3 justify-end w-full sm:flex-row sm:w-auto sm:gap-3 mt-6">
                   <button
                     onClick={handleRejectAll}
-                    className="px-6 py-2 text-white bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors"
+                    className="min-h-[48px] px-6 py-3 text-white bg-slate-700 rounded-lg hover:bg-slate-600 active:bg-slate-500 transition-colors text-sm font-medium touch-manipulation"
+                    style={{ minHeight: '48px' }}
                   >
                     {t('reject')}
                   </button>
                   <button
                     onClick={handleSaveSettings}
-                    className="px-6 py-2 text-white bg-[#b09155] rounded-lg hover:bg-[#9a7f4b] transition-colors flex items-center gap-2"
+                    className="min-h-[48px] px-6 py-3 text-white bg-[#b09155] rounded-lg hover:bg-[#9a7f4b] active:bg-[#8b6914] transition-colors flex items-center justify-center gap-2 text-sm font-medium touch-manipulation"
+                    style={{ minHeight: '48px' }}
                   >
                     <CheckCircle className="w-4 h-4" />
                     {t('saveSettings')}
