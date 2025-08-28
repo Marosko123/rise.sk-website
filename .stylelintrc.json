@@ -9,8 +9,16 @@
       }
     ],
     "no-descending-specificity": null,
-    "order/properties-alphabetical-order": true,
+    "order/properties-alphabetical-order": null,
     "selector-class-pattern": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "comment-empty-line-before": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "keyframes-name-pattern": null,
+    "length-zero-no-unit": null,
+    "media-feature-range-notation": null,
+    "property-no-vendor-prefix": null,
     "value-keyword-case": [
       "lower",
       {
