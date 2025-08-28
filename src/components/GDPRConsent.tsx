@@ -141,13 +141,12 @@ const GDPRConsent = () => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-t border-white/10"
+          className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-t border-white/10 gdpr-modal-mobile"
           style={{ 
-            paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))',
-            marginBottom: 'env(safe-area-inset-bottom)'
+            paddingBottom: 'max(1rem, env(safe-area-inset-bottom))',
           }}
         >
-          <div className="max-w-7xl mx-auto p-4 pb-6 sm:p-6 sm:pb-2">
+          <div className="max-w-7xl mx-auto p-6 pb-2 gdpr-container-mobile">
             {!showSettings ? (
               // Main banner
               <div className="flex flex-col lg:flex-row items-center gap-6">
@@ -163,7 +162,7 @@ const GDPRConsent = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3 w-full sm:flex-row sm:w-auto sm:gap-3">
+                <div className="flex flex-col gap-3 w-full sm:flex-row sm:w-auto sm:gap-3 mb-6 sm:mb-0">
                   <button
                     onClick={() => setShowSettings(true)}
                     className="min-h-[48px] px-4 py-3 text-white border border-white/20 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors flex items-center justify-center gap-2 text-sm font-medium touch-manipulation"

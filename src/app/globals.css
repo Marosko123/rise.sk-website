@@ -52,6 +52,17 @@ html {
   -webkit-user-select: none;
 }
 
+/* GDPR Modal mobile-specific spacing */
+@media (max-width: 640px) {
+  .gdpr-modal-mobile {
+    padding-bottom: max(3rem, calc(env(safe-area-inset-bottom) + 2rem)) !important;
+  }
+  
+  .gdpr-container-mobile {
+    padding-bottom: 2rem !important;
+  }
+}
+
 /* Ensure minimum touch target size for accessibility */
 @media (max-width: 640px) {
   button {
