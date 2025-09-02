@@ -1,8 +1,8 @@
 'use client';
 
+import { useTranslations } from '@/hooks/useTranslations';
 import { motion, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Eye, Github, Lock } from 'lucide-react';
-import { useTranslations } from '@/hooks/useTranslations';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -267,14 +267,14 @@ const Portfolio: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-transparent to-purple-900/10" />
       <div className="absolute inset-0 opacity-30">
         <div className="h-full w-full" style={{
-          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%), 
+          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
                            radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
                            radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%)`,
           backgroundSize: '800px 800px'
         }} />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial="hidden"
@@ -362,7 +362,7 @@ const Portfolio: React.FC = () => {
             </button>
 
             {/* Carousel Content */}
-            <div className="overflow-hidden mx-16">
+            <div className="overflow-hidden mx-4 md:mx-8">
               <motion.div
                 className="flex transition-transform duration-500 ease-in-out items-start"
                 style={{
@@ -372,7 +372,7 @@ const Portfolio: React.FC = () => {
                 {portfolioProjects.map((project) => (
                   <motion.div
                     key={project.id}
-                    className="group relative flex-shrink-0 px-4"
+                    className="group relative flex-shrink-0 px-2 md:px-3"
                     style={{
                       width: `${100 / itemsPerView}%`
                     }}
@@ -380,7 +380,7 @@ const Portfolio: React.FC = () => {
                   >
                 {/* Compact Project Card */}
                 <div
-                  className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden h-[500px] flex flex-col transition-all duration-500 hover:scale-105 hover:bg-white/10"
+                  className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden h-[520px] flex flex-col transition-all duration-500 hover:scale-105 hover:bg-white/10"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 >
@@ -580,16 +580,17 @@ const Portfolio: React.FC = () => {
             </div>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center mt-8 space-x-2">
+            <div className="flex justify-center mt-8 gap-1">
               {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentIndex === index
-                      ? 'bg-[var(--primary)] w-8'
-                      : 'bg-[var(--primary)]/30 hover:bg-[var(--primary)]/50'
+                  className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? 'bg-[var(--primary)] scale-125'
+                      : 'bg-white/30 hover:bg-white/50'
                   }`}
+                  style={{ minWidth: 'auto', minHeight: 'auto' }}
                 />
               ))}
             </div>

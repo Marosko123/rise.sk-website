@@ -170,7 +170,7 @@ const ServicesEnhanced: React.FC = () => {
           </button>
 
           {/* Carousel Content */}
-          <div className="overflow-hidden mx-16">
+          <div className="overflow-hidden mx-8 md:mx-12">
             <motion.div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
@@ -180,17 +180,17 @@ const ServicesEnhanced: React.FC = () => {
               {services.map((service, index) => (
                 <motion.div
                   key={service.id}
-                  className="group relative flex-shrink-0 px-4"
+                  className="group relative flex-shrink-0 px-2 md:px-3"
                   style={{
                     width: `${100 / itemsPerView}%`
                   }}
                   variants={itemVariants}
                 >
-                  <div className="relative h-[600px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:border-[var(--primary)]/60 transition-all duration-1500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[var(--primary)]/30 flex flex-col overflow-hidden">
+                  <div className="relative h-[600px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 hover:border-[var(--primary)]/60 transition-all duration-1500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[var(--primary)]/30 flex flex-col overflow-hidden">
                     {/* Large Background Emoji */}
-                    <div 
-                      className="absolute top-4 right-4 text-[12rem] opacity-10 blur-[2px] group-hover:opacity-20 group-hover:blur-[1px] group-hover:scale-110 transition-all duration-1500 pointer-events-none select-none transform rotate-12 group-hover:rotate-6" 
-                      style={{ 
+                    <div
+                      className="absolute top-4 right-4 text-[12rem] opacity-10 blur-[2px] group-hover:opacity-20 group-hover:blur-[1px] group-hover:scale-110 transition-all duration-1500 pointer-events-none select-none transform rotate-12 group-hover:rotate-6"
+                      style={{
                         animation: 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite'
                       }}
                     >
@@ -198,9 +198,9 @@ const ServicesEnhanced: React.FC = () => {
                     </div>
 
                     {/* Secondary Background Emoji - Smaller and more blurred */}
-                    <div 
-                      className="absolute bottom-8 left-4 text-[8rem] opacity-5 blur-[4px] group-hover:opacity-15 group-hover:blur-[2px] transition-all duration-1500 pointer-events-none select-none transform -rotate-12 group-hover:-rotate-6" 
-                      style={{ 
+                    <div
+                      className="absolute bottom-8 left-4 text-[8rem] opacity-5 blur-[4px] group-hover:opacity-15 group-hover:blur-[2px] transition-all duration-1500 pointer-events-none select-none transform -rotate-12 group-hover:-rotate-6"
+                      style={{
                         animation: 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         animationDelay: '3s'
                       }}
@@ -222,32 +222,51 @@ const ServicesEnhanced: React.FC = () => {
                     </h3>
 
                     {/* Service Description */}
-                    <p className="text-white/70 mb-6 leading-relaxed flex-grow">
-                      {service.description}
-                    </p>
+                    <div className="mb-6 flex-shrink-0" style={{ height: '80px' }}>
+                      <p className="text-white/70 leading-relaxed overflow-hidden" style={{ 
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical'
+                      }}>
+                        {service.description}
+                      </p>
+                    </div>
 
                     {/* Features List */}
-                    <div className="mb-8">
+                    <div className="flex-1 mb-6" style={{ minHeight: '200px', maxHeight: '200px' }}>
                       <h4 className="text-[var(--primary)] font-semibold mb-4">
                         {t('labels.features')}
                       </h4>
-                      <ul className="space-y-2">
-                        {service.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-start gap-3 text-white/80">
-                            <div className="w-5 h-5 rounded-full bg-[var(--primary)]/20 flex items-center justify-center mt-0.5 flex-shrink-0">
-                              <Check className="w-3 h-3 text-[var(--primary)]" />
-                            </div>
-                            <span className="text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="overflow-hidden" style={{ height: '160px' }}>
+                        <ul className="space-y-2">
+                          {service.features.slice(0, 6).map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-start gap-3 text-white/80">
+                              <div className="w-5 h-5 rounded-full bg-[var(--primary)]/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                                <Check className="w-3 h-3 text-[var(--primary)]" />
+                              </div>
+                              <span className="text-sm leading-tight">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
 
-                    {/* CTA Button */}
-                    <button className="w-full bg-gradient-to-r from-[var(--primary)] to-[#d4af37] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 mt-auto select-none">
-                      <MessageCircle className="w-5 h-5" />
-                      {t('buttons.discuss')}
-                    </button>
+                    {/* CTA Button - Fixed at bottom */}
+                    <div className="flex-shrink-0 relative z-10">
+                      <button 
+                        onClick={() => {
+                          // Scroll to contact section
+                          const contactSection = document.getElementById('contact');
+                          if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                        className="w-full bg-gradient-to-r from-[var(--primary)] to-[#d4af37] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/25 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        <MessageCircle className="w-5 h-5" />
+                        {t('buttons.discuss')}
+                      </button>
+                    </div>
 
                     {/* Hover Glow Effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/10 to-[#d4af37]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -258,16 +277,17 @@ const ServicesEnhanced: React.FC = () => {
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center mt-12 gap-2">
+          <div className="flex justify-center mt-12 gap-1">
             {Array.from({ length: maxIndex + 1 }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
                   index === currentIndex
                     ? 'bg-[var(--primary)] scale-125'
                     : 'bg-white/30 hover:bg-white/50'
                 }`}
+                style={{ minWidth: 'auto', minHeight: 'auto' }}
               />
             ))}
           </div>

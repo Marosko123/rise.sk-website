@@ -199,6 +199,33 @@ export default function Navigation() {
     };
   }, [mounted, activeSection, pathname, locale, getSectionMappings, initialHashHandled]);
 
+  // Handle mobile navigation click with smooth scroll
+  const handleMobileNavClick = useCallback((href: string) => {
+    if (href.startsWith('#')) {
+      setIsMenuOpen(false);
+      
+      // Small delay to allow menu to close
+      setTimeout(() => {
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Calculate offset for fixed navigation
+          const navHeight = 80;
+          const elementPosition = targetElement.offsetTop;
+          const offsetPosition = elementPosition - navHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300); // Wait for menu close animation
+    } else {
+      setIsMenuOpen(false);
+    }
+  }, []);
+
   // Function to check if a nav link is active
   const isLinkActive = (section: string) => {
     return activeSection === section;
@@ -312,40 +339,33 @@ export default function Navigation() {
                 return (
                   <motion.div
                     key={index}
-                    className={`block px-3 py-2 text-base font-medium transition-colors duration-300 select-none ${
+                    className={`block px-3 py-2 text-base font-medium transition-colors duration-300 select-none cursor-pointer ${
                       isActive
                         ? 'text-[#b09155] bg-[#b09155]/10'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'
                     }`}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => handleMobileNavClick(link.href)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    {link.href.includes('#') ? (
-                      <a href={link.href} className="block w-full h-full">
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link href={link.href as '/development'} className="block w-full h-full">
-                        {link.label}
-                      </Link>
-                    )}
+                    <span className="block w-full h-full">
+                      {link.label}
+                    </span>
                   </motion.div>
                 );
               })}
 
               {/* CTA Button - always show */}
-              <motion.a
-                href={`#${getSectionMappings(locale).contact}`}
-                className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] text-white block px-3 py-2 text-base font-medium rounded-lg mt-4 select-none'
-                onClick={() => setIsMenuOpen(false)}
+              <motion.div
+                className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] text-white block px-3 py-2 text-base font-medium rounded-lg mt-4 select-none cursor-pointer'
+                onClick={() => handleMobileNavClick(`#${getSectionMappings(locale).contact}`)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.1 }}
               >
                 {t('getStarted')}
-              </motion.a>
+              </motion.div>
 
               {/* Mobile Language Switcher */}
               <motion.div

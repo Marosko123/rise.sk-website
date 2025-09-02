@@ -498,10 +498,10 @@ export default function MultiStepContactForm() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Card className='bg-white/5 backdrop-blur-sm border-white/10 p-8'>
+            <Card className='bg-white/5 backdrop-blur-sm border-white/10 p-4 md:p-8 relative overflow-hidden'>
               {/* Progress Indicator */}
-              <div className='mb-8'>
-                <div className='flex items-center justify-between mb-4'>
+              <div className='mb-6 md:mb-8'>
+                <div className='flex items-center justify-between mb-3 md:mb-4 px-2 md:px-0'>
                   {stepTitles.map((title, index) => {
                     const StepIcon = stepIcons[index];
                     const stepNumber = index + 1;
@@ -511,7 +511,7 @@ export default function MultiStepContactForm() {
                     return (
                       <div key={index} className='flex items-center'>
                         <div
-                          className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-colors duration-200 ${
+                          className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 transition-colors duration-200 ${
                             isCompleted
                               ? 'bg-[#b09155] border-[#b09155] text-white'
                               : isActive
@@ -520,14 +520,14 @@ export default function MultiStepContactForm() {
                           }`}
                         >
                           {isCompleted ? (
-                            <CheckCircle2 className='w-5 h-5' />
+                            <CheckCircle2 className='w-4 h-4 md:w-5 md:h-5' />
                           ) : (
-                            <StepIcon className='w-5 h-5' />
+                            <StepIcon className='w-4 h-4 md:w-5 md:h-5' />
                           )}
                         </div>
                         {index < stepTitles.length - 1 && (
                           <div
-                            className={`w-16 h-0.5 mx-2 transition-colors duration-200 ${
+                            className={`w-8 md:w-16 h-0.5 mx-1 md:mx-2 transition-colors duration-200 ${
                               isCompleted ? 'bg-[#b09155]' : 'bg-white/20'
                             }`}
                           />
@@ -536,17 +536,18 @@ export default function MultiStepContactForm() {
                     );
                   })}
                 </div>
-                <div className='text-center'>
-                  <h3 className='text-xl font-semibold text-white mb-2'>
+                <div className='text-center px-4'>
+                  <h3 className='text-lg md:text-xl font-semibold text-white mb-2'>
                     {stepTitles[currentStep - 1]}
                   </h3>
-                  <p className='text-gray-400 text-sm'>
+                  <p className='text-gray-400 text-xs md:text-sm'>
                     {t('multistep.step')} {currentStep} {t('multistep.of')} {stepTitles.length}
                   </p>
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className='space-y-6'>
+              <form onSubmit={handleSubmit} className='space-y-6 relative z-10'>
+                <div className="w-full max-w-full overflow-hidden">
                 <AnimatePresence mode="wait">
                   {/* Step 1: Personal Information */}
                   {currentStep === 1 && (
@@ -658,25 +659,36 @@ export default function MultiStepContactForm() {
                         >
                           {t('service')} *
                         </label>
-                        <select
-                          id='service'
-                          name='service'
-                          required
-                          value={formData.service}
-                          onChange={handleChange}
-                          disabled={isSubmitting}
-                          className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
-                          data-cursor='pointer'
-                        >
-                          <option value='' className='bg-gray-800'>
-                            {t('selectService')}
-                          </option>
-                          {services.map((service, index) => (
-                            <option key={index} value={service} className='bg-gray-800'>
-                              {service}
+                        <div className="relative">
+                          <select
+                            id='service'
+                            name='service'
+                            required
+                            value={formData.service}
+                            onChange={handleChange}
+                            disabled={isSubmitting}
+                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+                            data-cursor='pointer'
+                            style={{ 
+                              WebkitAppearance: 'none',
+                              MozAppearance: 'none'
+                            }}
+                          >
+                            <option value='' className='bg-gray-800'>
+                              {t('selectService')}
                             </option>
-                          ))}
-                        </select>
+                            {services.map((service, index) => (
+                              <option key={index} value={service} className='bg-gray-800'>
+                                {service}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
+                        </div>
                       </div>
 
                       <div>
@@ -686,23 +698,34 @@ export default function MultiStepContactForm() {
                         >
                           {t('multistep.projectType')}
                         </label>
-                        <select
-                          id='projectType'
-                          name='projectType'
-                          value={formData.projectType}
-                          onChange={handleChange}
-                          disabled={isSubmitting}
-                          className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
-                        >
-                          <option value='' className='bg-gray-800'>
-                            {t('multistep.selectProjectType')}
-                          </option>
-                          {projectTypes.map((type, index) => (
-                            <option key={index} value={type} className='bg-gray-800'>
-                              {type}
+                        <div className="relative">
+                          <select
+                            id='projectType'
+                            name='projectType'
+                            value={formData.projectType}
+                            onChange={handleChange}
+                            disabled={isSubmitting}
+                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+                            style={{ 
+                              WebkitAppearance: 'none',
+                              MozAppearance: 'none'
+                            }}
+                          >
+                            <option value='' className='bg-gray-800'>
+                              {t('multistep.selectProjectType')}
                             </option>
-                          ))}
-                        </select>
+                            {projectTypes.map((type, index) => (
+                              <option key={index} value={type} className='bg-gray-800'>
+                                {type}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -725,23 +748,34 @@ export default function MultiStepContactForm() {
                           >
                             {t('multistep.budget')}
                           </label>
-                          <select
-                            id='budget'
-                            name='budget'
-                            value={formData.budget}
-                            onChange={handleChange}
-                            disabled={isSubmitting}
-                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
-                          >
-                            <option value='' className='bg-gray-800'>
-                              {t('multistep.selectBudget')}
-                            </option>
-                            {budgetRanges.map((range, index) => (
-                              <option key={index} value={range} className='bg-gray-800'>
-                                {range}
+                          <div className="relative">
+                            <select
+                              id='budget'
+                              name='budget'
+                              value={formData.budget}
+                              onChange={handleChange}
+                              disabled={isSubmitting}
+                              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+                              style={{ 
+                                WebkitAppearance: 'none',
+                                MozAppearance: 'none'
+                              }}
+                            >
+                              <option value='' className='bg-gray-800'>
+                                {t('multistep.selectBudget')}
                               </option>
-                            ))}
-                          </select>
+                              {budgetRanges.map((range, index) => (
+                                <option key={index} value={range} className='bg-gray-800'>
+                                  {range}
+                                </option>
+                              ))}
+                            </select>
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                              <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </div>
+                          </div>
                         </div>
                         <div>
                           <label
@@ -750,23 +784,34 @@ export default function MultiStepContactForm() {
                           >
                             {t('multistep.timeline')}
                           </label>
-                          <select
-                            id='timeline'
-                            name='timeline'
-                            value={formData.timeline}
-                            onChange={handleChange}
-                            disabled={isSubmitting}
-                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
-                          >
-                            <option value='' className='bg-gray-800'>
-                              {t('multistep.selectTimeline')}
-                            </option>
-                            {timelineOptions.map((timeline, index) => (
-                              <option key={index} value={timeline} className='bg-gray-800'>
-                                {timeline}
+                          <div className="relative">
+                            <select
+                              id='timeline'
+                              name='timeline'
+                              value={formData.timeline}
+                              onChange={handleChange}
+                              disabled={isSubmitting}
+                              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+                              style={{ 
+                                WebkitAppearance: 'none',
+                                MozAppearance: 'none'
+                              }}
+                            >
+                              <option value='' className='bg-gray-800'>
+                                {t('multistep.selectTimeline')}
                               </option>
-                            ))}
-                          </select>
+                              {timelineOptions.map((timeline, index) => (
+                                <option key={index} value={timeline} className='bg-gray-800'>
+                                  {timeline}
+                                </option>
+                              ))}
+                            </select>
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                              <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -884,15 +929,16 @@ export default function MultiStepContactForm() {
                 )}
 
                 {/* Navigation Buttons */}
-                <div className='flex justify-between items-center pt-6'>
+                <div className='flex justify-between items-center pt-4 md:pt-6 gap-3'>
                   <Button
                     type='button'
                     onClick={prevStep}
                     disabled={currentStep === 1}
-                    className='flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed'
+                    className='flex items-center px-3 md:px-6 py-2 md:py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base'
                   >
-                    <ChevronLeft className='w-5 h-5 mr-2' />
-                    {t('multistep.previous')}
+                    <ChevronLeft className='w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2' />
+                    <span className="hidden sm:inline">{t('multistep.previous')}</span>
+                    <span className="sm:hidden">←</span>
                   </Button>
 
                   {currentStep < 4 ? (
@@ -900,30 +946,34 @@ export default function MultiStepContactForm() {
                       type='button'
                       onClick={nextStep}
                       disabled={!isStepValid()}
-                      className='flex items-center px-6 py-3 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white disabled:opacity-50 disabled:cursor-not-allowed'
+                      className='flex items-center px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base font-semibold'
                     >
-                      {t('multistep.next')}
-                      <ChevronRight className='w-5 h-5 ml-2' />
+                      <span className="hidden sm:inline">{t('multistep.next')}</span>
+                      <span className="sm:hidden">→</span>
+                      <ChevronRight className='w-4 h-4 md:w-5 md:h-5 ml-1 md:ml-2' />
                     </Button>
                   ) : (
                     <Button
                       type='submit'
                       disabled={isSubmitting}
-                      className='flex items-center px-8 py-3 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed'
+                      className='flex items-center px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base'
                     >
                       {isSubmitting ? (
                         <>
-                          <div className='w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3' />
-                          {t('sending')}
+                          <div className='w-4 h-4 md:w-5 md:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2 md:mr-3' />
+                          <span className="hidden sm:inline">{t('sending')}</span>
+                          <span className="sm:hidden">...</span>
                         </>
                       ) : (
                         <>
-                          <Send className='w-5 h-5 mr-2' />
-                          {t('submit')}
+                          <Send className='w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2' />
+                          <span className="hidden sm:inline">{t('submit')}</span>
+                          <span className="sm:hidden">✓</span>
                         </>
                       )}
                     </Button>
                   )}
+                </div>
                 </div>
               </form>
             </Card>

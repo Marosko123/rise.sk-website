@@ -1,7 +1,7 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useIsMobile } from '@/hooks/useIsMobile';
@@ -192,12 +192,13 @@ export default function Reviews() {
                 <button
                   key={index}
                   onClick={() => goToReview(index)}
-                  className={`h-2 rounded-full transition-all duration-200 ${
+                  className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? 'bg-[var(--primary)] w-6'
-                      : 'bg-gray-600 hover:bg-gray-500 w-2'
+                      ? 'bg-[var(--primary)]'
+                      : 'bg-gray-600 hover:bg-gray-500'
                   }`}
                   aria-label={`Go to review ${index + 1}`}
+                  style={{ minWidth: 'auto', minHeight: 'auto' }}
                 />
               ))}
             </div>

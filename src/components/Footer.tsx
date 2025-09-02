@@ -237,7 +237,7 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('executives'), 'representative')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'representative' ? (
@@ -332,7 +332,7 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('address'), 'address')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'address' ? (
@@ -452,7 +452,7 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('registration'), 'orsr')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'orsr' ? (
@@ -488,7 +488,7 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('banking.bank'), 'bank')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 mt-0.5'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'bank' ? (
