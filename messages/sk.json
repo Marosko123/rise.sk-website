@@ -259,11 +259,11 @@
           "satisfaction": "10/10"
         }
       },
-      "trulee": {
+      "trulink": {
         "metrics": {
           "status": "V procese",
-          "duration": "1 mesiac s Vanc s.r.o.",
-          "satisfaction": "Pokračuje"
+          "duration": "2 mesiace",
+          "satisfaction": "10/10"
         }
       },
       "horilla": {
@@ -285,7 +285,7 @@
         "viacAkoNick": "Mobilná aplikácia pre detskú linku pomoci vyvinutá v najmodernejších technológiách - Flutter, Dart, PHP backend s natívnou iOS a Android podporou. Vytvorili sme bezpečnú komunikačnú platformu, kde deti a mladí ľudia môžu vyhľadať pomoc v ťažkých životných situáciách. Aplikácia obsahuje pokročilé bezpečnostné funkcie, šifrovanie správ a compliance s európskymi štandardmi ochrany detí.",
         "lumturi": "Sofistikovaná online aukčná platforma postavená na WordPress frameworku s rozšíreným PHP backendom. Projekt je v procese vývoja v spolupráci s firmou Try Art. Pracujeme na rozšírení funkcionalít existujúcej platformy, pridávame pokročilé funkcie ako real-time bidding, automatické notifikácie, bezpečné platby a detailnú históriu transakcií. Naša spolupráca prináša technické vylepšenia a modernizáciu používateľského rozhrania.",
         "pixelCorporation": "Pokročilá mobilná aplikácia pre iOS a Android v spolupráci s Pixel Corporation s.r.o. Pracujeme s nimi 3 mesiace na bežeckej aplikácii vyvinutej v Expo a React Native s TypeScript architektúrou. Nevytvorili sme ju od nuly, ale vylepšili sme existujúcu aplikáciu a vykonali sme významné aktualizácie závislostí. Aplikácia obsahuje GPS tracking, analýzu výkonu, sociálne funkcie a pokročilé štatistiky pre komunitu bežcov.",
-        "trulee": "Moderná progressive web aplikácia pre online zoznamovanie v spolupráci s klientom Vanc s.r.o. Projekt je v procese vývoja už 1 mesiac, vyvinutá v Next.js frameworku s mobilnou responzívnosťou. Vytvárame intuitívny algoritmus pre párovanie používateľov, real-time chat systém, video hovory a pokročilé bezpečnostné funkcie. Aplikácia kladie dôraz na kvalitné spojenia a poskytuje bezpečné prostredie pre spoznávanie nových ľudí.",
+        "trulink": "Progresívna webová aplikácia s pokročilými funkciami, ktorú vyvíjame už 2 mesiace v Next.js frameworku. Funguje na telefoóne aj na webe. Projekt zahŕňa responzívny dizajn, reálno-časové funkcie a moderné technológie. Aplikácia je navrhnutá s dôrazom na používateľské skúsenosti, bezpečnosť a kvalitné výsledky. Platforma obsahuje pokročilé algoritmy, real-time komunikáciu a moderne bezpečnostné funkcie s vynikajúcim hodnotením spokojnosti 10/10.",
         "riseWeb": "Plnohodnotná firemná webstránka pre IT spoločnosť kompletne vytvorená naším tímom za 1 mesiac. Vyvinuli sme celý design, napísali všetky texty a naprogramovali kompletný kód v Next.js frameworku s moderným designom a pokročilými funkciami. Obsahuje SEO optimalizáciu, rýchle načítavanie, responsive design a pokročilé analytické nástroje. Projekt je 100% náš - od konceptu po implementáciu.",
         "doucma": "Šesť rokov sme na tejto vzdelávacej platforme vyučovali informatiku a využívali rôzne IT technológie na zlepšenie vzdelávacieho procesu. Naša činnosť priniesla množstvo spokojných študentov a klientov, ktorí si rozšírili svoje znalosti v oblasti informatiky. Aplikovali sme moderné pedagogické prístupy kombinované s technologickými riešeniami pre efektívnejšie vzdelávanie.",
         "rozvojDopravy": "Webová aplikácia pre optimalizáciu mestskej dopravy vyvinutá vo Vue.js a Node.js s pokročilými vizualizačnými nástrojmi. Systém analyzuje dopravné toky, generuje inteligentné grafy a reporty, a pomáha mestu Trnava optimalizovať dopravnú infrastruktúru. Obsahuje real-time monitoring, prediktívne algoritmy a interaktívne dashboard pre mestských plánovačov.",

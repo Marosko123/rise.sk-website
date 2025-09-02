@@ -259,11 +259,11 @@
           "satisfaction": "10/10"
         }
       },
-      "trulee": {
+      "trulink": {
         "metrics": {
           "status": "In Progress",
-          "duration": "1 month with Vanc s.r.o.",
-          "satisfaction": "Ongoing"
+          "duration": "2 months",
+          "satisfaction": "10/10"
         }
       },
       "horilla": {
@@ -285,7 +285,7 @@
         "viacAkoNick": "Mobile application for children's helpline developed with cutting-edge technologies - Flutter, Dart, PHP backend with native iOS and Android support. We created a secure communication platform where children and young people can seek help in difficult life situations. The application includes advanced security features, message encryption, and compliance with European child protection standards.",
         "lumturi": "Sophisticated online auction platform built on WordPress framework with extended PHP backend. The project is currently in development in collaboration with Try Art company. We are working on expanding the functionality of the existing platform, adding advanced features like real-time bidding, automatic notifications, secure payments, and detailed transaction history. Our collaboration brings technical improvements and modernization of the user interface.",
         "pixelCorporation": "Advanced mobile application for iOS and Android in collaboration with Pixel Corporation s.r.o. We have been working with them for 3 months on a running app developed in Expo and React Native with TypeScript architecture. We did not create it from scratch, but improved the existing application and performed major dependency updates. The application includes GPS tracking, performance analysis, social features, and advanced statistics for the running community.",
-        "trulee": "Modern progressive web application for online dating in collaboration with client Vanc s.r.o. The project has been in development for 1 month, built with Next.js framework and mobile responsiveness. We are creating an intuitive algorithm for user matching, real-time chat system, video calls, and advanced security features. The application emphasizes quality connections and provides a safe environment for meeting new people.",
+        "trulink": "Comprehensive web platform with advanced functionality that we have been developing for 2 months using Next.js framework. The project includes responsive design, real-time features, and modern technologies. The application is designed with emphasis on user experience, security, and quality results. The platform contains advanced algorithms, real-time communication, and modern security features with an excellent satisfaction rating of 10/10.",
         "riseWeb": "Full-featured corporate website for IT company completely created by our team in 1 month. We developed the entire design, wrote all texts, and programmed the complete code in Next.js framework with modern design and advanced functionality. Features SEO optimization, fast loading, responsive design, and advanced analytics tools. The project is 100% ours - from concept to implementation.",
         "doucma": "For six years, we taught computer science on this educational platform and utilized various IT technologies to improve the educational process. Our activities brought many satisfied students and clients who expanded their knowledge in computer science. We applied modern pedagogical approaches combined with technological solutions for more effective education.",
         "rozvojDopravy": "Sophisticated web application for urban transportation optimization developed in Vue.js and Node.js with advanced visualization tools. The system analyzes traffic flows, generates intelligent charts and reports, and helps the city of Trnava optimize transportation infrastructure. Features real-time monitoring, predictive algorithms, and interactive dashboard for urban planners.",

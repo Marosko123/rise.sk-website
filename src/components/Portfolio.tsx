@@ -76,18 +76,18 @@ const getPortfolioProjects = (t: (key: string) => string) => [
   },
   {
     id: 5,
-    title: 'Trulee Dating',
-    descriptionKey: 'trulee',
+    title: 'Dating Platform',
+    descriptionKey: 'trulink',
     category: 'webapp',
     image: '/portfolio/trulee.webp',
-    tags: ['Next.js', 'Mobile App', 'Dating', 'Vanc s.r.o.'],
+    tags: ['Next.js', 'React', 'Web App', 'TypeScript'],
     liveUrl: null,
     githubUrl: null,
     featured: true,
     metrics: {
-      status: t('projects.trulee.metrics.status'),
-      duration: t('projects.trulee.metrics.duration'),
-      satisfaction: t('projects.trulee.metrics.satisfaction')
+      status: t('projects.trulink.metrics.status'),
+      duration: t('projects.trulink.metrics.duration'),
+      satisfaction: t('projects.trulink.metrics.satisfaction')
     }
   },
   {

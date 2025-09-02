@@ -14,7 +14,6 @@ import FAQ from './FAQ';
 import Footer from './Footer';
 import Hero from './Hero';
 import Hiring from './Hiring';
-import InteractiveRiseIcons from './InteractiveRiseIcons';
 import MultiStepContactForm from './MultiStepContactForm';
 import Navigation from './Navigation';
 import Portfolio from './Portfolio';
@@ -1058,7 +1057,7 @@ export default function LandingPage() {
       </div>
 
       {/* Interactive Rise Components - Landing Page */}
-      <InteractiveRiseIcons />
+      {/* <InteractiveRiseIcons /> */}
         </div>
       ) : (
         // Full website with all sections
@@ -1099,7 +1098,7 @@ export default function LandingPage() {
           <Footer />
 
           {/* Interactive Rise Components - Full Website */}
-          <InteractiveRiseIcons />
+          {/* <InteractiveRiseIcons /> */}
         </div>
       )}
     </div>
