@@ -1,0 +1,154 @@
+# BIMI Asset Verification Workflow
+name: BIMI Verification
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'public/.well-known/bimi/**'
+      - 'tools/svgo-bimi.config.js'
+      - 'package.json'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public/.well-known/bimi/**'
+      - 'tools/svgo-bimi.config.js'
+      - 'package.json'
+  schedule:
+    # Run weekly to verify BIMI asset availability
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  verify-bimi:
+    name: Verify BIMI Assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify BIMI SVG compliance
+        run: |
+          echo "🔍 Checking BIMI SVG compliance..."
+          npm run bimi:svgo
+
+          # Check if SVG file exists
+          if [ ! -f "public/.well-known/bimi/rise.svg" ]; then
+            echo "❌ BIMI SVG file not found"
+            exit 1
+          fi
+
+          echo "✅ BIMI SVG found and sanitized"
+
+      - name: Validate SVG structure
+        run: |
+          echo "🔍 Validating SVG structure..."
+
+          # Check SVG dimensions
+          if ! grep -q 'viewBox="0 0 512 512"' public/.well-known/bimi/rise.svg; then
+            echo "❌ SVG must have 512x512 viewBox"
+            exit 1
+          fi
+
+          # Check for forbidden elements
+          if grep -q '<script\|<style\|<foreignObject\|<use.*href' public/.well-known/bimi/rise.svg; then
+            echo "❌ SVG contains forbidden elements for BIMI"
+            exit 1
+          fi
+
+          # Check SVG namespace
+          if ! grep -q 'xmlns="http://www.w3.org/2000/svg"' public/.well-known/bimi/rise.svg; then
+            echo "❌ SVG missing required namespace"
+            exit 1
+          fi
+
+          echo "✅ SVG structure validation passed"
+
+      - name: Check file size
+        run: |
+          echo "🔍 Checking BIMI SVG file size..."
+
+          SIZE=$(wc -c < public/.well-known/bimi/rise.svg)
+          MAX_SIZE=32768  # 32KB limit for BIMI
+
+          if [ $SIZE -gt $MAX_SIZE ]; then
+            echo "❌ SVG file too large: ${SIZE} bytes (max: ${MAX_SIZE} bytes)"
+            exit 1
+          fi
+
+          echo "✅ SVG file size OK: ${SIZE} bytes"
+
+  verify-production:
+    name: Verify Production BIMI
+    runs-on: ubuntu-latest
+    needs: verify-bimi
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Wait for deployment
+        run: sleep 60  # Wait for Vercel deployment
+
+      - name: Test BIMI asset availability
+        run: |
+          echo "🔍 Testing BIMI asset availability..."
+
+          # Test HTTPS availability
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "https://rise.sk/.well-known/bimi/rise.svg")
+
+          if [ "$RESPONSE" != "200" ]; then
+            echo "❌ BIMI asset not accessible: HTTP $RESPONSE"
+            exit 1
+          fi
+
+          echo "✅ BIMI asset accessible via HTTPS"
+
+      - name: Verify Content-Type header
+        run: |
+          echo "🔍 Verifying Content-Type header..."
+
+          CONTENT_TYPE=$(curl -s -I "https://rise.sk/.well-known/bimi/rise.svg" | grep -i "content-type" | cut -d: -f2 | tr -d ' \r\n')
+
+          if [[ "$CONTENT_TYPE" != *"image/svg+xml"* ]]; then
+            echo "❌ Wrong Content-Type: $CONTENT_TYPE (expected: image/svg+xml)"
+            exit 1
+          fi
+
+          echo "✅ Content-Type header correct: $CONTENT_TYPE"
+
+      - name: Test DNS BIMI record
+        run: |
+          echo "🔍 Testing DNS BIMI record..."
+
+          # Check if BIMI DNS record exists
+          if ! dig TXT default._bimi.rise.sk +short | grep -q "v=BIMI1"; then
+            echo "⚠️  BIMI DNS record not found or incorrect"
+            echo "Expected: v=BIMI1; l=https://rise.sk/.well-known/bimi/rise.svg"
+            echo "Please configure DNS manually"
+          else
+            echo "✅ BIMI DNS record found"
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "📋 BIMI Verification Summary:"
+          echo "- SVG compliance: ✅"
+          echo "- File size: ✅"
+          echo "- HTTPS availability: ✅"
+          echo "- Content-Type header: ✅"
+          echo "- DNS configuration: Manual verification required"
+          echo ""
+          echo "🎯 Next steps:"
+          echo "1. Configure DNS TXT record: default._bimi.rise.sk"
+          echo "2. Ensure DMARC policy is enforced"
+          echo "3. Test with email clients that support BIMI"

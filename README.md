@@ -192,7 +192,64 @@ All documentation is organized in the `docs/` folder:
 - **[SendGrid Configuration](docs/SENDGRID_SETUP.md)** - Email service setup
 - **[Setup Completion Report](docs/SETUP_COMPLETION_REPORT.md)** - Project status and achievements
 
-## 🔒 Security
+## � Email Authentication & BIMI
+
+BIMI (Brand Indicators for Message Identification) displays the Rise.sk logo in supported email clients when DMARC authentication passes.
+
+### BIMI Asset Management
+
+```bash
+# Sanitize BIMI SVG for security compliance
+npm run bimi:svgo
+
+# Test BIMI asset availability
+npm run bimi:test
+```
+
+### DNS Configuration
+
+Add this TXT record to your DNS for BIMI logo display:
+
+```dns
+Record Type: TXT
+Name: default._bimi.rise.sk
+Value: v=BIMI1; l=https://rise.sk/.well-known/bimi/rise.svg
+```
+
+### DMARC Requirement
+
+BIMI requires DMARC policy enforcement. Ensure your DMARC record includes:
+
+```dns
+Record Type: TXT
+Name: _dmarc.rise.sk
+Value: v=DMARC1; p=quarantine; rua=mailto:dmarc@rise.sk
+```
+
+### Verification
+
+Test BIMI setup:
+
+```bash
+# Verify DNS record
+dig TXT default._bimi.rise.sk
+
+# Test asset availability
+curl -I https://rise.sk/.well-known/bimi/rise.svg
+
+# Validate SVG compliance
+npm run bimi:svgo && echo "BIMI SVG is compliant"
+```
+
+### Asset Specifications
+
+- **Location**: `public/.well-known/bimi/rise.svg`
+- **Format**: SVG Tiny P/S (no scripts, fonts, or external references)
+- **Size**: 512x512 pixels
+- **Background**: White for email client compatibility
+- **Content-Type**: `image/svg+xml` (configured via Vercel)
+
+## �🔒 Security
 
 - **npm audit** - Regular dependency vulnerability scanning
 - **Environment variables** - Secure configuration management
