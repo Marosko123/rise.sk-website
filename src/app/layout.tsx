@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { Analytics } from '@vercel/analytics/next';
 
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import GDPRConsent from '@/components/GDPRConsent';
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: Props) {
         <ServiceWorkerRegistration />
         <WebVitalsReporter />
         <GDPRConsent />
+        <Analytics />
       </body>
     </html>
   );
