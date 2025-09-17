@@ -10,15 +10,15 @@ module.exports = {
     'removeXMLProcInst',
     'removeComments',
     'removeMetadata',
-    
+
     // Remove scripts, styles, and other potentially unsafe elements
     'removeScriptElement',
     'removeStyleElement',
     'removeOffCanvasPaths',
-    
+
     // Remove external references
     'removeXlink',
-    
+
     // Clean up attributes and elements
     'removeUnknownsAndDefaults',
     'removeUnusedNS',
@@ -27,16 +27,16 @@ module.exports = {
     'removeHiddenElems',
     'removeEmptyText',
     'removeEmptyContainers',
-    
+
     // Remove presentation attributes that could conflict
     'removeDimensions',
-    
+
     // Clean up paths and shapes
     'convertShapeToPath',
     'mergePaths',
     'convertPathData',
     'removeUselessStrokeAndFill',
-    
+
     // Security: remove potentially dangerous elements
     {
       name: 'removeAttrs',
@@ -53,7 +53,7 @@ module.exports = {
         ]
       }
     },
-    
+
     // Remove foreign objects (not allowed in BIMI)
     {
       name: 'removeElementsByAttr',
@@ -61,7 +61,7 @@ module.exports = {
         id: 'foreignObject'
       }
     },
-    
+
     // Ensure no embedded images
     {
       name: 'removeElementsByAttr',
