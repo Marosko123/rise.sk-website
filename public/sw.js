@@ -13,9 +13,7 @@ const STATIC_ASSETS = [
   '/robots.txt',
   '/sitemap.xml',
   '/rise/bronze/Rise_logo_circle.png',
-  '/rise/bronze/logo-circle-white-bg.png',
   '/rise/bronze/Rise_logo_transparent.png',
-  '/rise/bronze/logo-text-rectangle.png',
   '/favicon.ico'
 ];
 

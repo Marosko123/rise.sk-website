@@ -34,15 +34,6 @@
       "type": "image/x-icon"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/rise/bronze/logo-text-rectangle.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Rise.sk Homepage"
-    }
-  ],
   "shortcuts": [
     {
       "name": "Kontakt",
