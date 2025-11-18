@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from '@/hooks/useTranslations';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -10,17 +11,17 @@ import { useParticles } from '@/hooks/useParticles';
 import { useAnimation } from './AnimationProvider';
 import LogoAndText from './LogoAndText';
 
-// Import all the components we'll need for the full page
-import About from './About';
-import FAQ from './FAQ';
-import Footer from './Footer';
-import Hero from './Hero';
-import Hiring from './Hiring';
-import MultiStepContactForm from './MultiStepContactForm';
-import Navigation from './Navigation';
-import Portfolio from './Portfolio';
-import Reviews from './Reviews';
-import ServicesEnhanced from './ServicesEnhanced';
+// Dynamic imports for better performance
+const About = dynamic(() => import('./About'));
+const FAQ = dynamic(() => import('./FAQ'));
+const Footer = dynamic(() => import('./Footer'));
+const Hero = dynamic(() => import('./Hero'));
+const Hiring = dynamic(() => import('./Hiring'));
+const MultiStepContactForm = dynamic(() => import('./MultiStepContactForm'));
+const Navigation = dynamic(() => import('./Navigation'));
+const Portfolio = dynamic(() => import('./Portfolio'));
+const Reviews = dynamic(() => import('./Reviews'));
+const ServicesEnhanced = dynamic(() => import('./ServicesEnhanced'));
 
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -211,7 +212,7 @@ export default function LandingPage() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleClick);
     };
-  }, []);
+  }, [createExplosion]);
 
 
 

@@ -1,5 +1,5 @@
 import { useAnimation } from '@/components/AnimationProvider';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export interface Particle {
   id: number;
@@ -37,13 +37,13 @@ export function useParticles() {
     animate();
   }, [animationTime]);
 
-  const createExplosion = (x: number, y: number, count: number = 3) => {
+  const createExplosion = useCallback((x: number, y: number, count: number = 3) => {
     const newParticles: Particle[] = [];
     for (let i = 0; i < count; i++) {
       newParticles.push({
         id: particleIdRef.current++,
-        x: x,
-        y: y,
+        x,
+        y,
         vx: (Math.random() - 0.5) * 4,
         vy: (Math.random() - 0.5) * 4,
         life: 30,
@@ -51,7 +51,7 @@ export function useParticles() {
       });
     }
     setParticles(prev => [...prev.slice(-10), ...newParticles]); // Limit total particles
-  };
+  }, []);
 
   return {
     particles,

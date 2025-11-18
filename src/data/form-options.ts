@@ -1,0 +1,35 @@
+export const getFormOptions = (t: (key: string) => string) => ({
+  services: [
+    t('services.webDevelopment'),
+    t('services.mobileApps'),
+    t('services.customSoftware'),
+    t('services.ecommerce'),
+    t('services.aiAnalytics'),
+    t('services.digitalMarketing'),
+    t('services.specialRequests'),
+    t('services.jobApplication'),
+    t('services.other'),
+  ],
+  budgetRanges: [
+    t('multistep.budgetRanges.under5k'),
+    t('multistep.budgetRanges.5k15k'),
+    t('multistep.budgetRanges.15k50k'),
+    t('multistep.budgetRanges.50k100k'),
+    t('multistep.budgetRanges.over100k'),
+    t('multistep.budgetRanges.discuss'),
+  ],
+  timelineOptions: [
+    t('multistep.timelineOptions.asap'),
+    t('multistep.timelineOptions.1to3months'),
+    t('multistep.timelineOptions.3to6months'),
+    t('multistep.timelineOptions.6plusmonths'),
+    t('multistep.timelineOptions.flexible'),
+  ],
+  projectTypes: [
+    t('multistep.projectTypes.newProject'),
+    t('multistep.projectTypes.existingUpdate'),
+    t('multistep.projectTypes.maintenance'),
+    t('multistep.projectTypes.consultation'),
+    t('multistep.projectTypes.partnership'),
+  ],
+});
