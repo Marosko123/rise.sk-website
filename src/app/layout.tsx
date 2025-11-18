@@ -1,12 +1,12 @@
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Analytics } from '@vercel/analytics/next';
 
-import GoogleAnalytics from '@/components/GoogleAnalytics';
 import GDPRConsent from '@/components/GDPRConsent';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+import SEOHead from '@/components/SEOHead';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import WebVitalsReporter from '@/components/WebVitalsReporter';
-import SEOHead from '@/components/SEOHead';
 
 import './globals.css';
 
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps.',
     images: [
       {
-        url: '/rise/Rise_logo_circle.png',
+        url: '/rise/bronze/Rise_logo_circle.png',
         width: 1200,
         height: 1200,
         alt: 'Rise.sk Logo',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Rise.sk - Expert Programming Teams',
     description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps.',
-    images: ['/rise/Rise_logo_circle.png'],
+    images: ['/rise/bronze/Rise_logo_circle.png'],
   },
   other: {
     'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION || '',

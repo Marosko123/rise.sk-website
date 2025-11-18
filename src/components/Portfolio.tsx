@@ -95,7 +95,7 @@ const getPortfolioProjects = (t: (key: string) => string) => [
     title: 'Rise.sk',
     descriptionKey: 'riseWeb',
     category: 'corporate',
-    image: '/rise/Rise_logo_transparent.png',
+    image: '/rise/bronze/Rise_logo_transparent.png',
     tags: ['Next.js', 'Website', 'IT Company'],
     liveUrl: 'https://www.rise.sk',
     githubUrl: null,

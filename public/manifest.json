@@ -17,13 +17,13 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/rise/Rise_logo_circle.png",
+      "src": "/rise/bronze/Rise_logo_circle.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/rise/Rise_logo_circle.png",
+      "src": "/rise/bronze/Rise_logo_circle.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
@@ -36,7 +36,7 @@
   ],
   "screenshots": [
     {
-      "src": "/rise/logo-text-rectangle.png",
+      "src": "/rise/bronze/logo-text-rectangle.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
@@ -51,7 +51,7 @@
       "url": "/kontakt",
       "icons": [
         {
-          "src": "/rise/Rise_logo_circle.png",
+          "src": "/rise/bronze/Rise_logo_circle.png",
           "sizes": "96x96"
         }
       ]
@@ -63,7 +63,7 @@
       "url": "/sluzby",
       "icons": [
         {
-          "src": "/rise/Rise_logo_circle.png",
+          "src": "/rise/bronze/Rise_logo_circle.png",
           "sizes": "96x96"
         }
       ]
@@ -75,7 +75,7 @@
       "url": "/portfolio",
       "icons": [
         {
-          "src": "/rise/Rise_logo_circle.png",
+          "src": "/rise/bronze/Rise_logo_circle.png",
           "sizes": "96x96"
         }
       ]

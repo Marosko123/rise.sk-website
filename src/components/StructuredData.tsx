@@ -7,7 +7,7 @@ export default function StructuredData() {
     "name": "Rise.sk",
     "legalName": "rise.sk s.r.o.",
     "url": "https://rise.sk",
-    "logo": "https://rise.sk/rise/Rise_logo_circle.png",
+    "logo": "https://rise.sk/rise/bronze/Rise_logo_circle.png",
     "description": "Expert programming teams and custom software development company in Slovakia. Quick delivery, reliable code, professional IT solutions.",
     "address": {
       "@type": "PostalAddress",

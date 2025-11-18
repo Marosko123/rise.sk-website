@@ -82,7 +82,7 @@ export function GameCounter() {
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 relative flex-shrink-0">
               <Image
-                src="/optimized/rise/Rise_logo_transparent.webp"
+                src="/optimized/rise/bronze/Rise_logo_transparent.webp"
                 alt="RISE"
                 fill
                 className="object-contain"
@@ -323,7 +323,7 @@ export default function InteractiveRiseIcons() {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/optimized/rise/Rise_logo_transparent.webp"
+                  src="/optimized/rise/bronze/Rise_logo_transparent.webp"
                   alt="RISE Logo"
                   fill
                   className="object-contain"

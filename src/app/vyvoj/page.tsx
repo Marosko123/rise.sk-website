@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 
 import About from '@/components/About';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/BreadcrumbSchema';
-import Contact from '@/components/MultiStepContactForm';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Hiring from '@/components/Hiring';
+import Contact from '@/components/MultiStepContactForm';
 import Navigation from '@/components/Navigation';
 import Portfolio from '@/components/Portfolio';
 import Reviews from '@/components/Reviews';
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     locale: 'sk_SK',
     images: [
       {
-        url: '/rise/Rise_logo_circle.png',
+        url: '/rise/bronze/Rise_logo_circle.png',
         width: 1200,
         height: 630,
         alt: 'Rise.sk - Vývoj Softvéru na Mieru',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Vývoj Softvéru na Mieru | Programátorské Tímy Slovensko - Rise.sk',
     description: 'Profesionálny vývoj softvéru na mieru na Slovensku. Najímajte dedikované programátorské tímy pre webové aplikácie, mobilné aplikácie a enterprise riešenia.',
-    images: ['/rise/Rise_logo_circle.png'],
+    images: ['/rise/bronze/Rise_logo_circle.png'],
   },
   alternates: {
     canonical: 'https://rise.sk/sk/vyvoj',

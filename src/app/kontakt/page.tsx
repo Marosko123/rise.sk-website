@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     locale: 'sk_SK',
     images: [
       {
-        url: '/rise/Rise_logo_circle.png',
+        url: '/rise/bronze/Rise_logo_circle.png',
         width: 1200,
         height: 630,
         alt: 'Kontakt Rise.sk - Profesionálne Programátorské Tímy',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Kontakt | Rise.sk - Profesionálne Programátorské Tímy Slovensko',
     description: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní.',
-    images: ['/rise/Rise_logo_circle.png'],
+    images: ['/rise/bronze/Rise_logo_circle.png'],
   },
   alternates: {
     canonical: 'https://rise.sk/sk/kontakt',

@@ -12,10 +12,10 @@ const STATIC_ASSETS = [
   '/manifest.json',
   '/robots.txt',
   '/sitemap.xml',
-  '/rise/Rise_logo_circle.png',
-  '/rise/logo-circle-white-bg.png',
-  '/rise/Rise_logo_transparent.png',
-  '/rise/logo-text-rectangle.png',
+  '/rise/bronze/Rise_logo_circle.png',
+  '/rise/bronze/logo-circle-white-bg.png',
+  '/rise/bronze/Rise_logo_transparent.png',
+  '/rise/bronze/logo-text-rectangle.png',
   '/favicon.ico'
 ];
 
@@ -29,7 +29,7 @@ const CRITICAL_RESOURCES = [
 // Install event
 self.addEventListener('install', (event) => {
   console.log('Service Worker installing...');
-  
+
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then((cache) => {
@@ -49,7 +49,7 @@ self.addEventListener('install', (event) => {
 // Activate event
 self.addEventListener('activate', (event) => {
   console.log('Service Worker activating...');
-  
+
   event.waitUntil(
     Promise.all([
       // Clean up old caches
@@ -57,8 +57,8 @@ self.addEventListener('activate', (event) => {
         return Promise.all(
           cacheNames
             .filter((cacheName) => {
-              return cacheName !== STATIC_CACHE && 
-                     cacheName !== DYNAMIC_CACHE && 
+              return cacheName !== STATIC_CACHE &&
+                     cacheName !== DYNAMIC_CACHE &&
                      cacheName !== IMAGE_CACHE;
             })
             .map((cacheName) => {
@@ -105,12 +105,12 @@ self.addEventListener('fetch', (event) => {
 
 async function handleFetch(request) {
   const url = new URL(request.url);
-  
+
   // Don't cache Next.js image optimization requests - let them pass through
   if (url.pathname.startsWith('/_next/image')) {
     return fetch(request);
   }
-  
+
   try {
     // Handle different types of requests
     if (isImageRequest(request)) {
@@ -130,7 +130,7 @@ async function handleFetch(request) {
 
 // Check if request is for an image
 function isImageRequest(request) {
-  return request.destination === 'image' || 
+  return request.destination === 'image' ||
          /\.(jpg|jpeg|png|gif|webp|avif|svg)(\?.*)?$/i.test(request.url);
 }
 
@@ -148,29 +148,29 @@ function isPageRequest(request) {
 async function handleImageRequest(request) {
   const cache = await caches.open(IMAGE_CACHE);
   const cachedResponse = await cache.match(request);
-  
+
   if (cachedResponse) {
     return cachedResponse;
   }
-  
+
   try {
     const response = await fetch(request);
-    
+
     // Only cache successful responses for actual image files, not optimized images
     if (response.status === 200 && !request.url.includes('/_next/image')) {
       cache.put(request, response.clone());
     }
-    
+
     return response;
   } catch (error) {
     console.error('Failed to fetch image:', error);
-    
+
     // Try to return from cache if network fails
     const cachedFallback = await cache.match(request);
     if (cachedFallback) {
       return cachedFallback;
     }
-    
+
     // Return a proper 404 response
     return new Response('', {
       status: 404,
@@ -183,18 +183,18 @@ async function handleImageRequest(request) {
 async function handleStaticAsset(request) {
   const cache = await caches.open(STATIC_CACHE);
   const cachedResponse = await cache.match(request);
-  
+
   if (cachedResponse) {
     return cachedResponse;
   }
-  
+
   try {
     const response = await fetch(request);
-    
+
     if (response.status === 200) {
       cache.put(request, response.clone());
     }
-    
+
     return response;
   } catch (error) {
     console.error('Failed to fetch static asset:', error);
@@ -206,23 +206,23 @@ async function handleStaticAsset(request) {
 async function handlePageRequest(request) {
   try {
     const response = await fetch(request);
-    
+
     if (response.status === 200) {
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, response.clone());
     }
-    
+
     return response;
   } catch (error) {
     console.error('Network failed, trying cache:', error);
-    
+
     const cache = await caches.open(DYNAMIC_CACHE);
     const cachedResponse = await cache.match(request);
-    
+
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     // Return offline page or basic response
     return new Response(`
       <!DOCTYPE html>
@@ -270,19 +270,19 @@ async function handlePageRequest(request) {
 async function handleDynamicRequest(request) {
   try {
     const response = await fetch(request);
-    
+
     if (response.status === 200) {
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, response.clone());
     }
-    
+
     return response;
   } catch (error) {
     console.error('Dynamic request failed:', error);
-    
+
     const cache = await caches.open(DYNAMIC_CACHE);
     const cachedResponse = await cache.match(request);
-    
+
     return cachedResponse || new Response('', { status: 404 });
   }
 }
@@ -304,15 +304,15 @@ async function syncVitals() {
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data ? event.data.text() : 'New update available!',
-    icon: '/rise/Rise_logo_circle.png',
-    badge: '/rise/Rise_logo_circle.png',
+    icon: '/rise/bronze/Rise_logo_circle.png',
+    badge: '/rise/bronze/Rise_logo_circle.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
       primaryKey: '2'
     }
   };
-  
+
   event.waitUntil(
     self.registration.showNotification('Rise.sk', options)
   );

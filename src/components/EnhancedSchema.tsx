@@ -8,7 +8,7 @@ interface EnhancedSchemaProps {
 const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
   const getSchema = () => {
     const baseUrl = 'https://rise.sk'
-    
+
     switch (type) {
       case 'Organization':
         return {
@@ -17,8 +17,8 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
           name: 'Rise.sk s.r.o.',
           legalName: 'Rise.sk s.r.o.',
           url: baseUrl,
-          logo: `${baseUrl}/rise/Rise_logo_circle.png`,
-          image: `${baseUrl}/rise/Rise_logo_circle.png`,
+          logo: `${baseUrl}/rise/bronze/Rise_logo_circle.png`,
+          image: `${baseUrl}/rise/bronze/Rise_logo_circle.png`,
           description: 'Professional web development and design services in Slovakia. Custom websites, e-commerce solutions, and digital transformation.',
           foundingDate: '2025',
           address: {
@@ -137,7 +137,7 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
             name: 'Rise.sk s.r.o.',
             logo: {
               '@type': 'ImageObject',
-              url: `${baseUrl}/rise/Rise_logo_circle.png`
+              url: `${baseUrl}/rise/bronze/Rise_logo_circle.png`
             }
           },
           potentialAction: {
@@ -217,7 +217,7 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
             name: 'Rise.sk s.r.o.',
             logo: {
               '@type': 'ImageObject',
-              url: `${baseUrl}/rise/Rise_logo_circle.png`
+              url: `${baseUrl}/rise/bronze/Rise_logo_circle.png`
             }
           },
           datePublished: data.datePublished || '2025-01-01',

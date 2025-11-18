@@ -142,12 +142,12 @@ export const companyConfig = {
 
     // Assets
     logo: {
-      main: '/rise/Rise_logo_circle.png',
-      circle: '/rise/Rise_logo_circle.png',
-      circleWhiteBg: '/rise/logo-circle-white-bg.png',
-      logoTextRectangle: '/rise/logo-text-rectangle.png',
-      logoGoldTransparent: '/rise/Rise_logo_transparent.png',
-      stamp: '/rise/stamp.png',
+      main: '/rise/bronze/Rise_logo_circle.png',
+      circle: '/rise/bronze/Rise_logo_circle.png',
+      circleWhiteBg: '/rise/bronze/logo-circle-white-bg.png',
+      logoTextRectangle: '/rise/bronze/logo-text-rectangle.png',
+      logoGoldTransparent: '/rise/bronze/Rise_logo_transparent.png',
+      stamp: '/rise/bronze/stamp.png',
     },
 
     // Analytics IDs (fill when available)

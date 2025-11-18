@@ -14,7 +14,7 @@ export default function ServiceWorkerRegistration() {
     try {
       // Clear old caches from previous versions
       const cacheNames = await caches.keys();
-      const oldCaches = cacheNames.filter(name => 
+      const oldCaches = cacheNames.filter(name =>
         name.startsWith('rise-sk-') && !name.includes('-v3') && !name.includes('-v2')
       );
       await Promise.all(oldCaches.map(name => caches.delete(name)));
@@ -31,7 +31,7 @@ export default function ServiceWorkerRegistration() {
       // Handle updates
       registration.addEventListener('updatefound', () => {
         const newWorker = registration.installing;
-        
+
         if (newWorker) {
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
@@ -79,7 +79,7 @@ export async function sendMessageToServiceWorker(message: unknown) {
   }
 
   const registration = await navigator.serviceWorker.ready;
-  
+
   if (registration.active) {
     registration.active.postMessage(message);
   }
@@ -93,7 +93,7 @@ export async function requestBackgroundSync(tag: string) {
 
   try {
     const registration = await navigator.serviceWorker.ready;
-    
+
     if ('sync' in registration && registration.sync) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await (registration as any).sync.register(tag);

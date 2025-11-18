@@ -60,10 +60,10 @@ export default function LanguageSwitcher() {
         aria-label="Change language"
       >
         <span className="text-xl">{currentLanguage.flag}</span>
-        <svg 
-          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
-          fill="none" 
-          stroke="currentColor" 
+        <svg
+          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -80,8 +80,8 @@ export default function LanguageSwitcher() {
                 setIsOpen(false);
               }}
               className={`w-full px-4 py-2 text-left hover:bg-white/10 transition-colors ${
-                currentLocale === language.code 
-                  ? 'bg-white/20 text-yellow-400' 
+                currentLocale === language.code
+                  ? 'bg-white/20 text-yellow-400'
                   : 'text-white'
               }`}
             >

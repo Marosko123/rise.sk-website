@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: 'Rise.sk',
     images: [
       {
-        url: '/rise/Rise_logo_circle.png',
+        url: '/rise/bronze/Rise_logo_circle.png',
         width: 1200,
         height: 630,
         alt: 'Rise.sk Portfolio - Software Development Projects',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Portfolio | Rise.sk - Software Development Projects & Case Studies',
     description: 'Explore Rise.sk portfolio of successful software development projects. Custom web applications, mobile apps, enterprise solutions.',
-    images: ['/rise/Rise_logo_circle.png'],
+    images: ['/rise/bronze/Rise_logo_circle.png'],
   },
   alternates: {
     canonical: 'https://rise.sk/en/portfolio',
@@ -40,7 +40,7 @@ export default async function PortfolioPage({
 }) {
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'portfolio');
-  
+
   return (
     <div className="min-h-screen bg-black">
       <BreadcrumbSchema items={breadcrumbs} page="portfolio" />
