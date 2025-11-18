@@ -1,9 +1,9 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, User, Building, Settings, MessageSquare, AlertCircle, CheckCircle, ChevronLeft, ChevronRight, Send } from 'lucide-react';
-import { useTranslations } from '@/hooks/useTranslations';
 import { useContactForm } from '@/hooks/useContactForm';
+import { useTranslations } from '@/hooks/useTranslations';
+import { AnimatePresence, motion } from 'framer-motion';
+import { AlertCircle, Building, CheckCircle, CheckCircle2, ChevronLeft, ChevronRight, MessageSquare, Send, Settings, User } from 'lucide-react';
 
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
@@ -11,9 +11,9 @@ import { Section } from '../ui/Section';
 
 import ContactInfo from './ContactInfo';
 import StepPersonalInfo from './steps/StepPersonalInfo';
-import StepServiceDetails from './steps/StepServiceDetails';
 import StepProjectSpecifics from './steps/StepProjectSpecifics';
 import StepReview from './steps/StepReview';
+import StepServiceDetails from './steps/StepServiceDetails';
 
 export default function ContactForm() {
   const t = useTranslations('contact');
@@ -100,7 +100,7 @@ export default function ContactForm() {
                     const stepNumber = index + 1;
                     const isActive = currentStep === stepNumber;
                     const isCompleted = currentStep > stepNumber;
-                    
+
                     return (
                       <div key={index} className='flex items-center'>
                         <div
@@ -143,24 +143,24 @@ export default function ContactForm() {
                 <div className="w-full max-w-full overflow-hidden">
                   <AnimatePresence mode="wait">
                     {currentStep === 1 && (
-                      <StepPersonalInfo 
-                        formData={formData} 
-                        handleChange={handleChange} 
-                        isSubmitting={isSubmitting} 
+                      <StepPersonalInfo
+                        formData={formData}
+                        handleChange={handleChange}
+                        isSubmitting={isSubmitting}
                       />
                     )}
                     {currentStep === 2 && (
-                      <StepServiceDetails 
-                        formData={formData} 
-                        handleChange={handleChange} 
-                        isSubmitting={isSubmitting} 
+                      <StepServiceDetails
+                        formData={formData}
+                        handleChange={handleChange}
+                        isSubmitting={isSubmitting}
                       />
                     )}
                     {currentStep === 3 && (
-                      <StepProjectSpecifics 
-                        formData={formData} 
-                        handleChange={handleChange} 
-                        isSubmitting={isSubmitting} 
+                      <StepProjectSpecifics
+                        formData={formData}
+                        handleChange={handleChange}
+                        isSubmitting={isSubmitting}
                       />
                     )}
                     {currentStep === 4 && (

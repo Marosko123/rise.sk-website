@@ -1,15 +1,15 @@
 'use client';
 
+import { getContactInfo } from '@/data/footer-data';
+import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
-import { useTranslations } from '@/hooks/useTranslations';
 import Link from 'next/link';
 import { useState } from 'react';
-import { getContactInfo } from '@/data/footer-data';
-import FooterLinks from './FooterLinks';
-import FooterContact from './FooterContact';
-import FooterBilling from './FooterBilling';
 import FooterBanking from './FooterBanking';
+import FooterBilling from './FooterBilling';
+import FooterContact from './FooterContact';
+import FooterLinks from './FooterLinks';
 
 export default function Footer() {
   const t = useTranslations('footer');

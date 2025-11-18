@@ -1,7 +1,7 @@
+import { getFooterLinks } from '@/data/footer-data';
+import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useTranslations } from '@/hooks/useTranslations';
-import { getFooterLinks } from '@/data/footer-data';
 
 export default function FooterLinks() {
   const t = useTranslations('footer');

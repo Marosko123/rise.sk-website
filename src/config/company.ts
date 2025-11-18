@@ -167,7 +167,7 @@ export const companyConfig = {
 
     // Assets
     logo: {
-      main: `/rise/${LOGO_THEME}/Rise_logo_circle.png`,
+      main: `/rise/${LOGO_THEME}/Rise_logo_transparent.png`,
       circle: `/rise/${LOGO_THEME}/Rise_logo_circle.png`,
       logoGoldTransparent: `/rise/${LOGO_THEME}/Rise_logo_transparent.png`,
       stamp: `/rise/${LOGO_THEME}/stamp.png`,

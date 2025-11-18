@@ -76,16 +76,6 @@
   "related_applications": [],
   "dir": "ltr",
   "iarc_rating_id": "",
-  "protocol_handlers": [
-    {
-      "protocol": "mailto",
-      "url": "mailto:rise@rise.sk?subject=%s"
-    },
-    {
-      "protocol": "tel",
-      "url": "tel:+421911670188"
-    }
-  ],
   "edge_side_panel": {
     "preferred_width": 400
   },

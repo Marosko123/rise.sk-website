@@ -1,6 +1,6 @@
+import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { Check, Copy, Mail, MapPin, Phone, Users } from 'lucide-react';
-import { useTranslations } from '@/hooks/useTranslations';
 
 interface FooterContactProps {
   copyToClipboard: (text: string, fieldName: string) => void;

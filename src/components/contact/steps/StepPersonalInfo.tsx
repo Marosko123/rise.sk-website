@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { useTranslations } from '@/hooks/useTranslations';
 import { FormData } from '@/hooks/useContactForm';
+import { useTranslations } from '@/hooks/useTranslations';
+import { motion } from 'framer-motion';
 
 interface StepProps {
   formData: FormData;

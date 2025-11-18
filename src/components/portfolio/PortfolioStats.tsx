@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import { useTranslations } from '@/hooks/useTranslations';
+import { motion } from 'framer-motion';
 
 export default function PortfolioStats() {
   const t = useTranslations('portfolio');

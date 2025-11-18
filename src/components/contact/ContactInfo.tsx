@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Copy, CheckCircle } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
+import { motion } from 'framer-motion';
+import { CheckCircle, Copy, Mail, MapPin, Phone } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ContactInfo() {

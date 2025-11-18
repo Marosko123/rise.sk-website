@@ -1,20 +1,20 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { useTranslations } from '@/hooks/useTranslations';
 import { getPortfolioProjects } from '@/data/projects';
 import { useCarousel } from '@/hooks/useCarousel';
+import { useTranslations } from '@/hooks/useTranslations';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import PortfolioControls from './PortfolioControls';
 import PortfolioStats from './PortfolioStats';
 import ProjectCard from './ProjectCard';
-import PortfolioControls from './PortfolioControls';
 
 export default function Portfolio() {
   const t = useTranslations('portfolio');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const portfolioProjects = getPortfolioProjects(t);
-  
+
   const {
     currentIndex,
     itemsPerView,

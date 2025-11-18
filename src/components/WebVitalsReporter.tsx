@@ -14,8 +14,6 @@ interface WebVitalsMetric {
 function reportWebVitals(metric: WebVitalsMetric) {
   // Only report in production
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line no-console
-    console.log('📊 Web Vitals (Dev):', metric);
     return;
   }
 
@@ -102,19 +100,6 @@ export default function WebVitalsReporter() {
       const observer = new PerformanceObserver((list) => {
         list.getEntries().forEach((entry) => {
           if (entry.duration > 80) { // Only warn for tasks longer than 80ms to reduce noise
-            // Only log in development with throttling
-            if (process.env.NODE_ENV === 'development') {
-              // Throttle warnings to prevent console spam
-              const now = Date.now();
-              const windowWithCustomProps = window as Window & { lastLongTaskWarning?: number };
-              const lastWarning = windowWithCustomProps.lastLongTaskWarning || 0;
-              if (now - lastWarning > 5000) { // Only warn every 5 seconds
-                // eslint-disable-next-line no-console
-                console.warn(`⚠️ Long Task detected: ${Math.round(entry.duration)}ms`);
-                windowWithCustomProps.lastLongTaskWarning = now;
-              }
-            }
-            
             // Report long tasks in production
             if (process.env.NODE_ENV === 'production' && typeof window.gtag !== 'undefined') {
               window.gtag('event', 'long_task', {

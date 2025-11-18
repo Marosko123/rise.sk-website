@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { useTranslations } from '@/hooks/useTranslations';
 import { FormData } from '@/hooks/useContactForm';
+import { useTranslations } from '@/hooks/useTranslations';
+import { motion } from 'framer-motion';
 
 interface StepProps {
   formData: FormData;
@@ -20,7 +20,7 @@ export default function StepReview({ formData }: StepProps) {
     >
       <div className='bg-white/5 rounded-lg p-6 space-y-4'>
         <h4 className='text-lg font-semibold text-white mb-4'>{t('multistep.reviewTitle')}</h4>
-        
+
         <div className='grid md:grid-cols-2 gap-4 text-sm'>
           <div>
             <span className='text-gray-400'>{t('fullName')}:</span>
@@ -65,7 +65,7 @@ export default function StepReview({ formData }: StepProps) {
             </div>
           )}
         </div>
-        
+
         {formData.message && (
           <div>
             <span className='text-gray-400'>{t('message')}:</span>

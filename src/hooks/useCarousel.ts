@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export function useCarousel(totalItems: number) {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -1,10 +1,10 @@
+import { Project } from '@/data/projects';
+import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { Eye, Github, Lock } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
-import { useTranslations } from '@/hooks/useTranslations';
 import OptimizedImage from '../OptimizedImage';
-import { Project } from '@/data/projects';
 
 interface ProjectCardProps {
   project: Project;
