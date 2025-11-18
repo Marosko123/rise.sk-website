@@ -121,11 +121,11 @@ export default function LandingPage() {
     const handleWheel = (e: WheelEvent) => {
       // Accumulate scroll (only positive for down, but allow up to reduce)
       scrollAccumulator.current = Math.max(0, scrollAccumulator.current + e.deltaY);
-      
+
       // Threshold to trigger transition (e.g. 400px)
       const threshold = 400;
       const progress = Math.min(scrollAccumulator.current / threshold, 1);
-      
+
       setScrollProgress(progress);
       setIsScrolling(true);
 
@@ -153,12 +153,12 @@ export default function LandingPage() {
     const handleTouchMove = (e: TouchEvent) => {
       const touchEndY = e.touches[0].clientY;
       const deltaY = touchStartY - touchEndY;
-      
+
       if (deltaY > 0) { // Swipe up
         const threshold = 200; // Lower threshold for touch
         const progress = Math.min(deltaY / threshold, 1);
         setScrollProgress(progress);
-        
+
         if (progress >= 1) {
           triggerTransition();
         }
@@ -485,20 +485,20 @@ export default function LandingPage() {
 
       {!showFullWebsite ? (
         // Pure landing page with animated squares only
-        <div 
+        <div
           className={`relative overflow-hidden min-h-screen`}
           style={{
-            transform: isTransitioning 
-              ? 'scale(2)' 
+            transform: isTransitioning
+              ? 'scale(2)'
               : `scale(${1 + scrollProgress * 0.15})`,
-            opacity: isTransitioning 
-              ? 0 
+            opacity: isTransitioning
+              ? 0
               : 1 - scrollProgress * 0.2,
-            filter: isTransitioning 
-              ? 'blur(4px)' 
+            filter: isTransitioning
+              ? 'blur(4px)'
               : `blur(${scrollProgress * 2}px)`,
-            transition: isTransitioning 
-              ? 'all 1s ease-in-out' 
+            transition: isTransitioning
+              ? 'all 1s ease-in-out'
               : (isScrolling ? 'all 0.1s ease-out' : 'all 0.5s ease-out')
           }}
         >
@@ -691,7 +691,7 @@ export default function LandingPage() {
           </div>
 
           {/* Scroll Indicator */}
-          <div 
+          <div
             className={`absolute bottom-24 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
             style={{
               opacity: isTransitioning ? 0 : 1 - scrollProgress * 2, // Hide quickly on scroll
