@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+import { companyConfig } from '@/config/company';
 
 interface RainIcon {
   id: number;
@@ -284,7 +285,7 @@ export default function RiseIconRain() {
             >
               <div className="relative w-full h-full drop-shadow-lg">
                 <Image
-                  src="/optimized/rise/bronze/Rise_logo_transparent.webp"
+                  src={companyConfig.website.logo.logoGoldTransparent}
                   alt="RISE Logo"
                   fill
                   className="object-contain"

@@ -8,6 +8,7 @@ import SEOHead from '@/components/SEOHead';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import ThemeProvider from '@/components/ThemeProvider';
 import WebVitalsReporter from '@/components/WebVitalsReporter';
+import { companyConfig } from '@/config/company';
 
 import './globals.css';
 
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps.',
     images: [
       {
-        url: '/rise/bronze/Rise_logo_circle.png',
+        url: companyConfig.website.logo.circle,
         width: 1200,
         height: 1200,
         alt: 'Rise.sk Logo',
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Rise.sk - Expert Programming Teams',
     description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps.',
-    images: ['/rise/bronze/Rise_logo_circle.png'],
+    images: [companyConfig.website.logo.circle],
   },
   other: {
     'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION || '',

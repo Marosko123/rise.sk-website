@@ -49,6 +49,15 @@
   --glow: #ffcc33;
 }
 
+/* Theme: Gradient (Metallic Gold) */
+:root[data-theme="gradient"] {
+  --primary: #DAB549;
+  --primary-dark: #8B6723;
+  --primary-darker: #6A4C1A;
+  --primary-light: #FEFBD8;
+  --glow: #DAB549;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #1a1a1a;
@@ -221,6 +230,22 @@ body {
 .gradient-text {
   background: linear-gradient(-45deg, var(--primary), var(--primary-light), var(--primary-dark), var(--primary-light));
   background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Specific override for Gradient theme to match 5-stop metallic spec */
+[data-theme="gradient"] .gradient-text {
+  background: linear-gradient(45deg, 
+    #FEFBD8 0%, 
+    #DAB549 25%, 
+    #8B6723 50%, 
+    #DAB549 75%, 
+    #FEFBD8 100%
+  );
+  background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

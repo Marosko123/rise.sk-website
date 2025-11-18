@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+import { companyConfig } from '@/config/company';
 
 interface FloatingIcon {
   id: number;
@@ -82,7 +83,7 @@ export function GameCounter() {
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 relative flex-shrink-0">
               <Image
-                src="/optimized/rise/bronze/Rise_logo_transparent.webp"
+                src={companyConfig.website.logo.logoGoldTransparent}
                 alt="RISE"
                 fill
                 className="object-contain"
@@ -323,7 +324,7 @@ export default function InteractiveRiseIcons() {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/optimized/rise/bronze/Rise_logo_transparent.webp"
+                  src={companyConfig.website.logo.logoGoldTransparent}
                   alt="RISE Logo"
                   fill
                   className="object-contain"
