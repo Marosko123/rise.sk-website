@@ -13,6 +13,7 @@ import { companyConfig } from '@/config/company';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://rise.sk'),
   title: 'Rise.sk - Expert Programming Teams | Custom Software Development Slovakia',
   description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps. Quick delivery, reliable code, 100% on-time projects.',
   icons: {

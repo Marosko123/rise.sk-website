@@ -21,7 +21,7 @@
 //   - primary-darker (even darker)
 //   - primary-light (lighter shade)
 //   - glow (for glowing effects)
-const LOGO_THEME = 'bronze';
+const LOGO_THEME = 'gradient';
 
 export const companyConfig = {
   // =====================================

@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
 import companyConfig from '@/config/company';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 import { useAnimation } from './AnimationProvider';
 
@@ -13,6 +13,8 @@ interface LogoAndTextProps {
 
 function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
   const { animationTime, mounted } = useAnimation();
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTextHovered, setIsTextHovered] = useState(false);
 
   return (
     <div className={`flex items-center space-x-3 ${className}`}>
@@ -23,28 +25,25 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
           width={50}
           height={50}
           priority
-          className='transition-all duration-300 hover:scale-110 cursor-pointer select-none'
+          className='transition-all duration-300 cursor-pointer select-none'
           style={mounted ? {
-            transform: `rotate(${Math.sin(animationTime * 0.001) * 5}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.07})`,
-            filter: `drop-shadow(0 0 10px rgba(176, 145, 85, ${0.5 + Math.sin(animationTime * 0.002) * 0.1})) hue-rotate(${Math.sin(animationTime * 0.0008) * 10}deg)`,
+            transform: isHovered
+              ? `scale(1.2) rotate(15deg)`
+              : `rotate(${Math.sin(animationTime * 0.001) * 5}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.07})`,
+            filter: isHovered
+              ? `brightness(1.2) contrast(1.1) saturate(1.1) drop-shadow(0 0 45px rgba(176, 145, 85, 0.8))`
+              : `drop-shadow(0 0 10px rgba(176, 145, 85, ${0.5 + Math.sin(animationTime * 0.002) * 0.1}))`,
+            transition: 'transform 0.3s ease-out, filter 0.3s ease-out',
           } : {
             transform: 'rotate(0deg) scale(1)',
             filter: 'drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))',
           }}
-          onMouseEnter={(e) => {
-            if (mounted) {
-              e.currentTarget.style.transform += ' scale(1.2) rotate(15deg)';
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (mounted) {
-              e.currentTarget.style.transform = `rotate(${Math.sin(animationTime * 0.001) * 5}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.07})`;
-            }
-          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           onClick={onClick}
           draggable={false}
         />
-        
+
         {/* Floating elements around logo */}
         {mounted && (
           <>
@@ -67,23 +66,18 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
           </>
         )}
       </div>
-      
+
       <div className='relative'>
         <span
           className='text-2xl font-bold text-white cursor-pointer inline-block transition-all duration-300 hover:scale-105 select-none'
           style={mounted ? {
-            textShadow: `0 0 15px rgba(176, 145, 85, 0.4)`,
+            textShadow: isTextHovered
+              ? '0 0 25px rgba(176, 145, 85, 0.8)'
+              : `0 0 15px rgba(176, 145, 85, 0.4)`,
+            color: isTextHovered ? '#B09155' : 'white',
           } : {}}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = '#B09155';
-            e.currentTarget.style.textShadow = '0 0 25px rgba(176, 145, 85, 0.8)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = 'white';
-            if (mounted) {
-              e.currentTarget.style.textShadow = `0 0 15px rgba(176, 145, 85, 0.4)`;
-            }
-          }}
+          onMouseEnter={() => setIsTextHovered(true)}
+          onMouseLeave={() => setIsTextHovered(false)}
           onClick={onClick}
         >
           {companyConfig.company.domain.split('').map((letter, index) => (
@@ -107,7 +101,7 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
             </span>
           ))}
         </span>
-        
+
         {/* Animated golden line under text - matching original */}
         {mounted && (
           <div
