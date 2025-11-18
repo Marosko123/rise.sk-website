@@ -7,7 +7,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useLocale, useTranslations } from '@/hooks/useTranslations';
 
-import { GameCounter } from './InteractiveRiseIcons';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Link } from './LocalizedLink';
 import LogoAndText from './LogoAndText';
@@ -203,18 +202,18 @@ export default function Navigation() {
   const handleMobileNavClick = useCallback((href: string) => {
     if (href.startsWith('#')) {
       setIsMenuOpen(false);
-      
+
       // Small delay to allow menu to close
       setTimeout(() => {
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
-        
+
         if (targetElement) {
           // Calculate offset for fixed navigation
           const navHeight = 80;
           const elementPosition = targetElement.offsetTop;
           const offsetPosition = elementPosition - navHeight;
-          
+
           window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
@@ -256,15 +255,15 @@ export default function Navigation() {
           </div>
 
           {/* Navigation Links - Center */}
-          <div className='hidden md:flex absolute left-1/2 transform -translate-x-1/2'>
-            <div className='flex items-center space-x-3 xl:space-x-5 whitespace-nowrap'>
+          <div className='hidden xl:flex absolute left-1/2 transform -translate-x-1/2'>
+            <div className='flex items-center space-x-2 xl:space-x-4 whitespace-nowrap'>
               {navLinks.map((link, index) => {
                 const isActive = isLinkActive(link.section);
 
                 return (
                   <motion.div
                     key={index}
-                    className={`px-1 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative group select-none whitespace-nowrap ${
+                    className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative group select-none whitespace-nowrap ${
                       isActive
                         ? 'text-[#b09155]'
                         : 'text-gray-300 hover:text-[#b09155]'
@@ -289,10 +288,10 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Right Side - Game Counter, Language Switcher, Contact Button & CTA Button */}
-          <div className='hidden md:flex items-center space-x-3 pr-6'>
-            {/* Game Counter */}
-            <GameCounter />
+          {/* Right Side - Language Switcher, Contact Button & CTA Button */}
+          <div className='hidden xl:flex items-center space-x-3 pr-6'>
+            {/* Game Counter - Hidden for now */}
+            {/* <GameCounter /> */}
 
             {/* Language Switcher - vertically centered */}
             <div className='flex items-center'>
@@ -303,7 +302,7 @@ export default function Navigation() {
               href={`#${getSectionMappings(locale).contact}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='border border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-300 select-none'
+              className='border-2 border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-6 py-2 rounded-lg font-bold text-base transition-all duration-300 select-none whitespace-nowrap shadow-lg hover:shadow-[#b09155]/50'
               data-cursor='button'
             >
               {t('getStarted')}
@@ -311,7 +310,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className='md:hidden pr-4'>
+          <div className='xl:hidden pr-4'>
             <motion.button
               onClick={toggleMenu}
               className='text-gray-300 hover:text-white p-2 select-none'
@@ -329,7 +328,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className='md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10'
+            className='xl:hidden bg-black/95 backdrop-blur-xl border-t border-white/10'
           >
             <div className='px-2 pt-2 pb-3 space-y-1'>
               {/* Navigation Links for mobile */}

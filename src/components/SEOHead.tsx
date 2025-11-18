@@ -16,6 +16,13 @@ export default function SEOHead({ canonical }: SEOHeadProps) {
 
   return (
     <>
+      {/* Favicon and icons */}
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+      <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="manifest" href="/manifest.json" />
+      
       {/* Viewport for mobile responsiveness with safe area support */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
       
@@ -40,7 +47,7 @@ export default function SEOHead({ canonical }: SEOHeadProps) {
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content="Rise.sk - Expert Programming Teams | Custom Software Development Slovakia" />
       <meta property="og:description" content="Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps. Quick delivery, reliable code, 100% on-time projects." />
-      <meta property="og:image" content={`${baseUrl}/rise/logo-circle-bronze-bg.png`} />
+      <meta property="og:image" content={`${baseUrl}/rise/Rise_logo_circle.png`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Rise.sk Logo - Expert Programming Teams" />
@@ -53,7 +60,7 @@ export default function SEOHead({ canonical }: SEOHeadProps) {
       <meta name="twitter:creator" content="@rise_sk" />
       <meta name="twitter:title" content="Rise.sk - Expert Programming Teams | Custom Software Development Slovakia" />
       <meta name="twitter:description" content="Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps. Quick delivery, reliable code, 100% on-time projects." />
-      <meta name="twitter:image" content={`${baseUrl}/rise/logo-circle-bronze-bg.png`} />
+      <meta name="twitter:image" content={`${baseUrl}/rise/Rise_logo_circle.png`} />
       <meta name="twitter:image:alt" content="Rise.sk Logo - Expert Programming Teams" />
       
       {/* Additional SEO meta tags */}

@@ -284,7 +284,7 @@ export default function RiseIconRain() {
             >
               <div className="relative w-full h-full drop-shadow-lg">
                 <Image
-                  src="/optimized/rise/logo-bronze-transparent.webp"
+                  src="/optimized/rise/Rise_logo_transparent.webp"
                   alt="RISE Logo"
                   fill
                   className="object-contain"

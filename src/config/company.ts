@@ -142,11 +142,11 @@ export const companyConfig = {
 
     // Assets
     logo: {
-      main: '/rise/logo-text-rectangle.png',
-      circle: '/rise/logo-circle-white-bg.png',
-      circleBronze: '/rise/logo-circle-bronze-bg.png',
-      logoBronzeTransparent: '/rise/logo-bronze-transparent.png',
-      logoGoldTransparent: '/rise/logo-bronze-transparent.png',
+      main: '/rise/Rise_logo_circle.png',
+      circle: '/rise/Rise_logo_circle.png',
+      circleWhiteBg: '/rise/logo-circle-white-bg.png',
+      logoTextRectangle: '/rise/logo-text-rectangle.png',
+      logoGoldTransparent: '/rise/Rise_logo_transparent.png',
       stamp: '/rise/stamp.png',
     },
 

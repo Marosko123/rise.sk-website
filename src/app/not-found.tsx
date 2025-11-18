@@ -18,7 +18,7 @@ export default function NotFound() {
         {/* Logo */}
         <div className="mb-8">
           <Image
-            src="/rise/logo-circle-bronze-bg.png"
+            src="/rise/Rise_logo_circle.png"
             alt="Rise.sk"
             width={80}
             height={80}

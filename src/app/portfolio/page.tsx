@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: 'Rise.sk',
     images: [
       {
-        url: '/rise/logo-circle-bronze-bg.png',
+        url: '/rise/Rise_logo_circle.png',
         width: 1200,
         height: 630,
         alt: 'Rise.sk Portfolio - Software Development Projects',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Portfolio | Rise.sk - Software Development Projects & Case Studies',
     description: 'Explore Rise.sk portfolio of successful software development projects. Custom web applications, mobile apps, enterprise solutions.',
-    images: ['/rise/logo-circle-bronze-bg.png'],
+    images: ['/rise/Rise_logo_circle.png'],
   },
   alternates: {
     canonical: 'https://rise.sk/en/portfolio',

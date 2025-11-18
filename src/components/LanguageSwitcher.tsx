@@ -41,8 +41,7 @@ export default function LanguageSwitcher() {
     return (
       <div className="relative">
         <button className="flex items-center gap-2 px-3 py-2 bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-200">
-          <span className="text-lg">🇸🇰</span>
-          <span className="hidden sm:inline">SK</span>
+          <span className="text-xl">🇸🇰</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
@@ -60,8 +59,7 @@ export default function LanguageSwitcher() {
         className="flex items-center gap-2 px-3 py-2 bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-200"
         aria-label="Change language"
       >
-        <span className="text-lg">{currentLanguage.flag}</span>
-        <span className="hidden sm:inline">{currentLanguage.code.toUpperCase()}</span>
+        <span className="text-xl">{currentLanguage.flag}</span>
         <svg 
           className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
           fill="none" 

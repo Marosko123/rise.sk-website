@@ -12,9 +12,21 @@ export default function ServiceWorkerRegistration() {
 
   const registerServiceWorker = useCallback(async () => {
     try {
+      // Clear old caches from previous versions
+      const cacheNames = await caches.keys();
+      const oldCaches = cacheNames.filter(name => 
+        name.startsWith('rise-sk-') && !name.includes('-v3') && !name.includes('-v2')
+      );
+      await Promise.all(oldCaches.map(name => caches.delete(name)));
+
       const registration = await navigator.serviceWorker.register('/sw.js', {
         scope: '/',
       });
+
+      // Force update on first load if there's an old version
+      if (registration.waiting) {
+        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
 
       // Handle updates
       registration.addEventListener('updatefound', () => {

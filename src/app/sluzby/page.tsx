@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     locale: 'sk_SK',
     images: [
       {
-        url: '/rise/logo-circle-bronze-bg.png',
+        url: '/rise/Rise_logo_circle.png',
         width: 1200,
         height: 630,
         alt: 'Rise.sk - IT Služby a Riešenia',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'IT Služby a Riešenia | Programátorské a Vývojárske Služby Slovensko',
     description: 'Komplexné IT služby a softvérové riešenia na Slovensku. Webový vývoj, mobilné aplikácie, enterprise softvér, cloudové riešenia.',
-    images: ['/rise/logo-circle-bronze-bg.png'],
+    images: ['/rise/Rise_logo_circle.png'],
   },
   alternates: {
     canonical: 'https://rise.sk/sk/sluzby',

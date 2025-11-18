@@ -13,11 +13,45 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Rise.sk - Expert Programming Teams | Custom Software Development Slovakia',
   description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps. Quick delivery, reliable code, 100% on-time projects.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
+  manifest: '/manifest.json',
   alternates: {
     languages: {
       'sk': 'https://rise.sk',
       'en': 'https://rise.sk/en',
     }
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'sk_SK',
+    url: 'https://rise.sk',
+    siteName: 'Rise.sk',
+    title: 'Rise.sk - Expert Programming Teams',
+    description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps.',
+    images: [
+      {
+        url: '/rise/Rise_logo_circle.png',
+        width: 1200,
+        height: 1200,
+        alt: 'Rise.sk Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Rise.sk - Expert Programming Teams',
+    description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps.',
+    images: ['/rise/Rise_logo_circle.png'],
   },
   other: {
     'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION || '',

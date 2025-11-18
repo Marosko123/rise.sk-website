@@ -1,8 +1,8 @@
-const CACHE_NAME = 'rise-sk-v2';
-const STATIC_CACHE = 'rise-sk-static-v2';
-const DYNAMIC_CACHE = 'rise-sk-dynamic-v2';
-const IMAGE_CACHE = 'rise-sk-images-v2';
-const FONT_CACHE = 'rise-sk-fonts-v1';
+const CACHE_NAME = 'rise-sk-v3';
+const STATIC_CACHE = 'rise-sk-static-v3';
+const DYNAMIC_CACHE = 'rise-sk-dynamic-v3';
+const IMAGE_CACHE = 'rise-sk-images-v3';
+const FONT_CACHE = 'rise-sk-fonts-v2';
 
 // Assets to cache on install
 const STATIC_ASSETS = [
@@ -12,9 +12,9 @@ const STATIC_ASSETS = [
   '/manifest.json',
   '/robots.txt',
   '/sitemap.xml',
-  '/rise/logo-circle-bronze-bg.png',
+  '/rise/Rise_logo_circle.png',
   '/rise/logo-circle-white-bg.png',
-  '/rise/logo-bronze-transparent.png',
+  '/rise/Rise_logo_transparent.png',
   '/rise/logo-text-rectangle.png',
   '/favicon.ico'
 ];
@@ -73,6 +73,13 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// Message event - handle skip waiting
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 // Fetch event
 self.addEventListener('fetch', (event) => {
   const { request } = event;
@@ -98,6 +105,11 @@ self.addEventListener('fetch', (event) => {
 
 async function handleFetch(request) {
   const url = new URL(request.url);
+  
+  // Don't cache Next.js image optimization requests - let them pass through
+  if (url.pathname.startsWith('/_next/image')) {
+    return fetch(request);
+  }
   
   try {
     // Handle different types of requests
@@ -144,8 +156,8 @@ async function handleImageRequest(request) {
   try {
     const response = await fetch(request);
     
-    // Cache successful responses
-    if (response.status === 200) {
+    // Only cache successful responses for actual image files, not optimized images
+    if (response.status === 200 && !request.url.includes('/_next/image')) {
       cache.put(request, response.clone());
     }
     
@@ -153,7 +165,13 @@ async function handleImageRequest(request) {
   } catch (error) {
     console.error('Failed to fetch image:', error);
     
-    // Return a fallback image or empty response
+    // Try to return from cache if network fails
+    const cachedFallback = await cache.match(request);
+    if (cachedFallback) {
+      return cachedFallback;
+    }
+    
+    // Return a proper 404 response
     return new Response('', {
       status: 404,
       statusText: 'Image not found'
@@ -286,8 +304,8 @@ async function syncVitals() {
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data ? event.data.text() : 'New update available!',
-    icon: '/rise/logo-circle-bronze-bg.png',
-    badge: '/rise/logo-circle-bronze-bg.png',
+    icon: '/rise/Rise_logo_circle.png',
+    badge: '/rise/Rise_logo_circle.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
