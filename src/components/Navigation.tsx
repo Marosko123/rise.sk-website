@@ -265,8 +265,8 @@ export default function Navigation() {
                     key={index}
                     className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative group select-none whitespace-nowrap ${
                       isActive
-                        ? 'text-[#b09155]'
-                        : 'text-gray-300 hover:text-[#b09155]'
+                        ? 'text-primary'
+                        : 'text-gray-300 hover:text-primary'
                     }`}
                     data-cursor='link'
                   >
@@ -279,7 +279,7 @@ export default function Navigation() {
                         {link.label}
                       </Link>
                     )}
-                    <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#b09155] to-[#d4af37] transition-all duration-300 ${
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-light transition-all duration-300 ${
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}></span>
                   </motion.div>
@@ -302,7 +302,7 @@ export default function Navigation() {
               href={`#${getSectionMappings(locale).contact}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='border-2 border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white px-6 py-2 rounded-lg font-bold text-base transition-all duration-300 select-none whitespace-nowrap shadow-lg hover:shadow-[#b09155]/50'
+              className='border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-lg font-bold text-base transition-all duration-300 select-none whitespace-nowrap shadow-lg hover:shadow-glow/50'
               data-cursor='button'
             >
               {t('getStarted')}
@@ -340,7 +340,7 @@ export default function Navigation() {
                     key={index}
                     className={`block px-3 py-2 text-base font-medium transition-colors duration-300 select-none cursor-pointer ${
                       isActive
-                        ? 'text-[#b09155] bg-[#b09155]/10'
+                        ? 'text-primary bg-primary/10'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'
                     }`}
                     onClick={() => handleMobileNavClick(link.href)}
@@ -357,7 +357,7 @@ export default function Navigation() {
 
               {/* CTA Button - always show */}
               <motion.div
-                className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] text-white block px-3 py-2 text-base font-medium rounded-lg mt-4 select-none cursor-pointer'
+                className='bg-gradient-to-r from-primary to-primary-dark text-white block px-3 py-2 text-base font-medium rounded-lg mt-4 select-none cursor-pointer'
                 onClick={() => handleMobileNavClick(`#${getSectionMappings(locale).contact}`)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}

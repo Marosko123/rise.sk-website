@@ -18,7 +18,7 @@ export function ParallaxBackground() {
     <div ref={ref} className='absolute inset-0 overflow-hidden'>
       <motion.div
         style={{ y, opacity }}
-        className='absolute inset-0 bg-gradient-to-br from-[#b09155]/10 via-[#9a7f4b]/10 to-[#d4af37]/10'
+        className='absolute inset-0 bg-gradient-to-br from-primary/10 via-primary-dark/10 to-primary-light/10'
       />
     </div>
   );
@@ -34,7 +34,7 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className='fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#b09155] via-[#9a7f4b] to-[#d4af37] origin-left z-50'
+      className='fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary-dark to-primary-light origin-left z-50'
       style={{ scaleX }}
     />
   );

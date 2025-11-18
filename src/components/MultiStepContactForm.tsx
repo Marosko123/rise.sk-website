@@ -371,7 +371,7 @@ export default function MultiStepContactForm() {
         >
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('mainTitle')}
-            <span className='bg-gradient-to-r from-[#b09155] via-[#d4af37] to-[#b8860b] bg-clip-text text-transparent block'>
+            <span className='bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-clip-text text-transparent block'>
               {t('mainTitleHighlight')}
             </span>
           </h2>
@@ -420,7 +420,7 @@ export default function MultiStepContactForm() {
                           ? 'noopener noreferrer'
                           : undefined
                       }
-                      className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-200'
+                      className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-200'
                       data-cursor='link'
                     >
                       <item.icon className='w-6 h-6 text-white' />
@@ -436,13 +436,13 @@ export default function MultiStepContactForm() {
                     {/* Copy Button */}
                     <button
                       onClick={() => copyToClipboard(item.value, `contact-${index}`)}
-                      className='ml-3 p-2 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200'
+                      className='ml-3 p-2 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200'
                       title='Copy to clipboard'
                     >
                       {copiedField === `contact-${index}` ? (
                         <CheckCircle className='w-4 h-4 text-green-400' />
                       ) : (
-                        <Copy className='w-4 h-4 text-gray-400 hover:text-[#b09155]' />
+                        <Copy className='w-4 h-4 text-gray-400 hover:text-primary' />
                       )}
                     </button>
                   </div>
@@ -458,7 +458,7 @@ export default function MultiStepContactForm() {
               className='p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/8 transition-colors duration-200'
             >
               <div className='flex items-center'>
-                <div className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center'>
+                <div className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center'>
                   <svg
                     className='w-6 h-6 text-white'
                     fill='none'
@@ -482,7 +482,7 @@ export default function MultiStepContactForm() {
                   </div>
                   <button
                     onClick={() => window.open('https://calendar.app.google/NWkLNFqSZffB36of6', '_blank')}
-                    className='inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white text-sm font-medium rounded-lg transition-colors duration-200'
+                    className='inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white text-sm font-medium rounded-lg transition-colors duration-200'
                   >
                     {t('meetingCta')}
                   </button>
@@ -513,9 +513,9 @@ export default function MultiStepContactForm() {
                         <div
                           className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 transition-colors duration-200 ${
                             isCompleted
-                              ? 'bg-[#b09155] border-[#b09155] text-white'
+                              ? 'bg-primary border-primary text-white'
                               : isActive
-                              ? 'border-[#b09155] text-[#b09155] bg-white/10'
+                              ? 'border-primary text-primary bg-white/10'
                               : 'border-white/20 text-gray-400'
                           }`}
                         >
@@ -528,7 +528,7 @@ export default function MultiStepContactForm() {
                         {index < stepTitles.length - 1 && (
                           <div
                             className={`w-8 md:w-16 h-0.5 mx-1 md:mx-2 transition-colors duration-200 ${
-                              isCompleted ? 'bg-[#b09155]' : 'bg-white/20'
+                              isCompleted ? 'bg-primary' : 'bg-white/20'
                             }`}
                           />
                         )}
@@ -575,7 +575,7 @@ export default function MultiStepContactForm() {
                             value={formData.name}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
+                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                             placeholder={t('placeholders.name')}
                             data-cursor='text'
                           />
@@ -594,7 +594,7 @@ export default function MultiStepContactForm() {
                             value={formData.company}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
+                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                             placeholder={t('placeholders.company')}
                           />
                         </div>
@@ -616,7 +616,7 @@ export default function MultiStepContactForm() {
                             value={formData.email}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
+                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                             placeholder={t('placeholders.email')}
                           />
                         </div>
@@ -634,7 +634,7 @@ export default function MultiStepContactForm() {
                             value={formData.phone}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50'
+                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
                             placeholder={t('placeholders.phone')}
                           />
                         </div>
@@ -667,7 +667,7 @@ export default function MultiStepContactForm() {
                             value={formData.service}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
                             data-cursor='pointer'
                             style={{ 
                               WebkitAppearance: 'none',
@@ -705,7 +705,7 @@ export default function MultiStepContactForm() {
                             value={formData.projectType}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+                            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
                             style={{ 
                               WebkitAppearance: 'none',
                               MozAppearance: 'none'
@@ -755,7 +755,7 @@ export default function MultiStepContactForm() {
                               value={formData.budget}
                               onChange={handleChange}
                               disabled={isSubmitting}
-                              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+                              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
                               style={{ 
                                 WebkitAppearance: 'none',
                                 MozAppearance: 'none'
@@ -791,7 +791,7 @@ export default function MultiStepContactForm() {
                               value={formData.timeline}
                               onChange={handleChange}
                               disabled={isSubmitting}
-                              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+                              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
                               style={{ 
                                 WebkitAppearance: 'none',
                                 MozAppearance: 'none'
@@ -829,7 +829,7 @@ export default function MultiStepContactForm() {
                           value={formData.message}
                           onChange={handleChange}
                           disabled={isSubmitting}
-                          className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b09155] focus:border-transparent transition-colors duration-150 resize-none disabled:opacity-50'
+                          className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 resize-none disabled:opacity-50'
                           placeholder={t('messagePlaceholder')}
                           data-cursor='text'
                         />
@@ -946,7 +946,7 @@ export default function MultiStepContactForm() {
                       type='button'
                       onClick={nextStep}
                       disabled={!isStepValid()}
-                      className='flex items-center px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base font-semibold'
+                      className='flex items-center px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base font-semibold'
                     >
                       <span className="hidden sm:inline">{t('multistep.next')}</span>
                       <span className="sm:hidden">→</span>
@@ -956,7 +956,7 @@ export default function MultiStepContactForm() {
                     <Button
                       type='submit'
                       disabled={isSubmitting}
-                      className='flex items-center px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base'
+                      className='flex items-center px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base'
                     >
                       {isSubmitting ? (
                         <>

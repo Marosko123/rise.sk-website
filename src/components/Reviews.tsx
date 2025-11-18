@@ -87,7 +87,7 @@ export default function Reviews() {
       className="bg-gradient-to-b from-slate-900/50 via-slate-800/30 to-slate-900/50 relative py-24"
     >
       {/* Distinct background for Reviews */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#b09155]/20 via-transparent to-[#9a7f4b]/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary-dark/20" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header - Simplified for performance */}

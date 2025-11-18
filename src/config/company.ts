@@ -1,3 +1,28 @@
+// =====================================
+// 🎨 THEME CONFIGURATION
+// =====================================
+// Change this to switch logo colors AND all UI colors: 'bronze' | 'gold1' | 'gold2' | 'gold3'
+// - bronze: Original bronze color (#b09155)
+// - gold1: Bright gold (#ffd700)
+// - gold2: Classic gold (#d4af37)
+// - gold3: Warm gold (#FFCC33)
+//
+// HOW TO USE IN COMPONENTS:
+// Instead of hardcoded colors like "#b09155", use Tailwind classes:
+//   ❌ className="text-[#b09155]"           → Use: ✅ className="text-primary"
+//   ❌ className="bg-[#9a7f4b]"             → Use: ✅ className="bg-primary-dark"
+//   ❌ className="border-[#b09155]"         → Use: ✅ className="border-primary"
+//   ❌ className="from-[#b09155]"           → Use: ✅ className="from-primary"
+//   ❌ style={{ color: '#b09155' }}         → Use: ✅ className="text-primary"
+//
+// Available Tailwind color classes:
+//   - primary (main theme color)
+//   - primary-dark (darker shade)
+//   - primary-darker (even darker)
+//   - primary-light (lighter shade)
+//   - glow (for glowing effects)
+const LOGO_THEME = 'gradient';
+
 export const companyConfig = {
   // =====================================
   // 🏢 BASIC COMPANY INFORMATION
@@ -142,10 +167,10 @@ export const companyConfig = {
 
     // Assets
     logo: {
-      main: '/rise/bronze/Rise_logo_circle.png',
-      circle: '/rise/bronze/Rise_logo_circle.png',
-      logoGoldTransparent: '/rise/bronze/Rise_logo_transparent.png',
-      stamp: '/rise/bronze/stamp.png',
+      main: `/rise/${LOGO_THEME}/Rise_logo_circle.png`,
+      circle: `/rise/${LOGO_THEME}/Rise_logo_circle.png`,
+      logoGoldTransparent: `/rise/${LOGO_THEME}/Rise_logo_transparent.png`,
+      stamp: `/rise/${LOGO_THEME}/stamp.png`,
     },
 
     // Analytics IDs (fill when available)
@@ -188,5 +213,6 @@ export const getSocialLinks = () => companyConfig.social;
 export const getDepartmentEmail = (
   dept: 'development' | 'support' | 'sales'
 ) => companyConfig.contact[dept];
+export const getLogoTheme = () => LOGO_THEME;
 
 export default companyConfig;

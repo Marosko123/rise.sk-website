@@ -785,7 +785,7 @@ export default function LandingPage() {
 
             <div className='mb-12'>
               <h1 className='text-4xl md:text-5xl font-bold text-white mb-4 select-none'>
-                {t('tagline.weAre')} <span style={{ color: '#B09155' }}>{t('tagline.innovativeSolutions')}</span>
+                {t('tagline.weAre')} <span className='text-primary'>{t('tagline.innovativeSolutions')}</span>
               </h1>
               <p className='text-xl text-white/80 font-light select-none'>
                 {t('description')}
@@ -794,11 +794,11 @@ export default function LandingPage() {
 
             <div className='flex justify-center'>
               <button
-                className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 shadow-lg'
+                className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 border-primary transition-all duration-300 hover:scale-105 shadow-lg'
                 style={{
-                  borderColor: '#D4AF37',
-                  backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                  boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
+                  backgroundColor: 'var(--primary)',
+                  opacity: 0.1,
+                  boxShadow: '0 4px 15px var(--glow)'
                 }}
                 onClick={() => {
                   // Fallback button navigation
@@ -996,7 +996,7 @@ export default function LandingPage() {
                 textShadow: '0 0 30px rgba(176, 145, 85, 0.3)',
               }}
             >
-              {t('tagline.weAre')} <span style={{ color: '#B09155' }}>{t('tagline.innovativeSolutions')}</span>
+              {t('tagline.weAre')} <span className='text-primary'>{t('tagline.innovativeSolutions')}</span>
             </h1>
             <p
               className='text-xl text-white/80 font-light transition-all duration-700 select-none'

@@ -85,7 +85,7 @@ export default function Footer() {
             <Link href='/' className='inline-block mb-6'>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className='text-3xl font-bold bg-gradient-to-r from-[#b09155] to-[#d4af37] bg-clip-text text-transparent'
+                className='text-3xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent'
               >
                 Rise.sk
               </motion.div>
@@ -111,7 +111,7 @@ export default function Footer() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ x: 5 }}
-                  className='flex items-center text-gray-300 hover:text-[#b09155] transition-all duration-300 group select-none'
+                  className='flex items-center text-gray-300 hover:text-primary transition-all duration-300 group select-none'
                 >
                   <div className='w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300'>
                     <item.icon className='w-5 h-5' />
@@ -149,7 +149,7 @@ export default function Footer() {
                   >
                     <Link
                       href={serviceLinks[index]}
-                      className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform select-none'
+                      className='text-gray-300 hover:text-primary transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform select-none'
                     >
                       {service}
                     </Link>
@@ -183,7 +183,7 @@ export default function Footer() {
                   >
                     <Link
                       href={companyLinks[index]}
-                      className='text-gray-300 hover:text-[#b09155] transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform select-none'
+                      className='text-gray-300 hover:text-primary transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform select-none'
                     >
                       {item}
                     </Link>
@@ -203,10 +203,10 @@ export default function Footer() {
           className='mb-8'
         >
           <div className='text-center mb-6'>
-            <h3 className='text-xl font-bold bg-gradient-to-r from-[#b09155] to-[#d4af37] bg-clip-text text-transparent mb-2'>
+            <h3 className='text-xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent mb-2'>
               {companyInfo('name')}
             </h3>
-            <div className='w-16 h-0.5 bg-gradient-to-r from-[#b09155] to-[#d4af37] mx-auto rounded-full'></div>
+            <div className='w-16 h-0.5 bg-gradient-to-r from-primary to-primary-light mx-auto rounded-full'></div>
           </div>
 
           {/* 3 Column Layout */}
@@ -215,18 +215,18 @@ export default function Footer() {
 
               {/* Kontakt Column */}
               <div className='space-y-4'>
-                <h4 className='text-lg font-semibold text-[#b09155] mb-4 flex items-center'>
+                <h4 className='text-lg font-semibold text-primary mb-4 flex items-center'>
                   <Mail className='w-5 h-5 mr-2' />
                   {t('contact.title')}
                 </h4>
 
                 {/* Zodpovedný zástupca */}
                 <div className='flex items-start space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
-                    <Users className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
+                    <Users className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.executives')}
                     </div>
                     <div className='text-white font-medium text-sm'>
@@ -237,29 +237,29 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('executives'), 'representative')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'representative' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
 
                 {/* Phone */}
                 <div className='flex items-center space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <Phone className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Phone className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {t('contact.phone')}
                     </div>
                     <a
                       href={`tel:${companyInfo('phone').replace(/\s/g, '')}`}
-                      className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-sm'
+                      className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm'
                     >
                       {companyInfo('phone')}
                     </a>
@@ -268,29 +268,29 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('phone'), 'phone')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'phone' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
 
                 {/* Email */}
                 <div className='flex items-center space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <Mail className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Mail className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {t('contact.email')}
                     </div>
                     <a
                       href={`mailto:${t('contact.values.email')}`}
-                      className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-sm'
+                      className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm'
                     >
                       {t('contact.values.email')}
                     </a>
@@ -299,31 +299,31 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(t('contact.values.email'), 'email')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'email' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
 
                 {/* Address */}
                 <div className='flex items-start space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
-                    <MapPin className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
+                    <MapPin className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.address')}
                     </div>
                     <a
                       href={`https://maps.google.com/?q=${encodeURIComponent(companyInfo('address'))}`}
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-white hover:text-[#b09155] transition-colors duration-300 font-medium text-sm leading-relaxed'
+                      className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm leading-relaxed'
                     >
                       {companyInfo('address')}
                     </a>
@@ -332,13 +332,13 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('address'), 'address')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'address' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
@@ -346,18 +346,18 @@ export default function Footer() {
 
               {/* Fakturačné údaje Column */}
               <div className='space-y-4'>
-                <h4 className='text-lg font-semibold text-[#b09155] mb-4 flex items-center'>
+                <h4 className='text-lg font-semibold text-primary mb-4 flex items-center'>
                   <FileText className='w-5 h-5 mr-2' />
                   {t('sections.billing')}
                 </h4>
 
                 {/* IČO */}
                 <div className='flex items-center space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <Hash className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Hash className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.businessId')}
                     </div>
                     <div className='text-white font-mono text-sm'>
@@ -368,24 +368,24 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('businessId'), 'businessId')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'businessId' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
 
                 {/* DIČ */}
                 <div className='flex items-center space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <CreditCard className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <CreditCard className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.vatId')}
                     </div>
                     <div className='text-white font-mono text-sm'>
@@ -396,24 +396,24 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('vatId'), 'vatId')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'vatId' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
 
                 {/* VAT Status */}
                 <div className='flex items-center space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <CreditCard className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <CreditCard className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.vatStatus')}
                     </div>
                     <div className='text-white text-sm font-medium'>
@@ -424,24 +424,24 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('vatStatus'), 'vatStatus')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'vatStatus' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
 
                 {/* ORSR */}
                 <div className='flex items-start space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
-                    <FileText className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
+                    <FileText className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.registration')}
                     </div>
                     <div className='text-white text-sm leading-relaxed'>
@@ -452,13 +452,13 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('registration'), 'orsr')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'orsr' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
@@ -466,18 +466,18 @@ export default function Footer() {
 
               {/* Bankové spojenie Column */}
               <div className='space-y-4'>
-                <h4 className='text-lg font-semibold text-[#b09155] mb-4 flex items-center'>
+                <h4 className='text-lg font-semibold text-primary mb-4 flex items-center'>
                   <Banknote className='w-5 h-5 mr-2' />
                   {t('sections.banking')}
                 </h4>
 
                 {/* Banka */}
                 <div className='flex items-start space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
-                    <Banknote className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5'>
+                    <Banknote className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.bank')}
                     </div>
                     <div className='text-white font-medium text-sm'>
@@ -488,24 +488,24 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('banking.bank'), 'bank')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'bank' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
 
                 {/* SWIFT */}
                 <div className='flex items-center space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <CreditCard className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <CreditCard className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.swift')}
                     </div>
                     <div className='text-white font-mono text-sm'>
@@ -516,24 +516,24 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('banking.swift'), 'swift')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'swift' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>
 
                 {/* IBAN */}
                 <div className='flex items-center space-x-3'>
-                  <div className='w-8 h-8 bg-gradient-to-br from-[#b09155]/20 to-[#d4af37]/20 rounded-lg flex items-center justify-center flex-shrink-0'>
-                    <Hash className='w-4 h-4 text-[#b09155]' />
+                  <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <Hash className='w-4 h-4 text-primary' />
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <div className='text-[#b09155] text-xs font-semibold uppercase tracking-wide'>
+                    <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
                       {companyInfo('labels.iban')}
                     </div>
                     <div className='text-white font-mono text-sm'>
@@ -544,13 +544,13 @@ export default function Footer() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard(companyInfo('banking.iban'), 'iban')}
-                    className='p-1.5 rounded-lg bg-white/10 hover:bg-[#b09155]/20 transition-colors duration-200 flex-shrink-0'
+                    className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
                     title='Copy to clipboard'
                   >
                     {copiedField === 'iban' ? (
                       <Check className='w-3 h-3 text-green-400' />
                     ) : (
-                      <Copy className='w-3 h-3 text-gray-400 hover:text-[#b09155]' />
+                      <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
                     )}
                   </motion.button>
                 </div>

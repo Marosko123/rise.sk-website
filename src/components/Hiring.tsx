@@ -80,7 +80,7 @@ export default function Hiring() {
         >
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('title')}
-            <span className='bg-gradient-to-r from-[#b09155] via-[#d4af37] to-[#b8860b] bg-clip-text text-transparent block'>
+            <span className='bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-clip-text text-transparent block'>
               {t('titleHighlight')}
             </span>
           </h2>
@@ -130,7 +130,7 @@ export default function Hiring() {
                   </p>
 
                   <div className='mb-4'>
-                    <h5 className='text-sm font-semibold text-[#b09155] mb-2'>
+                    <h5 className='text-sm font-semibold text-primary mb-2'>
                       {t('skillsNeeded')}:
                     </h5>
                     <div className='flex flex-wrap gap-2'>
@@ -178,7 +178,7 @@ export default function Hiring() {
                 }}
               >
                 <Card className='h-full bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 ease-out group text-center'>
-                  <div className='w-16 h-16 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ease-out mx-auto mb-4'>
+                  <div className='w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ease-out mx-auto mb-4'>
                     <perk.icon className='w-8 h-8 text-white' />
                   </div>
 
@@ -226,9 +226,9 @@ export default function Hiring() {
               }}
               className="h-full"
             >
-              <Card className='h-full bg-gradient-to-br from-[#b09155]/20 to-[#9a7f4b]/20 border-[#b09155]/30 backdrop-blur-sm hover:border-[#b09155]/50 hover:shadow-lg hover:shadow-[#b09155]/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
+              <Card className='h-full bg-gradient-to-br from-primary/20 to-primary-dark/20 border-primary/30 backdrop-blur-sm hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
                     onClick={() => window.open('https://forms.gle/ZmZnHoHr5PmewG8a8', '_blank')}>
-                <div className='w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>
+                <div className='w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>
                   <Image src="/file.svg" alt="Form" width={24} height={24} className="w-6 h-6" />
                 </div>
                 <h4 className='text-white font-bold mb-2'>

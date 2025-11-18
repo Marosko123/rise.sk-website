@@ -59,8 +59,8 @@ export function ScrollSectionNavigator({
             <motion.div
               className={`w-3 h-3 rounded-full border-2 transition-colors duration-300 ${
                 activeSection === id
-                  ? 'bg-[#b09155] border-[#b09155]'
-                  : 'bg-transparent border-gray-400 hover:border-[#b09155]'
+                  ? 'bg-primary border-primary'
+                  : 'bg-transparent border-gray-400 hover:border-primary'
               }`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
@@ -107,13 +107,13 @@ export function MultiLayerParallax({
       {/* Background layer */}
       <motion.div
         style={{ y: yBackground, rotateX, scale }}
-        className='absolute inset-0 bg-gradient-to-br from-[#b09155]/20 via-[#9a7f4b]/20 to-[#d4af37]/20'
+        className='absolute inset-0 bg-gradient-to-br from-primary/20 via-primary-dark/20 to-primary-light/20'
       />
 
       {/* Midground layer */}
       <motion.div
         style={{ y: yMidground }}
-        className='absolute inset-0 bg-gradient-to-tr from-[#b09155]/10 via-transparent to-[#d4af37]/10'
+        className='absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary-light/10'
       />
 
       {/* Foreground content */}

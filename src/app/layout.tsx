@@ -1,11 +1,12 @@
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import GDPRConsent from '@/components/GDPRConsent';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import SEOHead from '@/components/SEOHead';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
+import ThemeProvider from '@/components/ThemeProvider';
 import WebVitalsReporter from '@/components/WebVitalsReporter';
 
 import './globals.css';
@@ -71,11 +72,13 @@ export default function RootLayout({ children }: Props) {
         <SEOHead />
       </head>
       <body>
-        {children}
-        <ServiceWorkerRegistration />
-        <WebVitalsReporter />
-        <GDPRConsent />
-        <Analytics />
+        <ThemeProvider>
+          {children}
+          <ServiceWorkerRegistration />
+          <WebVitalsReporter />
+          <GDPRConsent />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -5,15 +5,48 @@
 :root {
   --background: #1a1a1a;
   --foreground: #fff;
-  --primary: #b09155;
-  --primary-dark: #9a7f4b;
   --secondary: #1e293b;
   --accent: #64748b;
   --neutral-light: #f1f5f9;
   --neutral-dark: #94a3b8;
   --border: #334155;
   --glass: rgb(255 255 255 / 10%);
+}
+
+/* Theme: Bronze (Original) */
+:root[data-theme="bronze"] {
+  --primary: #b09155;
+  --primary-dark: #9a7f4b;
+  --primary-darker: #8b7355;
+  --primary-light: #c9a66b;
   --glow: #b09155;
+}
+
+/* Theme: Gold1 (Bright Gold) */
+:root[data-theme="gold1"] {
+  --primary: #ffd700;
+  --primary-dark: #e6c200;
+  --primary-darker: #ccad00;
+  --primary-light: #ffe44d;
+  --glow: #ffd700;
+}
+
+/* Theme: Gold2 (Classic Gold) */
+:root[data-theme="gold2"] {
+  --primary: #d4af37;
+  --primary-dark: #b8991f;
+  --primary-darker: #9d8419;
+  --primary-light: #e6c84d;
+  --glow: #d4af37;
+}
+
+/* Theme: Gold3 (Warm Gold) */
+:root[data-theme="gold3"] {
+  --primary: #ffcc33;
+  --primary-dark: #e6b71f;
+  --primary-darker: #cca31a;
+  --primary-light: #ffdb66;
+  --glow: #ffcc33;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -186,7 +219,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(-45deg, #b09155, #d4af37, #b8860b, #daa520);
+  background: linear-gradient(-45deg, var(--primary), var(--primary-light), var(--primary-dark), var(--primary-light));
   background-size: 400% 400%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -277,7 +310,7 @@ body {
 
 /* Gradient text animations */
 .gradient-text-animated {
-  background: linear-gradient(45deg, #b09155, #d4af37, #b8860b, #b09155);
+  background: linear-gradient(45deg, var(--primary), var(--primary-light), var(--primary-dark), var(--primary));
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -542,13 +575,11 @@ body {
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #b09155 !important;
   background: var(--primary) !important;
   border-radius: 2px;
   transition: background-color 0.2s ease;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #9a7f4b !important;
   background: var(--primary-dark) !important;
 }

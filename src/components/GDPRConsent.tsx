@@ -151,7 +151,7 @@ const GDPRConsent = () => {
               // Main banner
               <div className="flex flex-col lg:flex-row items-center gap-6">
                 <div className="flex items-center gap-4 flex-1">
-                  <Shield className="w-8 h-8 text-[#b09155] flex-shrink-0" />
+                  <Shield className="w-8 h-8 text-primary flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">
                       {t('title')}
@@ -180,7 +180,7 @@ const GDPRConsent = () => {
                   </button>
                   <button
                     onClick={handleAcceptAll}
-                    className="min-h-[48px] px-6 py-3 text-white bg-[#b09155] rounded-lg hover:bg-[#9a7f4b] active:bg-[#8b6914] transition-colors text-sm font-medium touch-manipulation"
+                    className="min-h-[48px] px-6 py-3 text-white bg-primary rounded-lg hover:bg-primary-dark active:bg-primary-darker transition-colors text-sm font-medium touch-manipulation"
                     style={{ minHeight: '48px' }}
                   >
                     {t('accept')}
@@ -192,7 +192,7 @@ const GDPRConsent = () => {
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <Shield className="w-6 h-6 text-[#b09155]" />
+                    <Shield className="w-6 h-6 text-primary" />
                     <h3 className="text-xl font-semibold text-white">
                       {t('settingsTitle')}
                     </h3>
@@ -217,7 +217,7 @@ const GDPRConsent = () => {
                             {category.title}
                           </h4>
                           {category.required && (
-                            <span className="text-xs bg-[#b09155] text-white px-2 py-1 rounded">
+                            <span className="text-xs bg-primary text-white px-2 py-1 rounded">
                               {t('categories.necessary.required')}
                             </span>
                           )}
@@ -240,7 +240,7 @@ const GDPRConsent = () => {
                           <div className={`
                             w-11 h-6 rounded-full transition-colors
                             ${consent[category.key as keyof typeof consent] || category.required
-                              ? 'bg-[#b09155]'
+                              ? 'bg-primary'
                               : 'bg-slate-600'
                             }
                           `}>
@@ -271,7 +271,7 @@ const GDPRConsent = () => {
                   </button>
                   <button
                     onClick={handleSaveSettings}
-                    className="min-h-[48px] px-6 py-3 text-white bg-[#b09155] rounded-lg hover:bg-[#9a7f4b] active:bg-[#8b6914] transition-colors flex items-center justify-center gap-2 text-sm font-medium touch-manipulation"
+                    className="min-h-[48px] px-6 py-3 text-white bg-primary rounded-lg hover:bg-primary-dark active:bg-primary-darker transition-colors flex items-center justify-center gap-2 text-sm font-medium touch-manipulation"
                     style={{ minHeight: '48px' }}
                   >
                     <CheckCircle className="w-4 h-4" />
@@ -286,11 +286,11 @@ const GDPRConsent = () => {
                     <div>
                       <p className="mb-2">
                         {t('moreInfo')}{' '}
-                        <Link href="/ochrana-osobnych-udajov" target='_blank' className="text-[#b09155] hover:underline">
+                        <Link href="/ochrana-osobnych-udajov" target='_blank' className="text-primary hover:underline">
                           {t('privacyPolicy')}
                         </Link>
                         {' '}{t('and')}{' '}
-                        <Link href="/obchodne-podmienky" target='_blank' className="text-[#b09155] hover:underline">
+                        <Link href="/obchodne-podmienky" target='_blank' className="text-primary hover:underline">
                           {t('terms')}
                         </Link>.
                       </p>

@@ -83,7 +83,7 @@ export default function About() {
         >
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('title')}
-            <span className='bg-gradient-to-r from-[#b09155] via-[#d4af37] to-[#b8860b] bg-clip-text text-transparent block'>
+            <span className='bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-clip-text text-transparent block'>
               {t('titleHighlight')}
             </span>
           </h2>
@@ -105,14 +105,14 @@ export default function About() {
             >
               <Card className='text-center h-full bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300'>
                 <div className='flex justify-center mb-4'>
-                  <div className='w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
+                  <div className='w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
                     <stat.icon className='w-6 h-6 text-white' />
                   </div>
                 </div>
                 <div className='text-3xl font-bold text-white mb-2'>
                   {stat.number}
                 </div>
-                <div className='text-[#b09155] font-semibold mb-2'>
+                <div className='text-primary font-semibold mb-2'>
                   {stat.label}
                 </div>
                 <div className='text-sm text-gray-400'>{stat.description}</div>
@@ -134,7 +134,7 @@ export default function About() {
             >
               <Card className='h-full bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300'>
                 <div className='flex items-center mb-6'>
-                  <div className='w-12 h-12 bg-gradient-to-br from-[#b09155] to-[#9a7f4b] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4'>
+                  <div className='w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4'>
                     <value.icon className='w-6 h-6 text-white' />
                   </div>
                   <h3 className='text-xl font-bold text-white'>
@@ -157,7 +157,7 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className='text-center mt-16'
         >
-          <div className='bg-gradient-to-r from-[#b09155]/20 to-[#9a7f4b]/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto'>
+          <div className='bg-gradient-to-r from-primary/20 to-primary-dark/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto'>
             <h3 className='text-2xl md:text-3xl font-bold text-white mb-4'>
               {t('cta.title')}
             </h3>
@@ -165,10 +165,10 @@ export default function About() {
               {t('cta.description')}
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-              <Button href='#contact' variant='primary' className='bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#8b7355] transition-all duration-300'>
+              <Button href='#contact' variant='primary' className='bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-darker transition-all duration-300'>
                 {t('cta.startProject')}
               </Button>
-              <Button href='#services' variant='outline' className='border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white transition-all duration-300'>
+              <Button href='#services' variant='outline' className='border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300'>
                 {t('cta.viewServices')}
               </Button>
             </div>

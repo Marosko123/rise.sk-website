@@ -8,13 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--primary)',
-        'primary-dark': 'var(--primary-dark)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          dark: 'var(--primary-dark)',
+          darker: 'var(--primary-darker)',
+          light: 'var(--primary-light)',
+        },
         secondary: 'var(--secondary)',
         accent: 'var(--accent)',
         foreground: 'var(--foreground)',
         'neutral-dark': 'var(--neutral-dark)',
         border: 'var(--border)',
+        glow: 'var(--glow)',
       },
     },
   },
