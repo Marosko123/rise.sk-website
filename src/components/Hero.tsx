@@ -111,7 +111,7 @@ export default function Hero() {
             <Button
               href='#contact'
               variant='primary'
-              className='text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-[#b09155] to-[#9a7f4b] hover:from-[#9a7f4b] hover:to-[#b09155] transition-all duration-300 select-none'
+              className='text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-darker transition-all duration-300 select-none'
             >
               {t('startProject')}
               <ArrowRight size={20} className='ml-2' />

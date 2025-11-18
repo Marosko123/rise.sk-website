@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from '@/hooks/useTranslations';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import companyConfig from '@/config/company';
 import { SHAPE_CONFIG, useFloatingShapes } from '@/hooks/useFloatingShapes';
@@ -100,6 +100,90 @@ export default function LandingPage() {
 
   const sectionMap = getSectionMappings(locale);
 
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollAccumulator = useRef(0);
+  const scrollResetTimer = useRef<NodeJS.Timeout | null>(null);
+
+  const triggerTransition = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+
+    setTimeout(() => {
+      window.location.hash = sectionMap.development;
+    }, 800); // 800ms animation
+  }, [isTransitioning, sectionMap.development]);
+
+  useEffect(() => {
+    if (showFullWebsite || isTransitioning) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Accumulate scroll (only positive for down, but allow up to reduce)
+      scrollAccumulator.current = Math.max(0, scrollAccumulator.current + e.deltaY);
+      
+      // Threshold to trigger transition (e.g. 400px)
+      const threshold = 400;
+      const progress = Math.min(scrollAccumulator.current / threshold, 1);
+      
+      setScrollProgress(progress);
+      setIsScrolling(true);
+
+      // Clear existing reset timer
+      if (scrollResetTimer.current) clearTimeout(scrollResetTimer.current);
+
+      if (progress >= 1) {
+        triggerTransition();
+      } else {
+        // Reset after inactivity
+        scrollResetTimer.current = setTimeout(() => {
+          setIsScrolling(false);
+          setScrollProgress(0);
+          scrollAccumulator.current = 0;
+        }, 150);
+      }
+    };
+
+    let touchStartY = 0;
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+      setIsScrolling(true);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const touchEndY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+      
+      if (deltaY > 0) { // Swipe up
+        const threshold = 200; // Lower threshold for touch
+        const progress = Math.min(deltaY / threshold, 1);
+        setScrollProgress(progress);
+        
+        if (progress >= 1) {
+          triggerTransition();
+        }
+      }
+    };
+
+    const handleTouchEnd = () => {
+      if (!isTransitioning) {
+        setIsScrolling(false);
+        setScrollProgress(0);
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [showFullWebsite, isTransitioning, triggerTransition]);
 
 
   // Check hash changes to switch between landing and full website
@@ -108,11 +192,12 @@ export default function LandingPage() {
       const hasHash = window.location.hash.length > 0;
       setShowFullWebsite(hasHash);
 
-      // Hide body scrollbar when on landing page
-      if (hasHash) {
-        document.body.style.overflow = 'auto';
-      } else {
+      // Reset transition state when returning to landing page
+      if (!hasHash) {
+        setIsTransitioning(false);
         document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
       }
     };
 
@@ -400,7 +485,23 @@ export default function LandingPage() {
 
       {!showFullWebsite ? (
         // Pure landing page with animated squares only
-        <div className="relative overflow-hidden min-h-screen">
+        <div 
+          className={`relative overflow-hidden min-h-screen`}
+          style={{
+            transform: isTransitioning 
+              ? 'scale(2)' 
+              : `scale(${1 + scrollProgress * 0.15})`,
+            opacity: isTransitioning 
+              ? 0 
+              : 1 - scrollProgress * 0.2,
+            filter: isTransitioning 
+              ? 'blur(4px)' 
+              : `blur(${scrollProgress * 2}px)`,
+            transition: isTransitioning 
+              ? 'all 1s ease-in-out' 
+              : (isScrolling ? 'all 0.1s ease-out' : 'all 0.5s ease-out')
+          }}
+        >
           {/* Top Navigation Elements */}
           <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-6">
             {/* Logo in top left - using LogoAndText component */}
@@ -418,28 +519,56 @@ export default function LandingPage() {
             {floatingShapes.map((shape) => (
               <div
                 key={shape.id}
-                className='absolute select-none will-change-transform transition-opacity duration-300 hover:opacity-40 cursor-pointer'
+                className='absolute select-none will-change-transform cursor-pointer'
                 style={{
                   left: `${shape.x}%`,
                   top: `${shape.y}%`,
                   width: `${shape.size}px`,
                   height: `${shape.size}px`,
-                  opacity: SHAPE_CONFIG.BASE_OPACITY,
                   transform: `translate3d(-50%, -50%, 0) rotate(${shape.rotation}deg)`,
-                  backgroundColor: '#B09155',
-                  borderRadius: shape.id % 4 === 0 ? '50%' :
-                               shape.id % 3 === 0 ? '0%' :
-                               shape.id % 2 === 0 ? '20%' : '10%',
-                  transition: 'opacity 0.3s ease-out',
-                  boxShadow: `0 4px 20px rgba(176, 145, 85, ${SHAPE_CONFIG.GLOW_INTENSITY})`,
+                  zIndex: 1,
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = SHAPE_CONFIG.HOVER_OPACITY.toString();
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = SHAPE_CONFIG.BASE_OPACITY.toString();
-                }}
-              />
+              >
+                <div
+                  className='w-full h-full transition-all duration-300 ease-out'
+                  style={{
+                    opacity: SHAPE_CONFIG.BASE_OPACITY,
+                    // Metallic Gradient: Dark Bronze -> Gold -> Dark Bronze
+                    background: 'linear-gradient(135deg, #8B7355 0%, #F4E07A 50%, #8B7355 100%)',
+                    borderRadius: Math.floor(shape.id) % 4 === 0 ? '50%' :
+                                 Math.floor(shape.id) % 3 === 0 ? '0%' :
+                                 Math.floor(shape.id) % 2 === 0 ? '20%' : '10%',
+                    // Inner glow + Drop shadow for 3D metallic effect
+                    boxShadow: `
+                      0 10px 25px rgba(0, 0, 0, 0.5),
+                      inset 0 0 15px rgba(255, 255, 255, 0.4),
+                      inset 2px 2px 5px rgba(255, 255, 255, 0.4),
+                      inset -2px -2px 5px rgba(0, 0, 0, 0.4)
+                    `,
+                    border: '1px solid rgba(255, 255, 255, 0.4)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.opacity = SHAPE_CONFIG.HOVER_OPACITY.toString();
+                    e.currentTarget.style.transform = 'scale(1.2) rotate(15deg)';
+                    e.currentTarget.style.boxShadow = `
+                      0 15px 35px rgba(212, 175, 55, 0.4),
+                      inset 0 0 20px rgba(255, 255, 255, 0.6),
+                      inset 2px 2px 5px rgba(255, 255, 255, 0.6),
+                      inset -2px -2px 5px rgba(0, 0, 0, 0.2)
+                    `;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.opacity = SHAPE_CONFIG.BASE_OPACITY.toString();
+                    e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                    e.currentTarget.style.boxShadow = `
+                      0 10px 25px rgba(0, 0, 0, 0.5),
+                      inset 0 0 15px rgba(255, 255, 255, 0.4),
+                      inset 2px 2px 5px rgba(255, 255, 255, 0.4),
+                      inset -2px -2px 5px rgba(0, 0, 0, 0.4)
+                    `;
+                  }}
+                />
+              </div>
             ))}
 
             {/* Large background logo with minimal effects for performance */}
@@ -561,42 +690,18 @@ export default function LandingPage() {
             </p>
           </div>
 
-          {/* Main Button with magnetic attraction */}
-          <div className='flex justify-center'>
-            <div
-              className='transition-transform duration-300 ease-out'
-              style={{
-                transform: `translate(${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).x}px, ${getMagneticOffset(windowSize.width / 2, windowSize.height / 2 + 100).y}px)`,
-              }}
-            >
-              <a
-                href={`#${sectionMap.development}`}
-                className='relative px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden group shadow-lg inline-block'
-                style={{
-                  borderColor: '#D4AF37',
-                  backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                  boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#D4AF37';
-                  e.currentTarget.style.borderColor = '#F4E07A';
-                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 175, 55, 0.5)';
-                  e.currentTarget.style.color = '#1a1a1a';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
-                  e.currentTarget.style.borderColor = '#D4AF37';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
-                  e.currentTarget.style.color = 'white';
-                }}
-              >
-                {/* Ripple effect */}
-                <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 select-none pointer-events-none'></div>
-                <span className='relative flex items-center justify-center space-x-3 select-none'>
-                  <span>👉</span>
-                  <span>{t('development.title')}</span>
-                </span>
-              </a>
+          {/* Scroll Indicator */}
+          <div 
+            className={`absolute bottom-24 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
+            style={{
+              opacity: isTransitioning ? 0 : 1 - scrollProgress * 2, // Hide quickly on scroll
+              transform: `translate(-50%, ${scrollProgress * 50}px)` // Move down on scroll
+            }}
+          >
+            <div className="flex flex-col items-center gap-3 group cursor-pointer" onClick={triggerTransition}>
+              <div className="w-[30px] h-[50px] rounded-full border-2 border-white/20 flex justify-center p-2 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300">
+                <div className="w-1 h-2 bg-white/60 rounded-full animate-bounce group-hover:bg-primary transition-colors duration-300" />
+              </div>
             </div>
           </div>
         </div>
