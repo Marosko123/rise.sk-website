@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const CACHE_NAME = `rise-sk-${CACHE_VERSION}`;
 const STATIC_CACHE = `rise-sk-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `rise-sk-dynamic-${CACHE_VERSION}`;
@@ -13,8 +13,8 @@ const STATIC_ASSETS = [
   '/manifest.json',
   '/robots.txt',
   '/sitemap.xml',
-  '/rise/bronze/Rise_logo_circle.png',
-  '/rise/bronze/Rise_logo_transparent.png',
+  '/rise/gradient/Rise_logo_circle.png',
+  '/rise/gradient/Rise_logo_transparent.png',
   '/favicon.ico'
 ];
 
