@@ -8,7 +8,6 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 import ThemeProvider from '@/components/ThemeProvider';
 import WebVitalsReporter from '@/components/WebVitalsReporter';
-import { companyConfig } from '@/config/company';
 
 import './globals.css';
 
@@ -21,40 +20,40 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rise.sk'),
-  title: 'Rise.sk - Expert Programming Teams | Custom Software Development Slovakia',
-  description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps. Quick delivery, reliable code, 100% on-time projects.',
+  title: {
+    default: 'Rise.sk | Premium Software Development & Tech Consulting',
+    template: '%s | Rise.sk'
+  },
+  description: 'We build high-performance web & mobile applications. Hire expert programming teams in Slovakia delivering scalable solutions for ambitious companies. Start your project today.',
   applicationName: 'Rise.sk',
   authors: [{ name: 'Rise.sk s.r.o.' }],
   generator: 'Next.js',
   keywords: [
-    'software development',
-    'web development',
-    'mobile apps',
-    'Slovakia',
-    'programming teams',
-    'outsourcing',
-    'IT consulting',
-    'custom software',
-    'enterprise solutions',
+    'software development company',
+    'custom software development',
+    'web application development',
+    'mobile app development',
+    'Slovakia tech outsourcing',
+    'dedicated programming teams',
+    'IT consulting services',
+    'enterprise software solutions',
     'digital transformation',
-    'React',
-    'Next.js',
-    'TypeScript',
-    'Node.js',
-    'Bratislava',
+    'React Next.js experts',
+    'TypeScript development',
+    'Node.js backend',
+    'Bratislava software house',
     'Rise.sk',
     // Slovak keywords
-    'vývoj softvéru',
-    'tvorba web stránok',
-    'mobilné aplikácie',
+    'vývoj softvéru na mieru',
+    'tvorba webových aplikácií',
+    'vývoj mobilných aplikácií',
     'programátorské tímy',
-    'IT outsourcing',
-    'IT konzultácie',
-    'softvér na mieru',
-    'firemné riešenia',
-    'digitálna transformácia',
-    'programovanie',
-    'webdizajn'
+    'IT outsourcing Slovensko',
+    'technologické konzultácie',
+    'firemné softvérové riešenia',
+    'digitálna transformácia firiem',
+    'programovanie webov',
+    'webdizajn a vývoj'
   ],
   referrer: 'origin-when-cross-origin',
   creator: 'Rise.sk s.r.o.',
@@ -90,24 +89,17 @@ export const metadata: Metadata = {
     alternateLocale: 'en_US',
     url: 'https://rise.sk',
     siteName: 'Rise.sk',
-    title: 'Rise.sk - Expert Programming Teams',
-    description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps.',
-    images: [
-      {
-        url: companyConfig.website.logo.main,
-        width: 1200,
-        height: 1200,
-        alt: 'Rise.sk Logo',
-      },
-    ],
+    title: 'Rise.sk | Premium Software Development & Tech Consulting',
+    description: 'We build high-performance web & mobile applications. Hire expert programming teams in Slovakia delivering scalable solutions for ambitious companies.',
+    // images: handled automatically by opengraph-image.tsx
   },
   twitter: {
     card: 'summary_large_image',
     site: '@rise_sk',
     creator: '@rise_sk',
-    title: 'Rise.sk - Expert Programming Teams | Custom Software Development Slovakia',
-    description: 'Hire expert programming teams in Slovakia. Custom software development, web applications, mobile apps. Quick delivery, reliable code, 100% on-time projects.',
-    images: [companyConfig.website.logo.main],
+    title: 'Rise.sk | Premium Software Development & Tech Consulting',
+    description: 'We build high-performance web & mobile applications. Hire expert programming teams in Slovakia delivering scalable solutions for ambitious companies.',
+    // images: handled automatically by opengraph-image.tsx
   },
   other: {
     'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION || '',

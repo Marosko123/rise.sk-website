@@ -155,14 +155,24 @@ export const companyConfig = {
     url: 'https://rise.sk',
 
     // SEO and meta
-    defaultTitle: 'rise - Professional Consulting Services',
+    defaultTitle: 'Rise.sk | Premium Software Development & Tech Consulting',
     defaultDescription:
-      'Expert consulting in software development',
+      'We build high-performance web & mobile applications. Hire expert programming teams in Slovakia delivering scalable solutions for ambitious companies.',
     keywords: [
-      'consulting',
-      'software development',
-      'Slovakia',
-      'Bratislava',
+      'software development company',
+      'custom software development',
+      'web application development',
+      'mobile app development',
+      'Slovakia tech outsourcing',
+      'dedicated programming teams',
+      'IT consulting services',
+      'enterprise software solutions',
+      'digital transformation',
+      'React Next.js experts',
+      'TypeScript development',
+      'Node.js backend',
+      'Bratislava software house',
+      'Rise.sk',
     ],
 
     // Assets

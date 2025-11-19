@@ -690,27 +690,43 @@ export default function LandingPage() {
             </p>
           </div>
 
-          {/* Scroll Indicator / Enter Button */}
+          {/* Bottom Actions Container */}
           <div
-            className={`absolute bottom-24 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
+            className={`absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
             style={{
               opacity: isTransitioning ? 0 : 1 - scrollProgress * 2,
               transform: `translate(-50%, ${scrollProgress * 50}px)`
             }}
           >
+            {/* Primary CTA Button */}
             <button
               onClick={triggerTransition}
-              className="group relative flex flex-col items-center gap-4 p-4 focus:outline-none"
+              className="group relative px-12 py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
             >
-              <span className="text-sm font-medium tracking-[0.3em] text-white/70 group-hover:text-primary transition-colors duration-300 uppercase">
+              {/* Button Background & Border */}
+              <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.15)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-500" />
+              <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-full group-hover:bg-primary/10 transition-all duration-500" />
+
+              {/* Continuous Sheen Animation - "Press Me" effect */}
+              <div className="absolute inset-0 rounded-full overflow-hidden">
+                <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-sheen" />
+              </div>
+
+              {/* Button Text */}
+              <span className="relative text-sm font-bold tracking-[0.25em] text-white/90 group-hover:text-primary transition-colors duration-300 uppercase drop-shadow-md">
                 {locale === 'sk' ? 'Objavte viac' : 'Discover More'}
               </span>
-              
-              <div className="relative w-[30px] h-[50px] rounded-full border border-white/20 flex justify-center p-2 shadow-[0_0_15px_rgba(0,0,0,0.2)] group-hover:border-primary/50 group-hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] transition-all duration-300 bg-black/20 backdrop-blur-sm overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-1000" />
-                <div className="w-1 h-2 bg-white/60 rounded-full animate-bounce group-hover:bg-primary transition-colors duration-300 mt-1" />
-              </div>
             </button>
+
+            {/* Scroll Indicator (Mouse) */}
+            <div
+              className="flex flex-col items-center gap-2 cursor-pointer group/scroll"
+              onClick={triggerTransition}
+            >
+              <div className="w-[24px] h-[40px] rounded-full border-2 border-primary/60 flex justify-center p-1.5 shadow-[0_0_15px_rgba(212,175,55,0.15)] group-hover/scroll:border-primary group-hover/scroll:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300">
+                <div className="w-1 h-1.5 bg-primary rounded-full animate-bounce group-hover/scroll:bg-white transition-colors duration-300" />
+              </div>
+            </div>
           </div>
         </div>
       </section>

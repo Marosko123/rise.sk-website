@@ -99,7 +99,7 @@ html {
   .gdpr-modal-mobile {
     padding-bottom: max(3rem, calc(env(safe-area-inset-bottom) + 2rem)) !important;
   }
-  
+
   .gdpr-container-mobile {
     padding-bottom: 2rem !important;
   }
@@ -238,11 +238,11 @@ body {
 
 /* Specific override for Gradient theme to match 5-stop metallic spec */
 [data-theme="gradient"] .gradient-text {
-  background: linear-gradient(45deg, 
-    #FEFBD8 0%, 
-    #DAB549 25%, 
-    #8B6723 50%, 
-    #DAB549 75%, 
+  background: linear-gradient(45deg,
+    #FEFBD8 0%,
+    #DAB549 25%,
+    #8B6723 50%,
+    #DAB549 75%,
     #FEFBD8 100%
   );
   background-size: 200% auto;
@@ -607,4 +607,37 @@ body {
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dark) !important;
+}
+
+/* Button Sheen Animation */
+@keyframes sheen {
+  0% {
+    transform: translateX(-150%) skewX(-15deg);
+  }
+  40% {
+    transform: translateX(150%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(150%) skewX(-15deg);
+  }
+}
+
+.animate-sheen {
+  animation: sheen 4s infinite;
+}
+
+/* Prevent flash of landing page when loading with hash */
+html.loading-hash body {
+  /* Smooth scroll to top */
+  scroll-behavior: smooth;
+  /* Prevent jump */
+  top: 0;
+  position: relative;
+  /* Avoid flicker */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+html.loading-hash body.loaded {
+  opacity: 1;
 }
