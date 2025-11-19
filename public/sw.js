@@ -1,8 +1,9 @@
-const CACHE_NAME = 'rise-sk-v3';
-const STATIC_CACHE = 'rise-sk-static-v3';
-const DYNAMIC_CACHE = 'rise-sk-dynamic-v3';
-const IMAGE_CACHE = 'rise-sk-images-v3';
-const FONT_CACHE = 'rise-sk-fonts-v2';
+const CACHE_VERSION = 'v4';
+const CACHE_NAME = `rise-sk-${CACHE_VERSION}`;
+const STATIC_CACHE = `rise-sk-static-${CACHE_VERSION}`;
+const DYNAMIC_CACHE = `rise-sk-dynamic-${CACHE_VERSION}`;
+const IMAGE_CACHE = `rise-sk-images-${CACHE_VERSION}`;
+const FONT_CACHE = `rise-sk-fonts-${CACHE_VERSION}`;
 
 // Assets to cache on install
 const STATIC_ASSETS = [

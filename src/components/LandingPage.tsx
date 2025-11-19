@@ -690,19 +690,27 @@ export default function LandingPage() {
             </p>
           </div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll Indicator / Enter Button */}
           <div
             className={`absolute bottom-24 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
             style={{
-              opacity: isTransitioning ? 0 : 1 - scrollProgress * 2, // Hide quickly on scroll
-              transform: `translate(-50%, ${scrollProgress * 50}px)` // Move down on scroll
+              opacity: isTransitioning ? 0 : 1 - scrollProgress * 2,
+              transform: `translate(-50%, ${scrollProgress * 50}px)`
             }}
           >
-            <div className="flex flex-col items-center gap-3 group cursor-pointer" onClick={triggerTransition}>
-              <div className="w-[30px] h-[50px] rounded-full border-2 border-white/20 flex justify-center p-2 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300">
-                <div className="w-1 h-2 bg-white/60 rounded-full animate-bounce group-hover:bg-primary transition-colors duration-300" />
+            <button
+              onClick={triggerTransition}
+              className="group relative flex flex-col items-center gap-4 p-4 focus:outline-none"
+            >
+              <span className="text-sm font-medium tracking-[0.3em] text-white/70 group-hover:text-primary transition-colors duration-300 uppercase">
+                {locale === 'sk' ? 'Objavte viac' : 'Discover More'}
+              </span>
+              
+              <div className="relative w-[30px] h-[50px] rounded-full border border-white/20 flex justify-center p-2 shadow-[0_0_15px_rgba(0,0,0,0.2)] group-hover:border-primary/50 group-hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] transition-all duration-300 bg-black/20 backdrop-blur-sm overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-1000" />
+                <div className="w-1 h-2 bg-white/60 rounded-full animate-bounce group-hover:bg-primary transition-colors duration-300 mt-1" />
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </section>

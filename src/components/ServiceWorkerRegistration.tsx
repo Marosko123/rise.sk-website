@@ -15,7 +15,7 @@ export default function ServiceWorkerRegistration() {
       // Clear old caches from previous versions
       const cacheNames = await caches.keys();
       const oldCaches = cacheNames.filter(name =>
-        name.startsWith('rise-sk-') && !name.includes('-v3') && !name.includes('-v2')
+        name.startsWith('rise-sk-') && !name.includes('-v4')
       );
       await Promise.all(oldCaches.map(name => caches.delete(name)));
 
