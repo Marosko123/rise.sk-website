@@ -4,6 +4,7 @@
       "weAre": "We are",
       "innovativeSolutions": "Technology Experts"
     },
+    "discoverMore": "Discover More",
     "description": "Trusted partners for critical software projects and digital transformation.",
     "development": {
       "title": "I want to know more",
@@ -15,6 +16,12 @@
   "navigation": {
     "about": "About",
     "services": "Services",
+    "serviceItems": {
+      "webDevelopment": "Web Development",
+      "ecommerce": "E-commerce",
+      "mobileApps": "Mobile Apps",
+      "customSoftware": "Custom Software"
+    },
     "development": "Development",
     "engagement": "Engagement Models",
     "portfolio": "Portfolio",
@@ -111,100 +118,146 @@
     "badge": "Our Services",
     "title": "Complete Digital",
     "titleHighlight": "Solutions",
-    "subtitle": "From concept to deployment, we deliver end-to-end technology solutions with cutting-edge technologies"
-  },
-  "servicesEnhanced": {
-    "badge": "Our Services",
-    "title": "What we can",
-    "titleHighlight": "create for you",
-    "subtitle": "We are technology experts with years of experience. We create solutions that work and deliver results.",
-    "services": [
-      {
-        "title": "Modern Websites",
-        "description": "We create professional websites that attract customers and strengthen your brand.",
-        "features": [
-          "Responsive design for all devices",
-          "SEO optimization for better visibility",
-          "Fast loading and security",
-          "Integration with modern tools",
-          "CMS systems for easy management"
-        ],
-        "experience": "6+ years experience"
+    "subtitle": "From concept to deployment, we deliver end-to-end technology solutions with cutting-edge technologies",
+    "webDevelopment": {
+      "title": "Custom Website Development",
+      "description": "We create modern, fast, and SEO-optimized websites that turn visitors into customers. Professional web design and development for companies.",
+      "serviceType": "Web Development",
+      "meta": {
+        "title": "Custom Website Development | Modern Websites - Rise.sk",
+        "description": "Professional custom website development. Fast, secure, and SEO-optimized websites for businesses. Get a quote for a new website today."
       },
-      {
-        "title": "Mobile Applications",
-        "description": "We develop iOS and Android applications that simplify processes and increase user satisfaction.",
-        "features": [
-          "Native development for iOS and Android",
-          "Offline functionality and synchronization",
-          "Push notifications and real-time features",
-          "Optimized for speed and battery",
-          "Integration with cloud services"
-        ],
-        "experience": "3+ years experience"
-      },
-      {
-        "title": "Custom Software",
-        "description": "We design and implement comprehensive software solutions exactly according to your needs.",
-        "features": [
-          "Process analysis and architecture design",
-          "Scalable and secure solutions",
-          "API integrations and microservices",
-          "Database design and optimization",
-          "Maintenance and long-term support"
-        ],
-        "experience": "6+ years experience"
-      },
-      {
-        "title": "E-commerce Solutions",
-        "description": "Complete online stores with modern design and advanced features for maximum conversions.",
-        "features": [
-          "Optimized for conversions",
-          "Payment gateways and security",
-          "Inventory management systems",
-          "Analytics and reporting tools",
-          "Multi-platform integrations"
-        ],
-        "experience": "6+ years experience"
-      },
-      {
-        "title": "AI & Data Analytics",
-        "description": "We use artificial intelligence and advanced analytics to transform your data into competitive advantage.",
-        "features": [
-          "Machine learning models",
-          "Predictive analytics",
-          "Process automation with AI",
-          "Real-time dashboards",
-          "Big data processing"
-        ],
-        "experience": "5+ years experience"
-      },
-      {
-        "title": "Digital Marketing Tech",
-        "description": "Technical solutions for effective digital marketing and marketing process automation.",
-        "features": [
-          "Marketing automation tools",
-          "CRM integrations and workflows",
-          "A/B testing platforms",
-          "Social media management",
-          "Performance tracking systems"
-        ],
-        "experience": "2+ years experience"
+      "featuresTitle": "Why choose us for web development?",
+      "features": [
+        { "title": "SEO Optimization", "description": "We build websites that Google loves. Proper structure, speed, and metadata are the foundation." },
+        { "title": "Extreme Speed", "description": "We use Next.js and modern technologies for lightning-fast loading that increases conversions." },
+        { "title": "Responsive Design", "description": "Your website will look perfect on mobile, tablet, and large monitors." },
+        { "title": "Easy Management", "description": "We deliver a custom CMS where you can easily edit texts and images without a programmer." },
+        { "title": "Security", "description": "SSL certificate, protection against attacks, and regular backups are standard with us." },
+        { "title": "Analytics", "description": "Google Analytics 4 implementation and conversion tracking setup included." }
+      ],
+      "processTitle": "How does website development work?",
+      "process": [
+        { "title": "Consultation and Analysis", "description": "We identify your goals, target audience, and competition. We propose a strategy." },
+        { "title": "Design and Prototype", "description": "We create a visual design (UI/UX) that you approve before coding begins." },
+        { "title": "Development and Content", "description": "We program the website, deploy texts, and optimize images." },
+        { "title": "Testing and Launch", "description": "We test functionality, speed, and launch the website on your domain." }
+      ],
+      "faq": [
+        { "question": "How much does a website cost?", "answer": "The price depends on the scope. A simple presentation website starts from €800, more complex corporate websites from €1500. Contact us for an exact calculation." },
+        { "question": "How long does it take to create a website?", "answer": "We deliver a standard corporate website within 2-4 weeks from the delivery of materials." },
+        { "question": "Will I be able to edit the website myself?", "answer": "Yes, we can provide an administration system (CMS) for every website, where you can easily change texts or photos." },
+        { "question": "Do you also redesign old websites?", "answer": "Yes, modernizing old websites is our specialty. We will preserve your SEO positions and improve design and performance." }
+      ],
+      "cta": {
+        "primary": "I want a custom website",
+        "secondary": "View process"
       }
-    ],
-    "labels": {
-      "expertise": "Our expertise",
-      "features": "What we include",
-      "scrollToSeeMore": "Scroll to see all services"
     },
-    "buttons": {
-      "discuss": "Let's discuss the project",
-      "contact": "Contact us",
-      "references": "Our references"
+    "ecommerce": {
+      "title": "Custom E-shop Development",
+      "description": "Comprehensive solutions for online sales. We create e-shops that sell, are secure, and easy to manage. Scalable solutions for your growth.",
+      "serviceType": "E-commerce Development",
+      "meta": {
+        "title": "Custom E-shop Development | E-commerce Solutions - Rise.sk",
+        "description": "Professional custom e-shop development. Increase your sales with a fast and secure online store. Payment and shipping integration."
+      },
+      "featuresTitle": "Features for successful online sales",
+      "features": [
+        { "title": "High Conversions", "description": "UX design focused on a simple purchasing process and minimizing abandoned carts." },
+        { "title": "Payment Gateways", "description": "Integration of Stripe, GoPay, PayPal, Apple Pay, and Google Pay for convenient payments." },
+        { "title": "System Integration", "description": "Connection with accounting (Pohoda, SuperFaktúra), warehouse, and couriers." },
+        { "title": "Speed and Stability", "description": "Handles customer influx during the season thanks to scalable architecture." },
+        { "title": "SEO for Products", "description": "Automatic generation of metadata and structured data for Google Shopping." },
+        { "title": "Marketing Tools", "description": "Discount codes, newsletters, upsell and cross-sell functions directly in the system." }
+      ],
+      "processTitle": "E-shop development process",
+      "process": [
+        { "title": "Requirements Analysis", "description": "We define the assortment, target audience, and necessary integrations." },
+        { "title": "UX/UI Design", "description": "We design a clear catalog and intuitive cart." },
+        { "title": "Implementation", "description": "Backend development, frontend, and connection to external services." },
+        { "title": "Testing and Training", "description": "We test the purchasing process and train you in administration." }
+      ],
+      "faq": [
+        { "question": "What is the price for e-shop development?", "answer": "Custom e-shops start from €2500. The price depends on the number of integrations and specific functions." },
+        { "question": "Can you connect the e-shop to a warehouse?", "answer": "Yes, we commonly integrate warehouse systems, ERP, and invoicing software." },
+        { "question": "Is the e-shop optimized for mobile?", "answer": "Of course. A mobile-first approach is a necessity for us, as most purchases happen via phone." },
+        { "question": "Do you provide technical support?", "answer": "Yes, we ensure long-term management, updates, and monitoring of the e-shop." }
+      ],
+      "cta": {
+        "primary": "I want my own e-shop",
+        "secondary": "How it works"
+      }
     },
-    "cta": {
-      "title": "Want to discuss your project?",
-      "description": "We'd love to talk with you about your needs. We have experience with various types of projects and can find solutions for complex requirements."
+    "mobileApps": {
+      "title": "Mobile App Development",
+      "description": "Native and hybrid mobile applications for iOS and Android. We turn ideas into functional applications in the App Store and Google Play.",
+      "serviceType": "Mobile App Development",
+      "meta": {
+        "title": "Mobile App Development iOS and Android | Rise.sk",
+        "description": "Comprehensive custom mobile app development. iOS, Android, Flutter, and React Native. From design to publication in stores."
+      },
+      "featuresTitle": "Top mobile technologies",
+      "features": [
+        { "title": "iOS and Android", "description": "We develop for both platforms simultaneously using React Native or Flutter, which saves costs." },
+        { "title": "Native Performance", "description": "Applications are fast, smooth, and utilize phone hardware to the fullest." },
+        { "title": "Offline Mode", "description": "The application works even without the internet, and data synchronizes after connection." },
+        { "title": "Push Notifications", "description": "Reach users directly on their screen and increase engagement." },
+        { "title": "Modern UI Design", "description": "Design according to the latest Apple and Google standards for intuitive control." },
+        { "title": "Store Publication", "description": "We cover the entire approval process in the App Store and Google Play." }
+      ],
+      "processTitle": "Path to your application",
+      "process": [
+        { "title": "Concept and Wireframe", "description": "We draw screens and application logic." },
+        { "title": "UI Design", "description": "We create the final look of the application." },
+        { "title": "Development", "description": "Programming the mobile part and backend API." },
+        { "title": "Testing and Release", "description": "Beta testing and deployment to stores." }
+      ],
+      "faq": [
+        { "question": "How much does app development cost?", "answer": "Simple applications start from €3000, complex systems can cost more. It depends on the functions." },
+        { "question": "Do you do both iOS and Android?", "answer": "Yes, we specialize in multi-platform development, so you get both versions for a better price." },
+        { "question": "How long does development take?", "answer": "MVP (basic version) usually takes 2-3 months." },
+        { "question": "What happens after release?", "answer": "We provide a service contract for updates and bug fixes that may arise with new iOS/Android versions." }
+      ],
+      "cta": {
+        "primary": "I have an app idea",
+        "secondary": "More about development"
+      }
+    },
+    "customSoftware": {
+      "title": "Custom Software and Systems",
+      "description": "Digitization of company processes, CRM systems, internal portals, and API integrations. Software that adapts to your company, not the other way around.",
+      "serviceType": "Custom Software Development",
+      "meta": {
+        "title": "Custom Software Development | Corporate Systems - Rise.sk",
+        "description": "Custom software for your company. CRM, ERP, process automation, and web applications. Streamline your business with digital tools."
+      },
+      "featuresTitle": "Solutions for company efficiency",
+      "features": [
+        { "title": "Automation", "description": "Replace manual work and Excel spreadsheets with intelligent software." },
+        { "title": "API Integrations", "description": "We connect your existing tools into one functional unit." },
+        { "title": "Cloud Solution", "description": "Access to data from anywhere, securely and without the need for own servers." },
+        { "title": "Scalability", "description": "The system will grow with your company without the need for rewriting." },
+        { "title": "Reporting", "description": "Clear dashboards and charts for better management decision-making." },
+        { "title": "Data Security", "description": "Enterprise-level security for sensitive company data." }
+      ],
+      "processTitle": "How do we create software?",
+      "process": [
+        { "title": "In-depth Analysis", "description": "We understand your processes and identify bottlenecks." },
+        { "title": "Architecture", "description": "We propose a technical solution and database model." },
+        { "title": "Agile Development", "description": "We deliver functional parts gradually so you can use them immediately." },
+        { "title": "Deployment and Support", "description": "Implementation into operation and employee training." }
+      ],
+      "faq": [
+        { "question": "Why custom software and not a boxed solution?", "answer": "A boxed solution forces you to adapt to it. Custom software exactly copies and improves your unique processes." },
+        { "question": "What technologies do you use?", "answer": "We build the backend on Node.js or Python, frontend on React/Next.js. PostgreSQL databases." },
+        { "question": "Who owns the source code?", "answer": "After handover and payment of the project, property rights pass to you." },
+        { "question": "What about security?", "answer": "We adhere to strict security standards, data encryption, and GDPR rules." }
+      ],
+      "cta": {
+        "primary": "Consult a solution",
+        "secondary": "Our technologies"
+      }
     }
   },
   "portfolio": {
@@ -906,5 +959,18 @@
         "answer": "Of course, we routinely sign NDAs (non-disclosure agreements) before starting collaboration. Your business information and know-how are safe with us."
       }
     ]
+  },
+  "NotFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for might have been moved, deleted, or doesn't exist. Let's get you back on track with our professional software development services.",
+    "home": "Go Home",
+    "development": "Development Services",
+    "services": "IT Services",
+    "contact": "Contact Us",
+    "lookingFor": "Looking for something specific?",
+    "customSoftware": "Custom Software Development",
+    "webMobile": "Web & Mobile App Development",
+    "portfolio": "Portfolio & Case Studies",
+    "assistance": "Need immediate assistance?"
   }
 }

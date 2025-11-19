@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/utils/cn';
 import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 import Link from 'next/link';
@@ -44,12 +45,12 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   ...props
 }) => {
-  const baseClasses = `
-    inline-flex items-center justify-center gap-2 rounded-xl font-semibold
-    transition-all duration-300 transform select-none
-    disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
-    ${buttonVariants[variant]} ${sizeVariants[size]} ${className}
-  `.trim().replace(/\s+/g, ' ');
+  const baseClasses = cn(
+    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 transform select-none disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none",
+    buttonVariants[variant],
+    sizeVariants[size],
+    className
+  );
 
   const content = (
     <>
@@ -81,16 +82,15 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <Link href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>
-        <motion.button
+      <Link href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} legacyBehavior>
+        <motion.a
           className={baseClasses}
-          disabled={disabled || loading}
-          type={type}
           {...motionProps}
-          {...buttonProps}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          {...buttonProps as any}
         >
           {content}
-        </motion.button>
+        </motion.a>
       </Link>
     );
   }

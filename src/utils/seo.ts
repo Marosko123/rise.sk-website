@@ -20,7 +20,7 @@ export const metaDescriptions = {
         test_variant: 'A',
       },
       {
-        id: 'home_en_v2',
+        id: 'home_en_v2', 
         content: '🚀 Slovakia\'s #1 Programming Teams | Custom Software Development | Web & Mobile Apps | 100% On-Time Delivery | Start Your Project in 7 Days | Free Consultation',
         target: 'ctr',
         ctr_expected: 4.2,
@@ -37,7 +37,7 @@ export const metaDescriptions = {
       },
     ],
   },
-
+  
   development: {
     en: [
       {
@@ -98,7 +98,7 @@ export const metaDescriptions = {
     en: [
       {
         id: 'contact_en_v1',
-        content: 'Contact Rise.sk for professional programming services in Slovakia. Get your development team in 7 days. Email: rise@rise.sk, Phone: +421-911-670-188. Bratislava office.',
+        content: 'Contact Rise.sk for professional programming services in Slovakia. Get your development team in 7 days. Email: info@rise.sk, Phone: +421-911-670-188. Bratislava office.',
         target: 'conversion',
         ctr_expected: 4.1,
         test_variant: 'A',
@@ -114,7 +114,7 @@ export const metaDescriptions = {
     sk: [
       {
         id: 'contact_sk_v1',
-        content: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: rise@rise.sk, Telefón: +421-911-670-188. Kancelária v Bratislave.',
+        content: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: info@rise.sk, Telefón: +421-911-670-188. Kancelária v Bratislave.',
         target: 'conversion',
         ctr_expected: 3.9,
         test_variant: 'A',
@@ -142,6 +142,27 @@ export const metaDescriptions = {
       },
     ],
   },
+
+  education: {
+    en: [
+      {
+        id: 'education_en_v1',
+        content: 'Professional programming education and IT training courses in Slovakia. Learn web development, mobile app development, and software engineering from industry experts at Rise.sk.',
+        target: 'engagement',
+        ctr_expected: 2.8,
+        test_variant: 'A',
+      },
+    ],
+    sk: [
+      {
+        id: 'education_sk_v1',
+        content: 'Profesionálne programátorské vzdelávanie a IT školenia na Slovensku. Naučte sa webový vývoj, vývoj mobilných aplikácií a softvérové inžinierstvo od odborníkov z praxe v Rise.sk.',
+        target: 'engagement',
+        ctr_expected: 2.6,
+        test_variant: 'A',
+      },
+    ],
+  },
 };
 
 // Function to get the best performing meta description
@@ -151,7 +172,7 @@ export function getOptimizedMetaDescription(
   testVariant?: 'A' | 'B'
 ): string {
   const descriptions = metaDescriptions[page]?.[locale] || [];
-
+  
   if (descriptions.length === 0) {
     return 'Rise.sk - Professional Programming Teams and Software Development Services in Slovakia';
   }
@@ -163,7 +184,7 @@ export function getOptimizedMetaDescription(
   }
 
   // Return the description with highest expected CTR
-  const bestDesc = descriptions.reduce((best, current) =>
+  const bestDesc = descriptions.reduce((best, current) => 
     current.ctr_expected > best.ctr_expected ? current : best
   );
 

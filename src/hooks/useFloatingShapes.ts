@@ -1,4 +1,4 @@
-import { useAnimation } from '@/components/AnimationProvider';
+import { useAnimation } from '@/components/providers/AnimationProvider';
 import { useCallback, useEffect, useState } from 'react';
 
 // Configuration variables for floating shapes physics

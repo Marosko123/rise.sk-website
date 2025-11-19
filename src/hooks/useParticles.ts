@@ -1,4 +1,4 @@
-import { useAnimation } from '@/components/AnimationProvider';
+import { useAnimation } from '@/components/providers/AnimationProvider';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export interface Particle {

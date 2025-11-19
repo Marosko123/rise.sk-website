@@ -1,6 +1,7 @@
 'use client';
 
-import { useLocale, useTranslations } from '@/hooks/useTranslations';
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from '@/i18n/routing';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -8,28 +9,29 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import companyConfig from '@/config/company';
 import { SHAPE_CONFIG, useFloatingShapes } from '@/hooks/useFloatingShapes';
 import { useParticles } from '@/hooks/useParticles';
-import { useAnimation } from './AnimationProvider';
-import LogoAndText from './LogoAndText';
+import { useAnimation } from './providers/AnimationProvider';
+import LogoAndText from './layout/LogoAndText';
 
 // Dynamic imports for better performance
-const About = dynamic(() => import('./About'));
-const FAQ = dynamic(() => import('./FAQ'));
-const Footer = dynamic(() => import('./Footer'));
-const Hero = dynamic(() => import('./Hero'));
-const Hiring = dynamic(() => import('./Hiring'));
-const MultiStepContactForm = dynamic(() => import('./MultiStepContactForm'));
-const Navigation = dynamic(() => import('./Navigation'));
-const Portfolio = dynamic(() => import('./Portfolio'));
-const Reviews = dynamic(() => import('./Reviews'));
-const ServicesEnhanced = dynamic(() => import('./ServicesEnhanced'));
+const About = dynamic(() => import('./sections/About'));
+const FAQ = dynamic(() => import('./sections/FAQ'));
+const Footer = dynamic(() => import('./sections/Footer'));
+const Hero = dynamic(() => import('./sections/Hero'));
+const Hiring = dynamic(() => import('./sections/Hiring'));
+const MultiStepContactForm = dynamic(() => import('./features/MultiStepContactForm'));
+const Navigation = dynamic(() => import('./layout/Navigation'));
+const Portfolio = dynamic(() => import('./sections/Portfolio'));
+const Reviews = dynamic(() => import('./sections/Reviews'));
+const ServicesEnhanced = dynamic(() => import('./sections/ServicesEnhanced'));
 
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from './layout/LanguageSwitcher';
 
 
 
 export default function LandingPage() {
   const t = useTranslations('landing');
   const locale = useLocale();
+  const router = useRouter();
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -440,7 +442,7 @@ export default function LandingPage() {
                 }}
                 onClick={() => {
                   // Fallback button navigation
-                  window.location.href = `/${locale}/development`;
+                  router.push('/vyvoj');
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#D4AF37';
@@ -714,7 +716,7 @@ export default function LandingPage() {
 
               {/* Button Text */}
               <span className="relative text-sm font-bold tracking-[0.25em] text-white/90 group-hover:text-primary transition-colors duration-300 uppercase drop-shadow-md">
-                {locale === 'sk' ? 'Objavte viac' : 'Discover More'}
+                {t('discoverMore')}
               </span>
             </button>
 

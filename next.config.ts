@@ -60,47 +60,6 @@ const nextConfig: NextConfig = {
       }
     ];
   },
-  async redirects() {
-    return [
-      // Redirect /sk/* to /* (remove Slovak prefix) - only for specific paths to avoid loops
-      {
-        source: '/sk/vyvoj',
-        destination: '/vyvoj',
-        permanent: true,
-      },
-      {
-        source: '/sk/sluzby',
-        destination: '/sluzby',
-        permanent: true,
-      },
-      {
-        source: '/sk/portfolio',
-        destination: '/portfolio',
-        permanent: true,
-      },
-      {
-        source: '/sk/kontakt',
-        destination: '/kontakt',
-        permanent: true,
-      },
-      // Redirect English paths to Slovak for better SEO
-      {
-        source: '/development',
-        destination: '/vyvoj',
-        permanent: true,
-      },
-      {
-        source: '/services',
-        destination: '/sluzby',
-        permanent: true,
-      },
-      {
-        source: '/contact',
-        destination: '/kontakt',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default withNextIntl(nextConfig);

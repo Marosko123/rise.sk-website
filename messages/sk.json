@@ -4,6 +4,7 @@
       "weAre": "Sme",
       "innovativeSolutions": "Technologickí experti"
     },
+    "discoverMore": "Objavte viac",
     "description": "Dôveryhodní partneri pre kritické softvérové projekty a digitálnu transformáciu.",
     "development": {
       "title": "Chcem zistiť viac",
@@ -15,6 +16,12 @@
   "navigation": {
     "about": "O nás",
     "services": "Služby",
+    "serviceItems": {
+      "webDevelopment": "Tvorba webov",
+      "ecommerce": "E-shopy",
+      "mobileApps": "Mobilné aplikácie",
+      "customSoftware": "Softvér na mieru"
+    },
     "development": "Vývoj",
     "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
@@ -111,7 +118,147 @@
     "badge": "Naše služby",
     "title": "Komplexné digitálne",
     "titleHighlight": "riešenia",
-    "subtitle": "Od konceptu po nasadenie – dodávame koncové technologické riešenia s najmodernejšími technológiami"
+    "subtitle": "Od konceptu po nasadenie – dodávame koncové technologické riešenia s najmodernejšími technológiami",
+    "webDevelopment": {
+      "title": "Tvorba web stránok na mieru",
+      "description": "Vytvárame moderné, rýchle a SEO optimalizované webstránky, ktoré premenia návštevníkov na zákazníkov. Profesionálny webdizajn a vývoj pre firmy na Slovensku.",
+      "serviceType": "Web Development",
+      "meta": {
+        "title": "Tvorba Web Stránok Bratislava | Moderné Weby na Mieru - Rise.sk",
+        "description": "Profesionálna tvorba web stránok na mieru. Rýchle, bezpečné a SEO optimalizované weby pre firmy. Získajte cenovú ponuku na nový web ešte dnes."
+      },
+      "featuresTitle": "Prečo si vybrať nás pre tvorbu webu?",
+      "features": [
+        { "title": "SEO Optimalizácia", "description": "Weby staviame tak, aby ich Google miloval. Správna štruktúra, rýchlosť a metadáta sú základ." },
+        { "title": "Extrémna rýchlosť", "description": "Využívame Next.js a moderné technológie pre bleskové načítanie, ktoré zvyšuje konverzie." },
+        { "title": "Responzívny dizajn", "description": "Váš web bude vyzerať perfektne na mobile, tablete aj veľkom monitore." },
+        { "title": "Jednoduchá správa", "description": "Dodáme vám CMS na mieru, kde si ľahko upravíte texty a obrázky bez programátora." },
+        { "title": "Bezpečnosť", "description": "SSL certifikát, ochrana pred útokmi a pravidelné zálohy sú u nás štandardom." },
+        { "title": "Analytika", "description": "Nasadenie Google Analytics 4 a nastavenie sledovania konverzií v cene." }
+      ],
+      "processTitle": "Ako prebieha tvorba web stránky?",
+      "process": [
+        { "title": "Konzultácia a Analýza", "description": "Zistíme vaše ciele, cieľovú skupinu a konkurenciu. Navrhneme stratégiu." },
+        { "title": "Dizajn a Prototyp", "description": "Vytvoríme vizuálny návrh (UI/UX), ktorý schválite pred začatím kódovania." },
+        { "title": "Vývoj a Obsah", "description": "Naprogramujeme web, nasadíme texty a optimalizujeme obrázky." },
+        { "title": "Testovanie a Spustenie", "description": "Otestujeme funkčnosť, rýchlosť a spustíme web na vašej doméne." }
+      ],
+      "faq": [
+        { "question": "Koľko stojí tvorba web stránky?", "answer": "Cena závisí od rozsahu. Jednoduchý prezentačný web začína od 800 €, komplexnejšie firemné weby od 1500 €. Pre presnú kalkuláciu nás kontaktujte." },
+        { "question": "Ako dlho trvá vytvorenie webu?", "answer": "Štandardný firemný web dodáme do 2-4 týždňov od dodania podkladov." },
+        { "question": "Budem si vedieť web upravovať sám?", "answer": "Áno, ku každému webu vieme dodať administračný systém (CMS), kde si jednoducho zmeníte texty či fotky." },
+        { "question": "Robíte aj redizajn starých stránok?", "answer": "Áno, modernizácia starých webov je naša špecialita. Zachováme vaše SEO pozície a zlepšíme dizajn aj výkon." }
+      ],
+      "cta": {
+        "primary": "Chcem web na mieru",
+        "secondary": "Pozrieť proces"
+      }
+    },
+    "ecommerce": {
+      "title": "Tvorba e-shopu na mieru",
+      "description": "Komplexné riešenia pre online predaj. Vytvárame e-shopy, ktoré predávajú, sú bezpečné a ľahko sa spravujú. Škálovateľné riešenia pre váš rast.",
+      "serviceType": "E-commerce Development",
+      "meta": {
+        "title": "Tvorba E-shopu na Mieru | E-commerce Riešenia - Rise.sk",
+        "description": "Profesionálna tvorba e-shopov na mieru. Zvýšte svoje predaje s rýchlym a bezpečným online obchodom. Integrácia platieb a dopravy."
+      },
+      "featuresTitle": "Funkcie pre úspešný online predaj",
+      "features": [
+        { "title": "Vysoké konverzie", "description": "UX dizajn zameraný na jednoduchý nákupný proces a minimalizáciu opustených košíkov." },
+        { "title": "Platobné brány", "description": "Integrácia Stripe, GoPay, PayPal, Apple Pay a Google Pay pre pohodlné platby." },
+        { "title": "Napojenie na systémy", "description": "Prepojenie s účtovníctvom (Pohoda, SuperFaktúra), skladom a kuriérmi." },
+        { "title": "Rýchlosť a stabilita", "description": "Zvládne aj nápor zákazníkov počas sezóny vďaka škálovateľnej architektúre." },
+        { "title": "SEO pre produkty", "description": "Automatické generovanie metadát a štruktúrovaných dát pre Google Shopping." },
+        { "title": "Marketingové nástroje", "description": "Zľavové kódy, newslettery, upsell a cross-sell funkcie priamo v systéme." }
+      ],
+      "processTitle": "Postup vývoja e-shopu",
+      "process": [
+        { "title": "Analýza požiadaviek", "description": "Definujeme sortiment, cieľovú skupinu a potrebné integrácie." },
+        { "title": "UX/UI Dizajn", "description": "Navrhneme prehľadný katalóg a intuitívny košík." },
+        { "title": "Implementácia", "description": "Vývoj backendu, frontend a napojenie na externé služby." },
+        { "title": "Testovanie a Školenie", "description": "Otestujeme nákupný proces a zaškolíme vás do administrácie." }
+      ],
+      "faq": [
+        { "question": "Aká je cena za tvorbu e-shopu?", "answer": "E-shopy na mieru začínajú od 2500 €. Cena závisí od počtu integrácií a špecifických funkcií." },
+        { "question": "Viete napojiť e-shop na sklad?", "answer": "Áno, bežne integrujeme skladové systémy, ERP a fakturačné softvéry." },
+        { "question": "Je e-shop optimalizovaný pre mobil?", "answer": "Samozrejme. Mobile-first prístup je u nás nutnosťou, keďže väčšina nákupov sa deje cez telefón." },
+        { "question": "Poskytujete technickú podporu?", "answer": "Áno, zabezpečujeme dlhodobú správu, aktualizácie a monitoring e-shopu." }
+      ],
+      "cta": {
+        "primary": "Chcem vlastný e-shop",
+        "secondary": "Ako to funguje"
+      }
+    },
+    "mobileApps": {
+      "title": "Vývoj mobilných aplikácií",
+      "description": "Natívne a hybridné mobilné aplikácie pre iOS a Android. Premieňame nápady na funkčné aplikácie v App Store a Google Play.",
+      "serviceType": "Mobile App Development",
+      "meta": {
+        "title": "Vývoj Mobilných Aplikácií iOS a Android | Rise.sk",
+        "description": "Komplexný vývoj mobilných aplikácií na mieru. iOS, Android, Flutter a React Native. Od dizajnu po publikáciu v storoch."
+      },
+      "featuresTitle": "Špičkové mobilné technológie",
+      "features": [
+        { "title": "iOS a Android", "description": "Vyvíjame pre obe platformy súčasne pomocou React Native alebo Flutter, čo šetrí náklady." },
+        { "title": "Natívny výkon", "description": "Aplikácie sú rýchle, plynulé a využívajú hardvér telefónu naplno." },
+        { "title": "Offline režim", "description": "Aplikácia funguje aj bez internetu a dáta sa synchronizujú po pripojení." },
+        { "title": "Push notifikácie", "description": "Oslovte používateľov priamo na ich obrazovke a zvýšte angažovanosť." },
+        { "title": "Moderný UI dizajn", "description": "Dizajn podľa najnovších štandardov Apple a Google pre intuitívne ovládanie." },
+        { "title": "Publikácia do storov", "description": "Zastrešíme celý proces schvaľovania v App Store a Google Play." }
+      ],
+      "processTitle": "Cesta k vašej aplikácii",
+      "process": [
+        { "title": "Koncept a Wireframe", "description": "Nakreslíme obrazovky a logiku aplikácie." },
+        { "title": "UI Dizajn", "description": "Vytvoríme finálny vzhľad aplikácie." },
+        { "title": "Vývoj", "description": "Programovanie mobilnej časti a backendového API." },
+        { "title": "Testovanie a Release", "description": "Beta testovanie a nasadenie do obchodov." }
+      ],
+      "faq": [
+        { "question": "Koľko stojí vývoj aplikácie?", "answer": "Jednoduché aplikácie začínajú od 3000 €, komplexné systémy môžu stáť viac. Závisí to od funkcií." },
+        { "question": "Robíte iOS aj Android?", "answer": "Áno, špecializujeme sa na multiplatformový vývoj, takže dostanete obe verzie za lepšiu cenu." },
+        { "question": "Ako dlho trvá vývoj?", "answer": "MVP (základná verzia) zvyčajne trvá 2-3 mesiace." },
+        { "question": "Čo nasleduje po vydaní?", "answer": "Poskytujeme servisnú zmluvu na aktualizácie a opravy chýb, ktoré môžu vzniknúť novými verziami iOS/Android." }
+      ],
+      "cta": {
+        "primary": "Mám nápad na aplikáciu",
+        "secondary": "Viac o vývoji"
+      }
+    },
+    "customSoftware": {
+      "title": "Softvér a systémy na mieru",
+      "description": "Digitalizácia firemných procesov, CRM systémy, interné portály a API integrácie. Softvér, ktorý sa prispôsobí vašej firme, nie naopak.",
+      "serviceType": "Custom Software Development",
+      "meta": {
+        "title": "Vývoj Softvéru na Mieru | Firemné Systémy - Rise.sk",
+        "description": "Softvér na mieru pre vašu firmu. CRM, ERP, automatizácia procesov a webové aplikácie. Zefektívnite svoje podnikanie digitálnymi nástrojmi."
+      },
+      "featuresTitle": "Riešenia pre efektivitu firmy",
+      "features": [
+        { "title": "Automatizácia", "description": "Nahraďte manuálnu prácu a Excel tabuľky inteligentným softvérom." },
+        { "title": "Integrácie API", "description": "Prepojíme vaše existujúce nástroje do jedného funkčného celku." },
+        { "title": "Cloudové riešenie", "description": "Prístup k dátam odkiaľkoľvek, bezpečne a bez nutnosti vlastných serverov." },
+        { "title": "Škálovateľnosť", "description": "Systém porastie spolu s vašou firmou bez nutnosti prepisovania." },
+        { "title": "Reporting", "description": "Prehľadné dashboardy a grafy pre lepšie rozhodovanie manažmentu." },
+        { "title": "Bezpečnosť dát", "description": "Enterprise úroveň zabezpečenia citlivých firemných údajov." }
+      ],
+      "processTitle": "Ako tvoríme softvér?",
+      "process": [
+        { "title": "Hĺbková analýza", "description": "Pochopíme vaše procesy a identifikujeme úzke miesta." },
+        { "title": "Architektúra", "description": "Navrhneme technické riešenie a databázový model." },
+        { "title": "Agilný vývoj", "description": "Dodávame funkčné časti postupne, aby ste ich mohli hneď používať." },
+        { "title": "Nasadenie a Podpora", "description": "Implementácia do prevádzky a zaškolenie zamestnancov." }
+      ],
+      "faq": [
+        { "question": "Prečo softvér na mieru a nie krabicové riešenie?", "answer": "Krabicové riešenie vás núti prispôsobiť sa mu. Softvér na mieru presne kopíruje a vylepšuje vaše unikátne procesy." },
+        { "question": "Aké technológie používate?", "answer": "Backend staviame na Node.js alebo Pythone, frontend na Reacte/Next.js. Databázy PostgreSQL." },
+        { "question": "Kto vlastní zdrojový kód?", "answer": "Po odovzdaní a zaplatení projektu prechádzajú majetkové práva na vás." },
+        { "question": "Ako je to s bezpečnosťou?", "answer": "Dodržiavame prísne bezpečnostné štandardy, šifrovanie dát a GDPR pravidlá." }
+      ],
+      "cta": {
+        "primary": "Konzultovať riešenie",
+        "secondary": "Naše technológie"
+      }
+    }
   },
   "servicesEnhanced": {
     "badge": "Naše služby",
@@ -169,7 +316,7 @@
       },
       {
         "title": "AI & Data Analytics",
-        "description": "Využívame umelú inteligenciu a pokročilnú analytiku na transformáciu vašich dát na konkurenčnú výhodu.",
+        "description": "Využívame umelú inteligenciu a pokročilú analytiku na transformáciu vašich dát na konkurenčnú výhodu.",
         "features": [
           "Modely strojového učenia",
           "Prediktívna analytika",
@@ -890,5 +1037,18 @@
         "answer": "Absolútne! Špecializujeme sa na komplexné iniciatívy digitálnej transformácie. To zahŕňa modernizáciu legacy systémov, migráciu do cloudu, automatizáciu procesov, vývoj API, migráciu údajov, systémové integrácie, optimalizáciu workflow a školenie personálu. Pomáhame firmám prejsť od zastaraných systémov k moderným, škálovateľným a efektívnym digitálnym riešeniam, ktoré zlepšujú produktivitu a znižujú náklady."
       }
     ]
+  },
+  "NotFound": {
+    "title": "Stránka nenájdená",
+    "description": "Stránka, ktorú hľadáte, mohla byť presunutá, odstránená alebo neexistuje. Vráťme sa späť k našim profesionálnym službám vývoja softvéru.",
+    "home": "Domov",
+    "development": "Vývojové služby",
+    "services": "IT Služby",
+    "contact": "Kontaktujte nás",
+    "lookingFor": "Hľadáte niečo konkrétne?",
+    "customSoftware": "Vývoj softvéru na mieru",
+    "webMobile": "Vývoj webov a mobilných aplikácií",
+    "portfolio": "Portfólio a prípadové štúdie",
+    "assistance": "Potrebujete okamžitú pomoc?"
   }
 }

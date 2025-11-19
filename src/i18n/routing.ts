@@ -3,23 +3,53 @@ import { defineRouting } from 'next-intl/routing';
 
 export const routing = defineRouting({
   // A list of all locales that are supported
-  locales: ['sk'],
+  locales: ['sk', 'en'],
 
   // Used when no locale matches
   defaultLocale: 'sk',
   
-  // Never show locale prefix
-  localePrefix: 'never',
+  // Use "as-needed" to hide the locale prefix for the default locale (sk)
+  localePrefix: 'as-needed',
 
   // Localized pathnames
   pathnames: {
     '/': '/',
-    '/vyvoj': '/vyvoj',
-    '/sluzby': '/sluzby', 
-    '/portfolio': '/portfolio',
-    '/kontakt': '/kontakt'
+    '/vyvoj': {
+      sk: '/vyvoj',
+      en: '/development'
+    },
+    '/sluzby': {
+      sk: '/sluzby',
+      en: '/services'
+    },
+    '/portfolio': {
+      sk: '/portfolio',
+      en: '/portfolio'
+    },
+    '/kontakt': {
+      sk: '/kontakt',
+      en: '/contact'
+    },
+    '/sluzby/tvorba-web-stranok': {
+      sk: '/sluzby/tvorba-web-stranok',
+      en: '/services/web-development'
+    },
+    '/sluzby/tvorba-eshopu': {
+      sk: '/sluzby/tvorba-eshopu',
+      en: '/services/ecommerce-development'
+    },
+    '/sluzby/vyvoj-mobilnych-aplikacii': {
+      sk: '/sluzby/vyvoj-mobilnych-aplikacii',
+      en: '/services/mobile-app-development'
+    },
+    '/sluzby/softver-na-mieru': {
+      sk: '/sluzby/softver-na-mieru',
+      en: '/services/custom-software-development'
+    }
   }
 });
+
+export type AppPathnames = keyof typeof routing.pathnames;
 
 // Lightweight wrappers around Next.js' navigation APIs
 // that will consider the routing configuration

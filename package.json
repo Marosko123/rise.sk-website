@@ -70,11 +70,11 @@
     "nodemailer": "^7.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sharp": "^0.34.2",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@lhci/cli": "^0.15.1",
     "@size-limit/preset-app": "^11.0.0",
     "@types/node": "^20",
     "@types/react": "19.1.6",
@@ -89,6 +89,7 @@
     "lint-staged": "^15.2.0",
     "postcss": "^8.4.33",
     "prettier": "^3.1.1",
+    "sharp": "^0.34.5",
     "size-limit": "^11.0.1",
     "stylelint": "^16.0.2",
     "stylelint-config-standard": "^36.0.0",
