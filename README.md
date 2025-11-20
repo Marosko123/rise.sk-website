@@ -240,6 +240,7 @@ curl -I https://rise.sk/.well-known/bimi/rise.svg
 # Validate SVG compliance
 npm run bimi:svgo && echo "BIMI SVG is compliant"
 ```
+.test.
 
 ### Asset Specifications
 
