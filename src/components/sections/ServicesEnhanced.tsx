@@ -12,9 +12,10 @@ interface ServicesEnhancedProps {
   breadcrumbs?: BreadcrumbItem[];
 }
 
-const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fallbackIcon: any, gradient: string, speed?: number }) => {
-  const [animationData, setAnimationData] = useState<any>(null);
+const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fallbackIcon: React.ElementType, gradient?: string, speed?: number }) => {
+  const [animationData, setAnimationData] = useState<object | null>(null);
   const [error, setError] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lottieRef = useRef<any>(null);
 
   useEffect(() => {
