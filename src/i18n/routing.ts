@@ -7,7 +7,7 @@ export const routing = defineRouting({
 
   // Used when no locale matches
   defaultLocale: 'sk',
-  
+
   // Use "as-needed" to hide the locale prefix for the default locale (sk)
   localePrefix: 'as-needed',
 
@@ -45,6 +45,14 @@ export const routing = defineRouting({
     '/sluzby/softver-na-mieru': {
       sk: '/sluzby/softver-na-mieru',
       en: '/services/custom-software-development'
+    },
+    '/sluzby/ai-automatizacia': {
+      sk: '/sluzby/ai-automatizacia',
+      en: '/services/ai-automation'
+    },
+    '/sluzby/it-outsourcing': {
+      sk: '/sluzby/it-outsourcing',
+      en: '/services/it-outsourcing'
     }
   }
 });

@@ -1,37 +1,56 @@
 import type { Metadata } from 'next';
 
-import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import Portfolio from '@/components/sections/Portfolio';
+import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import EnhancedSchema from '@/components/seo/EnhancedSchema';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  title: 'Portfolio | Rise.sk - Software Development Projects & Case Studies',
-  description: 'Explore Rise.sk portfolio of successful software development projects. Custom web applications, mobile apps, enterprise solutions, and innovative programming projects in Slovakia.',
-  keywords: 'Rise.sk portfolio, software development projects, web application portfolio, mobile app development examples, programming case studies Slovakia, custom software projects',
-  openGraph: {
-    title: 'Portfolio | Rise.sk - Software Development Projects & Case Studies',
-    description: 'Explore Rise.sk portfolio of successful software development projects. Custom web applications, mobile apps, enterprise solutions, and innovative programming projects.',
-    url: 'https://rise.sk/en/portfolio',
-    siteName: 'Rise.sk',
-    images: [
-      {
-        url: '/rise/bronze/Rise_logo_circle.png',
-        width: 1200,
-        height: 630,
-        alt: 'Rise.sk Portfolio - Software Development Projects',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'pages.portfolio' });
+  const tProjects = await getTranslations({ locale, namespace: 'portfolio.projects.descriptions' });
+
+  const localePath = '/portfolio';
+  const localeCode = locale === 'sk' ? 'sk_SK' : 'en_US';
+  const canonicalUrl = locale === 'sk'
+    ? 'https://rise.sk/portfolio'
+    : `https://rise.sk/${locale}${localePath}`;
+
+  return {
+    title: t('meta.title'),
+    description: t('meta.description'),
+    keywords: t('meta.keywords'),
+    openGraph: {
+      title: t('meta.title'),
+      description: t('meta.description'),
+      url: canonicalUrl,
+      siteName: 'Rise.sk',
+      locale: localeCode,
+      images: [
+        {
+          url: '/rise/bronze/Rise_logo_circle.png',
+          width: 1200,
+          height: 630,
+          alt: `Rise.sk - ${t('meta.title')}`,
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('meta.title'),
+      description: t('meta.description'),
+      images: ['/rise/bronze/Rise_logo_circle.png'],
+    },
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        'sk': 'https://rise.sk/portfolio',
+        'en': 'https://rise.sk/en/portfolio',
       },
-    ],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Portfolio | Rise.sk - Software Development Projects & Case Studies',
-    description: 'Explore Rise.sk portfolio of successful software development projects. Custom web applications, mobile apps, enterprise solutions.',
-    images: ['/rise/bronze/Rise_logo_circle.png'],
-  },
-  alternates: {
-    canonical: 'https://rise.sk/en/portfolio',
-  },
-};
+    },
+  };
+}
 
 export default async function PortfolioPage({
   params,
@@ -40,10 +59,34 @@ export default async function PortfolioPage({
 }) {
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'portfolio');
+  const t = await getTranslations({ locale, namespace: 'pages.portfolio' });
+  const tProjects = await getTranslations({ locale, namespace: 'portfolio.projects.descriptions' });
+
+  // Extract project data for schema
+  const projects = [
+    { name: 'Horilla HR', description: tProjects('horilla') },
+    { name: 'Viac ako Nick', description: tProjects('viacAkoNick') },
+    { name: 'Lumturi Auction', description: tProjects('lumturi') },
+    { name: 'Pixel Corporation', description: tProjects('pixelCorporation') },
+    { name: 'Trulink', description: tProjects('trulink') },
+    { name: 'Rise.sk Web', description: tProjects('riseWeb') },
+    { name: 'Doučma', description: tProjects('doucma') },
+    { name: 'Rozvoj Dopravy', description: tProjects('rozvojDopravy') },
+    { name: 'TwoRing', description: tProjects('twoRing') },
+  ];
 
   return (
     <div className="min-h-screen bg-black">
       <BreadcrumbSchema items={breadcrumbs} page="portfolio" />
+      <EnhancedSchema
+        type="CollectionPage"
+        data={{
+          name: t('meta.title'),
+          description: t('meta.description'),
+          url: locale === 'sk' ? 'https://rise.sk/portfolio' : 'https://rise.sk/en/portfolio',
+          items: projects
+        }}
+      />
       <Portfolio />
     </div>
   );

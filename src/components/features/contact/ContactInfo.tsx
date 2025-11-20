@@ -109,7 +109,7 @@ export default function ContactInfo() {
               {t('meetingDescription')}
             </div>
             <button
-              onClick={() => window.open('https://calendar.app.google/NWkLNFqSZffB36of6', '_blank')}
+              onClick={() => window.open('https://calendar.app.google/V9cv7KRnKEpvGX5m8', '_blank')}
               className='inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white text-sm font-medium rounded-lg transition-colors duration-200'
             >
               {t('meetingCta')}

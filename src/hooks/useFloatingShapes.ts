@@ -70,12 +70,12 @@ export interface FloatingShape {
 }
 
 interface UseFloatingShapesProps {
-  cursorPosition: { x: number; y: number };
+  cursorPositionRef: React.MutableRefObject<{ x: number; y: number }>;
   windowSize: { width: number; height: number };
   mounted: boolean;
 }
 
-export function useFloatingShapes({ cursorPosition, windowSize, mounted }: UseFloatingShapesProps) {
+export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: UseFloatingShapesProps) {
   const { animationTime } = useAnimation();
   const [shapeCount, setShapeCount] = useState(SHAPE_CONFIG.INITIAL_COUNT);
   const [floatingShapes, setFloatingShapes] = useState<FloatingShape[]>([]);
@@ -214,8 +214,8 @@ export function useFloatingShapes({ cursorPosition, windowSize, mounted }: UseFl
           // Calculate distance from mouse to shape center
           const shapeScreenX = (shape.x / 100) * windowSize.width;
           const shapeScreenY = (shape.y / 100) * windowSize.height;
-          const deltaX = cursorPosition.x - shapeScreenX;
-          const deltaY = cursorPosition.y - shapeScreenY;
+          const deltaX = cursorPositionRef.current.x - shapeScreenX;
+          const deltaY = cursorPositionRef.current.y - shapeScreenY;
           const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
           // Mouse hover push effect
@@ -288,7 +288,7 @@ export function useFloatingShapes({ cursorPosition, windowSize, mounted }: UseFl
         cancelAnimationFrame(animationId);
       }
     };
-  }, [mounted, cursorPosition.x, cursorPosition.y, windowSize.width, windowSize.height, floatingShapes.length, isExploding, detectAndResolveCollisions]);
+  }, [mounted, windowSize.width, windowSize.height, floatingShapes.length, isExploding, detectAndResolveCollisions, cursorPositionRef]);
 
   // Function to create a new floating shape
   const createFloatingShape = (id: number, totalCount: number, isInitial: boolean = false): FloatingShape => {

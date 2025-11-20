@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v7';
 const CACHE_NAME = `rise-sk-${CACHE_VERSION}`;
 const STATIC_CACHE = `rise-sk-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `rise-sk-dynamic-${CACHE_VERSION}`;
@@ -6,10 +6,10 @@ const IMAGE_CACHE = `rise-sk-images-${CACHE_VERSION}`;
 const FONT_CACHE = `rise-sk-fonts-${CACHE_VERSION}`;
 
 // Assets to cache on install
+// NOTE: We DO NOT cache HTML pages (/, /en, /sk) here anymore.
+// This prevents the "stale index.html" issue where users get stuck on an old version
+// until the SW updates. HTML pages are handled by the Network-First strategy in fetch().
 const STATIC_ASSETS = [
-  '/',
-  '/en',
-  '/sk',
   '/manifest.json',
   '/robots.txt',
   '/sitemap.xml',
@@ -201,28 +201,17 @@ async function handleStaticAsset(request) {
   }
 }
 
-// Handle page requests with network-first strategy
+// Handle page requests with Network Only strategy (no caching of HTML)
 async function handlePageRequest(request) {
   try {
+    // Network Only strategy for HTML
+    // We want the browser to ALWAYS get the latest HTML from the server
     const response = await fetch(request);
-
-    if (response.status === 200) {
-      const cache = await caches.open(DYNAMIC_CACHE);
-      cache.put(request, response.clone());
-    }
-
     return response;
   } catch (error) {
-    console.error('Network failed, trying cache:', error);
+    console.error('Network failed for page:', error);
 
-    const cache = await caches.open(DYNAMIC_CACHE);
-    const cachedResponse = await cache.match(request);
-
-    if (cachedResponse) {
-      return cachedResponse;
-    }
-
-    // Return offline page or basic response
+    // Return offline page if network fails
     return new Response(`
       <!DOCTYPE html>
       <html>

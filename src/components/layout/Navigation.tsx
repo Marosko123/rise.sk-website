@@ -1,11 +1,12 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { ArrowRight, Brain, ChevronDown, Code2, Laptop, LucideIcon, Menu, ShoppingCart, Smartphone, Users, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 
+import { AppPathnames, Link, usePathname, useRouter } from '@/i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
-import { Link, usePathname, useRouter, AppPathnames } from '@/i18n/routing';
 
 import LanguageSwitcher from './LanguageSwitcher';
 import LogoAndText from './LogoAndText';
@@ -16,10 +17,10 @@ type NavLink = {
   section: string;
   isHash: boolean;
   hasDropdown?: boolean;
-  dropdownItems?: { label: string; href: AppPathnames }[];
+  dropdownItems?: { label: string; href: AppPathnames; icon?: LucideIcon; description?: string }[];
 };
 
-export default function Navigation() {
+export default function Navigation({ transparent = false, hideLinks = false }: { transparent?: boolean; hideLinks?: boolean }) {
   const t = useTranslations('navigation');
   const locale = useLocale();
   const router = useRouter();
@@ -29,12 +30,30 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [initialHashHandled, setInitialHashHandled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
   useEffect(() => {
     setMounted(true);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   // Dynamic section mappings based on language
   const getSectionMappings = useCallback((lang: string) => {
@@ -72,60 +91,92 @@ export default function Navigation() {
     const sectionMap = getSectionMappings(locale);
 
     return [
-      { 
-        href: { pathname: '/', hash: sectionMap.development }, 
-        label: t('development'), 
-        section: sectionMap.development, 
-        isHash: true 
+      {
+        href: { pathname: '/', hash: sectionMap.development },
+        label: t('development'),
+        section: sectionMap.development,
+        isHash: true
       },
-      { 
-        href: { pathname: '/', hash: sectionMap.about }, 
-        label: t('about'), 
-        section: sectionMap.about, 
-        isHash: true 
+      {
+        href: { pathname: '/', hash: sectionMap.about },
+        label: t('about'),
+        section: sectionMap.about,
+        isHash: true
       },
-      { 
-        href: { pathname: '/', hash: sectionMap.services }, 
-        label: t('services'), 
-        section: sectionMap.services, 
+      {
+        href: { pathname: '/', hash: sectionMap.services },
+        label: t('services'),
+        section: sectionMap.services,
         isHash: true,
         hasDropdown: true,
         dropdownItems: [
-          { label: t('serviceItems.webDevelopment'), href: '/sluzby/tvorba-web-stranok' },
-          { label: t('serviceItems.ecommerce'), href: '/sluzby/tvorba-eshopu' },
-          { label: t('serviceItems.mobileApps'), href: '/sluzby/vyvoj-mobilnych-aplikacii' },
-          { label: t('serviceItems.customSoftware'), href: '/sluzby/softver-na-mieru' },
+          {
+            label: t('serviceItems.webDevelopment'),
+            href: '/sluzby/tvorba-web-stranok',
+            icon: Laptop,
+            description: locale === 'sk' ? 'Moderné a responzívne webové stránky' : 'Modern and responsive websites'
+          },
+          {
+            label: t('serviceItems.ecommerce'),
+            href: '/sluzby/tvorba-eshopu',
+            icon: ShoppingCart,
+            description: locale === 'sk' ? 'Komplexné e-commerce riešenia' : 'Complete e-commerce solutions'
+          },
+          {
+            label: t('serviceItems.mobileApps'),
+            href: '/sluzby/vyvoj-mobilnych-aplikacii',
+            icon: Smartphone,
+            description: locale === 'sk' ? 'iOS a Android aplikácie' : 'iOS and Android applications'
+          },
+          {
+            label: t('serviceItems.customSoftware'),
+            href: '/sluzby/softver-na-mieru',
+            icon: Code2,
+            description: locale === 'sk' ? 'Riešenia šité na mieru vašim potrebám' : 'Solutions tailored to your needs'
+          },
+          {
+            label: t('serviceItems.ai'),
+            href: '/sluzby/ai-automatizacia',
+            icon: Brain,
+            description: locale === 'sk' ? 'Optimalizácia procesov a školenia' : 'Process optimization and training'
+          },
+          {
+            label: t('serviceItems.outsourcing'),
+            href: '/sluzby/it-outsourcing',
+            icon: Users,
+            description: locale === 'sk' ? 'Prenájom vývojárskych tímov' : 'Dedicated development teams'
+          },
         ]
       },
-      { 
-        href: { pathname: '/', hash: sectionMap.portfolio }, 
-        label: t('portfolio'), 
-        section: sectionMap.portfolio, 
-        isHash: true 
+      {
+        href: { pathname: '/', hash: sectionMap.portfolio },
+        label: t('portfolio'),
+        section: sectionMap.portfolio,
+        isHash: true
       },
-      { 
-        href: { pathname: '/', hash: sectionMap.reviews }, 
-        label: t('reviews'), 
-        section: sectionMap.reviews, 
-        isHash: true 
+      {
+        href: { pathname: '/', hash: sectionMap.reviews },
+        label: t('reviews'),
+        section: sectionMap.reviews,
+        isHash: true
       },
-      { 
-        href: { pathname: '/', hash: sectionMap.faq }, 
-        label: t('faq'), 
-        section: sectionMap.faq, 
-        isHash: true 
+      {
+        href: { pathname: '/', hash: sectionMap.faq },
+        label: t('faq'),
+        section: sectionMap.faq,
+        isHash: true
       },
-      { 
-        href: { pathname: '/', hash: sectionMap.hiring }, 
-        label: t('hiring'), 
-        section: sectionMap.hiring, 
-        isHash: true 
+      {
+        href: { pathname: '/', hash: sectionMap.hiring },
+        label: t('hiring'),
+        section: sectionMap.hiring,
+        isHash: true
       },
-      { 
-        href: { pathname: '/', hash: sectionMap.contact }, 
-        label: t('contact'), 
-        section: sectionMap.contact, 
-        isHash: true 
+      {
+        href: { pathname: '/', hash: sectionMap.contact },
+        label: t('contact'),
+        section: sectionMap.contact,
+        isHash: true
       },
     ];
   }, [t, locale, getSectionMappings]);
@@ -236,8 +287,13 @@ export default function Navigation() {
   };
 
   return (
+    <>
     <motion.nav
-      className='sticky top-0 left-0 right-0 z-[100] bg-black/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300'
+      className={`sticky top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+        (transparent && !isScrolled)
+          ? 'bg-transparent border-transparent'
+          : 'bg-black/95 backdrop-blur-xl border-b border-white/10'
+      }`}
       style={{ position: 'sticky', top: 0 }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -251,8 +307,14 @@ export default function Navigation() {
               <LogoAndText
                 onClick={() => {
                   if (isHomePage) {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    window.history.pushState(null, '', window.location.pathname);
+                    if (window.location.hash) {
+                      // Clear hash to trigger Landing Page transition
+                      window.history.pushState("", document.title, window.location.pathname + window.location.search);
+                      // Dispatch hashchange event manually to notify LandingPage
+                      window.dispatchEvent(new Event('hashchange'));
+                    } else {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                   } else {
                     router.push('/');
                   }
@@ -262,108 +324,132 @@ export default function Navigation() {
           </div>
 
           {/* Navigation Links - Center */}
-          <div className='hidden xl:flex absolute left-1/2 transform -translate-x-1/2'>
-            <div className='flex items-center space-x-2 xl:space-x-4 whitespace-nowrap'>
-              {navLinks.map((link, index) => {
-                const isActive = isLinkActive(link.section);
+          {!hideLinks && (
+            <div className='hidden lg:flex absolute left-1/2 transform -translate-x-1/2'>
+              <div className='flex items-center space-x-2 xl:space-x-4 whitespace-nowrap'>
+                {navLinks.map((link, index) => {
+                  const isActive = isLinkActive(link.section);
 
-                if (link.hasDropdown) {
-                  return (
-                    <div
-                      key={index}
-                      className="relative group"
-                      onMouseEnter={() => setIsServicesOpen(true)}
-                      onMouseLeave={() => setIsServicesOpen(false)}
-                    >
-                      <motion.div
-                        className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap flex items-center gap-1 cursor-pointer ${
-                          isActive || isServicesOpen
-                            ? 'text-primary'
-                            : 'text-gray-300 hover:text-primary'
-                        }`}
+                  if (link.hasDropdown) {
+                    return (
+                      <div
+                        key={index}
+                        className="relative group"
+                        onMouseEnter={() => setIsServicesOpen(true)}
+                        onMouseLeave={() => setIsServicesOpen(false)}
                       >
-                        <span onClick={() => {
-                          if (isHomePage) {
-                            const element = document.getElementById(link.section);
-                            if (element) {
-                              const navHeight = 80;
-                              const elementPosition = element.offsetTop;
-                              const offsetPosition = elementPosition - navHeight;
+                        <motion.div
+                          className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap flex items-center gap-1 cursor-pointer ${
+                            isActive || isServicesOpen
+                              ? 'text-primary'
+                              : 'text-gray-300 hover:text-primary'
+                          }`}
+                        >
+                          <span onClick={() => {
+                            if (isHomePage) {
+                              const element = document.getElementById(link.section);
+                              if (element) {
+                                const navHeight = 80;
+                                const elementPosition = element.offsetTop;
+                                const offsetPosition = elementPosition - navHeight;
 
-                              window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                              });
+                                window.scrollTo({
+                                  top: offsetPosition,
+                                  behavior: 'smooth'
+                                });
+                              }
+                            } else {
+                              if (typeof link.href === 'object' && 'pathname' in link.href) {
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                router.push(`${link.href.pathname}#${link.href.hash}` as any);
+                              } else {
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                router.push(link.href as any);
+                              }
                             }
-                          } else {
-                            router.push(link.href);
+                          }}>
+                            {link.label}
+                          </span>
+                          <ChevronDown className='w-4 h-4' />
+                        </motion.div>
+
+                        {/* Simple Dropdown Menu */}
+                        <AnimatePresence>
+                          {isServicesOpen && (
+                            <motion.div
+                              className='absolute top-full left-0 pt-5 w-80 z-50'
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 10 }}
+                              transition={{ duration: 0.2 }}
+                              onMouseLeave={() => setIsServicesOpen(false)}
+                            >
+                              <div className='bg-black/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden'>
+                                <div className='py-2'>
+                                {link.dropdownItems?.map((item, itemIndex) => {
+                                  const Icon = item.icon;
+                                  return (
+                                    <Link
+                                      key={itemIndex}
+                                      href={item.href}
+                                      className='flex items-center gap-4 px-5 py-4 hover:bg-white/5 transition-colors duration-200 group/item'
+                                      onClick={() => {
+                                        setIsServicesOpen(false);
+                                        setIsMenuOpen(false);
+                                      }}
+                                    >
+                                      <div className='p-2 rounded-lg bg-white/5 group-hover/item:bg-primary/20 transition-colors duration-200'>
+                                        {Icon && <Icon className='w-5 h-5 text-gray-300 group-hover/item:text-primary transition-colors duration-200' />}
+                                      </div>
+                                      <div className='flex-1'>
+                                        <div className='text-base font-semibold text-gray-200 group-hover/item:text-white transition-colors duration-200'>
+                                          {item.label}
+                                        </div>
+                                      </div>
+                                      <ArrowRight className='w-4 h-4 text-gray-600 group-hover/item:text-primary group-hover/item:translate-x-1 transition-all duration-200' />
+                                    </Link>
+                                  );
+                                })}
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap ${
+                        isActive ? 'text-primary' : 'text-gray-300 hover:text-primary'
+                      }`}
+                      onClick={(e) => {
+                        if (isHomePage && link.isHash) {
+                          e.preventDefault();
+                          const element = document.getElementById(link.section);
+                          if (element) {
+                            const navHeight = 80;
+                            const elementPosition = element.offsetTop;
+                            const offsetPosition = elementPosition - navHeight;
+
+                            window.scrollTo({
+                              top: offsetPosition,
+                              behavior: 'smooth'
+                            });
                           }
-                        }}>
-                          {link.label}
-                        </span>
-                        <ChevronDown className='w-4 h-4' />
-                      </motion.div>
-
-                      {/* Dropdown Menu */}
-                      <AnimatePresence>
-                        {isServicesOpen && (
-                          <motion.div
-                            className='absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-black rounded-lg shadow-lg overflow-hidden z-50'
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            {link.dropdownItems?.map((item, itemIndex) => (
-                              <Link
-                                key={itemIndex}
-                                href={item.href}
-                                className='block px-4 py-2 text-sm text-gray-300 hover:bg-primary hover:text-white transition-colors duration-200'
-                                onClick={() => {
-                                  // Close menu on item click
-                                  setIsMenuOpen(false);
-                                }}
-                              >
-                                {item.label}
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap ${
-                      isActive ? 'text-primary' : 'text-gray-300 hover:text-primary'
-                    }`}
-                    onClick={(e) => {
-                      if (isHomePage && link.isHash) {
-                        e.preventDefault();
-                        const element = document.getElementById(link.section);
-                        if (element) {
-                          const navHeight = 80;
-                          const elementPosition = element.offsetTop;
-                          const offsetPosition = elementPosition - navHeight;
-
-                          window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                          });
                         }
-                      }
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Right Side - Language Switcher & Menu Toggle */}
           <div className='flex items-center pr-6 space-x-4'>
@@ -373,137 +459,147 @@ export default function Navigation() {
             </div>
 
             {/* Mobile Menu Toggle */}
-            <div className='flex lg:hidden'>
-              <button
-                onClick={toggleMenu}
-                className='p-2 rounded-md text-gray-300 hover:bg-primary hover:text-white transition-all duration-200'
-              >
-                {isMenuOpen ? (
-                  <X className='w-6 h-6' />
-                ) : (
-                  <Menu className='w-6 h-6' />
-                )}
-              </button>
-            </div>
+            {!hideLinks && (
+              <div className='flex lg:hidden'>
+                <button
+                  onClick={toggleMenu}
+                  className='p-2 rounded-md text-gray-300 hover:bg-primary hover:text-white transition-all duration-200'
+                >
+                  {isMenuOpen ? (
+                    <X className='w-6 h-6' />
+                  ) : (
+                    <Menu className='w-6 h-6' />
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Mobile Navigation Menu - Full Width Overlay */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              className='fixed inset-0 z-50 bg-black bg-opacity-90 overflow-y-auto'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className='flex flex-col items-center pt-20 pb-10'>
-                {/* Close Button (Top Right) */}
-                <div className='absolute top-4 right-4'>
-                  <button
-                    onClick={toggleMenu}
-                    className='p-2 rounded-md text-gray-300 hover:bg-primary hover:text-white transition-all duration-200'
-                  >
-                    <X className='w-6 h-6' />
-                  </button>
-                </div>
-
-                {/* Navigation Links */}
-                <div className='flex flex-col items-center space-y-4'>
-                  {navLinks.map((link, index) => {
-                    const isActive = isLinkActive(link.section);
-
-                    if (link.hasDropdown) {
-                      return (
-                        <div
-                          key={index}
-                          className="relative group w-full flex flex-col items-center"
-                        >
-                          <motion.div
-                            className={`px-4 py-3 text-lg font-semibold transition-all duration-300 relative select-none flex items-center justify-center gap-2 w-full cursor-pointer ${
-                              isActive || isServicesOpen
-                                ? 'text-primary'
-                                : 'text-gray-300 hover:text-primary'
-                            }`}
-                            onClick={() => setIsServicesOpen(!isServicesOpen)}
-                          >
-                            <span>{link.label}</span>
-                            <ChevronDown className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
-                          </motion.div>
-
-                          {/* Dropdown Menu */}
-                          <AnimatePresence>
-                            {isServicesOpen && (
-                              <motion.div
-                                className='w-full bg-white/5 rounded-lg overflow-hidden'
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.3 }}
-                              >
-                                {link.dropdownItems?.map((item, itemIndex) => (
-                                  <Link
-                                    key={itemIndex}
-                                    href={item.href}
-                                    className='block px-4 py-3 text-base text-center text-gray-300 hover:bg-primary hover:text-white transition-colors duration-200'
-                                    onClick={() => {
-                                      // Close menu on item click
-                                      setIsMenuOpen(false);
-                                    }}
-                                  >
-                                    {item.label}
-                                  </Link>
-                                ))}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      );
-                    }
-
-                    return (
-                      <Link
-                        key={index}
-                        href={link.href}
-                        className={`px-4 py-3 text-lg font-semibold transition-all duration-300 relative select-none w-full text-center ${
-                          isActive ? 'text-primary' : 'text-gray-300 hover:text-primary'
-                        }`}
-                        onClick={(e) => {
-                          if (isHomePage && link.isHash) {
-                            e.preventDefault();
-                            const element = document.getElementById(link.section);
-                            if (element) {
-                              const navHeight = 80;
-                              const elementPosition = element.offsetTop;
-                              const offsetPosition = elementPosition - navHeight;
-
-                              window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                              });
-                              setIsMenuOpen(false);
-                            }
-                          } else {
-                            setIsMenuOpen(false);
-                          }
-                        }}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  })}
-                </div>
-
-                {/* Language Switcher - Mobile */}
-                <div className='flex lg:hidden mt-4'>
-                  <LanguageSwitcher />
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </motion.nav>
+
+    {/* Mobile Navigation Menu - Full Width Overlay */}
+    {mounted && isMenuOpen && createPortal(
+      <motion.div
+        className='fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm overflow-y-auto flex flex-col'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <div className='flex flex-col items-center w-full min-h-full pt-20 pb-10 relative'>
+          {/* Close Button (Top Right) */}
+          <button
+            onClick={toggleMenu}
+            className='absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:bg-primary hover:text-white transition-all duration-200 z-50'
+            aria-label="Close menu"
+          >
+            <X className='w-8 h-8' />
+          </button>
+
+          {/* Navigation Links */}
+          <div className='flex flex-col items-center space-y-6 w-full px-6'>
+            {navLinks.map((link, index) => {
+              const isActive = isLinkActive(link.section);
+
+              if (link.hasDropdown) {
+                return (
+                  <div
+                    key={index}
+                    className="relative group w-full flex flex-col items-center"
+                  >
+                    <div
+                      className={`px-4 py-3 text-xl font-bold transition-all duration-300 relative select-none flex items-center justify-center gap-2 w-full cursor-pointer ${
+                        isActive || isServicesOpen
+                          ? 'text-primary'
+                          : 'text-white hover:text-primary'
+                      }`}
+                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                    >
+                      <span>{link.label}</span>
+                      <ChevronDown className={`w-6 h-6 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                    </div>
+
+                    {/* Dropdown Menu */}
+                    <AnimatePresence>
+                      {isServicesOpen && (
+                        <motion.div
+                          className='w-full bg-white/5 rounded-xl overflow-hidden mt-4 border border-white/10'
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {link.dropdownItems?.map((item, itemIndex) => {
+                            const Icon = item.icon;
+                            return (
+                              <Link
+                                key={itemIndex}
+                                href={item.href}
+                                className='flex items-center gap-4 px-6 py-5 text-gray-200 hover:bg-primary hover:text-white transition-colors duration-200 border-b border-white/5 last:border-b-0'
+                                onClick={() => {
+                                  setIsMenuOpen(false);
+                                  setIsServicesOpen(false);
+                                }}
+                              >
+                                {Icon && <Icon className='w-6 h-6 flex-shrink-0' />}
+                                <div className='flex-1 text-left'>
+                                  <div className='font-bold text-lg'>{item.label}</div>
+                                  <div className='text-sm text-gray-400 mt-1'>{item.description}</div>
+                                </div>
+                                <ArrowRight className='w-5 h-5 flex-shrink-0' />
+                              </Link>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className={`px-4 py-3 text-xl font-bold transition-all duration-300 relative select-none w-full text-center ${
+                    isActive ? 'text-primary' : 'text-white hover:text-primary'
+                  }`}
+                  onClick={(e) => {
+                    if (isHomePage && link.isHash) {
+                      e.preventDefault();
+                      const element = document.getElementById(link.section);
+                      if (element) {
+                        const navHeight = 80;
+                        const elementPosition = element.offsetTop;
+                        const offsetPosition = elementPosition - navHeight;
+
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                        setIsMenuOpen(false);
+                      }
+                    } else {
+                      setIsMenuOpen(false);
+                    }
+                  }}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Language Switcher - Mobile */}
+          <div className='flex lg:hidden mt-8'>
+            <LanguageSwitcher />
+          </div>
+        </div>
+      </motion.div>,
+      document.body
+    )}
+    </>
   );
 }

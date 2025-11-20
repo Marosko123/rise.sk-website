@@ -12,6 +12,20 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.vectorlogo.zone',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react'],
@@ -25,7 +39,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate',
+            value: 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
           },
         ],
       },
@@ -54,7 +68,20 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com *.vercel-scripts.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: *.googletagmanager.com *.google-analytics.com; font-src 'self' data: fonts.gstatic.com; connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com vitals.vercel-analytics.com *.emailjs.com;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com *.vercel-scripts.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: *.googletagmanager.com *.google-analytics.com cdn.jsdelivr.net www.vectorlogo.zone upload.wikimedia.org; font-src 'self' data: fonts.gstatic.com; connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com vitals.vercel-analytics.com *.emailjs.com lottie.host *.lottiefiles.com;"
+          },
+          {
+            key: 'Clear-Site-Data',
+            value: '"cache", "storage"'
+          }
+        ]
+      },
+      {
+        source: '/((?!_next|static|favicon.ico).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0'
           }
         ]
       }

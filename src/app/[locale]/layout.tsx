@@ -5,12 +5,13 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { type ReactNode } from 'react';
 
-import EnhancedSchema from '@/components/seo/EnhancedSchema';
-import GDPRConsent from '@/components/features/GDPRConsent';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
-import ServiceWorkerRegistration from '@/components/features/ServiceWorkerRegistration';
-import ThemeProvider from '@/components/providers/ThemeProvider';
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter';
+import GDPRConsent from '@/components/features/GDPRConsent';
+import ServiceWorkerRegistration from '@/components/features/ServiceWorkerRegistration';
+import { AnimationProvider } from '@/components/providers/AnimationProvider';
+import ThemeProvider from '@/components/providers/ThemeProvider';
+import EnhancedSchema from '@/components/seo/EnhancedSchema';
 import { routing } from '@/i18n/routing';
 
 import '../globals.css';
@@ -151,7 +152,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
-            {children}
+            <AnimationProvider>
+              {children}
+            </AnimationProvider>
             <ServiceWorkerRegistration />
             <WebVitalsReporter />
             <GDPRConsent />

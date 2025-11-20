@@ -12,13 +12,6 @@ export default function ServiceWorkerRegistration() {
 
   const registerServiceWorker = useCallback(async () => {
     try {
-      // Clear old caches from previous versions
-      const cacheNames = await caches.keys();
-      const oldCaches = cacheNames.filter(name =>
-        name.startsWith('rise-sk-') && !name.includes('-v5')
-      );
-      await Promise.all(oldCaches.map(name => caches.delete(name)));
-
       const registration = await navigator.serviceWorker.register('/sw.js', {
         scope: '/',
       });

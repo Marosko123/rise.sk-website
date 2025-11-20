@@ -125,10 +125,6 @@ body {
     sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
-  /* Performance optimizations */
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  will-change: scroll-position;
 }
 
 /* Modern Gradients */

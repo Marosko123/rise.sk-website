@@ -56,7 +56,7 @@ export function getBreadcrumbsForPage(
     case 'vyvoj':
       breadcrumbs.push({
         name: locale === 'en' ? 'Development' : 'Vývoj',
-        url: `${baseUrl}/${locale}/${page}`
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'development' : 'vyvoj'}`
       });
       break;
 
@@ -64,7 +64,92 @@ export function getBreadcrumbsForPage(
     case 'sluzby':
       breadcrumbs.push({
         name: locale === 'en' ? 'Services' : 'Služby',
-        url: `${baseUrl}/${locale}/${page}`
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services' : 'sluzby'}`
+      });
+      break;
+
+    case 'tvorba-web-stranok':
+    case 'web-development':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Services' : 'Služby',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services' : 'sluzby'}`
+      });
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Web Development' : 'Tvorba Web Stránok',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services/web-development' : 'sluzby/tvorba-web-stranok'}`
+      });
+      break;
+
+    case 'tvorba-eshopu':
+    case 'ecommerce-development':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Services' : 'Služby',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services' : 'sluzby'}`
+      });
+      breadcrumbs.push({
+        name: locale === 'en' ? 'E-shop Development' : 'Tvorba E-shopu',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services/ecommerce-development' : 'sluzby/tvorba-eshopu'}`
+      });
+      break;
+
+    case 'vyvoj-mobilnych-aplikacii':
+    case 'mobile-app-development':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Services' : 'Služby',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services' : 'sluzby'}`
+      });
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Mobile App Development' : 'Vývoj Mobilných Aplikácií',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services/mobile-app-development' : 'sluzby/vyvoj-mobilnych-aplikacii'}`
+      });
+      break;
+
+    case 'softver-na-mieru':
+    case 'custom-software-development':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Services' : 'Služby',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services' : 'sluzby'}`
+      });
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Custom Software' : 'Softvér na Mieru',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services/custom-software-development' : 'sluzby/softver-na-mieru'}`
+      });
+      break;
+
+    case 'ai-automatizacia':
+    case 'ai-automation':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Services' : 'Služby',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services' : 'sluzby'}`
+      });
+      breadcrumbs.push({
+        name: locale === 'en' ? 'AI & Automation' : 'AI & Automatizácia',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services/ai-automation' : 'sluzby/ai-automatizacia'}`
+      });
+      break;
+
+    case 'it-outsourcing':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Services' : 'Služby',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services' : 'sluzby'}`
+      });
+      breadcrumbs.push({
+        name: locale === 'en' ? 'IT Outsourcing' : 'IT Outsourcing',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'services/it-outsourcing' : 'sluzby/it-outsourcing'}`
+      });
+      break;
+
+    case 'obchodne-podmienky':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Terms & Conditions' : 'Obchodné podmienky',
+        url: `${baseUrl}/${locale}/obchodne-podmienky`
+      });
+      break;
+
+    case 'ochrana-osobnych-udajov':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Privacy Policy' : 'Ochrana osobných údajov',
+        url: `${baseUrl}/${locale}/ochrana-osobnych-udajov`
       });
       break;
 
@@ -72,7 +157,7 @@ export function getBreadcrumbsForPage(
     case 'kontakt':
       breadcrumbs.push({
         name: locale === 'en' ? 'Contact' : 'Kontakt',
-        url: `${baseUrl}/${locale}/${page}`
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'contact' : 'kontakt'}`
       });
       break;
 

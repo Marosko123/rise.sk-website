@@ -1,8 +1,8 @@
-import React from 'react'
 import { companyConfig } from '@/config/company'
+import React from 'react'
 
 interface EnhancedSchemaProps {
-  type: 'Organization' | 'LocalBusiness' | 'WebSite' | 'Service' | 'Article'
+  type: 'Organization' | 'LocalBusiness' | 'WebSite' | 'Service' | 'Article' | 'FAQPage' | 'CollectionPage'
   data?: Record<string, unknown>
 }
 
@@ -12,6 +12,39 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
     const logoUrl = `${baseUrl}${companyConfig.website.logo.main}`
 
     switch (type) {
+      case 'FAQPage':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: (data.faqs as Array<{ question: string; answer: string }> || []).map(faq => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer
+            }
+          }))
+        }
+
+      case 'CollectionPage':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: data.name || 'Portfolio',
+          description: data.description || 'Our successful projects',
+          url: data.url || `${baseUrl}/portfolio`,
+          mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: (data.items as Array<{ name: string; description: string; url?: string }> || []).map((item, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              url: item.url || `${baseUrl}/portfolio`,
+              name: item.name,
+              description: item.description
+            }))
+          }
+        }
+
       case 'Organization':
         return {
           '@context': 'https://schema.org',
@@ -145,14 +178,6 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
               '@type': 'ImageObject',
               url: logoUrl
             }
-          },
-          potentialAction: {
-            '@type': 'SearchAction',
-            target: {
-              '@type': 'EntryPoint',
-              urlTemplate: `${baseUrl}/search?q={search_term_string}`
-            },
-            'query-input': 'required name=search_term_string'
           },
           mainEntity: {
             '@type': 'Organization',

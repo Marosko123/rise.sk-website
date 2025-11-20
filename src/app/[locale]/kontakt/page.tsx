@@ -1,41 +1,55 @@
 import type { Metadata } from 'next';
 
-import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import Contact from '@/components/features/MultiStepContactForm';
+import Navigation from '@/components/layout/Navigation';
+import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  title: 'Kontakt | Rise.sk - Profesionálne Programátorské Tímy Slovensko',
-  description: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: rise@rise.sk, Telefón: +421-911-670-188. Kancelária v Bratislave.',
-  keywords: 'kontakt Rise.sk, kontakt programátorské tímy, najať vývojárov Slovensko, kontakt vývoj softvéru, Bratislava programátorská spoločnosť',
-  openGraph: {
-    title: 'Kontakt | Rise.sk - Profesionálne Programátorské Tímy Slovensko',
-    description: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: rise@rise.sk, Telefón: +421-911-670-188.',
-    url: 'https://rise.sk/sk/kontakt',
-    siteName: 'Rise.sk',
-    locale: 'sk_SK',
-    images: [
-      {
-        url: '/rise/bronze/Rise_logo_circle.png',
-        width: 1200,
-        height: 630,
-        alt: 'Kontakt Rise.sk - Profesionálne Programátorské Tímy',
-      },
-    ],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Kontakt | Rise.sk - Profesionálne Programátorské Tímy Slovensko',
-    description: 'Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní.',
-    images: ['/rise/bronze/Rise_logo_circle.png'],
-  },
-  alternates: {
-    canonical: 'https://rise.sk/sk/kontakt',
-    languages: {
-      'en': 'https://rise.sk/en/contact',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'pages.contact' });
+
+  const localePath = locale === 'sk' ? '/kontakt' : '/contact';
+  const localeCode = locale === 'sk' ? 'sk_SK' : 'en_US';
+  const canonicalUrl = locale === 'sk'
+    ? 'https://rise.sk/kontakt'
+    : `https://rise.sk/${locale}${localePath}`;
+
+  return {
+    title: t('meta.title'),
+    description: t('meta.description'),
+    keywords: t('meta.keywords'),
+    openGraph: {
+      title: t('meta.title'),
+      description: t('meta.description'),
+      url: canonicalUrl,
+      siteName: 'Rise.sk',
+      locale: localeCode,
+      images: [
+        {
+          url: '/rise/bronze/Rise_logo_circle.png',
+          width: 1200,
+          height: 630,
+          alt: `Rise.sk - ${t('meta.title')}`,
+        },
+      ],
+      type: 'website',
     },
-  },
-};
+    twitter: {
+      card: 'summary_large_image',
+      title: t('meta.title'),
+      description: t('meta.description'),
+      images: ['/rise/bronze/Rise_logo_circle.png'],
+    },
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        'sk': 'https://rise.sk/kontakt',
+        'en': 'https://rise.sk/en/contact',
+      },
+    },
+  };
+}
 
 export default async function ContactPageSK({
   params,
@@ -48,7 +62,10 @@ export default async function ContactPageSK({
   return (
     <div className="min-h-screen bg-black">
       <BreadcrumbSchema items={breadcrumbs} page="kontakt" />
-      <Contact />
+      <Navigation transparent={true} />
+      <div className="-mt-20 pt-24">
+        <Contact />
+      </div>
     </div>
   );
 }

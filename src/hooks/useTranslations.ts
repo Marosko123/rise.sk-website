@@ -11,9 +11,6 @@ const messages = {
   sk: skMessages,
 };
 
-type Messages = typeof enMessages;
-type MessageKey = keyof Messages;
-
 export function useTranslations(namespace?: string) {
   const [locale, setLocale] = useState<'en' | 'sk'>('sk'); // Start with default
 
@@ -39,8 +36,18 @@ export function useTranslations(namespace?: string) {
     const currentMessages = messages[locale];
 
     if (namespace) {
-      // Handle nested keys like 'navigation.home'
-      const namespaceData = currentMessages[namespace as MessageKey];
+      // Handle nested namespaces like 'services.webDevelopment'
+      const namespaceKeys = namespace.split('.');
+      let namespaceData: unknown = currentMessages;
+
+      for (const nsKey of namespaceKeys) {
+        if (namespaceData && typeof namespaceData === 'object' && nsKey in namespaceData) {
+          namespaceData = (namespaceData as Record<string, unknown>)[nsKey];
+        } else {
+          return key;
+        }
+      }
+
       if (namespaceData && typeof namespaceData === 'object') {
         // Handle nested keys within namespace
         if (key.includes('.')) {
@@ -112,10 +119,22 @@ export function useTranslations(namespace?: string) {
       const currentMessages = messages[locale];
 
       if (namespace) {
-        const namespaceData = currentMessages[namespace as MessageKey];
+        // Handle nested namespaces like 'services.webDevelopment'
+        const namespaceKeys = namespace.split('.');
+        let namespaceData: unknown = currentMessages;
+
+        for (const nsKey of namespaceKeys) {
+          if (namespaceData && typeof namespaceData === 'object' && nsKey in namespaceData) {
+            namespaceData = (namespaceData as Record<string, unknown>)[nsKey];
+          } else {
+            return undefined;
+          }
+        }
+
         if (namespaceData && typeof namespaceData === 'object') {
           return (namespaceData as Record<string, unknown>)[key];
         }
+        return undefined;
       }
 
       const keys = key.split('.');

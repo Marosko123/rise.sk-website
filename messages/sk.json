@@ -20,7 +20,17 @@
       "webDevelopment": "Tvorba webov",
       "ecommerce": "E-shopy",
       "mobileApps": "Mobilné aplikácie",
-      "customSoftware": "Softvér na mieru"
+      "customSoftware": "Softvér na mieru",
+      "ai": "AI & Automatizácia",
+      "outsourcing": "IT Outsourcing"
+    },
+    "serviceDescriptions": {
+      "webDevelopment": "Moderné a responzívne webové stránky postavené na najnovších technológiách",
+      "ecommerce": "Komplexné e-commerce riešenia s pokročilými funkciami a integráciami",
+      "mobileApps": "Natívne iOS a Android aplikácie s vynikajúcim užívateľským zážitkom",
+      "customSoftware": "Softvérové riešenia šité presne na mieru vašim obchodným potrebám",
+      "ai": "Optimalizácia procesov, AI školenia a audit. Zefektívnite a zrýchlite chod vašej firmy.",
+      "outsourcing": "Prenájom celých vývojárskych tímov alebo jednotlivých expertov pre vaše projekty."
     },
     "development": "Vývoj",
     "engagement": "Modely spolupráce",
@@ -120,104 +130,205 @@
     "titleHighlight": "riešenia",
     "subtitle": "Od konceptu po nasadenie – dodávame koncové technologické riešenia s najmodernejšími technológiami",
     "webDevelopment": {
-      "title": "Tvorba web stránok na mieru",
-      "description": "Vytvárame moderné, rýchle a SEO optimalizované webstránky, ktoré premenia návštevníkov na zákazníkov. Profesionálny webdizajn a vývoj pre firmy na Slovensku.",
-      "serviceType": "Web Development",
+      "title": "Tvorba Web Stránok",
+      "tagline": "Rýchle, moderné a SEO optimalizované. Weby, po ktorých sníva každý.",
+      "description": "Weby, ktoré menia návštevníkov na zákazníkov.",
+      "serviceType": "Tvorba webových stránok a webový vývoj",
       "meta": {
-        "title": "Tvorba Web Stránok Bratislava | Moderné Weby na Mieru - Rise.sk",
-        "description": "Profesionálna tvorba web stránok na mieru. Rýchle, bezpečné a SEO optimalizované weby pre firmy. Získajte cenovú ponuku na nový web ešte dnes."
+        "title": "Tvorba Web Stránok na Mieru | Moderný Webdizajn & SEO | Rise.sk",
+        "description": "Profesionálna tvorba web stránok, ktoré predávajú. Moderný dizajn, špičkové SEO a blesková rýchlosť. Získajte web na mieru, ktorý predbehne vašu konkurenciu.",
+        "keywords": "tvorba web stránok, webdizajn, tvorba webu bratislava, web na mieru, seo optimalizácia, rýchly web, next.js vývoj, moderné webstránky"
       },
-      "featuresTitle": "Prečo si vybrať nás pre tvorbu webu?",
+      "featuresTitle": "Prečo si vybrať našu tvorbu webstránok?",
       "features": [
-        { "title": "SEO Optimalizácia", "description": "Weby staviame tak, aby ich Google miloval. Správna štruktúra, rýchlosť a metadáta sú základ." },
-        { "title": "Extrémna rýchlosť", "description": "Využívame Next.js a moderné technológie pre bleskové načítanie, ktoré zvyšuje konverzie." },
-        { "title": "Responzívny dizajn", "description": "Váš web bude vyzerať perfektne na mobile, tablete aj veľkom monitore." },
-        { "title": "Jednoduchá správa", "description": "Dodáme vám CMS na mieru, kde si ľahko upravíte texty a obrázky bez programátora." },
-        { "title": "Bezpečnosť", "description": "SSL certifikát, ochrana pred útokmi a pravidelné zálohy sú u nás štandardom." },
-        { "title": "Analytika", "description": "Nasadenie Google Analytics 4 a nastavenie sledovania konverzií v cene." }
+        { "title": "Pokročilá SEO Optimalizácia", "description": "Weby staviame na pevných základoch technického SEO. Sémantický kód, rýchlosť načítania (Core Web Vitals) a správna štruktúra zabezpečia, že vás Google bude milovať a zákazníci ľahko nájdu." },
+        { "title": "Extrémna rýchlosť s Next.js", "description": "Využívame najmodernejší framework Next.js (React), ktorý zaručuje bleskové načítanie stránok. Rýchly web znamená nižšiu mieru odchodov a vyššie konverzie." },
+        { "title": "Responzívny & UX Dizajn", "description": "Váš web bude vyzerať a fungovať perfektne na každom zariadení – od mobilu cez tablet až po veľké desktopové monitory. Dôraz kladieme na užívateľskú prívetivosť (UX)." },
+        { "title": "Kvalitný a Spoľahlivý Hosting", "description": "Zabezpečíme pre vás rýchly a bezpečný hosting za bezkonkurenčné ceny. Garantujeme 99.9% dostupnosť a pravidelné zálohy, aby bol váš web vždy online." },
+        { "title": "Maximálna Bezpečnosť", "description": "Bezpečnosť nepodceňujeme. SSL certifikát, ochrana pred DDoS útokmi, bezpečné formuláre a pravidelné zálohy sú u nás absolútnym štandardom." },
+        { "title": "Analytika a Meranie", "description": "Nasadíme Google Analytics 4 a nastavíme sledovanie konverzií, aby ste presne vedeli, ako sa vaši návštevníci správajú a čo vám prináša zisk." }
       ],
+      "techStack": {
+        "recommended": [
+          { "name": "Next.js", "reason": "Najlepší framework pre SEO a extrémne rýchle načítanie." },
+          { "name": "React", "reason": "Umožňuje vytvárať interaktívne a dynamické používateľské rozhrania." },
+          { "name": "TypeScript", "reason": "Zaručuje bezchybný kód a jednoduchšiu údržbu projektu." },
+          { "name": "Tailwind CSS", "reason": "Moderný prístup k dizajnu pre pixel-perfect výsledky." },
+          { "name": "Node.js", "reason": "Rýchly a škálovateľný backend pre náročné aplikácie." },
+          { "name": "PostgreSQL", "reason": "Najspoľahlivejšia databáza pre vaše cenné dáta." }
+        ],
+        "others": [
+          "WordPress", "Figma", "Docker", "AWS", "Google Analytics", "Svelte", "Nuxt.js", "Vercel", "Redis", "Elasticsearch"
+        ]
+      },
+      "tools": {
+        "title": "Najlepšie nástroje",
+        "subtitle": "Používame špičkové technológie pre najlepšie výsledky",
+        "items": [
+          { "name": "Next.js", "description": "Pre maximálnu rýchlosť a SEO" },
+          { "name": "React", "description": "Pre interaktívne používateľské rozhrania" },
+          { "name": "WordPress", "description": "Pre jednoduchú správu obsahu" },
+          { "name": "TypeScript", "description": "Pre bezpečnosť a škálovateľnosť" },
+          { "name": "Tailwind CSS", "description": "Pre moderný a responzívny dizajn" },
+          { "name": "Framer Motion", "description": "Pre plynulé animácie" },
+          { "name": "Node.js", "description": "Rýchly backend" },
+          { "name": "PostgreSQL", "description": "Spoľahlivá databáza" },
+          { "name": "Docker", "description": "Kontajnerizácia" },
+          { "name": "AWS", "description": "Cloud hosting" },
+          { "name": "Figma", "description": "UI/UX dizajn" },
+          { "name": "Svelte", "description": "Moderný frontend" },
+          { "name": "Nuxt.js", "description": "Vue.js framework" },
+          { "name": "Google Analytics", "description": "Analytika" }
+        ]
+      },
       "processTitle": "Ako prebieha tvorba web stránky?",
       "process": [
-        { "title": "Konzultácia a Analýza", "description": "Zistíme vaše ciele, cieľovú skupinu a konkurenciu. Navrhneme stratégiu." },
-        { "title": "Dizajn a Prototyp", "description": "Vytvoríme vizuálny návrh (UI/UX), ktorý schválite pred začatím kódovania." },
-        { "title": "Vývoj a Obsah", "description": "Naprogramujeme web, nasadíme texty a optimalizujeme obrázky." },
-        { "title": "Testovanie a Spustenie", "description": "Otestujeme funkčnosť, rýchlosť a spustíme web na vašej doméne." }
+        { "title": "1. Úvodná Konzultácia a Stratégia", "description": "Pochopíme váš biznis, ciele a cieľovú skupinu. Analyzujeme konkurenciu a navrhneme stratégiu, ako ju predbehnúť." },
+        { "title": "2. UX/UI Dizajn a Prototypovanie", "description": "Vytvoríme modely a atraktívny dizajn, ktorý schválite ešte pred začatím programovania. Priebežne sledujte progress webu počas samotného kódenia." },
+        { "title": "3. Vývoj a Implementácia", "description": "Naši senior programátori premenia dizajn na funkčný kód. Nasadíme texty, optimalizujeme obrázky a prepojíme web s potrebnými nástrojmi." },
+        { "title": "4. Testovanie, SEO a Spustenie", "description": "Dôkladne otestujeme funkčnosť, rýchlosť a responzivitu. Nastavíme SEO parametre a slávnostne spustíme web na vašej doméne." }
       ],
       "faq": [
-        { "question": "Koľko stojí tvorba web stránky?", "answer": "Cena závisí od rozsahu. Jednoduchý prezentačný web začína od 800 €, komplexnejšie firemné weby od 1500 €. Pre presnú kalkuláciu nás kontaktujte." },
-        { "question": "Ako dlho trvá vytvorenie webu?", "answer": "Štandardný firemný web dodáme do 2-4 týždňov od dodania podkladov." },
-        { "question": "Budem si vedieť web upravovať sám?", "answer": "Áno, ku každému webu vieme dodať administračný systém (CMS), kde si jednoducho zmeníte texty či fotky." },
-        { "question": "Robíte aj redizajn starých stránok?", "answer": "Áno, modernizácia starých webov je naša špecialita. Zachováme vaše SEO pozície a zlepšíme dizajn aj výkon." }
+        { "question": "Koľko stojí tvorba web stránky na mieru?", "answer": "Cena je individuálna a závisí od náročnosti a rozsahu projektu. Garantujeme vám najvyššiu kvalitu za férovú cenu a dodanie spoľahlivého produktu, ktorý bude dlhodobo slúžiť vášmu podnikaniu. Kontaktujte nás pre nezáväznú cenovú ponuku." },
+        { "question": "Ako dlho trvá vytvorenie webu?", "answer": "Štandardný firemný web zvyčajne dodáme do 2-4 týždňov od dodania všetkých podkladov. Náročnejšie projekty môžu trvať dlhšie, o čom vás budeme vopred informovať." },
+        { "question": "Budem si vedieť web upravovať sám?", "answer": "Áno, samozrejme. Ku každému webu vieme dodať užívateľsky prívetivý administračný systém (CMS), kde si jednoducho zmeníte texty, fotky alebo pridáte novinky." },
+        { "question": "Zabezpečujete aj webhosting a doménu?", "answer": "Áno, radi vám pomôžeme s výberom a registráciou domény aj s nastavením rýchleho a bezpečného webhostingu pre váš nový projekt." },
+        { "question": "Robíte aj redizajn starých stránok?", "answer": "Áno, modernizácia a redizajn starých webov je naša špecialita. Zachováme vaše cenné SEO pozície a zároveň výrazne zlepšíme dizajn, funkčnosť a výkon webu." }
       ],
       "cta": {
-        "primary": "Chcem web na mieru",
-        "secondary": "Pozrieť proces"
+        "primary": "Chcem web, ktorý zarába",
+        "secondary": "Pozrieť proces spolupráce"
       }
     },
     "ecommerce": {
       "title": "Tvorba e-shopu na mieru",
-      "description": "Komplexné riešenia pre online predaj. Vytvárame e-shopy, ktoré predávajú, sú bezpečné a ľahko sa spravujú. Škálovateľné riešenia pre váš rast.",
-      "serviceType": "E-commerce Development",
+      "description": "Komplexné riešenia pre online predaj, ktoré zarábajú. Vytvárame e-shopy na mieru s dôrazom na konverzie, rýchlosť a automatizáciu. Prepojenie so skladom, účtovníctvom a platobnými bránami je samozrejmosťou.",
+      "serviceType": "E-commerce riešenia a vývoj internetových obchodov",
       "meta": {
-        "title": "Tvorba E-shopu na Mieru | E-commerce Riešenia - Rise.sk",
-        "description": "Profesionálna tvorba e-shopov na mieru. Zvýšte svoje predaje s rýchlym a bezpečným online obchodom. Integrácia platieb a dopravy."
+        "title": "Tvorba E-shopu na Mieru | Rýchly & Ziskový Internetový Obchod | Rise.sk",
+        "description": "Komplexná tvorba e-shopov na mieru. Automatizované procesy, napojenie na sklady a platobné brány. E-shop, ktorý premení návštevníkov na verných zákazníkov.",
+        "keywords": "tvorba e-shopu, internetový obchod na mieru, woocommerce, shopify, e-commerce riešenia, online predaj, tvorba eshopu bratislava"
       },
       "featuresTitle": "Funkcie pre úspešný online predaj",
       "features": [
-        { "title": "Vysoké konverzie", "description": "UX dizajn zameraný na jednoduchý nákupný proces a minimalizáciu opustených košíkov." },
-        { "title": "Platobné brány", "description": "Integrácia Stripe, GoPay, PayPal, Apple Pay a Google Pay pre pohodlné platby." },
-        { "title": "Napojenie na systémy", "description": "Prepojenie s účtovníctvom (Pohoda, SuperFaktúra), skladom a kuriérmi." },
-        { "title": "Rýchlosť a stabilita", "description": "Zvládne aj nápor zákazníkov počas sezóny vďaka škálovateľnej architektúre." },
-        { "title": "SEO pre produkty", "description": "Automatické generovanie metadát a štruktúrovaných dát pre Google Shopping." },
-        { "title": "Marketingové nástroje", "description": "Zľavové kódy, newslettery, upsell a cross-sell funkcie priamo v systéme." }
+        { "title": "Maximalizácia Konverzií (CRO)", "description": "Každý prvok e-shopu navrhujeme s cieľom predať. Intuitívna navigácia, jednoduchý košík a psychológia predaja minimalizujú počet opustených objednávok." },
+        { "title": "Platobné Brány a Doprava", "description": "Bezproblémová integrácia Stripe, GoPay, PayPal, Apple Pay, Google Pay a napojenie na kuriérske spoločnosti (Packeta, DPD, GLS) pre automatizáciu logistiky." },
+        { "title": "Automatizácia a Integrácie", "description": "Prepojíme váš e-shop s účtovníctvom (Pohoda, SuperFaktúra, KROS), skladovým hospodárstvom a ERP systémami. Šetrite čas a eliminujte chyby." },
+        { "title": "Blesková Rýchlosť a Stabilita", "description": "Váš e-shop zvládne aj nápor zákazníkov počas Black Friday. Vďaka modernej architektúre sa stránky načítajú okamžite, čo zvyšuje predaje." },
+        { "title": "SEO a Marketingové Nástroje", "description": "Automatické generovanie XML feedov pre Google Nákupy a Heureku. Zabudované nástroje pre zľavové kódy, newslettery, upsell a cross-sell." },
+        { "title": "B2B a B2C Funkcionalita", "description": "Potrebujete veľkoobchodné ceny pre partnerov? Žiadny problém. Náš systém podporuje rôzne cenové hladiny, skupiny zákazníkov a individuálne zľavy." }
       ],
-      "processTitle": "Postup vývoja e-shopu",
+      "techStack": {
+        "recommended": [
+          { "name": "WooCommerce", "reason": "Najflexibilnejšia platforma pre e-shopy s nekonečnými možnosťami úprav." },
+          { "name": "Shopify", "reason": "Stabilné a bezpečné riešenie pre rýchly štart predaja." },
+          { "name": "Stripe", "reason": "Globálny štandard pre bezpečné a rýchle platby kartou." },
+          { "name": "Next.js", "reason": "Pre headless e-shopy, kde je rýchlosť kľúčová." },
+          { "name": "Redis", "reason": "Okamžité načítanie produktov vďaka pokročilému cachovaniu." },
+          { "name": "Elasticsearch", "reason": "Inteligentné vyhľadávanie, ktoré nájde produkt aj pri preklepe." }
+        ],
+        "others": [
+          "PayPal", "Google Analytics", "Magento", "PrestaShop", "Docker", "AWS", "React", "PostgreSQL", "Figma", "Tailwind CSS"
+        ]
+      },
+      "tools": {
+        "title": "Technológie a integrácie",
+        "subtitle": "Využívame overené platformy a platobné systémy",
+        "items": [
+          { "name": "WooCommerce", "description": "Flexibilná e-commerce platforma" },
+          { "name": "Shopify", "description": "Rýchle a stabilné riešenie" },
+          { "name": "Stripe", "description": "Bezpečné platby kartou" },
+          { "name": "PayPal", "description": "Globálny platobný systém" },
+          { "name": "Google Analytics", "description": "Meranie konverzií a návštevnosti" },
+          { "name": "React", "description": "Rýchly frontend pre headless e-shopy" },
+          { "name": "Magento", "description": "Enterprise e-commerce" },
+          { "name": "PrestaShop", "description": "Populárny e-shop systém" },
+          { "name": "Redis", "description": "Rýchla cache" },
+          { "name": "Elasticsearch", "description": "Pokročilé vyhľadávanie" },
+          { "name": "Docker", "description": "Nasadenie" },
+          { "name": "AWS", "description": "Infraštruktúra" }
+        ]
+      },
+      "processTitle": "Postup vývoja úspešného e-shopu",
       "process": [
-        { "title": "Analýza požiadaviek", "description": "Definujeme sortiment, cieľovú skupinu a potrebné integrácie." },
-        { "title": "UX/UI Dizajn", "description": "Navrhneme prehľadný katalóg a intuitívny košík." },
-        { "title": "Implementácia", "description": "Vývoj backendu, frontend a napojenie na externé služby." },
-        { "title": "Testovanie a Školenie", "description": "Otestujeme nákupný proces a zaškolíme vás do administrácie." }
+        { "title": "1. Analýza a Špecifikácia", "description": "Detailne preberieme váš sortiment, cieľovú skupinu a potrebné funkcie. Navrhneme technické riešenie a integrácie." },
+        { "title": "2. UX/UI Dizajn na Mieru", "description": "Navrhneme prehľadný katalóg produktov, detail produktu a optimalizovaný nákupný proces (checkout), ktorý zákazníci milujú." },
+        { "title": "3. Vývoj a Integrácie", "description": "Naprogramujeme e-shop, napojíme platobné brány, dopravcov a externé systémy. Importujeme vaše produkty." },
+        { "title": "4. Testovanie a Zaškolenie", "description": "Otestujeme celý nákupný proces, rýchlosť a bezpečnosť. Zaškolíme vás do administrácie, aby ste e-shop ovládali ľavou zadnou." }
       ],
       "faq": [
-        { "question": "Aká je cena za tvorbu e-shopu?", "answer": "E-shopy na mieru začínajú od 2500 €. Cena závisí od počtu integrácií a špecifických funkcií." },
-        { "question": "Viete napojiť e-shop na sklad?", "answer": "Áno, bežne integrujeme skladové systémy, ERP a fakturačné softvéry." },
-        { "question": "Je e-shop optimalizovaný pre mobil?", "answer": "Samozrejme. Mobile-first prístup je u nás nutnosťou, keďže väčšina nákupov sa deje cez telefón." },
-        { "question": "Poskytujete technickú podporu?", "answer": "Áno, zabezpečujeme dlhodobú správu, aktualizácie a monitoring e-shopu." }
+        { "question": "Aká je cena za tvorbu e-shopu na mieru?", "answer": "E-shopy na mieru začínajú od 2500 €. Konečná cena závisí od počtu integrácií, špecifických funkcií a náročnosti dizajnu. Investícia do kvalitného e-shopu sa vám však rýchlo vráti." },
+        { "question": "Viete napojiť e-shop na môj skladový systém?", "answer": "Áno, bežne integrujeme skladové systémy, ERP (Pohoda, Money S3, Kros) a fakturačné softvéry. Všetko sa deje automaticky." },
+        { "question": "Je e-shop optimalizovaný pre mobilné zariadenia?", "answer": "Samozrejme. Mobile-first prístup je u nás nutnosťou, keďže dnes už väčšina nákupov prebieha cez smartfóny." },
+        { "question": "Poskytujete technickú podporu po spustení?", "answer": "Áno, nenecháme vás v tom samých. Zabezpečujeme dlhodobú správu, aktualizácie, monitoring a sme pripravení pomôcť s akýmkoľvek problémom." },
+        { "question": "Ako dlho trvá vývoj e-shopu?", "answer": "Menší e-shop vieme dodať do 4-6 týždňov. Komplexné riešenia s množstvom integrácií môžu trvať 2-3 mesiace." }
       ],
       "cta": {
-        "primary": "Chcem vlastný e-shop",
+        "primary": "Chcem e-shop, ktorý predáva",
         "secondary": "Ako to funguje"
       }
     },
     "mobileApps": {
       "title": "Vývoj mobilných aplikácií",
-      "description": "Natívne a hybridné mobilné aplikácie pre iOS a Android. Premieňame nápady na funkčné aplikácie v App Store a Google Play.",
-      "serviceType": "Mobile App Development",
+      "tagline": "Aplikácie, ktoré si vaši zákazníci zamilujú!",
+      "description": "Premieňame inovatívne nápady na špičkové mobilné aplikácie pre iOS a Android. Vyvíjame natívne a hybridné aplikácie, ktoré si používatelia zamilujú. Od prvotného konceptu až po úspešné spustenie v App Store a Google Play.",
+      "serviceType": "Vývoj mobilných aplikácií pre iOS a Android",
       "meta": {
-        "title": "Vývoj Mobilných Aplikácií iOS a Android | Rise.sk",
-        "description": "Komplexný vývoj mobilných aplikácií na mieru. iOS, Android, Flutter a React Native. Od dizajnu po publikáciu v storoch."
+        "title": "Vývoj Mobilných Aplikácií (iOS & Android) | Appky na Mieru | Rise.sk",
+        "description": "Vývoj mobilných aplikácií pre iOS a Android. Natívne aj hybridné riešenia (Flutter, React Native). Premeníme váš nápad na úspešnú aplikáciu v App Store a Google Play.",
+        "keywords": "vývoj mobilných aplikácií, tvorba aplikácií, ios aplikácie, android aplikácie, react native, flutter, mobilné appky na mieru"
       },
-      "featuresTitle": "Špičkové mobilné technológie",
+      "featuresTitle": "Špičkové technológie pre vašu aplikáciu",
       "features": [
-        { "title": "iOS a Android", "description": "Vyvíjame pre obe platformy súčasne pomocou React Native alebo Flutter, čo šetrí náklady." },
-        { "title": "Natívny výkon", "description": "Aplikácie sú rýchle, plynulé a využívajú hardvér telefónu naplno." },
-        { "title": "Offline režim", "description": "Aplikácia funguje aj bez internetu a dáta sa synchronizujú po pripojení." },
-        { "title": "Push notifikácie", "description": "Oslovte používateľov priamo na ich obrazovke a zvýšte angažovanosť." },
-        { "title": "Moderný UI dizajn", "description": "Dizajn podľa najnovších štandardov Apple a Google pre intuitívne ovládanie." },
-        { "title": "Publikácia do storov", "description": "Zastrešíme celý proces schvaľovania v App Store a Google Play." }
+        { "title": "Multiplatformový Vývoj (Cross-platform)", "description": "Používame React Native a Flutter, vďaka čomu vytvoríme jednu aplikáciu, ktorá funguje perfektne na iOS aj Androide. Ušetríte tak až 40% nákladov a času." },
+        { "title": "Natívny Výkon a Zážitok", "description": "Naše aplikácie sú na nerozoznanie od natívnych. Sú plynulé, rýchle a využívajú hardvér telefónu (kamera, GPS, senzory) na maximum." },
+        { "title": "Offline Režim (Offline-first)", "description": "Aplikácia musí fungovať aj v tuneli alebo v lese. Dáta sa uložia lokálne a automaticky synchronizujú, keď sa používateľ opäť pripojí na internet." },
+        { "title": "Push Notifikácie", "description": "Udržujte kontakt so svojimi používateľmi. Posielajte im personalizované správy, novinky alebo pripomienky priamo na obrazovku ich telefónu." },
+        { "title": "Modern UI/UX Dizajn", "description": "Navrhujeme rozhrania podľa najnovších štandardov Apple (Human Interface Guidelines) a Google (Material Design), ktoré sú intuitívne a radosť používať." },
+        { "title": "Publikácia a Údržba", "description": "Zastrešíme celý byrokratický proces schvaľovania v App Store a Google Play. Postaráme sa o pravidelné aktualizácie a kompatibilitu s novými verziami systémov." }
       ],
-      "processTitle": "Cesta k vašej aplikácii",
+      "techStack": {
+        "recommended": [
+          { "name": "React Native", "reason": "Umožňuje vyvíjať pre iOS aj Android súčasne s jedným kódom." },
+          { "name": "Flutter", "reason": "Google technológia pre krásne a plynulé používateľské rozhrania." },
+          { "name": "Swift", "reason": "Natívny jazyk pre maximálny výkon na Apple zariadeniach." },
+          { "name": "Kotlin", "reason": "Moderný štandard pre robustné Android aplikácie." },
+          { "name": "Firebase", "reason": "Kompletný backend, databáza a analytika v jednom." },
+          { "name": "Expo", "reason": "Zrýchľuje vývoj a umožňuje okamžité aktualizácie aplikácie." }
+        ],
+        "others": [
+          "TypeScript", "Figma", "iOS", "Android", "Node.js", "Python", "Google Analytics"
+        ]
+      },
+      "tools": {
+        "title": "Technológie, ktoré ovládame",
+        "subtitle": "Používame najmodernejšie nástroje pre vývoj špičkových aplikácií",
+        "items": [
+          { "name": "React Native", "description": "Jedna kódová základňa pre iOS aj Android" },
+          { "name": "Expo", "description": "Rýchly vývoj a okamžité aktualizácie" },
+          { "name": "Flutter", "description": "Google technológia pre krásne UI" },
+          { "name": "Swift", "description": "Natívny a výkonný jazyk pre iOS" },
+          { "name": "Kotlin", "description": "Moderný štandard pre Android aplikácie" },
+          { "name": "Firebase", "description": "Robustný backend a real-time databáza" },
+          { "name": "iOS", "description": "Apple platforma" },
+          { "name": "Android", "description": "Google platforma" },
+          { "name": "TypeScript", "description": "Typová bezpečnosť" },
+          { "name": "Figma", "description": "Dizajn aplikácií" }
+        ]
+      },
+      "processTitle": "Cesta k vašej úspešnej aplikácii",
       "process": [
-        { "title": "Koncept a Wireframe", "description": "Nakreslíme obrazovky a logiku aplikácie." },
-        { "title": "UI Dizajn", "description": "Vytvoríme finálny vzhľad aplikácie." },
-        { "title": "Vývoj", "description": "Programovanie mobilnej časti a backendového API." },
-        { "title": "Testovanie a Release", "description": "Beta testovanie a nasadenie do obchodov." }
+        { "title": "1. Koncept a Stratégia", "description": "Spoločne definujeme funkcie, cieľovú skupinu a monetizačný model. Vytvoríme detailnú špecifikáciu." },
+        { "title": "2. UX/UI Dizajn a Prototyp", "description": "Navrhneme wireframy a následne finálny dizajn obrazoviek. Vytvoríme klikateľný prototyp, aby ste videli, ako aplikácia bude fungovať." },
+        { "title": "3. Agilný Vývoj", "description": "Programujeme aplikáciu v krátkych šprintoch. Pravidelne vám posielame testovacie verzie (TestFlight), aby ste mali prehľad o progrese." },
+        { "title": "4. Testovanie a Launch", "description": "Dôkladné testovanie na rôznych zariadeniach. Po schválení aplikáciu nasadíme do obchodov a pomôžeme s marketingom." }
       ],
       "faq": [
-        { "question": "Koľko stojí vývoj aplikácie?", "answer": "Jednoduché aplikácie začínajú od 3000 €, komplexné systémy môžu stáť viac. Závisí to od funkcií." },
-        { "question": "Robíte iOS aj Android?", "answer": "Áno, špecializujeme sa na multiplatformový vývoj, takže dostanete obe verzie za lepšiu cenu." },
-        { "question": "Ako dlho trvá vývoj?", "answer": "MVP (základná verzia) zvyčajne trvá 2-3 mesiace." },
-        { "question": "Čo nasleduje po vydaní?", "answer": "Poskytujeme servisnú zmluvu na aktualizácie a opravy chýb, ktoré môžu vzniknúť novými verziami iOS/Android." }
+        { "question": "Koľko stojí vývoj mobilnej aplikácie?", "answer": "Cena závisí od zložitosti a rozsahu projektu. Garantujeme vám najvyššiu kvalitu a dodanie špičkového produktu. Radi vám pripravíme presnú kalkuláciu na mieru." },
+        { "question": "Je lepšie vyvíjať natívne alebo hybridne?", "answer": "V 90% prípadov odporúčame hybridný vývoj (React Native/Flutter). Získate aplikáciu pre iOS aj Android z jedného kódu, čo je rýchlejšie a lacnejšie, bez kompromisov na kvalite." },
+        { "question": "Ako dlho trvá vývoj aplikácie?", "answer": "Jednoduché mobilné aplikácie vieme vytvoriť už za 1 mesiac, komplexnejšie projekty trvajú niekoľko mesiacov. Časový rámec výrazne závisí od zložitosti aplikácie a dĺžky procesu schvaľovania a testovania pri publikovaní." },
+        { "question": "Čo sa deje po vydaní aplikácie?", "answer": "Aplikácia potrebuje život. Poskytujeme servisnú zmluvu (SLA) na aktualizácie, opravy chýb a prispôsobovanie novým verziám iOS a Android." },
+        { "question": "Pomôžete mi dostať aplikáciu do App Store?", "answer": "Áno, kompletne zastrešíme proces vytvorenia vývojárskych účtov, nastavenia certifikátov a schvaľovacieho procesu v Apple App Store aj Google Play." }
       ],
       "cta": {
         "primary": "Mám nápad na aplikáciu",
@@ -227,10 +338,11 @@
     "customSoftware": {
       "title": "Softvér a systémy na mieru",
       "description": "Digitalizácia firemných procesov, CRM systémy, interné portály a API integrácie. Softvér, ktorý sa prispôsobí vašej firme, nie naopak.",
-      "serviceType": "Custom Software Development",
+      "serviceType": "Vývoj softvéru na mieru a firemné systémy",
       "meta": {
-        "title": "Vývoj Softvéru na Mieru | Firemné Systémy - Rise.sk",
-        "description": "Softvér na mieru pre vašu firmu. CRM, ERP, automatizácia procesov a webové aplikácie. Zefektívnite svoje podnikanie digitálnymi nástrojmi."
+        "title": "Vývoj Softvéru na Mieru | Firemné Systémy & Digitalizácia | Rise.sk",
+        "description": "Softvér na mieru, ktorý zefektívni vašu firmu. CRM, ERP systémy, automatizácia procesov a digitálna transformácia. Spoľahlivé riešenia pre váš rast.",
+        "keywords": "vývoj softvéru, softvér na mieru, firemné systémy, crm systémy, erp systémy, digitalizácia procesov, softvérová firma bratislava"
       },
       "featuresTitle": "Riešenia pre efektivitu firmy",
       "features": [
@@ -241,6 +353,67 @@
         { "title": "Reporting", "description": "Prehľadné dashboardy a grafy pre lepšie rozhodovanie manažmentu." },
         { "title": "Bezpečnosť dát", "description": "Enterprise úroveň zabezpečenia citlivých firemných údajov." }
       ],
+      "techStack": {
+        "recommended": [
+          { "name": "Node.js", "reason": "Ideálny pre škálovateľné sieťové aplikácie a API." },
+          { "name": "Python", "reason": "Líder v oblasti spracovania dát, AI a strojového učenia." },
+          { "name": "React", "reason": "Štandard pre moderné firemné dashboardy a aplikácie." },
+          { "name": "PostgreSQL", "reason": "Robustná a spoľahlivá databáza pre enterprise použitie." },
+          { "name": "Docker", "reason": "Zabezpečuje konzistentné prostredie od vývoja po produkciu." },
+          { "name": "AWS", "reason": "Najkomplexnejšia cloudová platforma na svete." }
+        ],
+        "others": [
+          "Java", ".NET", "Kubernetes", "Terraform", "Redis", "Linux", "Nginx", "Git", "Jenkins", "GitLab", "Oracle", "SAP", "Salesforce", "MSSQL", "DynamoDB", "Cassandra", "Ansible", "CircleCI", "Datadog", "Prometheus", "Grafana", "Go", "Rust", "Scala", "Ruby", "Apache Spark", "Hadoop", "Kafka", "Snowflake", "Databricks", "Tableau", "Spring Boot", "Django", "FastAPI", "Laravel", "Symfony"
+        ]
+      },
+      "tools": {
+        "title": "Náš technologický stack",
+        "subtitle": "Staviame na moderných a bezpečných technológiách",
+        "items": [
+          { "name": "Node.js", "description": "Výkonný backend" },
+          { "name": "Python", "description": "Spracovanie dát a AI" },
+          { "name": "React", "description": "Moderné webové aplikácie" },
+          { "name": "PostgreSQL", "description": "Spoľahlivá databáza" },
+          { "name": "Docker", "description": "Kontajnerizácia aplikácií" },
+          { "name": "AWS", "description": "Cloudová infraštruktúra" },
+          { "name": "Java", "description": "Enterprise backend" },
+          { "name": ".NET", "description": "Microsoft ekosystém" },
+          { "name": "Kubernetes", "description": "Orchestrácia" },
+          { "name": "Terraform", "description": "IaC" },
+          { "name": "Redis", "description": "Cache" },
+          { "name": "Linux", "description": "OS" },
+          { "name": "Nginx", "description": "Web server" },
+          { "name": "Git", "description": "Verzovanie" },
+          { "name": "Jenkins", "description": "CI/CD" },
+          { "name": "GitLab", "description": "DevOps" },
+          { "name": "Oracle", "description": "Enterprise databáza" },
+          { "name": "SAP", "description": "Podnikové systémy" },
+          { "name": "Salesforce", "description": "CRM riešenia" },
+          { "name": "Microsoft SQL Server", "description": "Relačná databáza" },
+          { "name": "DynamoDB", "description": "NoSQL databáza" },
+          { "name": "Cassandra", "description": "Distribuovaná databáza" },
+          { "name": "Ansible", "description": "Automatizácia" },
+          { "name": "CircleCI", "description": "CI/CD pipeline" },
+          { "name": "Datadog", "description": "Monitoring" },
+          { "name": "Prometheus", "description": "Metriky" },
+          { "name": "Grafana", "description": "Vizualizácia" },
+          { "name": "Go", "description": "Vysoký výkon" },
+          { "name": "Rust", "description": "Bezpečnosť pamäte" },
+          { "name": "Scala", "description": "Funkcionálne programovanie" },
+          { "name": "Ruby", "description": "Rýchly vývoj" },
+          { "name": "Apache Spark", "description": "Big Data" },
+          { "name": "Hadoop", "description": "Spracovanie dát" },
+          { "name": "Kafka", "description": "Streamovanie udalostí" },
+          { "name": "Snowflake", "description": "Cloud data warehouse" },
+          { "name": "Databricks", "description": "Dátová analytika" },
+          { "name": "Tableau", "description": "Business Intelligence" },
+          { "name": "Spring Boot", "description": "Java framework" },
+          { "name": "Django", "description": "Python framework" },
+          { "name": "FastAPI", "description": "Moderné API" },
+          { "name": "Laravel", "description": "PHP framework" },
+          { "name": "Symfony", "description": "PHP komponenty" }
+        ]
+      },
       "processTitle": "Ako tvoríme softvér?",
       "process": [
         { "title": "Hĺbková analýza", "description": "Pochopíme vaše procesy a identifikujeme úzke miesta." },
@@ -257,6 +430,158 @@
       "cta": {
         "primary": "Konzultovať riešenie",
         "secondary": "Naše technológie"
+      }
+    },
+    "ai": {
+      "title": "AI & Automatizácia",
+      "tagline": "Budúcnosť je tu. Pripravte na ňu svoju firmu.",
+      "description": "Optimalizujeme vaše firemné procesy pomocou umelej inteligencie. Poskytujeme školenia, audity a implementáciu AI nástrojov, ktoré šetria čas a peniaze.",
+      "serviceType": "AI Služby a Automatizácia",
+      "meta": {
+        "title": "AI Audit, Školenia a Automatizácia | Zvýšte Efektivitu Firmy - Rise.sk",
+        "description": "Komplexné AI služby: Školenia zamestnancov, Technologický audit, Automatizácia procesov a Poradenstvo pri výbere hardvéru. Zvýšte produktivitu a znížte náklady s Rise.sk.",
+        "keywords": "umelá inteligencia, ai školenia, automatizácia procesov, chatgpt školenie, ai audit, digitálna transformácia, efektivita firmy, gemini ai, copilot"
+      },
+      "featuresTitle": "Cesta digitálnej transformácie",
+      "features": [
+        {
+          "title": "1. AI pre začiatočníkov",
+          "subtitle": "Vzdelávanie | 2,5 hodiny | Skupina: max 6 ľudí",
+          "description": "Začneme od základov. Vysvetlíme si, čo AI je a ako funguje. Naučíte sa využívať **Gemini AI**, písať prvé prompty a zefektívniť prácu v **Google Workspace**.",
+          "price": "580 €",
+          "priceNote": "Cena za skupinu (bez DPH)",
+          "benefits": [
+            "Pochopenie princípov AI a LLM",
+            "Základy promptovania a email podpisy",
+            "Ukážky reálneho využitia v administratíve"
+          ]
+        },
+        {
+          "title": "2. AI pre pokročilých",
+          "subtitle": "Vzdelávanie | 3 hodiny | Skupina: max 6 ľudí",
+          "description": "Pôjdeme do hĺbky. Naučíme sa pokročilé techniky, generovanie obrázkov a prácu s **NotebookLM** pre analýzu dokumentov. Zmeníme spôsob, akým premýšľate o riešení problémov.",
+          "price": "580 €",
+          "priceNote": "Cena za skupinu (bez DPH)",
+          "benefits": [
+            "Pokročilé promptovacie techniky",
+            "Analýza dát s NotebookLM",
+            "Generovanie vizuálov (Midjourney, DALL-E)"
+          ]
+        },
+        {
+          "title": "3. AI praktický workshop",
+          "subtitle": "Prax | 3 hodiny | Skupina: max 6 ľudí",
+          "description": "Teóriu premeníme na prax. Riešime vaše konkrétne firemné problémy. Vyberiete si oblasť (marketing, HR, obchod) a spoločne nastavíme procesy.",
+          "price": "680 €",
+          "priceNote": "Cena za skupinu (bez DPH)",
+          "benefits": [
+            "Riešenie konkrétnych use-cases vašej firmy",
+            "Nastavenie vlastných GPTs asistentov",
+            "Okamžitá aplikácia do firemných procesov"
+          ]
+        },
+        {
+          "title": "4. Automatizácia procesov",
+          "subtitle": "Implementácia",
+          "description": "Keď už viete AI používať, je čas ju nechať pracovať samostatne. Prepojíme vaše emaily, CRM a fakturáciu tak, aby sa veci diali automaticky.",
+          "price": "Individuálne",
+          "benefits": [
+            "Audit opakujúcich sa činností",
+            "Prepojenie systémov (N8n.com / Make.com / Zapier)",
+            "Automatizácia administratívy a reportingu"
+          ]
+        },
+        {
+          "title": "5. Technologický upgrade",
+          "subtitle": "Infraštruktúra",
+          "description": "Aby všetko fungovalo hladko, pozrieme sa na váš hardware a software. Odporučíme moderné nástroje a vybavenie pre maximálnu produktivitu.",
+          "price": "Konzultácia",
+          "benefits": [
+            "Audit softvérových licencií",
+            "Výber ergonomického hardvéru",
+            "Nastavenie cloudového prostredia"
+          ]
+        }
+      ],
+      "tools": {
+        "title": "Nástroje, ktoré učíme a používame",
+        "subtitle": "Pracujeme s najlepšími AI modelmi na trhu",
+        "items": [
+          { "name": "ChatGPT, Claude & Gemini", "description": "Pokročilé jazykové modely a Google Workspace AI" },
+          { "name": "NotebookLM", "description": "Analýza dokumentov a tvorba podcastov" },
+          { "name": "Midjourney", "description": "Generovanie vizuálneho obsahu" },
+          { "name": "Python & LangChain", "description": "Vývoj vlastných AI aplikácií" },
+          { "name": "N8n.com / Make.com", "description": "Automatizácia workflowov" },
+          { "name": "Copilot", "description": "AI asistencia pri programovaní a práci" }
+        ]
+      },
+      "processTitle": "Ako prebieha spolupráca?",
+      "process": [
+        { "title": "1. Úvodný Audit", "description": "Zistíme, ako vaša firma funguje a kde máte najväčší priestor na zlepšenie pomocou AI." },
+        { "title": "2. Návrh Riešenia", "description": "Pripravíme plán školení alebo technickej implementácie presne na mieru vašim potrebám." },
+        { "title": "3. Realizácia a Školenie", "description": "Implementujeme nástroje a naučíme vašich ľudí s nimi pracovať. Prakticky a zrozumiteľne." },
+        { "title": "4. Podpora a Rozvoj", "description": "Sledujeme výsledky a pomáhame vám držať krok s rýchlym vývojom AI technológií." }
+      ],
+      "faq": [
+        { "question": "Je AI vhodná aj pre malú firmu?", "answer": "Áno, práve malé firmy môžu z AI ťažiť najviac, pretože im umožní robiť 'veľké veci' s malým tímom." },
+        { "question": "Koľko trvá školenie zamestnancov?", "answer": "Základné školenie trvá zvyčajne pol dňa až jeden deň. Pre hlbšie osvojenie odporúčame sériu workshopov." },
+        { "question": "Nahradí AI našich zamestnancov?", "answer": "Nie, naším cieľom je, aby AI vašim ľuďom pomáhala, zbavila ich nudnej rutiny a umožnila im venovať sa kreatívnejšej práci." },
+        { "question": "Aké sú náklady na implementáciu?", "answer": "Cena závisí od rozsahu. Školenia začínajú od stoviek eur, komplexné automatizácie sa naceňujú individuálne podľa úspory, ktorú prinesú." }
+      ],
+      "cta": {
+        "primary": "Chcem zefektívniť firmu",
+        "secondary": "Viac o AI audite"
+      }
+    },
+    "outsourcing": {
+      "title": "IT Outsourcing a Prenájom Tímov",
+      "tagline": "Špičkoví vývojári pripravení pre váš projekt. Ihneď.",
+      "description": "Poskytujeme dedikované vývojárske tímy aj jednotlivých expertov. Flexibilne škálujte svoje kapacity bez starostí s náborom a HR agendou.",
+      "serviceType": "IT Outsourcing a Staff Augmentation",
+      "meta": {
+        "title": "IT Outsourcing a Prenájom Programátorov | Rise.sk",
+        "description": "Prenajmite si overených vývojárov alebo celé tímy. React, Node.js, Python, Mobile. Rýchly nástup, seniorita a garancia kvality.",
+        "keywords": "it outsourcing, prenájom programátorov, body leasing, dedikovaný tím, vývojári na prenájom, react vývojár, node.js programátor, it špecialisti"
+      },
+      "featuresTitle": "Prečo outsourcovať s nami?",
+      "features": [
+        { "title": "Okamžitý Nástup", "description": "Nestrácajte mesiace hľadaním ľudí. Náš tím môže začať pracovať na vašom projekte už do 7 dní." },
+        { "title": "Overená Seniorita", "description": "Naši vývojári prešli náročným výberom a majú skúsenosti z medzinárodných projektov. Žiadni juniori, ktorí sa učia na vašom kóde." },
+        { "title": "Flexibilita Kapacít", "description": "Potrebujete pridať dvoch ľudí na mesiac pred deadlinom? Alebo postaviť celý tím na rok? Prispôsobíme sa." },
+        { "title": "Žiadne HR Starosti", "description": "Odvody, dovolenky, PNky, hardware či vzdelávanie riešime my. Vy platíte len za odvedenú prácu." },
+        { "title": "Zastupiteľnosť", "description": "Ak vývojár vypadne, okamžite zabezpečíme náhradu. Váš projekt sa nezastaví." },
+        { "title": "Transparentná Komunikácia", "description": "Vývojári sú súčasťou vášho tímu. Komunikujú priamo s vami, zúčastňujú sa stand-upov a používajú vaše nástroje." }
+      ],
+      "tools": {
+        "title": "Technológie, ktoré dodávame",
+        "subtitle": "Máme expertov na široké spektrum technológií",
+        "items": [
+          { "name": "Frontend", "description": "React, Next.js, Vue.js, Angular, TypeScript, Tailwind CSS" },
+          { "name": "Backend", "description": "Node.js, Python, Java, .NET, PHP, Go, Spring Boot" },
+          { "name": "Mobile", "description": "React Native, Flutter, iOS (Swift), Android (Kotlin)" },
+          { "name": "Cloud & DevOps", "description": "AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform" },
+          { "name": "Data & AI", "description": "TensorFlow, PowerBI, Kafka, Snowflake, OpenAI API" },
+          { "name": "Databázy", "description": "PostgreSQL, MySQL, MongoDB, Redis, Oracle, MSSQL" },
+          { "name": "Enterprise & Nástroje", "description": "SAP, Salesforce, Figma" },
+          { "name": "QA Testing", "description": "Cypress" }
+        ]
+      },
+      "processTitle": "Ako získať vývojárov?",
+      "process": [
+        { "title": "1. Definícia Potrieb", "description": "Povedzte nám, koho hľadáte (tech stack, seniorita) a na aký dlhý čas." },
+        { "title": "2. Výber Kandidátov", "description": "Do 48 hodín vám pošleme profily (CV) dostupných vývojárov, ktorí spĺňajú vaše kritériá." },
+        { "title": "3. Pohovor", "description": "S vybranými kandidátmi si môžete spraviť technický pohovor, aby ste si overili ich skills a chémiu." },
+        { "title": "4. Onboarding a Štart", "description": "Podpíšeme zmluvu a vývojár sa pripája k vášmu tímu. Sledujeme spokojnosť a pravidelne reportujeme." }
+      ],
+      "faq": [
+        { "question": "Aká je hodinová sadzba?", "answer": "Sadzby závisia od seniority a technológie, zvyčajne sa pohybujú od 35€ do 60€ na hodinu. Pri dlhodobej spolupráci ponúkame zvýhodnené 'flat' ceny." },
+        { "question": "Môžem si vývojára najprv vyskúšať?", "answer": "Áno, štandardne ponúkame skúšobnú dobu (napr. 2 týždne), počas ktorej môžete spoluprácu kedykoľvek ukončiť, ak nebudete spokojní." },
+        { "question": "Pracujú vývojári remote alebo onsite?", "answer": "Väčšinou pracujeme remote, ale v rámci Bratislavy a okolia je možný aj hybridný režim alebo občasné návštevy u klienta." },
+        { "question": "Ako je to s duševným vlastníctvom?", "answer": "Všetok kód a dielo, ktoré naši vývojári vytvoria, je výhradným vlastníctvom vašej spoločnosti. Je to zmluvne garantované." }
+      ],
+      "cta": {
+        "primary": "Najať vývojárov",
+        "secondary": "Dohodnúť konzultáciu"
       }
     }
   },
@@ -736,8 +1061,8 @@
       "mobileApps": "Mobilné aplikácie",
       "customSoftware": "Vlastný softvér",
       "ecommerce": "E‑commerce riešenia",
-      "aiAnalytics": "AI & Data Analytics",
-      "digitalMarketing": "Technológie pre digitálny marketing",
+      "ai": "AI & Automatizácia",
+      "outsourcing": "IT Outsourcing",
       "specialRequests": "Špeciálne požiadavky",
       "jobApplication": "Pracovná ponuka",
       "other": "Iné"
@@ -747,8 +1072,8 @@
       "mobileApps": "Dobrý deň,\n\nuvažujem o vývoji mobilnej aplikácie. Rád by som sa dozvedel viac o vašom prístupe k vývoju pre iOS a Android.\n\nĎakujem.",
       "customSoftware": "Dobrý deň,\n\npotrebujem vlastné softvérové riešenie pre moju firmu. Rád by som prediskutoval naše potreby a možnosti implementácie.\n\nĎakujem.",
       "ecommerce": "Dobrý deň,\n\nplánujem spustenie online obchodu a mám záujem o vaše e‑commerce riešenia. Rád by som získal viac informácií.\n\nĎakujem.",
-      "aiAnalytics": "Dobrý deň,\n\nmám záujem o implementáciu AI a dátovej analytiky vo firme. Rád by som prediskutoval možnosti.\n\nĎakujem.",
-      "digitalMarketing": "Dobrý deň,\n\nhľadám technologické riešenia pre digitálny marketing. Rád by som sa dozvedel viac o vašich službách v tejto oblasti.\n\nĎakujem.",
+      "ai": "Dobrý deň,\n\nmám záujem o implementáciu AI, automatizáciu procesov alebo školenie zamestnancov. Rád by som prediskutoval možnosti.\n\nĎakujem.",
+      "outsourcing": "Dobrý deň,\n\nhľadám tím vývojárov alebo IT expertov na prenájom pre môj projekt. Rád by som sa dozvedel viac o vašich kapacitách.\n\nĎakujem.",
       "specialRequests": "Dobrý deň,\n\nmám špecifické požiadavky na technologické riešenie, ktoré by som chcel prediskutovať. Verím, že nájdete vhodné riešenie.\n\nĎakujem.",
       "other": "Dobrý deň,\n\nrád by som prediskutoval možnosti spolupráce. Môžeme sa spojiť a prejsť si detaily môjho projektu?\n\nĎakujem."
     },
@@ -875,7 +1200,7 @@
       "description": "Získajte vyhradený tím do 7 dní. Garantujeme 100 % dodanie načas a 20–40 % úsporu nákladov.",
       "button": "Začnite dnes"
     },
-    "services": ["Vlastný vývoj", "DevOps & Cloud", "UX/UI dizajn", "Zabezpečenie kvality", "Vzdelávanie & školenia"],
+    "services": ["Tvorba webov", "E-shopy", "Mobilné aplikácie", "Softvér na mieru", "AI & Automatizácia", "IT Outsourcing"],
     "company": ["O nás", "Náš tím", "Kariéra", "Prípadové štúdie", "Kontaktujte nás"]
   },
   "hiring": {
@@ -982,61 +1307,73 @@
     "items": [
       {
         "question": "Aké služby poskytujete?",
-        "answer": "Poskytujeme komplexné softvérové riešenia na podnikovej úrovni: moderné webové aplikácie (React, Next.js 15, Nuxt.js), natívne a multiplatformové mobilné aplikácie (React Native, Flutter, Swift, Kotlin), e-commerce riešenia, softvér na mieru, AI/ML integrácie, blockchain vývoj, IoT riešenia, API integrácie a strategické technologické poradenstvo. Špecializujeme sa na najnovšie technológie a momentálne pracujeme na ISO 27001 a ISO 9001 certifikátoch pre zabezpečenie najvyšších štandardov kvality."
+        "answer": "Špecializujeme sa na vývoj webových a mobilných aplikácií na mieru, e-commerce riešenia a firemné systémy. Od úvodnej analýzy až po nasadenie a dlhodobú podporu."
       },
       {
-        "question": "Ako dlho trvá typický projekt?",
-        "answer": "Doba trvania projektu závisí od zložitosti. Jednoduché webové stránky trvajú 2-4 týždne, aplikácie strednej zložitosti 6-12 týždňov a komplexné riešenia 3-6 mesiacov. Po analýze vašich požiadaviek vám poskytneme presný časový harmonogram."
+        "question": "Koľko stojí vývoj projektu?",
+        "answer": "Každý projekt je jedinečný. Ponúkame férové ceny, ktoré odrážajú vysokú kvalitu a pridanú hodnotu. Získate špičkové riešenie za rozumnú investíciu, ktorá sa vám vráti."
       },
       {
-        "question": "S akými technológiami pracujete?",
-        "answer": "Pracujeme s najnovšími trendovými technológiami: Frontend (React 18+, Next.js 15, Vue.js 3, Svelte, TypeScript, Tailwind CSS, Shadcn/ui), Backend (Node.js, Python, Go, Rust, Bun.js), Databázy (PostgreSQL, MongoDB, Redis, Supabase, PlanetScale), Mobile (React Native, Expo, Flutter, Swift, Kotlin), AI/ML (OpenAI, LangChain, TensorFlow, PyTorch), Cloud (Vercel, AWS, Azure, Google Cloud), DevOps (Docker, Kubernetes, GitHub Actions, Terraform) a Blockchain (Ethereum, Solana, Web3). Neustále sledujeme najnovšie technologické trendy a priebežne osvojujeme nové technológie, ktoré prinášajú hodnotu našim klientom."
+        "question": "Ako dlho trvá dodanie?",
+        "answer": "Menšie projekty dodávame v priebehu týždňov, komplexné systémy v mesiacoch. Vždy dbáme na dodržanie termínov bez kompromisov na kvalite."
       },
       {
-        "question": "Ako určujete ceny projektov?",
-        "answer": "Ceny kalkulujeme na základe zložitosti projektu, počtu funkcionalít, použitých technológií a časových požiadaviek. Poskytujeme transparentné cenové ponuky s rozpisom nákladov. Ponúkame aj fixné ceny pre jasne definované projekty."
+        "question": "Aké technológie používate?",
+        "answer": "Staviame na moderných a overených technológiách ako Next.js, React, React Native, Python a cloudových službách. To zaručuje rýchlosť, bezpečnosť a ľahkú rozšíriteľnosť do budúcna."
       },
       {
-        "question": "Čo je zahrnuté v cene?",
-        "answer": "V cene je zahrnutý kompletný vývoj, testovanie, nasadenie aplikácie, základné školenie, dokumentácia a 30-dňová bezplatná podpora po spustení. Údržba a rozšírenia sa riešia samostatne podľa dohody."
+        "question": "Poskytujete servis aj po dokončení?",
+        "answer": "Samozrejme. Hľadáme dlhodobé partnerstvá. Po spustení projektu ponúkame servisnú podporu, aktualizácie a ďalší rozvoj podľa vašich potrieb."
       },
       {
-        "question": "Aké sú vaše platobné podmienky?",
-        "answer": "Akceptujeme platby vo forme záloh (30% pri podpise zmluvy, 40% v polovici projektu, 30% pri dokončení) alebo mesačné platby pre dlhodobé projekty. Faktúry sú splatné do 14 dní."
+        "question": "Ako prebieha platba?",
+        "answer": "Platobné podmienky nastavujeme férovo a flexibilne, zvyčajne viazané na odovzdanie konkrétnych etáp projektu."
       },
       {
-        "question": "Pracujete s existujúcimi systémami?",
-        "answer": "Áno, máme rozsiahle skúsenosti s integráciou do existujúcich systémov, migráciou údajov, modernizáciou legacy aplikácií a integráciami third-party API."
+        "question": "Dokážete prepojiť nový softvér s našimi existujúcimi systémami?",
+        "answer": "Áno, integrácia s internými systémami, CRM alebo API tretích strán je našou bežnou praxou. Zabezpečíme plynulý tok dát."
       },
       {
-        "question": "Ako riešite bezpečnosť údajov?",
-        "answer": "Bezpečnosť je naša najvyššia priorita. Implementujeme bezpečnostné opatrenia na podnikovej úrovni: HTTPS s modernými TLS protokolmi, zero-trust architektúru, viacfaktorovú autentifikáciu, end-to-end šifrovanie, bezpečné API s rate limitingom, GDPR a CCPA compliance, pravidelné penetračné testovanie, bezpečnostné audity a SOC 2 compliance procesy. Aktívne pracujeme na ISO 27001 certifikácii pre zabezpečenie najvyšších medzinárodných bezpečnostných štandardov. Všetci naši vývojári dodržiavajú bezpečné kódovacie praktiky a absolvujú pravidelné bezpečnostné školenia."
-      },
-      {
-        "question": "Viete škálovať naše riešenie?",
-        "answer": "Absolútne! Všetky aplikácie navrhujeme so škálovateľnosťou v ich jadre pomocou moderných cloud-natívnych architektúr. Naše riešenia využívajú mikroslužby, serverless funkcie, auto-scaling infraštruktúru, CDN, pokročilé caching stratégie, optimalizáciu databáz a monitorovacie systémy. Implementujeme horizontálne a vertikálne škálovacie stratégie, ktoré dokážu zvládnuť milióny používateľov. Naše skúsenosti zahŕňajú aplikácie obsluhujúce 100 000+ súčasných používateľov so zárukami 99,9% uptime."
-      },
-      {
-        "question": "Ako prebieha komunikácia počas projektu?",
-        "answer": "Komunikujeme pravidelne cez email, Slack alebo Teams. Organizujeme týždenné status meetingy, poskytujeme prístup k projektovým nástrojom a pravidelné demo verzie."
-      },
-      {
-        "question": "Poskytujete údržbu po dokončení?",
-        "answer": "Áno, ponúkame komplexné balíčky údržby prispôsobené vašim potrebám: základnú technickú podporu, kompletný servis s novými funkciami, monitorovanie výkonu, bezpečnostné aktualizácie, správu záloh, 24/7 monitoring, opravy chýb a vylepšenia funkcií. Naša údržba zahŕňa proaktívne monitorovanie, automatizované zálohy, bezpečnostné záplaty, optimalizáciu výkonu a mesačné reporty. Poskytujeme aj emergency podporu a SLA záruky."
-      },
-      {
-        "question": "Pracujete s AI a strojovým učením?",
-        "answer": "Áno! Sme v popredí AI/ML vývoja. Vytvárame vlastné AI riešenia pomocou OpenAI GPT modelov, LangChain, TensorFlow, PyTorch a Hugging Face. Naše AI služby zahŕňajú chatboty, generovanie obsahu, analýzu údajov, počítačové videnie, spracovanie prirodzeného jazyka, odporúčacie systémy a AI-powered automatizáciu. Takisto integrujeme s populárnymi AI API a vytvárame vlastné modely strojového učenia prispôsobené vašim obchodným potrebám."
-      },
-      {
-        "question": "Čo ISO certifikáty a štandardy kvality?",
-        "answer": "Aktívne usilujeme o ISO 27001 (Information Security Management) a ISO 9001 (Quality Management) certifikáty pre zabezpečenie medzinárodných štandardov kvality a bezpečnosti. Naše vývojové procesy dodržiavajú najlepšie praktiky vrátane GDPR compliance, SOC 2 frameworkov a secure development lifecycle (SDLC). Udržiavame detailnú dokumentáciu, procesy zabezpečenia kvality a pravidelné audity tretích strán pre zabezpečenie najvyšších štandardov."
-      },
-      {
-        "question": "Viete pomôcť s digitálnou transformáciou?",
-        "answer": "Absolútne! Špecializujeme sa na komplexné iniciatívy digitálnej transformácie. To zahŕňa modernizáciu legacy systémov, migráciu do cloudu, automatizáciu procesov, vývoj API, migráciu údajov, systémové integrácie, optimalizáciu workflow a školenie personálu. Pomáhame firmám prejsť od zastaraných systémov k moderným, škálovateľným a efektívnym digitálnym riešeniam, ktoré zlepšujú produktivitu a znižujú náklady."
+        "question": "Je bezpečnosť prioritou?",
+        "answer": "Bezpečnosť berieme vážne. Dodržiavame prísne štandardy ochrany dát a implementujeme moderné bezpečnostné prvky do každého projektu."
       }
     ]
+  },
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "Rise.sk | Prémiový Vývoj Softvéru a Technologické Konzultácie",
+        "description": "Vytvárame vysoko výkonné webové a mobilné aplikácie. Najmite si expertné programátorské tímy na Slovensku pre škálovateľné riešenia. Začnite svoj projekt dnes."
+      }
+    },
+    "development": {
+      "meta": {
+        "title": "Vývoj Softvéru na Mieru | Programátorské Tímy Slovensko - Rise.sk",
+        "description": "Profesionálny vývoj softvéru na mieru na Slovensku. Najímajte dedikované programátorské tímy pre webové aplikácie, mobilné aplikácie a enterprise riešenia. Rýchle dodanie, spoľahlivý kód.",
+        "keywords": "vývoj softvéru na mieru, programátorské služby Slovensko, webový vývoj, vývoj mobilných aplikácií, dedikované vývojárske tímy, softvérové riešenia Slovensko"
+      }
+    },
+    "services": {
+      "meta": {
+        "title": "IT Služby a Riešenia | Programátorské a Vývojárske Služby Slovensko",
+        "description": "Komplexné IT služby a softvérové riešenia na Slovensku. Webový vývoj, mobilné aplikácie, enterprise softvér, cloudové riešenia a dedikované programátorské tímy. Profesionálne IT poradenstvo.",
+        "keywords": "IT služby Slovensko, programátorské služby, softvérové riešenia, webové vývojárske služby, vývoj mobilných aplikácií, enterprise softvér, cloudové riešenia, IT poradenstvo Slovensko"
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Kontakt | Rise.sk - Profesionálne Programátorské Tímy Slovensko",
+        "description": "Kontaktujte Rise.sk pre profesionálne programátorské služby na Slovensku. Získajte svoj vývojársky tím za 7 dní. Email: rise@rise.sk, Telefón: +421-911-670-188. Kancelária v Bratislave.",
+        "keywords": "kontakt Rise.sk, kontakt programátorské tímy, najať vývojárov Slovensko, kontakt vývoj softvéru, Bratislava programátorská spoločnosť"
+      }
+    },
+    "portfolio": {
+      "meta": {
+        "title": "Portfólio | Rise.sk - Projekty Vývoja Softvéru a Prípadové Štúdie",
+        "description": "Preskúmajte portfólio Rise.sk úspešných projektov vývoja softvéru. Vlastné webové aplikácie, mobilné aplikácie, enterprise riešenia a inovatívne programátorské projekty na Slovensku.",
+        "keywords": "Rise.sk portfólio, projekty vývoja softvéru, portfólio webových aplikácií, príklady vývoja mobilných aplikácií, programátorské prípadové štúdie Slovensko, projekty softvéru na mieru"
+      }
+    }
   },
   "NotFound": {
     "title": "Stránka nenájdená",

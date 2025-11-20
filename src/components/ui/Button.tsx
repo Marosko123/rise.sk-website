@@ -30,6 +30,8 @@ const sizeVariants = {
   lg: 'px-8 py-4 text-lg'
 };
 
+const MotionLink = motion.create(Link);
+
 export const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'primary',
@@ -71,27 +73,28 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   // Extract motion-conflicting props
-  const { 
-    onDrag: _onDrag, 
-    onDragEnd: _onDragEnd, 
-    onDragStart: _onDragStart, 
-    onAnimationStart: _onAnimationStart, 
+  const {
+    onDrag: _onDrag,
+    onDragEnd: _onDragEnd,
+    onDragStart: _onDragStart,
+    onAnimationStart: _onAnimationStart,
     onAnimationEnd: _onAnimationEnd,
-    ...buttonProps 
+    ...buttonProps
   } = props;
 
   if (href) {
     return (
-      <Link href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} legacyBehavior>
-        <motion.a
-          className={baseClasses}
-          {...motionProps}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          {...buttonProps as any}
-        >
-          {content}
-        </motion.a>
-      </Link>
+      <MotionLink
+        href={href}
+        target={external ? '_blank' : undefined}
+        rel={external ? 'noopener noreferrer' : undefined}
+        className={baseClasses}
+        {...motionProps}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        {...buttonProps as any}
+      >
+        {content}
+      </MotionLink>
     );
   }
 

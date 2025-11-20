@@ -19,8 +19,10 @@ export function useParticles() {
   // Animate particles using shared animation context
   useEffect(() => {
     const animate = () => {
-      setParticles(prev =>
-        prev
+      setParticles(prev => {
+        if (prev.length === 0) return prev;
+        
+        return prev
           .map(particle => ({
             ...particle,
             x: particle.x + particle.vx,
@@ -29,8 +31,8 @@ export function useParticles() {
             vx: particle.vx * 0.98,
             vy: particle.vy * 0.98,
           }))
-          .filter(particle => particle.life > 0)
-      );
+          .filter(particle => particle.life > 0);
+      });
     };
 
     // Use shared animation context instead of separate requestAnimationFrame

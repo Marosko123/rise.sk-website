@@ -1,9 +1,10 @@
 'use client';
 
 import { useTranslations } from '@/hooks/useTranslations';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
+import FAQAccordion from '../ui/FAQAccordion';
 
 interface FAQItem {
   question: string;
@@ -13,7 +14,6 @@ interface FAQItem {
 
 const FAQ = () => {
   const t = useTranslations('faq');
-  const [openItems, setOpenItems] = useState<number[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [showAllFAQs, setShowAllFAQs] = useState<boolean>(false);
 
@@ -103,14 +103,6 @@ const FAQ = () => {
   const displayedFAQ = showAllFAQs ? filteredFAQ : filteredFAQ.slice(0, PREVIEW_COUNT);
   const hasMoreFAQs = filteredFAQ.length > PREVIEW_COUNT;
 
-  const toggleItem = (index: number) => {
-    setOpenItems(prev =>
-      prev.includes(index)
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
-    );
-  };
-
   return (
     <section className="py-12 bg-gradient-to-b from-slate-800/30 to-slate-900/50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -145,45 +137,7 @@ const FAQ = () => {
 
         {/* FAQ Items */}
         <div className="space-y-4">
-          {displayedFAQ.map((item, index) => (
-            <motion.div
-              key={`${activeCategory}-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="bg-slate-800/30 rounded-xl border border-white/10 overflow-hidden hover:border-white/20 transition-colors duration-300"
-            >
-              <button
-                onClick={() => toggleItem(index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-slate-700/20 transition-colors duration-300"
-              >
-                <h3 className="text-lg font-semibold text-[var(--foreground)] pr-4">
-                  {item.question}
-                </h3>
-                {openItems.includes(index) ? (
-                  <ChevronUp className="w-5 h-5 text-[var(--primary)] flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-[var(--foreground-muted)] flex-shrink-0" />
-                )}
-              </button>
-
-              <AnimatePresence>
-                {openItems.includes(index) && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 pb-5 text-[var(--foreground-muted)] leading-relaxed">
-                      {item.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+          <FAQAccordion items={displayedFAQ} />
         </div>
 
         {/* Show More/Less Button */}

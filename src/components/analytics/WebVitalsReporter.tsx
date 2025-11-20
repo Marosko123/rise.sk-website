@@ -68,8 +68,8 @@ export default function WebVitalsReporter() {
         list.getEntries().forEach((entry) => {
           if (entry.duration > 50) { // Task longer than 50ms
             // eslint-disable-next-line no-console
-            console.warn(`⚠️ Long Task detected: ${entry.duration}ms`);
-            
+            console.warn(`⚠️ Long Task detected: ${Math.round(entry.duration)}ms`);
+
             // Report long tasks in production
             if (process.env.NODE_ENV === 'production' && typeof window.gtag !== 'undefined') {
               window.gtag('event', 'long_task', {

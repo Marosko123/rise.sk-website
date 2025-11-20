@@ -1,8 +1,8 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowRight, Award, CheckCircle, Clock, Code, Globe, MapPin, Shield, Star, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '../ui/Button';
 
@@ -39,7 +39,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className='hero-gradient min-h-screen flex items-center justify-center pt-16 relative overflow-hidden lg:-mt-12'>
+    <section className='hero-gradient min-h-[calc(100vh+80px)] flex items-center justify-center pt-32 relative overflow-hidden mt-[-80px]'>
       {/* Floating Background Elements */}
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         {floatingIcons.map(({ Icon, delay, x, y }, index) => (

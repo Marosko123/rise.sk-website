@@ -1,7 +1,7 @@
 import { getFooterLinks } from '@/data/footer-data';
-import { useTranslations } from 'next-intl';
 import { AppPathnames, Link } from '@/i18n/routing';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export default function FooterLinks() {
   const t = useTranslations('footer');
@@ -12,7 +12,8 @@ export default function FooterLinks() {
     '/sluzby/tvorba-eshopu',
     '/sluzby/vyvoj-mobilnych-aplikacii',
     '/sluzby/softver-na-mieru',
-    '/kontakt'
+    '/sluzby/ai-automatizacia',
+    '/sluzby/it-outsourcing'
   ];
 
   const companyLinks = [

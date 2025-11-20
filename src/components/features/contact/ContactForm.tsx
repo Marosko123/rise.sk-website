@@ -58,7 +58,7 @@ export default function ContactForm() {
         >
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('mainTitle')}
-            <span className='bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-clip-text text-transparent block'>
+            <span className='gradient-text block pb-2'>
               {t('mainTitleHighlight')}
             </span>
           </h2>

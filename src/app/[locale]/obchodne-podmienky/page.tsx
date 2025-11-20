@@ -1,14 +1,31 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
+import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Obchodné podmienky | Rise.sk',
   description: 'Obchodné podmienky a podmienky používania služieb Rise.sk pre vývoj webových stránok a IT riešení.',
+  openGraph: {
+    title: 'Obchodné podmienky | Rise.sk',
+    description: 'Obchodné podmienky a podmienky používania služieb Rise.sk pre vývoj webových stránok a IT riešení.',
+    url: 'https://rise.sk/sk/obchodne-podmienky',
+    siteName: 'Rise.sk',
+    locale: 'sk_SK',
+    type: 'website',
+  },
 }
 
-export default function ObchodnePodmienky() {
+export default async function ObchodnePodmienky({
+  params,
+}: {
+  params: Promise<{ locale: 'en' | 'sk' }>;
+}) {
+  const { locale } = await params;
+  const breadcrumbs = getBreadcrumbsForPage(locale, 'obchodne-podmienky');
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <BreadcrumbSchema items={breadcrumbs} page="obchodne-podmienky" />
       <div className="max-w-4xl mx-auto px-6 py-12">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">
@@ -21,14 +38,14 @@ export default function ObchodnePodmienky() {
                 1. Základné ustanovenia
               </h2>
               <p className="text-gray-600 mb-4">
-                Tieto obchodné podmienky (ďalej len &ldquo;OP&rdquo;) upravujú vzťahy medzi 
-                spoločnosťou <strong>Rise.sk s.r.o.</strong> so sídlom v Bratislave, 
-                Slovenská republika, IČO: 56 911 157 (ďalej len &ldquo;poskytovateľ&rdquo; 
+                Tieto obchodné podmienky (ďalej len &ldquo;OP&rdquo;) upravujú vzťahy medzi
+                spoločnosťou <strong>Rise.sk s.r.o.</strong> so sídlom v Bratislave,
+                Slovenská republika, IČO: 56 911 157 (ďalej len &ldquo;poskytovateľ&rdquo;
                 alebo &ldquo;Rise.sk&rdquo;) a objednávateľom služieb (ďalej len &ldquo;klient&rdquo;).
               </p>
               <p className="text-gray-600 mb-4">
-                Tieto OP sa vzťahujú na všetky služby poskytované spoločnosťou Rise.sk, 
-                vrátane vývoja webových stránok, mobilných aplikácií, e-commerce riešení 
+                Tieto OP sa vzťahujú na všetky služby poskytované spoločnosťou Rise.sk,
+                vrátane vývoja webových stránok, mobilných aplikácií, e-commerce riešení
                 a IT konzultácií.
               </p>
             </section>
@@ -77,7 +94,7 @@ export default function ObchodnePodmienky() {
                 <li>Osobnou návštevou po predchádzajúcej dohode</li>
               </ul>
               <p className="text-gray-600 mb-4">
-                Po prijatí objednávky vás budeme kontaktovať do 24 hodín na upresnenie 
+                Po prijatí objednávky vás budeme kontaktovať do 24 hodín na upresnenie
                 požiadaviek a vytvorenie cenové ponuky.
               </p>
             </section>
@@ -224,8 +241,8 @@ export default function ObchodnePodmienky() {
                 12. Riešenie sporov
               </h2>
               <p className="text-gray-600 mb-4">
-                Všetky spory sa riešia prednostne mimosúdnou cestou. V prípade 
-                neúspešného riešenia je príslušný súd v Bratislave podľa sídla 
+                Všetky spory sa riešia prednostne mimosúdnou cestou. V prípade
+                neúspešného riešenia je príslušný súd v Bratislave podľa sídla
                 poskytovateľa.
               </p>
               <p className="text-gray-600 mb-4">
@@ -238,22 +255,22 @@ export default function ObchodnePodmienky() {
                 13. Záverečné ustanovenia
               </h2>
               <p className="text-gray-600 mb-4">
-                Tieto obchodné podmienky nadobúdajú účinnosť 25. augusta 2025 
+                Tieto obchodné podmienky nadobúdajú účinnosť 25. augusta 2025
                 a nahrádzajú všetky predchádzajúce verzie.
               </p>
               <p className="text-gray-600 mb-4">
-                Rise.sk si vyhradzuje právo na zmenu týchto podmienok. O zmenách 
+                Rise.sk si vyhradzuje právo na zmenu týchto podmienok. O zmenách
                 budú klienti informovaní prostredníctvom webovej stránky alebo emailom.
               </p>
               <p className="text-gray-600">
-                V prípade rozporu medzi týmito OP a písomnou zmluvou má prednosť 
+                V prípade rozporu medzi týmito OP a písomnou zmluvou má prednosť
                 písomná zmluva.
               </p>
             </section>
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-200">
-            <Link 
+            <Link
               href="/"
               target="_blank"
               rel="noopener noreferrer"

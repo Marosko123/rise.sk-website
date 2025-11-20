@@ -7,6 +7,7 @@ export const getFooterLinks = (t: (key: string) => string) => ({
     t('services.2'),
     t('services.3'),
     t('services.4'),
+    t('services.5'),
   ],
   company: [
     t('company.0'),

@@ -1,14 +1,31 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
+import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Ochrana osobných údajov | Rise.sk',
   description: 'Informácie o ochrane osobných údajov a spracovaní dát v súlade s GDPR na Rise.sk.',
+  openGraph: {
+    title: 'Ochrana osobných údajov | Rise.sk',
+    description: 'Informácie o ochrane osobných údajov a spracovaní dát v súlade s GDPR na Rise.sk.',
+    url: 'https://rise.sk/sk/ochrana-osobnych-udajov',
+    siteName: 'Rise.sk',
+    locale: 'sk_SK',
+    type: 'website',
+  },
 }
 
-export default function OchranaOsobnychUdajov() {
+export default async function OchranaOsobnychUdajov({
+  params,
+}: {
+  params: Promise<{ locale: 'en' | 'sk' }>;
+}) {
+  const { locale } = await params;
+  const breadcrumbs = getBreadcrumbsForPage(locale, 'ochrana-osobnych-udajov');
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <BreadcrumbSchema items={breadcrumbs} page="ochrana-osobnych-udajov" />
       <div className="max-w-4xl mx-auto px-6 py-12">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">
@@ -21,15 +38,15 @@ export default function OchranaOsobnychUdajov() {
                 1. Základné informácie
               </h2>
               <p className="text-gray-600 mb-4">
-                Spoločnosť <strong>Rise.sk s.r.o.</strong> (ďalej len &ldquo;spoločnosť&rdquo; alebo &ldquo;my&rdquo;) 
-                so sídlom v Bratislave, Slovenská republika, IČO: 56 911 157, berie ochranu 
-                osobných údajov veľmi vážne a zaväzuje sa chrániť súkromie všetkých návštevníkov 
+                Spoločnosť <strong>Rise.sk s.r.o.</strong> (ďalej len &ldquo;spoločnosť&rdquo; alebo &ldquo;my&rdquo;)
+                so sídlom v Bratislave, Slovenská republika, IČO: 56 911 157, berie ochranu
+                osobných údajov veľmi vážne a zaväzuje sa chrániť súkromie všetkých návštevníkov
                 našej webovej stránky a klientov.
               </p>
               <p className="text-gray-600 mb-4">
-                Táto zásada ochrany osobných údajov vysvetľuje, ako zhromažďujeme, používame, 
-                uchovávame a chránime vaše osobné údaje v súlade s Nariadením Európskeho 
-                parlamentu a Rady (EU) 2016/679 (GDPR) a zákonom č. 18/2018 Z.z. o ochrane 
+                Táto zásada ochrany osobných údajov vysvetľuje, ako zhromažďujeme, používame,
+                uchovávame a chránime vaše osobné údaje v súlade s Nariadením Európskeho
+                parlamentu a Rady (EU) 2016/679 (GDPR) a zákonom č. 18/2018 Z.z. o ochrane
                 osobných údajov.
               </p>
             </section>
@@ -121,7 +138,7 @@ export default function OchranaOsobnychUdajov() {
                 8. Cookies
               </h2>
               <p className="text-gray-600 mb-4">
-                Naša webová stránka používa cookies na zlepšenie používateľského zážitku. 
+                Naša webová stránka používa cookies na zlepšenie používateľského zážitku.
                 Rozlišujeme tieto kategórie cookies:
               </p>
               <ul className="list-disc pl-6 mb-4 text-gray-600">
@@ -140,8 +157,8 @@ export default function OchranaOsobnychUdajov() {
                 9. Bezpečnosť údajov
               </h2>
               <p className="text-gray-600 mb-4">
-                Implementovali sme vhodné technické a organizačné opatrenia na ochranu 
-                vašich osobných údajov proti neoprávnenému prístupu, zmene, zverejneniu 
+                Implementovali sme vhodné technické a organizačné opatrenia na ochranu
+                vašich osobných údajov proti neoprávnenému prístupu, zmene, zverejneniu
                 alebo zničeniu, vrátane:
               </p>
               <ul className="list-disc pl-6 mb-4 text-gray-600">
@@ -179,8 +196,8 @@ export default function OchranaOsobnychUdajov() {
                 11. Zmeny tejto zásady
               </h2>
               <p className="text-gray-600 mb-4">
-                Túto zásadu ochrany osobných údajov môžeme priebežne aktualizovať. 
-                O významných zmenách vás budeme informovať prostredníctvom našej 
+                Túto zásadu ochrany osobných údajov môžeme priebežne aktualizovať.
+                O významných zmenách vás budeme informovať prostredníctvom našej
                 webovej stránky alebo emailom.
               </p>
               <p className="text-gray-600">
@@ -190,7 +207,7 @@ export default function OchranaOsobnychUdajov() {
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-200">
-            <Link 
+            <Link
               href="/"
               target="_blank"
               rel="noopener noreferrer"
