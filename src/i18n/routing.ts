@@ -11,6 +11,9 @@ export const routing = defineRouting({
   // Use "as-needed" to hide the locale prefix for the default locale (sk)
   localePrefix: 'as-needed',
 
+  // Disable automatic locale detection based on Accept-Language header
+  localeDetection: false,
+
   // Localized pathnames
   pathnames: {
     '/': '/',

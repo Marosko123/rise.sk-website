@@ -273,7 +273,7 @@ export default function LandingPage() {
               >
                 <span className='flex items-center justify-center space-x-3 select-none'>
                   <span>👉</span>
-                  <span>{t('development.title')}</span>
+                  <span>{t('discoverMore')}</span>
                 </span>
               </button>
             </div>
