@@ -30,7 +30,7 @@ export default function LandingPage() {
   const [showFullWebsite, setShowFullWebsite] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
-  
+
   const scrollAccumulator = useRef(0);
   const scrollResetTimer = useRef<NodeJS.Timeout | null>(null);
   const landingOverlayRef = useRef<LandingOverlayRef>(null);
@@ -201,31 +201,45 @@ export default function LandingPage() {
 
   if (!mounted) {
     return (
-      <div className='min-h-screen relative overflow-hidden flex flex-col' style={{ backgroundColor: '#1a1a1a' }}>
-        <header className='relative z-50 px-6 py-6'>
-          <div className='max-w-7xl mx-auto flex justify-between items-center'>
-            <div className='flex items-center space-x-3'>
-              <div className='relative'>
-                <Image
-                  src={companyConfig.website.logo.logoGoldTransparent}
-                  alt={companyConfig.company.name}
-                  width={50}
-                  height={50}
-                  className='select-none'
-                  draggable={false}
-                />
-              </div>
-              <span className='text-2xl font-bold text-white select-none'>
-                {companyConfig.company.domain}
-              </span>
-            </div>
-            <div className="relative z-50">
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </header>
+      <div className='min-h-screen relative overflow-hidden bg-[#1a1a1a]'>
+        {/* Background Logo - Matching Overlay */}
+        <div className='absolute inset-0 flex items-center justify-center pointer-events-none'>
+          <Image
+            src={companyConfig.website.logo.logoGoldTransparent}
+            alt={companyConfig.company.name}
+            width={600}
+            height={600}
+            className='select-none opacity-[0.04]'
+            draggable={false}
+            priority
+          />
+        </div>
 
-        <main className='relative z-10 flex-1 flex items-center justify-center px-6'>
+        {/* Header - Absolute positioning to match Overlay */}
+        <div className='absolute top-0 left-0 right-0 z-50 flex justify-between items-center p-6'>
+          <div className='flex items-center space-x-3'>
+            <div className='relative'>
+              <Image
+                src={companyConfig.website.logo.logoGoldTransparent}
+                alt={companyConfig.company.name}
+                width={50}
+                height={50}
+                className='select-none'
+                draggable={false}
+                style={{ filter: 'drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))' }}
+              />
+            </div>
+            <span className='text-2xl font-bold text-white select-none'>
+              {companyConfig.company.domain}
+            </span>
+          </div>
+          <div className="relative z-50">
+            <LanguageSwitcher />
+          </div>
+        </div>
+
+        {/* Main Content - Centered exactly like Overlay */}
+        <section className='relative z-10 flex items-center justify-center px-6 min-h-screen'>
           <div className='text-center max-w-3xl'>
             <div className='mb-8'>
               <Image
@@ -235,11 +249,15 @@ export default function LandingPage() {
                 height={120}
                 className='mx-auto select-none'
                 draggable={false}
+                style={{
+                  filter: 'drop-shadow(0 0 30px rgba(176, 145, 85, 0.4))'
+                }}
+                priority
               />
             </div>
 
             <div className='mb-12'>
-              <h1 className='text-4xl md:text-5xl font-bold text-white mb-4 select-none'>
+              <h1 className='text-4xl md:text-5xl font-bold text-white mb-4 select-none' style={{ textShadow: '0 0 30px rgba(176, 145, 85, 0.3)' }}>
                 {t('tagline.weAre')} <span className='text-primary'>{t('tagline.innovativeSolutions')}</span>
               </h1>
               <p className='text-xl text-white/80 font-light select-none'>
@@ -247,46 +265,40 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className='flex justify-center'>
+            {/* Button - Absolute positioning at bottom to match Overlay */}
+            <div className='absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6'>
               <button
-                className='px-12 py-6 text-xl font-semibold text-white rounded-xl border-2 border-primary transition-all duration-300 hover:scale-105 shadow-lg'
-                style={{
-                  backgroundColor: 'var(--primary)',
-                  opacity: 0.1,
-                  boxShadow: '0 4px 15px var(--glow)'
-                }}
+                className="group relative px-12 py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
                 onClick={() => {
                   router.push('/vyvoj');
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#D4AF37';
-                  e.currentTarget.style.borderColor = '#F4E07A';
-                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 175, 55, 0.4)';
-                  e.currentTarget.style.color = '#1a1a1a';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
-                  e.currentTarget.style.borderColor = '#D4AF37';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
-                  e.currentTarget.style.color = 'white';
-                }}
               >
-                <span className='flex items-center justify-center space-x-3 select-none'>
-                  <span>👉</span>
-                  <span>{t('discoverMore')}</span>
+                <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.15)]" />
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-full" />
+
+                <div className="absolute inset-0 rounded-full overflow-hidden">
+                  <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-50" />
+                </div>
+
+                <span className="relative text-sm font-bold tracking-[0.25em] text-white/90 uppercase drop-shadow-md">
+                  {t('discoverMore')}
                 </span>
               </button>
+
+              {/* Scroll Indicator Placeholder to match spacing */}
+              <div className="w-[24px] h-[40px] rounded-full border-2 border-primary/60 flex justify-center p-1.5 shadow-[0_0_15px_rgba(212,175,55,0.15)] opacity-80">
+                <div className="w-1 h-1.5 bg-primary rounded-full" />
+              </div>
             </div>
           </div>
-        </main>
+        </section>
 
-        <footer className='relative z-10 px-6 py-6'>
-          <div className='text-center'>
-            <p className='text-white/60 text-sm select-none'>
-              {t('footer')}
-            </p>
-          </div>
-        </footer>
+        {/* Footer - Absolute positioning to match Overlay */}
+        <div className='absolute bottom-0 left-0 right-0 z-20 p-6 text-center'>
+          <p className='text-white/60 text-sm select-none'>
+            {t('footer')}
+          </p>
+        </div>
       </div>
     );
   }
