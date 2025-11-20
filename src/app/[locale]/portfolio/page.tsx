@@ -8,7 +8,7 @@ import { getTranslations } from 'next-intl/server';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'pages.portfolio' });
-  const tProjects = await getTranslations({ locale, namespace: 'portfolio.projects.descriptions' });
+  // Removed unused tProjects variable
 
   const localePath = '/portfolio';
   const localeCode = locale === 'sk' ? 'sk_SK' : 'en_US';
