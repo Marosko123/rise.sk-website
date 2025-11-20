@@ -32,6 +32,17 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  trailingSlash: false,
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.rise.sk' }],
+        destination: 'https://rise.sk/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
@@ -71,8 +82,8 @@ const nextConfig: NextConfig = {
             value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com *.vercel-scripts.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: *.googletagmanager.com *.google-analytics.com cdn.jsdelivr.net www.vectorlogo.zone upload.wikimedia.org; font-src 'self' data: fonts.gstatic.com; connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com vitals.vercel-analytics.com *.emailjs.com lottie.host *.lottiefiles.com;"
           },
           {
-            key: 'Clear-Site-Data',
-            value: '"cache", "storage"'
+            key: 'Vary',
+            value: 'Accept-Language, Cookie'
           }
         ]
       },

@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v7';
+const CACHE_VERSION = 'v10';
 const CACHE_NAME = `rise-sk-${CACHE_VERSION}`;
 const STATIC_CACHE = `rise-sk-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `rise-sk-dynamic-${CACHE_VERSION}`;
