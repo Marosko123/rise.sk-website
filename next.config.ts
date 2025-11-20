@@ -33,16 +33,6 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   trailingSlash: false,
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.rise.sk' }],
-        destination: 'https://rise.sk/:path*',
-        permanent: true,
-      },
-    ];
-  },
   async headers() {
     return [
       {
@@ -79,7 +69,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com *.vercel-scripts.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: *.googletagmanager.com *.google-analytics.com cdn.jsdelivr.net www.vectorlogo.zone upload.wikimedia.org; font-src 'self' data: fonts.gstatic.com; connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com vitals.vercel-analytics.com *.emailjs.com lottie.host *.lottiefiles.com;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com https://cdn.jsdelivr.net https://www.vectorlogo.zone https://upload.wikimedia.org; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://vitals.vercel-analytics.com https://*.emailjs.com https://lottie.host https://*.lottiefiles.com;"
           },
           {
             key: 'Vary',
