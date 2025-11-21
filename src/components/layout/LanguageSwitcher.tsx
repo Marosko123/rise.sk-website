@@ -51,16 +51,16 @@ export default function LanguageSwitcher({ alternateLinks }: { alternateLinks?: 
               // Note: alternateLinks values should be the full path including the slug, but NOT the locale prefix (Link handles that).
               // However, if we pass a string to href in Link, it will try to resolve it against routing.
               // If we pass a pathname that is not in routing, it might be treated as a literal string.
-              
+
               // If we have an alternate link, we should probably use it.
               // But wait, `Link` from `next-intl` expects `href` to be one of the defined pathnames or a string.
               // If we pass `/blog/my-slug`, `next-intl` might not know how to handle it if it's not in `pathnames`.
               // But usually it handles dynamic segments if defined.
               // Here `/blog` is defined but `/blog/[slug]` is not explicitly defined in `routing.ts`.
               // Next.js App Router with next-intl usually handles dynamic routes by matching the file structure.
-              
+
               // If I pass `/blog/translated-slug` to `Link` with `locale='en'`, it should generate `/en/blog/translated-slug`.
-              
+
               const href = alternateLinks?.[language.code] || pathname;
 
               return (
