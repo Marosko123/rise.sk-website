@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { getSortedPostsData } from '@/utils/blog-server'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://rise.sk'
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/sluzby/vyvoj-mobilnych-aplikacii', enPath: '/services/mobile-app-development', priority: 0.8, changeFreq: 'weekly' as const },
     { path: '/sluzby/softver-na-mieru', enPath: '/services/custom-software-development', priority: 0.8, changeFreq: 'weekly' as const },
     { path: '/portfolio', enPath: '/portfolio', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/blog', enPath: '/blog', priority: 0.8, changeFreq: 'daily' as const },
     { path: '/kontakt', enPath: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
     { path: '/ochrana-osobnych-udajov', priority: 0.6, changeFreq: 'yearly' as const },
     { path: '/obchodne-podmienky', priority: 0.6, changeFreq: 'yearly' as const },
@@ -47,6 +49,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })
     }
   })
+
+  // Add Blog Posts
+  const skPosts = getSortedPostsData('sk');
+  const enPosts = getSortedPostsData('en');
+
+  skPosts.forEach(post => {
+    sitemap.push({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    });
+  });
+
+  enPosts.forEach(post => {
+    sitemap.push({
+      url: `${baseUrl}/en/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    });
+  });
 
   return sitemap
 }

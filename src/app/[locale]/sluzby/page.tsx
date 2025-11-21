@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
 import ServicesEnhanced from '@/components/sections/ServicesEnhanced';
+import LatestPosts from '@/components/sections/LatestPosts';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import { getTranslations } from 'next-intl/server';
 
@@ -181,6 +182,7 @@ export default async function ServicesPage({
         <div className="bg-black pt-20">
           <ServicesEnhanced breadcrumbs={breadcrumbs} />
         </div>
+        <LatestPosts locale={locale} />
       </main>
       <Footer />
     </div>

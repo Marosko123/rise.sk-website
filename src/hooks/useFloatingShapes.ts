@@ -11,12 +11,12 @@ export const SHAPE_CONFIG = {
 
   // Physics
   GRAVITY_STRENGTH: 0.0002, // How strong the pull to center is
-  DAMPING: 0.98, // Velocity damping (0.98 = slight decay)
-  HOVER_PUSH_FORCE: 1.2, // Force applied when hovering
-  HOVER_RADIUS: 100, // Hover detection radius in pixels
+  DAMPING: 0.98, // Velocity damping (0.98 = slippery)
+  HOVER_PUSH_FORCE: 1.5, // Force applied when hovering
+  HOVER_RADIUS: 160, // Hover detection radius in pixels
 
   // Collision physics
-  COLLISION_ENABLED: false, // Disable collision detection for better performance
+  COLLISION_ENABLED: true, // Enable collision detection for better performance
   COLLISION_DAMPING: 0.8, // How much velocity is retained after collision (0-1)
   COLLISION_REPULSION: 0.5, // How much shapes repel each other during collision
 
@@ -67,6 +67,7 @@ export interface FloatingShape {
   speed: number;
   vx: number;
   vy: number;
+  isStuck?: boolean;
 }
 
 interface UseFloatingShapesProps {
@@ -117,12 +118,56 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
 
         // Check for collision
         if (distance < minDistance && distance > 0) {
+          // If both are stuck, don't move either
+          if (shape1.isStuck && shape2.isStuck) {
+            continue;
+          }
+
           // Calculate collision normal (unit vector from shape1 to shape2)
           const normalX = deltaX / distance;
           const normalY = deltaY / distance;
 
           // Calculate overlap amount
           const overlap = minDistance - distance;
+
+          // If one is stuck, only move the other one
+          if (shape1.isStuck) {
+             // Move shape2 away from shape1
+             const separationX = overlap * normalX;
+             const separationY = overlap * normalY;
+             
+             const separationPercentX2 = (separationX / windowWidth) * 100;
+             const separationPercentY2 = (separationY / windowHeight) * 100;
+
+             updatedShapes[j] = {
+                ...shape2,
+                x: shape2.x + separationPercentX2,
+                y: shape2.y + separationPercentY2,
+                // Bounce shape2
+                vx: shape2.vx + normalX * 2, // Add some bounce
+                vy: shape2.vy + normalY * 2
+             };
+             continue;
+          }
+
+          if (shape2.isStuck) {
+             // Move shape1 away from shape2
+             const separationX = overlap * normalX;
+             const separationY = overlap * normalY;
+             
+             const separationPercentX1 = -(separationX / windowWidth) * 100;
+             const separationPercentY1 = -(separationY / windowHeight) * 100;
+
+             updatedShapes[i] = {
+                ...shape1,
+                x: shape1.x + separationPercentX1,
+                y: shape1.y + separationPercentY1,
+                // Bounce shape1
+                vx: shape1.vx - normalX * 2, // Add some bounce
+                vy: shape1.vy - normalY * 2
+             };
+             continue;
+          }
 
           // Separate the shapes by moving them apart
           const separationX = (overlap / 2) * normalX;
@@ -210,6 +255,11 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
             };
           }
 
+          // If stuck, stay stuck
+          if (shape.isStuck) {
+             return shape;
+          }
+
           // Normal physics when not exploding
           // Calculate distance from mouse to shape center
           const shapeScreenX = (shape.x / 100) * windowSize.width;
@@ -251,8 +301,33 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
           // Update position based on velocity
           const velocityScaleX = 100 / windowSize.width; // Convert px velocity to % velocity
           const velocityScaleY = 100 / windowSize.height;
-          shape.x += shape.vx * velocityScaleX;
-          shape.y += shape.vy * velocityScaleY;
+          
+          let newX = shape.x + shape.vx * velocityScaleX;
+          let newY = shape.y + shape.vy * velocityScaleY;
+
+          // Wall Sticking Logic
+          const sizePercentX = (shape.size / windowSize.width) * 100;
+          const sizePercentY = (shape.size / windowSize.height) * 100;
+          const halfSizeX = sizePercentX / 2;
+          const halfSizeY = sizePercentY / 2;
+          
+          let isStuck = false;
+          
+          if (newX < halfSizeX) { newX = halfSizeX; isStuck = true; }
+          if (newX > 100 - halfSizeX) { newX = 100 - halfSizeX; isStuck = true; }
+          if (newY < halfSizeY) { newY = halfSizeY; isStuck = true; }
+          if (newY > 100 - halfSizeY) { newY = 100 - halfSizeY; isStuck = true; }
+
+          if (isStuck) {
+             return {
+                 ...shape,
+                 x: newX,
+                 y: newY,
+                 vx: 0,
+                 vy: 0,
+                 isStuck: true
+             };
+          }
 
           // Add subtle floating animation using current time
           const floatTime = Date.now() * SHAPE_CONFIG.FLOAT_SPEED;
@@ -261,8 +336,8 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
 
           return {
             ...shape,
-            x: shape.x + floatOffsetX * 0.1, // Small floating motion
-            y: shape.y + floatOffsetY * 0.1,
+            x: newX + floatOffsetX * 0.1, // Small floating motion
+            y: newY + floatOffsetY * 0.1,
             rotation: shape.rotation + SHAPE_CONFIG.ROTATION_SPEED,
           };
         });
@@ -399,6 +474,14 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
       triggerExplosion();
     }
 
+    // Check for win condition (all stuck)
+    if (floatingShapes.length > 0 && !isExploding) {
+        const allStuck = floatingShapes.every(s => s.isStuck);
+        if (allStuck) {
+            triggerExplosion();
+        }
+    }
+
     // Clean up shapes after explosion
     if (isExploding && (animationTime - explosionStartTime) >= SHAPE_CONFIG.EXPLOSION_CLEANUP_TIME) {
       setFloatingShapes([]);
@@ -414,7 +497,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
       setFloatingShapes(shapes);
       setShapeCount(SHAPE_CONFIG.INITIAL_COUNT);
     }
-  }, [animationTime, mounted, isExploding, explosionStartTime, floatingShapes.length, shapeCount, triggerExplosion]);
+  }, [animationTime, mounted, isExploding, explosionStartTime, floatingShapes, shapeCount, triggerExplosion]);
 
   // Handle logo click to add/remove shapes
   const handleLogoClick = useCallback(() => {
@@ -435,6 +518,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
     isExploding,
     handleLogoClick,
     shapeCount,
-    createFloatingShape
+    createFloatingShape,
+    explosionStartTime
   };
 }

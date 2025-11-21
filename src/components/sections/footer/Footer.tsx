@@ -1,10 +1,10 @@
 'use client';
 
 import { getContactInfo } from '@/data/footer-data';
-import { useTranslations } from '@/hooks/useTranslations';
 import { Link } from '@/i18n/routing';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import FooterBanking from './FooterBanking';
 import FooterBilling from './FooterBilling';
@@ -41,7 +41,7 @@ export default function Footer() {
         <div className='h-full w-full bg-[linear-gradient(rgba(180,145,85,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(180,145,85,0.1)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]'></div>
       </div>
 
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 text-white'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 relative z-10 text-white'>
         <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-12'>
           {/* Company Info */}
           <motion.div
@@ -54,7 +54,7 @@ export default function Footer() {
             <Link href='/' className='inline-block mb-6'>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className='text-3xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent'
+                className='text-3xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent pb-1'
               >
                 Rise.sk
               </motion.div>
@@ -106,7 +106,7 @@ export default function Footer() {
           className='mb-8'
         >
           <div className='text-center mb-6'>
-            <h3 className='text-xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent mb-2'>
+            <h3 className='text-xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent mb-2 pb-1'>
               {companyInfo('name')}
             </h3>
             <div className='w-16 h-0.5 bg-gradient-to-r from-primary to-primary-light mx-auto rounded-full'></div>

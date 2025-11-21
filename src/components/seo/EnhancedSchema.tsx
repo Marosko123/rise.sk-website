@@ -2,7 +2,7 @@ import { companyConfig } from '@/config/company'
 import React from 'react'
 
 interface EnhancedSchemaProps {
-  type: 'Organization' | 'LocalBusiness' | 'WebSite' | 'Service' | 'Article' | 'FAQPage' | 'CollectionPage'
+  type: 'Organization' | 'LocalBusiness' | 'WebSite' | 'Service' | 'Article' | 'FAQPage' | 'CollectionPage' | 'ProfilePage'
   data?: Record<string, unknown>
 }
 
@@ -43,6 +43,18 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
               description: item.description
             }))
           }
+        }
+
+      case 'ProfilePage':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'ProfilePage',
+          mainEntity: {
+            '@type': 'Person',
+            name: companyConfig.founders.maros.name,
+            ...data.mainEntity as object
+          },
+          ...data
         }
 
       case 'Organization':

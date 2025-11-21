@@ -11,7 +11,14 @@
       "description": "Vývoj softvéru, technické poradenstvo a služby webového vývoja",
       "cta": "Preskúmať vývoj"
     },
-    "footer": "© 2025 Rise.sk s.r.o. Všetky práva vyhradené."
+    "footer": "© 2025 Rise.sk s.r.o. Všetky práva vyhradené.",
+    "latestPosts": {
+      "badge": "Náš Blog",
+      "title": "Najnovšie články",
+      "description": "Buďte v obraze s najnovšími trendmi v technológiách a vývoji.",
+      "viewAll": "Zobraziť všetky články",
+      "latestArticles": "Najnovšie články"
+    }
   },
   "navigation": {
     "about": "O nás",
@@ -32,6 +39,7 @@
       "ai": "Optimalizácia procesov, AI školenia a audit. Zefektívnite a zrýchlite chod vašej firmy.",
       "outsourcing": "Prenájom celých vývojárskych tímov alebo jednotlivých expertov pre vaše projekty."
     },
+    "blog": "Blog",
     "development": "Vývoj",
     "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
@@ -1136,7 +1144,33 @@
     "imageNotAvailable": "Obrázok nie je dostupný",
     "loading": "Načítava sa...",
     "error": "Chyba",
-    "scrollToTop": "Prejsť na začiatok"
+    "scrollToTop": "Prejsť na začiatok",
+    "skipToContent": "Preskočiť na obsah"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Postrehy a novinky zo sveta technológií",
+    "description": "Postrehy, návody a novinky zo sveta IT a softvérového vývoja.",
+    "readMore": "Čítať viac",
+    "backToBlog": "Späť na blog",
+    "publishedOn": "Publikované",
+    "minRead": "min čítania",
+    "noPosts": "Žiadne príspevky sa nenašli",
+    "readNext": "Prečítajte si ďalšie články",
+    "searchPlaceholder": "Hľadať články...",
+    "activeFilters": "Aktívne filtre",
+    "clearAll": "Vymazať všetko",
+    "tags": "Tagy",
+    "keywords": "Kľúčové slová:",
+    "gallery": "Galéria",
+    "archive": "Archív",
+    "onThisPage": "Na tejto stránke",
+    "share": "Zdieľať:",
+    "previous": "Predchádzajúci",
+    "next": "Nasledujúci",
+    "newerPost": "Novší článok",
+    "olderPost": "Starší článok",
+    "latestArticles": "Najnovšie články"
   },
   "companyInfo": {
     "name": "Rise.sk s.r.o.",

@@ -11,7 +11,14 @@
       "description": "Software development, technical consulting, and web development services",
       "cta": "Explore Development"
     },
-    "footer": "© 2025 Rise.sk s.r.o. All rights reserved."
+    "footer": "© 2025 Rise.sk s.r.o. All rights reserved.",
+    "latestPosts": {
+      "badge": "Our Blog",
+      "title": "Latest Insights",
+      "description": "Stay updated with the latest trends in technology and development.",
+      "viewAll": "View all articles",
+      "latestArticles": "Latest Articles"
+    }
   },
   "navigation": {
     "about": "About",
@@ -32,6 +39,7 @@
       "ai": "Process optimization, AI training and audit. Streamline and speed up your company operations.",
       "outsourcing": "Dedicated development teams or individual experts for your projects."
     },
+    "blog": "Blog",
     "development": "Development",
     "engagement": "Engagement Models",
     "portfolio": "Portfolio",
@@ -975,7 +983,33 @@
     "imageNotAvailable": "Image not available",
     "loading": "Loading...",
     "error": "Error",
-    "scrollToTop": "Scroll to top"
+    "scrollToTop": "Scroll to top",
+    "skipToContent": "Skip to content"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights and news from the world of technology",
+    "description": "Insights, tutorials, and news from the world of IT and software development.",
+    "readMore": "Read more",
+    "backToBlog": "Back to blog",
+    "publishedOn": "Published on",
+    "minRead": "min read",
+    "noPosts": "No posts found",
+    "readNext": "Read Next",
+    "searchPlaceholder": "Search articles...",
+    "activeFilters": "Active Filters",
+    "clearAll": "Clear All",
+    "tags": "Tags",
+    "keywords": "Keywords:",
+    "gallery": "Gallery",
+    "archive": "Archive",
+    "onThisPage": "On this page",
+    "share": "Share:",
+    "previous": "Previous",
+    "next": "Next",
+    "newerPost": "Newer Post",
+    "olderPost": "Older Post",
+    "latestArticles": "Latest Articles"
   },
   "companyInfo": {
     "name": "Rise.sk s.r.o.",

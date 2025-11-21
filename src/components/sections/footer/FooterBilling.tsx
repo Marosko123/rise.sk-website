@@ -1,6 +1,6 @@
-import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { Check, Copy, CreditCard, FileText, Hash } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface FooterBillingProps {
   copyToClipboard: (text: string, fieldName: string) => void;

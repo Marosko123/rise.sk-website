@@ -22,7 +22,11 @@ const Portfolio = dynamic(() => import('./sections/Portfolio'));
 const Reviews = dynamic(() => import('./sections/Reviews'));
 const ServicesEnhanced = dynamic(() => import('./sections/ServicesEnhanced'));
 
-export default function LandingPage() {
+interface LandingPageProps {
+  latestPosts?: React.ReactNode;
+}
+
+export default function LandingPage({ latestPosts }: LandingPageProps) {
   const t = useTranslations('landing');
   const locale = useLocale();
   const router = useRouter();
@@ -347,6 +351,8 @@ export default function LandingPage() {
             <div id={sectionMap.hiring}>
               <Hiring />
             </div>
+
+            {latestPosts}
 
             <div id={sectionMap.contact}>
               <MultiStepContactForm />

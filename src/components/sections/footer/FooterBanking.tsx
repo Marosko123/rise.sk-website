@@ -1,6 +1,6 @@
-import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { Banknote, Check, Copy, CreditCard, Hash } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface FooterBankingProps {
   copyToClipboard: (text: string, fieldName: string) => void;

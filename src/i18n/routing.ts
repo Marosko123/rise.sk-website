@@ -56,6 +56,10 @@ export const routing = defineRouting({
     '/sluzby/it-outsourcing': {
       sk: '/sluzby/it-outsourcing',
       en: '/services/it-outsourcing'
+    },
+    '/blog': {
+      sk: '/blog',
+      en: '/blog'
     }
   }
 });

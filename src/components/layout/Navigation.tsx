@@ -20,7 +20,13 @@ type NavLink = {
   dropdownItems?: { label: string; href: AppPathnames; icon?: LucideIcon; description?: string }[];
 };
 
-export default function Navigation({ transparent = false, hideLinks = false }: { transparent?: boolean; hideLinks?: boolean }) {
+interface NavigationProps {
+  alternateLinks?: Record<string, string>;
+  transparent?: boolean;
+  hideLinks?: boolean;
+}
+
+export default function Navigation({ alternateLinks, transparent, hideLinks }: NavigationProps) {
   const t = useTranslations('navigation');
   const locale = useLocale();
   const router = useRouter();
@@ -173,6 +179,12 @@ export default function Navigation({ transparent = false, hideLinks = false }: {
         isHash: true
       },
       {
+        href: { pathname: '/', hash: 'blog' },
+        label: t('blog'),
+        section: 'blog',
+        isHash: true
+      },
+      {
         href: { pathname: '/', hash: sectionMap.contact },
         label: t('contact'),
         section: sectionMap.contact,
@@ -285,6 +297,8 @@ export default function Navigation({ transparent = false, hideLinks = false }: {
   const isLinkActive = (section: string) => {
     return activeSection === section;
   };
+
+
 
   return (
     <>
@@ -455,7 +469,7 @@ export default function Navigation({ transparent = false, hideLinks = false }: {
           <div className='flex items-center pr-6 space-x-4'>
             {/* Language Switcher - Always visible */}
             <div className='hidden lg:flex'>
-              <LanguageSwitcher />
+              <LanguageSwitcher alternateLinks={alternateLinks} />
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -594,7 +608,7 @@ export default function Navigation({ transparent = false, hideLinks = false }: {
 
           {/* Language Switcher - Mobile */}
           <div className='flex lg:hidden mt-8'>
-            <LanguageSwitcher />
+            <LanguageSwitcher alternateLinks={alternateLinks} />
           </div>
         </div>
       </motion.div>,

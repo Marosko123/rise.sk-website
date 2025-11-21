@@ -1,4 +1,5 @@
 import LandingPage from '@/components/LandingPage';
+import LatestPosts from '@/components/sections/LatestPosts';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
@@ -26,8 +27,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 // This is the main Slovak homepage - no redirect needed
-export default function RootPage() {
+export default async function RootPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return (
-    <LandingPage />
+    <LandingPage latestPosts={<LatestPosts locale={locale} />} />
   );
 }

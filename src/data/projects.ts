@@ -6,6 +6,7 @@ export interface ProjectMetric {
 
 export interface Project {
   id: number;
+  slug: string;
   title: string;
   descriptionKey: string;
   category: string;
@@ -20,6 +21,7 @@ export interface Project {
 export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   {
     id: 1,
+    slug: 'horilla-payroll',
     title: 'Horilla Payroll',
     descriptionKey: 'horilla',
     category: 'webapp',
@@ -36,6 +38,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 2,
+    slug: 'viac-ako-nick',
     title: 'Viac Ako Ni(c)K',
     descriptionKey: 'viacAkoNick',
     category: 'mobileApps',
@@ -52,6 +55,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 3,
+    slug: 'lumturi-auction',
     title: 'Lumturi Auction',
     descriptionKey: 'lumturi',
     category: 'webapp',
@@ -68,6 +72,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 4,
+    slug: 'pixel-corporation',
     title: 'Pixel Corporation',
     descriptionKey: 'pixelCorporation',
     category: 'mobileApps',
@@ -84,6 +89,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 5,
+    slug: 'dating-platform',
     title: 'Dating Platform',
     descriptionKey: 'trulink',
     category: 'webapp',
@@ -100,6 +106,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 6,
+    slug: 'rise-sk',
     title: 'Rise.sk',
     descriptionKey: 'riseWeb',
     category: 'corporate',
@@ -116,6 +123,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 7,
+    slug: 'doucma-education',
     title: 'Doucma Education',
     descriptionKey: 'doucma',
     category: 'education',
@@ -132,6 +140,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 8,
+    slug: 'rozvoj-dopravy-trnava',
     title: 'Rozvoj dopravy Trnava',
     descriptionKey: 'rozvojDopravy',
     category: 'webapp',
@@ -148,6 +157,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 9,
+    slug: '2-ring',
     title: '2 Ring',
     descriptionKey: 'twoRing',
     category: 'webapp',

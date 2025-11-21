@@ -6,12 +6,14 @@ import { notFound } from 'next/navigation';
 import { type ReactNode } from 'react';
 
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import GoogleTagManager from '@/components/analytics/GoogleTagManager';
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter';
 import GDPRConsent from '@/components/features/GDPRConsent';
 import ServiceWorkerRegistration from '@/components/features/ServiceWorkerRegistration';
 import { AnimationProvider } from '@/components/providers/AnimationProvider';
 import ThemeProvider from '@/components/providers/ThemeProvider';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
+import SkipLink from '@/components/ui/SkipLink';
 import { routing } from '@/i18n/routing';
 
 import '../globals.css';
@@ -139,6 +141,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale}>
       <head>
+        <GoogleTagManager />
         <GoogleAnalytics />
         <EnhancedSchema type="Organization" />
         <EnhancedSchema type="LocalBusiness" />
@@ -150,6 +153,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         }} />
       </head>
       <body>
+        <SkipLink />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <AnimationProvider>

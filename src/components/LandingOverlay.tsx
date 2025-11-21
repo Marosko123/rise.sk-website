@@ -46,7 +46,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   const logoContainerRef = useRef<HTMLDivElement>(null);
   const bottomActionsRef = useRef<HTMLDivElement>(null);
   const floatingShapesRef = useRef<FloatingShapesRef>(null);
-  const [shapesState, setShapesState] = useState({ length: SHAPE_CONFIG.INITIAL_COUNT, isExploding: false });
+  const [shapesState, setShapesState] = useState({ length: SHAPE_CONFIG.INITIAL_COUNT, isExploding: false, explosionStartTime: 0 });
 
   const { particles, createExplosion } = useParticles();
 
@@ -91,8 +91,8 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
     floatingShapesRef.current?.handleLogoClick();
   }, []);
 
-  const handleShapesStateChange = useCallback((length: number, isExploding: boolean) => {
-    setShapesState({ length, isExploding });
+  const handleShapesStateChange = useCallback((length: number, isExploding: boolean, explosionStartTime?: number) => {
+    setShapesState({ length, isExploding, explosionStartTime: explosionStartTime || 0 });
   }, []);
 
   const isShivering = useCallback(() => {
@@ -205,12 +205,65 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 
   const calculateLogoScale = useCallback(() => {
     if (shapesState.isExploding) {
+      const timeSinceExplosion = animationTime - shapesState.explosionStartTime;
+      
+      // Animation phases:
+      // 0-200ms: Anticipation (scale down slightly)
+      // 200-600ms: Explosion (scale up huge)
+      // 600-1000ms: Settle (scale back to normal with bounce)
+      
+      if (timeSinceExplosion < 200) {
+        const progress = timeSinceExplosion / 200;
+        return 1.0 - (progress * 0.2); // Scale down to 0.8
+      } else if (timeSinceExplosion < 600) {
+        const progress = (timeSinceExplosion - 200) / 400;
+        // Elastic ease out
+        return 0.8 + (progress * 1.7); // Scale up to 2.5
+      } else if (timeSinceExplosion < 1200) {
+        const progress = (timeSinceExplosion - 600) / 600;
+        // Bounce back to 1.0
+        return 2.5 - (progress * 1.5);
+      }
+      
       return 1.0;
     }
     const objectCount = shapesState.length;
     const scale = 1.0 + (objectCount * 0.05);
     return Math.min(scale, SHAPE_CONFIG.LOGO_SCALE_MAX);
-  }, [shapesState.length, shapesState.isExploding]);
+  }, [shapesState.length, shapesState.isExploding, shapesState.explosionStartTime, animationTime]);
+
+  const getExplosionRotation = useCallback(() => {
+    if (!shapesState.isExploding) return 0;
+    
+    const timeSinceExplosion = animationTime - shapesState.explosionStartTime;
+    
+    if (timeSinceExplosion < 200) {
+      return (Math.random() - 0.5) * 10; // Shake
+    } else if (timeSinceExplosion < 1000) {
+      // Spin fast
+      return (timeSinceExplosion - 200) * 2; 
+    }
+    
+    return 0;
+  }, [shapesState.isExploding, shapesState.explosionStartTime, animationTime]);
+
+  const getExplosionFilter = useCallback(() => {
+    if (!shapesState.isExploding) return null;
+    
+    const timeSinceExplosion = animationTime - shapesState.explosionStartTime;
+    
+    if (timeSinceExplosion > 200 && timeSinceExplosion < 800) {
+      const progress = (timeSinceExplosion - 200) / 600;
+      const intensity = Math.sin(progress * Math.PI); // 0 -> 1 -> 0
+      
+      return {
+        brightness: 1 + intensity * 2, // Super bright
+        dropShadow: `0 0 ${50 * intensity}px rgba(255, 215, 0, ${intensity})`
+      };
+    }
+    
+    return null;
+  }, [shapesState.isExploding, shapesState.explosionStartTime, animationTime]);
 
   return (
     <div
@@ -304,17 +357,20 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                   style={{
                     transform: `
                       scale(${calculateLogoScale() + (isLogoHovered ? 0.2 : 0)})
-                      rotate(${isLogoHovered ? 5 : (isShivering() ? Math.sin(animationTime * 0.02) * 12 : 0)}deg)
+                      rotate(${isLogoHovered ? 5 : (shapesState.isExploding ? getExplosionRotation() : (isShivering() ? Math.sin(animationTime * 0.02) * 12 : 0))}deg)
                       translateX(${Math.sin(animationTime * 0.003) * 3}px)
                     `,
-                    filter: `
+                    filter: shapesState.isExploding ? `
+                      brightness(${getExplosionFilter()?.brightness || 1})
+                      drop-shadow(${getExplosionFilter()?.dropShadow || 'none'})
+                    ` : `
                       brightness(${logoColorFilter.brightness * (isLogoHovered ? 1.2 : 1)})
                       contrast(${logoColorFilter.contrast * (isLogoHovered ? 1.1 : 1)})
                       saturate(${logoColorFilter.saturate * (isLogoHovered ? 1.1 : 1)})
                       sepia(${logoColorFilter.sepia})
                       drop-shadow(0 0 ${SHAPE_CONFIG.LOGO_GLOW_RADIUS * (isLogoHovered ? 1.5 : 1)}px ${logoColorFilter.dropShadowColor})
                     `,
-                    transition: 'transform 0.2s ease-out, filter 0.2s ease-out',
+                    transition: shapesState.isExploding ? 'none' : 'transform 0.2s ease-out, filter 0.2s ease-out',
                   }}
                   draggable={false}
                   onMouseEnter={() => {

@@ -80,7 +80,7 @@ export default function Hiring() {
         >
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
             {t('title')}
-            <span className='bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-clip-text text-transparent block'>
+            <span className='bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-clip-text text-transparent block pb-1'>
               {t('titleHighlight')}
             </span>
           </h2>
