@@ -66,6 +66,7 @@ export default function LanguageSwitcher({ alternateLinks }: { alternateLinks?: 
               return (
                 <Link
                   key={language.code}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   href={href as any}
                   locale={language.code}
                   onClick={() => setIsOpen(false)}
