@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Award, CheckCircle, Clock, Code, Globe, MapPin, Shield, Star, Zap } from 'lucide-react';
+import { ArrowRight, Code, Globe, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { Button } from '../ui/Button';
@@ -125,73 +125,6 @@ export default function Hero() {
               {t('freeConsultation')}
               <div className='w-2 h-2 bg-current rounded-full ml-2 animate-pulse'></div>
             </Button>
-          </motion.div>
-
-          {/* Trust Badges */}
-          <motion.div
-            variants={itemVariants}
-            className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-4xl mx-auto opacity-60'
-          >
-            {[
-              {
-                icon: Shield,
-                title: t('badges.ssl'),
-                color: 'text-gray-400',
-                bgColor: 'bg-gray-500/5'
-              },
-              {
-                icon: Clock,
-                title: t('badges.response'),
-                color: 'text-gray-400',
-                bgColor: 'bg-gray-500/5'
-              },
-              {
-                icon: MapPin,
-                title: t('badges.slovakia'),
-                color: 'text-gray-400',
-                bgColor: 'bg-gray-500/5'
-              },
-              {
-                icon: Award,
-                title: t('badges.established'),
-                color: 'text-gray-400',
-                bgColor: 'bg-gray-500/5'
-              },
-              {
-                icon: CheckCircle,
-                title: t('badges.success'),
-                color: 'text-gray-400',
-                bgColor: 'bg-gray-500/5'
-              },
-              {
-                icon: Star,
-                title: t('badges.quality'),
-                color: 'text-gray-400',
-                bgColor: 'bg-gray-500/5'
-              }
-            ].map((badge, index) => {
-              const IconComponent = badge.icon;
-              return (
-                <motion.div
-                  key={index}
-                  className={`
-                    ${badge.bgColor} ${badge.color}
-                    p-2 rounded-lg border border-white/5
-                    flex flex-col items-center text-center
-                    hover:opacity-80 transition-all duration-300
-                    select-none
-                  `}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.5 + index * 0.05, duration: 0.8 }}
-                >
-                  <IconComponent className="w-4 h-4 mb-1" />
-                  <h4 className="font-medium text-[12px] text-white/60">
-                    {badge.title}
-                  </h4>
-                </motion.div>
-              );
-            })}
           </motion.div>
         </div>
       </motion.div>

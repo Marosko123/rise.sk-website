@@ -8,6 +8,7 @@ interface FloatingShapesProps {
   windowSize: { width: number; height: number };
   mounted: boolean;
   onStateChange?: (length: number, isExploding: boolean, explosionStartTime?: number) => void;
+  isMobile?: boolean;
 }
 
 export interface FloatingShapesRef {
@@ -16,11 +17,12 @@ export interface FloatingShapesRef {
   floatingShapesLength: number;
 }
 
-const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cursorPositionRef, windowSize, mounted, onStateChange }, ref) => {
+const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cursorPositionRef, windowSize, mounted, onStateChange, isMobile = false }, ref) => {
   const { floatingShapes, isExploding, handleLogoClick, explosionStartTime } = useFloatingShapes({
     cursorPositionRef,
     windowSize,
-    mounted
+    mounted,
+    isMobile
   });
 
   useEffect(() => {

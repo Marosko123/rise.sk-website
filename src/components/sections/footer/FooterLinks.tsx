@@ -18,7 +18,7 @@ export default function FooterLinks() {
 
   const companyLinks = [
     { pathname: '/', hash: 'about' },
-    { pathname: '/', hash: 'about' },
+    { pathname: '/team' },
     { pathname: '/', hash: 'hiring' },
     { pathname: '/', hash: 'portfolio' },
     { pathname: '/', hash: 'contact' }

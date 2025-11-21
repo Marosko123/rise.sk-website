@@ -129,7 +129,10 @@ export default async function BlogPost({ params }: Props) {
           author: post.author ? {
             '@type': 'Person',
             name: post.author.name,
-            image: post.author.avatar ? `${baseUrl}${post.author.avatar}` : undefined
+            image: post.author.avatar ? `${baseUrl}${post.author.avatar}` : undefined,
+            jobTitle: post.author.role,
+            description: post.author.bio,
+            url: `${baseUrl}/${locale}/blog/author/${post.author.slug}`
           } : undefined
         }}
       />

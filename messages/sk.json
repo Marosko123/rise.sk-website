@@ -40,6 +40,7 @@
       "outsourcing": "Prenájom celých vývojárskych tímov alebo jednotlivých expertov pre vaše projekty."
     },
     "blog": "Blog",
+    "team": "Tím",
     "development": "Vývoj",
     "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
@@ -870,7 +871,6 @@
     },
     "cta": {
       "title": "Pripravení na váš vlastný úspešný projekt?",
-      "description": "Vytvorme spolu niečo úžasné. Kontaktujte nás a prediskutujme vaše potreby.",
       "startProject": "Spustiť projekt"
     }
   },
@@ -908,7 +908,7 @@
         "content": "Ďakujem za rýchle naplánovanie konzultácie. RISE.SK mi pomohol vyvinúť nástroj na analýzu webu – projekt konečne napredoval. 5/5!",
         "rating": 5,
         "tags": ["Poradenstvo", "Webová analytika", "Rýchla reakcia"]
-      },
+                },
       {
         "id": "tomas-v",
         "name": "Tomáš V.",
@@ -1401,25 +1401,88 @@
         "keywords": "kontakt Rise.sk, kontakt programátorské tímy, najať vývojárov Slovensko, kontakt vývoj softvéru, Bratislava programátorská spoločnosť"
       }
     },
+    "team": {
+      "meta": {
+        "title": "Náš Tím | Rise.sk - Experti na Vývoj a Dizajn",
+        "description": "Spoznajte tím za Rise.sk. Skúsení vývojári, dizajnéri a marketingoví experti pripravení transformovať vašu digitálnu prítomnosť.",
+        "keywords": "Rise.sk tím, softvéroví vývojári, web dizajnéri, marketingoví experti, IT profesionáli Slovensko"
+      }
+    },
     "portfolio": {
       "meta": {
         "title": "Portfólio | Rise.sk - Projekty Vývoja Softvéru a Prípadové Štúdie",
         "description": "Preskúmajte portfólio Rise.sk úspešných projektov vývoja softvéru. Vlastné webové aplikácie, mobilné aplikácie, enterprise riešenia a inovatívne programátorské projekty na Slovensku.",
         "keywords": "Rise.sk portfólio, projekty vývoja softvéru, portfólio webových aplikácií, príklady vývoja mobilných aplikácií, programátorské prípadové štúdie Slovensko, projekty softvéru na mieru"
       }
+    },
+    "NotFound": {
+      "title": "Stránka nenájdená",
+      "description": "Stránka, ktorú hľadáte, mohla byť presunutá, odstránená alebo neexistuje. Vráťme sa späť k našim profesionálnym službám vývoja softvéru.",
+      "home": "Domov",
+      "development": "Vývojové služby",
+      "services": "IT Služby",
+      "contact": "Kontaktujte nás",
+      "lookingFor": "Hľadáte niečo konkrétne?",
+      "customSoftware": "Vývoj softvéru na mieru",
+      "webMobile": "Vývoj webov a mobilných aplikácií",
+      "portfolio": "Portfólio a prípadové štúdie",
+      "assistance": "Potrebujete okamžitú pomoc?"
     }
   },
-  "NotFound": {
-    "title": "Stránka nenájdená",
-    "description": "Stránka, ktorú hľadáte, mohla byť presunutá, odstránená alebo neexistuje. Vráťme sa späť k našim profesionálnym službám vývoja softvéru.",
-    "home": "Domov",
-    "development": "Vývojové služby",
-    "services": "IT Služby",
-    "contact": "Kontaktujte nás",
-    "lookingFor": "Hľadáte niečo konkrétne?",
-    "customSoftware": "Vývoj softvéru na mieru",
-    "webMobile": "Vývoj webov a mobilných aplikácií",
-    "portfolio": "Portfólio a prípadové štúdie",
-    "assistance": "Potrebujete okamžitú pomoc?"
+  "team": {
+    "badge": "Náš Tím",
+    "title": "Spoznajte",
+    "titleHighlight": "Inovátorov",
+    "subtitle": "Sme skupina mladých, ambicióznych vývojárov a kreatívcov. Nepíšeme len kód, budujeme digitálne produkty, ktoré definujú budúcnosť.",
+    "scrollDown": "Posuňte nižšie",
+    "members": {
+      "maros-bednar": {
+        "role": "CEO & Lead Developer",
+        "bio": "Začínal som ako doučovateľ informatiky a prvé projekty som ťahal úplne sám. Rýchlo som však pochopil, že skutočne veľké veci človek nedokáže bez ľudí, ktorým verí. Milujem šport, smiech a život naplno, no v biznise sa riadim tvrdou disciplínou. Rise.sk je dôkazom, že keď spojíte správny tím a poctivú prácu, výsledkom je svetová kvalita.",
+        "motto": "Ver, že dokážeš\na si na polceste k úspechu.",
+        "hobbies": "Gym, Techno, Futbal"
+      },
+
+      "lukas-jankola": {
+        "role": "Developer & Cloud Enthusiast",
+        "bio": "Lukáš je náš hlavný 'Cloud' inžinier, ktorý čerpá inšpiráciu priamo v uličkách Amsterdamu. Verí, že kód by mal byť čistý, no myseľ otvorená... a mierne zahmlená. Špecialista na 'smoke testing' a vysoké nasadenie. Keď práve nekódi, pravdepodobne analyzuje kvalitu miestnych 'bylinných zmesí' alebo hľadá inšpiráciu v oblakoch.",
+        "motto": "Kód musí dýchať.\nA ja tiež.",
+        "hobbies": "Cestovanie, Relax, 'Záhradkárčenie'"
+      },
+      "david-varinsky": {
+        "role": "Security & Bug Hunter",
+        "bio": "Dávid je nezastaviteľná sila – na parkete aj v termináli. Miluje techno a nebojí sa 'ravovať' celú noc, no skutočný adrenalín prichádza, keď zbadá BUG. Vtedy ide o život. Nerieši to ticketom, ale vyhlasuje stav ohrozenia a bojuje do posledného dychu (alebo do posledného commitu). Jeho fixy sú tvrdšie ako dropy na jeho playliste.",
+        "motto": "Eat. Sleep.\nRave. Fix.",
+        "hobbies": "Hard Techno, Raves, Bug Hunting"
+      },
+      "david-stevanak": {
+        "role": "Developer",
+        "bio": "Dávid je mužom paradoxov – študuje Big Data, no najväčšie pravdy hľadá v kostole. Je to multiinštrumentalista a spevák s tvárou anjela, no nikto netuší, aká šelma v ňom drieme. Kolegovia sa boja opýtať, či tá šelma kódi v Assembleri alebo len extrémne rýchlo bubnuje. Jeho viera je pevná, ale zálohy robí aj tak každú hodinu. Keď práve neanalyzuje terabajty dát, pravdepodobne ladí gitaru alebo svoju karmu.",
+        "motto": "V Boha veríme, ostatní musia priniesť dáta.",
+        "hobbies": "Big Data, Hudba, Exorcizmus bugov, Viera"
+      },
+      "marek-smutny": {
+        "role": "Developer",
+        "bio": "Marek je chodiaci dôkaz, že optimizmus je len nedostatok informácií. Cez deň dvíha železo, aby uniesol ťarchu legacy kódu, a v noci sa 'lieči' na rave parties. Má diagnostikovanú slabosť pre medičky – asi dúfa, že ho raz resuscitujú po nepodarenom deployi. Jeho kód je taký temný, že aj IDE sa mu automaticky prepne do Dark Mode. Keď sa smeje, pravdepodobne práve niekomu spadla produkcia.",
+        "motto": "Život je len pomalý memory leak.",
+        "hobbies": "Raves, Gym, Medičky, Nihilizmus"
+      },
+      "stefan-dubnicka": {
+        "role": "Developer",
+        "bio": "Backend guru a architekt databázových systémov. Štefan sa stará o to, aby dáta boli vždy v bezpečí a rýchlo dostupné.",
+        "motto": "Dáta sú nové zlato.",
+        "hobbies": "Cyklistika, Varenie, Príroda"
+      },
+      "tatiana-gavulova": {
+        "role": "CMO & Marketingový Manažér",
+        "bio": "Začínala som v škôlke, kde som sa naučila to najdôležitejšie – zaujať a viesť. Dnes ako CMO v Rise.sk spájam túto empatiu s tvrdými dátami a stratégiou. Milujem život v pohybe a humor, no v práci vyžadujem disciplínu. Mojím cieľom je budovať značku, ktorá nielen hovorí, ale prináša merateľné výsledky.",
+        "motto": "Prestaňte predávať.\nZačnite pomáhať.",
+        "hobbies": "Cestovanie, Knihy, Umenie"
+      }
+    },
+    "cta": {
+      "title": "Chcete byť súčasťou nášho príbehu?",
+      "button": "Pridajte sa k nám"
+    }
   }
 }

@@ -40,6 +40,7 @@
       "outsourcing": "Dedicated development teams or individual experts for your projects."
     },
     "blog": "Blog",
+    "team": "Team",
     "development": "Development",
     "engagement": "Engagement Models",
     "portfolio": "Portfolio",
@@ -1240,6 +1241,13 @@
         "keywords": "contact Rise.sk, contact programming teams, hire developers Slovakia, contact software development, Bratislava programming company"
       }
     },
+    "team": {
+      "meta": {
+        "title": "Our Team | Rise.sk - Experts in Development & Design",
+        "description": "Meet the team behind Rise.sk. Experienced developers, designers, and marketing experts ready to transform your digital presence.",
+        "keywords": "Rise.sk team, software developers, web designers, marketing experts, IT professionals Slovakia"
+      }
+    },
     "portfolio": {
       "meta": {
         "title": "Portfolio | Rise.sk - Software Development Projects & Case Studies",
@@ -1260,5 +1268,61 @@
     "webMobile": "Web & Mobile App Development",
     "portfolio": "Portfolio & Case Studies",
     "assistance": "Need immediate assistance?"
+  },
+  "team": {
+    "badge": "Our Team",
+    "title": "Meet the",
+    "titleHighlight": "Innovators",
+    "subtitle": "We are a group of young, ambitious developers and creative minds. We don't just write code; we build digital products that define the future.",
+    "scrollDown": "Scroll Down",
+    "members": {
+      "maros-bednar": {
+        "role": "CEO & Lead Developer",
+        "bio": "I started as a computer science tutor, building my first projects entirely on my own. But I quickly realized that you can't achieve truly big things without people you trust. I love sports, laughter, and living life to the fullest, but in business, I am driven by strict discipline. Rise.sk is proof that when you combine the right team with honest hard work, the result is world-class quality.",
+        "motto": "Believe you can and you're halfway there.",
+        "hobbies": "Gym, Techno, Football"
+      },
+
+      "lukas-jankola": {
+        "role": "Developer & Cloud Enthusiast",
+        "bio": "Lukáš is our chief 'Cloud' engineer who draws inspiration directly from the streets of Amsterdam. He believes code should be clean, but the mind open... and slightly hazy. A specialist in 'smoke testing' and high performance. When he's not coding, he's probably analyzing the quality of local 'herbal blends' or finding inspiration in the clouds.",
+        "motto": "Code must breathe.\nAnd so must I.",
+        "hobbies": "Travel, Relax, 'Gardening'"
+      },
+      "david-varinsky": {
+        "role": "Security & Bug Hunter",
+        "bio": "David is an unstoppable force – on the dancefloor and in the terminal. He loves techno and isn't afraid to rave all night, but the real adrenaline kicks in when he spots a BUG. Then it's a fight for survival. He doesn't file a ticket; he declares a state of emergency and fights to the last breath (or the last commit). His fixes are harder than the drops on his playlist.",
+        "motto": "Eat. Sleep.\nRave. Fix.",
+        "hobbies": "Hard Techno, Raves, Bug Hunting"
+      },
+      "david-stevanak": {
+        "role": "Developer",
+        "bio": "David is a man of paradoxes – he studies Big Data, yet seeks the greatest truths in church. He is a multi-instrumentalist and singer with the face of an angel, but no one knows what beast slumbers within. Colleagues are afraid to ask if the beast codes in Assembly or just drums extremely fast. His faith is strong, but he still backs up his data every hour. When he's not analyzing terabytes of data, he's probably tuning his guitar or his karma.",
+        "motto": "In God we trust, all others must bring data.",
+        "hobbies": "Big Data, Music, Bug Exorcism, Faith"
+      },
+      "marek-smutny": {
+        "role": "Developer",
+        "bio": "Marek is walking proof that optimism is just a lack of information. By day he lifts iron to carry the weight of legacy code, and by night he 'heals' at rave parties. He has a diagnosed weakness for medical students – probably hoping one will resuscitate him after a failed deploy. His code is so dark that IDEs automatically switch to Dark Mode around him. If he's laughing, someone's production probably just crashed.",
+        "motto": "Life is just a slow memory leak.",
+        "hobbies": "Raves, Gym, Med Students, Nihilism"
+      },
+      "stefan-dubnicka": {
+        "role": "Developer",
+        "bio": "Backend guru and database systems architect. Štefan ensures that data is always secure and quickly accessible.",
+        "motto": "Data is the new gold.",
+        "hobbies": "Cycling, Cooking, Nature"
+      },
+      "tatiana-gavulova": {
+        "role": "CMO & Marketing Manager",
+        "bio": "I started in a kindergarten, where I learned the most important thing – how to engage and lead. Today, as CMO at Rise.sk, I combine this empathy with hard data and strategy. I love life in motion and humor, but at work, I demand discipline. My goal is to build a brand that doesn't just talk, but delivers measurable results.",
+        "motto": "Stop selling.\nStart helping.",
+        "hobbies": "Travel, Books, Art"
+      }
+    },
+    "cta": {
+      "title": "Want to be part of our story?",
+      "button": "Join Our Team"
+    }
   }
 }

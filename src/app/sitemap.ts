@@ -1,5 +1,5 @@
-import { MetadataRoute } from 'next'
 import { getSortedPostsData } from '@/utils/blog-server'
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://rise.sk'
@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/sluzby/softver-na-mieru', enPath: '/services/custom-software-development', priority: 0.8, changeFreq: 'weekly' as const },
     { path: '/portfolio', enPath: '/portfolio', priority: 0.8, changeFreq: 'weekly' as const },
     { path: '/blog', enPath: '/blog', priority: 0.8, changeFreq: 'daily' as const },
+    { path: '/tim', enPath: '/team', priority: 0.8, changeFreq: 'monthly' as const },
     { path: '/kontakt', enPath: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
     { path: '/ochrana-osobnych-udajov', priority: 0.6, changeFreq: 'yearly' as const },
     { path: '/obchodne-podmienky', priority: 0.6, changeFreq: 'yearly' as const },

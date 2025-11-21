@@ -38,6 +38,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   const scrollAccumulator = useRef(0);
   const scrollResetTimer = useRef<NodeJS.Timeout | null>(null);
   const landingOverlayRef = useRef<LandingOverlayRef>(null);
+  const requestRef = useRef<number | null>(null);
 
   // Dynamic section mappings based on language
   const getSectionMappings = (lang: string) => {
@@ -81,7 +82,11 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     if (isTransitioning) return;
 
     const updateVisuals = (progress: number) => {
-      landingOverlayRef.current?.updateVisuals(progress);
+      if (requestRef.current) return;
+      requestRef.current = requestAnimationFrame(() => {
+        landingOverlayRef.current?.updateVisuals(progress);
+        requestRef.current = null;
+      });
     };
 
     const handleWheel = (e: WheelEvent) => {
@@ -123,8 +128,11 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       const deltaY = touchStartY - touchEndY;
 
       if (!showFullWebsite) {
+        // Prevent native scroll/bounce on mobile
+        if (e.cancelable) e.preventDefault();
+
         if (deltaY > 0) {
-          const threshold = 200;
+          const threshold = 150; // Lower threshold for mobile
           const progress = Math.min(deltaY / threshold, 1);
           updateVisuals(progress);
 
@@ -147,12 +155,13 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       }
     };
 
-    window.addEventListener('wheel', handleWheel);
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('touchend', handleTouchEnd);
 
     return () => {
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
@@ -272,7 +281,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
             {/* Button - Absolute positioning at bottom to match Overlay */}
             <div className='absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6'>
               <button
-                className="group relative px-12 py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
+                className="group relative px-8 py-3 md:px-12 md:py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
                 onClick={() => {
                   router.push('/vyvoj');
                 }}

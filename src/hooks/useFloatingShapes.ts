@@ -74,18 +74,25 @@ interface UseFloatingShapesProps {
   cursorPositionRef: React.MutableRefObject<{ x: number; y: number }>;
   windowSize: { width: number; height: number };
   mounted: boolean;
+  isMobile?: boolean;
 }
 
-export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: UseFloatingShapesProps) {
+export function useFloatingShapes({ cursorPositionRef, windowSize, mounted, isMobile = false }: UseFloatingShapesProps) {
   const { animationTime } = useAnimation();
-  const [shapeCount, setShapeCount] = useState(SHAPE_CONFIG.INITIAL_COUNT);
+
+  // Adjust config based on device
+  const initialCount = isMobile ? 3 : SHAPE_CONFIG.INITIAL_COUNT;
+  const maxCount = isMobile ? 15 : SHAPE_CONFIG.MAX_COUNT;
+  const collisionEnabled = isMobile ? false : SHAPE_CONFIG.COLLISION_ENABLED;
+
+  const [shapeCount, setShapeCount] = useState(initialCount);
   const [floatingShapes, setFloatingShapes] = useState<FloatingShape[]>([]);
   const [isExploding, setIsExploding] = useState(false);
   const [explosionStartTime, setExplosionStartTime] = useState(0);
 
   // Collision detection function with performance optimization
   const detectAndResolveCollisions = useCallback((shapes: FloatingShape[], windowWidth: number, windowHeight: number, frameCount: number) => {
-    if (!SHAPE_CONFIG.COLLISION_ENABLED) return shapes;
+    if (!collisionEnabled) return shapes;
 
     // Skip collision detection occasionally for better performance
     const skipFrame = frameCount % 2; // Only run collision detection every other frame (~30fps for collisions)
@@ -135,7 +142,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
              // Move shape2 away from shape1
              const separationX = overlap * normalX;
              const separationY = overlap * normalY;
-             
+
              const separationPercentX2 = (separationX / windowWidth) * 100;
              const separationPercentY2 = (separationY / windowHeight) * 100;
 
@@ -154,7 +161,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
              // Move shape1 away from shape2
              const separationX = overlap * normalX;
              const separationY = overlap * normalY;
-             
+
              const separationPercentX1 = -(separationX / windowWidth) * 100;
              const separationPercentY1 = -(separationY / windowHeight) * 100;
 
@@ -224,7 +231,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
     }
 
     return updatedShapes;
-  }, []);
+  }, [collisionEnabled]);
 
   // Animate floating shapes with gravity and mouse interaction - dedicated 60fps loop
   useEffect(() => {
@@ -301,7 +308,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
           // Update position based on velocity
           const velocityScaleX = 100 / windowSize.width; // Convert px velocity to % velocity
           const velocityScaleY = 100 / windowSize.height;
-          
+
           let newX = shape.x + shape.vx * velocityScaleX;
           let newY = shape.y + shape.vy * velocityScaleY;
 
@@ -310,9 +317,9 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
           const sizePercentY = (shape.size / windowSize.height) * 100;
           const halfSizeX = sizePercentX / 2;
           const halfSizeY = sizePercentY / 2;
-          
+
           let isStuck = false;
-          
+
           if (newX < halfSizeX) { newX = halfSizeX; isStuck = true; }
           if (newX > 100 - halfSizeX) { newX = 100 - halfSizeX; isStuck = true; }
           if (newY < halfSizeY) { newY = halfSizeY; isStuck = true; }
@@ -416,12 +423,12 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
   // Initialize floating shapes
   useEffect(() => {
     if (mounted) {
-      const shapes = Array.from({ length: SHAPE_CONFIG.INITIAL_COUNT }, (_, i) =>
-        createFloatingShape(i, SHAPE_CONFIG.INITIAL_COUNT, true) // Pass true for initial shapes
+      const shapes = Array.from({ length: initialCount }, (_, i) =>
+        createFloatingShape(i, initialCount, true) // Pass true for initial shapes
       );
       setFloatingShapes(shapes);
     }
-  }, [mounted]);
+  }, [mounted, initialCount]);
 
   // Function to trigger explosion
   const triggerExplosion = useCallback(() => {
@@ -470,7 +477,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
     if (!mounted) return;
 
     // Trigger explosion when reaching MAX_COUNT
-    if (floatingShapes.length >= SHAPE_CONFIG.MAX_COUNT && !isExploding) {
+    if (floatingShapes.length >= maxCount && !isExploding) {
       triggerExplosion();
     }
 
@@ -491,17 +498,17 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
 
     // Restart with new shapes after a brief pause with 0 objects
     if (!isExploding && floatingShapes.length === 0 && shapeCount === 0 && (animationTime - explosionStartTime) >= (SHAPE_CONFIG.EXPLOSION_CLEANUP_TIME + 1000)) {
-      const shapes = Array.from({ length: SHAPE_CONFIG.INITIAL_COUNT }, (_, i) =>
-        createFloatingShape(i, SHAPE_CONFIG.INITIAL_COUNT, true)
+      const shapes = Array.from({ length: initialCount }, (_, i) =>
+        createFloatingShape(i, initialCount, true)
       );
       setFloatingShapes(shapes);
-      setShapeCount(SHAPE_CONFIG.INITIAL_COUNT);
+      setShapeCount(initialCount);
     }
-  }, [animationTime, mounted, isExploding, explosionStartTime, floatingShapes, shapeCount, triggerExplosion]);
+  }, [animationTime, mounted, isExploding, explosionStartTime, floatingShapes, shapeCount, triggerExplosion, maxCount, initialCount]);
 
   // Handle logo click to add/remove shapes
   const handleLogoClick = useCallback(() => {
-    if (shapeCount >= SHAPE_CONFIG.MAX_COUNT) {
+    if (shapeCount >= maxCount) {
       // Reset to 0 shapes when reaching maximum
       setFloatingShapes([]);
       setShapeCount(0);
@@ -511,7 +518,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted }: Us
       setFloatingShapes(prev => [...prev, newShape]);
       setShapeCount(prev => prev + 1);
     }
-  }, [shapeCount]);
+  }, [shapeCount, maxCount]);
 
   return {
     floatingShapes,

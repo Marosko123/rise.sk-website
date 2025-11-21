@@ -1,3 +1,4 @@
+import { useAnalytics } from '@/hooks/useAnalytics';
 import { useTranslations } from '@/hooks/useTranslations';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -20,6 +21,7 @@ export interface SubmitStatus {
 
 export function useContactForm() {
   const t = useTranslations('contact');
+  const { trackContactFormSubmit } = useAnalytics();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -144,6 +146,9 @@ export function useContactForm() {
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
+      // Track successful submission
+      trackContactFormSubmit(formData.service || 'General Inquiry');
+
       if (autoReplyTemplateId) {
         try {
           await emailjs.send(serviceId, autoReplyTemplateId, {
@@ -179,7 +184,7 @@ export function useContactForm() {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData, t]);
+  }, [formData, t, trackContactFormSubmit]);
 
   return {
     currentStep,

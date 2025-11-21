@@ -1,0 +1,68 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Twitter } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+
+interface TeamMemberProps {
+  id: string;
+  name: string;
+  role: string;
+  image: string;
+  socials: {
+    linkedin?: string;
+    github?: string;
+    twitter?: string;
+  };
+  index: number;
+}
+
+export const TeamMemberCard = ({ id, name, role, image, socials, index }: TeamMemberProps) => {
+  const t = useTranslations('team.members');
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+    >
+      <div className="aspect-[4/5] relative overflow-hidden">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <p className="text-white text-sm mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
+            {t(`${id}.bio`)}
+          </p>
+          <div className="flex gap-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-200">
+            {socials.linkedin && (
+              <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-400 transition-colors">
+                <Linkedin size={24} />
+              </a>
+            )}
+            {socials.github && (
+              <a href={socials.github} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-400 transition-colors">
+                <Github size={24} />
+              </a>
+            )}
+            {socials.twitter && (
+              <a href={socials.twitter} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-400 transition-colors">
+                <Twitter size={24} />
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="p-6 relative z-10 bg-white dark:bg-gray-800">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{name}</h3>
+        <p className="text-primary-600 dark:text-primary-400 font-medium">{role}</p>
+      </div>
+    </motion.div>
+  );
+};

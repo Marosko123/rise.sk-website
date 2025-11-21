@@ -2,7 +2,7 @@ import { companyConfig } from '@/config/company'
 import React from 'react'
 
 interface EnhancedSchemaProps {
-  type: 'Organization' | 'LocalBusiness' | 'WebSite' | 'Service' | 'Article' | 'FAQPage' | 'CollectionPage' | 'ProfilePage'
+  type: 'Organization' | 'LocalBusiness' | 'WebSite' | 'Service' | 'Article' | 'FAQPage' | 'CollectionPage' | 'ProfilePage' | 'AboutPage'
   data?: Record<string, unknown>
 }
 
@@ -12,6 +12,22 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
     const logoUrl = `${baseUrl}${companyConfig.website.logo.main}`
 
     switch (type) {
+      case 'AboutPage':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: data.title || 'About Us',
+          description: data.description || 'About Rise.sk',
+          url: data.url || `${baseUrl}/about`,
+          mainEntity: {
+            '@type': 'Organization',
+            name: companyConfig.company.legalName,
+            logo: logoUrl,
+            url: baseUrl
+          },
+          ...data
+        }
+
       case 'FAQPage':
         return {
           '@context': 'https://schema.org',

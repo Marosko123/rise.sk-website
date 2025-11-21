@@ -179,6 +179,12 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
         isHash: true
       },
       {
+        href: '/team',
+        label: t('team'),
+        section: 'team',
+        isHash: false
+      },
+      {
         href: { pathname: '/', hash: 'blog' },
         label: t('blog'),
         section: 'blog',

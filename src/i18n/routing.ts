@@ -60,6 +60,14 @@ export const routing = defineRouting({
     '/blog': {
       sk: '/blog',
       en: '/blog'
+    },
+    '/team': {
+      sk: '/tim',
+      en: '/team'
+    },
+    '/kariera': {
+      sk: '/kariera',
+      en: '/careers'
     }
   }
 });

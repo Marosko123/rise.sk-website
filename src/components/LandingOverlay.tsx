@@ -6,12 +6,13 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRe
 
 import companyConfig from '@/config/company';
 import { SHAPE_CONFIG } from '@/hooks/useFloatingShapes';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { useParticles } from '@/hooks/useParticles';
-import { useAnimation } from './providers/AnimationProvider';
-import MouseTrail from './animations/MouseTrail';
 import FloatingShapes, { FloatingShapesRef } from './animations/FloatingShapes';
-import LogoAndText from './layout/LogoAndText';
+import MouseTrail from './animations/MouseTrail';
 import LanguageSwitcher from './layout/LanguageSwitcher';
+import LogoAndText from './layout/LogoAndText';
+import { useAnimation } from './providers/AnimationProvider';
 
 interface LandingOverlayProps {
   showFullWebsite: boolean;
@@ -34,12 +35,12 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 }, ref) => {
   const t = useTranslations('landing');
   const { animationTime } = useAnimation();
-  
+
   const cursorPositionRef = useRef({ x: 0, y: 0 });
   const [shiverCycleStart, setShiverCycleStart] = useState(0);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  
+
   const backgroundLogoRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const landingContentRef = useRef<HTMLDivElement>(null);
@@ -48,6 +49,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   const floatingShapesRef = useRef<FloatingShapesRef>(null);
   const [shapesState, setShapesState] = useState({ length: SHAPE_CONFIG.INITIAL_COUNT, isExploding: false, explosionStartTime: 0 });
 
+  const isMobile = useIsMobile();
   const { particles, createExplosion } = useParticles();
 
   useImperativeHandle(ref, () => ({
@@ -206,12 +208,12 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   const calculateLogoScale = useCallback(() => {
     if (shapesState.isExploding) {
       const timeSinceExplosion = animationTime - shapesState.explosionStartTime;
-      
+
       // Animation phases:
       // 0-200ms: Anticipation (scale down slightly)
       // 200-600ms: Explosion (scale up huge)
       // 600-1000ms: Settle (scale back to normal with bounce)
-      
+
       if (timeSinceExplosion < 200) {
         const progress = timeSinceExplosion / 200;
         return 1.0 - (progress * 0.2); // Scale down to 0.8
@@ -224,7 +226,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
         // Bounce back to 1.0
         return 2.5 - (progress * 1.5);
       }
-      
+
       return 1.0;
     }
     const objectCount = shapesState.length;
@@ -234,34 +236,34 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 
   const getExplosionRotation = useCallback(() => {
     if (!shapesState.isExploding) return 0;
-    
+
     const timeSinceExplosion = animationTime - shapesState.explosionStartTime;
-    
+
     if (timeSinceExplosion < 200) {
       return (Math.random() - 0.5) * 10; // Shake
     } else if (timeSinceExplosion < 1000) {
       // Spin fast
-      return (timeSinceExplosion - 200) * 2; 
+      return (timeSinceExplosion - 200) * 2;
     }
-    
+
     return 0;
   }, [shapesState.isExploding, shapesState.explosionStartTime, animationTime]);
 
   const getExplosionFilter = useCallback(() => {
     if (!shapesState.isExploding) return null;
-    
+
     const timeSinceExplosion = animationTime - shapesState.explosionStartTime;
-    
+
     if (timeSinceExplosion > 200 && timeSinceExplosion < 800) {
       const progress = (timeSinceExplosion - 200) / 600;
       const intensity = Math.sin(progress * Math.PI); // 0 -> 1 -> 0
-      
+
       return {
         brightness: 1 + intensity * 2, // Super bright
         dropShadow: `0 0 ${50 * intensity}px rgba(255, 215, 0, ${intensity})`
       };
     }
-    
+
     return null;
   }, [shapesState.isExploding, shapesState.explosionStartTime, animationTime]);
 
@@ -291,6 +293,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
             windowSize={windowSize}
             mounted={mounted && !showFullWebsite}
             onStateChange={handleShapesStateChange}
+            isMobile={isMobile}
           />
 
           <div
@@ -313,7 +316,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
             />
           </div>
 
-          <MouseTrail />
+          {!isMobile && <MouseTrail />}
 
           {particles.map((particle) => (
             <div
@@ -415,7 +418,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
             >
               <button
                 onClick={triggerTransition}
-                className="group relative px-12 py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
+                className="group relative px-8 py-3 md:px-12 md:py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
               >
                 <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.15)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-500" />
                 <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-full group-hover:bg-primary/10 transition-all duration-500" />
