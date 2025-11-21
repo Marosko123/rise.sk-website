@@ -1,17 +1,6 @@
 User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://rise.sk/sitemap.xml
-
-# Block unnecessary paths
 Disallow: /api/
 Disallow: /admin/
 
-# Allow important assets
-Allow: /favicon.ico
-Allow: /robots.txt
-Allow: /sitemap.xml
-
-# Host directive
-Host: https://rise.sk
+# Sitemap
+Sitemap: https://rise.sk/sitemap.xml

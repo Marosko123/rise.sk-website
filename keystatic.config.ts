@@ -1,4 +1,4 @@
-import { config, fields, collection } from '@keystatic/core';
+import { collection, config, fields } from '@keystatic/core';
 
 const postSchema = {
   title: fields.slug({ name: { label: 'Title' } }),
@@ -40,9 +40,9 @@ const postSchema = {
 };
 
 const isProduction = process.env.NODE_ENV === 'production';
-const hasGithubCredentials = 
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID && 
-  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET && 
+const hasGithubCredentials =
+  process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
+  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
   process.env.KEYSTATIC_SECRET;
 
 const storage = isProduction && hasGithubCredentials
@@ -83,8 +83,8 @@ export default config({
       schema: {
         name_en: fields.slug({ name: { label: '🇬🇧 Name (English)' } }),
         name_sk: fields.text({ label: '🇸🇰 Name (Slovak)' }),
-        slug_sk: fields.text({ 
-          label: '🇸🇰 Slug (Slovak)', 
+        slug_sk: fields.text({
+          label: '🇸🇰 Slug (Slovak)',
           description: 'URL slug for Slovak version (e.g. "tvorba-webov")',
           validation: { length: { min: 1 } }
         }),
@@ -97,41 +97,41 @@ export default config({
       format: { contentField: 'content_en' },
       schema: {
         // 1. Core Identification (English Title is Slug Source)
-        title_en: fields.slug({ 
-          name: { 
+        title_en: fields.slug({
+          name: {
             label: '🇬🇧 Title (English) - SLUG SOURCE',
             description: 'The main title in English. This generates the default URL slug (folder name).'
-          } 
+          }
         }),
 
         // 2. Slovak Identification
-        title_sk: fields.text({ 
-          label: '🇸🇰 Title (Slovak)', 
+        title_sk: fields.text({
+          label: '🇸🇰 Title (Slovak)',
           description: 'Slovenský nadpis článku.',
-          validation: { length: { min: 1 } } 
+          validation: { length: { min: 1 } }
         }),
-        slug_sk: fields.text({ 
-          label: '🇸🇰 URL Slug (Slovak)', 
+        slug_sk: fields.text({
+          label: '🇸🇰 URL Slug (Slovak)',
           description: 'Custom URL slug for Slovak version (e.g. "ako-na-to"). If empty, Title (SK) will be slugified.',
         }),
 
         // 3. General Settings (Visual Divider)
         // We can't add a real divider, so we group these
-        date: fields.date({ 
-          label: '📅 Publish Date', 
+        date: fields.date({
+          label: '📅 Publish Date',
           description: 'The date shown on the blog post.',
-          defaultValue: { kind: 'today' } 
+          defaultValue: { kind: 'today' }
         }),
-        
-        draft: fields.checkbox({ 
-          label: 'Draft Mode', 
+
+        draft: fields.checkbox({
+          label: 'Draft Mode',
           description: '✅ Check this to HIDE this post from the live website.',
-          defaultValue: false, 
+          defaultValue: false,
         }),
-        featured: fields.checkbox({ 
-          label: 'Featured Post', 
+        featured: fields.checkbox({
+          label: 'Featured Post',
           description: '⭐️ Check this to pin this post to the top of the list.',
-          defaultValue: false, 
+          defaultValue: false,
         }),
 
         author: fields.relationship({
@@ -159,16 +159,16 @@ export default config({
           directory: 'public/images/blog',
           publicPath: '/images/blog/',
         }),
-        coverImageAlt: fields.text({ 
+        coverImageAlt: fields.text({
           label: '🖼️ Cover Image Alt Text',
           description: 'Description of the image for accessibility (SEO).'
         }),
 
         // 4. English Content Section
-        excerpt_en: fields.text({ 
-          label: '🇬🇧 Excerpt (English)', 
+        excerpt_en: fields.text({
+          label: '🇬🇧 Excerpt (English)',
           description: 'Short summary (1-2 sentences) for blog cards and SEO.',
-          multiline: true 
+          multiline: true
         }),
         content_en: fields.mdx({
           label: '🇬🇧 Content (English)',
@@ -184,16 +184,16 @@ export default config({
           title: fields.text({ label: '🇬🇧 SEO Title', description: 'Override the browser tab title. Defaults to post title.' }),
           description: fields.text({ label: '🇬🇧 SEO Description', multiline: true, description: 'Override the search engine description. Defaults to excerpt.' }),
           keywords: fields.text({ label: '🇬🇧 Keywords', description: 'Comma separated keywords (e.g. react, nextjs).' }),
-        }, { 
+        }, {
           label: '🇬🇧 SEO Settings (English)',
           description: 'Advanced SEO settings for the English version.'
         }),
 
         // 5. Slovak Content Section
-        excerpt_sk: fields.text({ 
-          label: '🇸🇰 Excerpt (Slovak)', 
+        excerpt_sk: fields.text({
+          label: '🇸🇰 Excerpt (Slovak)',
           description: 'Krátke zhrnutie (1-2 vety) pre karty a SEO.',
-          multiline: true 
+          multiline: true
         }),
         content_sk: fields.mdx({
           label: '🇸🇰 Content (Slovak)',
@@ -209,7 +209,7 @@ export default config({
           title: fields.text({ label: '🇸🇰 SEO Nadpis', description: 'Prepíše titulok v prehliadači. Predvolené: Nadpis článku.' }),
           description: fields.text({ label: '🇸🇰 SEO Popis', multiline: true, description: 'Prepíše popis vo vyhľadávačoch. Predvolené: Excerpt.' }),
           keywords: fields.text({ label: '🇸🇰 Kľúčové slová', description: 'Oddelené čiarkou (napr. tvorba webov, marketing).' }),
-        }, { 
+        }, {
           label: '🇸🇰 SEO Nastavenia (Slovak)',
           description: 'Pokročilé SEO nastavenia pre slovenskú verziu.'
         }),

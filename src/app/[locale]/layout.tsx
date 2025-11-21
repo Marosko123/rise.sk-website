@@ -15,6 +15,7 @@ import ThemeProvider from '@/components/providers/ThemeProvider';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
 import SkipLink from '@/components/ui/SkipLink';
 import { routing } from '@/i18n/routing';
+import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 
 import '../globals.css';
 
@@ -90,6 +91,17 @@ export const metadata: Metadata = {
       'x-default': 'https://rise.sk',
     }
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'sk_SK',
@@ -138,6 +150,8 @@ export default async function LocaleLayout({ children, params }: Props) {
   // side is the easiest way to get started
   const messages = await getMessages();
 
+  const breadcrumbs = getBreadcrumbsForPage(locale as 'en' | 'sk', 'home');
+
   return (
     <html lang={locale}>
       <head>
@@ -151,6 +165,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           description: "Professional web development and design services in Slovakia",
           serviceType: "Custom Software Development"
         }} />
+        <BreadcrumbSchema items={breadcrumbs} page="home" />
       </head>
       <body>
         <SkipLink />
