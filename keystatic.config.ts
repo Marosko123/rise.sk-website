@@ -39,13 +39,23 @@ const postSchema = {
   }),
 };
 
+const isProduction = process.env.NODE_ENV === 'production';
+const hasGithubCredentials = 
+  process.env.KEYSTATIC_GITHUB_CLIENT_ID && 
+  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET && 
+  process.env.KEYSTATIC_SECRET;
+
+const storage = isProduction && hasGithubCredentials
+  ? {
+      kind: 'github',
+      repo: 'Marosko123/rise.sk-website',
+    }
+  : {
+      kind: 'local',
+    };
+
 export default config({
-  storage: process.env.NODE_ENV === 'development'
-    ? { kind: 'local' }
-    : {
-        kind: 'github',
-        repo: 'Marosko123/rise.sk-website',
-      },
+  storage: storage as any,
   collections: {
     authors: collection({
       label: 'Authors',
