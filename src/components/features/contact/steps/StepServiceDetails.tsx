@@ -34,7 +34,7 @@ export default function StepServiceDetails({ formData, handleChange, isSubmittin
             value={formData.service}
             onChange={handleChange}
             disabled={isSubmitting}
-            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
             style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
           >
             <option value='' className='bg-gray-800'>{t('selectService')}</option>
@@ -52,16 +52,17 @@ export default function StepServiceDetails({ formData, handleChange, isSubmittin
 
       <div>
         <label htmlFor='projectType' className='block text-white font-semibold mb-2'>
-          {t('multistep.projectType')}
+          {t('multistep.projectType')} *
         </label>
         <div className="relative">
           <select
             id='projectType'
             name='projectType'
+            required
             value={formData.projectType}
             onChange={handleChange}
             disabled={isSubmitting}
-            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
             style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
           >
             <option value='' className='bg-gray-800'>{t('multistep.selectProjectType')}</option>

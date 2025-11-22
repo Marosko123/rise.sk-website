@@ -1,5 +1,6 @@
 'use client';
 
+import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
 import { Link } from '@/i18n/routing';
@@ -8,17 +9,16 @@ import { Home, Mail } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export default function NotFoundPage() {
-  const t = useTranslations('NotFound');
+  const t = useTranslations('pages.NotFound');
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
-      <Navigation />
-      
-      <main className="flex-grow flex items-center justify-center relative overflow-hidden py-20">
-        {/* Background Effects */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-900/20 rounded-full blur-[128px] pointer-events-none" />
+    <div className="min-h-screen relative text-white flex flex-col">
+      <GlobalBackgroundWrapper showFullWebsite={true} />
+      <div className="sticky top-0 z-[100]">
+        <Navigation />
+      </div>
 
+      <main className="flex-grow flex items-center justify-center relative overflow-hidden py-20">
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -36,15 +36,15 @@ export default function NotFoundPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary-dark text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/25"
               >
                 <Home className="w-5 h-5" />
                 {t('home')}
               </Link>
-              <Link 
-                href="/kontakt" 
+              <Link
+                href="/kontakt"
                 className="flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/10"
               >
                 <Mail className="w-5 h-5" />

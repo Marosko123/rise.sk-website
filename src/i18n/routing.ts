@@ -68,6 +68,14 @@ export const routing = defineRouting({
     '/kariera': {
       sk: '/kariera',
       en: '/careers'
+    },
+    '/o-nas': {
+      sk: '/o-nas',
+      en: '/about'
+    },
+    '/recenzie': {
+      sk: '/recenzie',
+      en: '/reviews'
     }
   }
 });

@@ -2,8 +2,9 @@
 
 import { useContactForm } from '@/hooks/useContactForm';
 import { useTranslations } from '@/hooks/useTranslations';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
 import { AlertCircle, Building, CheckCircle, CheckCircle2, ChevronLeft, ChevronRight, MessageSquare, Send, Settings, User } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '../../ui/Button';
 import { Card } from '../../ui/Card';
@@ -15,7 +16,12 @@ import StepProjectSpecifics from './steps/StepProjectSpecifics';
 import StepReview from './steps/StepReview';
 import StepServiceDetails from './steps/StepServiceDetails';
 
-export default function ContactForm() {
+interface ContactFormProps {
+  className?: string;
+  id?: string;
+}
+
+export default function ContactForm({ className, id = 'contact' }: ContactFormProps) {
   const t = useTranslations('contact');
   const {
     currentStep,
@@ -29,6 +35,19 @@ export default function ContactForm() {
     isStepValid,
   } = useContactForm();
 
+  const [isReadyToSubmit, setIsReadyToSubmit] = useState(false);
+
+  useEffect(() => {
+    if (currentStep === 4) {
+      setIsReadyToSubmit(false);
+      const timer = setTimeout(() => setIsReadyToSubmit(true), 800);
+      return () => clearTimeout(timer);
+    }
+  }, [currentStep]);
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   const stepIcons = [User, Building, Settings, MessageSquare];
   const stepTitles = [
     t('multistep.steps.personalInfo'),
@@ -39,20 +58,16 @@ export default function ContactForm() {
 
   return (
     <Section
-      id="contact"
-      className="bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden"
+      id={id}
+      ref={ref}
+      background="transparent"
+      className={`relative overflow-hidden ${className || ''}`}
     >
-      {/* Background Effects */}
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%)]' />
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.3),transparent_50%)]' />
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_40%_40%,rgba(120,200,255,0.2),transparent_50%)]' />
-
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
           className='text-center mb-16'
         >
@@ -67,8 +82,7 @@ export default function ContactForm() {
         {/* Centered Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
           className='text-center mb-16'
         >
@@ -87,8 +101,7 @@ export default function ContactForm() {
           {/* Multi-Step Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <Card className='bg-white/5 backdrop-blur-sm border-white/10 p-4 md:p-8 relative overflow-hidden'>
@@ -215,7 +228,7 @@ export default function ContactForm() {
                     ) : (
                       <Button
                         type='submit'
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !isReadyToSubmit}
                         className='flex items-center px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base'
                       >
                         {isSubmitting ? (

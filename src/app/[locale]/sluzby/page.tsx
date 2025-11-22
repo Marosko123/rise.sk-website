@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 
+import MultiStepContactForm from '@/components/features/MultiStepContactForm';
+import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
-import ServicesEnhanced from '@/components/sections/ServicesEnhanced';
 import LatestPosts from '@/components/sections/LatestPosts';
+import ServicesEnhanced from '@/components/sections/ServicesEnhanced';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import { getTranslations } from 'next-intl/server';
 
@@ -26,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       locale: localeCode,
       images: [
         {
-          url: '/rise/bronze/Rise_logo_circle.png',
+          url: '/rise/gradient/Rise_logo_circle.png',
           width: 1200,
           height: 630,
           alt: `Rise.sk - ${t('meta.title')}`,
@@ -38,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: 'summary_large_image',
       title: t('meta.title'),
       description: t('meta.description'),
-      images: ['/rise/bronze/Rise_logo_circle.png'],
+      images: ['/rise/gradient/Rise_logo_circle.png'],
     },
     alternates: {
       canonical: `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}${localePath}`,
@@ -171,7 +173,8 @@ export default async function ServicesPage({
   };
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen relative">
+      <GlobalBackgroundWrapper />
       <BreadcrumbSchema items={breadcrumbs} page={locale === 'sk' ? 'sluzby' : 'services'} />
       <script
         type="application/ld+json"
@@ -179,10 +182,11 @@ export default async function ServicesPage({
       />
       <Navigation transparent={true} />
       <main className="-mt-20">
-        <div className="bg-black pt-20">
+        <div className="pt-20">
           <ServicesEnhanced breadcrumbs={breadcrumbs} />
         </div>
         <LatestPosts locale={locale} />
+        <MultiStepContactForm />
       </main>
       <Footer />
     </div>

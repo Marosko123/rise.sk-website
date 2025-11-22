@@ -1,10 +1,13 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, Brain, ChevronDown, Code2, Laptop, LucideIcon, Menu, ShoppingCart, Smartphone, Users, X } from 'lucide-react';
+import { ArrowRight, Brain, ChevronDown, Code2, Laptop, LucideIcon, Menu, ShoppingCart, Smartphone, User, Users, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useThrottledCallback } from 'use-debounce';
 
+import { Button } from '@/components/ui/Button';
+import { teamMembers } from '@/data/team';
 import { AppPathnames, Link, usePathname, useRouter } from '@/i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -17,7 +20,7 @@ type NavLink = {
   section: string;
   isHash: boolean;
   hasDropdown?: boolean;
-  dropdownItems?: { label: string; href: AppPathnames; icon?: LucideIcon; description?: string }[];
+  dropdownItems?: { label: string; href: AppPathnames | { pathname: AppPathnames; hash: string }; icon?: LucideIcon; description?: string }[];
 };
 
 interface NavigationProps {
@@ -28,17 +31,45 @@ interface NavigationProps {
 
 export default function Navigation({ alternateLinks, transparent, hideLinks }: NavigationProps) {
   const t = useTranslations('navigation');
+  const tMembers = useTranslations('team.members');
+  const tTeam = useTranslations('team');
   const locale = useLocale();
   const router = useRouter();
 
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [initialHashHandled, setInitialHashHandled] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
+
+  const prefetchRoute = (href: AppPathnames | { pathname: AppPathnames; hash: string }) => {
+    if (typeof href === 'string') {
+      router.prefetch(href);
+    } else if (typeof href === 'object' && href.pathname) {
+      router.prefetch(href.pathname);
+    }
+  };
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    if (isHomePage) {
+      e.preventDefault();
+      const element = document.getElementById('contact');
+      if (element) {
+        const navHeight = 80;
+        const elementPosition = element.offsetTop;
+        const offsetPosition = elementPosition - navHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        setIsMenuOpen(false);
+      }
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -70,8 +101,6 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
         services: 'sluzby',
         portfolio: 'portfolio',
         reviews: 'recenzie',
-        faq: 'faq',
-        hiring: 'kariera',
         contact: 'kontakt'
       };
     } else {
@@ -81,8 +110,6 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
         services: 'services',
         portfolio: 'portfolio',
         reviews: 'reviews',
-        faq: 'faq',
-        hiring: 'hiring',
         contact: 'contact'
       };
     }
@@ -98,124 +125,111 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
 
     return [
       {
-        href: { pathname: '/', hash: sectionMap.development },
+        href: '/vyvoj' as AppPathnames,
         label: t('development'),
         section: sectionMap.development,
-        isHash: true
+        isHash: false
       },
       {
-        href: { pathname: '/', hash: sectionMap.about },
+        href: '/o-nas' as AppPathnames,
         label: t('about'),
         section: sectionMap.about,
-        isHash: true
+        isHash: false
       },
       {
-        href: { pathname: '/', hash: sectionMap.services },
+        href: '/sluzby' as AppPathnames,
         label: t('services'),
         section: sectionMap.services,
-        isHash: true,
+        isHash: false,
         hasDropdown: true,
         dropdownItems: [
           {
             label: t('serviceItems.webDevelopment'),
-            href: '/sluzby/tvorba-web-stranok',
+            href: '/sluzby/tvorba-web-stranok' as AppPathnames,
             icon: Laptop,
             description: locale === 'sk' ? 'Moderné a responzívne webové stránky' : 'Modern and responsive websites'
           },
           {
             label: t('serviceItems.ecommerce'),
-            href: '/sluzby/tvorba-eshopu',
+            href: '/sluzby/tvorba-eshopu' as AppPathnames,
             icon: ShoppingCart,
             description: locale === 'sk' ? 'Komplexné e-commerce riešenia' : 'Complete e-commerce solutions'
           },
           {
             label: t('serviceItems.mobileApps'),
-            href: '/sluzby/vyvoj-mobilnych-aplikacii',
+            href: '/sluzby/vyvoj-mobilnych-aplikacii' as AppPathnames,
             icon: Smartphone,
             description: locale === 'sk' ? 'iOS a Android aplikácie' : 'iOS and Android applications'
           },
           {
             label: t('serviceItems.customSoftware'),
-            href: '/sluzby/softver-na-mieru',
+            href: '/sluzby/softver-na-mieru' as AppPathnames,
             icon: Code2,
             description: locale === 'sk' ? 'Riešenia šité na mieru vašim potrebám' : 'Solutions tailored to your needs'
           },
           {
             label: t('serviceItems.ai'),
-            href: '/sluzby/ai-automatizacia',
+            href: '/sluzby/ai-automatizacia' as AppPathnames,
             icon: Brain,
             description: locale === 'sk' ? 'Optimalizácia procesov a školenia' : 'Process optimization and training'
           },
           {
             label: t('serviceItems.outsourcing'),
-            href: '/sluzby/it-outsourcing',
+            href: '/sluzby/it-outsourcing' as AppPathnames,
             icon: Users,
             description: locale === 'sk' ? 'Prenájom vývojárskych tímov' : 'Dedicated development teams'
           },
         ]
       },
       {
-        href: { pathname: '/', hash: sectionMap.portfolio },
+        href: '/portfolio' as AppPathnames,
         label: t('portfolio'),
         section: sectionMap.portfolio,
-        isHash: true
-      },
-      {
-        href: { pathname: '/', hash: sectionMap.reviews },
-        label: t('reviews'),
-        section: sectionMap.reviews,
-        isHash: true
-      },
-      {
-        href: { pathname: '/', hash: sectionMap.faq },
-        label: t('faq'),
-        section: sectionMap.faq,
-        isHash: true
-      },
-      {
-        href: { pathname: '/', hash: sectionMap.hiring },
-        label: t('hiring'),
-        section: sectionMap.hiring,
-        isHash: true
-      },
-      {
-        href: '/team',
-        label: t('team'),
-        section: 'team',
         isHash: false
       },
       {
-        href: { pathname: '/', hash: 'blog' },
-        label: t('blog'),
-        section: 'blog',
-        isHash: true
+        href: '/recenzie' as AppPathnames,
+        label: t('reviews'),
+        section: sectionMap.reviews,
+        isHash: false
       },
       {
-        href: { pathname: '/', hash: sectionMap.contact },
+        href: '/team' as AppPathnames,
+        label: t('team'),
+        section: 'team',
+        isHash: false,
+        hasDropdown: true,
+        dropdownItems: [
+          ...teamMembers.map(member => ({
+            label: member.name,
+            href: { pathname: '/team' as AppPathnames, hash: member.id },
+            icon: User,
+            description: tMembers(`${member.id}.role`)
+          })),
+          {
+            label: tTeam('joinUs.title'),
+            href: { pathname: '/team' as AppPathnames, hash: 'join-us' },
+            icon: Users,
+            description: tTeam('joinUs.subtitle')
+          }
+        ]
+      },
+      {
+        href: '/blog' as AppPathnames,
+        label: t('blog'),
+        section: 'blog',
+        isHash: false
+      },
+      {
+        href: '/kontakt' as AppPathnames,
         label: t('contact'),
         section: sectionMap.contact,
-        isHash: true
+        isHash: false
       },
     ];
-  }, [t, locale, getSectionMappings]);
+  }, [t, tMembers, tTeam, locale, getSectionMappings]);
 
-  // Scroll tracking effect to highlight active section
-  useEffect(() => {
-    if (!mounted) return;
-
-    // Check if we're on a page route first
-    const checkActivePage = () => {
-      // If we're on the main page, use scroll-based detection
-      if (isHomePage) {
-        handleScrollBasedSection();
-        return;
-      }
-
-      // Default: no active section
-      setActiveSection('');
-    };
-
-    const handleScrollBasedSection = () => {
+    const handleScrollBasedSection = useThrottledCallback(() => {
       const sectionMap = getSectionMappings(locale);
       const sections = [
         sectionMap.development,
@@ -223,8 +237,6 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
         sectionMap.services,
         sectionMap.portfolio,
         sectionMap.reviews,
-        sectionMap.faq,
-        sectionMap.hiring,
         sectionMap.contact
       ];
       const sectionElements = sections.map(section => document.getElementById(section));
@@ -264,6 +276,22 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
           window.history.replaceState(null, '', `#${currentSection}`);
         }
       }
+    }, 100);
+
+  // Scroll tracking effect to highlight active section
+  useEffect(() => {
+    if (!mounted) return;
+
+    // Check if we're on a page route first
+    const checkActivePage = () => {
+      // If we're on the main page, use scroll-based detection
+      if (isHomePage) {
+        handleScrollBasedSection();
+        return;
+      }
+
+      // Default: no active section
+      setActiveSection('');
     };
 
     // Initial check
@@ -297,11 +325,26 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
       window.removeEventListener('scroll', handleScrollBasedSection);
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [mounted, activeSection, pathname, locale, getSectionMappings, initialHashHandled, isHomePage]);
+  }, [mounted, activeSection, pathname, locale, getSectionMappings, initialHashHandled, isHomePage, handleScrollBasedSection]);
 
   // Function to check if a nav link is active
-  const isLinkActive = (section: string) => {
-    return activeSection === section;
+  const isLinkActive = (link: NavLink) => {
+    // Check if we are on the specific page
+    if (typeof link.href === 'string') {
+        // Exact match
+        if (pathname === link.href) return true;
+
+        // Handle sub-routes (e.g. /sluzby/...)
+        // But exclude root '/' to avoid matching everything
+        if (link.href !== '/' && pathname.startsWith(link.href)) return true;
+    }
+
+    // Check scroll spy on homepage
+    if (isHomePage && activeSection === link.section) {
+        return true;
+    }
+
+    return false;
   };
 
 
@@ -345,22 +388,25 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
 
           {/* Navigation Links - Center */}
           {!hideLinks && (
-            <div className='hidden lg:flex absolute left-1/2 transform -translate-x-1/2'>
+            <div className='hidden lg:flex'>
               <div className='flex items-center space-x-2 xl:space-x-4 whitespace-nowrap'>
                 {navLinks.map((link, index) => {
-                  const isActive = isLinkActive(link.section);
+                  const isActive = isLinkActive(link);
 
                   if (link.hasDropdown) {
                     return (
                       <div
                         key={index}
                         className="relative group"
-                        onMouseEnter={() => setIsServicesOpen(true)}
-                        onMouseLeave={() => setIsServicesOpen(false)}
+                        onMouseEnter={() => {
+                          setActiveDropdown(link.section);
+                          prefetchRoute(link.href);
+                        }}
+                        onMouseLeave={() => setActiveDropdown(null)}
                       >
                         <motion.div
                           className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap flex items-center gap-1 cursor-pointer ${
-                            isActive || isServicesOpen
+                            isActive || activeDropdown === link.section
                               ? 'text-primary'
                               : 'text-gray-300 hover:text-primary'
                           }`}
@@ -395,14 +441,14 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
 
                         {/* Simple Dropdown Menu */}
                         <AnimatePresence>
-                          {isServicesOpen && (
+                          {activeDropdown === link.section && (
                             <motion.div
                               className='absolute top-full left-0 pt-5 w-80 z-50'
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 10 }}
                               transition={{ duration: 0.2 }}
-                              onMouseLeave={() => setIsServicesOpen(false)}
+                              onMouseLeave={() => setActiveDropdown(null)}
                             >
                               <div className='bg-black/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden'>
                                 <div className='py-2'>
@@ -413,8 +459,9 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                       key={itemIndex}
                                       href={item.href}
                                       className='flex items-center gap-4 px-5 py-4 hover:bg-white/5 transition-colors duration-200 group/item'
+                                      onMouseEnter={() => prefetchRoute(item.href)}
                                       onClick={() => {
-                                        setIsServicesOpen(false);
+                                        setActiveDropdown(null);
                                         setIsMenuOpen(false);
                                       }}
                                     >
@@ -446,6 +493,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                       className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap ${
                         isActive ? 'text-primary' : 'text-gray-300 hover:text-primary'
                       }`}
+                      onMouseEnter={() => prefetchRoute(link.href)}
                       onClick={(e) => {
                         if (isHomePage && link.isHash) {
                           e.preventDefault();
@@ -473,6 +521,19 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
 
           {/* Right Side - Language Switcher & Menu Toggle */}
           <div className='flex items-center pr-6 space-x-4'>
+            {/* Desktop CTA Button */}
+            <div className='hidden lg:block'>
+              <Button
+                href="#contact"
+                variant="primary"
+                size="sm"
+                onClick={handleContactClick}
+                className="shadow-lg shadow-primary/20"
+              >
+                {t('startProject')}
+              </Button>
+            </div>
+
             {/* Language Switcher - Always visible */}
             <div className='hidden lg:flex'>
               <LanguageSwitcher alternateLinks={alternateLinks} />
@@ -521,29 +582,41 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
           {/* Navigation Links */}
           <div className='flex flex-col items-center space-y-6 w-full px-6'>
             {navLinks.map((link, index) => {
-              const isActive = isLinkActive(link.section);
+              const isActive = isLinkActive(link);
 
               if (link.hasDropdown) {
                 return (
                   <div
                     key={index}
-                    className="relative group w-full flex flex-col items-center"
+                    id={`mobile-dropdown-${link.section}`}
+                    className="relative group w-full flex flex-col items-center scroll-mt-24"
                   >
                     <div
                       className={`px-4 py-3 text-xl font-bold transition-all duration-300 relative select-none flex items-center justify-center gap-2 w-full cursor-pointer ${
-                        isActive || isServicesOpen
+                        isActive || activeDropdown === link.section
                           ? 'text-primary'
                           : 'text-white hover:text-primary'
                       }`}
-                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      onClick={() => {
+                        const newActive = activeDropdown === link.section ? null : link.section;
+                        setActiveDropdown(newActive);
+                        if (newActive) {
+                          setTimeout(() => {
+                            const element = document.getElementById(`mobile-dropdown-${link.section}`);
+                            if (element) {
+                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                          }, 100);
+                        }
+                      }}
                     >
                       <span>{link.label}</span>
-                      <ChevronDown className={`w-6 h-6 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-6 h-6 transition-transform ${activeDropdown === link.section ? 'rotate-180' : ''}`} />
                     </div>
 
                     {/* Dropdown Menu */}
                     <AnimatePresence>
-                      {isServicesOpen && (
+                      {activeDropdown === link.section && (
                         <motion.div
                           className='w-full bg-white/5 rounded-xl overflow-hidden mt-4 border border-white/10'
                           initial={{ opacity: 0, height: 0 }}
@@ -558,9 +631,10 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                 key={itemIndex}
                                 href={item.href}
                                 className='flex items-center gap-4 px-6 py-5 text-gray-200 hover:bg-primary hover:text-white transition-colors duration-200 border-b border-white/5 last:border-b-0'
+                                onMouseEnter={() => prefetchRoute(item.href)}
                                 onClick={() => {
                                   setIsMenuOpen(false);
-                                  setIsServicesOpen(false);
+                                  setActiveDropdown(null);
                                 }}
                               >
                                 {Icon && <Icon className='w-6 h-6 flex-shrink-0' />}
@@ -586,6 +660,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                   className={`px-4 py-3 text-xl font-bold transition-all duration-300 relative select-none w-full text-center ${
                     isActive ? 'text-primary' : 'text-white hover:text-primary'
                   }`}
+                  onMouseEnter={() => prefetchRoute(link.href)}
                   onClick={(e) => {
                     if (isHomePage && link.isHash) {
                       e.preventDefault();
@@ -620,6 +695,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
       </motion.div>,
       document.body
     )}
+
     </>
   );
 }

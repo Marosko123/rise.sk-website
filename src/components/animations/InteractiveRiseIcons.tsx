@@ -1,9 +1,9 @@
 'use client';
 
+import { companyConfig } from '@/config/company';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
-import { companyConfig } from '@/config/company';
 
 interface FloatingIcon {
   id: number;
@@ -88,6 +88,7 @@ export function GameCounter() {
                 fill
                 className="object-contain"
                 draggable={false}
+                sizes="20px"
               />
             </div>
             <span>{gameClicks}/10</span>
@@ -329,6 +330,7 @@ export default function InteractiveRiseIcons() {
                   fill
                   className="object-contain"
                   draggable={false}
+                  sizes="50px"
                 />
 
                 {/* Gentle glow effect */}

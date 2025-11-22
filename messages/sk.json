@@ -4,6 +4,7 @@
       "weAre": "Sme",
       "innovativeSolutions": "Technologickí experti"
     },
+    "clickMe": "Klikni ma",
     "discoverMore": "Objavte viac",
     "description": "Dôveryhodní partneri pre kritické softvérové projekty a digitálnu transformáciu.",
     "development": {
@@ -44,10 +45,11 @@
     "development": "Vývoj",
     "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
-    "reviews": "Referencie",
+    "reviews": "Recenzie",
     "faq": "FAQ",
     "hiring": "Hľadáme talenty",
     "contact": "Kontakt",
+    "startProject": "Konzultácia zdarma",
     "backToHome": "Späť na hlavnú",
     "getStarted": "Začať"
   },
@@ -60,7 +62,7 @@
     },
     "description": "Sme spoločnosť poskytujúca komplexné technologické riešenia, ktorá sa špecializuje na vývoj webov, mobilných aplikácií a softvéru na mieru.",
     "subtitle": "Ak hľadáte spoľahlivého partnera pre Váš digitálny projekt, ste na správnom mieste!",
-    "startProject": "Spustiť projekt",
+    "startProject": "Konzultácia zdarma",
     "freeConsultation": "Bezplatná konzultácia",
     "metrics": {
       "onTimeDelivery": {
@@ -871,7 +873,7 @@
     },
     "cta": {
       "title": "Pripravení na váš vlastný úspešný projekt?",
-      "startProject": "Spustiť projekt"
+      "startProject": "Konzultácia zdarma"
     }
   },
   "reviews": {
@@ -887,7 +889,7 @@
     "cta": {
       "title": "Pripravení pridať sa k našim úspešným príbehom?",
       "description": "Vytvorme niečo úžasné spolu. Kontaktujte nás a prediskutujme vaše potreby.",
-      "startProject": "Spustiť projekt",
+      "startProject": "Konzultácia zdarma",
       "viewServices": "Pozrieť služby"
     },
     "reviews": [
@@ -908,7 +910,7 @@
         "content": "Ďakujem za rýchle naplánovanie konzultácie. RISE.SK mi pomohol vyvinúť nástroj na analýzu webu – projekt konečne napredoval. 5/5!",
         "rating": 5,
         "tags": ["Poradenstvo", "Webová analytika", "Rýchla reakcia"]
-                },
+                     },
       {
         "id": "tomas-v",
         "name": "Tomáš V.",
@@ -1065,14 +1067,12 @@
     "service": "Požadovaná služba",
     "selectService": "Vyberte službu",
     "services": {
-      "webDevelopment": "Moderné weby",
+      "webDevelopment": "Tvorba webov",
       "mobileApps": "Mobilné aplikácie",
-      "customSoftware": "Vlastný softvér",
-      "ecommerce": "E‑commerce riešenia",
+      "customSoftware": "Softvér na mieru",
+      "ecommerce": "E-shopy",
       "ai": "AI & Automatizácia",
       "outsourcing": "IT Outsourcing",
-      "specialRequests": "Špeciálne požiadavky",
-      "jobApplication": "Pracovná ponuka",
       "other": "Iné"
     },
     "templateMessages": {
@@ -1107,11 +1107,14 @@
       "projectType": "Typ projektu",
       "selectProjectType": "Vyberte typ projektu",
       "projectTypes": {
-        "newProject": "Nový projekt",
-        "existingUpdate": "Aktualizácia existujúceho projektu",
-        "maintenance": "Údržba a podpora",
-        "consultation": "Iba konzultácia",
-        "partnership": "Dlhodobé partnerstvo"
+        "mvp": "MVP",
+        "fullDevelopment": "Kompletný vývoj",
+        "redesign": "Aktualizácia existujúceho riešenia",
+        "teamAugmentation": "Doplnenie tímu (Outsourcing)",
+        "audit": "Audit, analýza, vzdelávanie",
+        "maintenance": "Dlhodobá správa a údržba",
+        "consultation": "Konzultácia",
+        "other": "Iné"
       },
       "budget": "Rozpočet",
       "selectBudget": "Vyberte rozpočet",
@@ -1147,6 +1150,25 @@
     "scrollToTop": "Prejsť na začiatok",
     "skipToContent": "Preskočiť na obsah"
   },
+  "loadingScreen": {
+    "quotes": {
+      "0": "\"Inovácia odlišuje lídra od nasledovníka.\"",
+      "1": "\"Robte to jednoducho, ale významne.\"",
+      "2": "\"Najlepší marketing nepôsobí ako marketing.\"",
+      "3": "\"Jednoduchosť je nekonečná dokonalosť.\"",
+      "4": "\"Kvalita je ten najlepší obchodný plán.\"",
+      "5": "\"Ľudia nekupujú to, čo robíte, ale prečo to robíte.\"",
+      "6": "\"Dobrý dizajn je dobrý biznis.\"",
+      "7": "\"Technológia je najlepšia vtedy, keď spája ľudí.\"",
+      "8": "\"Dáta sú viac ako názor.\"",
+      "9": "\"Zamerajte sa na užívateľa a všetko ostatné príde samo.\"",
+      "10": "\"Najlepší spôsob, ako predpovedať budúcnosť, je vytvoriť ju.\"",
+      "11": "\"Príležitosti sa nedejú. Vy ich vytvárate.\"",
+      "12": "\"Veľké veci v biznise nikdy nerobí jeden človek.\"",
+      "13": "\"Nesledujte hodiny; robte to, čo robia ony. Pokračujte.\"",
+      "14": "\"Úspech zvyčajne prichádza k tým, ktorí sú príliš zaneprázdnení na to, aby ho hľadali.\""
+    }
+  },
   "blog": {
     "title": "Blog",
     "subtitle": "Postrehy a novinky zo sveta technológií",
@@ -1158,6 +1180,7 @@
     "noPosts": "Žiadne príspevky sa nenašli",
     "readNext": "Prečítajte si ďalšie články",
     "searchPlaceholder": "Hľadať články...",
+    "showFilters": "Zobraziť filtre",
     "activeFilters": "Aktívne filtre",
     "clearAll": "Vymazať všetko",
     "tags": "Tagy",
@@ -1438,7 +1461,7 @@
     "members": {
       "maros-bednar": {
         "role": "CEO & Lead Developer",
-        "bio": "Začínal som ako doučovateľ informatiky a prvé projekty som ťahal úplne sám. Rýchlo som však pochopil, že skutočne veľké veci človek nedokáže bez ľudí, ktorým verí. Milujem šport, smiech a život naplno, no v biznise sa riadim tvrdou disciplínou. Rise.sk je dôkazom, že keď spojíte správny tím a poctivú prácu, výsledkom je svetová kvalita.",
+        "bio": "Maroš je náš CEO a hlavný filozof, ktorého myšlienkové pochody sú tak ďaleko v budúcnosti, že k nám prichádzajú s lagom. Jeho motivačné príhovory sú legendárne – nikto im nerozumie, ale všetci prikyvujú, lebo sa boja, že sa opýta na detaily. Dokáže 20 minút rozprávať o 'holistickom prístupe k premenným', kým tím len chcel vedieť, či si môžu objednať pizzu. Kedysi doučoval, teraz nás školí o tom, že 'kód je len stav mysle'. Je to jediný človek, ktorý dokáže motivovať server, aby bežal rýchlejšie, len silou vôle a citátom od Steva Jobsa, ktorý si pravdepodobne vymyslel.",
         "motto": "Ver, že dokážeš\na si na polceste k úspechu.",
         "hobbies": "Gym, Techno, Futbal"
       },
@@ -1475,7 +1498,7 @@
       },
       "tatiana-gavulova": {
         "role": "CMO & Marketingový Manažér",
-        "bio": "Začínala som v škôlke, kde som sa naučila to najdôležitejšie – zaujať a viesť. Dnes ako CMO v Rise.sk spájam túto empatiu s tvrdými dátami a stratégiou. Milujem život v pohybe a humor, no v práci vyžadujem disciplínu. Mojím cieľom je budovať značku, ktorá nielen hovorí, ale prináša merateľné výsledky.",
+        "bio": "Tatiana je naša 'Wonder Woman' a jediná bytosť vo firme, ktorá vonia inak ako káva a prehriaty procesor. Má svätú trpezlivosť, ktorú si vytrénovala v škôlke – čo sa ukázalo ako dokonalá príprava na manažovanie nášho vývojárskeho tímu (rozdiely sú minimálne, len hračky sú drahšie). Kým my riešime, prečo spadla databáza, ona rieši, aby nespadla firma. Je to jediný človek, ktorého sa Maroš bojí, a keď zdvihne obočie, aj server prestane hučať. Jej superschopnosťou je premeniť náš 'nerd talk' na ľudskú reč, ktorej klienti rozumejú.",
         "motto": "Prestaňte predávať.\nZačnite pomáhať.",
         "hobbies": "Cestovanie, Knihy, Umenie"
       }
@@ -1483,6 +1506,12 @@
     "cta": {
       "title": "Chcete byť súčasťou nášho príbehu?",
       "button": "Pridajte sa k nám"
+    },
+    "joinUs": {
+      "title": "Chceš sa k nám pridať?",
+      "subtitle": "Stále hľadáme talentovaných ľudí.",
+      "description": "Máš vášeň pre technológie a chceš pracovať na zaujímavých projektoch? Ozvi sa nám!",
+      "button": "Napíš nám"
     }
   }
 }

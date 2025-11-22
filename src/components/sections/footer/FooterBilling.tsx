@@ -35,7 +35,7 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => copyToClipboard(companyInfo('businessId'), 'businessId')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
+          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
           title='Copy to clipboard'
         >
           {copiedField === 'businessId' ? (
@@ -63,7 +63,7 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => copyToClipboard(companyInfo('vatId'), 'vatId')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
+          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
           title='Copy to clipboard'
         >
           {copiedField === 'vatId' ? (
@@ -91,7 +91,7 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => copyToClipboard(companyInfo('vatStatus'), 'vatStatus')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
+          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
           title='Copy to clipboard'
         >
           {copiedField === 'vatStatus' ? (

@@ -25,16 +25,17 @@ export default function StepProjectSpecifics({ formData, handleChange, isSubmitt
       <div className='grid md:grid-cols-2 gap-6'>
         <div>
           <label htmlFor='budget' className='block text-white font-semibold mb-2'>
-            {t('multistep.budget')}
+            {t('multistep.budget')} *
           </label>
           <div className="relative">
             <select
               id='budget'
               name='budget'
+              required
               value={formData.budget}
               onChange={handleChange}
               disabled={isSubmitting}
-              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
               style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
             >
               <option value='' className='bg-gray-800'>{t('multistep.selectBudget')}</option>
@@ -51,16 +52,17 @@ export default function StepProjectSpecifics({ formData, handleChange, isSubmitt
         </div>
         <div>
           <label htmlFor='timeline' className='block text-white font-semibold mb-2'>
-            {t('multistep.timeline')}
+            {t('multistep.timeline')} *
           </label>
           <div className="relative">
             <select
               id='timeline'
               name='timeline'
+              required
               value={formData.timeline}
               onChange={handleChange}
               disabled={isSubmitting}
-              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
+              className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50 appearance-none cursor-pointer'
               style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
             >
               <option value='' className='bg-gray-800'>{t('multistep.selectTimeline')}</option>
@@ -79,16 +81,17 @@ export default function StepProjectSpecifics({ formData, handleChange, isSubmitt
 
       <div>
         <label htmlFor='message' className='block text-white font-semibold mb-2'>
-          {t('message')}
+          {t('message')} *
         </label>
         <textarea
           id='message'
           name='message'
+          required
           rows={4}
           value={formData.message}
           onChange={handleChange}
           disabled={isSubmitting}
-          className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 resize-none disabled:opacity-50'
+          className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 resize-none disabled:opacity-50'
           placeholder={t('messagePlaceholder')}
         />
       </div>

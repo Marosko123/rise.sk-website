@@ -36,7 +36,7 @@ export default function MouseTrail() {
           className='absolute w-2 h-2 rounded-full pointer-events-none select-none will-change-transform'
           style={{
             transform: `translate3d(${point.x - 4}px, ${point.y - 4}px, 0) scale(${point.opacity})`,
-            backgroundColor: '#B09155',
+            backgroundColor: '#DAB549',
             opacity: point.opacity * 0.5,
             zIndex: 5, // Ensure it's above background but below content
           }}

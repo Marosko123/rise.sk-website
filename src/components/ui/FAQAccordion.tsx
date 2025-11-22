@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
+import FadeIn from '@/components/animations/FadeIn';
 import { cn } from '@/utils/cn';
 
 interface FAQItem {
@@ -40,12 +41,9 @@ export default function FAQAccordion({ items, className, allowMultiple = false }
         const isOpen = openIndexes.includes(index);
 
         return (
-          <motion.div
+          <FadeIn
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            delay={index * 0.1}
             className={cn(
               "group rounded-xl border overflow-hidden transition-all duration-500",
               isOpen
@@ -90,7 +88,7 @@ export default function FAQAccordion({ items, className, allowMultiple = false }
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </FadeIn>
         );
       })}
     </div>

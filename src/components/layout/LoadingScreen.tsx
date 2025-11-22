@@ -1,6 +1,8 @@
 'use client';
 
+import companyConfig from '@/config/company';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 interface LoadingScreenProps {
@@ -52,7 +54,7 @@ const LoadingScreen = ({ isLoading = true, onComplete }: LoadingScreenProps) => 
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#050505]"
     >
       <div className="text-center">
         {/* Logo Animation */}
@@ -63,14 +65,14 @@ const LoadingScreen = ({ isLoading = true, onComplete }: LoadingScreenProps) => 
           className="mb-8"
         >
           <div className="relative w-24 h-24 mx-auto mb-6">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 border-4 border-transparent border-t-[#b09155] rounded-full"
+            <Image
+              src={companyConfig.website.logo.logoGoldTransparent}
+              alt="Rise Logo"
+              fill
+              sizes="96px"
+              className="object-contain"
+              priority
             />
-            <div className="absolute inset-2 bg-[#b09155] rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">R</span>
-            </div>
           </div>
         </motion.div>
 
@@ -93,12 +95,12 @@ const LoadingScreen = ({ isLoading = true, onComplete }: LoadingScreenProps) => 
 
         {/* Progress Bar */}
         <div className="w-80 max-w-sm mx-auto">
-          <div className="bg-slate-700 rounded-full h-2 mb-4 overflow-hidden">
+          <div className="bg-white/10 rounded-full h-2 mb-4 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}
-              className="bg-gradient-to-r from-[#b09155] to-[#d4b884] h-full rounded-full relative"
+              className="bg-gradient-to-r from-[#DAB549] to-[#8B6723] h-full rounded-full relative"
             >
               <motion.div
                 animate={{ x: [-20, 100, -20] }}
@@ -117,21 +119,21 @@ const LoadingScreen = ({ isLoading = true, onComplete }: LoadingScreenProps) => 
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              initial={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                opacity: 0 
+              initial={{
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
+                opacity: 0
               }}
-              animate={{ 
-                y: [null, Math.random() * window.innerHeight],
+              animate={{
+                y: [null, Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)],
                 opacity: [0, 0.3, 0]
               }}
-              transition={{ 
+              transition={{
                 duration: 3 + Math.random() * 2,
                 repeat: Infinity,
                 delay: Math.random() * 2
               }}
-              className="absolute w-1 h-1 bg-[#b09155] rounded-full"
+              className="absolute w-1 h-1 bg-[#DAB549] rounded-full"
             />
           ))}
         </div>

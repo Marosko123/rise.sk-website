@@ -60,6 +60,14 @@ export function getBreadcrumbsForPage(
       });
       break;
 
+    case 'about':
+    case 'o-nas':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'About Us' : 'O nás',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'about' : 'o-nas'}`
+      });
+      break;
+
     case 'services':
     case 'sluzby':
       breadcrumbs.push({
@@ -165,6 +173,14 @@ export function getBreadcrumbsForPage(
       breadcrumbs.push({
         name: locale === 'en' ? 'Portfolio' : 'Portfólio',
         url: `${baseUrl}/${locale}/${page}`
+      });
+      break;
+
+    case 'recenzie':
+    case 'reviews':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Reviews' : 'Recenzie',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'reviews' : 'recenzie'}`
       });
       break;
 

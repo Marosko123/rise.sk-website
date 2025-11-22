@@ -40,7 +40,9 @@ import {
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+import FadeIn from '@/components/animations/FadeIn';
 import MultiStepContactForm from '@/components/features/MultiStepContactForm';
+import GlobalBackground from '@/components/GlobalBackground';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
@@ -118,7 +120,7 @@ const TECH_LOGOS: Record<string, string> = {
   'Android': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg',
   'iOS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg',
   'ChatGPT & Claude': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg',
-  'OpenAI API': 'https://www.vectorlogo.zone/logos/openai/openai-icon.svg',
+  'OpenAI API': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg',
   'Midjourney': 'https://www.vectorlogo.zone/logos/midjourney/midjourney-icon.svg',
   'Python & LangChain': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
   'N8n.com / Make.com / Zapier': 'https://www.vectorlogo.zone/logos/zapier/zapier-icon.svg',
@@ -247,8 +249,11 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
   }
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] text-white">
-      <Navigation transparent={true} />
+    <div className="min-h-screen relative text-white selection:bg-[var(--primary)]/30 selection:text-[var(--primary-light)]">
+      <GlobalBackground mounted={mounted} showFullWebsite={true} />
+      <div className="sticky top-0 z-[100]">
+        <Navigation transparent={true} />
+      </div>
 
       {/* Schema for SEO */}
       <EnhancedSchema type="Service" data={{
@@ -291,7 +296,11 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
       )}
 
       {/* Hero Section */}
-      <section className="hero-gradient min-h-screen flex flex-col relative overflow-hidden -mt-20 pt-20">
+      <section className="relative min-h-[90vh] flex flex-col -mt-20 pt-20 overflow-hidden">
+        {/* Background Effects */}
+        {/* Remove grid.svg on mobile */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] hidden sm:block" />
+
         {/* Floating Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {floatingIcons.map(({ Icon, delay, x, y }, index) => (
@@ -326,18 +335,16 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="pt-10 pb-8 flex justify-start"
+              className="py-8 md:py-12 flex justify-center md:justify-start relative z-20"
             >
-              <Breadcrumbs items={breadcrumbs} />
+              <Breadcrumbs items={breadcrumbs} className="justify-center md:justify-start" />
             </motion.div>
           )}
 
           <div className="flex-1 flex flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.25, 0.25, 0.75] }}
-              className="text-center w-full mx-auto -mt-20"
+            <FadeIn
+              duration={0.8}
+              className="text-center w-full mx-auto"
             >
               {/* Icon removed as per request */}
 
@@ -346,10 +353,9 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                 <span className="gradient-text">{t('title').split(' ').slice(1).join(' ')}</span>
               </h1>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
+              <FadeIn
+                delay={0.4}
+                duration={0.8}
                 className="mb-12 max-w-4xl mx-auto"
               >
                 {tagline && (
@@ -360,12 +366,11 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                 <p className="text-lg text-[var(--accent)] leading-relaxed">
                   {t('description')}
                 </p>
-              </motion.div>
+              </FadeIn>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
+              <FadeIn
+                delay={0.6}
+                duration={0.6}
                 className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
               >
                 <Button
@@ -387,16 +392,16 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                   {t('cta.secondary')}
                   <div className="w-2 h-2 bg-current rounded-full ml-2 animate-pulse"></div>
                 </Button>
-              </motion.div>
+              </FadeIn>
 
               {/* Trust Badges removed as per request */}
-            </motion.div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Features Grid */}
-      <section className="py-32 px-6 bg-[#1a1a1a] relative overflow-hidden">
+      <section className="py-32 px-6 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
             <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
@@ -404,12 +409,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
+          <FadeIn className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               <span className="text-white">{t('featuresTitle').split(' ')[0]} </span>
               <span className="gradient-text">
@@ -417,7 +417,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-light)] mx-auto rounded-full" />
-          </motion.div>
+          </FadeIn>
 
           {serviceId === 'ai' ? (
             <div className="max-w-4xl mx-auto space-y-24">
@@ -427,16 +427,14 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                 const isLastInGroup = idx === 2 || idx === 4;
 
                 return (
-                  <motion.div
+                  <FadeIn
                     key={idx}
-                    initial={{ opacity: 0, x: isRight ? 50 : -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1, duration: 0.5 }}
+                    direction={isRight ? 'left' : 'right'}
+                    delay={idx * 0.1}
                     className={`relative pl-8 md:pl-12 max-w-2xl ${isRight ? 'ml-auto' : 'mr-auto'}`}
                   >
                     {/* Icon */}
-                    <div className="absolute left-0 top-0 z-10 bg-[#1a1a1a] rounded-full">
+                    <div className="absolute left-0 top-0 z-10 bg-[#030303] rounded-full">
                       <Icon className="w-8 h-8 md:w-10 md:h-10 text-[var(--primary)]" strokeWidth={1.5} />
                     </div>
 
@@ -507,22 +505,19 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                         </div>
                       )}
                     </div>
-                  </motion.div>
+                  </FadeIn>
                 );
               })}
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
               {features.map((feature, idx) => {
                 const Icon = getFeatureIcon(feature?.title || '');
                 return (
-                  <motion.div
+                  <FadeIn
                     key={idx}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1, duration: 0.5 }}
-                    className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm"
+                    delay={idx * 0.1}
+                    className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm min-w-[80vw] max-w-[90vw] md:min-w-0 snap-center flex-shrink-0"
                   >
                     {/* Hover Gradient Blob */}
                     <div className="absolute -right-20 -top-20 w-64 h-64 bg-[var(--primary)]/10 rounded-full blur-[80px] group-hover:bg-[var(--primary)]/20 transition-all duration-500 opacity-0 group-hover:opacity-100" />
@@ -537,11 +532,11 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                         <Icon className="w-8 h-8 text-[var(--primary)]" />
                       </div>
 
-                      <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[var(--primary)] transition-colors duration-300">
+                      <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[var(--primary)] transition-colors duration-300 whitespace-normal break-words">
                         {feature?.title}
                       </h3>
 
-                      <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors mb-4">
+                      <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors mb-4 whitespace-normal break-words line-clamp-3">
                         {feature?.description}
                       </p>
 
@@ -552,7 +547,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                         </div>
                       )}
                     </div>
-                  </motion.div>
+                  </FadeIn>
                 );
               })}
             </div>
@@ -563,34 +558,26 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
       {techStack ? (
         <>
           {/* Recommended Tech Section */}
-          <section className="py-24 px-6 bg-[#1a1a1a]">
+          <section className="py-24 px-6">
             <div className="max-w-7xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
+              <FadeIn className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                   <span className="text-white">Odporúčané </span>
                   <span className="gradient-text">technológie</span>
                 </h2>
                 <p className="text-[var(--muted-foreground)] text-lg">To najlepšie pre váš projekt</p>
-              </motion.div>
+              </FadeIn>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
                 {techStack.recommended.map((tech, idx) => {
                   const LogoUrl = TECH_LOGOS[tech.name];
                   const FallbackIcon = getFeatureIcon(tech.name);
 
                   return (
-                    <motion.div
+                    <FadeIn
                       key={idx}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.1, duration: 0.5 }}
-                      className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm"
+                      delay={idx * 0.1}
+                      className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm min-w-[80vw] max-w-[90vw] md:min-w-0 snap-center flex-shrink-0"
                     >
                       <div className="mb-6 p-4 rounded-2xl bg-white/5 inline-block group-hover:scale-110 transition-transform duration-500">
                         {LogoUrl ? (
@@ -599,6 +586,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                               src={LogoUrl}
                               alt={tech.name}
                               fill
+                              sizes="48px"
                               className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
                             />
                           </div>
@@ -607,14 +595,14 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                         )}
                       </div>
 
-                      <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[var(--primary)] transition-colors">
+                      <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[var(--primary)] transition-colors whitespace-normal break-words">
                         {tech.name}
                       </h3>
 
-                      <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                      <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors whitespace-normal break-words line-clamp-3">
                         {tech.reason}
                       </p>
-                    </motion.div>
+                    </FadeIn>
                   );
                 })}
               </div>
@@ -622,32 +610,25 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
           </section>
 
           {/* Others Tech Section (Taktiež Dodávame) */}
-          <section className="py-24 px-6 bg-[#1a1a1a] border-t border-white/5">
+          <section className="py-24 px-6 border-t border-white/5">
             <div className="max-w-7xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
+              <FadeIn className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   <span className="text-white">Taktiež </span>
                   <span className="gradient-text">dodávame</span>
                 </h2>
-              </motion.div>
+              </FadeIn>
 
               <div className="flex flex-wrap justify-center gap-8 md:gap-12">
                 {techStack.others.map((tech, idx) => (
-                  <motion.div
+                  <FadeIn
                     key={idx}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.05, duration: 0.4 }}
+                    delay={idx * 0.05}
+                    duration={0.4}
                     className="flex flex-col items-center gap-4 group"
                   >
                     <div className="relative w-16 h-16 md:w-20 md:h-20 p-[1px] rounded-xl overflow-hidden bg-gradient-to-br from-white/10 via-white/5 to-white/10 group-hover:from-[var(--primary)] group-hover:via-white/40 group-hover:to-[var(--primary)] transition-all duration-500 shadow-lg group-hover:shadow-[var(--primary)]/20">
-                      <div className="w-full h-full bg-[#1a1a1a] rounded-xl flex items-center justify-center relative overflow-hidden">
+                      <div className="w-full h-full bg-[#030303] rounded-xl flex items-center justify-center relative overflow-hidden">
                         <motion.div
                           className="absolute inset-0 w-full h-full bg-gradient-to-tr from-transparent via-white/10 to-transparent z-10"
                           initial={{ x: '-100%' }}
@@ -677,7 +658,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                     <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">
                       {tech}
                     </span>
-                  </motion.div>
+                  </FadeIn>
                 ))}
               </div>
             </div>
@@ -687,22 +668,17 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
         <>
           {/* Tools Section */}
           {tools && tools.items && (
-            <section className="py-24 px-6 bg-[var(--secondary)]/30">
+            <section className="py-24 px-6">
               <div className="max-w-7xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-center mb-16"
-                >
+                <FadeIn className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                     <span className="text-[var(--foreground)]">{tools.title.split(' ')[0]} </span>
                     <span className="gradient-text">{tools.title.split(' ').slice(1).join(' ')}</span>
                   </h2>
                   <p className="text-[var(--muted-foreground)] text-lg">{tools.subtitle}</p>
-                </motion.div>
+                </FadeIn>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
                   {tools.items.map((tool, idx) => {
                     const getCategoryIcon = (name: string) => {
                       const n = name.toLowerCase();
@@ -725,20 +701,18 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                     };
 
                     return (
-                      <motion.div
+                      <FadeIn
                         key={idx}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1, duration: 0.6 }}
-                        className="p-8 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[var(--primary)]/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 flex flex-col items-start"
+                        delay={idx * 0.1}
+                        duration={0.6}
+                        className="p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 flex flex-col items-start min-w-[80vw] max-w-[90vw] md:min-w-0 snap-center flex-shrink-0"
                       >
                         <div className="mb-6 p-3 rounded-xl bg-white/5 inline-block">
                           {getCategoryIcon(tool.name)}
                         </div>
-                        <h3 className="text-2xl font-bold mb-2 text-[var(--foreground)]">{tool.name}</h3>
-                        <p className="text-[var(--muted-foreground)]">{tool.description}</p>
-                      </motion.div>
+                        <h3 className="text-2xl font-bold mb-2 text-[var(--foreground)] whitespace-normal break-words">{tool.name}</h3>
+                        <p className="text-[var(--muted-foreground)] whitespace-normal break-words line-clamp-3">{tool.description}</p>
+                      </FadeIn>
                     );
                   })}
                 </div>
@@ -748,28 +722,21 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
 
           {/* Technologies Grid Section */}
           {allTechnologies.length > 0 && (
-            <section className="py-24 px-6 bg-[#1a1a1a] border-t border-white/5">
+            <section className="py-24 px-6 border-t border-white/5">
               <div className="max-w-7xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-center mb-16"
-                >
+                <FadeIn className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-bold mb-4">
                     <span className="text-white">Použité </span>
                     <span className="gradient-text">technológie</span>
                   </h2>
-                </motion.div>
+                </FadeIn>
 
                 <div className="flex flex-wrap justify-center gap-8 md:gap-12">
                   {allTechnologies.map((tech, idx) => (
-                    <motion.div
+                    <FadeIn
                       key={idx}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.05, duration: 0.4 }}
+                      delay={idx * 0.05}
+                      duration={0.4}
                       className="flex flex-col items-center gap-4 group"
                     >
                       <div className="relative w-16 h-16 md:w-20 md:h-20 p-[1px] rounded-xl overflow-hidden bg-gradient-to-br from-white/10 via-white/5 to-white/10 group-hover:from-[var(--primary)] group-hover:via-white/40 group-hover:to-[var(--primary)] transition-all duration-500 shadow-lg group-hover:shadow-[var(--primary)]/20">
@@ -803,7 +770,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                       <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">
                         {tech}
                       </span>
-                    </motion.div>
+                    </FadeIn>
                   ))}
                 </div>
               </div>
@@ -813,7 +780,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
       )}
 
       {/* Process Section */}
-      <section id="process" className="py-32 px-6 bg-[#1a1a1a] relative overflow-hidden">
+      <section id="process" className="py-32 px-6 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-[var(--primary)]/5 rounded-full blur-[120px]" />
@@ -821,18 +788,13 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-24"
-          >
+          <FadeIn className="text-center mb-24">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               <span className="text-white">{t('processTitle').split(' ')[0]} </span>
               <span className="gradient-text">{t('processTitle').split(' ').slice(1).join(' ')}</span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-light)] mx-auto rounded-full" />
-          </motion.div>
+          </FadeIn>
 
           <div className="relative">
             {/* Main Connecting Line */}
@@ -846,12 +808,9 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
             />
 
             {processSteps.map((step, idx) => (
-              <motion.div
+              <FadeIn
                 key={idx}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.2 }}
+                delay={idx * 0.2}
                 className={`relative flex items-center gap-8 mb-20 last:mb-0 ${
                   idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
@@ -861,15 +820,12 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
 
                 {/* Number Circle */}
                 <div className="absolute left-6 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.2 + 0.2, type: "spring", stiffness: 200 }}
-                        className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#1a1a1a] border-4 border-[var(--primary)] flex items-center justify-center shadow-[0_0_20px_rgba(176,145,85,0.4)] relative z-10"
+                    <FadeIn
+                        delay={idx * 0.2 + 0.2}
+                        className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#030303] border-4 border-[var(--primary)] flex items-center justify-center shadow-[0_0_20px_rgba(176,145,85,0.4)] relative z-10"
                     >
                         <span className="text-xl md:text-2xl font-bold text-[var(--primary)]">{idx + 1}</span>
-                    </motion.div>
+                    </FadeIn>
                 </div>
 
                 {/* Content Card */}
@@ -889,26 +845,21 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                      </p>
                   </div>
                 </div>
-              </motion.div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 px-6 bg-[var(--background)]">
+      <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <FadeIn className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               <span className="gradient-text">FAQ</span>
             </h2>
             <p className="text-[var(--muted-foreground)] text-lg">Najčastejšie otázky a odpovede</p>
-          </motion.div>
+          </FadeIn>
 
           <div className="space-y-4">
             <FAQAccordion items={faqs} />

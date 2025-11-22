@@ -1,11 +1,13 @@
 import { useTranslations } from '@/hooks/useTranslations';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { CheckCircle, Copy, Mail, MapPin, Phone } from 'lucide-react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function ContactInfo() {
   const t = useTranslations('contact');
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const copyToClipboard = async (text: string, fieldName: string) => {
     try {
@@ -40,9 +42,9 @@ export default function ContactInfo() {
 
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
       transition={{ duration: 0.8 }}
       className='space-y-6'
     >
@@ -50,8 +52,7 @@ export default function ContactInfo() {
         <motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.4, delay: index * 0.1 }}
           className='p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/8 transition-colors duration-200'
         >
@@ -90,8 +91,7 @@ export default function ContactInfo() {
       {/* Calendar Booking Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.4, delay: 0.3 }}
         className='p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/8 transition-colors duration-200'
       >

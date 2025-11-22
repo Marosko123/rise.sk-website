@@ -1,9 +1,9 @@
 'use client';
 
+import { companyConfig } from '@/config/company';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
-import { companyConfig } from '@/config/company';
 
 interface RainIcon {
   id: number;
@@ -291,6 +291,7 @@ export default function RiseIconRain() {
                   className="object-contain"
                   draggable={false}
                   priority={false}
+                  sizes="50px"
                 />
                 {/* Glow effect - much more subtle intensity progression */}
                 <div

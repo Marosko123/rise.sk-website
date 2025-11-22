@@ -2,6 +2,11 @@
 
 import ContactForm from './contact/ContactForm';
 
-export default function MultiStepContactForm() {
-  return <ContactForm />;
+interface MultiStepContactFormProps {
+  className?: string;
+  id?: string;
+}
+
+export default function MultiStepContactForm({ className, id }: MultiStepContactFormProps) {
+  return <ContactForm className={className} id={id} />;
 }

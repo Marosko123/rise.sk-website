@@ -1,22 +1,24 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import {
-  Award,
-  CheckCircle,
-  Target,
-  TrendingUp,
-  Users,
-  Zap,
-} from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
+import { motion, useInView } from 'framer-motion';
+import {
+    Award,
+    CheckCircle,
+    Target,
+    TrendingUp,
+    Users,
+    Zap,
+} from 'lucide-react';
+import { useRef } from 'react';
 
-import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
 import { Section } from '../ui/Section';
 
 export default function About() {
   const t = useTranslations('about');
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const stats = [
     {
@@ -66,82 +68,78 @@ export default function About() {
   return (
     <Section
       id="about"
-      className="bg-gradient-to-br from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative overflow-hidden"
+      ref={ref}
+      background="transparent"
+      className="relative overflow-hidden"
     >
-      {/* Background Effects */}
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent_50%)]' />
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,119,198,0.2),transparent_50%)]' />
-
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className='text-center mb-16'
+          className='text-center mb-10'
         >
-          <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
+          <h2 className='text-4xl md:text-5xl font-bold text-white mb-4'>
             {t('title')}
             <span className='bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-clip-text text-transparent block pb-1'>
               {t('titleHighlight')}
             </span>
           </h2>
-          <p className='text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed'>
+          <p className='text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed'>
             {t('description')}
           </p>
         </motion.div>
 
-        {/* Stats Grid */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20'>
+        {/* Stats Grid - Compact 2x2 on mobile */}
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12'>
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               data-cursor='hover'
             >
-              <Card className='text-center h-full bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300'>
-                <div className='flex justify-center mb-4'>
-                  <div className='w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
-                    <stat.icon className='w-6 h-6 text-white' />
+              <Card className='text-center h-full bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300 p-4 md:p-6'>
+                <div className='flex justify-center mb-3'>
+                  <div className='w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
+                    <stat.icon className='w-5 h-5 md:w-6 md:h-6 text-white' />
                   </div>
                 </div>
-                <div className='text-3xl font-bold text-white mb-2'>
+                <div className='text-2xl md:text-3xl font-bold text-white mb-1'>
                   {stat.number}
                 </div>
-                <div className='text-primary font-semibold mb-2'>
+                <div className='text-primary font-semibold mb-1 text-sm md:text-base'>
                   {stat.label}
                 </div>
-                <div className='text-sm text-gray-400'>{stat.description}</div>
+                <div className='text-xs md:text-sm text-gray-400 hidden md:block'>{stat.description}</div>
               </Card>
             </motion.div>
           ))}
         </div>
 
-        {/* Values Section */}
-        <div className='grid lg:grid-cols-3 gap-8'>
+        {/* Values Section - Slider on mobile */}
+        <div className='flex overflow-x-auto pb-6 -mx-4 px-4 snap-x snap-mandatory md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-6 scrollbar-hide'>
           {values.map((value, index) => (
             <motion.div
               key={index}
+              className="min-w-[85vw] md:min-w-0 snap-center"
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               data-cursor='hover'
             >
               <Card className='h-full bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300'>
-                <div className='flex items-center mb-6'>
-                  <div className='w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4'>
-                    <value.icon className='w-6 h-6 text-white' />
+                <div className='flex items-center mb-4'>
+                  <div className='w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mr-4'>
+                    <value.icon className='w-5 h-5 md:w-6 md:h-6 text-white' />
                   </div>
-                  <h3 className='text-xl font-bold text-white'>
+                  <h3 className='text-lg md:text-xl font-bold text-white'>
                     {value.title}
                   </h3>
                 </div>
-                <p className='text-gray-300 leading-relaxed'>
+                <p className='text-gray-300 leading-relaxed text-sm md:text-base'>
                   {value.description}
                 </p>
               </Card>
@@ -150,30 +148,7 @@ export default function About() {
         </div>
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className='text-center mt-16'
-        >
-          <div className='bg-gradient-to-r from-primary/20 to-primary-dark/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto'>
-            <h3 className='text-2xl md:text-3xl font-bold text-white mb-4'>
-              {t('cta.title')}
-            </h3>
-            <p className='text-gray-300 text-lg mb-8 max-w-2xl mx-auto'>
-              {t('cta.description')}
-            </p>
-            <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-              <Button href='#contact' variant='primary' className='bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-darker transition-all duration-300'>
-                {t('cta.startProject')}
-              </Button>
-              <Button href='#services' variant='outline' className='border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300'>
-                {t('cta.viewServices')}
-              </Button>
-            </div>
-          </div>
-        </motion.div>
+        {/* Removed redundant CTA section */}
       </div>
     </Section>
   );

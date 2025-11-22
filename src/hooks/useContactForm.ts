@@ -90,8 +90,8 @@ export function useContactForm() {
   const isStepValid = useCallback(() => {
     switch (currentStep) {
       case 1: return !!(formData.name && formData.email);
-      case 2: return !!formData.service;
-      case 3: return true;
+      case 2: return !!(formData.service && formData.projectType);
+      case 3: return !!(formData.budget && formData.timeline && formData.message);
       case 4: return true;
       default: return false;
     }
@@ -99,10 +99,16 @@ export function useContactForm() {
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Prevent submission if not on the final step
+    if (currentStep < 4) {
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
-    if (!formData.name || !formData.email || !formData.service) {
+    if (!formData.name || !formData.email || !formData.service || !formData.projectType || !formData.budget || !formData.timeline || !formData.message) {
       setSubmitStatus({ type: 'error', message: t('requiredFields') });
       setIsSubmitting(false);
       return;
@@ -184,7 +190,7 @@ export function useContactForm() {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData, t, trackContactFormSubmit]);
+  }, [currentStep, formData, t, trackContactFormSubmit]);
 
   return {
     currentStep,

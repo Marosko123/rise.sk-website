@@ -66,7 +66,7 @@ export default function FooterContact({ copyToClipboard, copiedField }: FooterCo
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => copyToClipboard(companyInfo('phone'), 'phone')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
+          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
           title='Copy to clipboard'
         >
           {copiedField === 'phone' ? (
@@ -97,7 +97,7 @@ export default function FooterContact({ copyToClipboard, copiedField }: FooterCo
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => copyToClipboard(t('contact.values.email'), 'email')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
+          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
           title='Copy to clipboard'
         >
           {copiedField === 'email' ? (

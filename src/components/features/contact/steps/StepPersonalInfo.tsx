@@ -33,7 +33,7 @@ export default function StepPersonalInfo({ formData, handleChange, isSubmitting 
             value={formData.name}
             onChange={handleChange}
             disabled={isSubmitting}
-            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
+            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
             placeholder={t('placeholders.name')}
           />
         </div>
@@ -48,7 +48,7 @@ export default function StepPersonalInfo({ formData, handleChange, isSubmitting 
             value={formData.company}
             onChange={handleChange}
             disabled={isSubmitting}
-            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
+            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
             placeholder={t('placeholders.company')}
           />
         </div>
@@ -67,22 +67,23 @@ export default function StepPersonalInfo({ formData, handleChange, isSubmitting 
             value={formData.email}
             onChange={handleChange}
             disabled={isSubmitting}
-            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
+            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
             placeholder={t('placeholders.email')}
           />
         </div>
         <div>
           <label htmlFor='phone' className='block text-white font-semibold mb-2'>
-            {t('phone')}
+            {t('phone')} *
           </label>
           <input
             type='tel'
             id='phone'
             name='phone'
+            required
             value={formData.phone}
             onChange={handleChange}
             disabled={isSubmitting}
-            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
+            className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
             placeholder={t('placeholders.phone')}
           />
         </div>

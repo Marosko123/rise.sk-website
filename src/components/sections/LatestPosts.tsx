@@ -1,7 +1,7 @@
-import { getSortedPostsData } from '@/utils/blog-server';
 import BlogCard from '@/components/blog/BlogCard';
-import Link from 'next/link';
+import { getSortedPostsData } from '@/utils/blog-server';
 import { getTranslations } from 'next-intl/server';
+import Link from 'next/link';
 
 interface LatestPostsProps {
   locale: string;
@@ -14,10 +14,7 @@ export default async function LatestPosts({ locale }: LatestPostsProps) {
   if (posts.length === 0) return null;
 
   return (
-    <section id="blog" className="py-20 bg-black relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-black to-black" />
-
+    <section id="blog" className="py-20 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
@@ -28,8 +25,8 @@ export default async function LatestPosts({ locale }: LatestPostsProps) {
           <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8">
             {t('description') || 'Stay updated with the latest trends in technology and development.'}
           </p>
-          
-          <Link 
+
+          <Link
             href={`/${locale}/blog`}
             className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-light transition-colors group"
           >
@@ -40,9 +37,11 @@ export default async function LatestPosts({ locale }: LatestPostsProps) {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex overflow-x-auto pb-8 -mx-4 px-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-8 scrollbar-hide">
           {posts.map((post) => (
-            <BlogCard key={post.slug} post={post} locale={locale} />
+            <div key={post.slug} className="min-w-[85vw] md:min-w-0 snap-center">
+              <BlogCard post={post} locale={locale} />
+            </div>
           ))}
         </div>
       </div>

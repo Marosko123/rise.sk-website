@@ -12,10 +12,11 @@ import GDPRConsent from '@/components/features/GDPRConsent';
 import ServiceWorkerRegistration from '@/components/features/ServiceWorkerRegistration';
 import { AnimationProvider } from '@/components/providers/AnimationProvider';
 import ThemeProvider from '@/components/providers/ThemeProvider';
+import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
+import LoadingScreen from '@/components/ui/LoadingScreen';
 import SkipLink from '@/components/ui/SkipLink';
 import { routing } from '@/i18n/routing';
-import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 
 import '../globals.css';
 
@@ -23,7 +24,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#b09155',
+  themeColor: '#000000',
 };
 
 export const metadata: Metadata = {
@@ -74,11 +75,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/rise/gradient/Rise_logo_circle.png', sizes: '192x192', type: 'image/png' },
+      { url: '/rise/gradient/Rise_logo_circle.png', sizes: '512x512', type: 'image/png' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/rise/gradient/Rise_logo_circle.png', sizes: '180x180', type: 'image/png' },
     ],
     shortcut: '/favicon.ico',
   },
@@ -168,6 +169,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <BreadcrumbSchema items={breadcrumbs} page="home" />
       </head>
       <body>
+        <LoadingScreen />
         <SkipLink />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>

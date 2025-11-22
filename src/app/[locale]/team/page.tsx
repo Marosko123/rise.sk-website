@@ -1,3 +1,4 @@
+import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
 import Navigation from '@/components/layout/Navigation';
 import TeamPage from '@/components/sections/TeamPage';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
@@ -49,12 +50,15 @@ export default async function Page({ params }: Props) {
   };
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-screen flex flex-col overflow-hidden relative">
+      <GlobalBackgroundWrapper showFullWebsite={true} />
       <EnhancedSchema
         type="AboutPage"
         data={teamSchemaData}
       />
-      <Navigation />
+      <div className="sticky top-0 z-[100]">
+        <Navigation transparent={true} />
+      </div>
       <div className="flex-1 overflow-hidden">
         <TeamPage />
       </div>

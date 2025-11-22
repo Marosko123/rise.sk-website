@@ -7,15 +7,15 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import companyConfig from '@/config/company';
+import { SHAPE_CONFIG } from '@/hooks/useFloatingShapes';
+import GlobalBackground, { GlobalBackgroundRef } from './GlobalBackground';
 import LandingOverlay, { LandingOverlayRef } from './LandingOverlay';
 import LanguageSwitcher from './layout/LanguageSwitcher';
 
 // Dynamic imports for better performance
 const About = dynamic(() => import('./sections/About'));
-const FAQ = dynamic(() => import('./sections/FAQ'));
 const Footer = dynamic(() => import('./sections/Footer'));
 const Hero = dynamic(() => import('./sections/Hero'));
-const Hiring = dynamic(() => import('./sections/Hiring'));
 const MultiStepContactForm = dynamic(() => import('./features/MultiStepContactForm'));
 const Navigation = dynamic(() => import('./layout/Navigation'));
 const Portfolio = dynamic(() => import('./sections/Portfolio'));
@@ -38,7 +38,17 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   const scrollAccumulator = useRef(0);
   const scrollResetTimer = useRef<NodeJS.Timeout | null>(null);
   const landingOverlayRef = useRef<LandingOverlayRef>(null);
+  const globalBackgroundRef = useRef<GlobalBackgroundRef>(null);
   const requestRef = useRef<number | null>(null);
+  const [shapesState, setShapesState] = useState({ length: SHAPE_CONFIG.INITIAL_COUNT, isExploding: false, explosionStartTime: 0 });
+
+  const handleShapesStateChange = useCallback((length: number, isExploding: boolean, explosionStartTime?: number) => {
+    setShapesState({ length, isExploding, explosionStartTime: explosionStartTime || 0 });
+  }, []);
+
+  const handleLogoClick = useCallback(() => {
+    globalBackgroundRef.current?.handleLogoClick();
+  }, []);
 
   // Dynamic section mappings based on language
   const getSectionMappings = (lang: string) => {
@@ -49,8 +59,6 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         services: 'sluzby',
         portfolio: 'portfolio',
         reviews: 'recenzie',
-        faq: 'faq',
-        hiring: 'kariera',
         contact: 'kontakt'
       };
     } else {
@@ -60,8 +68,6 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         services: 'services',
         portfolio: 'portfolio',
         reviews: 'reviews',
-        faq: 'faq',
-        hiring: 'hiring',
         contact: 'contact'
       };
     }
@@ -214,7 +220,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
   if (!mounted) {
     return (
-      <div className='min-h-screen relative overflow-hidden bg-[#1a1a1a]'>
+      <div className='min-h-screen relative overflow-hidden bg-[#050505]'>
         {/* Background Logo - Matching Overlay */}
         <div className='absolute inset-0 flex items-center justify-center pointer-events-none'>
           <Image
@@ -239,7 +245,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
                 height={50}
                 className='select-none'
                 draggable={false}
-                style={{ filter: 'drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))' }}
+                style={{ filter: 'drop-shadow(0 0 10px rgba(218, 181, 73, 0.5))' }}
               />
             </div>
             <span className='text-2xl font-bold text-white select-none'>
@@ -263,30 +269,32 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
                 className='mx-auto select-none'
                 draggable={false}
                 style={{
-                  filter: 'drop-shadow(0 0 30px rgba(176, 145, 85, 0.4))'
+                  filter: 'drop-shadow(0 0 30px rgba(218, 181, 73, 0.4))'
                 }}
                 priority
               />
             </div>
 
             <div className='mb-12'>
-              <h1 className='text-4xl md:text-5xl font-bold text-white mb-4 select-none' style={{ textShadow: '0 0 30px rgba(176, 145, 85, 0.3)' }}>
-                {t('tagline.weAre')} <span className='text-primary'>{t('tagline.innovativeSolutions')}</span>
-              </h1>
-              <p className='text-xl text-white/80 font-light select-none'>
+              <div className='flex flex-col items-center mb-4 select-none'>
+                <h1 className='text-4xl sm:text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-[linear-gradient(to_right,#DAB549,#FEFBD8,#DAB549,#FEFBD8,#DAB549)] bg-[length:200%_auto] animate-text-shimmer drop-shadow-[0_0_30px_rgba(218,181,73,0.2)] pb-2 leading-tight'>
+                  {t('tagline.innovativeSolutions')}
+                </h1>
+              </div>
+              <p className='text-lg md:text-xl text-white/80 font-light select-none px-4'>
                 {t('description')}
               </p>
             </div>
 
             {/* Button - Absolute positioning at bottom to match Overlay */}
-            <div className='absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6'>
+            <div className='absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6 w-full px-6'>
               <button
-                className="group relative px-8 py-3 md:px-12 md:py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
+                className="group relative w-full max-w-[280px] md:w-auto md:max-w-none py-4 md:px-12 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
                 onClick={() => {
                   router.push('/vyvoj');
                 }}
               >
-                <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.15)]" />
+                <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(218,181,73,0.15)]" />
                 <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-full" />
 
                 <div className="absolute inset-0 rounded-full overflow-hidden">
@@ -299,7 +307,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
               </button>
 
               {/* Scroll Indicator Placeholder to match spacing */}
-              <div className="w-[24px] h-[40px] rounded-full border-2 border-primary/60 flex justify-center p-1.5 shadow-[0_0_15px_rgba(212,175,55,0.15)] opacity-80">
+              <div className="w-[24px] h-[40px] rounded-full border-2 border-primary/60 flex justify-center p-1.5 shadow-[0_0_15px_rgba(218,181,73,0.15)] opacity-80">
                 <div className="w-1 h-1.5 bg-primary rounded-full" />
               </div>
             </div>
@@ -317,7 +325,14 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] relative">
+    <div className="min-h-screen relative">
+      <GlobalBackground
+        ref={globalBackgroundRef}
+        mounted={mounted}
+        showFullWebsite={showFullWebsite}
+        onShapesStateChange={handleShapesStateChange}
+      />
+
       <div className={`sticky top-0 left-0 right-0 z-[100] transition-opacity duration-700 ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <Navigation transparent={true} hideLinks={!showFullWebsite} />
       </div>
@@ -328,7 +343,8 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         isTransitioning={isTransitioning}
         isScrolling={isScrolling}
         triggerTransition={triggerTransition}
-        mounted={mounted}
+        onLogoClick={handleLogoClick}
+        shapesState={shapesState}
       />
 
       <div className={`relative transition-all duration-1000 ease-in-out ${showFullWebsite ? 'opacity-100 blur-0' : 'opacity-0 blur-xl pointer-events-none'}`}>
@@ -353,19 +369,9 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
               <Reviews />
             </div>
 
-            <div id={sectionMap.faq}>
-              <FAQ />
-            </div>
-
-            <div id={sectionMap.hiring}>
-              <Hiring />
-            </div>
-
             {latestPosts}
 
-            <div id={sectionMap.contact}>
-              <MultiStepContactForm />
-            </div>
+            <MultiStepContactForm id={sectionMap.contact} />
 
             <Footer />
           </>

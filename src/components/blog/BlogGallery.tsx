@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
-import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { cn } from '@/utils/cn';
+import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
+import Image from 'next/image';
+import { useCallback, useEffect, useState } from 'react';
 
 interface BlogGalleryProps {
   images: string[];
@@ -57,6 +57,36 @@ export default function BlogGallery({ images, title }: BlogGalleryProps) {
     });
   }, [images.length, errorImages]);
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Reset touch end
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextImage();
+    }
+    if (isRightSwipe) {
+      prevImage();
+    }
+  };
+
   // Handle keyboard navigation
   useEffect(() => {
     if (!isOpen) return;
@@ -85,17 +115,17 @@ export default function BlogGallery({ images, title }: BlogGalleryProps) {
       )}>
         {images.map((image, index) => {
           if (errorImages[index]) return null;
-          
+
           return (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="relative aspect-video rounded-xl overflow-hidden border border-white/10 shadow-lg group cursor-pointer bg-secondary/50"
               onClick={() => openLightbox(index)}
             >
               {!loadedImages[index] && !errorImages[index] && (
                 <div className="absolute inset-0 animate-pulse bg-white/5" />
               )}
-              
+
               <Image
                 src={image}
                 alt={`${title} - Gallery Image ${index + 1}`}
@@ -108,8 +138,9 @@ export default function BlogGallery({ images, title }: BlogGalleryProps) {
                 quality={80}
                 onLoad={() => setLoadedImages(prev => ({ ...prev, [index]: true }))}
                 onError={() => setErrorImages(prev => ({ ...prev, [index]: true }))}
+                priority={index < 2}
               />
-              
+
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                 <ZoomIn className="w-8 h-8 text-white drop-shadow-lg transform scale-75 group-hover:scale-100 transition-transform" />
@@ -121,14 +152,17 @@ export default function BlogGallery({ images, title }: BlogGalleryProps) {
 
       {/* Lightbox Modal */}
       {isOpen && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 touch-none"
           onClick={closeLightbox}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           {/* Close Button */}
-          <button 
+          <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-50"
+            className="absolute top-4 right-4 p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-[210]"
             aria-label="Close gallery"
           >
             <X className="w-8 h-8" />
@@ -137,16 +171,16 @@ export default function BlogGallery({ images, title }: BlogGalleryProps) {
           {/* Navigation Buttons */}
           {images.length > 1 && (
             <>
-              <button 
+              <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-50 hidden md:block"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-2 md:p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-[210]"
                 aria-label="Previous image"
               >
                 <ChevronLeft className="w-8 h-8" />
               </button>
-              <button 
+              <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-50 hidden md:block"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-2 md:p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-[210]"
                 aria-label="Next image"
               >
                 <ChevronRight className="w-8 h-8" />
@@ -155,7 +189,7 @@ export default function BlogGallery({ images, title }: BlogGalleryProps) {
           )}
 
           {/* Main Image */}
-          <div 
+          <div
             className="relative w-full h-full max-w-7xl max-h-[90vh] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
@@ -170,7 +204,7 @@ export default function BlogGallery({ images, title }: BlogGalleryProps) {
                 priority
               />
             </div>
-            
+
             {/* Image Counter */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/50 backdrop-blur-md rounded-full text-white text-sm font-medium">
               {currentIndex + 1} / {images.length}

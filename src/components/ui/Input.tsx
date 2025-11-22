@@ -10,9 +10,9 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const inputVariants = {
-  default: 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-[#b09155] focus:border-transparent',
-  filled: 'bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:ring-[#b09155] focus:border-[#b09155]',
-  glass: 'bg-white/5 backdrop-blur-sm border-white/10 text-white placeholder-gray-300 focus:ring-[#b09155]/50 focus:border-[#b09155]/50'
+  default: 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-[#DAB549] focus:border-transparent',
+  filled: 'bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:ring-[#DAB549] focus:border-[#DAB549]',
+  glass: 'bg-white/5 backdrop-blur-sm border-white/10 text-white placeholder-gray-300 focus:ring-[#DAB549]/50 focus:border-[#DAB549]/50'
 };
 
 const sizeVariants = {

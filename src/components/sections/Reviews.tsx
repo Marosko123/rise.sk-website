@@ -19,9 +19,12 @@ interface Review {
   tags: string[];
 }
 
-export default function Reviews() {
+interface ReviewsProps {
+  className?: string;
+}
+
+export default function Reviews({ className }: ReviewsProps) {
   const t = useTranslations('reviews');
-  const portfolioT = useTranslations('portfolio'); // Add portfolio translations for CTA
   const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -84,11 +87,9 @@ export default function Reviews() {
   return (
     <Section
       id="reviews"
-      className="bg-gradient-to-b from-slate-900/50 via-slate-800/30 to-slate-900/50 relative py-24"
+      background="transparent"
+      className={`relative py-24 ${className || ''}`}
     >
-      {/* Distinct background for Reviews */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary-dark/20" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header - Simplified for performance */}
         <div className="text-center mb-20">
@@ -205,44 +206,10 @@ export default function Reviews() {
           )}
         </div>
 
-        {/* CTA Section - Moved from Portfolio */}
-        <div className="text-center mt-20">
-          <div className="glass-effect rounded-3xl p-12 relative overflow-hidden">
-            <div className="relative z-10">
-              <h3 className="text-3xl font-bold mb-4 gradient-text-animated">
-                {portfolioT('cta.title')}
-              </h3>
-              <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
-                {portfolioT('cta.description')}
-              </p>
-              <div className="flex justify-center">
-                <button
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }}
-                  className="bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-8 py-4 rounded-full text-lg font-semibold text-white shadow-2xl transition-colors duration-300"
-                >
-                  {portfolioT('cta.startProject')}
-                </button>
-              </div>
-            </div>
-
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="h-full w-full" style={{
-                backgroundImage: `radial-gradient(circle at 25% 25%, var(--primary) 1px, transparent 1px), radial-gradient(circle at 75% 75%, var(--primary) 1px, transparent 1px)`,
-                backgroundSize: '50px 50px'
-              }} />
-            </div>
-          </div>
-        </div>
+        {/* CTA Section - Removed redundant CTA */}
       </div>
 
       {/* Bottom border for visual separation */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--primary)]/30 to-transparent"></div>
     </Section>
   );
 }

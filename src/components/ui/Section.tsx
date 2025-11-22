@@ -1,13 +1,14 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { cn } from '@/utils/cn';
+import { forwardRef, ReactNode } from 'react';
 
 export interface SectionProps {
   children: ReactNode;
   id?: string;
   className?: string;
   background?: 'default' | 'gradient' | 'dark' | 'transparent';
-  padding?: 'sm' | 'md' | 'lg' | 'xl';
+  padding?: 'sm' | 'md' | 'lg' | 'xl' | 'none';
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '7xl' | 'full';
 }
 
@@ -22,7 +23,8 @@ const paddingVariants = {
   sm: 'py-12',
   md: 'py-16',
   lg: 'py-20',
-  xl: 'py-24'
+  xl: 'py-24',
+  none: 'py-0'
 };
 
 const maxWidthVariants = {
@@ -35,7 +37,7 @@ const maxWidthVariants = {
   full: 'max-w-full'
 };
 
-export const Section: React.FC<SectionProps> = ({
+export const Section = forwardRef<HTMLElement, SectionProps>(({
   children,
   id,
   className = '',
@@ -43,17 +45,21 @@ export const Section: React.FC<SectionProps> = ({
   padding = 'lg',
   maxWidth = '7xl',
   ...props
-}) => {
-  const baseClasses = `
-    relative overflow-hidden
-    ${backgroundVariants[background]} ${paddingVariants[padding]} ${className}
-  `.trim().replace(/\s+/g, ' ');
+}, ref) => {
+  const baseClasses = cn(
+    'relative overflow-hidden',
+    backgroundVariants[background],
+    paddingVariants[padding],
+    className
+  );
 
   return (
-    <section id={id} className={baseClasses} {...props}>
+    <section id={id} ref={ref} className={baseClasses} {...props}>
       <div className={`mx-auto px-6 lg:px-8 ${maxWidthVariants[maxWidth]}`}>
         {children}
       </div>
     </section>
   );
-};
+});
+
+Section.displayName = 'Section';

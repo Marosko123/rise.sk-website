@@ -33,10 +33,3 @@ export const scaleOnHover = {
   whileTap: { scale: 0.95 },
   transition: { type: "spring", stiffness: 300, damping: 20 }
 };
-
-export const slideUpOnScroll = {
-  initial: { opacity: 0, y: 50 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.8 }
-};

@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 
+import MultiStepContactForm from '@/components/features/MultiStepContactForm';
+import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
+import Navigation from '@/components/layout/Navigation';
+import Footer from '@/components/sections/Footer';
 import Portfolio from '@/components/sections/Portfolio';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
@@ -28,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       locale: localeCode,
       images: [
         {
-          url: '/rise/bronze/Rise_logo_circle.png',
+          url: '/rise/gradient/Rise_logo_circle.png',
           width: 1200,
           height: 630,
           alt: `Rise.sk - ${t('meta.title')}`,
@@ -40,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: 'summary_large_image',
       title: t('meta.title'),
       description: t('meta.description'),
-      images: ['/rise/bronze/Rise_logo_circle.png'],
+      images: ['/rise/gradient/Rise_logo_circle.png'],
     },
     alternates: {
       canonical: canonicalUrl,
@@ -76,7 +80,11 @@ export default async function PortfolioPage({
   ];
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen relative">
+      <GlobalBackgroundWrapper showFullWebsite={true} />
+      <div className="sticky top-0 z-[100]">
+        <Navigation />
+      </div>
       <BreadcrumbSchema items={breadcrumbs} page="portfolio" />
       <EnhancedSchema
         type="CollectionPage"
@@ -88,6 +96,8 @@ export default async function PortfolioPage({
         }}
       />
       <Portfolio />
+      <MultiStepContactForm />
+      <Footer />
     </div>
   );
 }

@@ -1,15 +1,16 @@
 'use client';
 
+import FadeIn from '@/components/animations/FadeIn';
 import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import {
-  Bot,
-  Briefcase,
-  Code,
-  Mail,
-  Megaphone,
-  Palette,
-  Users,
+    Bot,
+    Briefcase,
+    Code,
+    Mail,
+    Megaphone,
+    Palette,
+    Users,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -63,19 +64,13 @@ export default function Hiring() {
     <Section
       id="hiring"
       padding="sm"
-      className="bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] relative overflow-hidden"
+      background="transparent"
+      className="relative overflow-hidden"
     >
-      {/* Simplified Background Effects */}
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(96,165,250,0.08),transparent_60%)]' />
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(168,85,247,0.08),transparent_60%)]' />
-
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-5%" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+        <FadeIn
+          duration={0.8}
           className='text-center mb-12'
         >
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
@@ -88,14 +83,12 @@ export default function Hiring() {
           <p className='text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto'>
             {t('subtitle')}
           </p>
-        </motion.div>
+        </FadeIn>
 
         {/* Open Positions */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-5%" }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+        <FadeIn
+          delay={0.1}
+          duration={0.7}
           className='mb-12'
         >
           <h3 className='text-2xl font-bold text-white mb-6 text-center'>
@@ -104,16 +97,10 @@ export default function Hiring() {
 
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {positions.map((position, index) => (
-              <motion.div
+              <FadeIn
                 key={position.key}
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-5%" }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  delay: index * 0.08
-                }}
+                delay={index * 0.08}
+                duration={0.5}
               >
                 <Card className={`h-full bg-gradient-to-br ${position.bgGradient} border-white/10 backdrop-blur-sm hover:border-white/20 transition-all duration-300 ease-out group`}>
                   <div className='flex items-center mb-4'>
@@ -147,17 +134,15 @@ export default function Hiring() {
                     </div>
                   </div>
                 </Card>
-              </motion.div>
+              </FadeIn>
             ))}
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* Why Join Us */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-5%" }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+        <FadeIn
+          delay={0.2}
+          duration={0.7}
           className='mb-12'
         >
           <h3 className='text-2xl font-bold text-white mb-6 text-center'>
@@ -166,16 +151,10 @@ export default function Hiring() {
 
           <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
             {perks.map((perk, index) => (
-              <motion.div
+              <FadeIn
                 key={perk.key}
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-5%" }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  delay: index * 0.08
-                }}
+                delay={index * 0.08}
+                duration={0.5}
               >
                 <Card className='h-full bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 ease-out group text-center'>
                   <div className='w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ease-out mx-auto mb-4'>
@@ -190,17 +169,15 @@ export default function Hiring() {
                     {t(`whyJoinUs.perks.${perk.key}.description`)}
                   </p>
                 </Card>
-              </motion.div>
+              </FadeIn>
             ))}
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-5%" }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+        <FadeIn
+          delay={0.3}
+          duration={0.7}
           className='text-center'
         >
           <h3 className='text-2xl font-bold text-white mb-6'>
@@ -214,94 +191,88 @@ export default function Hiring() {
           {/* Three Action Buttons */}
           <div className='grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto'>
             {/* Fill Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ scale: 1.03, y: -2 }}
-              viewport={{ once: true, margin: "-5%" }}
-              transition={{
-                duration: 0.4,
-                ease: [0.25, 0.46, 0.45, 0.94],
-                delay: 0.1
-              }}
+            <FadeIn
+              delay={0.1}
+              duration={0.4}
               className="h-full"
             >
-              <Card className='h-full bg-gradient-to-br from-primary/20 to-primary-dark/20 border-primary/30 backdrop-blur-sm hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
-                    onClick={() => window.open('https://forms.gle/ZmZnHoHr5PmewG8a8', '_blank')}>
-                <div className='w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>
-                  <Image src="/file.svg" alt="Form" width={24} height={24} className="w-6 h-6" />
-                </div>
-                <h4 className='text-white font-bold mb-2'>
-                  {t('cta.actions.fillForm.title')}
-                </h4>
-                <p className='text-gray-300 text-sm flex-grow'>
-                  {t('cta.actions.fillForm.description')}
-                </p>
-              </Card>
-            </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.03, y: -2 }}
+                className="h-full"
+              >
+                <Card className='h-full bg-gradient-to-br from-primary/20 to-primary-dark/20 border-primary/30 backdrop-blur-sm hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
+                      onClick={() => window.open('https://forms.gle/ZmZnHoHr5PmewG8a8', '_blank')}>
+                  <div className='w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>
+                    <Image src="/file.svg" alt="Form" width={24} height={24} className="w-6 h-6" />
+                  </div>
+                  <h4 className='text-white font-bold mb-2'>
+                    {t('cta.actions.fillForm.title')}
+                  </h4>
+                  <p className='text-gray-300 text-sm flex-grow'>
+                    {t('cta.actions.fillForm.description')}
+                  </p>
+                </Card>
+              </motion.div>
+            </FadeIn>
 
             {/* Join Discord */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ scale: 1.03, y: -2 }}
-              viewport={{ once: true, margin: "-5%" }}
-              transition={{
-                duration: 0.4,
-                ease: [0.25, 0.46, 0.45, 0.94],
-                delay: 0.15
-              }}
+            <FadeIn
+              delay={0.15}
+              duration={0.4}
               className="h-full"
             >
-              <Card className='h-full bg-gradient-to-br from-blue-500/20 to-indigo-600/20 border-blue-500/30 backdrop-blur-sm hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
-                    onClick={() => window.open('https://discord.gg/6fC74Z4g', '_blank')}>
-                <div className='w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>
-                  <Image src="/discord.png" alt="Discord" width={24} height={24} className="w-6 h-6" />
-                </div>
-                <h4 className='text-white font-bold mb-2'>
-                  {t('cta.actions.discord.title')}
-                </h4>
-                <p className='text-gray-300 text-sm flex-grow'>
-                  {t('cta.actions.discord.description')}
-                </p>
-              </Card>
-            </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.03, y: -2 }}
+                className="h-full"
+              >
+                <Card className='h-full bg-gradient-to-br from-blue-500/20 to-indigo-600/20 border-blue-500/30 backdrop-blur-sm hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
+                      onClick={() => window.open('https://discord.gg/6fC74Z4g', '_blank')}>
+                  <div className='w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>
+                    <Image src="/discord.png" alt="Discord" width={24} height={24} className="w-6 h-6" />
+                  </div>
+                  <h4 className='text-white font-bold mb-2'>
+                    {t('cta.actions.discord.title')}
+                  </h4>
+                  <p className='text-gray-300 text-sm flex-grow'>
+                    {t('cta.actions.discord.description')}
+                  </p>
+                </Card>
+              </motion.div>
+            </FadeIn>
 
             {/* Contact Us */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ scale: 1.03, y: -2 }}
-              viewport={{ once: true, margin: "-5%" }}
-              transition={{
-                duration: 0.4,
-                ease: [0.25, 0.46, 0.45, 0.94],
-                delay: 0.2
-              }}
+            <FadeIn
+              delay={0.2}
+              duration={0.4}
               className="h-full"
             >
-              <Card className='h-full bg-gradient-to-br from-green-500/20 to-emerald-600/20 border-green-500/30 backdrop-blur-sm hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
-                    onClick={() => {
-                      const contactSection = document.getElementById('contact');
-                      contactSection?.scrollIntoView({ behavior: 'smooth' });
-                    }}>
-                <div className='w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>
-                  <Mail className='w-6 h-6 text-white' />
-                </div>
-                <h4 className='text-white font-bold mb-2'>
-                  {t('cta.actions.contact.title')}
-                </h4>
-                <p className='text-gray-300 text-sm flex-grow'>
-                  {t('cta.actions.contact.description')}
-                </p>
-              </Card>
-            </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.03, y: -2 }}
+                className="h-full"
+              >
+                <Card className='h-full bg-gradient-to-br from-green-500/20 to-emerald-600/20 border-green-500/30 backdrop-blur-sm hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
+                      onClick={() => {
+                        const contactSection = document.getElementById('contact');
+                        contactSection?.scrollIntoView({ behavior: 'smooth' });
+                      }}>
+                  <div className='w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>
+                    <Mail className='w-6 h-6 text-white' />
+                  </div>
+                  <h4 className='text-white font-bold mb-2'>
+                    {t('cta.actions.contact.title')}
+                  </h4>
+                  <p className='text-gray-300 text-sm flex-grow'>
+                    {t('cta.actions.contact.description')}
+                  </p>
+                </Card>
+              </motion.div>
+            </FadeIn>
           </div>
 
           <p className='text-gray-400 text-sm mt-6 italic'>
             {t('cta.note')}
           </p>
-        </motion.div>
+        </FadeIn>
       </div>
     </Section>
   );

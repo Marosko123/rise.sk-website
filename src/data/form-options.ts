@@ -6,8 +6,6 @@ export const getFormOptions = (t: (key: string) => string) => ({
     t('services.ecommerce'),
     t('services.ai'),
     t('services.outsourcing'),
-    t('services.specialRequests'),
-    t('services.jobApplication'),
     t('services.other'),
   ],
   budgetRanges: [
@@ -26,10 +24,13 @@ export const getFormOptions = (t: (key: string) => string) => ({
     t('multistep.timelineOptions.flexible'),
   ],
   projectTypes: [
-    t('multistep.projectTypes.newProject'),
-    t('multistep.projectTypes.existingUpdate'),
+    t('multistep.projectTypes.mvp'),
+    t('multistep.projectTypes.fullDevelopment'),
+    t('multistep.projectTypes.redesign'),
+    t('multistep.projectTypes.teamAugmentation'),
+    t('multistep.projectTypes.audit'),
     t('multistep.projectTypes.maintenance'),
     t('multistep.projectTypes.consultation'),
-    t('multistep.projectTypes.partnership'),
+    t('multistep.projectTypes.other'),
   ],
 });

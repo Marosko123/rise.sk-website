@@ -1,16 +1,18 @@
-import { getAllTags, getArchiveDates, getFilteredPosts } from '@/utils/blog-server';
-import { getTranslations } from 'next-intl/server';
-import { Metadata } from 'next';
+import BlogCard from '@/components/blog/BlogCard';
+import BlogFilters from '@/components/blog/BlogFilters';
+import MultiStepContactForm from '@/components/features/MultiStepContactForm';
+import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
-import BlogFilters from '@/components/blog/BlogFilters';
-import BlogCard from '@/components/blog/BlogCard';
 import Pagination from '@/components/ui/Pagination';
+import { getAllTags, getArchiveDates, getFilteredPosts } from '@/utils/blog-server';
+import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
-  
+
   return {
     title: t('title'),
     description: t('description') || 'Blog about IT, software development and digital technologies.',
@@ -24,16 +26,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function BlogIndex({ 
+export default async function BlogIndex({
   params,
-  searchParams 
-}: { 
+  searchParams
+}: {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { locale } = await params;
   const resolvedSearchParams = await searchParams;
-  
+
   const search = typeof resolvedSearchParams.search === 'string' ? resolvedSearchParams.search : undefined;
   const tag = typeof resolvedSearchParams.tag === 'string' ? resolvedSearchParams.tag : undefined;
   const date = typeof resolvedSearchParams.date === 'string' ? resolvedSearchParams.date : undefined;
@@ -45,12 +47,15 @@ export default async function BlogIndex({
   const t = await getTranslations({ locale, namespace: 'blog' });
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
+    <main className="min-h-screen relative">
+      <GlobalBackgroundWrapper showFullWebsite={true} />
+      <div className="sticky top-0 z-[100]">
+        <Navigation />
+      </div>
       {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-b from-secondary/30 to-background pt-32 pb-12 border-b border-white/5 mb-12">
+      <div className="relative w-full pt-32 pb-12 border-b border-white/5 mb-12">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/60 pb-2">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-transparent bg-clip-text bg-[linear-gradient(to_right,#DAB549,#FEFBD8,#DAB549,#FEFBD8,#DAB549)] bg-[length:200%_auto] animate-text-shimmer drop-shadow-[0_0_30px_rgba(218,181,73,0.2)] pb-2">
             {t('title')}
           </h1>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
@@ -74,19 +79,19 @@ export default async function BlogIndex({
               <>
                 <div className="grid gap-8 md:grid-cols-2">
                   {posts.map((post, index) => (
-                    <BlogCard 
-                      key={post.slug} 
-                      post={post} 
-                      locale={locale} 
+                    <BlogCard
+                      key={post.slug}
+                      post={post}
+                      locale={locale}
                       priority={index < 4}
                     />
                   ))}
                 </div>
-                
-                <Pagination 
-                  totalPages={totalPages} 
-                  currentPage={page} 
-                  baseUrl={`/${locale}/blog`} 
+
+                <Pagination
+                  totalPages={totalPages}
+                  currentPage={page}
+                  baseUrl={`/${locale}/blog`}
                 />
               </>
             ) : (
@@ -94,8 +99,8 @@ export default async function BlogIndex({
                 <div className="text-6xl mb-4">📭</div>
                 <h3 className="text-xl font-bold text-white mb-2">{t('noPosts')}</h3>
                 <p className="text-gray-400">
-                  {search || tag || date 
-                    ? 'Try adjusting your filters.' 
+                  {search || tag || date
+                    ? 'Try adjusting your filters.'
                     : 'Check back later for new updates.'}
                 </p>
               </div>
@@ -103,6 +108,7 @@ export default async function BlogIndex({
           </div>
         </div>
       </div>
+      <MultiStepContactForm />
       <Footer />
     </main>
   );

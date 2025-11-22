@@ -110,7 +110,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
     title: 'Rise.sk',
     descriptionKey: 'riseWeb',
     category: 'corporate',
-    image: '/rise/bronze/Rise_logo_transparent.png',
+    image: '/rise/gradient/Rise_logo.svg',
     tags: ['Next.js', 'Website', 'IT Company'],
     liveUrl: 'https://www.rise.sk',
     githubUrl: null,

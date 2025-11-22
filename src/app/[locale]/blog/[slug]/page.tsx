@@ -1,12 +1,10 @@
-import ProgressBar from '@/components/blog/ProgressBar';
 import ShareButtons from '@/components/blog/ShareButtons';
 import TableOfContents from '@/components/blog/TableOfContents';
+import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
-import EnhancedSchema from '@/components/seo/EnhancedSchema';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
-import { companyConfig } from '@/config/company';
-import { formatDate, getAdjacentPosts, getPostData, getRelatedPosts, getTranslatedSlug } from '@/utils/blog-server';
+import { formatDate, getPostData, getRelatedPosts, getTranslatedSlug } from '@/utils/blog-server';
 import { cn } from '@/utils/cn';
 import { slugify } from '@/utils/slugify';
 import { ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
@@ -19,7 +17,6 @@ import { notFound } from 'next/navigation';
 import { ReactNode } from 'react';
 
 import BlogGallery from '@/components/blog/BlogGallery';
-import BlogNavigation from '@/components/blog/BlogNavigation';
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -85,7 +82,6 @@ export default async function BlogPost({ params }: Props) {
   const { locale, slug } = await params;
   const post = getPostData(slug, locale);
   const relatedPosts = getRelatedPosts(slug, locale);
-  const adjacentPosts = getAdjacentPosts(slug, locale);
   const t = await getTranslations({ locale, namespace: 'blog' });
 
   if (!post) notFound();
@@ -102,53 +98,25 @@ export default async function BlogPost({ params }: Props) {
     if (enSlug) alternateLinks['en'] = `/blog/${enSlug}`;
   }
 
-  const baseUrl = companyConfig.website.url;
-  const postUrl = `${baseUrl}/${locale}/blog/${slug}`;
-
   return (
-    <main className="min-h-screen bg-background">
-      <ProgressBar />
-      <Navigation alternateLinks={alternateLinks} />
-      <BlogNavigation
-        previousPost={adjacentPosts.previous}
-        nextPost={adjacentPosts.next}
-        locale={locale}
-      />
-      <EnhancedSchema
-        type="Article"
-        data={{
-          headline: post.seo?.title || post.title,
-          description: post.seo?.description || post.excerpt,
-          datePublished: post.date,
-          dateModified: post.date,
-          url: postUrl,
-          image: [
-            ...(post.coverImage ? [`${baseUrl}${post.coverImage}`] : []),
-            ...(post.galleryImages?.map(img => `${baseUrl}${img}`) || [])
-          ],
-          author: post.author ? {
-            '@type': 'Person',
-            name: post.author.name,
-            image: post.author.avatar ? `${baseUrl}${post.author.avatar}` : undefined,
-            jobTitle: post.author.role,
-            description: post.author.bio,
-            url: `${baseUrl}/${locale}/blog/author/${post.author.slug}`
-          } : undefined
-        }}
-      />
+    <main className="min-h-screen relative">
+      <GlobalBackgroundWrapper showFullWebsite={true} />
+      <div className="sticky top-0 z-[100]">
+        <Navigation />
+      </div>
 
       {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-b from-secondary/30 to-background pt-24 pb-8 border-b border-white/5">
-        <div className="container mx-auto px-4 max-w-4xl">
-          {/* Breadcrumbs */}
-          <div className="mb-8">
-            <Breadcrumbs
-              items={[
-                { name: t('title'), url: `/${locale}/blog` },
-                { name: post.title, url: `/${locale}/blog/${slug}` }
-              ]}
-            />
-          </div>
+      <div className="relative w-full pt-32 pb-12 border-b border-white/5 mb-12">
+        <div className="absolute left-4 top-12 md:left-8 z-10">
+          <Breadcrumbs
+            items={[
+              { name: t('title'), url: `/${locale}/blog` },
+              { name: post.title, url: `/${locale}/blog/${slug}` }
+            ]}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 max-w-4xl text-center">
 
           {/* Tags */}
           {post.tags && post.tags.length > 0 && (

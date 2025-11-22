@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Facebook, Github, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
@@ -10,10 +10,12 @@ interface TeamMemberProps {
   name: string;
   role: string;
   image: string;
-  socials: {
+  socials?: {
     linkedin?: string;
     github?: string;
     twitter?: string;
+    instagram?: string;
+    facebook?: string;
   };
   index: number;
 }
@@ -41,19 +43,29 @@ export const TeamMemberCard = ({ id, name, role, image, socials, index }: TeamMe
             {t(`${id}.bio`)}
           </p>
           <div className="flex gap-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-200">
-            {socials.linkedin && (
+            {socials?.linkedin && (
               <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-400 transition-colors">
                 <Linkedin size={24} />
               </a>
             )}
-            {socials.github && (
+            {socials?.github && (
               <a href={socials.github} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-400 transition-colors">
                 <Github size={24} />
               </a>
             )}
-            {socials.twitter && (
+            {socials?.twitter && (
               <a href={socials.twitter} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-400 transition-colors">
                 <Twitter size={24} />
+              </a>
+            )}
+            {socials?.instagram && (
+              <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-400 transition-colors">
+                <Instagram size={24} />
+              </a>
+            )}
+            {socials?.facebook && (
+              <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-400 transition-colors">
+                <Facebook size={24} />
               </a>
             )}
           </div>

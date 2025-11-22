@@ -42,10 +42,10 @@ export default function AnimatedLogo({ className = '', onClick }: AnimatedLogoPr
           className='transition-all duration-300 hover:scale-110 cursor-pointer select-none'
           style={mounted ? {
             transform: `rotate(${Math.sin(animationTime * 0.001) * 5}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.07})`,
-            filter: `drop-shadow(0 0 10px rgba(176, 145, 85, ${0.5 + Math.sin(animationTime * 0.002) * 0.1})) hue-rotate(${Math.sin(animationTime * 0.0008) * 10}deg)`,
+            filter: `drop-shadow(0 0 10px rgba(218, 181, 73, ${0.5 + Math.sin(animationTime * 0.002) * 0.1})) hue-rotate(${Math.sin(animationTime * 0.0008) * 10}deg)`,
           } : {
             transform: 'rotate(0deg) scale(1)',
-            filter: 'drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))',
+            filter: 'drop-shadow(0 0 10px rgba(218, 181, 73, 0.5))',
           }}
           onMouseEnter={(e) => {
             if (mounted) {
@@ -85,16 +85,16 @@ export default function AnimatedLogo({ className = '', onClick }: AnimatedLogoPr
         <span
           className='text-2xl font-bold text-white cursor-pointer inline-block transition-all duration-300 hover:scale-105 select-none'
           style={mounted ? {
-            textShadow: `0 0 15px rgba(176, 145, 85, 0.4)`,
+            textShadow: `0 0 15px rgba(218, 181, 73, 0.4)`,
           } : {}}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = '#B09155';
-            e.currentTarget.style.textShadow = '0 0 25px rgba(176, 145, 85, 0.8)';
+            e.currentTarget.style.color = '#DAB549';
+            e.currentTarget.style.textShadow = '0 0 25px rgba(218, 181, 73, 0.8)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.color = 'white';
             if (mounted) {
-              e.currentTarget.style.textShadow = `0 0 15px rgba(176, 145, 85, 0.4)`;
+              e.currentTarget.style.textShadow = `0 0 15px rgba(218, 181, 73, 0.4)`;
             }
           }}
           onClick={onClick}
@@ -109,7 +109,7 @@ export default function AnimatedLogo({ className = '', onClick }: AnimatedLogoPr
               } : {}}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-3px) scale(1.2)';
-                e.currentTarget.style.color = '#B09155';
+                e.currentTarget.style.color = '#DAB549';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = '';

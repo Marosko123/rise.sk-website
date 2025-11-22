@@ -4,8 +4,8 @@ import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
-import FAQAccordion from '../ui/FAQAccordion';
 import EnhancedSchema from '../seo/EnhancedSchema';
+import FAQAccordion from '../ui/FAQAccordion';
 
 interface FAQItem {
   question: string;
@@ -105,7 +105,7 @@ const FAQ = () => {
   const hasMoreFAQs = filteredFAQ.length > PREVIEW_COUNT;
 
   return (
-    <section className="py-12 bg-gradient-to-b from-slate-800/30 to-slate-900/50">
+    <section className="py-12 bg-transparent">
       <EnhancedSchema type="FAQPage" data={{ faqs: faqData }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

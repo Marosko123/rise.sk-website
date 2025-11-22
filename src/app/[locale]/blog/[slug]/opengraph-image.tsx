@@ -78,7 +78,7 @@ export default async function Image({ params }: Props) {
             }}
           />
           <div style={{ 
-            color: '#b09155', 
+            color: '#DAB549', 
             fontSize: 24, 
             fontWeight: 600,
             textTransform: 'uppercase',
@@ -97,9 +97,9 @@ export default async function Image({ params }: Props) {
                 <div
                   key={tag}
                   style={{
-                    backgroundColor: 'rgba(176, 145, 85, 0.1)',
-                    border: '1px solid rgba(176, 145, 85, 0.3)',
-                    color: '#b09155',
+                    backgroundColor: 'rgba(218, 181, 73, 0.1)',
+                    border: '1px solid rgba(218, 181, 73, 0.3)',
+                    color: '#DAB549',
                     padding: '8px 16px',
                     borderRadius: '20px',
                     fontSize: 18,
@@ -155,7 +155,7 @@ export default async function Image({ params }: Props) {
               width: '48px',
               height: '48px',
               borderRadius: '50%',
-              backgroundColor: '#b09155',
+              backgroundColor: '#DAB549',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -175,7 +175,7 @@ export default async function Image({ params }: Props) {
             </div>
           </div>
 
-          <div style={{ color: '#b09155', fontSize: 20, fontWeight: 600 }}>
+          <div style={{ color: '#DAB549', fontSize: 20, fontWeight: 600 }}>
             rise.sk
           </div>
         </div>

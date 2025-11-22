@@ -1,9 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+
+import FadeIn from '@/components/animations/FadeIn';
 
 interface TeamMemberProps {
   id: string;
@@ -23,11 +24,9 @@ export default function TeamCard({ id, name, role, image, socials, index }: Team
   const t = useTranslations('team.members');
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+    <FadeIn
+      delay={index * 0.1}
+      duration={0.5}
       className="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800"
     >
       <div className="aspect-[4/5] relative overflow-hidden">
@@ -70,6 +69,6 @@ export default function TeamCard({ id, name, role, image, socials, index }: Team
           {t(`${id}.bio`)}
         </p>
       </div>
-    </motion.div>
+    </FadeIn>
   );
 }

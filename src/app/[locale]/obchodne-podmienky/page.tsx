@@ -54,7 +54,7 @@ export default async function ObchodnePodmienky({
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">
                 2. Kontaktné údaje poskytovateľa
               </h2>
-              <div className="bg-bronze-50 p-4 rounded-lg text-gray-800">
+              <div className="bg-primary/10 p-4 rounded-lg text-gray-800">
                 <p><strong>Názov:</strong> Rise.sk s.r.o.</p>
                 <p><strong>Sídlo:</strong> Bratislava, Slovenská republika</p>
                 <p><strong>IČO:</strong> 56 911 157</p>
@@ -274,7 +274,7 @@ export default async function ObchodnePodmienky({
               href="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-bronze-600 hover:text-bronze-700 font-medium"
+              className="inline-flex items-center text-primary-dark hover:text-primary-darker font-medium"
             >
               ← Späť na hlavnú stránku
             </Link>

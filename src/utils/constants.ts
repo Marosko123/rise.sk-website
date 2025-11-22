@@ -1,9 +1,9 @@
 // Brand colors
 export const COLORS = {
-  primary: '#b09155',
-  primaryDark: '#9a7f4b',
-  primaryLight: '#d4af37',
-  accent: '#b8860b',
+  primary: '#DAB549',
+  primaryDark: '#8B6723',
+  primaryLight: '#FEFBD8',
+  accent: '#DAB549',
   
   // Neutrals
   white: '#ffffff',

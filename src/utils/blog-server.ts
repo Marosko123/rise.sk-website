@@ -1,7 +1,7 @@
 import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
-import { Author, BlogPost, BlogFilters } from './blog';
+import path from 'path';
+import { Author, BlogFilters, BlogPost } from './blog';
 
 export * from './blog';
 
@@ -40,18 +40,18 @@ export function getAuthor(slug: string, locale: string = 'en'): Author {
 // Helper to resolve tag slugs to names
 function getTagNames(slugs: string[], locale: string): string[] {
   if (!Array.isArray(slugs)) return [];
-  
+
   return slugs.map(slug => {
     try {
       const fullPath = path.join(tagsDirectory, `${slug}.json`);
       if (fs.existsSync(fullPath)) {
         const fileContents = fs.readFileSync(fullPath, 'utf8');
         const data = JSON.parse(fileContents);
-        
-        // If we have a localized slug, we should probably use it for URLs, 
+
+        // If we have a localized slug, we should probably use it for URLs,
         // but this function returns NAMES for display.
         // The filtering logic currently relies on NAMES.
-        
+
         return locale === 'sk' ? (data.name_sk || data.name_en || slug) : (data.name_en || slug);
       }
     } catch {
@@ -70,7 +70,7 @@ export function getSortedPostsData(locale: string): BlogPost[] {
     .map(directorySlug => {
       // New structure: src/content/blog/[slug]/index.mdx
       const fullPath = path.join(postsDirectory, directorySlug, 'index.mdx');
-      
+
       // Fallback for legacy structure (optional, but good for transition)
       if (!fs.existsSync(fullPath)) {
         // Try legacy path
@@ -143,10 +143,10 @@ export function getPostData(slug: string, locale: string): BlogPost | null {
   // Since slug might be slug_sk or directorySlug, we can't just look up by path.
   // We reuse getSortedPostsData which already handles the slug resolution.
   // This is slightly less efficient than direct lookup but ensures consistency and handles the reverse lookup.
-  
+
   const allPosts = getSortedPostsData(locale);
   const post = allPosts.find(p => p.slug === slug);
-  
+
   return post || null;
 }
 
@@ -230,7 +230,7 @@ export function getArchiveDates(locale: string): { date: string; label: string; 
 }
 
 export function getFilteredPosts(
-  locale: string, 
+  locale: string,
   filters: BlogFilters,
   page: number = 1,
   limit: number = 6
@@ -239,10 +239,10 @@ export function getFilteredPosts(
 
   if (filters.search) {
     const searchLower = filters.search.toLowerCase();
-    posts = posts.filter(post => 
-      post.title.toLowerCase().includes(searchLower) || 
-      post.excerpt.toLowerCase().includes(searchLower) ||
-      post.tags?.some(tag => tag.toLowerCase().includes(searchLower))
+    posts = posts.filter(post =>
+      post.title?.toLowerCase().includes(searchLower) ||
+      post.excerpt?.toLowerCase().includes(searchLower) ||
+      post.tags?.some(tag => tag?.toLowerCase().includes(searchLower))
     );
   }
 
@@ -260,7 +260,7 @@ export function getFilteredPosts(
     const currentMonthStart = new Date(year, month - 1, 1);
     // Next month start (to define end of current month)
     const nextMonthStart = new Date(year, month, 1);
-    
+
     // We want posts where date >= currentMonthStart AND date < nextMonthStart
     posts = posts.filter(post => {
       const postDate = new Date(post.date);
@@ -290,4 +290,3 @@ export function getTranslatedSlug(directorySlug: string, targetLocale: string): 
   const post = posts.find(p => p.directorySlug === directorySlug);
   return post ? post.slug : null;
 }
-

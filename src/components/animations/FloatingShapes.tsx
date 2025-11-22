@@ -57,7 +57,7 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
             style={{
               opacity: shape.isStuck ? 0.5 : SHAPE_CONFIG.BASE_OPACITY,
               // Metallic Gradient: Dark Bronze -> Gold -> Dark Bronze
-              background: 'linear-gradient(135deg, #8B7355 0%, #F4E07A 50%, #8B7355 100%)',
+              background: 'linear-gradient(135deg, #8B6723 0%, #DAB549 50%, #8B6723 100%)',
               borderRadius: Math.floor(shape.id) % 4 === 0 ? '50%' :
                            Math.floor(shape.id) % 3 === 0 ? '0%' :
                            Math.floor(shape.id) % 2 === 0 ? '20%' : '10%',

@@ -22,19 +22,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       locale: localeCode,
       images: [
         {
-          url: '/rise/bronze/Rise_logo_circle.png',
-          width: 1200,
-          height: 630,
-          alt: `Rise.sk - ${t('meta.title')}`,
+          url: '/rise/gradient/Rise_logo_circle.png',
+          width: 800,
+          height: 800,
+          alt: 'Rise.sk Logo',
         },
       ],
-      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: t('meta.title'),
       description: t('meta.description'),
-      images: ['/rise/bronze/Rise_logo_circle.png'],
+      images: ['/rise/gradient/Rise_logo_circle.png'],
     },
     alternates: {
       canonical: `https://rise.sk/${locale}${localePath}`,

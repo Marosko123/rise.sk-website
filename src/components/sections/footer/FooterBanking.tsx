@@ -63,7 +63,7 @@ export default function FooterBanking({ copyToClipboard, copiedField }: FooterBa
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => copyToClipboard(companyInfo('banking.swift'), 'swift')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
+          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
           title='Copy to clipboard'
         >
           {copiedField === 'swift' ? (
@@ -91,7 +91,7 @@ export default function FooterBanking({ copyToClipboard, copiedField }: FooterBa
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => copyToClipboard(companyInfo('banking.iban'), 'iban')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0'
+          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
           title='Copy to clipboard'
         >
           {copiedField === 'iban' ? (

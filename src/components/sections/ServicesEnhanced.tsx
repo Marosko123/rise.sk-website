@@ -123,11 +123,8 @@ const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs }) => {
     <section
       id="services"
       ref={ref}
-      className="relative py-24 overflow-hidden bg-black"
+      className="relative py-24 overflow-hidden bg-transparent"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-black to-black" />
-
       <div className="container mx-auto px-4 md:px-8 relative z-10 max-w-7xl">
         {/* Breadcrumbs */}
         {breadcrumbs && (
@@ -148,43 +145,44 @@ const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs }) => {
           </h2>
         </motion.div>
 
-        {/* Services Grid - 2x2 Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Services Grid - Responsive Slider on Mobile */}
+        <div className="flex overflow-x-auto pb-8 -mx-4 px-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-6 scrollbar-hide">
           {services.map((service, index) => {
             return (
               <motion.div
                 key={service.id}
+                className="min-w-[85vw] md:min-w-0 snap-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Link href={service.path}>
-                  <div className="group relative h-[400px] bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl p-8 hover:border-primary/50 transition-all duration-500 overflow-hidden cursor-pointer">
+                  <div className="group relative h-[340px] bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-500 overflow-hidden cursor-pointer">
                     {/* Number Badge */}
-                    <div className="absolute top-6 left-6 text-5xl font-bold text-white/5 group-hover:text-white/10 transition-colors duration-500">
+                    <div className="absolute top-4 left-4 text-4xl font-bold text-white/5 group-hover:text-white/10 transition-colors duration-500">
                       {service.number}
                     </div>
 
                     {/* Content */}
                     <div className="relative z-10 flex flex-col h-full">
                       {/* Icon SVG Container */}
-                      <div className="flex-1 flex items-center justify-center mb-8 relative">
+                      <div className="flex-1 flex items-center justify-center mb-4 relative">
                         {/* Gradient Background Circle */}
-                        <div className={`absolute w-48 h-48 rounded-lg bg-gradient-to-br ${service.gradient} blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500`} />
+                        <div className={`absolute w-40 h-40 rounded-lg bg-gradient-to-br ${service.gradient} blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500`} />
 
                         {/* Icon */}
-                        <div className={`relative p-8 rounded-xl bg-gradient-to-br ${service.gradient} group-hover:scale-110 transition-all duration-500`}>
+                        <div className={`relative p-6 rounded-xl bg-gradient-to-br ${service.gradient} group-hover:scale-110 transition-all duration-500`}>
                           <LottieIcon url={service.lottieUrl} fallbackIcon={service.icon} gradient={service.iconGradient} speed={service.speed} />
                         </div>
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
                         {service.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">
+                      <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2">
                         {service.description}
                       </p>
 

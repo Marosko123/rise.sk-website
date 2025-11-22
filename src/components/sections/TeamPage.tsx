@@ -6,8 +6,13 @@ import { cn } from '@/utils/cn';
 import { motion } from 'framer-motion';
 import { ArrowDown, Facebook, Github, Instagram, Linkedin } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+
+import FadeIn from '@/components/animations/FadeIn';
+
+const MultiStepContactForm = dynamic(() => import('@/components/features/MultiStepContactForm'));
 
 const gradients = [
   "from-amber-500/40 via-orange-500/20 to-yellow-500/20", // Maroš - Gold/Warm
@@ -60,18 +65,24 @@ export default function TeamPage() {
     return () => observer.disconnect();
   }, []);
 
-  // Handle initial hash scroll
+  // Handle initial hash scroll and hash changes
   useEffect(() => {
-    if (window.location.hash) {
-      const id = window.location.hash.substring(1);
-      // Small delay to ensure DOM is ready and layout is stable
-      setTimeout(() => {
+    const handleHashScroll = () => {
+      if (window.location.hash) {
+        const id = window.location.hash.substring(1);
         const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
-    }
+      }
+    };
+
+    // Handle initial load
+    setTimeout(handleHashScroll, 100);
+
+    // Handle hash changes (e.g. from navbar)
+    window.addEventListener('hashchange', handleHashScroll);
+    return () => window.removeEventListener('hashchange', handleHashScroll);
   }, []);
 
   const scrollToMember = (id: string) => {
@@ -89,9 +100,9 @@ export default function TeamPage() {
   };
 
   return (
-    <div ref={containerRef} className="h-full overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#1a1a1a] text-white relative">
+    <div ref={containerRef} className="h-full overflow-y-auto snap-y snap-proximity scroll-smooth text-white relative">
       {/* Side Navigation */}
-      <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-4 items-start">
+      <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-4 items-start">
         {teamMembers.map((member) => (
           <button
             key={member.id}
@@ -107,16 +118,22 @@ export default function TeamPage() {
             {member.name}
           </button>
         ))}
+        <button
+          onClick={() => scrollToMember('join-us')}
+          className={cn(
+            "transition-all duration-300 text-left origin-left mt-4",
+            activeId === 'join-us'
+              ? "text-base text-primary font-bold scale-110"
+              : "text-xs text-gray-600 hover:text-gray-400 font-medium"
+          )}
+          aria-label="Scroll to Join Us"
+        >
+          {t('joinUs.title')}
+        </button>
       </div>
 
       {/* Hero Section */}
-      <section className="h-full snap-start flex flex-col items-center justify-center relative overflow-hidden px-4 pb-32">
-        {/* Background Effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
-        </div>
-
+      <section className="min-h-[100dvh] md:h-full snap-start flex flex-col items-center justify-center relative overflow-hidden px-4 pb-32">
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -142,9 +159,9 @@ export default function TeamPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-gray-400 hover:text-primary transition-colors flex flex-col items-center gap-2"
+          className="absolute bottom-24 md:bottom-12 left-1/2 -translate-x-1/2 text-gray-300 hover:text-primary transition-colors flex flex-col items-center gap-2"
         >
-          <span className="text-sm uppercase tracking-widest">{t('scrollDown')}</span>
+          <span className="text-sm uppercase tracking-widest font-medium">{t('scrollDown')}</span>
           <ArrowDown className="animate-bounce w-6 h-6" />
         </motion.button>
       </section>
@@ -154,7 +171,7 @@ export default function TeamPage() {
         <section
           key={member.id}
           id={member.id}
-          className="h-full snap-start flex items-center justify-center relative overflow-hidden"
+          className="min-h-[100dvh] md:h-full snap-start flex items-center justify-center relative overflow-hidden"
         >
           {/* Background Gradient */}
           <div className={cn(
@@ -164,17 +181,16 @@ export default function TeamPage() {
               : "bg-gradient-to-bl from-primary/20 via-transparent to-transparent"
           )} />
 
-          <div className="container mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 pt-20 md:pt-0">
+          <div className="container mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 py-12 md:py-0">
             {/* Image Section */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, margin: "-20%" }}
-              transition={{ type: "spring", stiffness: 50, damping: 20 }}
+            <FadeIn
               className={cn(
-                "relative w-full max-w-[350px] aspect-square flex-shrink-0",
+                "relative w-full max-w-[160px] md:max-w-[350px] aspect-square flex-shrink-0",
                 index % 2 !== 0 && "md:order-2"
               )}
+              direction="none"
+              once={false}
+              amount={0.2}
             >
               {/* Animated Background Gradient */}
               <motion.div
@@ -213,59 +229,56 @@ export default function TeamPage() {
                 {/* Subtle Inner Shadow/Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent pointer-events-none" />
               </motion.div>
-            </motion.div>
+            </FadeIn>
 
             {/* Content Section */}
-            <motion.div
-              initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-20%" }}
-              transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 50 }}
+            <FadeIn
+              direction={index % 2 === 0 ? 'right' : 'left'}
+              delay={0.2}
+              once={false}
+              amount={0.2}
               className={cn(
-                "flex flex-col text-center md:text-left max-w-xl",
+                "flex flex-col text-center md:text-left max-w-xl pb-10 md:pb-0",
                 index % 2 !== 0 && "md:items-end md:text-right"
               )}
             >
-              <h2 className="text-4xl md:text-6xl font-bold mb-2 text-white">
+              <h2 className="text-3xl md:text-6xl font-bold mb-2 text-white">
                 {member.name}
               </h2>
-              <p className="text-xl md:text-2xl text-primary font-medium mb-6">
+              <p className="text-lg md:text-2xl text-primary font-medium mb-6">
                 {tMembers(`${member.id}.role`)}
               </p>
 
-              <div className="w-20 h-1 bg-primary mb-8 mx-auto md:mx-0" />
+              <div className="w-20 h-1 bg-primary mb-6 md:mb-8 mx-auto md:mx-0" />
 
-              <p className="text-lg text-gray-300 leading-relaxed mb-8 text-justify">
+              <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6 md:mb-8 text-justify">
                 {tMembers(`${member.id}.bio`)}
               </p>
 
               {/* Personal Details */}
               <div className={cn(
-                "flex flex-col gap-8 w-full mt-4",
+                "flex flex-col gap-6 md:gap-8 w-full mt-2 md:mt-4 items-center",
                 index % 2 !== 0 ? "md:items-end" : "md:items-start"
               )}>
                 {/* Motto Section */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
+                <FadeIn
+                  delay={0.4}
                   className={cn(
                     "relative max-w-lg py-2",
                     index % 2 !== 0
-                      ? "border-r-4 border-primary pr-6 text-right"
-                      : "border-l-4 border-primary pl-6 text-left"
+                      ? "md:border-r-4 md:border-primary md:pr-6 md:text-right"
+                      : "md:border-l-4 md:border-primary md:pl-6 md:text-left",
+                    "border-l-4 border-primary pl-4 text-left md:border-l-0 md:pl-0" // Mobile default: left border
                   )}
                 >
-                  <p className="text-2xl md:text-3xl font-serif italic text-white/90 leading-relaxed whitespace-pre-line">
+                  <p className="text-xl md:text-3xl font-serif italic text-white/90 leading-relaxed whitespace-pre-line">
                     {tMembers(`${member.id}.motto`)}
                   </p>
-                </motion.div>
+                </FadeIn>
 
                 {/* Social Links Section */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
+                <FadeIn
+                  delay={0.5}
                   className={cn(
                     "flex gap-4",
                     index % 2 !== 0 ? "justify-end" : "justify-start"
@@ -315,12 +328,50 @@ export default function TeamPage() {
                       <Facebook className="w-6 h-6" />
                     </a>
                   )}
-                </motion.div>
+                </FadeIn>
               </div>
-            </motion.div>
+            </FadeIn>
           </div>
         </section>
       ))}
+
+      {/* Join Us Section */}
+      <section
+        id="join-us"
+        className="min-h-[100dvh] md:h-full snap-start flex items-center justify-center relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+
+        <div className="container mx-auto px-4 h-full flex flex-col items-center justify-center text-center relative z-10">
+          <FadeIn>
+            <h2 className="text-4xl md:text-7xl font-bold mb-6 text-white">
+              {t('joinUs.title')}
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mb-12">
+              {t('joinUs.description')}
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.4}>
+            <motion.a
+              href="/kontakt"
+              whileHover={{ scale: 1.05 }}
+              className="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:bg-primary/90 transition-colors inline-block"
+            >
+              {t('joinUs.button')}
+            </motion.a>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section
+        id="contact"
+        className="min-h-[100dvh] md:h-full snap-start flex items-center justify-center relative overflow-hidden"
+      >
+        <MultiStepContactForm id="contact-form" />
+      </section>
 
       {/* Footer Section */}
       <section className="snap-start">

@@ -14,7 +14,7 @@ const STATIC_ASSETS = [
   '/robots.txt',
   '/sitemap.xml',
   '/rise/gradient/Rise_logo_circle.png',
-  '/rise/gradient/Rise_logo_transparent.png',
+  '/rise/gradient/Rise_logo.svg',
   '/favicon.ico'
 ];
 
@@ -292,8 +292,8 @@ async function syncVitals() {
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data ? event.data.text() : 'New update available!',
-    icon: '/rise/bronze/Rise_logo_circle.png',
-    badge: '/rise/bronze/Rise_logo_circle.png',
+    icon: '/rise/gradient/Rise_logo_circle.png',
+    badge: '/rise/gradient/Rise_logo_circle.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),

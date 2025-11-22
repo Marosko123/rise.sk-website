@@ -4,6 +4,7 @@
       "weAre": "We are",
       "innovativeSolutions": "Technology Experts"
     },
+    "clickMe": "Click me",
     "discoverMore": "Discover More",
     "description": "Trusted partners for critical software projects and digital transformation.",
     "development": {
@@ -48,6 +49,7 @@
     "faq": "FAQ",
     "hiring": "We're Hiring",
     "contact": "Contact",
+    "startProject": "Start Project",
     "backToHome": "Back to Home",
     "getStarted": "Get Started"
   },
@@ -905,14 +907,12 @@
     "service": "Required Service",
     "selectService": "Select service",
     "services": {
-      "webDevelopment": "Modern Websites",
-      "mobileApps": "Mobile Applications",
+      "webDevelopment": "Web Development",
+      "mobileApps": "Mobile Apps",
       "customSoftware": "Custom Software",
-      "ecommerce": "E-commerce Solutions",
+      "ecommerce": "E-commerce",
       "ai": "AI & Automation",
       "outsourcing": "IT Outsourcing",
-      "specialRequests": "Special Requests",
-      "jobApplication": "Job Application",
       "other": "Other"
     },
     "templateMessages": {
@@ -947,11 +947,14 @@
       "projectType": "Project Type",
       "selectProjectType": "Select project type",
       "projectTypes": {
-        "newProject": "New project",
-        "existingUpdate": "Existing project update",
-        "maintenance": "Maintenance & Support",
-        "consultation": "Consultation only",
-        "partnership": "Long-term partnership"
+        "mvp": "MVP (Minimum Viable Product)",
+        "fullDevelopment": "Full Turnkey Development",
+        "redesign": "Redesign of existing solution",
+        "teamAugmentation": "Team Augmentation (Outsourcing)",
+        "audit": "Audit and Analysis",
+        "maintenance": "Long-term Maintenance",
+        "consultation": "Consultation",
+        "other": "Other"
       },
       "budget": "Budget Range",
       "selectBudget": "Select budget range",
@@ -987,6 +990,25 @@
     "scrollToTop": "Scroll to top",
     "skipToContent": "Skip to content"
   },
+  "loadingScreen": {
+    "quotes": {
+      "0": "\"Innovation distinguishes between a leader and a follower.\"",
+      "1": "\"Make it simple, but significant.\"",
+      "2": "\"The best marketing doesn't feel like marketing.\"",
+      "3": "\"Simplicity is the ultimate sophistication.\"",
+      "4": "\"Quality is the best business plan.\"",
+      "5": "\"People don't buy what you do; they buy why you do it.\"",
+      "6": "\"Good design is good business.\"",
+      "7": "\"Technology is best when it brings people together.\"",
+      "8": "\"Data beats opinion.\"",
+      "9": "\"Focus on the user and all else will follow.\"",
+      "10": "\"The best way to predict the future is to create it.\"",
+      "11": "\"Opportunities don't happen. You create them.\"",
+      "12": "\"Great things in business are never done by one person.\"",
+      "13": "\"Don't watch the clock; do what it does. Keep going.\"",
+      "14": "\"Success usually comes to those who are too busy to be looking for it.\""
+    }
+  },
   "blog": {
     "title": "Blog",
     "subtitle": "Insights and news from the world of technology",
@@ -998,6 +1020,7 @@
     "noPosts": "No posts found",
     "readNext": "Read Next",
     "searchPlaceholder": "Search articles...",
+    "showFilters": "Show filters",
     "activeFilters": "Active Filters",
     "clearAll": "Clear All",
     "tags": "Tags",
@@ -1254,20 +1277,20 @@
         "description": "Explore Rise.sk portfolio of successful software development projects. Custom web applications, mobile apps, enterprise solutions, and innovative programming projects in Slovakia.",
         "keywords": "Rise.sk portfolio, software development projects, web application portfolio, mobile app development examples, programming case studies Slovakia, custom software projects"
       }
+    },
+    "NotFound": {
+      "title": "Page Not Found",
+      "description": "The page you are looking for might have been moved, deleted, or doesn't exist. Let's get you back on track with our professional software development services.",
+      "home": "Go Home",
+      "development": "Development Services",
+      "services": "IT Services",
+      "contact": "Contact Us",
+      "lookingFor": "Looking for something specific?",
+      "customSoftware": "Custom Software Development",
+      "webMobile": "Web & Mobile App Development",
+      "portfolio": "Portfolio & Case Studies",
+      "assistance": "Need immediate assistance?"
     }
-  },
-  "NotFound": {
-    "title": "Page Not Found",
-    "description": "The page you are looking for might have been moved, deleted, or doesn't exist. Let's get you back on track with our professional software development services.",
-    "home": "Go Home",
-    "development": "Development Services",
-    "services": "IT Services",
-    "contact": "Contact Us",
-    "lookingFor": "Looking for something specific?",
-    "customSoftware": "Custom Software Development",
-    "webMobile": "Web & Mobile App Development",
-    "portfolio": "Portfolio & Case Studies",
-    "assistance": "Need immediate assistance?"
   },
   "team": {
     "badge": "Our Team",
@@ -1278,7 +1301,7 @@
     "members": {
       "maros-bednar": {
         "role": "CEO & Lead Developer",
-        "bio": "I started as a computer science tutor, building my first projects entirely on my own. But I quickly realized that you can't achieve truly big things without people you trust. I love sports, laughter, and living life to the fullest, but in business, I am driven by strict discipline. Rise.sk is proof that when you combine the right team with honest hard work, the result is world-class quality.",
+        "bio": "Maroš is our CEO and chief philosopher whose thought processes are so far in the future they reach us with lag. His motivational speeches are legendary – no one understands them, but everyone nods because they're afraid he'll ask for details. He can talk for 20 minutes about a 'holistic approach to variables' when the team just wanted to know if they can order pizza. He used to tutor, now he lectures us that 'code is just a state of mind'. He is the only person who can motivate a server to run faster using only sheer willpower and a Steve Jobs quote he probably made up.",
         "motto": "Believe you can and you're halfway there.",
         "hobbies": "Gym, Techno, Football"
       },
@@ -1315,7 +1338,7 @@
       },
       "tatiana-gavulova": {
         "role": "CMO & Marketing Manager",
-        "bio": "I started in a kindergarten, where I learned the most important thing – how to engage and lead. Today, as CMO at Rise.sk, I combine this empathy with hard data and strategy. I love life in motion and humor, but at work, I demand discipline. My goal is to build a brand that doesn't just talk, but delivers measurable results.",
+        "bio": "Tatiana is our 'Wonder Woman' and the only being in the company who smells different than coffee and overheated processors. She possesses saint-like patience trained in kindergarten – which turned out to be perfect preparation for managing our dev team (the differences are minimal, only the toys are more expensive). While we figure out why the database crashed, she makes sure the company doesn't. She is the only person Maroš is afraid of, and when she raises an eyebrow, even the servers stop humming. Her superpower is translating our 'nerd talk' into human language that clients actually understand.",
         "motto": "Stop selling.\nStart helping.",
         "hobbies": "Travel, Books, Art"
       }
@@ -1323,6 +1346,12 @@
     "cta": {
       "title": "Want to be part of our story?",
       "button": "Join Our Team"
+    },
+    "joinUs": {
+      "title": "Want to join us?",
+      "subtitle": "We are always looking for talented people.",
+      "description": "Do you have a passion for technology and want to work on interesting projects? Let us know!",
+      "button": "Contact Us"
     }
   }
 }

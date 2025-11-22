@@ -53,22 +53,7 @@ export default function Portfolio() {
       id="portfolio"
       ref={ref}
       className="py-16 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, var(--background) 0%, rgba(15, 23, 42, 0.8) 50%, var(--background) 100%)',
-        color: 'var(--foreground)'
-      }}
     >
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-transparent to-purple-900/10" />
-      <div className="absolute inset-0 opacity-30">
-        <div className="h-full w-full" style={{
-          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                           radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
-                           radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%)`,
-          backgroundSize: '800px 800px'
-        }} />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -144,9 +129,6 @@ export default function Portfolio() {
           </div>
         </motion.div>
       </div>
-
-      {/* Bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
     </section>
   );
 }

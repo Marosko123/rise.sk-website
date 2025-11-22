@@ -39,7 +39,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className='hero-gradient min-h-[calc(100vh+80px)] flex items-center justify-center pt-32 relative overflow-hidden mt-[-80px]'>
+    <section className='min-h-[calc(100vh+80px)] flex items-center justify-center pt-32 relative overflow-hidden mt-[-80px]'>
       {/* Floating Background Elements */}
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         {floatingIcons.map(({ Icon, delay, x, y }, index) => (

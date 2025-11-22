@@ -24,19 +24,18 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
           alt={companyConfig.company.name}
           width={50}
           height={50}
-          priority
           className='transition-all duration-300 cursor-pointer select-none'
           style={mounted ? {
             transform: isHovered
               ? `scale(1.2) rotate(15deg)`
               : `rotate(${Math.sin(animationTime * 0.001) * 5}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.07})`,
             filter: isHovered
-              ? `brightness(1.2) contrast(1.1) saturate(1.1) drop-shadow(0 0 45px rgba(176, 145, 85, 0.8))`
-              : `drop-shadow(0 0 10px rgba(176, 145, 85, ${0.5 + Math.sin(animationTime * 0.002) * 0.1}))`,
+              ? `brightness(1.2) contrast(1.1) saturate(1.1) drop-shadow(0 0 45px rgba(218, 181, 73, 0.8))`
+              : `drop-shadow(0 0 10px rgba(218, 181, 73, ${0.5 + Math.sin(animationTime * 0.002) * 0.1}))`,
             transition: 'transform 0.3s ease-out, filter 0.3s ease-out',
           } : {
             transform: 'rotate(0deg) scale(1)',
-            filter: 'drop-shadow(0 0 10px rgba(176, 145, 85, 0.5))',
+            filter: 'drop-shadow(0 0 10px rgba(218, 181, 73, 0.5))',
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -72,9 +71,9 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
           className='text-2xl font-bold text-white cursor-pointer inline-block transition-all duration-300 hover:scale-105 select-none'
           style={mounted ? {
             textShadow: isTextHovered
-              ? '0 0 25px rgba(176, 145, 85, 0.8)'
-              : `0 0 15px rgba(176, 145, 85, 0.4)`,
-            color: isTextHovered ? '#B09155' : 'white',
+              ? '0 0 25px rgba(218, 181, 73, 0.8)'
+              : `0 0 15px rgba(218, 181, 73, 0.4)`,
+            color: isTextHovered ? '#DAB549' : 'white',
           } : {}}
           onMouseEnter={() => setIsTextHovered(true)}
           onMouseLeave={() => setIsTextHovered(false)}
@@ -90,7 +89,7 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
               } : {}}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-3px) scale(1.2)';
-                e.currentTarget.style.color = '#B09155';
+                e.currentTarget.style.color = '#DAB549';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = '';
