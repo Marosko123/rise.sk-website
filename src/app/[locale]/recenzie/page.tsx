@@ -24,6 +24,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       locale,
       type: 'website',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${t('title')} | Rise.sk`,
+      description: t('subtitle'),
+    },
   };
 }
 

@@ -30,21 +30,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       url: `https://rise.sk/${locale}${localePath}`,
       siteName: 'Rise.sk',
       locale: localeCode,
-      images: [
-        {
-          url: '/rise/gradient/Rise_logo_circle.png',
-          width: 1200,
-          height: 630,
-          alt: `Rise.sk - ${t('meta.title')}`,
-        },
-      ],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: t('meta.title'),
       description: t('meta.description'),
-      images: ['/rise/gradient/Rise_logo_circle.png'],
     },
     alternates: {
       canonical: `https://rise.sk/${locale}${localePath}`,
