@@ -31,18 +31,21 @@ export default function PortfolioControls({
         <ChevronRight className="h-6 w-6 text-[var(--primary)]" />
       </button>
 
-      <div className="flex justify-center mt-8 gap-1">
+      <div className="flex justify-center mt-8 gap-3">
         {Array.from({ length: maxIndex + 1 }).map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
+            className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 relative ${
               index === currentIndex
                 ? 'bg-[var(--primary)] scale-125'
                 : 'bg-white/30 hover:bg-white/50'
             }`}
             style={{ minWidth: 'auto', minHeight: 'auto' }}
-          />
+          >
+            {/* Increase touch area for mobile */}
+            <span className="absolute -inset-2" />
+          </button>
         ))}
       </div>
     </>

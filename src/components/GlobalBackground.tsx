@@ -58,12 +58,12 @@ const ParallaxParticle = ({ particle, scrollY }: { particle: Particle, scrollY: 
   );
 };
 
-const BackgroundParticles = ({ count = 60, mounted }: { count?: number; mounted: boolean }) => {
+const BackgroundParticles = ({ count = 60, mounted, isMobile }: { count?: number; mounted: boolean; isMobile: boolean }) => {
   const { scrollY } = useScroll();
   const smoothScrollY = useSpring(scrollY, { stiffness: 50, damping: 20, restDelta: 0.001 });
 
   const particles = useMemo(() => {
-    if (!mounted) return [];
+    if (!mounted || isMobile) return [];
     return Array.from({ length: count }).map((_, i) => ({
       id: i,
       top: `${random(0, 100)}%`,
@@ -76,9 +76,9 @@ const BackgroundParticles = ({ count = 60, mounted }: { count?: number; mounted:
       ty: `${random(-30, 30)}px`,
       depth: random(0.2, 1.5), // Increased depth range for more 3D feel
     }));
-  }, [count, mounted]);
+  }, [count, mounted, isMobile]);
 
-  if (!mounted) return null;
+  if (!mounted || isMobile) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -144,6 +144,7 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
     const throttleDelay = 16;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (isMobile) return;
       const now = Date.now();
       if (now - lastUpdate < throttleDelay) return;
       lastUpdate = now;
@@ -161,14 +162,18 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
       createExplosion(e.clientX, e.clientY);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    if (!isMobile) {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
     window.addEventListener('click', handleClick);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (!isMobile) {
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
       window.removeEventListener('click', handleClick);
     };
-  }, [createExplosion, showFullWebsite]);
+  }, [createExplosion, showFullWebsite, isMobile]);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
@@ -185,28 +190,34 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#1a1205_0%,#000000_100%)] opacity-80 pointer-events-none"></div>
 
             {/* 2. Rotating Conic Sheen - Adds dynamic "metallic" feel */}
-            <div className="absolute inset-[-50%] w-[200%] h-[200%] animate-rotate-very-slow opacity-[0.15] pointer-events-none mix-blend-screen">
-              <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(218,181,73,0.1)_60deg,transparent_120deg,transparent_180deg,rgba(139,103,35,0.1)_240deg,transparent_300deg)] blur-[60px]"></div>
-            </div>
+            {!isMobile && (
+              <div className="absolute inset-[-50%] w-[200%] h-[200%] animate-rotate-very-slow opacity-[0.15] pointer-events-none mix-blend-screen">
+                <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(218,181,73,0.1)_60deg,transparent_120deg,transparent_180deg,rgba(139,103,35,0.1)_240deg,transparent_300deg)] blur-[60px]"></div>
+              </div>
+            )}
 
             {/* 3. Large Soft Glows - The "Gold" presence */}
             {/* Top Right - Rich Gold */}
-            <div className="absolute top-[-20%] right-[-10%] w-[80%] h-[80%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.08)_0%,transparent_70%)] blur-[120px] pointer-events-none mix-blend-screen animate-pulse-slow"></div>
+            <div className={`absolute top-[-20%] right-[-10%] w-[80%] h-[80%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.08)_0%,transparent_70%)] ${isMobile ? 'blur-[60px]' : 'blur-[120px]'} pointer-events-none mix-blend-screen animate-pulse-slow`}></div>
 
             {/* Bottom Left - Deep Bronze */}
-            <div className="absolute bottom-[-20%] left-[-10%] w-[80%] h-[80%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.1)_0%,transparent_70%)] blur-[120px] pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-4000"></div>
+            <div className={`absolute bottom-[-20%] left-[-10%] w-[80%] h-[80%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.1)_0%,transparent_70%)] ${isMobile ? 'blur-[60px]' : 'blur-[120px]'} pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-4000`}></div>
 
             {/* Center - Subtle Highlight */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.03)_0%,transparent_60%)] blur-[100px] pointer-events-none mix-blend-screen"></div>
+            <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.03)_0%,transparent_60%)] ${isMobile ? 'blur-[50px]' : 'blur-[100px]'} pointer-events-none mix-blend-screen`}></div>
 
             {/* 4. Floating "Gold Dust" - Replaces harsh particles */}
             {/* We keep the existing particle system but make it subtler via CSS if needed,
                 but here we add some very large, barely visible moving orbs for texture */}
-            <div className="absolute top-[20%] left-[20%] w-[30%] h-[30%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.05)_0%,transparent_70%)] blur-[80px] animate-float-slow pointer-events-none"></div>
-            <div className="absolute bottom-[30%] right-[20%] w-[25%] h-[25%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.05)_0%,transparent_70%)] blur-[80px] animate-float-slow animation-delay-2000 pointer-events-none"></div>
+            {!isMobile && (
+              <>
+                <div className="absolute top-[20%] left-[20%] w-[30%] h-[30%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.05)_0%,transparent_70%)] blur-[80px] animate-float-slow pointer-events-none"></div>
+                <div className="absolute bottom-[30%] right-[20%] w-[25%] h-[25%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.05)_0%,transparent_70%)] blur-[80px] animate-float-slow animation-delay-2000 pointer-events-none"></div>
+              </>
+            )}
 
             {/* Ambient Particles for Landing Page - Optimized for mobile */}
-            <BackgroundParticles count={isMobile ? 30 : 60} mounted={mounted} />
+            <BackgroundParticles count={isMobile ? 0 : 60} mounted={mounted} isMobile={isMobile} />
 
             <FloatingShapes
               ref={floatingShapesRef}
@@ -277,38 +288,46 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
         {/* Animated Gradient Orbs - Enhanced for "Live" feel */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Rotating container for global movement */}
-          <div className="absolute inset-[-50%] w-[200%] h-[200%] animate-rotate-slow opacity-60">
-             {/* Large ambient glows */}
-             <div className="absolute top-[20%] left-[20%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_70%)] blur-[120px] mix-blend-screen animate-blob"></div>
-             <div className="absolute bottom-[20%] right-[20%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_70%)] blur-[120px] mix-blend-screen animate-blob animation-delay-4000"></div>
-          </div>
+          {!isMobile && (
+            <div className="absolute inset-[-50%] w-[200%] h-[200%] animate-rotate-slow opacity-60">
+               {/* Large ambient glows */}
+               <div className="absolute top-[20%] left-[20%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_70%)] blur-[120px] mix-blend-screen animate-blob"></div>
+               <div className="absolute bottom-[20%] right-[20%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_70%)] blur-[120px] mix-blend-screen animate-blob animation-delay-4000"></div>
+            </div>
+          )}
 
           {/* Active floating elements */}
           {/* Top Left - Bright Gold */}
-          <div className="absolute top-[5%] left-[10%] w-[35%] h-[35%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.15)_0%,transparent_60%)] blur-[80px] animate-float-vertical mix-blend-screen"></div>
+          <div className={`absolute top-[5%] left-[10%] w-[35%] h-[35%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.15)_0%,transparent_60%)] ${isMobile ? 'blur-[40px]' : 'blur-[80px]'} animate-float-vertical mix-blend-screen`}></div>
 
           {/* Bottom Right - Deep Bronze */}
-          <div className="absolute bottom-[10%] right-[5%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.15)_0%,transparent_60%)] blur-[90px] animate-float-vertical animation-delay-2000 mix-blend-screen"></div>
+          <div className={`absolute bottom-[10%] right-[5%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.15)_0%,transparent_60%)] ${isMobile ? 'blur-[45px]' : 'blur-[90px]'} animate-float-vertical animation-delay-2000 mix-blend-screen`}></div>
 
           {/* Center - Pulsing Core */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.12)_0%,transparent_70%)] blur-[100px] animate-pulse-bright mix-blend-screen"></div>
+          <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.12)_0%,transparent_70%)] ${isMobile ? 'blur-[50px]' : 'blur-[100px]'} animate-pulse-bright mix-blend-screen`}></div>
 
           {/* Drifting Accents */}
-          <div className="absolute top-[30%] right-[20%] w-[25%] h-[25%] rounded-full bg-[radial-gradient(circle,rgba(254,251,216,0.1)_0%,transparent_60%)] blur-[60px] animate-float-horizontal animation-delay-2000 mix-blend-screen"></div>
-          <div className="absolute bottom-[30%] left-[15%] w-[30%] h-[30%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.1)_0%,transparent_60%)] blur-[70px] animate-float-horizontal mix-blend-screen"></div>
+          {!isMobile && (
+            <>
+              <div className="absolute top-[30%] right-[20%] w-[25%] h-[25%] rounded-full bg-[radial-gradient(circle,rgba(254,251,216,0.1)_0%,transparent_60%)] blur-[60px] animate-float-horizontal animation-delay-2000 mix-blend-screen"></div>
+              <div className="absolute bottom-[30%] left-[15%] w-[30%] h-[30%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.1)_0%,transparent_60%)] blur-[70px] animate-float-horizontal mix-blend-screen"></div>
+            </>
+          )}
         </div>
 
         {/* Noise Texture for "Live" feel */}
-        <div
-          className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat',
-          }}
-        ></div>
+        {!isMobile && (
+          <div
+            className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+              backgroundRepeat: 'repeat',
+            }}
+          ></div>
+        )}
 
         {/* Random Background Particles */}
-        <BackgroundParticles mounted={mounted} />
+        <BackgroundParticles mounted={mounted} isMobile={isMobile} />
 
         {/* Vignette Overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] pointer-events-none"></div>

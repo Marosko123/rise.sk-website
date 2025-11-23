@@ -75,13 +75,13 @@ export default function ContactInfo() {
             </div>
             <button
               onClick={() => copyToClipboard(item.value, `contact-${index}`)}
-              className='ml-3 p-2 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200'
+              className='ml-3 p-2 rounded-md hover:bg-white/5 transition-colors duration-200 group'
               title='Copy to clipboard'
             >
               {copiedField === `contact-${index}` ? (
-                <CheckCircle className='w-4 h-4 text-green-400' />
+                <CheckCircle className='w-5 h-5 text-green-400' />
               ) : (
-                <Copy className='w-4 h-4 text-gray-400 hover:text-primary' />
+                <Copy className='w-5 h-5 text-white/30 group-hover:text-primary transition-colors' />
               )}
             </button>
           </div>

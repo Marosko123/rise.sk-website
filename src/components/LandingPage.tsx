@@ -8,6 +8,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import companyConfig from '@/config/company';
 import { SHAPE_CONFIG } from '@/hooks/useFloatingShapes';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import GlobalBackground, { GlobalBackgroundRef } from './GlobalBackground';
 import LandingOverlay, { LandingOverlayRef } from './LandingOverlay';
 import LanguageSwitcher from './layout/LanguageSwitcher';
@@ -30,6 +31,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   const t = useTranslations('landing');
   const locale = useLocale();
   const router = useRouter();
+  const isMobile = useIsMobile();
   const [mounted, setMounted] = useState(false);
   const [showFullWebsite, setShowFullWebsite] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -347,7 +349,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         shapesState={shapesState}
       />
 
-      <div className={`relative transition-all duration-1000 ease-in-out ${showFullWebsite ? 'opacity-100 blur-0' : 'opacity-0 blur-xl pointer-events-none'}`}>
+      <div className={`relative transition-all duration-1000 ease-in-out ${showFullWebsite ? 'opacity-100 blur-0' : `opacity-0 ${isMobile ? 'blur-sm' : 'blur-xl'} pointer-events-none`}`}>
           <>
             <div id={sectionMap.development}>
               <Hero />

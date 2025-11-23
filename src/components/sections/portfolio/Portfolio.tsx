@@ -2,6 +2,7 @@
 
 import { getPortfolioProjects } from '@/data/projects';
 import { useCarousel } from '@/hooks/useCarousel';
+import { useSwipe } from '@/hooks/useSwipe';
 import { useTranslations } from '@/hooks/useTranslations';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
@@ -24,6 +25,11 @@ export default function Portfolio() {
     goToSlide,
     setIsHovered,
   } = useCarousel(portfolioProjects.length);
+
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: nextSlide,
+    onSwipedRight: prevSlide,
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -99,7 +105,7 @@ export default function Portfolio() {
           </motion.div>
 
           {/* Carousel Container */}
-          <div className="relative">
+          <div className="relative" {...swipeHandlers}>
             <div className="overflow-hidden mx-4 md:mx-8">
               <motion.div
                 className="flex transition-transform duration-500 ease-in-out items-start"

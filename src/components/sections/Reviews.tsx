@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { useSwipe } from '@/hooks/useSwipe';
 
 import { Card } from '../ui/Card';
 import { Section } from '../ui/Section';
@@ -27,7 +28,7 @@ export default function Reviews({ className }: ReviewsProps) {
   const t = useTranslations('reviews');
   const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Get reviews from translations
   const reviews: Review[] = useMemo(() => {
@@ -43,31 +44,33 @@ export default function Reviews({ className }: ReviewsProps) {
   const visibleReviews = isMobile ? 1 : 3;
   const maxIndex = Math.max(0, reviews.length - visibleReviews);
 
-  // Auto-play carousel - only on desktop for better UX
+  // Auto-play carousel
   useEffect(() => {
-    if (!isAutoPlaying || isMobile || reviews.length <= visibleReviews) return;
+    if (isPaused || reviews.length <= visibleReviews) return;
 
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-    }, 6000); // Slower auto-play for better readability
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, isMobile, reviews.length, visibleReviews, maxIndex]);
+  }, [isPaused, reviews.length, visibleReviews, maxIndex]);
 
   const nextReview = useCallback(() => {
     setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-    setIsAutoPlaying(false);
   }, [maxIndex]);
 
   const prevReview = useCallback(() => {
     setCurrentIndex(prev => (prev === 0 ? maxIndex : prev - 1));
-    setIsAutoPlaying(false);
   }, [maxIndex]);
 
   const goToReview = useCallback((index: number) => {
     setCurrentIndex(index);
-    setIsAutoPlaying(false);
   }, []);
+
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: nextReview,
+    onSwipedRight: prevReview,
+  });
 
   // Optimized star rendering with memoization
   const renderStars = useMemo(() => {
@@ -124,9 +127,22 @@ export default function Reviews({ className }: ReviewsProps) {
           )}
 
           {/* Reviews Carousel - Optimized */}
-          <div className="overflow-hidden">
+          <div
+            className="overflow-hidden"
+            onTouchStart={(e) => {
+              setIsPaused(true);
+              swipeHandlers.onTouchStart(e);
+            }}
+            onTouchMove={swipeHandlers.onTouchMove}
+            onTouchEnd={() => {
+              setIsPaused(false);
+              swipeHandlers.onTouchEnd();
+            }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             <div
-              className="flex gap-6 transition-transform duration-300 ease-out items-stretch"
+              className="flex transition-transform duration-500 ease-out items-stretch"
               style={{
                 transform: `translateX(-${currentIndex * (100 / visibleReviews)}%)`,
               }}
@@ -134,50 +150,52 @@ export default function Reviews({ className }: ReviewsProps) {
               {reviews.map((review) => (
                 <div
                   key={review.id}
-                  className={`flex-shrink-0 ${
+                  className={`flex-shrink-0 px-3 ${
                     isMobile ? 'w-full' : 'w-1/3'
                   }`}
                 >
-                  <Card className="h-full bg-[var(--card)] border-[var(--border)] hover:bg-[var(--card)]/90 transition-colors duration-200 shadow-md hover:shadow-lg flex flex-col">
-                    {/* Quote Icon and Rating - Simplified */}
-                    <div className="flex justify-between items-start mb-4">
-                      <Quote className="w-6 h-6 text-[var(--primary)] opacity-70" />
-                      <div className="flex gap-0.5">
-                        {renderStars(review.rating)}
-                      </div>
+                  <Card
+                    variant="glass"
+                    className="h-full flex flex-col relative overflow-hidden group border-white/5 hover:border-[var(--primary)]/30 transition-all duration-500"
+                    hover={!isMobile}
+                  >
+                    {/* Background Gradient Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Quote Icon - Modernized */}
+                    <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                      <Quote className="w-16 h-16 text-[var(--primary)] rotate-12" />
                     </div>
 
-                    {/* Review Content - Fixed height with consistent spacing */}
-                    <div className="flex-1 flex flex-col">
-                      <blockquote className="text-[var(--foreground)] leading-relaxed text-base flex-1 min-h-[120px] flex items-start">
+                    {/* Rating */}
+                    <div className="flex gap-1 mb-6 relative z-10">
+                      {renderStars(review.rating)}
+                    </div>
+
+                    {/* Review Content */}
+                    <div className="flex-1 flex flex-col relative z-10">
+                      <blockquote className="text-gray-200 leading-relaxed text-lg font-light italic flex-1 min-h-[100px]">
                         &ldquo;{review.content}&rdquo;
                       </blockquote>
                     </div>
 
-                    {/* Author Info - Always at bottom */}
-                    <div className="pt-4 border-t border-[var(--border)]/50 mt-auto">
-                      <div className="mb-3">
-                        <div className="font-semibold text-[var(--foreground)] text-base mb-1">
-                          {review.name}
+                    {/* Author Info */}
+                    <div className="pt-6 mt-6 border-t border-white/10 relative z-10">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-[var(--primary)]/20 flex items-center justify-center text-[var(--primary)] font-bold text-lg">
+                          {review.name.charAt(0)}
                         </div>
-                        <div className="text-[var(--primary)] text-sm font-medium">
-                          {review.role}
-                        </div>
-                        <div className="text-[var(--foreground-muted)] text-sm">
-                          {review.company}
+                        <div>
+                          <div className="font-bold text-white text-base">
+                            {review.name}
+                          </div>
+                          <div className="text-[var(--primary)] text-sm font-medium">
+                            {review.role}
+                          </div>
                         </div>
                       </div>
-
-                      {/* Tags - Simplified */}
-                      <div className="flex flex-wrap gap-2">
-                        {review.tags.slice(0, isMobile ? 2 : 3).map((tag, tagIndex) => (
-                          <span
-                            key={tagIndex}
-                            className="px-2 py-1 bg-[var(--primary)]/10 text-[var(--primary)] text-xs rounded-md"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                      <div className="text-gray-400 text-sm mt-2 pl-14">
+                        {review.company}
                       </div>
                     </div>
                   </Card>
@@ -188,19 +206,22 @@ export default function Reviews({ className }: ReviewsProps) {
 
           {/* Dots Indicator - Simplified */}
           {reviews.length > visibleReviews && (
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-3 mt-8 mb-12">
               {Array.from({ length: maxIndex + 1 }, (_, index) => (
                 <button
                   key={index}
                   onClick={() => goToReview(index)}
-                  className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
+                  className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 relative ${
                     index === currentIndex
-                      ? 'bg-[var(--primary)]'
+                      ? 'bg-[var(--primary)] scale-125'
                       : 'bg-gray-600 hover:bg-gray-500'
                   }`}
                   aria-label={`Go to review ${index + 1}`}
                   style={{ minWidth: 'auto', minHeight: 'auto' }}
-                />
+                >
+                  {/* Increase touch area for mobile */}
+                  <span className="absolute -inset-2" />
+                </button>
               ))}
             </div>
           )}

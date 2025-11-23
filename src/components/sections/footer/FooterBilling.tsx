@@ -32,16 +32,16 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           </div>
         </div>
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => copyToClipboard(companyInfo('businessId'), 'businessId')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
+          className='p-2 rounded-md hover:bg-white/5 transition-colors duration-200 flex-shrink-0 flex items-center justify-center group'
           title='Copy to clipboard'
         >
           {copiedField === 'businessId' ? (
-            <Check className='w-3 h-3 text-green-400' />
+            <Check className='w-4 h-4 text-green-400' />
           ) : (
-            <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
+            <Copy className='w-4 h-4 text-white/30 group-hover:text-primary transition-colors' />
           )}
         </motion.button>
       </div>
@@ -60,16 +60,16 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           </div>
         </div>
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => copyToClipboard(companyInfo('vatId'), 'vatId')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
+          className='p-2 rounded-md hover:bg-white/5 transition-colors duration-200 flex-shrink-0 flex items-center justify-center group'
           title='Copy to clipboard'
         >
           {copiedField === 'vatId' ? (
-            <Check className='w-3 h-3 text-green-400' />
+            <Check className='w-4 h-4 text-green-400' />
           ) : (
-            <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
+            <Copy className='w-4 h-4 text-white/30 group-hover:text-primary transition-colors' />
           )}
         </motion.button>
       </div>
@@ -88,16 +88,16 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           </div>
         </div>
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => copyToClipboard(companyInfo('vatStatus'), 'vatStatus')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
+          className='p-2 rounded-md hover:bg-white/5 transition-colors duration-200 flex-shrink-0 flex items-center justify-center group'
           title='Copy to clipboard'
         >
           {copiedField === 'vatStatus' ? (
-            <Check className='w-3 h-3 text-green-400' />
+            <Check className='w-4 h-4 text-green-400' />
           ) : (
-            <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
+            <Copy className='w-4 h-4 text-white/30 group-hover:text-primary transition-colors' />
           )}
         </motion.button>
       </div>
@@ -116,16 +116,16 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           </div>
         </div>
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => copyToClipboard(companyInfo('registration'), 'orsr')}
-          className='p-1.5 rounded-lg bg-white/10 hover:bg-primary/20 transition-colors duration-200 flex-shrink-0 flex items-center justify-center'
+          className='p-2 rounded-md hover:bg-white/5 transition-colors duration-200 flex-shrink-0 flex items-center justify-center group'
           title='Copy to clipboard'
         >
           {copiedField === 'orsr' ? (
-            <Check className='w-3 h-3 text-green-400' />
+            <Check className='w-4 h-4 text-green-400' />
           ) : (
-            <Copy className='w-3 h-3 text-gray-400 hover:text-primary' />
+            <Copy className='w-4 h-4 text-white/30 group-hover:text-primary transition-colors' />
           )}
         </motion.button>
       </div>

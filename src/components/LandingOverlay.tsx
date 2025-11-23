@@ -6,6 +6,7 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRe
 
 import companyConfig from '@/config/company';
 import { SHAPE_CONFIG } from '@/hooks/useFloatingShapes';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import LanguageSwitcher from './layout/LanguageSwitcher';
 import LogoAndText from './layout/LogoAndText';
 import { useAnimation } from './providers/AnimationProvider';
@@ -33,6 +34,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 }, ref) => {
   const t = useTranslations('landing');
   const { animationTime } = useAnimation();
+  const isMobile = useIsMobile();
 
   const cursorPositionRef = useRef({ x: 0, y: 0 });
   const [shiverCycleStart, setShiverCycleStart] = useState(0);
@@ -108,6 +110,8 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
+
     let lastUpdate = 0;
     const throttleDelay = 16;
 
@@ -131,7 +135,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [getMagneticOffset]);
+  }, [getMagneticOffset, isMobile]);
 
   const logoColorFilter = useMemo(() => {
     const shapePercentage = Math.min(shapesState.length / SHAPE_CONFIG.MAX_COUNT, 1.0);
@@ -238,7 +242,10 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
       style={{
           transition: (showFullWebsite || isTransitioning)
             ? 'all 1s ease-in-out'
-            : (isScrolling ? 'all 0.1s ease-out' : 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)')
+            : (isScrolling ? 'all 0.1s ease-out' : 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)'),
+          opacity: showFullWebsite ? 0 : undefined,
+          pointerEvents: showFullWebsite ? 'none' : undefined,
+          visibility: showFullWebsite ? 'hidden' : 'visible'
       }}
     >
         <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-6 pointer-events-auto">
@@ -296,13 +303,19 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                       filter: shapesState.isExploding ? `
                         brightness(${getExplosionFilter()?.brightness || 1})
                         drop-shadow(${getExplosionFilter()?.dropShadow || 'none'})
+                      ` : (isMobile ? `
+                        brightness(${logoColorFilter.brightness})
+                        contrast(${logoColorFilter.contrast})
+                        saturate(${logoColorFilter.saturate})
+                        sepia(${logoColorFilter.sepia})
+                        drop-shadow(0 0 ${SHAPE_CONFIG.LOGO_GLOW_RADIUS * 0.5}px ${logoColorFilter.dropShadowColor})
                       ` : `
                         brightness(${logoColorFilter.brightness * (isLogoHovered ? 1.2 : 1)})
                         contrast(${logoColorFilter.contrast * (isLogoHovered ? 1.1 : 1)})
                         saturate(${logoColorFilter.saturate * (isLogoHovered ? 1.1 : 1)})
                         sepia(${logoColorFilter.sepia})
                         drop-shadow(0 0 ${SHAPE_CONFIG.LOGO_GLOW_RADIUS * (isLogoHovered ? 1.5 : 1)}px ${logoColorFilter.dropShadowColor})
-                      `,
+                      `),
                       transition: shapesState.isExploding ? 'none' : 'filter 0.2s ease-out',
                     }}
                     draggable={false}

@@ -62,7 +62,7 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
                            Math.floor(shape.id) % 3 === 0 ? '0%' :
                            Math.floor(shape.id) % 2 === 0 ? '20%' : '10%',
               // Inner glow + Drop shadow for 3D metallic effect
-              boxShadow: shape.isStuck ? `
+              boxShadow: isMobile ? 'none' : (shape.isStuck ? `
                 0 0 15px rgba(244, 224, 122, 0.6),
                 inset 0 0 15px rgba(255, 255, 255, 0.4),
                 inset 2px 2px 5px rgba(255, 255, 255, 0.4),
@@ -72,12 +72,12 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
                 inset 0 0 15px rgba(255, 255, 255, 0.4),
                 inset 2px 2px 5px rgba(255, 255, 255, 0.4),
                 inset -2px -2px 5px rgba(0, 0, 0, 0.4)
-              `,
+              `),
               border: shape.isStuck ? '2px solid rgba(244, 224, 122, 0.8)' : '1px solid rgba(255, 255, 255, 0.4)',
-              filter: shape.isStuck ? 'brightness(1.2)' : 'none',
+              filter: isMobile ? 'none' : (shape.isStuck ? 'brightness(1.2)' : 'none'),
             }}
             onMouseEnter={(e) => {
-              if (shape.isStuck) return;
+              if (shape.isStuck || isMobile) return;
               e.currentTarget.style.opacity = SHAPE_CONFIG.HOVER_OPACITY.toString();
               e.currentTarget.style.transform = 'scale(1.2) rotate(15deg)';
               e.currentTarget.style.boxShadow = `
@@ -88,7 +88,7 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
               `;
             }}
             onMouseLeave={(e) => {
-              if (shape.isStuck) return;
+              if (shape.isStuck || isMobile) return;
               e.currentTarget.style.opacity = SHAPE_CONFIG.BASE_OPACITY.toString();
               e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
               e.currentTarget.style.boxShadow = `
