@@ -184,6 +184,14 @@ export function getBreadcrumbsForPage(
       });
       break;
 
+    case 'otestujte-podnikanie':
+    case 'test-your-business':
+      breadcrumbs.push({
+        name: locale === 'en' ? 'Test Your Business' : 'Otestujte podnikanie',
+        url: `${baseUrl}/${locale}/${locale === 'en' ? 'test-your-business' : 'otestujte-podnikanie'}`
+      });
+      break;
+
     default:
       // For unknown pages, don't add additional breadcrumb
       break;

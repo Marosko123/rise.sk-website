@@ -47,7 +47,8 @@ export default function FooterLinks() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 <Link
-                  href={serviceLinks[index]}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  href={serviceLinks[index] as any}
                   className='text-gray-300 hover:text-primary transition-all duration-300 text-sm leading-relaxed hover:translate-x-1 inline-block transform select-none'
                 >
                   {service}

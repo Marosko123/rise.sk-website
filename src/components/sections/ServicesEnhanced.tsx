@@ -157,7 +157,10 @@ const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs, id = '
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Link href={service.path}>
+                <Link
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  href={service.path as any}
+                >
                   <div className="group relative h-[340px] bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-500 overflow-hidden cursor-pointer">
                     {/* Number Badge */}
                     <div className="absolute top-4 left-4 text-4xl font-bold text-white/5 group-hover:text-white/10 transition-colors duration-500">

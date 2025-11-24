@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/blog', enPath: '/blog', priority: 0.8, changeFreq: 'daily' as const },
     { path: '/tim', enPath: '/team', priority: 0.8, changeFreq: 'monthly' as const },
     { path: '/kontakt', enPath: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
+    { path: '/otestujte-podnikanie', enPath: '/test-your-business', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/ochrana-osobnych-udajov', priority: 0.6, changeFreq: 'yearly' as const },
     { path: '/obchodne-podmienky', priority: 0.6, changeFreq: 'yearly' as const },
   ]

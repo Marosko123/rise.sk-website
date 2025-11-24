@@ -46,6 +46,7 @@
     "engagement": "Modely spolupráce",
     "portfolio": "Portfólio",
     "reviews": "Recenzie",
+    "testYourBusiness": "Bezplatná kontrola!",
     "faq": "FAQ",
     "hiring": "Hľadáme talenty",
     "contact": "Kontakt",
@@ -95,7 +96,7 @@
     "story": {
       "title": "Od kamarátov z výšky k technologickým partnerom",
       "p1": "Naša cesta nezačala v zasadačkách, ale v univerzitných labákoch a pri dlhých nočných coding sessions. Sme skupina priateľov, ktorí veria, že technológie majú slúžiť ľuďom, nie naopak. Zachovali sme si našu mladícku dravosť a priateľskú atmosféru, no dnes ju kombinujeme s expertízou, ktorú oceňujú tí najväčší hráči na trhu.",
-      "p2": "Pomáhame firmám rásť, pretože sami vieme, aké je to budovať niečo od nuly. Používame tie najmodernejšie nástroje, pretože nás to baví a pretože vieme, že práve tie prinášajú najlepšie výsledky. Či už ide o komplexný vládny systém alebo inovatívnu appku pre startup, do každého projektu dávame kúsok nášho 'rise' ducha.",
+      "p2": "Pomáhame firmám rásť, pretože sami vieme, aké je to budovať niečo od nula. Používame tie najmodernejšie nástroje, pretože nás to baví a pretože vieme, že práve tie prinášajú najlepšie výsledky. Či už ide o komplexný vládny systém alebo inovatívnu appku pre startup, do každého projektu dávame kúsok nášho 'rise' ducha.",
       "cta": "Chceme pomôcť aj vám. Nie sme len dodávatelia, sme vaši budúci technologickí partneri. Poďme sa stretnúť, dať si kávu a porozprávať sa o tom, ako môžeme spoločne vyrásť."
     },
     "stats": {
@@ -158,59 +159,173 @@
       },
       "featuresTitle": "Prečo si vybrať našu tvorbu webstránok?",
       "features": [
-        { "title": "Pokročilá SEO Optimalizácia", "description": "Weby staviame na pevných základoch technického SEO. Sémantický kód, rýchlosť načítania (Core Web Vitals) a správna štruktúra zabezpečia, že vás Google bude milovať a zákazníci ľahko nájdu." },
-        { "title": "Extrémna rýchlosť s Next.js", "description": "Využívame najmodernejší framework Next.js (React), ktorý zaručuje bleskové načítanie stránok. Rýchly web znamená nižšiu mieru odchodov a vyššie konverzie." },
-        { "title": "Responzívny & UX Dizajn", "description": "Váš web bude vyzerať a fungovať perfektne na každom zariadení – od mobilu cez tablet až po veľké desktopové monitory. Dôraz kladieme na užívateľskú prívetivosť (UX)." },
-        { "title": "Kvalitný a Spoľahlivý Hosting", "description": "Zabezpečíme pre vás rýchly a bezpečný hosting za bezkonkurenčné ceny. Garantujeme 99.9% dostupnosť a pravidelné zálohy, aby bol váš web vždy online." },
-        { "title": "Maximálna Bezpečnosť", "description": "Bezpečnosť nepodceňujeme. SSL certifikát, ochrana pred DDoS útokmi, bezpečné formuláre a pravidelné zálohy sú u nás absolútnym štandardom." },
-        { "title": "Analytika a Meranie", "description": "Nasadíme Google Analytics 4 a nastavíme sledovanie konverzií, aby ste presne vedeli, ako sa vaši návštevníci správajú a čo vám prináša zisk." }
+        {
+          "title": "Pokročilá SEO Optimalizácia",
+          "description": "Weby staviame na pevných základoch technického SEO. Sémantický kód, rýchlosť načítania (Core Web Vitals) a správna štruktúra zabezpečia, že vás Google bude milovať a zákazníci ľahko nájdu."
+        },
+        {
+          "title": "Extrémna rýchlosť s Next.js",
+          "description": "Využívame najmodernejší framework Next.js (React), ktorý zaručuje bleskové načítanie stránok. Rýchly web znamená nižšiu mieru odchodov a vyššie konverzie."
+        },
+        {
+          "title": "Responzívny & UX Dizajn",
+          "description": "Váš web bude vyzerať a fungovať perfektne na každom zariadení – od mobilu cez tablet až po veľké desktopové monitory. Dôraz kladieme na užívateľskú prívetivosť (UX)."
+        },
+        {
+          "title": "Kvalitný a Spoľahlivý Hosting",
+          "description": "Zabezpečíme pre vás rýchly a bezpečný hosting za bezkonkurenčné ceny. Garantujeme 99.9% dostupnosť a pravidelné zálohy, aby bol váš web vždy online."
+        },
+        {
+          "title": "Maximálna Bezpečnosť",
+          "description": "Bezpečnosť nepodceňujeme. SSL certifikát, ochrana pred DDoS útokmi, bezpečné formuláre a pravidelné zálohy sú u nás absolútnym štandardom."
+        },
+        {
+          "title": "Analytika a Meranie",
+          "description": "Nasadíme Google Analytics 4 a nastavíme sledovanie konverzií, aby ste presne vedeli, ako sa vaši návštevníci správajú a čo vám prináša zisk."
+        }
       ],
       "techStack": {
         "recommended": [
-          { "name": "Next.js", "reason": "Najlepší framework pre SEO a extrémne rýchle načítanie." },
-          { "name": "React", "reason": "Umožňuje vytvárať interaktívne a dynamické používateľské rozhrania." },
-          { "name": "TypeScript", "reason": "Zaručuje bezchybný kód a jednoduchšiu údržbu projektu." },
-          { "name": "Tailwind CSS", "reason": "Moderný prístup k dizajnu pre pixel-perfect výsledky." },
-          { "name": "Node.js", "reason": "Rýchly a škálovateľný backend pre náročné aplikácie." },
-          { "name": "PostgreSQL", "reason": "Najspoľahlivejšia databáza pre vaše cenné dáta." }
+          {
+            "name": "Next.js",
+            "reason": "Najlepší framework pre SEO a extrémne rýchle načítanie."
+          },
+          {
+            "name": "React",
+            "reason": "Umožňuje vytvárať interaktívne a dynamické používateľské rozhrania."
+          },
+          {
+            "name": "TypeScript",
+            "reason": "Zaručuje bezchybný kód a jednoduchšiu údržbu projektu."
+          },
+          {
+            "name": "Tailwind CSS",
+            "reason": "Moderný prístup k dizajnu pre pixel-perfect výsledky."
+          },
+          {
+            "name": "Node.js",
+            "reason": "Rýchly a škálovateľný backend pre náročné aplikácie."
+          },
+          {
+            "name": "PostgreSQL",
+            "reason": "Najspoľahlivejšia databáza pre vaše cenné dáta."
+          }
         ],
         "others": [
-          "WordPress", "Figma", "Docker", "AWS", "Google Analytics", "Svelte", "Nuxt.js", "Vercel", "Redis", "Elasticsearch"
+          "WordPress",
+          "Figma",
+          "Docker",
+          "AWS",
+          "Google Analytics",
+          "Svelte",
+          "Nuxt.js",
+          "Vercel",
+          "Redis",
+          "Elasticsearch"
         ]
       },
       "tools": {
         "title": "Najlepšie nástroje",
         "subtitle": "Používame špičkové technológie pre najlepšie výsledky",
         "items": [
-          { "name": "Next.js", "description": "Pre maximálnu rýchlosť a SEO" },
-          { "name": "React", "description": "Pre interaktívne používateľské rozhrania" },
-          { "name": "WordPress", "description": "Pre jednoduchú správu obsahu" },
-          { "name": "TypeScript", "description": "Pre bezpečnosť a škálovateľnosť" },
-          { "name": "Tailwind CSS", "description": "Pre moderný a responzívny dizajn" },
-          { "name": "Framer Motion", "description": "Pre plynulé animácie" },
-          { "name": "Node.js", "description": "Rýchly backend" },
-          { "name": "PostgreSQL", "description": "Spoľahlivá databáza" },
-          { "name": "Docker", "description": "Kontajnerizácia" },
-          { "name": "AWS", "description": "Cloud hosting" },
-          { "name": "Figma", "description": "UI/UX dizajn" },
-          { "name": "Svelte", "description": "Moderný frontend" },
-          { "name": "Nuxt.js", "description": "Vue.js framework" },
-          { "name": "Google Analytics", "description": "Analytika" }
+          {
+            "name": "Next.js",
+            "description": "Pre maximálnu rýchlosť a SEO"
+          },
+          {
+            "name": "React",
+            "description": "Pre interaktívne používateľské rozhrania"
+          },
+          {
+            "name": "WordPress",
+            "description": "Pre jednoduchú správu obsahu"
+          },
+          {
+            "name": "TypeScript",
+            "description": "Pre bezpečnosť a škálovateľnosť"
+          },
+          {
+            "name": "Tailwind CSS",
+            "description": "Pre moderný a responzívny dizajn"
+          },
+          {
+            "name": "Framer Motion",
+            "description": "Pre plynulé animácie"
+          },
+          {
+            "name": "Node.js",
+            "description": "Rýchly backend"
+          },
+          {
+            "name": "PostgreSQL",
+            "description": "Spoľahlivá databáza"
+          },
+          {
+            "name": "Docker",
+            "description": "Kontajnerizácia"
+          },
+          {
+            "name": "AWS",
+            "description": "Cloud hosting"
+          },
+          {
+            "name": "Figma",
+            "description": "UI/UX dizajn"
+          },
+          {
+            "name": "Svelte",
+            "description": "Moderný frontend"
+          },
+          {
+            "name": "Nuxt.js",
+            "description": "Vue.js framework"
+          },
+          {
+            "name": "Google Analytics",
+            "description": "Analytika"
+          }
         ]
       },
       "processTitle": "Ako prebieha tvorba web stránky?",
       "process": [
-        { "title": "1. Úvodná Konzultácia a Stratégia", "description": "Pochopíme váš biznis, ciele a cieľovú skupinu. Analyzujeme konkurenciu a navrhneme stratégiu, ako ju predbehnúť." },
-        { "title": "2. UX/UI Dizajn a Prototypovanie", "description": "Vytvoríme modely a atraktívny dizajn, ktorý schválite ešte pred začatím programovania. Priebežne sledujte progress webu počas samotného kódenia." },
-        { "title": "3. Vývoj a Implementácia", "description": "Naši senior programátori premenia dizajn na funkčný kód. Nasadíme texty, optimalizujeme obrázky a prepojíme web s potrebnými nástrojmi." },
-        { "title": "4. Testovanie, SEO a Spustenie", "description": "Dôkladne otestujeme funkčnosť, rýchlosť a responzivitu. Nastavíme SEO parametre a slávnostne spustíme web na vašej doméne." }
+        {
+          "title": "1. Úvodná Konzultácia a Stratégia",
+          "description": "Pochopíme váš biznis, ciele a cieľovú skupinu. Analyzujeme konkurenciu a navrhneme stratégiu, ako ju predbehnúť."
+        },
+        {
+          "title": "2. UX/UI Dizajn a Prototypovanie",
+          "description": "Vytvoríme modely a atraktívny dizajn, ktorý schválite ešte pred začatím programovania. Priebežne sledujte progress webu počas samotného kódenia."
+        },
+        {
+          "title": "3. Vývoj a Implementácia",
+          "description": "Naši senior programátori premenia dizajn na funkčný kód. Nasadíme texty, optimalizujeme obrázky a prepojíme web s potrebnými nástrojmi."
+        },
+        {
+          "title": "4. Testovanie, SEO a Spustenie",
+          "description": "Dôkladne otestujeme funkčnosť, rýchlosť a responzivitu. Nastavíme SEO parametre a slávnostne spustíme web na vašej doméne."
+        }
       ],
       "faq": [
-        { "question": "Koľko stojí tvorba web stránky na mieru?", "answer": "Cena je individuálna a závisí od náročnosti a rozsahu projektu. Garantujeme vám najvyššiu kvalitu za férovú cenu a dodanie spoľahlivého produktu, ktorý bude dlhodobo slúžiť vášmu podnikaniu. Kontaktujte nás pre nezáväznú cenovú ponuku." },
-        { "question": "Ako dlho trvá vytvorenie webu?", "answer": "Štandardný firemný web zvyčajne dodáme do 2-4 týždňov od dodania všetkých podkladov. Náročnejšie projekty môžu trvať dlhšie, o čom vás budeme vopred informovať." },
-        { "question": "Budem si vedieť web upravovať sám?", "answer": "Áno, samozrejme. Ku každému webu vieme dodať užívateľsky prívetivý administračný systém (CMS), kde si jednoducho zmeníte texty, fotky alebo pridáte novinky." },
-        { "question": "Zabezpečujete aj webhosting a doménu?", "answer": "Áno, radi vám pomôžeme s výberom a registráciou domény aj s nastavením rýchleho a bezpečného webhostingu pre váš nový projekt." },
-        { "question": "Robíte aj redizajn starých stránok?", "answer": "Áno, modernizácia a redizajn starých webov je naša špecialita. Zachováme vaše cenné SEO pozície a zároveň výrazne zlepšíme dizajn, funkčnosť a výkon webu." }
+        {
+          "question": "Koľko stojí tvorba web stránky na mieru?",
+          "answer": "Cena je individuálna a závisí od náročnosti a rozsahu projektu. Garantujeme vám najvyššiu kvalitu za férovú cenu a dodanie spoľahlivého produktu, ktorý bude dlhodobo slúžiť vášmu podnikaniu. Kontaktujte nás pre nezáväznú cenovú ponuku."
+        },
+        {
+          "question": "Ako dlho trvá vytvorenie webu?",
+          "answer": "Štandardný firemný web zvyčajne dodáme do 2-4 týždňov od dodania všetkých podkladov. Náročnejšie projekty môžu trvať dlhšie, o čom vás budeme vopred informovať."
+        },
+        {
+          "question": "Budem si vedieť web upravovať sám?",
+          "answer": "Áno, samozrejme. Ku každému webu vieme dodať užívateľsky prívetivý administračný systém (CMS), kde si jednoducho zmeníte texty, fotky alebo pridáte novinky."
+        },
+        {
+          "question": "Zabezpečujete aj webhosting a doménu?",
+          "answer": "Áno, radi vám pomôžeme s výberom a registráciou domény aj s nastavením rýchleho a bezpečného webhostingu pre váš nový projekt."
+        },
+        {
+          "question": "Robíte aj redizajn starých stránok?",
+          "answer": "Áno, modernizácia a redizajn starých webov je naša špecialita. Zachováme vaše cenné SEO pozície a zároveň výrazne zlepšíme dizajn, funkčnosť a výkon webu."
+        }
       ],
       "cta": {
         "primary": "Chcem web, ktorý zarába",
@@ -228,57 +343,165 @@
       },
       "featuresTitle": "Funkcie pre úspešný online predaj",
       "features": [
-        { "title": "Maximalizácia Konverzií (CRO)", "description": "Každý prvok e-shopu navrhujeme s cieľom predať. Intuitívna navigácia, jednoduchý košík a psychológia predaja minimalizujú počet opustených objednávok." },
-        { "title": "Platobné Brány a Doprava", "description": "Bezproblémová integrácia Stripe, GoPay, PayPal, Apple Pay, Google Pay a napojenie na kuriérske spoločnosti (Packeta, DPD, GLS) pre automatizáciu logistiky." },
-        { "title": "Automatizácia a Integrácie", "description": "Prepojíme váš e-shop s účtovníctvom (Pohoda, SuperFaktúra, KROS), skladovým hospodárstvom a ERP systémami. Šetrite čas a eliminujte chyby." },
-        { "title": "Blesková Rýchlosť a Stabilita", "description": "Váš e-shop zvládne aj nápor zákazníkov počas Black Friday. Vďaka modernej architektúre sa stránky načítajú okamžite, čo zvyšuje predaje." },
-        { "title": "SEO a Marketingové Nástroje", "description": "Automatické generovanie XML feedov pre Google Nákupy a Heureku. Zabudované nástroje pre zľavové kódy, newslettery, upsell a cross-sell." },
-        { "title": "B2B a B2C Funkcionalita", "description": "Potrebujete veľkoobchodné ceny pre partnerov? Žiadny problém. Náš systém podporuje rôzne cenové hladiny, skupiny zákazníkov a individuálne zľavy." }
+        {
+          "title": "Maximalizácia Konverzií (CRO)",
+          "description": "Každý prvok e-shopu navrhujeme s cieľom predať. Intuitívna navigácia, jednoduchý košík a psychológia predaja minimalizujú počet opustených objednávok."
+        },
+        {
+          "title": "Platobné Brány a Doprava",
+          "description": "Bezproblémová integrácia Stripe, GoPay, PayPal, Apple Pay, Google Pay a napojenie na kuriérske spoločnosti (Packeta, DPD, GLS) pre automatizáciu logistiky."
+        },
+        {
+          "title": "Automatizácia a Integrácie",
+          "description": "Prepojíme váš e-shop s účtovníctvom (Pohoda, SuperFaktúra, KROS), skladovým hospodárstvom a ERP systémami. Šetrite čas a eliminujte chyby."
+        },
+        {
+          "title": "Blesková Rýchlosť a Stabilita",
+          "description": "Váš e-shop zvládne aj nápor zákazníkov počas Black Friday. Vďaka modernej architektúre sa stránky načítajú okamžite, čo zvyšuje predaje."
+        },
+        {
+          "title": "SEO a Marketingové Nástroje",
+          "description": "Automatické generovanie XML feedov pre Google Nákupy a Heureku. Zabudované nástroje pre zľavové kódy, newslettery, upsell a cross-sell."
+        },
+        {
+          "title": "B2B a B2C Funkcionalita",
+          "description": "Potrebujete veľkoobchodné ceny pre partnerov? Žiadny problém. Náš systém podporuje rôzne cenové hladiny, skupiny zákazníkov a individuálne zľavy."
+        }
       ],
       "techStack": {
         "recommended": [
-          { "name": "WooCommerce", "reason": "Najflexibilnejšia platforma pre e-shopy s nekonečnými možnosťami úprav." },
-          { "name": "Shopify", "reason": "Stabilné a bezpečné riešenie pre rýchly štart predaja." },
-          { "name": "Stripe", "reason": "Globálny štandard pre bezpečné a rýchle platby kartou." },
-          { "name": "Next.js", "reason": "Pre headless e-shopy, kde je rýchlosť kľúčová." },
-          { "name": "Redis", "reason": "Okamžité načítanie produktov vďaka pokročilému cachovaniu." },
-          { "name": "Elasticsearch", "reason": "Inteligentné vyhľadávanie, ktoré nájde produkt aj pri preklepe." }
+          {
+            "name": "WooCommerce",
+            "reason": "Najflexibilnejšia platforma pre e-shopy s nekonečnými možnosťami úprav."
+          },
+          {
+            "name": "Shopify",
+            "reason": "Stabilné a bezpečné riešenie pre rýchly štart predaja."
+          },
+          {
+            "name": "Stripe",
+            "reason": "Globálny štandard pre bezpečné a rýchle platby kartou."
+          },
+          {
+            "name": "Next.js",
+            "reason": "Pre headless e-shopy, kde je rýchlosť kľúčová."
+          },
+          {
+            "name": "Redis",
+            "reason": "Okamžité načítanie produktov vďaka pokročilému cachovaniu."
+          },
+          {
+            "name": "Elasticsearch",
+            "reason": "Inteligentné vyhľadávanie, ktoré nájde produkt aj pri preklepe."
+          }
         ],
         "others": [
-          "PayPal", "Google Analytics", "Magento", "PrestaShop", "Docker", "AWS", "React", "PostgreSQL", "Figma", "Tailwind CSS"
+          "PayPal",
+          "Google Analytics",
+          "Magento",
+          "PrestaShop",
+          "Docker",
+          "AWS",
+          "React",
+          "PostgreSQL",
+          "Figma",
+          "Tailwind CSS"
         ]
       },
       "tools": {
         "title": "Technológie a integrácie",
         "subtitle": "Využívame overené platformy a platobné systémy",
         "items": [
-          { "name": "WooCommerce", "description": "Flexibilná e-commerce platforma" },
-          { "name": "Shopify", "description": "Rýchle a stabilné riešenie" },
-          { "name": "Stripe", "description": "Bezpečné platby kartou" },
-          { "name": "PayPal", "description": "Globálny platobný systém" },
-          { "name": "Google Analytics", "description": "Meranie konverzií a návštevnosti" },
-          { "name": "React", "description": "Rýchly frontend pre headless e-shopy" },
-          { "name": "Magento", "description": "Enterprise e-commerce" },
-          { "name": "PrestaShop", "description": "Populárny e-shop systém" },
-          { "name": "Redis", "description": "Rýchla cache" },
-          { "name": "Elasticsearch", "description": "Pokročilé vyhľadávanie" },
-          { "name": "Docker", "description": "Nasadenie" },
-          { "name": "AWS", "description": "Infraštruktúra" }
+          {
+            "name": "WooCommerce",
+            "description": "Flexibilná e-commerce platforma"
+          },
+          {
+            "name": "Shopify",
+            "description": "Rýchle a stabilné riešenie"
+          },
+          {
+            "name": "Stripe",
+            "description": "Bezpečné platby kartou"
+          },
+          {
+            "name": "PayPal",
+            "description": "Globálny platobný systém"
+          },
+          {
+            "name": "Google Analytics",
+            "description": "Meranie konverzií a návštevnosti"
+          },
+          {
+            "name": "React",
+            "description": "Rýchly frontend pre headless e-shopy"
+          },
+          {
+            "name": "Magento",
+            "description": "Enterprise e-commerce"
+          },
+          {
+            "name": "PrestaShop",
+            "description": "Populárny e-shop systém"
+          },
+          {
+            "name": "Redis",
+            "description": "Rýchla cache"
+          },
+          {
+            "name": "Elasticsearch",
+            "description": "Pokročilé vyhľadávanie"
+          },
+          {
+            "name": "Docker",
+            "description": "Nasadenie"
+          },
+          {
+            "name": "AWS",
+            "description": "Infraštruktúra"
+          }
         ]
       },
       "processTitle": "Postup vývoja úspešného e-shopu",
       "process": [
-        { "title": "1. Analýza a Špecifikácia", "description": "Detailne preberieme váš sortiment, cieľovú skupinu a potrebné funkcie. Navrhneme technické riešenie a integrácie." },
-        { "title": "2. UX/UI Dizajn na Mieru", "description": "Navrhneme prehľadný katalóg produktov, detail produktu a optimalizovaný nákupný proces (checkout), ktorý zákazníci milujú." },
-        { "title": "3. Vývoj a Integrácie", "description": "Naprogramujeme e-shop, napojíme platobné brány, dopravcov a externé systémy. Importujeme vaše produkty." },
-        { "title": "4. Testovanie a Zaškolenie", "description": "Otestujeme celý nákupný proces, rýchlosť a bezpečnosť. Zaškolíme vás do administrácie, aby ste e-shop ovládali ľavou zadnou." }
+        {
+          "title": "1. Analýza a Špecifikácia",
+          "description": "Detailne preberieme váš sortiment, cieľovú skupinu a potrebné funkcie. Navrhneme technické riešenie a integrácie."
+        },
+        {
+          "title": "2. UX/UI Dizajn na Mieru",
+          "description": "Navrhneme prehľadný katalóg produktov, detail produktu a optimalizovaný nákupný proces (checkout), ktorý zákazníci milujú."
+        },
+        {
+          "title": "3. Vývoj a Integrácie",
+          "description": "Naprogramujeme e-shop, napojíme platobné brány, dopravcov a externé systémy. Importujeme vaše produkty."
+        },
+        {
+          "title": "4. Testovanie a Zaškolenie",
+          "description": "Otestujeme celý nákupný proces, rýchlosť a bezpečnosť. Zaškolíme vás do administrácie, aby ste e-shop ovládali ľavou zadnou."
+        }
       ],
       "faq": [
-        { "question": "Aká je cena za tvorbu e-shopu na mieru?", "answer": "E-shopy na mieru začínajú od 2500 €. Konečná cena závisí od počtu integrácií, špecifických funkcií a náročnosti dizajnu. Investícia do kvalitného e-shopu sa vám však rýchlo vráti." },
-        { "question": "Viete napojiť e-shop na môj skladový systém?", "answer": "Áno, bežne integrujeme skladové systémy, ERP (Pohoda, Money S3, Kros) a fakturačné softvéry. Všetko sa deje automaticky." },
-        { "question": "Je e-shop optimalizovaný pre mobilné zariadenia?", "answer": "Samozrejme. Mobile-first prístup je u nás nutnosťou, keďže dnes už väčšina nákupov prebieha cez smartfóny." },
-        { "question": "Poskytujete technickú podporu po spustení?", "answer": "Áno, nenecháme vás v tom samých. Zabezpečujeme dlhodobú správu, aktualizácie, monitoring a sme pripravení pomôcť s akýmkoľvek problémom." },
-        { "question": "Ako dlho trvá vývoj e-shopu?", "answer": "Menší e-shop vieme dodať do 4-6 týždňov. Komplexné riešenia s množstvom integrácií môžu trvať 2-3 mesiace." }
+        {
+          "question": "Aká je cena za tvorbu e-shopu na mieru?",
+          "answer": "E-shopy na mieru začínajú od 2500 €. Konečná cena závisí od počtu integrácií, špecifických funkcií a náročnosti dizajnu. Investícia do kvalitného e-shopu sa vám však rýchlo vráti."
+        },
+        {
+          "question": "Viete napojiť e-shop na môj skladový systém?",
+          "answer": "Áno, bežne integrujeme skladové systémy, ERP (Pohoda, Money S3, Kros) a fakturačné softvéry. Všetko sa deje automaticky."
+        },
+        {
+          "question": "Je e-shop optimalizovaný pre mobilné zariadenia?",
+          "answer": "Samozrejme. Mobile-first prístup je u nás nutnosťou, keďže dnes už väčšina nákupov prebieha cez smartfóny."
+        },
+        {
+          "question": "Poskytujete technickú podporu po spustení?",
+          "answer": "Áno, nenecháme vás v tom samých. Zabezpečujeme dlhodobú správu, aktualizácie, monitoring a sme pripravení pomôcť s akýmkoľvek problémom."
+        },
+        {
+          "question": "Ako dlho trvá vývoj e-shopu?",
+          "answer": "Menší e-shop vieme dodať do 4-6 týždňov. Komplexné riešenia s množstvom integrácií môžu trvať 2-3 mesiace."
+        }
       ],
       "cta": {
         "primary": "Chcem e-shop, ktorý predáva",
@@ -297,55 +520,154 @@
       },
       "featuresTitle": "Špičkové technológie pre vašu aplikáciu",
       "features": [
-        { "title": "Multiplatformový Vývoj (Cross-platform)", "description": "Používame React Native a Flutter, vďaka čomu vytvoríme jednu aplikáciu, ktorá funguje perfektne na iOS aj Androide. Ušetríte tak až 40% nákladov a času." },
-        { "title": "Natívny Výkon a Zážitok", "description": "Naše aplikácie sú na nerozoznanie od natívnych. Sú plynulé, rýchle a využívajú hardvér telefónu (kamera, GPS, senzory) na maximum." },
-        { "title": "Offline Režim (Offline-first)", "description": "Aplikácia musí fungovať aj v tuneli alebo v lese. Dáta sa uložia lokálne a automaticky synchronizujú, keď sa používateľ opäť pripojí na internet." },
-        { "title": "Push Notifikácie", "description": "Udržujte kontakt so svojimi používateľmi. Posielajte im personalizované správy, novinky alebo pripomienky priamo na obrazovku ich telefónu." },
-        { "title": "Modern UI/UX Dizajn", "description": "Navrhujeme rozhrania podľa najnovších štandardov Apple (Human Interface Guidelines) a Google (Material Design), ktoré sú intuitívne a radosť používať." },
-        { "title": "Publikácia a Údržba", "description": "Zastrešíme celý byrokratický proces schvaľovania v App Store a Google Play. Postaráme sa o pravidelné aktualizácie a kompatibilitu s novými verziami systémov." }
+        {
+          "title": "Multiplatformový Vývoj (Cross-platform)",
+          "description": "Používame React Native a Flutter, vďaka čomu vytvoríme jednu aplikáciu, ktorá funguje perfektne na iOS aj Androide. Ušetríte tak až 40% nákladov a času."
+        },
+        {
+          "title": "Natívny Výkon a Zážitok",
+          "description": "Naše aplikácie sú na nerozoznanie od natívnych. Sú plynulé, rýchle a využívajú hardvér telefónu (kamera, GPS, senzory) na maximum."
+        },
+        {
+          "title": "Offline Režim (Offline-first)",
+          "description": "Aplikácia musí fungovať aj v tuneli alebo v lese. Dáta sa uložia lokálne a automaticky synchronizujú, keď sa používateľ opäť pripojí na internet."
+        },
+        {
+          "title": "Push Notifikácie",
+          "description": "Udržujte kontakt so svojimi používateľmi. Posielajte im personalizované správy, novinky alebo pripomienky priamo na obrazovku ich telefónu."
+        },
+        {
+          "title": "Modern UI/UX Dizajn",
+          "description": "Navrhujeme rozhrania podľa najnovších štandardov Apple (Human Interface Guidelines) a Google (Material Design), ktoré sú intuitívne a radosť používať."
+        },
+        {
+          "title": "Publikácia a Údržba",
+          "description": "Zastrešíme celý byrokratický proces schvaľovania v App Store a Google Play. Postaráme sa o pravidelné aktualizácie a kompatibilitu s novými verziami systémov."
+        }
       ],
       "techStack": {
         "recommended": [
-          { "name": "React Native", "reason": "Umožňuje vyvíjať pre iOS aj Android súčasne s jedným kódom." },
-          { "name": "Flutter", "reason": "Google technológia pre krásne a plynulé používateľské rozhrania." },
-          { "name": "Swift", "reason": "Natívny jazyk pre maximálny výkon na Apple zariadeniach." },
-          { "name": "Kotlin", "reason": "Moderný štandard pre robustné Android aplikácie." },
-          { "name": "Firebase", "reason": "Kompletný backend, databáza a analytika v jednom." },
-          { "name": "Expo", "reason": "Zrýchľuje vývoj a umožňuje okamžité aktualizácie aplikácie." }
+          {
+            "name": "React Native",
+            "reason": "Umožňuje vyvíjať pre iOS aj Android súčasne s jedným kódom."
+          },
+          {
+            "name": "Flutter",
+            "reason": "Google technológia pre krásne a plynulé používateľské rozhrania."
+          },
+          {
+            "name": "Swift",
+            "reason": "Natívny jazyk pre maximálny výkon na Apple zariadeniach."
+          },
+          {
+            "name": "Kotlin",
+            "reason": "Moderný štandard pre robustné Android aplikácie."
+          },
+          {
+            "name": "Firebase",
+            "reason": "Kompletný backend, databáza a analytika v jednom."
+          },
+          {
+            "name": "Expo",
+            "reason": "Zrýchľuje vývoj a umožňuje okamžité aktualizácie aplikácie."
+          }
         ],
         "others": [
-          "TypeScript", "Figma", "iOS", "Android", "Node.js", "Python", "Google Analytics"
+          "TypeScript",
+          "Figma",
+          "iOS",
+          "Android",
+          "Node.js",
+          "Python",
+          "Google Analytics"
         ]
       },
       "tools": {
         "title": "Technológie, ktoré ovládame",
         "subtitle": "Používame najmodernejšie nástroje pre vývoj špičkových aplikácií",
         "items": [
-          { "name": "React Native", "description": "Jedna kódová základňa pre iOS aj Android" },
-          { "name": "Expo", "description": "Rýchly vývoj a okamžité aktualizácie" },
-          { "name": "Flutter", "description": "Google technológia pre krásne UI" },
-          { "name": "Swift", "description": "Natívny a výkonný jazyk pre iOS" },
-          { "name": "Kotlin", "description": "Moderný štandard pre Android aplikácie" },
-          { "name": "Firebase", "description": "Robustný backend a real-time databáza" },
-          { "name": "iOS", "description": "Apple platforma" },
-          { "name": "Android", "description": "Google platforma" },
-          { "name": "TypeScript", "description": "Typová bezpečnosť" },
-          { "name": "Figma", "description": "Dizajn aplikácií" }
+          {
+            "name": "React Native",
+            "description": "Jedna kódová základňa pre iOS aj Android"
+          },
+          {
+            "name": "Expo",
+            "description": "Rýchly vývoj a okamžité aktualizácie"
+          },
+          {
+            "name": "Flutter",
+            "description": "Google technológia pre krásne UI"
+          },
+          {
+            "name": "Swift",
+            "description": "Natívny a výkonný jazyk pre iOS"
+          },
+          {
+            "name": "Kotlin",
+            "description": "Moderný štandard pre Android aplikácie"
+          },
+          {
+            "name": "Firebase",
+            "description": "Robustný backend a real-time databáza"
+          },
+          {
+            "name": "iOS",
+            "description": "Apple platforma"
+          },
+          {
+            "name": "Android",
+            "description": "Google platforma"
+          },
+          {
+            "name": "TypeScript",
+            "description": "Typová bezpečnosť"
+          },
+          {
+            "name": "Figma",
+            "description": "Dizajn aplikácií"
+          }
         ]
       },
       "processTitle": "Cesta k vašej úspešnej aplikácii",
       "process": [
-        { "title": "1. Koncept a Stratégia", "description": "Spoločne definujeme funkcie, cieľovú skupinu a monetizačný model. Vytvoríme detailnú špecifikáciu." },
-        { "title": "2. UX/UI Dizajn a Prototyp", "description": "Navrhneme wireframy a následne finálny dizajn obrazoviek. Vytvoríme klikateľný prototyp, aby ste videli, ako aplikácia bude fungovať." },
-        { "title": "3. Agilný Vývoj", "description": "Programujeme aplikáciu v krátkych šprintoch. Pravidelne vám posielame testovacie verzie (TestFlight), aby ste mali prehľad o progrese." },
-        { "title": "4. Testovanie a Launch", "description": "Dôkladné testovanie na rôznych zariadeniach. Po schválení aplikáciu nasadíme do obchodov a pomôžeme s marketingom." }
+        {
+          "title": "1. Koncept a Stratégia",
+          "description": "Spoločne definujeme funkcie, cieľovú skupinu a monetizačný model. Vytvoríme detailnú špecifikáciu."
+        },
+        {
+          "title": "2. UX/UI Dizajn a Prototyp",
+          "description": "Navrhneme wireframy a následne finálny dizajn obrazoviek. Vytvoríme klikateľný prototyp, aby ste videli, ako aplikácia bude fungovať."
+        },
+        {
+          "title": "3. Agilný Vývoj",
+          "description": "Programujeme aplikáciu v krátkych šprintoch. Pravidelne vám posielame testovacie verzie (TestFlight), aby ste mali prehľad o progrese."
+        },
+        {
+          "title": "4. Testovanie a Launch",
+          "description": "Dôkladné testovanie na rôznych zariadeniach. Po schválení aplikáciu nasadíme do obchodov a pomôžeme s marketingom."
+        }
       ],
       "faq": [
-        { "question": "Koľko stojí vývoj mobilnej aplikácie?", "answer": "Cena závisí od zložitosti a rozsahu projektu. Garantujeme vám najvyššiu kvalitu a dodanie špičkového produktu. Radi vám pripravíme presnú kalkuláciu na mieru." },
-        { "question": "Je lepšie vyvíjať natívne alebo hybridne?", "answer": "V 90% prípadov odporúčame hybridný vývoj (React Native/Flutter). Získate aplikáciu pre iOS aj Android z jedného kódu, čo je rýchlejšie a lacnejšie, bez kompromisov na kvalite." },
-        { "question": "Ako dlho trvá vývoj aplikácie?", "answer": "Jednoduché mobilné aplikácie vieme vytvoriť už za 1 mesiac, komplexnejšie projekty trvajú niekoľko mesiacov. Časový rámec výrazne závisí od zložitosti aplikácie a dĺžky procesu schvaľovania a testovania pri publikovaní." },
-        { "question": "Čo sa deje po vydaní aplikácie?", "answer": "Aplikácia potrebuje život. Poskytujeme servisnú zmluvu (SLA) na aktualizácie, opravy chýb a prispôsobovanie novým verziám iOS a Android." },
-        { "question": "Pomôžete mi dostať aplikáciu do App Store?", "answer": "Áno, kompletne zastrešíme proces vytvorenia vývojárskych účtov, nastavenia certifikátov a schvaľovacieho procesu v Apple App Store aj Google Play." }
+        {
+          "question": "Koľko stojí vývoj mobilnej aplikácie?",
+          "answer": "Cena závisí od zložitosti a rozsahu projektu. Garantujeme vám najvyššiu kvalitu a dodanie špičkového produktu. Radi vám pripravíme presnú kalkuláciu na mieru."
+        },
+        {
+          "question": "Je lepšie vyvíjať natívne alebo hybridne?",
+          "answer": "V 90% prípadov odporúčame hybridný vývoj (React Native/Flutter). Získate aplikáciu pre iOS aj Android z jedného kódu, čo je rýchlejšie a lacnejšie, bez kompromisov na kvalite."
+        },
+        {
+          "question": "Ako dlho trvá vývoj aplikácie?",
+          "answer": "Jednoduché mobilné aplikácie vieme vytvoriť už za 1 mesiac, komplexnejšie projekty trvajú niekoľko mesiacov. Časový rámec výrazne závisí od zložitosti aplikácie a dĺžky procesu schvaľovania a testovania pri publikovaní."
+        },
+        {
+          "question": "Čo sa deje po vydaní aplikácie?",
+          "answer": "Aplikácia potrebuje život. Poskytujeme servisnú zmluvu (SLA) na aktualizácie, opravy chýb a prispôsobovanie novým verziám iOS a Android."
+        },
+        {
+          "question": "Pomôžete mi dostať aplikáciu do App Store?",
+          "answer": "Áno, kompletne zastrešíme proces vytvorenia vývojárskych účtov, nastavenia certifikátov a schvaľovacieho procesu v Apple App Store aj Google Play."
+        }
       ],
       "cta": {
         "primary": "Mám nápad na aplikáciu",
@@ -363,86 +685,307 @@
       },
       "featuresTitle": "Riešenia pre efektivitu firmy",
       "features": [
-        { "title": "Automatizácia", "description": "Nahraďte manuálnu prácu a Excel tabuľky inteligentným softvérom." },
-        { "title": "Integrácie API", "description": "Prepojíme vaše existujúce nástroje do jedného funkčného celku." },
-        { "title": "Cloudové riešenie", "description": "Prístup k dátam odkiaľkoľvek, bezpečne a bez nutnosti vlastných serverov." },
-        { "title": "Škálovateľnosť", "description": "Systém porastie spolu s vašou firmou bez nutnosti prepisovania." },
-        { "title": "Reporting", "description": "Prehľadné dashboardy a grafy pre lepšie rozhodovanie manažmentu." },
-        { "title": "Bezpečnosť dát", "description": "Enterprise úroveň zabezpečenia citlivých firemných údajov." }
+        {
+          "title": "Automatizácia",
+          "description": "Nahraďte manuálnu prácu a Excel tabuľky inteligentným softvérom."
+        },
+        {
+          "title": "Integrácie API",
+          "description": "Prepojíme vaše existujúce nástroje do jedného funkčného celku."
+        },
+        {
+          "title": "Cloudové riešenie",
+          "description": "Prístup k dátam odkiaľkoľvek, bezpečne a bez nutnosti vlastných serverov."
+        },
+        {
+          "title": "Škálovateľnosť",
+          "description": "Systém porastie spolu s vašou firmou bez nutnosti prepisovania."
+        },
+        {
+          "title": "Reporting",
+          "description": "Prehľadné dashboardy a grafy pre lepšie rozhodovanie manažmentu."
+        },
+        {
+          "title": "Bezpečnosť dát",
+          "description": "Enterprise úroveň zabezpečenia citlivých firemných údajov."
+        }
       ],
       "techStack": {
         "recommended": [
-          { "name": "Node.js", "reason": "Ideálny pre škálovateľné sieťové aplikácie a API." },
-          { "name": "Python", "reason": "Líder v oblasti spracovania dát, AI a strojového učenia." },
-          { "name": "React", "reason": "Štandard pre moderné firemné dashboardy a aplikácie." },
-          { "name": "PostgreSQL", "reason": "Robustná a spoľahlivá databáza pre enterprise použitie." },
-          { "name": "Docker", "reason": "Zabezpečuje konzistentné prostredie od vývoja po produkciu." },
-          { "name": "AWS", "reason": "Najkomplexnejšia cloudová platforma na svete." }
+          {
+            "name": "Node.js",
+            "reason": "Ideálny pre škálovateľné sieťové aplikácie a API."
+          },
+          {
+            "name": "Python",
+            "reason": "Líder v oblasti spracovania dát, AI a strojového učenia."
+          },
+          {
+            "name": "React",
+            "reason": "Štandard pre moderné firemné dashboardy a aplikácie."
+          },
+          {
+            "name": "PostgreSQL",
+            "reason": "Robustná a spoľahlivá databáza pre enterprise použitie."
+          },
+          {
+            "name": "Docker",
+            "reason": "Zabezpečuje konzistentné prostredie od vývoja po produkciu."
+          },
+          {
+            "name": "AWS",
+            "reason": "Najkomplexnejšia cloudová platforma na svete."
+          }
         ],
         "others": [
-          "Java", ".NET", "Kubernetes", "Terraform", "Redis", "Linux", "Nginx", "Git", "Jenkins", "GitLab", "Oracle", "SAP", "Salesforce", "MSSQL", "DynamoDB", "Cassandra", "Ansible", "CircleCI", "Datadog", "Prometheus", "Grafana", "Go", "Rust", "Scala", "Ruby", "Apache Spark", "Hadoop", "Kafka", "Snowflake", "Databricks", "Tableau", "Spring Boot", "Django", "FastAPI", "Laravel", "Symfony"
+          "Java",
+          ".NET",
+          "Kubernetes",
+          "Terraform",
+          "Redis",
+          "Linux",
+          "Nginx",
+          "Git",
+          "Jenkins",
+          "GitLab",
+          "Oracle",
+          "SAP",
+          "Salesforce",
+          "MSSQL",
+          "DynamoDB",
+          "Cassandra",
+          "Ansible",
+          "CircleCI",
+          "Datadog",
+          "Prometheus",
+          "Grafana",
+          "Go",
+          "Rust",
+          "Scala",
+          "Ruby",
+          "Apache Spark",
+          "Hadoop",
+          "Kafka",
+          "Snowflake",
+          "Databricks",
+          "Tableau",
+          "Spring Boot",
+          "Django",
+          "FastAPI",
+          "Laravel",
+          "Symfony"
         ]
       },
       "tools": {
         "title": "Náš technologický stack",
         "subtitle": "Staviame na moderných a bezpečných technológiách",
         "items": [
-          { "name": "Node.js", "description": "Výkonný backend" },
-          { "name": "Python", "description": "Spracovanie dát a AI" },
-          { "name": "React", "description": "Moderné webové aplikácie" },
-          { "name": "PostgreSQL", "description": "Spoľahlivá databáza" },
-          { "name": "Docker", "description": "Kontajnerizácia aplikácií" },
-          { "name": "AWS", "description": "Cloudová infraštruktúra" },
-          { "name": "Java", "description": "Enterprise backend" },
-          { "name": ".NET", "description": "Microsoft ekosystém" },
-          { "name": "Kubernetes", "description": "Orchestrácia" },
-          { "name": "Terraform", "description": "IaC" },
-          { "name": "Redis", "description": "Cache" },
-          { "name": "Linux", "description": "OS" },
-          { "name": "Nginx", "description": "Web server" },
-          { "name": "Git", "description": "Verzovanie" },
-          { "name": "Jenkins", "description": "CI/CD" },
-          { "name": "GitLab", "description": "DevOps" },
-          { "name": "Oracle", "description": "Enterprise databáza" },
-          { "name": "SAP", "description": "Podnikové systémy" },
-          { "name": "Salesforce", "description": "CRM riešenia" },
-          { "name": "Microsoft SQL Server", "description": "Relačná databáza" },
-          { "name": "DynamoDB", "description": "NoSQL databáza" },
-          { "name": "Cassandra", "description": "Distribuovaná databáza" },
-          { "name": "Ansible", "description": "Automatizácia" },
-          { "name": "CircleCI", "description": "CI/CD pipeline" },
-          { "name": "Datadog", "description": "Monitoring" },
-          { "name": "Prometheus", "description": "Metriky" },
-          { "name": "Grafana", "description": "Vizualizácia" },
-          { "name": "Go", "description": "Vysoký výkon" },
-          { "name": "Rust", "description": "Bezpečnosť pamäte" },
-          { "name": "Scala", "description": "Funkcionálne programovanie" },
-          { "name": "Ruby", "description": "Rýchly vývoj" },
-          { "name": "Apache Spark", "description": "Big Data" },
-          { "name": "Hadoop", "description": "Spracovanie dát" },
-          { "name": "Kafka", "description": "Streamovanie udalostí" },
-          { "name": "Snowflake", "description": "Cloud data warehouse" },
-          { "name": "Databricks", "description": "Dátová analytika" },
-          { "name": "Tableau", "description": "Business Intelligence" },
-          { "name": "Spring Boot", "description": "Java framework" },
-          { "name": "Django", "description": "Python framework" },
-          { "name": "FastAPI", "description": "Moderné API" },
-          { "name": "Laravel", "description": "PHP framework" },
-          { "name": "Symfony", "description": "PHP komponenty" }
+          {
+            "name": "Node.js",
+            "description": "Výkonný backend"
+          },
+          {
+            "name": "Python",
+            "description": "Spracovanie dát a AI"
+          },
+          {
+            "name": "React",
+            "description": "Moderné webové aplikácie"
+          },
+          {
+            "name": "PostgreSQL",
+            "description": "Spoľahlivá databáza"
+          },
+          {
+            "name": "Docker",
+            "description": "Kontajnerizácia aplikácií"
+          },
+          {
+            "name": "AWS",
+            "description": "Cloudová infraštruktúra"
+          },
+          {
+            "name": "Java",
+            "description": "Enterprise backend"
+          },
+          {
+            "name": ".NET",
+            "description": "Microsoft ekosystém"
+          },
+          {
+            "name": "Kubernetes",
+            "description": "Orchestrácia"
+          },
+          {
+            "name": "Terraform",
+            "description": "IaC"
+          },
+          {
+            "name": "Redis",
+            "description": "Cache"
+          },
+          {
+            "name": "Linux",
+            "description": "OS"
+          },
+          {
+            "name": "Nginx",
+            "description": "Web server"
+          },
+          {
+            "name": "Git",
+            "description": "Verzovanie"
+          },
+          {
+            "name": "Jenkins",
+            "description": "CI/CD"
+          },
+          {
+            "name": "GitLab",
+            "description": "DevOps"
+          },
+          {
+            "name": "Oracle",
+            "description": "Enterprise databáza"
+          },
+          {
+            "name": "SAP",
+            "description": "Podnikové systémy"
+          },
+          {
+            "name": "Salesforce",
+            "description": "CRM riešenia"
+          },
+          {
+            "name": "Microsoft SQL Server",
+            "description": "Relačná databáza"
+          },
+          {
+            "name": "DynamoDB",
+            "description": "NoSQL databáza"
+          },
+          {
+            "name": "Cassandra",
+            "description": "Distribuovaná databáza"
+          },
+          {
+            "name": "Ansible",
+            "description": "Automatizácia"
+          },
+          {
+            "name": "CircleCI",
+            "description": "CI/CD pipeline"
+          },
+          {
+            "name": "Datadog",
+            "description": "Monitoring"
+          },
+          {
+            "name": "Prometheus",
+            "description": "Metriky"
+          },
+          {
+            "name": "Grafana",
+            "description": "Vizualizácia"
+          },
+          {
+            "name": "Go",
+            "description": "Vysoký výkon"
+          },
+          {
+            "name": "Rust",
+            "description": "Bezpečnosť pamäte"
+          },
+          {
+            "name": "Scala",
+            "description": "Funkcionálne programovanie"
+          },
+          {
+            "name": "Ruby",
+            "description": "Rýchly vývoj"
+          },
+          {
+            "name": "Apache Spark",
+            "description": "Big Data"
+          },
+          {
+            "name": "Hadoop",
+            "description": "Spracovanie dát"
+          },
+          {
+            "name": "Kafka",
+            "description": "Streamovanie udalostí"
+          },
+          {
+            "name": "Snowflake",
+            "description": "Cloud data warehouse"
+          },
+          {
+            "name": "Databricks",
+            "description": "Dátová analytika"
+          },
+          {
+            "name": "Tableau",
+            "description": "Business Intelligence"
+          },
+          {
+            "name": "Spring Boot",
+            "description": "Java framework"
+          },
+          {
+            "name": "Django",
+            "description": "Python framework"
+          },
+          {
+            "name": "FastAPI",
+            "description": "Moderné API"
+          },
+          {
+            "name": "Laravel",
+            "description": "PHP framework"
+          },
+          {
+            "name": "Symfony",
+            "description": "PHP komponenty"
+          }
         ]
       },
       "processTitle": "Ako tvoríme softvér?",
       "process": [
-        { "title": "Hĺbková analýza", "description": "Pochopíme vaše procesy a identifikujeme úzke miesta." },
-        { "title": "Architektúra", "description": "Navrhneme technické riešenie a databázový model." },
-        { "title": "Agilný vývoj", "description": "Dodávame funkčné časti postupne, aby ste ich mohli hneď používať." },
-        { "title": "Nasadenie a Podpora", "description": "Implementácia do prevádzky a zaškolenie zamestnancov." }
+        {
+          "title": "Hĺbková analýza",
+          "description": "Pochopíme vaše procesy a identifikujeme úzke miesta."
+        },
+        {
+          "title": "Architektúra",
+          "description": "Navrhneme technické riešenie a databázový model."
+        },
+        {
+          "title": "Agilný vývoj",
+          "description": "Dodávame funkčné časti postupne, aby ste ich mohli hneď používať."
+        },
+        {
+          "title": "Nasadenie a Podpora",
+          "description": "Implementácia do prevádzky a zaškolenie zamestnancov."
+        }
       ],
       "faq": [
-        { "question": "Prečo softvér na mieru a nie krabicové riešenie?", "answer": "Krabicové riešenie vás núti prispôsobiť sa mu. Softvér na mieru presne kopíruje a vylepšuje vaše unikátne procesy." },
-        { "question": "Aké technológie používate?", "answer": "Backend staviame na Node.js alebo Pythone, frontend na Reacte/Next.js. Databázy PostgreSQL." },
-        { "question": "Kto vlastní zdrojový kód?", "answer": "Po odovzdaní a zaplatení projektu prechádzajú majetkové práva na vás." },
-        { "question": "Ako je to s bezpečnosťou?", "answer": "Dodržiavame prísne bezpečnostné štandardy, šifrovanie dát a GDPR pravidlá." }
+        {
+          "question": "Prečo softvér na mieru a nie krabicové riešenie?",
+          "answer": "Krabicové riešenie vás núti prispôsobiť sa mu. Softvér na mieru presne kopíruje a vylepšuje vaše unikátne procesy."
+        },
+        {
+          "question": "Aké technológie používate?",
+          "answer": "Backend staviame na Node.js alebo Pythone, frontend na Reacte/Next.js. Databázy PostgreSQL."
+        },
+        {
+          "question": "Kto vlastní zdrojový kód?",
+          "answer": "Po odovzdaní a zaplatení projektu prechádzajú majetkové práva na vás."
+        },
+        {
+          "question": "Ako je to s bezpečnosťou?",
+          "answer": "Dodržiavame prísne bezpečnostné štandardy, šifrovanie dát a GDPR pravidlá."
+        }
       ],
       "cta": {
         "primary": "Konzultovať riešenie",
@@ -524,26 +1067,68 @@
         "title": "Nástroje, ktoré učíme a používame",
         "subtitle": "Pracujeme s najlepšími AI modelmi na trhu",
         "items": [
-          { "name": "ChatGPT, Claude & Gemini", "description": "Pokročilé jazykové modely a Google Workspace AI" },
-          { "name": "NotebookLM", "description": "Analýza dokumentov a tvorba podcastov" },
-          { "name": "Midjourney", "description": "Generovanie vizuálneho obsahu" },
-          { "name": "Python & LangChain", "description": "Vývoj vlastných AI aplikácií" },
-          { "name": "N8n.com / Make.com", "description": "Automatizácia workflowov" },
-          { "name": "Copilot", "description": "AI asistencia pri programovaní a práci" }
+          {
+            "name": "ChatGPT, Claude & Gemini",
+            "description": "Pokročilé jazykové modely a Google Workspace AI"
+          },
+          {
+            "name": "NotebookLM",
+            "description": "Analýza dokumentov a tvorba podcastov"
+          },
+          {
+            "name": "Midjourney",
+            "description": "Generovanie vizuálneho obsahu"
+          },
+          {
+            "name": "Python & LangChain",
+            "description": "Vývoj vlastných AI aplikácií"
+          },
+          {
+            "name": "N8n.com / Make.com",
+            "description": "Automatizácia workflowov"
+          },
+          {
+            "name": "Copilot",
+            "description": "AI asistencia pri programovaní a práci"
+          }
         ]
       },
       "processTitle": "Ako prebieha spolupráca?",
       "process": [
-        { "title": "1. Úvodný Audit", "description": "Zistíme, ako vaša firma funguje a kde máte najväčší priestor na zlepšenie pomocou AI." },
-        { "title": "2. Návrh Riešenia", "description": "Pripravíme plán školení alebo technickej implementácie presne na mieru vašim potrebám." },
-        { "title": "3. Realizácia a Školenie", "description": "Implementujeme nástroje a naučíme vašich ľudí s nimi pracovať. Prakticky a zrozumiteľne." },
-        { "title": "4. Podpora a Rozvoj", "description": "Sledujeme výsledky a pomáhame vám držať krok s rýchlym vývojom AI technológií." }
+        {
+          "title": "1. Úvodný Audit",
+          "description": "Zistíme, ako vaša firma funguje a kde máte najväčší priestor na zlepšenie pomocou AI."
+        },
+        {
+          "title": "2. Návrh Riešenia",
+          "description": "Pripravíme plán školení alebo technickej implementácie presne na mieru vašim potrebám."
+        },
+        {
+          "title": "3. Realizácia a Školenie",
+          "description": "Implementujeme nástroje a naučíme vašich ľudí s nimi pracovať. Prakticky a zrozumiteľne."
+        },
+        {
+          "title": "4. Podpora a Rozvoj",
+          "description": "Sledujeme výsledky a pomáhame vám držať krok s rýchlym vývojom AI technológií."
+        }
       ],
       "faq": [
-        { "question": "Je AI vhodná aj pre malú firmu?", "answer": "Áno, práve malé firmy môžu z AI ťažiť najviac, pretože im umožní robiť 'veľké veci' s malým tímom." },
-        { "question": "Koľko trvá školenie zamestnancov?", "answer": "Základné školenie trvá zvyčajne pol dňa až jeden deň. Pre hlbšie osvojenie odporúčame sériu workshopov." },
-        { "question": "Nahradí AI našich zamestnancov?", "answer": "Nie, naším cieľom je, aby AI vašim ľuďom pomáhala, zbavila ich nudnej rutiny a umožnila im venovať sa kreatívnejšej práci." },
-        { "question": "Aké sú náklady na implementáciu?", "answer": "Cena závisí od rozsahu. Školenia začínajú od stoviek eur, komplexné automatizácie sa naceňujú individuálne podľa úspory, ktorú prinesú." }
+        {
+          "question": "Je AI vhodná aj pre malú firmu?",
+          "answer": "Áno, práve malé firmy môžu z AI ťažiť najviac, pretože im umožní robiť 'veľké veci' s malým tímom."
+        },
+        {
+          "question": "Koľko trvá školenie zamestnancov?",
+          "answer": "Základné školenie trvá zvyčajne pol dňa až jeden deň. Pre hlbšie osvojenie odporúčame sériu workshopov."
+        },
+        {
+          "question": "Nahradí AI našich zamestnancov?",
+          "answer": "Nie, naším cieľom je, aby AI vašim ľuďom pomáhala, zbavila ich nudnej rutiny a umožnila im venovať sa kreatívnejšej práci."
+        },
+        {
+          "question": "Aké sú náklady na implementáciu?",
+          "answer": "Cena závisí od rozsahu. Školenia začínajú od stoviek eur, komplexné automatizácie sa naceňujú individuálne podľa úspory, ktorú prinesú."
+        }
       ],
       "cta": {
         "primary": "Chcem zefektívniť firmu",
@@ -562,39 +1147,105 @@
       },
       "featuresTitle": "Prečo outsourcovať s nami?",
       "features": [
-        { "title": "Okamžitý Nástup", "description": "Nestrácajte mesiace hľadaním ľudí. Náš tím môže začať pracovať na vašom projekte už do 7 dní." },
-        { "title": "Overená Seniorita", "description": "Naši vývojári prešli náročným výberom a majú skúsenosti z medzinárodných projektov. Žiadni juniori, ktorí sa učia na vašom kóde." },
-        { "title": "Flexibilita Kapacít", "description": "Potrebujete pridať dvoch ľudí na mesiac pred deadlinom? Alebo postaviť celý tím na rok? Prispôsobíme sa." },
-        { "title": "Žiadne HR Starosti", "description": "Odvody, dovolenky, PNky, hardware či vzdelávanie riešime my. Vy platíte len za odvedenú prácu." },
-        { "title": "Zastupiteľnosť", "description": "Ak vývojár vypadne, okamžite zabezpečíme náhradu. Váš projekt sa nezastaví." },
-        { "title": "Transparentná Komunikácia", "description": "Vývojári sú súčasťou vášho tímu. Komunikujú priamo s vami, zúčastňujú sa stand-upov a používajú vaše nástroje." }
+        {
+          "title": "Okamžitý Nástup",
+          "description": "Nestrácajte mesiace hľadaním ľudí. Náš tím môže začať pracovať na vašom projekte už do 7 dní."
+        },
+        {
+          "title": "Overená Seniorita",
+          "description": "Naši vývojári prešli náročným výberom a majú skúsenosti z medzinárodných projektov. Žiadni juniori, ktorí sa učia na vašom kóde."
+        },
+        {
+          "title": "Flexibilita Kapacít",
+          "description": "Potrebujete pridať dvoch ľudí na mesiac pred deadlinom? Alebo postaviť celý tím na rok? Prispôsobíme sa."
+        },
+        {
+          "title": "Žiadne HR Starosti",
+          "description": "Odvody, dovolenky, PNky, hardware či vzdelávanie riešime my. Vy platíte len za odvedenú prácu."
+        },
+        {
+          "title": "Zastupiteľnosť",
+          "description": "Ak vývojár vypadne, okamžite zabezpečíme náhradu. Váš projekt sa nezastaví."
+        },
+        {
+          "title": "Transparentná Komunikácia",
+          "description": "Vývojári sú súčasťou vášho tímu. Komunikujú priamo s vami, zúčastňujú sa stand-upov a používajú vaše nástroje."
+        }
       ],
       "tools": {
         "title": "Technológie, ktoré dodávame",
         "subtitle": "Máme expertov na široké spektrum technológií",
         "items": [
-          { "name": "Frontend", "description": "React, Next.js, Vue.js, Angular, TypeScript, Tailwind CSS" },
-          { "name": "Backend", "description": "Node.js, Python, Java, .NET, PHP, Go, Spring Boot" },
-          { "name": "Mobile", "description": "React Native, Flutter, iOS (Swift), Android (Kotlin)" },
-          { "name": "Cloud & DevOps", "description": "AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform" },
-          { "name": "Data & AI", "description": "TensorFlow, PowerBI, Kafka, Snowflake, OpenAI API" },
-          { "name": "Databázy", "description": "PostgreSQL, MySQL, MongoDB, Redis, Oracle, MSSQL" },
-          { "name": "Enterprise & Nástroje", "description": "SAP, Salesforce, Figma" },
-          { "name": "QA Testing", "description": "Cypress" }
+          {
+            "name": "Frontend",
+            "description": "React, Next.js, Vue.js, Angular, TypeScript, Tailwind CSS"
+          },
+          {
+            "name": "Backend",
+            "description": "Node.js, Python, Java, .NET, PHP, Go, Spring Boot"
+          },
+          {
+            "name": "Mobile",
+            "description": "React Native, Flutter, iOS (Swift), Android (Kotlin)"
+          },
+          {
+            "name": "Cloud & DevOps",
+            "description": "AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform"
+          },
+          {
+            "name": "Data & AI",
+            "description": "TensorFlow, PowerBI, Kafka, Snowflake, OpenAI API"
+          },
+          {
+            "name": "Databázy",
+            "description": "PostgreSQL, MySQL, MongoDB, Redis, Oracle, MSSQL"
+          },
+          {
+            "name": "Enterprise & Nástroje",
+            "description": "SAP, Salesforce, Figma"
+          },
+          {
+            "name": "QA Testing",
+            "description": "Cypress"
+          }
         ]
       },
       "processTitle": "Ako získať vývojárov?",
       "process": [
-        { "title": "1. Definícia Potrieb", "description": "Povedzte nám, koho hľadáte (tech stack, seniorita) a na aký dlhý čas." },
-        { "title": "2. Výber Kandidátov", "description": "Do 48 hodín vám pošleme profily (CV) dostupných vývojárov, ktorí spĺňajú vaše kritériá." },
-        { "title": "3. Pohovor", "description": "S vybranými kandidátmi si môžete spraviť technický pohovor, aby ste si overili ich skills a chémiu." },
-        { "title": "4. Onboarding a Štart", "description": "Podpíšeme zmluvu a vývojár sa pripája k vášmu tímu. Sledujeme spokojnosť a pravidelne reportujeme." }
+        {
+          "title": "1. Definícia Potrieb",
+          "description": "Povedzte nám, koho hľadáte (tech stack, seniorita) a na aký dlhý čas."
+        },
+        {
+          "title": "2. Výber Kandidátov",
+          "description": "Do 48 hodín vám pošleme profily (CV) dostupných vývojárov, ktorí spĺňajú vaše kritériá."
+        },
+        {
+          "title": "3. Pohovor",
+          "description": "S vybranými kandidátmi si môžete spraviť technický pohovor, aby ste si overili ich skills a chémiu."
+        },
+        {
+          "title": "4. Onboarding a Štart",
+          "description": "Podpíšeme zmluvu a vývojár sa pripája k vášmu tímu. Sledujeme spokojnosť a pravidelne reportujeme."
+        }
       ],
       "faq": [
-        { "question": "Aká je hodinová sadzba?", "answer": "Sadzby závisia od seniority a technológie, zvyčajne sa pohybujú od 35€ do 60€ na hodinu. Pri dlhodobej spolupráci ponúkame zvýhodnené 'flat' ceny." },
-        { "question": "Môžem si vývojára najprv vyskúšať?", "answer": "Áno, štandardne ponúkame skúšobnú dobu (napr. 2 týždne), počas ktorej môžete spoluprácu kedykoľvek ukončiť, ak nebudete spokojní." },
-        { "question": "Pracujú vývojári remote alebo onsite?", "answer": "Väčšinou pracujeme remote, ale v rámci Bratislavy a okolia je možný aj hybridný režim alebo občasné návštevy u klienta." },
-        { "question": "Ako je to s duševným vlastníctvom?", "answer": "Všetok kód a dielo, ktoré naši vývojári vytvoria, je výhradným vlastníctvom vašej spoločnosti. Je to zmluvne garantované." }
+        {
+          "question": "Aká je hodinová sadzba?",
+          "answer": "Sadzby závisia od seniority a technológie, zvyčajne sa pohybujú od 35€ do 60€ na hodinu. Pri dlhodobej spolupráci ponúkame zvýhodnené 'flat' ceny."
+        },
+        {
+          "question": "Môžem si vývojára najprv vyskúšať?",
+          "answer": "Áno, štandardne ponúkame skúšobnú dobu (napr. 2 týždne), počas ktorej môžete spoluprácu kedykoľvek ukončiť, ak nebudete spokojní."
+        },
+        {
+          "question": "Pracujú vývojári remote alebo onsite?",
+          "answer": "Väčšinou pracujeme remote, ale v rámci Bratislavy a okolia je možný aj hybridný režim alebo občasné návštevy u klienta."
+        },
+        {
+          "question": "Ako je to s duševným vlastníctvom?",
+          "answer": "Všetok kód a dielo, ktoré naši vývojári vytvoria, je výhradným vlastníctvom vašej spoločnosti. Je to zmluvne garantované."
+        }
       ],
       "cta": {
         "primary": "Najať vývojárov",
@@ -906,7 +1557,11 @@
         "company": "IT spoločnosť",
         "content": "RISE.SK je spoľahlivý vývojár. Zadával som úlohy priamo cez Kanban board a tím ich efektívne splnil. Určite odporúčam každému, kto hľadá zodpovedného partnera.",
         "rating": 5,
-        "tags": ["Vývoj", "Projektový manažment", "Spoľahlivosť"]
+        "tags": [
+          "Vývoj",
+          "Projektový manažment",
+          "Spoľahlivosť"
+        ]
       },
       {
         "id": "matej-s",
@@ -915,8 +1570,12 @@
         "company": "Digitálna agentúra",
         "content": "Ďakujem za rýchle naplánovanie konzultácie. RISE.SK mi pomohol vyvinúť nástroj na analýzu webu – projekt konečne napredoval. 5/5!",
         "rating": 5,
-        "tags": ["Poradenstvo", "Webová analytika", "Rýchla reakcia"]
-                     },
+        "tags": [
+          "Poradenstvo",
+          "Webová analytika",
+          "Rýchla reakcia"
+        ]
+      },
       {
         "id": "tomas-v",
         "name": "Tomáš V.",
@@ -924,7 +1583,11 @@
         "company": "FinTech startup",
         "content": "SQL školenie od RISE.SK bolo pútavé a praktické. Jasne vysvetľovali pokročilé techniky, odpovedali na všetky otázky a vyriešili komplexné problémy krok za krokom. Teraz sa cítim oveľa istejšie pri práci so SQL.",
         "rating": 5,
-        "tags": ["SQL školenie", "Databázy", "Vzdelávanie"]
+        "tags": [
+          "SQL školenie",
+          "Databázy",
+          "Vzdelávanie"
+        ]
       },
       {
         "id": "timotej-l",
@@ -933,7 +1596,11 @@
         "company": "Softvérová spoločnosť",
         "content": "Začínal som s Pythonom od nuly. RISE.SK rýchlo objasnil problém v priateľskej atmosfére, kód zrazu fungoval a pokrok prišiel okamžite. Odporúčam každému, kto chce Python zvládnuť rýchlo a efektívne.",
         "rating": 5,
-        "tags": ["Python", "Školenie", "Pre začiatočníkov"]
+        "tags": [
+          "Python",
+          "Školenie",
+          "Pre začiatočníkov"
+        ]
       },
       {
         "id": "pavel-k",
@@ -942,7 +1609,11 @@
         "company": "Hardvérová spoločnosť",
         "content": "RISE.SK mi veľmi pomohol s projektom v jazyku C. Profesionálny prístup, jasné vysvetlenie, perfektný výsledok. Odporúčam 5/5 ★.",
         "rating": 5,
-        "tags": ["C programovanie", "Profesionalita", "Riešenie problémov"]
+        "tags": [
+          "C programovanie",
+          "Profesionalita",
+          "Riešenie problémov"
+        ]
       },
       {
         "id": "rene-corporate",
@@ -951,7 +1622,11 @@
         "company": "Firemný projekt",
         "content": "Potreboval som v práci pomoc s Pythonom. RISE.SK nastavili jasný plán a lekcie boli zrozumiteľné aj praktické. Spoluprácu môžem len odporučiť.",
         "rating": 5,
-        "tags": ["Python", "Korporátne školenie", "Praktické učenie"]
+        "tags": [
+          "Python",
+          "Korporátne školenie",
+          "Praktické učenie"
+        ]
       },
       {
         "id": "jana-g",
@@ -960,7 +1635,11 @@
         "company": "Rodina",
         "content": "RISE.SK viedli môjho syna k programovaniu v angličtine. Lekcie boli vždy pripravené, zamerané na jeho ciele, a pokrok bol viditeľný pri každej hodine. Oceňujem aj profesionálnu angličtinu tímu.",
         "rating": 5,
-        "tags": ["Programovanie pre mladých", "Výuka v angličtine", "Mentoring"]
+        "tags": [
+          "Programovanie pre mladých",
+          "Výuka v angličtine",
+          "Mentoring"
+        ]
       },
       {
         "id": "zuzana-p",
@@ -969,7 +1648,11 @@
         "company": "Univerzita",
         "content": "S RISE.SK mám doučovanie programovania. Komunikácia je bezproblémová, časovo sa prispôsobia, všetko vysvetlia a dbajú na to, aby som si riešenia vyskúšala sama. Skvelá podpora pri rozvoji praktických zručností.",
         "rating": 5,
-        "tags": ["Doučovanie programovania", "Praktické zručnosti", "Flexibilný rozvrh"]
+        "tags": [
+          "Doučovanie programovania",
+          "Praktické zručnosti",
+          "Flexibilný rozvrh"
+        ]
       },
       {
         "id": "roman-s",
@@ -978,7 +1661,11 @@
         "company": "Prvák",
         "content": "Som v prvom ročníku VŠ a RISE.SK ma doučujú programovanie. Všetko super vysvetlia, sú spoľahliví a v tom, čo robia, sa naozaj vyznajú.",
         "rating": 5,
-        "tags": ["Univerzitná podpora", "Základy programovania", "Spoľahlivosť"]
+        "tags": [
+          "Univerzitná podpora",
+          "Základy programovania",
+          "Spoľahlivosť"
+        ]
       },
       {
         "id": "daniel-k",
@@ -987,7 +1674,11 @@
         "company": "Vzdelávanie",
         "content": "Profesionalita na každom kroku – RISE.SK dokázali zrozumiteľne vysvetliť každý koncept a odpovedať na všetky otázky. Super doučovanie, odporúčam.",
         "rating": 5,
-        "tags": ["Profesionálne doučovanie", "Jasné vysvetlenia", "Vzdelávacia excelencia"]
+        "tags": [
+          "Profesionálne doučovanie",
+          "Jasné vysvetlenia",
+          "Vzdelávacia excelencia"
+        ]
       }
     ]
   },
@@ -1031,7 +1722,11 @@
         "ideal": "Keď potrebujete určité zručnosti rýchlo"
       }
     },
-    "guarantees": ["Týždenné reportovanie", "Zdieľané KPI", "Plynulý transfer poznatkov pri odovzdaní"],
+    "guarantees": [
+      "Týždenné reportovanie",
+      "Zdieľané KPI",
+      "Plynulý transfer poznatkov pri odovzdaní"
+    ],
     "guaranteesTitle": "Všetky modely zahŕňajú"
   },
   "contact": {
@@ -1172,20 +1867,20 @@
       "11": "\"Príležitosti sa nedejú. Vy ich vytvárate.\"",
       "12": "\"Veľké veci v biznise nikdy nerobí jeden človek.\"",
       "13": "\"Nesledujte hodiny; robte to, čo robia ony. Pokračujte.\"",
-      "14": "\"Úspech zvyčajne prichádza k tým, ktorí sú príliš zaneprázdnení na to, aby ho hľadali.\"",
+      "14": "\"Úspech prichádza k tým, ktorí na ňom tvrdo pracujú.\"",
       "15": "\"Vaša značka je to, čo o vás hovoria ľudia, keď nie ste v miestnosti.\"",
-      "16": "\"Marketing už nie je o veciach, ktoré vyrábate, ale o príbehoch, ktoré rozprávate.\"",
+      "16": "\"Marketing nie je o produktoch, ale o príbehoch.\"",
       "17": "\"Obsah je kráľ.\"",
       "18": "\"Najlepšia reklama sú spokojní zákazníci.\"",
-      "19": "\"Nehľadajte zákazníkov pre svoje produkty, hľadajte produkty pre svojich zákazníkov.\"",
+      "19": "\"Hľadajte produkty pre zákazníkov, nie naopak.\"",
       "20": "\"Ak to neviete vysvetliť jednoducho, nerozumiete tomu dostatočne dobre.\"",
-      "21": "\"Dizajn nie je len to, ako to vyzerá a pôsobí. Dizajn je to, ako to funguje.\"",
+      "21": "\"Dizajn nie je len vzhľad, ale aj funkčnosť.\"",
       "22": "\"Kreativita je inteligencia, ktorá sa zabáva.\"",
       "23": "\"Robte to, čo milujete, a peniaze prídu samé.\"",
       "24": "\"Jediný spôsob, ako robiť skvelú prácu, je milovať to, čo robíte.\"",
       "25": "\"Podnikanie má len dve funkcie - marketing a inovácie.\"",
-      "26": "\"Ak sa nepostaráte o svojho zákazníka vy, postará sa o neho vaša konkurencia.\"",
-      "27": "\"Cieľom marketingu je poznať a chápať zákazníka tak dobre, že výrobok alebo služba mu sadne a predá sa sama.\"",
+      "26": "\"Postarajte sa o zákazníka, inak to urobí konkurencia.\"",
+      "27": "\"Poznajte zákazníka tak dobre, že sa produkt predá sám.\"",
       "28": "\"Vízia bez exekúcie je len halucinácia.\"",
       "29": "\"Rast nie je nikdy dielom náhody; je výsledkom spolupráce síl.\""
     }
@@ -1278,8 +1973,21 @@
       "description": "Získajte vyhradený tím do 7 dní. Garantujeme 100 % dodanie načas a 20–40 % úsporu nákladov.",
       "button": "Začnite dnes"
     },
-    "services": ["Tvorba webov", "E-shopy", "Mobilné aplikácie", "Softvér na mieru", "AI & Automatizácia", "IT Outsourcing"],
-    "company": ["O nás", "Náš tím", "Kariéra", "Prípadové štúdie", "Kontaktujte nás"]
+    "services": [
+      "Tvorba webov",
+      "E-shopy",
+      "Mobilné aplikácie",
+      "Softvér na mieru",
+      "AI & Automatizácia",
+      "IT Outsourcing"
+    ],
+    "company": [
+      "O nás",
+      "Náš tím",
+      "Kariéra",
+      "Prípadové štúdie",
+      "Kontaktujte nás"
+    ]
   },
   "hiring": {
     "badge": "Pridajte sa k nám",
@@ -1486,7 +2194,6 @@
         "motto": "Ver, že dokážeš\na si na polceste k úspechu.",
         "hobbies": "Gym, Techno, Futbal"
       },
-
       "lukas-jankola": {
         "role": "Developer & Cloud Enthusiast",
         "bio": "Lukáš je náš hlavný 'Cloud' inžinier, ktorý čerpá inšpiráciu priamo v uličkách Amsterdamu. Verí, že kód by mal byť čistý, no myseľ otvorená... a mierne zahmlená. Špecialista na 'smoke testing' a vysoké nasadenie. Keď práve nekódi, pravdepodobne analyzuje kvalitu miestnych 'bylinných zmesí' alebo hľadá inšpiráciu v oblakoch.",
@@ -1501,7 +2208,7 @@
       },
       "david-stevanak": {
         "role": "Developer",
-        "bio": "Dávid je mužom paradoxov – študuje Big Data, no najväčšie pravdy hľadá v kostole. Je to multiinštrumentalista a spevák s tvárou anjela, no nikto netuší, aká šelma v ňom drieme. Kolegovia sa boja opýtať, či tá šelma kódi v Assembleri alebo len extrémne rýchlo bubnuje. Jeho viera je pevná, ale zálohy robí aj tak každú hodinu. Keď práve neanalyzuje terabajty dát, pravdepodobne ladí gitaru alebo svoju karmu.",
+        "bio": "Dávid je mužom paradoxov – študuje Big Data, no najväčšie pravdy hľadá v kostole. Je to multiinštrumentalista a spevák s tvárou anjela, no nikto netuší, aká šelma v ňom drieme. Kolegovia sa boja opýtať, či tá šelma kódi v Assembleri alebo len extrémne rýchlo bubnuje. Jeho viera je pevná, ale zálohy robí aj tak každú hodinu. Keď sa práve neanalyzuje terabajty dát, pravdepodobne ladí gitaru alebo svoju karmu.",
         "motto": "V Boha veríme, ostatní musia priniesť dáta.",
         "hobbies": "Big Data, Hudba, Exorcizmus bugov, Viera"
       },
@@ -1533,6 +2240,398 @@
       "subtitle": "Stále hľadáme talentovaných ľudí.",
       "description": "Máš vášeň pre technológie a chceš pracovať na zaujímavých projektoch? Ozvi sa nám!",
       "button": "Napíš nám"
+    }
+  },
+  "testYourBusiness": {
+    "meta": {
+      "title": "Otestujte svoje podnikanie | Bezplatný digitálny audit - Rise.sk",
+      "description": "Zistite, ako je na tom vaše podnikanie. Bezplatné nástroje a checklisty pre web, SEO, sociálne siete, AI a automatizáciu. Získajte náskok pred konkurenciou."
+    },
+    "hero": {
+      "badge": "Bezplatný audit",
+      "title": "Otestujte zdravie svojho",
+      "titleHighlight": "digitálneho biznisu",
+      "description": "Pripravili sme pre vás bezplatný digitálny audit. Skontrolujte si web, SEO, sociálne siete, branding, AI a automatizáciu. Žiadny email nie je potrebný.",
+      "startCheck": "Začať bezplatný test",
+      "sendReports": "Chcem zlepšiť svoje výsledky",
+      "subtext": "100% zadarmo. Okamžité výsledky.",
+      "progressTitle": "Váš pokrok",
+      "resetButton": "Resetovať audit",
+      "resetConfirm": "Naozaj chcete vymazať svoj postup?",
+      "readMore": "Detailný návod a nástroje",
+      "markComplete": "Označiť ako hotové",
+      "completed": "Hotovo"
+    },
+    "howItWorks": {
+      "title": "Ako to funguje?",
+      "steps": [
+        {
+          "title": "1. Spustite nástroje",
+          "description": "Prejdite si naše checklisty a použite odporúčané bezplatné nástroje."
+        },
+        {
+          "title": "2. Zhodnoťte stav",
+          "description": "Poznačte si, čo je zelené (OK) a čo červené (potrebuje opravu)."
+        },
+        {
+          "title": "3. Pošlite nám výsledky",
+          "description": "Pošlite nám vaše zistenia a my vám navrhneme jednoduchý plán zlepšenia."
+        }
+      ]
+    },
+    "summary": {
+      "title": "Ako ste dopadli?",
+      "description": "Ak máte 'zelenú' v menej ako 8 z 12 oblastí, prichádzate o peniaze.",
+      "note": "Poznačte si oblasti, kde ste 'červení' alebo 'žltí'."
+    },
+    "contact": {
+      "title": "Premeňte výsledky na akciu",
+      "description": "Spravili ste ťažkú prácu kontrolou. Teraz vám pomôžeme premeniť výsledky na rast.",
+      "form": {
+        "areasOfInterest": "S čím potrebujete pomôcť?",
+        "frustration": "Čo vás najviac frustrovalo pri kontrole?",
+        "upload": "Nahrať reporty (nepovinné)",
+        "submit": "Odoslať výsledky a získať plán"
+      },
+      "promise": "Prečítame si vaše reporty a pošleme krátky, jasný plán. Odporučíme len služby, ktoré reálne pomôcť."
+    }
+  },
+  "Audit": {
+    "testYourBusiness": "Otestujte podnikanie",
+    "backToOverview": "Späť na prehľad",
+    "checklistTitle": "Kontrolný zoznam",
+    "reset": "Resetovať",
+    "ctaButton": "Získať akčný plán",
+    "toolsTitle": "Bezplatné nástroje na testovanie:",
+    "successTitle": "Gratulujeme! Vaše podnikanie je pripravené na rast! 🚀",
+    "successMessage": "Skvelá práca! Prešli ste všetkými kľúčovými oblasťami. Teraz je čas premeniť tieto zistenia na reálne výsledky.",
+    "moduleCompletedTitle": "Skvelá práca! 🎉",
+    "moduleCompletedDescription": "Úspešne ste dokončili tento modul. Pokračujte na ďalší krok a posuňte svoje podnikanie vpred.",
+    "nextModuleButton": "Pokračovať na {module}",
+    "websiteUx": {
+      "title": "Funkčnosť webu a UX",
+      "description": "Základom úspechu je web, ktorý funguje bezchybne a intuitívne.",
+      "checklist": [
+        "Skontrolujte SSL Certifikát: Otvorte vašu stránku v prehliadači. V adresnom riadku by ste mali vidieť ikonu zámku. Ak vidíte 'Not Secure', okamžite to riešte.",
+        "Test Navigácie: Kliknite na každú položku v menu a v pätičke. Fungujú všetky odkazy? Vedú tam, kam majú?",
+        "Call to Action (CTA): Pozrite sa na úvodnú obrazovku (Hero sekcia). Je do 3 sekúnd jasné, čo má návštevník urobiť? (napr. 'Kúpiť', 'Kontaktovať').",
+        "Dostupnosť kontaktu: Nájdite kontakt na stránke. Trvá to menej ako 5 sekúnd? Je formulár funkčný? Skúste si poslať testovaciu správu.",
+        "Mobilná čitateľnosť: Otvorte web na mobile. Je text čitateľný bez približovania? Prvky by nemali presahovať šírku obrazovky."
+      ],
+      "toolsTitle": "Bezplatné nástroje na testovanie:",
+      "toolsList": [
+        {
+          "name": "Chrome Lighthouse",
+          "description": "Oficiálny nástroj od Google priamo v prehliadači Chrome. Kliknite pravým tlačidlom na stránku -> Skontrolovať -> záložka Lighthouse -> Analyze page load. Získate komplexné skóre výkonu, prístupnosti a SEO.",
+          "url": "https://developers.google.com/web/tools/lighthouse"
+        },
+        {
+          "name": "WebPageTest",
+          "description": "Pokročilý test rýchlosti načítania z rôznych lokalít a zariadení. Zadajte URL vašej stránky a získate detailný vodopád načítania, ktorý odhalí, čo presne spomaľuje váš web.",
+          "url": "https://www.webpagetest.org/"
+        }
+      ],
+      "scoring": "7/10 = dobré, 4–6 = potrebuje prácu, 0–3 = kritické",
+      "cta": "Exportujte reporty a pošlite nám ich pre jasný technický akčný plán."
+    },
+    "seo": {
+      "title": "SEO a viditeľnosť v Google",
+      "description": "Ak vás zákazníci nenájdu, ako by ste neexistovali.",
+      "checklist": [
+        "Google Index: Zadajte do Google 'site:vasadomena.sk'. Vidíte všetky vaše podstránky? Ak nie, Google o vás nevie.",
+        "Titulky a Popisy: Pozrite si výsledky vyhľadávania. Sú titulky lákavé? Obsahujú kľúčové slová, ktoré hľadajú vaši zákazníci?",
+        "Duplicity: Skontrolujte, či sa rovnaký obsah nenachádza na viacerých URL adresách (napr. s www a bez www).",
+        "Kľúčové slová: Máte v textoch na webe slová, ktoré ľudia reálne hľadajú? (Použite nástroje nižšie na overenie).",
+        "Otestujte nástroje: Použite odporúčané SEO nástroje nižšie a skontrolujte svoje skóre."
+      ],
+      "toolsTitle": "Bezplatné SEO nástroje:",
+      "toolsList": [
+        {
+          "name": "Google Search Console",
+          "description": "Nevyhnutný nástroj pre každého majiteľa webu. Ukáže vám, cez aké kľúčové slová vás ľudia nachádzajú a či má Google problém s indexovaním vašich stránok.",
+          "url": "https://search.google.com/search-console"
+        },
+        {
+          "name": "Ahrefs Free SEO Tools",
+          "description": "Sada bezplatných nástrojov na kontrolu spätných odkazov, kľúčových slov a technického SEO zdravia vášho webu.",
+          "url": "https://ahrefs.com/free-seo-tools"
+        },
+        {
+          "name": "Ubersuggest",
+          "description": "Nástroj na analýzu kľúčových slov a konkurencie. Zistite, čo hľadajú vaši zákazníci a ako sa umiestňuje vaša konkurencia.",
+          "url": "https://neilpatel.com/ubersuggest/"
+        }
+      ],
+      "cta": "Ak je skóre nízke, pošlite nám report a hlavné kľúčové slová. Navrhneme SEO roadmapu."
+    },
+    "speed": {
+      "title": "Rýchlosť stránky a Core Web Vitals",
+      "description": "Pomalé stránky strácajú návštevníkov a zhoršujú pozície v Google.",
+      "checklist": [
+        "Mobilná rýchlosť: Otvorte stránku na 4G sieti (vypnite Wi-Fi). Načíta sa do 3 sekúnd? Každá sekunda navyše vás stojí zákazníkov.",
+        "Vizuálna stabilita (CLS): Poskakuje text alebo obrázky počas načítavania? To frustruje používateľov a Google to penalizuje.",
+        "Interaktivita: Keď kliknete na tlačidlo alebo menu, reaguje stránka okamžite? Oneskorenie pôsobí neprofesionálne."
+      ],
+      "toolsTitle": "Nástroje na meranie rýchlosti:",
+      "toolsList": [
+        {
+          "name": "Google PageSpeed Insights",
+          "description": "Oficiálny nástroj od Google. Zadajte URL a zistite, ako Google hodnotí vašu rýchlosť (Core Web Vitals). Červené čísla znamenajú horšie pozície vo vyhľadávaní.",
+          "url": "https://pagespeed.web.dev/"
+        },
+        {
+          "name": "GTmetrix",
+          "description": "Poskytuje detailný pohľad na načítavanie stránky, veľkosť obrázkov a requestov. Ideálny na zistenie, prečo je stránka pomalá.",
+          "url": "https://gtmetrix.com/"
+        },
+        {
+          "name": "WebPageTest",
+          "description": "Pokročilý test rýchlosti načítania z rôznych lokalít a zariadení. Zadajte URL vašej stránky a získate detailný vodopád načítania, ktorý odhalí, čo presne spomaľuje váš web.",
+          "url": "https://www.webpagetest.org/"
+        }
+      ],
+      "benchmarks": "Dobré hodnoty: Performance ≥ 80, LCP < 2.5s, CLS < 0.1, FID < 100ms",
+      "cta": "Pošlite nám screenshot rýchlosti. Odporučíme hosting alebo optimalizáciu kódu/obrázkov."
+    },
+    "mobileDesign": {
+      "title": "Mobilný dizajn a pocit zo značky",
+      "description": "Väčšina návštevníkov príde cez mobil. Nepodceňujte prvý dojem.",
+      "checklist": [
+        "Čitateľnosť: Je text na mobile dostatočne veľký (aspoň 16px) bez nutnosti približovania?",
+        "Dotykové ciele: Sú tlačidlá a odkazy dostatočne veľké a ďaleko od seba, aby sa dali ľahko stlačiť palcom?",
+        "Kvalita loga: Je vaše logo ostré aj na retina displejoch (iPhone)? Rozmazané logo pôsobí lacno.",
+        "Konzistencia: Používate rovnaké farby a fonty na každej podstránke? Pôsobí web ako jeden celok?"
+      ],
+      "toolsTitle": "Nástroje na testovanie mobile:",
+      "toolsList": [
+        {
+          "name": "Google Mobile-Friendly Test",
+          "description": "Oficiálny test od Google. Zadajte URL a zistite, či je váš web optimalizovaný pre mobilné zariadenia. Ak nie je, Google vás vo vyhľadávaní posunie nižšie.",
+          "url": "https://search.google.com/test/mobile-friendly"
+        },
+        {
+          "name": "Responsive Design Checker",
+          "description": "Zobrazí váš web na rôznych veľkostiach obrazoviek (iPhone, iPad, Desktop). Skontrolujte, či sa texty neprekrývajú a či sú tlačidlá dostupné.",
+          "url": "https://responsivedesignchecker.com/"
+        }
+      ],
+      "cta": "Ak web vyzerá zastaralo, pošlite nám ukážky. Navrhneme moderný dizajn."
+    },
+    "eshop": {
+      "title": "E-shop a konverzie",
+      "description": "Premieňajte návštevníkov na platiacich zákazníkov.",
+      "checklist": [
+        "Pravidlo 3 klikov: Dá sa produkt nájsť a vložiť do košíka do 3 kliknutí z domovskej stránky?",
+        "Transparentnosť: Sú informácie o doprave a cenách jasné ešte pred vstupom do pokladne?",
+        "Dôveryhodnosť: Máte na stránke viditeľné recenzie, logá partnerov a bezpečnostné certifikáty?",
+        "Zvyšovanie hodnoty: Ponúka košík automaticky súvisiace produkty (upsell/cross-sell)?"
+      ],
+      "toolsTitle": "Nástroje na analýzu konverzií:",
+      "toolsList": [
+        {
+          "name": "Hotjar",
+          "description": "Nahráva správanie návštevníkov na webe. Uvidíte presne, kde klikajú, ako scrollujú a kde sa zasekávajú pri nákupe.",
+          "url": "https://www.hotjar.com/"
+        },
+        {
+          "name": "Google Analytics",
+          "description": "Základný nástroj na meranie návštevnosti. Zistite, odkiaľ ľudia chodia, ako dlho zostávajú a ktoré produkty si prezerajú najčastejšie.",
+          "url": "https://analytics.google.com/"
+        },
+        {
+          "name": "Crazy Egg",
+          "description": "Vytvára teplotné mapy (heatmaps), ktoré ukazujú najhorúcejšie miesta vášho webu. Zistite, či ľudia klikajú tam, kam chcete.",
+          "url": "https://www.crazyegg.com/"
+        }
+      ],
+      "cta": "Ak ľudia chodia, ale nekupujú, požiadajte o audit konverzií e-shopu."
+    },
+    "socialMedia": {
+      "title": "Stratégia sociálnych sietí",
+      "description": "Buďte tam, kde sú vaši zákazníci. Konzistentne a hodnotne.",
+      "checklist": [
+        "Identita: Máte rovnaké používateľské meno (@handle) a profilovú fotku na všetkých sieťach?",
+        "Bio optimalizácia: Hovorí vaše bio jasne, koho učíte/čo predávate a obsahuje výzvu k akcii (odkaz)?",
+        "Konzistencia: Publikujete aspoň 1 hodnotný príspevok týždenne na vašej hlavnej platforme?",
+        "Obsahový mix: Striedate vzdelávací obsah, sociálne dôkazy (recenzie) a predajné ponuky?"
+      ],
+      "toolsTitle": "Nástroje na správu sociálnych sietí:",
+      "toolsList": [
+        {
+          "name": "Buffer",
+          "description": "Umožňuje naplánovať príspevky na týždne dopredu pre všetky sociálne siete naraz. Ušetríte hodiny času."
+        },
+        {
+          "name": "Canva",
+          "description": "Jednoduchý grafický nástroj pre ne-dizajnérov. Vytvorte profesionálne vyzerajúce príspevky, stories a bannery pomocou tisícok šablón."
+        },
+        {
+          "name": "Later",
+          "description": "Vizuálny plánovač pre Instagram. Umožňuje vidieť, ako bude vyzerať váš feed predtým, než príspevky publikujete."
+        }
+      ],
+      "cta": "Pošlite nám vaše profily. Navrhneme obsahovú a rastovú stratégiu."
+    },
+    "socialProfiles": {
+      "title": "Profily LinkedIn / Instagram / Facebook",
+      "description": "Váš profil je vaša vizitka. Musí predávať za vás.",
+      "checklist": [
+        "LinkedIn Headline: Používate vzorec 'Pomáham [komu] získať [výsledok] pomocou [ako]'?",
+        "Príbeh značky: Rozpráva vaša 'About' sekcia príbeh, s ktorým sa zákazník stotožní?",
+        "Vizuál: Je vaša profilová fotka profesionálna a banner relevantný k vášmu biznisu?",
+        "Instagram Highlights: Máte uložené príbehy s ponukou, recenziami a 'o nás'?"
+      ],
+      "toolsTitle": "Nástroje na optimalizáciu profilov:",
+      "toolsList": [
+        {
+          "name": "LinkedIn Profile Strength Meter",
+          "description": "Vyhodnotenie sily LinkedIn profilu",
+          "url": "https://www.linkedin.com/"
+        },
+        {
+          "name": "Iconosquare",
+          "description": "Analytika a audit Instagram účtu",
+          "url": "https://www.iconosquare.com/"
+        }
+      ],
+      "cta": "Pošlite nám URL profilov na optimalizáciu positioningu."
+    },
+    "email": {
+      "title": "Email a podpis",
+      "description": "Profesionalita sa skrýva v detailoch. Aj v pätičke emailu.",
+      "checklist": [
+        "Profesionálna adresa: Používate firemný email (meno@firma.sk) namiesto freemailu (@gmail.com)?",
+        "Podpis: Obsahuje váš podpis meno, rolu, logo, odkaz na web a sociálne siete?",
+        "Call to Action: Máte v podpise odkaz na rezerváciu stretnutia alebo aktuálnu ponuku?"
+      ],
+      "toolsTitle": "Generátory emailových podpisov:",
+      "toolsList": [
+        {
+          "name": "HubSpot Email Signature Generator",
+          "description": "Profesionálne emailové podpisy zadarmo",
+          "url": "https://www.hubspot.com/email-signature-generator"
+        },
+        {
+          "name": "MySignature",
+          "description": "Pokročilé šablóny email podpisov",
+          "url": "https://www.mysignature.io/"
+        }
+      ],
+      "cta": "Pošlite screenshot podpisu pre feedback alebo redesign."
+    },
+    "brand": {
+      "title": "Názov a konzistencia značky",
+      "description": "Silná značka je zapamätateľná a jednotná všade.",
+      "checklist": [
+        "Jednoduchosť: Dá sa názov vašej značky ľahko vysloviť a napísať bez chýb?",
+        "Dostupnosť: Je názov voľný na všetkých dôležitých sociálnych sieťach a doménach?",
+        "Vizuálny súlad: Zodpovedá vaše logo a farby cenovej kategórii vašich služieb (prémiové vs. dostupné)?"
+      ],
+      "toolsTitle": "Nástroje na kontrolu dostupnosti:",
+      "toolsList": [
+        {
+          "name": "Namechk",
+          "description": "Kontrola dostupnosti mena na všetkých platformách",
+          "url": "https://namechk.com/"
+        },
+        {
+          "name": "Namecheap Domain Search",
+          "description": "Hľadanie dostupných domén",
+          "url": "https://www.namecheap.com/"
+        }
+      ],
+      "cta": "Ak vaša značka nie je dostupná všade, pomôžeme nájsť smart variáciu."
+    },
+    "mobileApp": {
+      "title": "Zdravie mobilnej aplikácie",
+      "description": "Máte aplikáciu? Uistite sa, že jej používatelia verí.",
+      "checklist": [
+        "Sociálny dôkaz: Máte aspoň 10–20 recenzií za posledný polrok?",
+        "Hodnotenie: Je vaše priemerné hodnotenie nad 4.0 hviezdičiek?",
+        "Popis: Zameriava sa popis v obchode na benefity pre užívateľa, nie len na funkcie?",
+        "Vizuál: Ukazujú screenshoty aktuálny dizajn a kľúčové funkcie?"
+      ],
+      "toolsTitle": "ASO (App Store Optimization) nástroje:",
+      "toolsList": [
+        {
+          "name": "App Annie (data.ai)",
+          "description": "Analytika a monitoring mobile aplikácií",
+          "url": "https://www.data.ai/"
+        },
+        {
+          "name": "Sensor Tower",
+          "description": "ASO a competitive intelligence",
+          "url": "https://sensortower.com/"
+        },
+        {
+          "name": "AppTweak",
+          "description": "ASO nástroj pre optimalizáciu",
+          "url": "https://www.apptweak.com/"
+        }
+      ],
+      "cta": "Ak je viditeľnosť nízka, pomôžeme s redesignom a ASO."
+    },
+    "ai": {
+      "title": "Využitie AI v podnikaní",
+      "description": "Pracujte múdrejšie, nie tvrdšie. AI je vaša konkurenčná výhoda.",
+      "checklist": [
+        "Tvorba obsahu: Používate AI na generovanie nápadov pre blogy a sociálne siete?",
+        "Prieskum trhu: Využívate AI na analýzu konkurencie a trendov?",
+        "Zákaznícka podpora: Máte pripravené AI šablóny pre časté otázky zákazníkov?",
+        "Procesy: Máte zdokumentované, kde všade vo firme vám AI šetrí čas?"
+      ],
+      "toolsTitle": "AI nástroje pre podnikanie:",
+      "toolsList": [
+        {
+          "name": "ChatGPT",
+          "description": "Generovanie textu, odpovede, analýza",
+          "url": "https://chat.openai.com/"
+        },
+        {
+          "name": "Claude",
+          "description": "Pokročilý AI asistent pre komplexné úlohy",
+          "url": "https://claude.ai/"
+        },
+        {
+          "name": "Gemini",
+          "description": "Google AI pre výskum a produktivitu",
+          "url": "https://gemini.google.com/"
+        },
+        {
+          "name": "Midjourney",
+          "description": "Generovanie obrázkov a grafiky pomocou AI",
+          "url": "https://www.midjourney.com/"
+        }
+      ],
+      "cta": "Napíšte nám vaše žrúty času. Pošleme 1-2 konkrétne AI workflowy."
+    },
+    "automation": {
+      "title": "Automatizácia procesov",
+      "description": "Nechajte roboty robiť nudnú prácu. Vy sa venujte biznisu.",
+      "checklist": [
+        "Identifikácia: Viete presne, ktoré úlohy opakujete každý deň alebo týždeň?",
+        "CRM Integrácia: Padajú dopyty z webu automaticky do vášho CRM alebo tabuľky?",
+        "Komunikácia: Odchádzajú potvrdzujúce emaily a faktúry automaticky bez vášho zásahu?"
+      ],
+      "toolsTitle": "Nástroje na automatizáciu:",
+      "toolsList": [
+        {
+          "name": "Zapier",
+          "description": "Automatizácia workflows medzi aplikáciami",
+          "url": "https://zapier.com/"
+        },
+        {
+          "name": "Make (Integromat)",
+          "description": "Pokročilá automatizácia a integrácie",
+          "url": "https://www.make.com/"
+        },
+        {
+          "name": "n8n",
+          "description": "Open-source automatizácia workflows",
+          "url": "https://n8n.io/"
+        }
+      ],
+      "cta": "Pošlite zoznam 3 najnudnejších úloh. Navrhneme automatizáciu a úsporu času."
     }
   }
 }

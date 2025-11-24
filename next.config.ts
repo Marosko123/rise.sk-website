@@ -29,6 +29,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      },
     ],
   },
   experimental: {
@@ -87,7 +91,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.vercel-scripts.com https://vercel.live https://rise.sk https://www.rise.sk; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://vercel.live; img-src 'self' blob: data: https://*.googletagmanager.com https://*.google-analytics.com https://cdn.jsdelivr.net https://www.vectorlogo.zone https://upload.wikimedia.org https://vercel.live https://rise.sk https://www.rise.sk; font-src 'self' data: https://fonts.gstatic.com https://vercel.live; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://vitals.vercel-analytics.com https://*.emailjs.com https://lottie.host https://*.lottiefiles.com https://vercel.live https://rise.sk https://www.rise.sk; frame-src 'self' https://vercel.live;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.vercel-scripts.com https://vercel.live https://rise.sk https://www.rise.sk; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://vercel.live; img-src 'self' blob: data: https://*.googletagmanager.com https://*.google-analytics.com https://cdn.jsdelivr.net https://www.vectorlogo.zone https://upload.wikimedia.org https://images.unsplash.com https://plus.unsplash.com https://vercel.live https://rise.sk https://www.rise.sk; font-src 'self' data: https://fonts.gstatic.com https://vercel.live; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://vitals.vercel-analytics.com https://*.emailjs.com https://lottie.host https://*.lottiefiles.com https://vercel.live https://rise.sk https://www.rise.sk; frame-src 'self' https://vercel.live;"
           },
           {
             key: 'Vary',

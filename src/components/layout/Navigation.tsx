@@ -10,6 +10,7 @@ import { useThrottledCallback } from 'use-debounce';
 
 import { Button } from '@/components/ui/Button';
 import { teamMembers } from '@/data/team';
+import { usePersistentClick } from '@/hooks/usePersistentClick';
 import { AppPathnames, Link, usePathname, useRouter } from '@/i18n/routing';
 
 import LanguageSwitcher from './LanguageSwitcher';
@@ -43,39 +44,44 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [initialHashHandled, setInitialHashHandled] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { hasClicked: hasClickedCheckup, handleClick: handleCheckupClickInternal } = usePersistentClick('rise_has_clicked_checkup');
+  const { hasClicked: hasClickedStartProject, handleClick: handleStartProjectClickInternal } = usePersistentClick('rise_has_clicked_start_project');
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
   const prefetchRoute = (href: AppPathnames | { pathname: AppPathnames; hash: string }) => {
     if (typeof href === 'string') {
-      router.prefetch(href);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      router.prefetch(href as any);
     } else if (typeof href === 'object' && href.pathname) {
-      router.prefetch(href.pathname);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      router.prefetch(href.pathname as any);
     }
   };
 
   const handleContactClick = (e: React.MouseEvent) => {
+    handleStartProjectClickInternal();
+
     e.preventDefault();
     const sectionMap = getSectionMappings(locale);
+    const contactSectionId = sectionMap.contact;
+    const element = document.getElementById(contactSectionId);
 
-    if (isHomePage) {
-      // On homepage, scroll to locale-specific contact section (kontakt/contact)
-      const element = document.getElementById(sectionMap.contact);
-      if (element) {
-        const navHeight = 80;
-        const elementPosition = element.offsetTop;
-        const offsetPosition = elementPosition - navHeight;
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.offsetTop;
+      const offsetPosition = elementPosition - navHeight;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-        setIsMenuOpen(false);
-      }
-    } else {
-      // On other pages, navigate to homepage with locale-specific hash
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
       setIsMenuOpen(false);
-      router.push(`/#${sectionMap.contact}` as AppPathnames);
+    } else {
+      // On other pages where contact section is missing, navigate to homepage with locale-specific hash
+      setIsMenuOpen(false);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      router.push(`/#${contactSectionId}` as any);
     }
   };
 
@@ -86,8 +92,14 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
     };
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial state
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleCheckupClick = () => {
+    handleCheckupClickInternal();
+    if (isMenuOpen) setIsMenuOpen(false);
+  };
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -468,7 +480,8 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                   return (
                                     <Link
                                       key={itemIndex}
-                                      href={item.href}
+                                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                      href={item.href as any}
                                       className='flex items-center gap-4 px-5 py-4 hover:bg-white/5 transition-colors duration-200 group/item'
                                       onMouseEnter={() => prefetchRoute(item.href)}
                                       onClick={() => {
@@ -518,7 +531,8 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                   return (
                     <Link
                       key={index}
-                      href={link.href}
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      href={link.href as any}
                       className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap ${
                         isActive ? 'text-primary' : 'text-gray-300 hover:text-primary'
                       }`}
@@ -550,16 +564,31 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
 
           {/* Right Side - Language Switcher & Menu Toggle */}
           <div className='flex items-center pr-6 space-x-4'>
-            {/* Desktop CTA Button */}
-            <div className='hidden lg:block'>
+            {/* Desktop CTA Buttons */}
+            <div className='hidden lg:flex items-center gap-4'>
+              <Button
+                href="/otestujte-podnikanie"
+                variant="outline"
+                size="sm"
+                className="glow hover:glow-hover border-2 relative overflow-hidden"
+                onClick={handleCheckupClick}
+              >
+                <span className="relative z-10">{t('testYourBusiness')}</span>
+                {!hasClickedCheckup && (
+                  <div className="absolute inset-0 -translate-x-full animate-sheen bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                )}
+              </Button>
               <Button
                 href={`#${getSectionMappings(locale).contact}`}
                 variant="primary"
                 size="sm"
                 onClick={handleContactClick}
-                className="shadow-lg shadow-primary/20"
+                className="relative overflow-hidden shadow-lg shadow-primary/20 group"
               >
-                {t('startProject')}
+                <span className="relative z-10">{t('startProject')}</span>
+                {!hasClickedStartProject && (
+                  <div className="absolute inset-0 -translate-x-full animate-sheen bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" style={{ animationDelay: '0.4s' }} />
+                )}
               </Button>
             </div>
 
@@ -660,7 +689,8 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                             return (
                               <Link
                                 key={itemIndex}
-                                href={item.href}
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                href={item.href as any}
                                 className='flex items-center gap-4 px-6 py-5 text-gray-200 hover:bg-primary hover:text-white transition-colors duration-200 border-b border-white/5 last:border-b-0'
                                 onMouseEnter={() => prefetchRoute(item.href)}
                                 onClick={() => {
@@ -705,7 +735,8 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
               return (
                 <Link
                   key={index}
-                  href={link.href}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  href={link.href as any}
                   className={`px-4 py-3 text-xl font-bold transition-all duration-300 relative select-none w-full text-center ${
                     isActive ? 'text-primary' : 'text-white hover:text-primary'
                   }`}
@@ -734,6 +765,19 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                 </Link>
               );
             })}
+
+            {/* Mobile Free Checkup Button */}
+            <Button
+              href="/otestujte-podnikanie"
+              variant="outline"
+              className="w-full text-xl py-3 border-white/20 text-white hover:bg-primary hover:text-black hover:border-primary mt-4 glow relative overflow-hidden"
+              onClick={handleCheckupClick}
+            >
+              <span className="relative z-10">{t('testYourBusiness')}</span>
+              {!hasClickedCheckup && (
+                <div className="absolute inset-0 -translate-x-full animate-sheen bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+              )}
+            </Button>
           </div>
 
           {/* Language Switcher - Mobile */}

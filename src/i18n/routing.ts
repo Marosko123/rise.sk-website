@@ -76,6 +76,14 @@ export const routing = defineRouting({
     '/recenzie': {
       sk: '/recenzie',
       en: '/reviews'
+    },
+    '/otestujte-podnikanie': {
+      sk: '/otestujte-podnikanie',
+      en: '/test-your-business'
+    },
+    '/otestujte-podnikanie/[slug]': {
+      sk: '/otestujte-podnikanie/[slug]',
+      en: '/test-your-business/[slug]'
     }
   }
 });

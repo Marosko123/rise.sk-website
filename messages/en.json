@@ -46,6 +46,7 @@
     "engagement": "Engagement Models",
     "portfolio": "Portfolio",
     "reviews": "Reviews",
+    "testYourBusiness": "Free Checkup",
     "faq": "FAQ",
     "hiring": "We're Hiring",
     "contact": "Contact",
@@ -157,37 +158,97 @@
       },
       "featuresTitle": "Why choose us for web development?",
       "features": [
-        { "title": "SEO Optimization", "description": "We build websites that Google loves. Proper structure, speed, and metadata are the foundation." },
-        { "title": "Extreme Speed", "description": "We use Next.js and modern technologies for lightning-fast loading that increases conversions." },
-        { "title": "Responsive Design", "description": "Your website will look perfect on mobile, tablet, and large monitors." },
-        { "title": "Cheap and Reliable Hosting", "description": "We provide fast and secure hosting at unbeatable prices. We guarantee 99.9% uptime and regular backups so your website is always online." },
-        { "title": "Security", "description": "SSL certificate, protection against attacks, and regular backups are standard with us." },
-        { "title": "Analytics", "description": "Google Analytics 4 implementation and conversion tracking setup included." }
+        {
+          "title": "SEO Optimization",
+          "description": "We build websites that Google loves. Proper structure, speed, and metadata are the foundation."
+        },
+        {
+          "title": "Extreme Speed",
+          "description": "We use Next.js and modern technologies for lightning-fast loading that increases conversions."
+        },
+        {
+          "title": "Responsive Design",
+          "description": "Your website will look perfect on mobile, tablet, and large monitors."
+        },
+        {
+          "title": "Cheap and Reliable Hosting",
+          "description": "We provide fast and secure hosting at unbeatable prices. We guarantee 99.9% uptime and regular backups so your website is always online."
+        },
+        {
+          "title": "Security",
+          "description": "SSL certificate, protection against attacks, and regular backups are standard with us."
+        },
+        {
+          "title": "Analytics",
+          "description": "Google Analytics 4 implementation and conversion tracking setup included."
+        }
       ],
       "tools": {
         "title": "Best Tools",
         "subtitle": "We use cutting-edge technologies for best results",
         "items": [
-          { "name": "Next.js", "description": "For maximum speed and SEO" },
-          { "name": "React", "description": "For interactive user interfaces" },
-          { "name": "WordPress", "description": "For easy content management" },
-          { "name": "TypeScript", "description": "For safety and scalability" },
-          { "name": "Tailwind CSS", "description": "For modern and responsive design" },
-          { "name": "Framer Motion", "description": "For smooth animations" }
+          {
+            "name": "Next.js",
+            "description": "For maximum speed and SEO"
+          },
+          {
+            "name": "React",
+            "description": "For interactive user interfaces"
+          },
+          {
+            "name": "WordPress",
+            "description": "For easy content management"
+          },
+          {
+            "name": "TypeScript",
+            "description": "For safety and scalability"
+          },
+          {
+            "name": "Tailwind CSS",
+            "description": "For modern and responsive design"
+          },
+          {
+            "name": "Framer Motion",
+            "description": "For smooth animations"
+          }
         ]
       },
       "processTitle": "How does website development work?",
       "process": [
-        { "title": "Consultation and Analysis", "description": "We identify your goals, target audience, and competition. We propose a strategy." },
-        { "title": "Design and Prototype", "description": "We create a visual design (UI/UX) that you approve before coding begins." },
-        { "title": "Development and Content", "description": "We program the website, deploy texts, and optimize images." },
-        { "title": "Testing and Launch", "description": "We test functionality, speed, and launch the website on your domain." }
+        {
+          "title": "Consultation and Analysis",
+          "description": "We identify your goals, target audience, and competition. We propose a strategy."
+        },
+        {
+          "title": "Design and Prototype",
+          "description": "We create a visual design (UI/UX) that you approve before coding begins."
+        },
+        {
+          "title": "Development and Content",
+          "description": "We program the website, deploy texts, and optimize images."
+        },
+        {
+          "title": "Testing and Launch",
+          "description": "We test functionality, speed, and launch the website on your domain."
+        }
       ],
       "faq": [
-        { "question": "How much does a website cost?", "answer": "The price is individual and depends on the complexity and scope of the project. We guarantee the best quality for a fair price and the delivery of a reliable product that will serve your business long-term. Contact us for a non-binding quote." },
-        { "question": "How long does it take to create a website?", "answer": "We deliver a standard corporate website within 2-4 weeks from the delivery of materials." },
-        { "question": "Will I be able to edit the website myself?", "answer": "Yes, we can provide an administration system (CMS) for every website, where you can easily change texts or photos." },
-        { "question": "Do you also redesign old websites?", "answer": "Yes, modernizing old websites is our specialty. We will preserve your SEO positions and improve design and performance." }
+        {
+          "question": "How much does a website cost?",
+          "answer": "The price is individual and depends on the complexity and scope of the project. We guarantee the best quality for a fair price and the delivery of a reliable product that will serve your business long-term. Contact us for a non-binding quote."
+        },
+        {
+          "question": "How long does it take to create a website?",
+          "answer": "We deliver a standard corporate website within 2-4 weeks from the delivery of materials."
+        },
+        {
+          "question": "Will I be able to edit the website myself?",
+          "answer": "Yes, we can provide an administration system (CMS) for every website, where you can easily change texts or photos."
+        },
+        {
+          "question": "Do you also redesign old websites?",
+          "answer": "Yes, modernizing old websites is our specialty. We will preserve your SEO positions and improve design and performance."
+        }
       ],
       "cta": {
         "primary": "I want a custom website",
@@ -204,37 +265,97 @@
       },
       "featuresTitle": "Features for successful online sales",
       "features": [
-        { "title": "High Conversions", "description": "UX design focused on a simple purchasing process and minimizing abandoned carts." },
-        { "title": "Payment Gateways", "description": "Integration of Stripe, GoPay, PayPal, Apple Pay, and Google Pay for convenient payments." },
-        { "title": "System Integration", "description": "Connection with accounting (Pohoda, SuperFaktúra), warehouse, and couriers." },
-        { "title": "Speed and Stability", "description": "Handles customer influx during the season thanks to scalable architecture." },
-        { "title": "SEO for Products", "description": "Automatic generation of metadata and structured data for Google Shopping." },
-        { "title": "Marketing Tools", "description": "Discount codes, newsletters, upsell and cross-sell functions directly in the system." }
+        {
+          "title": "High Conversions",
+          "description": "UX design focused on a simple purchasing process and minimizing abandoned carts."
+        },
+        {
+          "title": "Payment Gateways",
+          "description": "Integration of Stripe, GoPay, PayPal, Apple Pay, and Google Pay for convenient payments."
+        },
+        {
+          "title": "System Integration",
+          "description": "Connection with accounting (Pohoda, SuperFaktúra), warehouse, and couriers."
+        },
+        {
+          "title": "Speed and Stability",
+          "description": "Handles customer influx during the season thanks to scalable architecture."
+        },
+        {
+          "title": "SEO for Products",
+          "description": "Automatic generation of metadata and structured data for Google Shopping."
+        },
+        {
+          "title": "Marketing Tools",
+          "description": "Discount codes, newsletters, upsell and cross-sell functions directly in the system."
+        }
       ],
       "tools": {
         "title": "Technologies and Integrations",
         "subtitle": "We use proven platforms and payment systems",
         "items": [
-          { "name": "WooCommerce", "description": "Flexible e-commerce platform" },
-          { "name": "Shopify", "description": "Fast and stable solution" },
-          { "name": "Stripe", "description": "Secure card payments" },
-          { "name": "PayPal", "description": "Global payment system" },
-          { "name": "Google Analytics", "description": "Conversion and traffic tracking" },
-          { "name": "React", "description": "Fast frontend for headless e-shops" }
+          {
+            "name": "WooCommerce",
+            "description": "Flexible e-commerce platform"
+          },
+          {
+            "name": "Shopify",
+            "description": "Fast and stable solution"
+          },
+          {
+            "name": "Stripe",
+            "description": "Secure card payments"
+          },
+          {
+            "name": "PayPal",
+            "description": "Global payment system"
+          },
+          {
+            "name": "Google Analytics",
+            "description": "Conversion and traffic tracking"
+          },
+          {
+            "name": "React",
+            "description": "Fast frontend for headless e-shops"
+          }
         ]
       },
       "processTitle": "E-shop development process",
       "process": [
-        { "title": "Requirements Analysis", "description": "We define the assortment, target audience, and necessary integrations." },
-        { "title": "UX/UI Design", "description": "We design a clear catalog and intuitive cart." },
-        { "title": "Implementation", "description": "Backend development, frontend, and connection to external services." },
-        { "title": "Testing and Training", "description": "We test the purchasing process and train you in administration." }
+        {
+          "title": "Requirements Analysis",
+          "description": "We define the assortment, target audience, and necessary integrations."
+        },
+        {
+          "title": "UX/UI Design",
+          "description": "We design a clear catalog and intuitive cart."
+        },
+        {
+          "title": "Implementation",
+          "description": "Backend development, frontend, and connection to external services."
+        },
+        {
+          "title": "Testing and Training",
+          "description": "We test the purchasing process and train you in administration."
+        }
       ],
       "faq": [
-        { "question": "What is the price for e-shop development?", "answer": "Custom e-shops start from €2500. The price depends on the number of integrations and specific functions." },
-        { "question": "Can you connect the e-shop to a warehouse?", "answer": "Yes, we commonly integrate warehouse systems, ERP, and invoicing software." },
-        { "question": "Is the e-shop optimized for mobile?", "answer": "Of course. A mobile-first approach is a necessity for us, as most purchases happen via phone." },
-        { "question": "Do you provide technical support?", "answer": "Yes, we ensure long-term management, updates, and monitoring of the e-shop." }
+        {
+          "question": "What is the price for e-shop development?",
+          "answer": "Custom e-shops start from €2500. The price depends on the number of integrations and specific functions."
+        },
+        {
+          "question": "Can you connect the e-shop to a warehouse?",
+          "answer": "Yes, we commonly integrate warehouse systems, ERP, and invoicing software."
+        },
+        {
+          "question": "Is the e-shop optimized for mobile?",
+          "answer": "Of course. A mobile-first approach is a necessity for us, as most purchases happen via phone."
+        },
+        {
+          "question": "Do you provide technical support?",
+          "answer": "Yes, we ensure long-term management, updates, and monitoring of the e-shop."
+        }
       ],
       "cta": {
         "primary": "I want my own e-shop",
@@ -252,37 +373,97 @@
       },
       "featuresTitle": "Top mobile technologies",
       "features": [
-        { "title": "iOS and Android", "description": "We develop for both platforms simultaneously using React Native or Flutter, which saves costs." },
-        { "title": "Native Performance", "description": "Applications are fast, smooth, and utilize phone hardware to the fullest." },
-        { "title": "Offline Mode", "description": "The application works even without the internet, and data synchronizes after connection." },
-        { "title": "Push Notifications", "description": "Reach users directly on their screen and increase engagement." },
-        { "title": "Modern UI Design", "description": "Design according to the latest Apple and Google standards for intuitive control." },
-        { "title": "Store Publication", "description": "We cover the entire approval process in the App Store and Google Play." }
+        {
+          "title": "iOS and Android",
+          "description": "We develop for both platforms simultaneously using React Native or Flutter, which saves costs."
+        },
+        {
+          "title": "Native Performance",
+          "description": "Applications are fast, smooth, and utilize phone hardware to the fullest."
+        },
+        {
+          "title": "Offline Mode",
+          "description": "The application works even without the internet, and data synchronizes after connection."
+        },
+        {
+          "title": "Push Notifications",
+          "description": "Reach users directly on their screen and increase engagement."
+        },
+        {
+          "title": "Modern UI Design",
+          "description": "Design according to the latest Apple and Google standards for intuitive control."
+        },
+        {
+          "title": "Store Publication",
+          "description": "We cover the entire approval process in the App Store and Google Play."
+        }
       ],
       "tools": {
         "title": "Technologies We Master",
         "subtitle": "We use cutting-edge tools to build top-tier applications",
         "items": [
-          { "name": "React Native", "description": "One codebase for both iOS and Android" },
-          { "name": "Expo", "description": "Rapid development and instant updates" },
-          { "name": "Flutter", "description": "Google's toolkit for beautiful UI" },
-          { "name": "Swift", "description": "Native and powerful language for iOS" },
-          { "name": "Kotlin", "description": "Modern standard for Android apps" },
-          { "name": "Firebase", "description": "Robust backend and real-time database" }
+          {
+            "name": "React Native",
+            "description": "One codebase for both iOS and Android"
+          },
+          {
+            "name": "Expo",
+            "description": "Rapid development and instant updates"
+          },
+          {
+            "name": "Flutter",
+            "description": "Google's toolkit for beautiful UI"
+          },
+          {
+            "name": "Swift",
+            "description": "Native and powerful language for iOS"
+          },
+          {
+            "name": "Kotlin",
+            "description": "Modern standard for Android apps"
+          },
+          {
+            "name": "Firebase",
+            "description": "Robust backend and real-time database"
+          }
         ]
       },
       "processTitle": "Path to your application",
       "process": [
-        { "title": "Concept and Wireframe", "description": "We draw screens and application logic." },
-        { "title": "UI Design", "description": "We create the final look of the application." },
-        { "title": "Development", "description": "Programming the mobile part and backend API." },
-        { "title": "Testing and Release", "description": "Beta testing and deployment to stores." }
+        {
+          "title": "Concept and Wireframe",
+          "description": "We draw screens and application logic."
+        },
+        {
+          "title": "UI Design",
+          "description": "We create the final look of the application."
+        },
+        {
+          "title": "Development",
+          "description": "Programming the mobile part and backend API."
+        },
+        {
+          "title": "Testing and Release",
+          "description": "Beta testing and deployment to stores."
+        }
       ],
       "faq": [
-        { "question": "How much does app development cost?", "answer": "The price depends on the complexity and scope of the project. We guarantee the highest quality and delivery of a top-tier product. We will be happy to prepare a precise calculation for you." },
-        { "question": "Do you do both iOS and Android?", "answer": "Yes, we specialize in multi-platform development, so you get both versions for a better price." },
-        { "question": "How long does development take?", "answer": "We can make simple mobile apps in 1 month, more complex projects take several months. The timeline highly depends on the app's complexity and the duration of the review and testing process during publishing." },
-        { "question": "What happens after release?", "answer": "We provide a service contract for updates and bug fixes that may arise with new iOS/Android versions." }
+        {
+          "question": "How much does app development cost?",
+          "answer": "The price depends on the complexity and scope of the project. We guarantee the highest quality and delivery of a top-tier product. We will be happy to prepare a precise calculation for you."
+        },
+        {
+          "question": "Do you do both iOS and Android?",
+          "answer": "Yes, we specialize in multi-platform development, so you get both versions for a better price."
+        },
+        {
+          "question": "How long does development take?",
+          "answer": "We can make simple mobile apps in 1 month, more complex projects take several months. The timeline highly depends on the app's complexity and the duration of the review and testing process during publishing."
+        },
+        {
+          "question": "What happens after release?",
+          "answer": "We provide a service contract for updates and bug fixes that may arise with new iOS/Android versions."
+        }
       ],
       "cta": {
         "primary": "I have an app idea",
@@ -299,73 +480,241 @@
       },
       "featuresTitle": "Solutions for company efficiency",
       "features": [
-        { "title": "Automation", "description": "Replace manual work and Excel spreadsheets with intelligent software." },
-        { "title": "API Integrations", "description": "We connect your existing tools into one functional unit." },
-        { "title": "Cloud Solution", "description": "Access to data from anywhere, securely and without the need for own servers." },
-        { "title": "Scalability", "description": "The system will grow with your company without the need for rewriting." },
-        { "title": "Reporting", "description": "Clear dashboards and charts for better management decision-making." },
-        { "title": "Data Security", "description": "Enterprise-level security for sensitive company data." }
+        {
+          "title": "Automation",
+          "description": "Replace manual work and Excel spreadsheets with intelligent software."
+        },
+        {
+          "title": "API Integrations",
+          "description": "We connect your existing tools into one functional unit."
+        },
+        {
+          "title": "Cloud Solution",
+          "description": "Access to data from anywhere, securely and without the need for own servers."
+        },
+        {
+          "title": "Scalability",
+          "description": "The system will grow with your company without the need for rewriting."
+        },
+        {
+          "title": "Reporting",
+          "description": "Clear dashboards and charts for better management decision-making."
+        },
+        {
+          "title": "Data Security",
+          "description": "Enterprise-level security for sensitive company data."
+        }
       ],
       "tools": {
         "title": "Our Tech Stack",
         "subtitle": "We build on modern and secure technologies",
         "items": [
-          { "name": "Node.js", "description": "Powerful backend" },
-          { "name": "Python", "description": "Data processing and AI" },
-          { "name": "React", "description": "Modern web applications" },
-          { "name": "PostgreSQL", "description": "Reliable database" },
-          { "name": "Docker", "description": "Application containerization" },
-          { "name": "AWS", "description": "Cloud infrastructure" },
-          { "name": "Java", "description": "Enterprise backend" },
-          { "name": ".NET", "description": "Microsoft ecosystem" },
-          { "name": "Kubernetes", "description": "Orchestration" },
-          { "name": "Terraform", "description": "IaC" },
-          { "name": "Redis", "description": "Cache" },
-          { "name": "Linux", "description": "OS" },
-          { "name": "Nginx", "description": "Web server" },
-          { "name": "Git", "description": "Versioning" },
-          { "name": "Jenkins", "description": "CI/CD" },
-          { "name": "GitLab", "description": "DevOps" },
-          { "name": "Oracle", "description": "Enterprise database" },
-          { "name": "SAP", "description": "Enterprise systems" },
-          { "name": "Salesforce", "description": "CRM solutions" },
-          { "name": "Microsoft SQL Server", "description": "Relational database" },
-          { "name": "DynamoDB", "description": "NoSQL database" },
-          { "name": "Cassandra", "description": "Distributed database" },
-          { "name": "Ansible", "description": "Automation" },
-          { "name": "CircleCI", "description": "CI/CD pipeline" },
-          { "name": "Datadog", "description": "Monitoring" },
-          { "name": "Prometheus", "description": "Metrics" },
-          { "name": "Grafana", "description": "Visualization" },
-          { "name": "Go", "description": "High performance" },
-          { "name": "Rust", "description": "Memory safety" },
-          { "name": "Scala", "description": "Functional programming" },
-          { "name": "Ruby", "description": "Rapid development" },
-          { "name": "Apache Spark", "description": "Big Data" },
-          { "name": "Hadoop", "description": "Data processing" },
-          { "name": "Kafka", "description": "Event streaming" },
-          { "name": "Snowflake", "description": "Cloud data warehouse" },
-          { "name": "Databricks", "description": "Data analytics" },
-          { "name": "Tableau", "description": "Business Intelligence" },
-          { "name": "Spring Boot", "description": "Java framework" },
-          { "name": "Django", "description": "Python framework" },
-          { "name": "FastAPI", "description": "Modern API" },
-          { "name": "Laravel", "description": "PHP framework" },
-          { "name": "Symfony", "description": "PHP components" }
+          {
+            "name": "Node.js",
+            "description": "Powerful backend"
+          },
+          {
+            "name": "Python",
+            "description": "Data processing and AI"
+          },
+          {
+            "name": "React",
+            "description": "Modern web applications"
+          },
+          {
+            "name": "PostgreSQL",
+            "description": "Reliable database"
+          },
+          {
+            "name": "Docker",
+            "description": "Application containerization"
+          },
+          {
+            "name": "AWS",
+            "description": "Cloud infrastructure"
+          },
+          {
+            "name": "Java",
+            "description": "Enterprise backend"
+          },
+          {
+            "name": ".NET",
+            "description": "Microsoft ecosystem"
+          },
+          {
+            "name": "Kubernetes",
+            "description": "Orchestration"
+          },
+          {
+            "name": "Terraform",
+            "description": "IaC"
+          },
+          {
+            "name": "Redis",
+            "description": "Cache"
+          },
+          {
+            "name": "Linux",
+            "description": "OS"
+          },
+          {
+            "name": "Nginx",
+            "description": "Web server"
+          },
+          {
+            "name": "Git",
+            "description": "Versioning"
+          },
+          {
+            "name": "Jenkins",
+            "description": "CI/CD"
+          },
+          {
+            "name": "GitLab",
+            "description": "DevOps"
+          },
+          {
+            "name": "Oracle",
+            "description": "Enterprise database"
+          },
+          {
+            "name": "SAP",
+            "description": "Enterprise systems"
+          },
+          {
+            "name": "Salesforce",
+            "description": "CRM solutions"
+          },
+          {
+            "name": "Microsoft SQL Server",
+            "description": "Relational database"
+          },
+          {
+            "name": "DynamoDB",
+            "description": "NoSQL database"
+          },
+          {
+            "name": "Cassandra",
+            "description": "Distributed database"
+          },
+          {
+            "name": "Ansible",
+            "description": "Automation"
+          },
+          {
+            "name": "CircleCI",
+            "description": "CI/CD pipeline"
+          },
+          {
+            "name": "Datadog",
+            "description": "Monitoring"
+          },
+          {
+            "name": "Prometheus",
+            "description": "Metrics"
+          },
+          {
+            "name": "Grafana",
+            "description": "Visualization"
+          },
+          {
+            "name": "Go",
+            "description": "High performance"
+          },
+          {
+            "name": "Rust",
+            "description": "Memory safety"
+          },
+          {
+            "name": "Scala",
+            "description": "Functional programming"
+          },
+          {
+            "name": "Ruby",
+            "description": "Rapid development"
+          },
+          {
+            "name": "Apache Spark",
+            "description": "Big Data"
+          },
+          {
+            "name": "Hadoop",
+            "description": "Data processing"
+          },
+          {
+            "name": "Kafka",
+            "description": "Event streaming"
+          },
+          {
+            "name": "Snowflake",
+            "description": "Cloud data warehouse"
+          },
+          {
+            "name": "Databricks",
+            "description": "Data analytics"
+          },
+          {
+            "name": "Tableau",
+            "description": "Business Intelligence"
+          },
+          {
+            "name": "Spring Boot",
+            "description": "Java framework"
+          },
+          {
+            "name": "Django",
+            "description": "Python framework"
+          },
+          {
+            "name": "FastAPI",
+            "description": "Modern API"
+          },
+          {
+            "name": "Laravel",
+            "description": "PHP framework"
+          },
+          {
+            "name": "Symfony",
+            "description": "PHP components"
+          }
         ]
       },
       "processTitle": "How do we create software?",
       "process": [
-        { "title": "In-depth Analysis", "description": "We understand your processes and identify bottlenecks." },
-        { "title": "Architecture", "description": "We propose a technical solution and database model." },
-        { "title": "Agile Development", "description": "We deliver functional parts gradually so you can use them immediately." },
-        { "title": "Deployment and Support", "description": "Implementation into operation and employee training." }
+        {
+          "title": "In-depth Analysis",
+          "description": "We understand your processes and identify bottlenecks."
+        },
+        {
+          "title": "Architecture",
+          "description": "We propose a technical solution and database model."
+        },
+        {
+          "title": "Agile Development",
+          "description": "We deliver functional parts gradually so you can use them immediately."
+        },
+        {
+          "title": "Deployment and Support",
+          "description": "Implementation into operation and employee training."
+        }
       ],
       "faq": [
-        { "question": "Why custom software and not a boxed solution?", "answer": "A boxed solution forces you to adapt to it. Custom software exactly copies and improves your unique processes." },
-        { "question": "What technologies do you use?", "answer": "We build the backend on Node.js or Python, frontend on React/Next.js. PostgreSQL databases." },
-        { "question": "Who owns the source code?", "answer": "After handover and payment of the project, property rights pass to you." },
-        { "question": "What about security?", "answer": "We adhere to strict security standards, data encryption, and GDPR rules." }
+        {
+          "question": "Why custom software and not a boxed solution?",
+          "answer": "A boxed solution forces you to adapt to it. Custom software exactly copies and improves your unique processes."
+        },
+        {
+          "question": "What technologies do you use?",
+          "answer": "We build the backend on Node.js or Python, frontend on React/Next.js. PostgreSQL databases."
+        },
+        {
+          "question": "Who owns the source code?",
+          "answer": "After handover and payment of the project, property rights pass to you."
+        },
+        {
+          "question": "What about security?",
+          "answer": "We adhere to strict security standards, data encryption, and GDPR rules."
+        }
       ],
       "cta": {
         "primary": "Consult a solution",
@@ -446,26 +795,68 @@
         "title": "Tools we teach and use",
         "subtitle": "We work with the best AI models on the market",
         "items": [
-          { "name": "ChatGPT, Claude & Gemini", "description": "Advanced language models and Google Workspace AI" },
-          { "name": "NotebookLM", "description": "Document analysis and podcast creation" },
-          { "name": "Midjourney", "description": "Visual content generation" },
-          { "name": "Python & LangChain", "description": "Development of custom AI applications" },
-          { "name": "N8n.com / Make.com", "description": "Workflow automation" },
-          { "name": "Copilot", "description": "AI assistance in programming and work" }
+          {
+            "name": "ChatGPT, Claude & Gemini",
+            "description": "Advanced language models and Google Workspace AI"
+          },
+          {
+            "name": "NotebookLM",
+            "description": "Document analysis and podcast creation"
+          },
+          {
+            "name": "Midjourney",
+            "description": "Visual content generation"
+          },
+          {
+            "name": "Python & LangChain",
+            "description": "Development of custom AI applications"
+          },
+          {
+            "name": "N8n.com / Make.com",
+            "description": "Workflow automation"
+          },
+          {
+            "name": "Copilot",
+            "description": "AI assistance in programming and work"
+          }
         ]
       },
       "processTitle": "How does cooperation work?",
       "process": [
-        { "title": "1. Initial Audit", "description": "We find out how your company works and where you have the most room for improvement using AI." },
-        { "title": "2. Solution Proposal", "description": "We prepare a training or technical implementation plan tailored exactly to your needs." },
-        { "title": "3. Implementation and Training", "description": "We implement tools and teach your people to work with them. Practically and understandably." },
-        { "title": "4. Support and Development", "description": "We monitor results and help you keep up with the rapid development of AI technologies." }
+        {
+          "title": "1. Initial Audit",
+          "description": "We find out how your company works and where you have the most room for improvement using AI."
+        },
+        {
+          "title": "2. Solution Proposal",
+          "description": "We prepare a training or technical implementation plan tailored exactly to your needs."
+        },
+        {
+          "title": "3. Implementation and Training",
+          "description": "We implement tools and teach your people to work with them. Practically and understandably."
+        },
+        {
+          "title": "4. Support and Development",
+          "description": "We monitor results and help you keep up with the rapid development of AI technologies."
+        }
       ],
       "faq": [
-        { "question": "Is AI suitable for a small company?", "answer": "Yes, small companies can benefit the most from AI because it allows them to do 'big things' with a small team." },
-        { "question": "How long does employee training take?", "answer": "Basic training usually takes half a day to one day. For deeper adoption, we recommend a series of workshops." },
-        { "question": "Will AI replace our employees?", "answer": "No, our goal is for AI to help your people, rid them of boring routine, and allow them to focus on more creative work." },
-        { "question": "What are the implementation costs?", "answer": "The price depends on the scope. Training starts from hundreds of euros, complex automations are priced individually according to the savings they bring." }
+        {
+          "question": "Is AI suitable for a small company?",
+          "answer": "Yes, small companies can benefit the most from AI because it allows them to do 'big things' with a small team."
+        },
+        {
+          "question": "How long does employee training take?",
+          "answer": "Basic training usually takes half a day to one day. For deeper adoption, we recommend a series of workshops."
+        },
+        {
+          "question": "Will AI replace our employees?",
+          "answer": "No, our goal is for AI to help your people, rid them of boring routine, and allow them to focus on more creative work."
+        },
+        {
+          "question": "What are the implementation costs?",
+          "answer": "The price depends on the scope. Training starts from hundreds of euros, complex automations are priced individually according to the savings they bring."
+        }
       ],
       "cta": {
         "primary": "I want to streamline my company",
@@ -483,39 +874,105 @@
       },
       "featuresTitle": "Why outsource with us?",
       "features": [
-        { "title": "Immediate Onboarding", "description": "Don't waste months looking for people. Our team can start working on your project within 7 days." },
-        { "title": "Verified Seniority", "description": "Our developers have passed a rigorous selection process and have experience from international projects. No juniors learning on your code." },
-        { "title": "Capacity Flexibility", "description": "Need to add two people for a month before a deadline? Or build an entire team for a year? We adapt." },
-        { "title": "No HR Hassles", "description": "We handle levies, holidays, sick leave, hardware, or education. You only pay for the work done." },
-        { "title": "Replaceability", "description": "If a developer drops out, we immediately provide a replacement. Your project won't stop." },
-        { "title": "Transparent Communication", "description": "Developers are part of your team. They communicate directly with you, participate in stand-ups, and use your tools." }
+        {
+          "title": "Immediate Onboarding",
+          "description": "Don't waste months looking for people. Our team can start working on your project within 7 days."
+        },
+        {
+          "title": "Verified Seniority",
+          "description": "Our developers have passed a rigorous selection process and have experience from international projects. No juniors learning on your code."
+        },
+        {
+          "title": "Capacity Flexibility",
+          "description": "Need to add two people for a month before a deadline? Or build an entire team for a year? We adapt."
+        },
+        {
+          "title": "No HR Hassles",
+          "description": "We handle levies, holidays, sick leave, hardware, or education. You only pay for the work done."
+        },
+        {
+          "title": "Replaceability",
+          "description": "If a developer drops out, we immediately provide a replacement. Your project won't stop."
+        },
+        {
+          "title": "Transparent Communication",
+          "description": "Developers are part of your team. They communicate directly with you, participate in stand-ups, and use your tools."
+        }
       ],
       "tools": {
         "title": "Technologies we deliver",
         "subtitle": "We have experts in a wide range of technologies",
         "items": [
-          { "name": "Frontend", "description": "React, Next.js, Vue.js, Angular, TypeScript, Tailwind CSS" },
-          { "name": "Backend", "description": "Node.js, Python, Java, .NET, PHP, Go, Spring Boot" },
-          { "name": "Mobile", "description": "React Native, Flutter, iOS (Swift), Android (Kotlin)" },
-          { "name": "Cloud & DevOps", "description": "AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform" },
-          { "name": "Data & AI", "description": "TensorFlow, PowerBI, Kafka, Snowflake, OpenAI API" },
-          { "name": "Databases", "description": "PostgreSQL, MySQL, MongoDB, Redis, Oracle, MSSQL" },
-          { "name": "Enterprise & Tools", "description": "SAP, Salesforce, Figma" },
-          { "name": "QA Testing", "description": "Cypress" }
+          {
+            "name": "Frontend",
+            "description": "React, Next.js, Vue.js, Angular, TypeScript, Tailwind CSS"
+          },
+          {
+            "name": "Backend",
+            "description": "Node.js, Python, Java, .NET, PHP, Go, Spring Boot"
+          },
+          {
+            "name": "Mobile",
+            "description": "React Native, Flutter, iOS (Swift), Android (Kotlin)"
+          },
+          {
+            "name": "Cloud & DevOps",
+            "description": "AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform"
+          },
+          {
+            "name": "Data & AI",
+            "description": "TensorFlow, PowerBI, Kafka, Snowflake, OpenAI API"
+          },
+          {
+            "name": "Databases",
+            "description": "PostgreSQL, MySQL, MongoDB, Redis, Oracle, MSSQL"
+          },
+          {
+            "name": "Enterprise & Tools",
+            "description": "SAP, Salesforce, Figma"
+          },
+          {
+            "name": "QA Testing",
+            "description": "Cypress"
+          }
         ]
       },
       "processTitle": "How to get developers?",
       "process": [
-        { "title": "1. Needs Definition", "description": "Tell us who you are looking for (tech stack, seniority) and for how long." },
-        { "title": "2. Candidate Selection", "description": "Within 48 hours, we will send you profiles (CVs) of available developers who meet your criteria." },
-        { "title": "3. Interview", "description": "You can have a technical interview with selected candidates to verify their skills and chemistry." },
-        { "title": "4. Onboarding and Start", "description": "We sign a contract and the developer joins your team. We monitor satisfaction and report regularly." }
+        {
+          "title": "1. Needs Definition",
+          "description": "Tell us who you are looking for (tech stack, seniority) and for how long."
+        },
+        {
+          "title": "2. Candidate Selection",
+          "description": "Within 48 hours, we will send you profiles (CVs) of available developers who meet your criteria."
+        },
+        {
+          "title": "3. Interview",
+          "description": "You can have a technical interview with selected candidates to verify their skills and chemistry."
+        },
+        {
+          "title": "4. Onboarding and Start",
+          "description": "We sign a contract and the developer joins your team. We monitor satisfaction and report regularly."
+        }
       ],
       "faq": [
-        { "question": "What is the hourly rate?", "answer": "Rates depend on seniority and technology, usually ranging from €35 to €60 per hour. For long-term cooperation, we offer discounted 'flat' prices." },
-        { "question": "Can I try the developer first?", "answer": "Yes, we standardly offer a trial period (e.g., 2 weeks) during which you can terminate the cooperation at any time if you are not satisfied." },
-        { "question": "Do developers work remote or onsite?", "answer": "We mostly work remotely, but within Bratislava and the surrounding area, a hybrid mode or occasional visits to the client are also possible." },
-        { "question": "What about intellectual property?", "answer": "All code and work created by our developers is the exclusive property of your company. It is contractually guaranteed." }
+        {
+          "question": "What is the hourly rate?",
+          "answer": "Rates depend on seniority and technology, usually ranging from €35 to €60 per hour. For long-term cooperation, we offer discounted 'flat' prices."
+        },
+        {
+          "question": "Can I try the developer first?",
+          "answer": "Yes, we standardly offer a trial period (e.g., 2 weeks) during which you can terminate the cooperation at any time if you are not satisfied."
+        },
+        {
+          "question": "Do developers work remote or onsite?",
+          "answer": "We mostly work remotely, but within Bratislava and the surrounding area, a hybrid mode or occasional visits to the client are also possible."
+        },
+        {
+          "question": "What about intellectual property?",
+          "answer": "All code and work created by our developers is the exclusive property of your company. It is contractually guaranteed."
+        }
       ],
       "cta": {
         "primary": "Hire developers",
@@ -746,7 +1203,11 @@
         "company": "IT Company",
         "content": "RISE.SK is a reliable developer. I assigned tasks directly from the Kanban board and the team efficiently completed them. I highly recommend to anyone looking for a responsible partner.",
         "rating": 5,
-        "tags": ["Development", "Project Management", "Reliability"]
+        "tags": [
+          "Development",
+          "Project Management",
+          "Reliability"
+        ]
       },
       {
         "id": "matej-s",
@@ -755,7 +1216,11 @@
         "company": "Digital Agency",
         "content": "Thank you for quickly scheduling a consultation. RISE.SK helped me develop a website analysis tool – finally the project moved forward. 5/5!",
         "rating": 5,
-        "tags": ["Consulting", "Web Analysis", "Quick Response"]
+        "tags": [
+          "Consulting",
+          "Web Analysis",
+          "Quick Response"
+        ]
       },
       {
         "id": "tomas-v",
@@ -764,7 +1229,11 @@
         "company": "FinTech Startup",
         "content": "SQL database training with RISE.SK was engaging and practical. They clearly explained advanced techniques, answered all questions and solved complex problems step by step. Now I feel much more confident working with SQL.",
         "rating": 5,
-        "tags": ["SQL Training", "Databases", "Education"]
+        "tags": [
+          "SQL Training",
+          "Databases",
+          "Education"
+        ]
       },
       {
         "id": "timotej-l",
@@ -773,7 +1242,11 @@
         "company": "Software Company",
         "content": "I started with Python from scratch. RISE.SK quickly clarified the problem in a friendly atmosphere, the code suddenly worked and progress was immediate. I recommend to anyone who wants to master Python quickly and effectively.",
         "rating": 5,
-        "tags": ["Python", "Training", "For Beginners"]
+        "tags": [
+          "Python",
+          "Training",
+          "For Beginners"
+        ]
       },
       {
         "id": "pavel-k",
@@ -782,7 +1255,11 @@
         "company": "Hardware Company",
         "content": "RISE.SK helped me a lot with a C project. Professional approach, clear explanation, perfect result. I recommend 5/5 ★.",
         "rating": 5,
-        "tags": ["C Programming", "Professionalism", "Problem Solving"]
+        "tags": [
+          "C Programming",
+          "Professionalism",
+          "Problem Solving"
+        ]
       },
       {
         "id": "rene-corporate",
@@ -791,7 +1268,11 @@
         "company": "Corporate Project",
         "content": "I needed help with Python at work. RISE.SK set up a clear plan and the lessons were understandable and practical. I can only recommend the collaboration.",
         "rating": 5,
-        "tags": ["Python", "Corporate Training", "Practical Learning"]
+        "tags": [
+          "Python",
+          "Corporate Training",
+          "Practical Learning"
+        ]
       },
       {
         "id": "jana-g",
@@ -800,7 +1281,11 @@
         "company": "Family",
         "content": "RISE.SK guided my son into programming in English. The lessons were always prepared, focused on his goals, and progress was visible with every session. I also appreciate the team's professional English.",
         "rating": 5,
-        "tags": ["Youth Programming", "English Instruction", "Mentoring"]
+        "tags": [
+          "Youth Programming",
+          "English Instruction",
+          "Mentoring"
+        ]
       },
       {
         "id": "zuzana-p",
@@ -809,7 +1294,11 @@
         "company": "University",
         "content": "I have programming tutoring with RISE.SK. Communication is seamless, they adapt to my schedule, explain everything, and make sure I try the solutions myself. Great support for developing practical skills.",
         "rating": 5,
-        "tags": ["Programming Tutoring", "Practical Skills", "Flexible Schedule"]
+        "tags": [
+          "Programming Tutoring",
+          "Practical Skills",
+          "Flexible Schedule"
+        ]
       },
       {
         "id": "roman-s",
@@ -818,7 +1307,11 @@
         "company": "First Year Student",
         "content": "I'm in my first year of university and RISE.SK tutors me in programming. They explain everything perfectly, are reliable and really know what they're doing.",
         "rating": 5,
-        "tags": ["University Support", "Programming Basics", "Reliability"]
+        "tags": [
+          "University Support",
+          "Programming Basics",
+          "Reliability"
+        ]
       },
       {
         "id": "daniel-k",
@@ -827,7 +1320,11 @@
         "company": "Education",
         "content": "Professionalism at every step – RISE.SK managed to clearly explain every concept and answer all questions. Great tutoring, I recommend it.",
         "rating": 5,
-        "tags": ["Professional Tutoring", "Clear Explanations", "Educational Excellence"]
+        "tags": [
+          "Professional Tutoring",
+          "Clear Explanations",
+          "Educational Excellence"
+        ]
       }
     ]
   },
@@ -871,7 +1368,11 @@
         "ideal": "When you need specific skills quickly"
       }
     },
-    "guarantees": ["Weekly reporting", "Shared KPIs", "Seamless knowledge transfer at handoff"],
+    "guarantees": [
+      "Weekly reporting",
+      "Shared KPIs",
+      "Seamless knowledge transfer at handoff"
+    ],
     "guaranteesTitle": "All Models Include"
   },
   "contact": {
@@ -1012,20 +1513,20 @@
       "11": "\"Opportunities don't happen. You create them.\"",
       "12": "\"Great things in business are never done by one person.\"",
       "13": "\"Don't watch the clock; do what it does. Keep going.\"",
-      "14": "\"Success usually comes to those who are too busy to be looking for it.\"",
+      "14": "\"Success comes to those who work for it.\"",
       "15": "\"Your brand is what other people say about you when you're not in the room.\"",
-      "16": "\"Marketing is no longer about the stuff that you make, but about the stories you tell.\"",
+      "16": "\"Marketing is about the stories you tell.\"",
       "17": "\"Content is king.\"",
       "18": "\"The best advertising is done by satisfied customers.\"",
-      "19": "\"Don't find customers for your products, find products for your customers.\"",
+      "19": "\"Find products for your customers, not customers for products.\"",
       "20": "\"If you can't explain it simply, you don't understand it well enough.\"",
-      "21": "\"Design is not just what it looks like and feels like. Design is how it works.\"",
+      "21": "\"Design is not just how it looks, but how it works.\"",
       "22": "\"Creativity is intelligence having fun.\"",
       "23": "\"Do what you love and the money will follow.\"",
       "24": "\"The only way to do great work is to love what you do.\"",
       "25": "\"Business has only two functions - marketing and innovation.\"",
-      "26": "\"If you are not taking care of your customer, your competitor will.\"",
-      "27": "\"The aim of marketing is to know and understand the customer so well the product or service fits him and sells itself.\"",
+      "26": "\"Take care of your customer, or your competitor will.\"",
+      "27": "\"Know the customer so well the product sells itself.\"",
       "28": "\"Vision without execution is just hallucination.\"",
       "29": "\"Growth is never by mere chance; it is the result of forces working together.\""
     }
@@ -1118,8 +1619,21 @@
       "description": "Get a dedicated team in 7 days. We guarantee 100% on-time delivery and 20-40% cost savings.",
       "button": "Start Today"
     },
-    "services": ["Web Development", "E-commerce", "Mobile Apps", "Custom Software", "AI & Automation", "IT Outsourcing"],
-    "company": ["About Us", "Our Team", "Careers", "Case Studies", "Contact Us"]
+    "services": [
+      "Web Development",
+      "E-commerce",
+      "Mobile Apps",
+      "Custom Software",
+      "AI & Automation",
+      "IT Outsourcing"
+    ],
+    "company": [
+      "About Us",
+      "Our Team",
+      "Careers",
+      "Case Studies",
+      "Contact Us"
+    ]
   },
   "hiring": {
     "badge": "Join Our Team",
@@ -1326,7 +1840,6 @@
         "motto": "Believe you can and you're halfway there.",
         "hobbies": "Gym, Techno, Football"
       },
-
       "lukas-jankola": {
         "role": "Developer & Cloud Enthusiast",
         "bio": "Lukáš is our chief 'Cloud' engineer who draws inspiration directly from the streets of Amsterdam. He believes code should be clean, but the mind open... and slightly hazy. A specialist in 'smoke testing' and high performance. When he's not coding, he's probably analyzing the quality of local 'herbal blends' or finding inspiration in the clouds.",
@@ -1373,6 +1886,401 @@
       "subtitle": "We are always looking for talented people.",
       "description": "Do you have a passion for technology and want to work on interesting projects? Let us know!",
       "button": "Contact Us"
+    }
+  },
+  "testYourBusiness": {
+    "meta": {
+      "title": "Test Your Business | Free Digital Audit - Rise.sk",
+      "description": "Find out how your business is doing. Free tools and checklists for web, SEO, social media, AI, and automation. Get ahead of the competition."
+    },
+    "hero": {
+      "badge": "Free Audit",
+      "title": "Test the Health of Your",
+      "titleHighlight": "Digital Business",
+      "description": "We prepared a free digital audit for you. Check your website, SEO, social media, branding, AI, and automation. No email required.",
+      "startCheck": "Start Free Test",
+      "sendReports": "Send Reports to RISE",
+      "subtext": "Fix quick wins yourself. If something is broken, we'll help you repair it.",
+      "progressTitle": "Your Progress",
+      "resetButton": "Reset Audit",
+      "resetConfirm": "Are you sure you want to clear your progress?",
+      "readMore": "Detailed Guide & Tools",
+      "markComplete": "Mark as Complete",
+      "completed": "Completed"
+    },
+    "howItWorks": {
+      "title": "How It Works?",
+      "steps": [
+        {
+          "title": "1. Run Tools",
+          "description": "Go through our checklists and use recommended free tools."
+        },
+        {
+          "title": "2. Evaluate Status",
+          "description": "Note what is green (OK) and what is red (needs work)."
+        },
+        {
+          "title": "3. Send Us Results",
+          "description": "Send us your findings and we will propose a simple improvement plan."
+        }
+      ]
+    },
+    "summary": {
+      "title": "How did you score?",
+      "description": "If you are 'green' in fewer than 8 out of 12 areas, you are losing money.",
+      "note": "Note the areas where you are 'red' or 'yellow'."
+    },
+    "contact": {
+      "title": "Turn Results into Action",
+      "description": "You did the hard work checking. Now we'll help you turn results into growth.",
+      "form": {
+        "areasOfInterest": "What do you need help with?",
+        "frustration": "What frustrated you most during the check?",
+        "upload": "Upload reports (optional)",
+        "submit": "Send Results and Get Plan"
+      },
+      "promise": "We will read your reports and send a short, clear plan. We only recommend services that really help."
+    }
+  },
+  "Audit": {
+    "testYourBusiness": "Test Your Business",
+    "backToOverview": "Back to overview",
+    "checklistTitle": "Checklist",
+    "reset": "Reset",
+    "ctaButton": "Get Action Plan",
+    "toolsTitle": "Free testing tools:",
+    "successTitle": "Congratulations! Your business is ready to grow! 🚀",
+    "successMessage": "Great job! You've covered all key areas. Now it's time to turn these insights into real results.",
+    "moduleCompletedTitle": "Great job! 🎉",
+    "moduleCompletedDescription": "You have successfully completed this module. Continue to the next step and move your business forward.",
+    "nextModuleButton": "Continue to {module}",
+    "websiteUx": {
+      "title": "Website Functionality & UX",
+      "description": "The foundation of success is a website that works flawlessly and intuitively.",
+      "checklist": [
+        "Site loads without security warnings",
+        "Main links (menu, contact, buttons) work",
+        "Clear primary action on homepage",
+        "Easy way to contact (form, email, phone)",
+        "Looks good on mobile (no tiny text, horizontal scroll)"
+      ],
+      "toolsTitle": "Free testing tools:",
+      "toolsList": [
+        {
+          "name": "Chrome Lighthouse",
+          "description": "Official Google tool directly in Chrome browser. Right-click on page -> Inspect -> Lighthouse tab -> Analyze page load. Get comprehensive scores for performance, accessibility, and SEO.",
+          "url": "https://developers.google.com/web/tools/lighthouse"
+        },
+        {
+          "name": "WebPageTest",
+          "description": "Advanced speed test from various locations and devices. Enter your URL to get a detailed loading waterfall chart that reveals exactly what is slowing down your website.",
+          "url": "https://www.webpagetest.org/"
+        }
+      ],
+      "scoring": "7/10 = good, 4–6 = needs work, 0–3 = critical",
+      "cta": "Export reports and send them to us for a clear technical action plan."
+    },
+    "seo": {
+      "title": "SEO & Google Visibility",
+      "description": "If customers can't find you, it's like you don't exist.",
+      "checklist": [
+        "Google Index: Type 'site:yourdomain.com' into Google. Do you see all your pages? If not, Google doesn't know about you.",
+        "Titles and Descriptions: Check search results. Are titles appealing? Do they contain keywords your customers search for?",
+        "Duplicates: Check if the same content exists on multiple URLs (e.g., with and without www).",
+        "Keywords: Do you have words in your text that people actually search for? (Use tools below to verify).",
+        "Test Tools: Use the recommended SEO tools below and check your score."
+      ],
+      "toolsTitle": "Free SEO tools:",
+      "toolsList": [
+        {
+          "name": "Google Search Console",
+          "description": "Essential tool for every website owner. Shows you which keywords people use to find you and if Google has trouble indexing your pages.",
+          "url": "https://search.google.com/search-console"
+        },
+        {
+          "name": "Ahrefs Free SEO Tools",
+          "description": "Set of free tools to check backlinks, keywords, and technical SEO health of your website.",
+          "url": "https://ahrefs.com/free-seo-tools"
+        },
+        {
+          "name": "Ubersuggest",
+          "description": "Keyword and competitor analysis tool. Find out what your customers are searching for and how your competition ranks.",
+          "url": "https://neilpatel.com/ubersuggest/"
+        }
+      ],
+      "cta": "If the score is low, send us the report and main keywords. We'll propose an SEO roadmap."
+    },
+    "speed": {
+      "title": "Page Speed & Core Web Vitals",
+      "description": "Slow pages lose visitors and worsen Google rankings.",
+      "checklist": [
+        "Mobile Speed: Open site on 4G (turn off Wi-Fi). Does it load under 3 seconds? Every extra second costs you customers.",
+        "Visual Stability (CLS): Does text or images jump while loading? This frustrates users and Google penalizes it.",
+        "Interactivity: When you click a button or menu, does the page react immediately? Delays feel unprofessional."
+      ],
+      "toolsTitle": "Speed measurement tools:",
+      "toolsList": [
+        {
+          "name": "Google PageSpeed Insights",
+          "description": "Official Google tool. Enter your URL to see how Google rates your speed (Core Web Vitals). Red scores mean worse search rankings.",
+          "url": "https://pagespeed.web.dev/"
+        },
+        {
+          "name": "GTmetrix",
+          "description": "Provides a detailed look at page loading, image sizes, and requests. Ideal for finding out why a page is slow.",
+          "url": "https://gtmetrix.com/"
+        },
+        {
+          "name": "WebPageTest",
+          "description": "Advanced speed test from various locations and devices. Enter your URL to get a detailed loading waterfall chart that reveals exactly what is slowing down your website.",
+          "url": "https://www.webpagetest.org/"
+        }
+      ],
+      "benchmarks": "Good values: Performance ≥ 80, LCP < 2.5s, CLS < 0.1, FID < 100ms",
+      "cta": "Send us a speed screenshot. We'll recommend hosting or code/image optimization."
+    },
+    "mobileDesign": {
+      "title": "Mobile Design & Brand Feel",
+      "description": "Most visitors come via mobile. Don't underestimate the first impression.",
+      "checklist": [
+        "Readability: Is text on mobile large enough (at least 16px) without zooming?",
+        "Touch Targets: Are buttons and links large enough and spaced apart to be easily tapped with a thumb?",
+        "Logo Quality: Is your logo sharp even on retina displays (iPhone)? A blurry logo looks cheap.",
+        "Consistency: Do you use the same colors and fonts on every page? Does the site feel like a unified whole?"
+      ],
+      "toolsTitle": "Mobile testing tools:",
+      "toolsList": [
+        {
+          "name": "Google Mobile-Friendly Test",
+          "description": "Official Google test. Enter your URL to see if your site is optimized for mobile devices. If not, Google will rank you lower in search results.",
+          "url": "https://search.google.com/test/mobile-friendly"
+        },
+        {
+          "name": "Responsive Design Checker",
+          "description": "View your website on various screen sizes (iPhone, iPad, Desktop). Check if texts overlap and if buttons are accessible.",
+          "url": "https://responsivedesignchecker.com/"
+        }
+      ],
+      "cta": "If the site looks outdated, send us samples. We'll propose a modern design."
+    },
+    "eshop": {
+      "title": "E-shop & Conversions",
+      "description": "Turn visitors into paying customers.",
+      "checklist": [
+        "3-Click Rule: Can a product be found and added to cart within 3 clicks from the homepage?",
+        "Transparency: Are shipping and pricing details clear before entering checkout?",
+        "Trust: Do you have visible reviews, partner logos, and security certificates on the site?",
+        "Value Add: Does the cart automatically offer related products (upsell/cross-sell)?"
+      ],
+      "toolsTitle": "Conversion analysis tools:",
+      "toolsList": [
+        {
+          "name": "Hotjar",
+          "description": "Records visitor behavior on your site. See exactly where they click, how they scroll, and where they get stuck during purchase.",
+          "url": "https://www.hotjar.com/"
+        },
+        {
+          "name": "Google Analytics",
+          "description": "Essential tool for measuring traffic. Find out where people come from, how long they stay, and which products they view most often.",
+          "url": "https://analytics.google.com/"
+        },
+        {
+          "name": "Crazy Egg",
+          "description": "Creates heatmaps showing the hottest spots on your website. Find out if people are clicking where you want them to.",
+          "url": "https://www.crazyegg.com/"
+        }
+      ],
+      "cta": "If people visit but don't buy, ask for an e-shop conversion audit."
+    },
+    "socialMedia": {
+      "title": "Social Media Strategy",
+      "description": "Be where your customers are. Consistently and valuably.",
+      "checklist": [
+        "Identity: Do you have the same username (@handle) and profile photo on all networks?",
+        "Bio Optimization: Does your bio clearly say who you teach/what you sell and include a call to action (link)?",
+        "Consistency: Do you publish at least 1 valuable post per week on your main platform?",
+        "Content Mix: Do you alternate educational content, social proof (reviews), and sales offers?"
+      ],
+      "toolsTitle": "Social media management tools:",
+      "toolsList": [
+        {
+          "name": "Buffer",
+          "description": "Allows you to schedule posts weeks in advance for all social networks at once. Save hours of time.",
+          "url": "https://buffer.com/"
+        },
+        {
+          "name": "Canva",
+          "description": "Simple graphic tool for non-designers. Create professional-looking posts, stories, and banners using thousands of templates.",
+          "url": "https://www.canva.com/"
+        },
+        {
+          "name": "Later",
+          "description": "Visual planner for Instagram. Allows you to see what your feed will look like before you publish posts.",
+          "url": "https://later.com/"
+        }
+      ],
+      "cta": "Send us your profiles. We'll propose a content and growth strategy."
+    },
+    "socialProfiles": {
+      "title": "LinkedIn / Instagram / Facebook Profiles",
+      "description": "Your profile is your business card. It must sell for you.",
+      "checklist": [
+        "LinkedIn: Headline formula 'I help [who] get [result] using [how]'",
+        "About section tells a story and includes social proof",
+        "Professional photo and banner",
+        "Instagram/FB: Clear bio with link, Highlights with offers"
+      ],
+      "toolsTitle": "Profile optimization tools:",
+      "toolsList": [
+        {
+          "name": "LinkedIn Profile Strength Meter",
+          "description": "Evaluate LinkedIn profile strength",
+          "url": "https://www.linkedin.com/"
+        },
+        {
+          "name": "Iconosquare",
+          "description": "Instagram account analytics and audit",
+          "url": "https://www.iconosquare.com/"
+        }
+      ],
+      "cta": "Send us profile URLs for positioning optimization."
+    },
+    "email": {
+      "title": "Email & Signature",
+      "description": "Professionalism is in the details. Even in the email footer.",
+      "checklist": [
+        "Using domain email (not @gmail for business)",
+        "Signature includes: name, role, company, logo, web, social media",
+        "Link to book a meeting (if relevant)"
+      ],
+      "toolsTitle": "Email signature generators:",
+      "toolsList": [
+        {
+          "name": "HubSpot Email Signature Generator",
+          "description": "Professional email signatures for free",
+          "url": "https://www.hubspot.com/email-signature-generator"
+        },
+        {
+          "name": "MySignature",
+          "description": "Advanced email signature templates",
+          "url": "https://www.mysignature.io/"
+        }
+      ],
+      "cta": "Send a signature screenshot for feedback or redesign."
+    },
+    "brand": {
+      "title": "Name & Brand Consistency",
+      "description": "A strong brand is memorable and unified everywhere.",
+      "checklist": [
+        "Name is easy to spell and pronounce",
+        "Name is available/consistent on domains and social media",
+        "Visual identity matches positioning (premium vs. budget)"
+      ],
+      "toolsTitle": "Availability check tools:",
+      "toolsList": [
+        {
+          "name": "Namechk",
+          "description": "Check name availability across all platforms",
+          "url": "https://namechk.com/"
+        },
+        {
+          "name": "Namecheap Domain Search",
+          "description": "Find available domains",
+          "url": "https://www.namecheap.com/"
+        }
+      ],
+      "cta": "If your brand isn't available everywhere, we'll help find a smart variation."
+    },
+    "mobileApp": {
+      "title": "Mobile App Health",
+      "description": "Have an app? Make sure users trust it.",
+      "checklist": [
+        "At least 10–20 recent reviews",
+        "Rating above 4.0",
+        "Clear description focused on benefits",
+        "Updated screenshots showing key features"
+      ],
+      "toolsTitle": "ASO (App Store Optimization) tools:",
+      "toolsList": [
+        {
+          "name": "App Annie (data.ai)",
+          "description": "Mobile app analytics and monitoring",
+          "url": "https://www.data.ai/"
+        },
+        {
+          "name": "Sensor Tower",
+          "description": "ASO and competitive intelligence",
+          "url": "https://sensortower.com/"
+        },
+        {
+          "name": "AppTweak",
+          "description": "ASO tool for optimization",
+          "url": "https://www.apptweak.com/"
+        }
+      ],
+      "cta": "If visibility is low, we'll help with redesign and ASO."
+    },
+    "ai": {
+      "title": "AI Usage in Business",
+      "description": "Work smarter, not harder. AI is your competitive advantage.",
+      "checklist": [
+        "Using AI for content concepts (posts, blogs)?",
+        "For research and idea validation?",
+        "For FAQ or customer support?",
+        "Do you have documented AI workflows?"
+      ],
+      "toolsTitle": "AI tools for business:",
+      "toolsList": [
+        {
+          "name": "ChatGPT",
+          "description": "Text generation, answers, analysis",
+          "url": "https://chat.openai.com/"
+        },
+        {
+          "name": "Claude",
+          "description": "Advanced AI assistant for complex tasks",
+          "url": "https://claude.ai/"
+        },
+        {
+          "name": "Gemini",
+          "description": "Google AI for research and productivity",
+          "url": "https://gemini.google.com/"
+        },
+        {
+          "name": "Midjourney",
+          "description": "AI image and graphics generation",
+          "url": "https://www.midjourney.com/"
+        }
+      ],
+      "cta": "Write us your time-eaters. We'll send 1-2 concrete AI workflows."
+    },
+    "automation": {
+      "title": "Process Automation",
+      "description": "Let robots do the boring work. You focus on business.",
+      "checklist": [
+        "Which tasks do you repeat daily/weekly?",
+        "Are leads collected from forms automatically into CRM?",
+        "Are confirmations and follow-ups automated?"
+      ],
+      "toolsTitle": "Automation tools:",
+      "toolsList": [
+        {
+          "name": "Zapier",
+          "description": "Workflow automation between apps",
+          "url": "https://zapier.com/"
+        },
+        {
+          "name": "Make (Integromat)",
+          "description": "Advanced automation and integrations",
+          "url": "https://www.make.com/"
+        },
+        {
+          "name": "n8n",
+          "description": "Open-source workflow automation",
+          "url": "https://n8n.io/"
+        }
+      ],
+      "cta": "Send a list of 3 most boring tasks. We'll propose automation and time savings."
     }
   }
 }

@@ -19,17 +19,17 @@ export default function LoadingScreen() {
     // Prevent scrolling while loading
     document.body.style.overflow = 'hidden';
 
-    // Phase 1: Loading (2.0s)
+    // Phase 1: Loading (2.3s)
     const loadingTimer = setTimeout(() => {
       setStage('scaling');
-    }, 2000);
+    }, 2300);
 
     // Phase 2: Scaling (0.8s after loading)
     const completeTimer = setTimeout(() => {
       setStage('complete');
       document.body.style.overflow = '';
       document.body.classList.add('loaded');
-    }, 2800); // 2000 + 800
+    }, 3100); // 2300 + 800
 
     return () => {
       clearTimeout(loadingTimer);
@@ -41,7 +41,7 @@ export default function LoadingScreen() {
   if (stage === 'complete') return null;
 
   return (
-    <div className={`fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden ${stage === 'loading' ? 'pointer-events-auto' : 'pointer-events-none'}`}>
+    <div className={`fixed inset-0 h-[100dvh] w-screen z-[9999] flex items-center justify-center overflow-hidden ${stage === 'loading' ? 'pointer-events-auto' : 'pointer-events-none'}`}>
       {/* Background - Fades out during scaling */}
       <motion.div
         className="absolute inset-0 bg-[#050505]"
@@ -54,11 +54,11 @@ export default function LoadingScreen() {
 
         {/* Logo Container - Scales up massively */}
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.8, opacity: 0, y: -20 }}
           animate={
             stage === 'loading'
-              ? { scale: 1, opacity: 1 }
-              : { scale: 60, opacity: 0 } // Scale huge to create "zoom through" effect
+              ? { scale: 1, opacity: 1, y: -20 }
+              : { scale: 60, opacity: 0, y: 0 } // Scale huge to create "zoom through" effect
           }
           transition={
             stage === 'loading'

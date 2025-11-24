@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Code, Globe, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import { usePersistentClick } from '@/hooks/usePersistentClick';
 import { Button } from '../ui/Button';
 
 interface HeroProps {
@@ -12,6 +13,9 @@ interface HeroProps {
 
 export default function Hero({ contactSectionId = 'contact' }: HeroProps) {
   const t = useTranslations('hero');
+  const tNav = useTranslations('navigation');
+  const { hasClicked: hasClickedCheckup, handleClick: handleCheckupClick } = usePersistentClick('rise_has_clicked_checkup');
+  const { hasClicked: hasClickedStartProject, handleClick: handleStartProjectClick } = usePersistentClick('rise_has_clicked_start_project');
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -113,12 +117,29 @@ export default function Hero({ contactSectionId = 'contact' }: HeroProps) {
             className='flex flex-col sm:flex-row gap-6 justify-center items-center mb-16'
           >
             <Button
+              href="/otestujte-podnikanie"
+              variant='outline'
+              className="text-lg select-none glow hover:glow-hover border-2 relative overflow-hidden"
+              onClick={handleCheckupClick}
+            >
+              <span className="relative z-10">{tNav('testYourBusiness')}</span>
+              {!hasClickedCheckup && (
+                <div className="absolute inset-0 -translate-x-full animate-sheen bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+              )}
+            </Button>
+            <Button
               href={`#${contactSectionId}`}
               variant='primary'
-              className='text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-darker transition-all duration-300 select-none'
+              className='text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-darker transition-all duration-300 select-none relative overflow-hidden group'
+              onClick={handleStartProjectClick}
             >
-              {t('startProject')}
-              <ArrowRight size={20} className='ml-2' />
+              <span className="relative z-10 flex items-center">
+                {t('startProject')}
+                <ArrowRight size={20} className='ml-2' />
+              </span>
+              {!hasClickedStartProject && (
+                <div className="absolute inset-0 -translate-x-full animate-sheen bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" style={{ animationDelay: '0.4s' }} />
+              )}
             </Button>
           </motion.div>
         </div>
