@@ -51,6 +51,7 @@ import { Button } from '@/components/ui/Button';
 import FAQAccordion from '@/components/ui/FAQAccordion';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { useTranslations } from '@/hooks/useTranslations';
+import { useLocale } from 'next-intl';
 
 interface ServiceDetailProps {
   serviceId: string; // e.g., 'webDevelopment', 'ecommerce'
@@ -191,8 +192,11 @@ const getAiIcon = (index: number) => {
 
 export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceDetailProps) {
   const t = useTranslations(`services.${serviceId}`);
+  const locale = useLocale();
   const { trackServiceInterest } = useAnalytics();
   const [mounted, setMounted] = useState(false);
+
+  const contactSectionId = locale === 'sk' ? 'kontakt' : 'contact';
 
   useEffect(() => {
     setMounted(true);
@@ -376,7 +380,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                 <Button
                   onClick={() => {
                     trackServiceInterest(serviceId);
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById(contactSectionId)?.scrollIntoView({ behavior: 'smooth' });
                   }}
                   variant="primary"
                   className="text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-darker transition-all duration-300 select-none"
@@ -491,7 +495,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
                           <button
                             onClick={() => {
                               trackServiceInterest(`${serviceId} - ${feature.title}`);
-                              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                              document.getElementById(contactSectionId)?.scrollIntoView({ behavior: 'smooth' });
                             }}
                             className="bg-[var(--primary)] hover:bg-[var(--primary-light)] text-black font-bold text-xl px-8 py-3 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(176,145,85,0.2)] hover:shadow-[0_0_30px_rgba(176,145,85,0.4)]"
                           >
@@ -868,9 +872,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
       </section>
 
       {/* Contact Section */}
-      <div id="contact">
-        <MultiStepContactForm />
-      </div>
+      <MultiStepContactForm id={contactSectionId} />
 
       <Footer />
     </div>

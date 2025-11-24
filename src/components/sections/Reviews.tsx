@@ -22,9 +22,10 @@ interface Review {
 
 interface ReviewsProps {
   className?: string;
+  id?: string;
 }
 
-export default function Reviews({ className }: ReviewsProps) {
+export default function Reviews({ className, id = 'reviews' }: ReviewsProps) {
   const t = useTranslations('reviews');
   const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -89,7 +90,7 @@ export default function Reviews({ className }: ReviewsProps) {
 
   return (
     <Section
-      id="reviews"
+      id={id}
       background="transparent"
       className={`relative py-24 ${className || ''}`}
     >

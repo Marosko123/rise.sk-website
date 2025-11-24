@@ -54,7 +54,7 @@ export default function ReviewsPage() {
         />
 
         <Reviews className="pb-0" />
-        <Contact className="pt-0" />
+        <Contact className="pt-0" id={locale === 'sk' ? 'kontakt' : 'contact'} />
       </div>
       <Footer />
     </main>

@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface ServicesEnhancedProps {
   breadcrumbs?: BreadcrumbItem[];
+  id?: string;
 }
 
 const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fallbackIcon: React.ElementType, gradient?: string, speed?: number }) => {
@@ -43,7 +44,7 @@ const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fal
   return <Lottie lottieRef={lottieRef} animationData={animationData} loop={true} className="w-32 h-32" />;
 };
 
-const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs }) => {
+const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs, id = 'services' }) => {
   const t = useTranslations('navigation');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
@@ -121,7 +122,7 @@ const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs }) => {
 
   return (
     <section
-      id="services"
+      id={id}
       ref={ref}
       className="relative py-24 overflow-hidden bg-transparent"
     >

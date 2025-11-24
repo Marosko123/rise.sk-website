@@ -87,7 +87,7 @@ export default async function PortfolioPage({
         }}
       />
       <Portfolio />
-      <MultiStepContactForm />
+      <MultiStepContactForm id={locale === 'sk' ? 'kontakt' : 'contact'} />
       <Footer />
     </div>
   );

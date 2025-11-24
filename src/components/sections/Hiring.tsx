@@ -3,6 +3,7 @@
 import FadeIn from '@/components/animations/FadeIn';
 import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 import {
     Bot,
     Briefcase,
@@ -19,6 +20,8 @@ import { Section } from '../ui/Section';
 
 export default function Hiring() {
   const t = useTranslations('hiring');
+  const locale = useLocale();
+  const contactSectionId = locale === 'sk' ? 'kontakt' : 'contact';
 
   const positions = [
     {
@@ -252,7 +255,7 @@ export default function Hiring() {
               >
                 <Card className='h-full bg-gradient-to-br from-green-500/20 to-emerald-600/20 border-green-500/30 backdrop-blur-sm hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 ease-out p-6 cursor-pointer flex flex-col'
                       onClick={() => {
-                        const contactSection = document.getElementById('contact');
+                        const contactSection = document.getElementById(contactSectionId);
                         contactSection?.scrollIntoView({ behavior: 'smooth' });
                       }}>
                   <div className='w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-110'>

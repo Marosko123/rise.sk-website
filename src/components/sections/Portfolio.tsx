@@ -2,6 +2,6 @@
 
 import Portfolio from './portfolio/Portfolio';
 
-export default function PortfolioWrapper() {
-  return <Portfolio />;
+export default function PortfolioWrapper({ id }: { id?: string }) {
+  return <Portfolio id={id} />;
 }

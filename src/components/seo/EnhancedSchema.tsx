@@ -98,6 +98,13 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
             areaServed: 'SK',
             availableLanguage: ['Slovak', 'English']
           },
+          vatID: companyConfig.company.vatNumber,
+          taxID: companyConfig.company.taxNumber,
+          identifier: {
+            '@type': 'PropertyValue',
+            propertyID: 'IČO',
+            value: companyConfig.company.registrationNumber
+          },
           sameAs: [
             companyConfig.social.facebook,
             companyConfig.social.linkedin,
@@ -149,6 +156,13 @@ const EnhancedSchema: React.FC<EnhancedSchemaProps> = ({ type, data = {} }) => {
           url: baseUrl,
           telephone: companyConfig.contact.phone.replace(/\s/g, ''),
           email: companyConfig.contact.email,
+          vatID: companyConfig.company.vatNumber,
+          taxID: companyConfig.company.taxNumber,
+          identifier: {
+            '@type': 'PropertyValue',
+            propertyID: 'IČO',
+            value: companyConfig.company.registrationNumber
+          },
           address: {
             '@type': 'PostalAddress',
             addressLocality: companyConfig.address.city,

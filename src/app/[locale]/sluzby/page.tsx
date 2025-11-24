@@ -177,7 +177,7 @@ export default async function ServicesPage({
           <ServicesEnhanced breadcrumbs={breadcrumbs} />
         </div>
         <LatestPosts locale={locale} />
-        <MultiStepContactForm />
+        <MultiStepContactForm id={locale === 'sk' ? 'kontakt' : 'contact'} />
       </main>
       <Footer />
     </div>

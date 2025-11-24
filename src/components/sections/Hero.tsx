@@ -6,7 +6,11 @@ import { useTranslations } from 'next-intl';
 
 import { Button } from '../ui/Button';
 
-export default function Hero() {
+interface HeroProps {
+  contactSectionId?: string;
+}
+
+export default function Hero({ contactSectionId = 'contact' }: HeroProps) {
   const t = useTranslations('hero');
 
   const containerVariants = {
@@ -109,21 +113,12 @@ export default function Hero() {
             className='flex flex-col sm:flex-row gap-6 justify-center items-center mb-16'
           >
             <Button
-              href='#contact'
+              href={`#${contactSectionId}`}
               variant='primary'
               className='text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-darker transition-all duration-300 select-none'
             >
               {t('startProject')}
               <ArrowRight size={20} className='ml-2' />
-            </Button>
-
-            <Button
-              href='#contact'
-              variant='outline'
-              className='text-lg border-2 border-[#b09155] text-[#b09155] hover:bg-[#b09155] hover:text-white transition-all duration-300 select-none'
-            >
-              {t('freeConsultation')}
-              <div className='w-2 h-2 bg-current rounded-full ml-2 animate-pulse'></div>
             </Button>
           </motion.div>
         </div>

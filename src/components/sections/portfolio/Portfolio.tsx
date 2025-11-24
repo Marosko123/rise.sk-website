@@ -10,7 +10,7 @@ import PortfolioControls from './PortfolioControls';
 import PortfolioStats from './PortfolioStats';
 import ProjectCard from './ProjectCard';
 
-export default function Portfolio() {
+export default function Portfolio({ id = 'portfolio' }: { id?: string }) {
   const t = useTranslations('portfolio');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -56,7 +56,7 @@ export default function Portfolio() {
 
   return (
     <section
-      id="portfolio"
+      id={id}
       ref={ref}
       className="py-16 relative overflow-hidden"
     >

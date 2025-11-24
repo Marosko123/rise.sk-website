@@ -107,7 +107,7 @@ export default async function AboutPage({
           <TeamSection />
         </div>
         <div id={sectionMap.contact}>
-          <Contact />
+          <Contact id={sectionMap.contact} />
         </div>
       </main>
       <Footer />

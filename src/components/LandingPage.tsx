@@ -35,12 +35,19 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   const [mounted, setMounted] = useState(false);
   const [showFullWebsite, setShowFullWebsite] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isReturning, setIsReturning] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
 
+  const allowReturnRef = useRef(false);
+  const isAtTopRef = useRef(true);
+
   const scrollAccumulator = useRef(0);
+  const scrollTarget = useRef(0);
+  const scrollCurrent = useRef(0);
   const scrollResetTimer = useRef<NodeJS.Timeout | null>(null);
   const landingOverlayRef = useRef<LandingOverlayRef>(null);
   const globalBackgroundRef = useRef<GlobalBackgroundRef>(null);
+  const mainContentRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<number | null>(null);
   const [shapesState, setShapesState] = useState({ length: SHAPE_CONFIG.INITIAL_COUNT, isExploding: false, explosionStartTime: 0 });
 
@@ -50,6 +57,29 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
   const handleLogoClick = useCallback(() => {
     globalBackgroundRef.current?.handleLogoClick();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isAtTop = window.scrollY <= 5;
+
+      if (!isAtTop) {
+        isAtTopRef.current = false;
+        allowReturnRef.current = false;
+      } else {
+        if (!isAtTopRef.current) {
+          // Just arrived at top
+          isAtTopRef.current = true;
+          // Set timeout to allow return - prevents momentum scrolling from triggering return
+          setTimeout(() => {
+            allowReturnRef.current = true;
+          }, 500);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Dynamic section mappings based on language
@@ -77,6 +107,101 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
   const sectionMap = getSectionMappings(locale);
 
+  // Linear interpolation helper
+  const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
+
+
+
+  const updateVisuals = useCallback((progress: number) => {
+    landingOverlayRef.current?.updateVisuals(progress);
+    globalBackgroundRef.current?.updateVisuals(progress);
+    if (mainContentRef.current) {
+        // Opacity: Fade in late (when progress > 0.5)
+        // progress 0 -> 1
+        // opacity 0 -> 1
+        // Let's make it visible earlier but smoother
+        const opacity = Math.pow(progress, 2); // Quadratic ease in
+        mainContentRef.current.style.opacity = `${opacity}`;
+
+        // Scale: 0.8 -> 1.0
+        // More noticeable zoom in for main content
+        const scale = 0.8 + (0.2 * progress);
+
+        // TranslateY: 100px -> 0px
+        // Slide up as we enter, slide down as we leave
+        const translateY = (1 - progress) * 100;
+
+        mainContentRef.current.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+    }
+  }, []);
+
+  // Animation Loop
+  useEffect(() => {
+    let animationFrameId: number;
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const animate = () => {
+      // Smoothly interpolate current value towards target
+      const diff = scrollTarget.current - scrollCurrent.current;
+
+      if (Math.abs(diff) > 0.001) {
+        scrollCurrent.current = lerp(scrollCurrent.current, scrollTarget.current, 0.15);
+        updateVisuals(scrollCurrent.current);
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        // Snap to target if close enough
+        if (scrollCurrent.current !== scrollTarget.current) {
+            scrollCurrent.current = scrollTarget.current;
+            updateVisuals(scrollCurrent.current);
+        }
+      }
+    };
+
+    // Start animation if target changes (we can just run this loop when needed,
+    // but for simplicity let's trigger it from the event handlers)
+    // Actually, better to have a running loop or trigger it.
+    // Let's expose a trigger function.
+
+    return () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, [updateVisuals]);
+
+  const startAnimationLoop = useCallback(() => {
+      if (requestRef.current) return;
+
+      const loop = () => {
+          const diff = scrollTarget.current - scrollCurrent.current;
+          if (Math.abs(diff) > 0.0001 || isScrolling) {
+              scrollCurrent.current = lerp(scrollCurrent.current, scrollTarget.current, 0.15);
+              updateVisuals(scrollCurrent.current);
+              requestRef.current = requestAnimationFrame(loop);
+          } else {
+              requestRef.current = null;
+              // Ensure final state is exact
+              scrollCurrent.current = scrollTarget.current;
+              updateVisuals(scrollCurrent.current);
+          }
+      };
+      requestRef.current = requestAnimationFrame(loop);
+  }, [updateVisuals, isScrolling]);
+
+  // Trigger loop when scrolling state changes
+  useEffect(() => {
+      if (isScrolling) {
+          startAnimationLoop();
+      }
+  }, [isScrolling, startAnimationLoop]);
+
+  const setTransitions = useCallback((enabled: boolean) => {
+    const transition = enabled ? '' : 'none'; // Empty string reverts to CSS class
+    landingOverlayRef.current?.setTransition(transition);
+    globalBackgroundRef.current?.setTransition(transition);
+    if (mainContentRef.current) {
+        mainContentRef.current.style.transition = transition;
+    }
+  }, []);
+
   const triggerTransition = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
@@ -89,38 +214,95 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   useEffect(() => {
     if (isTransitioning) return;
 
-    const updateVisuals = (progress: number) => {
-      if (requestRef.current) return;
-      requestRef.current = requestAnimationFrame(() => {
-        landingOverlayRef.current?.updateVisuals(progress);
-        requestRef.current = null;
-      });
-    };
-
     const handleWheel = (e: WheelEvent) => {
-      if (!showFullWebsite) {
-        scrollAccumulator.current = Math.max(0, scrollAccumulator.current + e.deltaY);
-        const threshold = 400;
-        const progress = Math.min(scrollAccumulator.current / threshold, 1);
+      const threshold = 600; // Increased threshold for better feel
 
-        updateVisuals(progress);
-        setIsScrolling(true);
+      if (!showFullWebsite) {
+        // Rubber banding effect: harder to pull as we get closer to 1
+        const progress = scrollAccumulator.current / threshold;
+        const resistance = 1 - Math.pow(progress, 2) * 0.5; // Quadratic resistance
+
+        scrollAccumulator.current = Math.max(0, scrollAccumulator.current + e.deltaY * resistance);
+        const targetProgress = Math.min(scrollAccumulator.current / threshold, 1);
+
+        scrollTarget.current = targetProgress;
+        startAnimationLoop();
+
+        if (!isScrolling) {
+            setIsScrolling(true);
+            setTransitions(false);
+        }
 
         if (scrollResetTimer.current) clearTimeout(scrollResetTimer.current);
 
-        if (progress >= 1) {
+        if (targetProgress >= 1) {
           triggerTransition();
         } else {
           scrollResetTimer.current = setTimeout(() => {
             setIsScrolling(false);
-            updateVisuals(0);
+            setTransitions(true);
+            scrollTarget.current = 0; // Animate back to 0
+            startAnimationLoop();
             scrollAccumulator.current = 0;
           }, 150);
         }
       } else {
-        if (window.scrollY <= 10 && e.deltaY < -30) {
-           window.history.pushState("", document.title, window.location.pathname + window.location.search);
-           window.dispatchEvent(new Event('hashchange'));
+        // On main website
+        if (window.scrollY <= 5) {
+           // Check if we are allowed to return (cooldown after arriving at top)
+           if (!allowReturnRef.current && !isReturning) return;
+
+           if (e.deltaY < 0 || (isReturning && e.deltaY > 0)) {
+              if (!isReturning && scrollAccumulator.current === 0) {
+                  scrollAccumulator.current = threshold;
+                  scrollCurrent.current = 1;
+                  scrollTarget.current = 1;
+              }
+
+              // Rubber banding for return
+              const _progress = scrollAccumulator.current / threshold;
+              // When progress is high (near 1), resistance is low. When low (near 0), resistance is high?
+              // No, we want it to be easy to start pulling, then maybe harder?
+              // Actually linear is fine for return, or maybe slight ease.
+
+              scrollAccumulator.current = Math.max(0, Math.min(threshold, scrollAccumulator.current + e.deltaY));
+              const targetProgress = scrollAccumulator.current / threshold;
+
+              scrollTarget.current = targetProgress;
+              startAnimationLoop();
+
+              if (targetProgress < 1) {
+                  if (!isReturning) {
+                      setIsReturning(true);
+                      setIsScrolling(true);
+                      setTransitions(false);
+                  }
+
+                  if (e.cancelable) e.preventDefault();
+              }
+
+              if (scrollResetTimer.current) clearTimeout(scrollResetTimer.current);
+
+              if (targetProgress <= 0) {
+                  window.history.pushState("", document.title, window.location.pathname + window.location.search);
+                  window.dispatchEvent(new Event('hashchange'));
+                  setIsReturning(false);
+                  setIsScrolling(false);
+                  setTransitions(true);
+              } else {
+                  scrollResetTimer.current = setTimeout(() => {
+                      setIsScrolling(false);
+                      setIsReturning(false);
+                      setTransitions(true);
+                      scrollTarget.current = 1; // Animate back to 1
+                      startAnimationLoop();
+                      scrollAccumulator.current = threshold;
+                      if (mainContentRef.current) {
+                          // We let the loop finish the animation to 1
+                      }
+                  }, 150);
+              }
+           }
         }
       }
     };
@@ -128,38 +310,88 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     let touchStartY = 0;
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
-      if (!showFullWebsite) setIsScrolling(true);
+      if (showFullWebsite && window.scrollY <= 5) {
+          if (!isReturning) {
+              scrollAccumulator.current = 600;
+              scrollTarget.current = 1;
+              scrollCurrent.current = 1;
+          }
+      }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
       const touchEndY = e.touches[0].clientY;
       const deltaY = touchStartY - touchEndY;
+      const threshold = 250; // Increased mobile threshold
 
       if (!showFullWebsite) {
-        // Prevent native scroll/bounce on mobile
         if (e.cancelable) e.preventDefault();
 
         if (deltaY > 0) {
-          const threshold = 150; // Lower threshold for mobile
-          const progress = Math.min(deltaY / threshold, 1);
-          updateVisuals(progress);
+          if (!isScrolling) {
+              setIsScrolling(true);
+              setTransitions(false);
+          }
 
-          if (progress >= 1) {
+          // Rubber band for touch
+          const progress = Math.min(deltaY / threshold, 1);
+          // Apply some curve to touch input
+          const curvedProgress = Math.pow(progress, 0.8); // Slight ease out
+
+          scrollTarget.current = Math.min(curvedProgress, 1);
+          startAnimationLoop();
+
+          if (scrollTarget.current >= 1) {
             triggerTransition();
           }
         }
       } else {
-        if (window.scrollY <= 10 && deltaY < -50) {
-           window.history.pushState("", document.title, window.location.pathname + window.location.search);
-           window.dispatchEvent(new Event('hashchange'));
+        if (window.scrollY <= 5) {
+            // Check if we are allowed to return (cooldown after arriving at top)
+            if (!allowReturnRef.current && !isReturning) return;
+
+            if (deltaY < 0 || (isReturning && deltaY > 0)) {
+                const pullDistance = -deltaY;
+                if (pullDistance > 0) {
+                    const progress = Math.max(0, 1 - (pullDistance / threshold));
+
+                    if (progress < 1) {
+                        if (!isReturning) {
+                            setIsReturning(true);
+                            setIsScrolling(true);
+                            setTransitions(false);
+                        }
+
+                        scrollTarget.current = progress;
+                        startAnimationLoop();
+
+                        if (e.cancelable) e.preventDefault();
+                    }
+
+                    if (progress <= 0) {
+                        window.history.pushState("", document.title, window.location.pathname + window.location.search);
+                        window.dispatchEvent(new Event('hashchange'));
+                        setIsReturning(false);
+                        setTransitions(true);
+                    }
+                }
+            }
         }
       }
     };
 
     const handleTouchEnd = () => {
-      if (!isTransitioning && !showFullWebsite) {
+      if (!isTransitioning) {
         setIsScrolling(false);
-        updateVisuals(0);
+        setTransitions(true);
+        if (!showFullWebsite) {
+            scrollTarget.current = 0;
+            startAnimationLoop();
+        } else if (isReturning) {
+            setIsReturning(false);
+            scrollTarget.current = 1;
+            startAnimationLoop();
+        }
       }
     };
 
@@ -175,7 +407,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [showFullWebsite, isTransitioning, triggerTransition]);
+  }, [showFullWebsite, isTransitioning, triggerTransition, updateVisuals, isReturning, setTransitions, startAnimationLoop, isScrolling]);
 
   useEffect(() => {
     const checkHash = () => {
@@ -184,11 +416,29 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
       if (!hasHash) {
         setIsTransitioning(false);
+        setIsReturning(false);
+        scrollAccumulator.current = 0;
+        scrollTarget.current = 0;
+        scrollCurrent.current = 0;
         document.body.style.overflow = 'hidden';
+        // Reset visuals to landing state
+        if (mainContentRef.current) {
+            mainContentRef.current.style.opacity = '';
+            mainContentRef.current.style.transform = '';
+        }
+        updateVisuals(0);
       } else {
         setIsTransitioning(false);
+        scrollAccumulator.current = 600; // Initialize as "full"
+        scrollTarget.current = 1;
+        scrollCurrent.current = 1;
         document.body.style.overflowY = 'auto';
         document.body.style.overflowX = 'hidden';
+        // Ensure visuals are at full state
+        updateVisuals(1);
+        // Initialize allowReturnRef to true since we are starting at top
+        allowReturnRef.current = true;
+        isAtTopRef.current = true;
       }
     };
 
@@ -200,13 +450,32 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       document.body.style.overflowY = 'auto';
       document.body.style.overflowX = 'hidden';
     };
-  }, []);
+  }, [updateVisuals]);
 
   useEffect(() => {
     if (showFullWebsite && window.location.hash) {
       const timer = setTimeout(() => {
         const hash = window.location.hash.substring(1);
-        const element = document.getElementById(hash);
+        let element = document.getElementById(hash);
+
+        // If element not found, try to map from other language
+        if (!element) {
+          const otherLocale = locale === 'sk' ? 'en' : 'sk';
+          const currentMappings = getSectionMappings(locale);
+          const otherMappings = getSectionMappings(otherLocale);
+
+          // Find key in otherMappings that matches hash
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const key = Object.keys(otherMappings).find(k => (otherMappings as any)[k] === hash);
+
+          if (key) {
+            // Get corresponding value in currentMappings
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const mappedHash = (currentMappings as any)[key];
+            element = document.getElementById(mappedHash);
+          }
+        }
+
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
@@ -214,7 +483,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
       return () => clearTimeout(timer);
     }
-  }, [showFullWebsite]);
+  }, [showFullWebsite, locale]);
 
   useEffect(() => {
     setMounted(true);
@@ -263,21 +532,6 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         <section className='relative z-10 flex items-center justify-center px-6 min-h-screen'>
           <div className='text-center max-w-3xl'>
             <div className='mb-8'>
-              <Image
-                src={companyConfig.website.logo.logoGoldTransparent}
-                alt={companyConfig.company.name}
-                width={120}
-                height={120}
-                className='mx-auto select-none'
-                draggable={false}
-                style={{
-                  filter: 'drop-shadow(0 0 30px rgba(218, 181, 73, 0.4))'
-                }}
-                priority
-              />
-            </div>
-
-            <div className='mb-12'>
               <div className='flex flex-col items-center mb-4 select-none'>
                 <h1 className='text-4xl sm:text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-[linear-gradient(to_right,#DAB549,#FEFBD8,#DAB549,#FEFBD8,#DAB549)] bg-[length:200%_auto] animate-text-shimmer drop-shadow-[0_0_30px_rgba(218,181,73,0.2)] pb-2 leading-tight'>
                   {t('tagline.innovativeSolutions')}
@@ -289,15 +543,15 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
             </div>
 
             {/* Button - Absolute positioning at bottom to match Overlay */}
-            <div className='absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6 w-full px-6'>
+            <div className='absolute bottom-24 md:bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6 w-full px-6'>
               <button
                 className="group relative w-full max-w-[280px] md:w-auto md:max-w-none py-4 md:px-12 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
                 onClick={() => {
                   router.push('/vyvoj');
                 }}
               >
-                <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(218,181,73,0.15)]" />
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-full" />
+                <div className="absolute inset-0 border border-primary rounded-full shadow-[0_0_15px_rgba(218,181,73,0.15)]" />
+                <div className="absolute inset-0 bg-zinc-900/80 backdrop-blur-md rounded-full" />
 
                 <div className="absolute inset-0 rounded-full overflow-hidden">
                   <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-50" />
@@ -332,6 +586,9 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         ref={globalBackgroundRef}
         mounted={mounted}
         showFullWebsite={showFullWebsite}
+        isTransitioning={isTransitioning}
+        isReturning={isReturning}
+        isScrolling={isScrolling}
         onShapesStateChange={handleShapesStateChange}
       />
 
@@ -343,33 +600,35 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         ref={landingOverlayRef}
         showFullWebsite={showFullWebsite}
         isTransitioning={isTransitioning}
+        isReturning={isReturning}
         isScrolling={isScrolling}
         triggerTransition={triggerTransition}
         onLogoClick={handleLogoClick}
         shapesState={shapesState}
       />
 
-      <div className={`relative transition-all duration-1000 ease-in-out ${showFullWebsite ? 'opacity-100 blur-0' : `opacity-0 ${isMobile ? 'blur-sm' : 'blur-xl'} pointer-events-none`}`}>
+      <div
+        ref={mainContentRef}
+        className={`relative transition-all duration-1000 ease-in-out ${showFullWebsite ? 'opacity-100 blur-0' : `opacity-0 ${isMobile ? 'blur-sm' : 'blur-xl'} pointer-events-none`}`}
+        style={{
+            // If returning, we might want to override the class based opacity with manual control
+            // But we do that in updateVisuals.
+            // We just need to ensure the transition doesn't fight us if we are scrolling.
+            transition: isScrolling ? 'none' : undefined
+        }}
+      >
           <>
             <div id={sectionMap.development}>
-              <Hero />
+              <Hero contactSectionId={sectionMap.contact} />
             </div>
 
-            <div id={sectionMap.about}>
-              <About />
-            </div>
+            <About id={sectionMap.about} />
 
-            <div id={sectionMap.services}>
-              <ServicesEnhanced />
-            </div>
+            <ServicesEnhanced id={sectionMap.services} />
 
-            <div id={sectionMap.portfolio}>
-              <Portfolio />
-            </div>
+            <Portfolio id={sectionMap.portfolio} />
 
-            <div id={sectionMap.reviews}>
-              <Reviews />
-            </div>
+            <Reviews id={sectionMap.reviews} />
 
             {latestPosts}
 

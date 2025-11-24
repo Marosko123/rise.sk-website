@@ -54,9 +54,12 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
   };
 
   const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const sectionMap = getSectionMappings(locale);
+
     if (isHomePage) {
-      e.preventDefault();
-      const element = document.getElementById('contact');
+      // On homepage, scroll to locale-specific contact section (kontakt/contact)
+      const element = document.getElementById(sectionMap.contact);
       if (element) {
         const navHeight = 80;
         const elementPosition = element.offsetTop;
@@ -68,6 +71,10 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
         });
         setIsMenuOpen(false);
       }
+    } else {
+      // On other pages, navigate to homepage with locale-specific hash
+      setIsMenuOpen(false);
+      router.push(`/#${sectionMap.contact}` as AppPathnames);
     }
   };
 
@@ -524,7 +531,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
             {/* Desktop CTA Button */}
             <div className='hidden lg:block'>
               <Button
-                href="#contact"
+                href={`#${getSectionMappings(locale).contact}`}
                 variant="primary"
                 size="sm"
                 onClick={handleContactClick}

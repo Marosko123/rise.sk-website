@@ -3,6 +3,7 @@
 import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useLocale } from 'next-intl';
 import { useState } from 'react';
 import EnhancedSchema from '../seo/EnhancedSchema';
 import FAQAccordion from '../ui/FAQAccordion';
@@ -15,8 +16,11 @@ interface FAQItem {
 
 const FAQ = () => {
   const t = useTranslations('faq');
+  const locale = useLocale();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [showAllFAQs, setShowAllFAQs] = useState<boolean>(false);
+
+  const contactSectionId = locale === 'sk' ? 'kontakt' : 'contact';
 
   // Number of FAQs to show in preview mode
   const PREVIEW_COUNT = 4;
@@ -176,7 +180,7 @@ const FAQ = () => {
               Kontaktujte nás a radi vám poskytneme podrobnú konzultáciu a odpovieme na všetky vaše otázky.
             </p>
             <a
-              href="#contact"
+              href={`#${contactSectionId}`}
               className="inline-flex items-center px-8 py-4 bg-[var(--primary)] text-white font-semibold rounded-xl hover:bg-[#9a7f4b] transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               Kontaktovať nás

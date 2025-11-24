@@ -49,7 +49,7 @@
     "faq": "FAQ",
     "hiring": "Hľadáme talenty",
     "contact": "Kontakt",
-    "startProject": "Konzultácia zdarma",
+    "startProject": "Konzultácia zdarma!",
     "backToHome": "Späť na hlavnú",
     "getStarted": "Začať"
   },
@@ -62,7 +62,7 @@
     },
     "description": "Sme spoločnosť poskytujúca komplexné technologické riešenia, ktorá sa špecializuje na vývoj webov, mobilných aplikácií a softvéru na mieru.",
     "subtitle": "Ak hľadáte spoľahlivého partnera pre Váš digitálny projekt, ste na správnom mieste!",
-    "startProject": "Konzultácia zdarma",
+    "startProject": "Konzultácia zdarma!",
     "freeConsultation": "Bezplatná konzultácia",
     "metrics": {
       "onTimeDelivery": {
@@ -873,7 +873,7 @@
     },
     "cta": {
       "title": "Pripravení na váš vlastný úspešný projekt?",
-      "startProject": "Konzultácia zdarma"
+      "startProject": "Konzultácia zdarma!"
     }
   },
   "reviews": {
@@ -889,7 +889,7 @@
     "cta": {
       "title": "Pripravení pridať sa k našim úspešným príbehom?",
       "description": "Vytvorme niečo úžasné spolu. Kontaktujte nás a prediskutujme vaše potreby.",
-      "startProject": "Konzultácia zdarma",
+      "startProject": "Konzultácia zdarma!",
       "viewServices": "Pozrieť služby"
     },
     "reviews": [
@@ -1059,8 +1059,8 @@
     "message": "Detaily projektu",
     "messagePlaceholder": "Povedzte nám o vašom projekte, časovej os a cieľoch...",
     "placeholders": {
-      "name": "John Smith",
-      "email": "john@company.com",
+      "name": "Janko Hráško",
+      "email": "janko@gmail.com",
       "phone": "+421 911 123 456",
       "company": "Vaša spoločnosť"
     },
@@ -1199,9 +1199,9 @@
     "name": "Rise.sk s.r.o.",
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
-    "taxId": "2122465094",
-    "vatId": "2122531840",
-    "vatStatus": "Nie sme platitelia DPH",
+    "taxId": "2122531840",
+    "vatId": "SK2122531840",
+    "vatStatus": "Platca DPH",
     "registration": "Obchodný register Mestského súdu Bratislava III, oddiel: Sro, vložka č. 188634/B",
     "executives": "Bc. Maroš Bednár",
     "phone": "+421 911 670 188",
@@ -1215,7 +1215,7 @@
       "address": "Adresa",
       "businessId": "IČO",
       "taxId": "DIČ",
-      "vatId": "DIČ",
+      "vatId": "IČ DPH",
       "vatStatus": "DPH Status",
       "registration": "Zápis v ORSR",
       "executives": "Zodpovední zástupcovia",

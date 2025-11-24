@@ -15,7 +15,7 @@ import { useRef } from 'react';
 import { Card } from '../ui/Card';
 import { Section } from '../ui/Section';
 
-export default function About() {
+export default function About({ id = 'about' }: { id?: string }) {
   const t = useTranslations('about');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -67,7 +67,7 @@ export default function About() {
 
   return (
     <Section
-      id="about"
+      id={id}
       ref={ref}
       background="transparent"
       className="relative overflow-hidden"

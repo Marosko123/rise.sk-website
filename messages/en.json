@@ -899,8 +899,8 @@
     "message": "Project Details",
     "messagePlaceholder": "Tell us about your project, timeline, and goals...",
     "placeholders": {
-      "name": "John Smith",
-      "email": "john@company.com",
+      "name": "Janko Hráško",
+      "email": "janko@gmail.com",
       "phone": "+421 911 123 456",
       "company": "Your Company"
     },
@@ -1039,9 +1039,9 @@
     "name": "Rise.sk s.r.o.",
     "address": "Karpatské námestie 7770/10A, 831 06 Bratislava",
     "businessId": "56911157",
-    "taxId": "2122465094",
-    "vatId": "2122531840",
-    "vatStatus": "Not VAT payers",
+    "taxId": "2122531840",
+    "vatId": "SK2122531840",
+    "vatStatus": "VAT Payer",
     "registration": "Commercial Register of District Court Bratislava III, Section: Sro, Insert No. 188634/B",
     "executives": "Bc. Maroš Bednár",
     "phone": "+421 911 670 188",

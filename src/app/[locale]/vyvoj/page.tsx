@@ -78,7 +78,7 @@ export default async function DevelopmentPageSK({
       <Navigation transparent={true} />
       <main className="-mt-20">
         <div id={sectionMap.development}>
-          <Hero />
+          <Hero contactSectionId={sectionMap.contact} />
         </div>
         <div id={sectionMap.about}>
           <About />

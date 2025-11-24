@@ -5,7 +5,7 @@ import { teamMembers } from '@/data/team';
 import { cn } from '@/utils/cn';
 import { motion } from 'framer-motion';
 import { ArrowDown, Facebook, Github, Instagram, Linkedin } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
@@ -26,8 +26,11 @@ const gradients = [
 export default function TeamPage() {
   const t = useTranslations('team');
   const tMembers = useTranslations('team.members');
+  const locale = useLocale();
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState<string>('');
+
+  const contactId = locale === 'sk' ? 'kontakt' : 'contact';
 
   useEffect(() => {
     const container = containerRef.current;
@@ -222,7 +225,7 @@ export default function TeamPage() {
                   alt={member.name}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 160px, (max-width: 1200px) 300px, 350px"
                   priority={index === 0}
                 />
 
@@ -354,23 +357,22 @@ export default function TeamPage() {
             </p>
           </FadeIn>
           <FadeIn delay={0.4}>
-            <motion.a
-              href="/kontakt"
-              whileHover={{ scale: 1.05 }}
-              className="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:bg-primary/90 transition-colors inline-block"
+            <button
+              onClick={() => scrollToMember(contactId)}
+              className="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:bg-primary/90 transition-colors inline-block cursor-pointer"
             >
               {t('joinUs.button')}
-            </motion.a>
+            </button>
           </FadeIn>
         </div>
       </section>
 
       {/* Contact Section */}
       <section
-        id="contact"
+        id={contactId}
         className="min-h-[100dvh] md:h-full snap-start flex items-center justify-center relative overflow-hidden"
       >
-        <MultiStepContactForm id="contact-form" />
+        <MultiStepContactForm id={contactId} />
       </section>
 
       {/* Footer Section */}

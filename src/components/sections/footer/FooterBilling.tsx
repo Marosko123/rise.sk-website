@@ -53,6 +53,34 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
         </div>
         <div className='min-w-0 flex-1'>
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
+            {companyInfo('labels.taxId')}
+          </div>
+          <div className='text-white font-mono text-sm'>
+            {companyInfo('taxId')}
+          </div>
+        </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => copyToClipboard(companyInfo('taxId'), 'taxId')}
+          className='p-2 rounded-md hover:bg-white/5 transition-colors duration-200 flex-shrink-0 flex items-center justify-center group'
+          title='Copy to clipboard'
+        >
+          {copiedField === 'taxId' ? (
+            <Check className='w-4 h-4 text-green-400' />
+          ) : (
+            <Copy className='w-4 h-4 text-white/30 group-hover:text-primary transition-colors' />
+          )}
+        </motion.button>
+      </div>
+
+      {/* IČ DPH */}
+      <div className='flex items-center space-x-3'>
+        <div className='w-8 h-8 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg flex items-center justify-center flex-shrink-0'>
+          <CreditCard className='w-4 h-4 text-primary' />
+        </div>
+        <div className='min-w-0 flex-1'>
+          <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.vatId')}
           </div>
           <div className='text-white font-mono text-sm'>

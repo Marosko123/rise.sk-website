@@ -121,7 +121,7 @@ export default async function BlogIndex({
           </div>
         </div>
       </div>
-      <MultiStepContactForm />
+      <MultiStepContactForm id={locale === 'sk' ? 'kontakt' : 'contact'} />
       <Footer />
     </main>
   );

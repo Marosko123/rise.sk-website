@@ -14,6 +14,7 @@ import { useAnimation } from './providers/AnimationProvider';
 interface LandingOverlayProps {
   showFullWebsite: boolean;
   isTransitioning: boolean;
+  isReturning?: boolean;
   isScrolling: boolean;
   triggerTransition: () => void;
   onLogoClick: () => void;
@@ -22,11 +23,13 @@ interface LandingOverlayProps {
 
 export interface LandingOverlayRef {
   updateVisuals: (progress: number) => void;
+  setTransition: (transition: string) => void;
 }
 
 const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   showFullWebsite,
   isTransitioning,
+  isReturning,
   isScrolling,
   triggerTransition,
   onLogoClick,
@@ -50,11 +53,17 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
       if (containerRef.current) {
         // Only fade out the content container, not the background
         containerRef.current.style.opacity = `${1 - progress * 1.5}`;
+        containerRef.current.style.transform = `scale(${1 + progress * 0.5})`;
         containerRef.current.style.pointerEvents = progress > 0.5 ? 'none' : 'auto';
       }
       if (bottomActionsRef.current) {
         bottomActionsRef.current.style.opacity = `${1 - progress * 2}`;
         bottomActionsRef.current.style.transform = `translate(-50%, ${progress * 50}px)`;
+      }
+    },
+    setTransition: (transition: string) => {
+      if (containerRef.current) {
+        containerRef.current.style.transition = transition;
       }
     }
   }));
@@ -70,6 +79,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   // Removed handleShapesStateChange as it's now managed in GlobalBackground/LandingPage
 
   const isShivering = useCallback(() => {
+    if (isMobile) return false;
     if (isLogoHovered) return false;
 
     const timeSinceLastInteraction = animationTime - shiverCycleStart;
@@ -83,7 +93,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 
     const timeInShiverCycle = (timeSinceLastInteraction - waitTime) % totalCycle;
     return timeInShiverCycle < shiverDuration;
-  }, [animationTime, shiverCycleStart, isLogoHovered]);
+  }, [animationTime, shiverCycleStart, isLogoHovered, isMobile]);
 
   const shivering = isShivering();
 
@@ -243,9 +253,10 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
           transition: (showFullWebsite || isTransitioning)
             ? 'all 1s ease-in-out'
             : (isScrolling ? 'all 0.1s ease-out' : 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)'),
-          opacity: showFullWebsite ? 0 : undefined,
+          opacity: (showFullWebsite || isTransitioning) && !isReturning ? 0 : undefined,
+          transform: (showFullWebsite || isTransitioning) && !isReturning ? 'scale(1.5)' : undefined,
           pointerEvents: showFullWebsite ? 'none' : undefined,
-          visibility: showFullWebsite ? 'hidden' : 'visible'
+          visibility: (showFullWebsite && !isReturning) ? 'hidden' : 'visible'
       }}
     >
         <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-6 pointer-events-auto">
@@ -264,25 +275,29 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                 style={{
                   transform: 'translate(0, 0)',
                 }}
-                onClick={handleLogoClick}
+                onClick={isMobile ? undefined : handleLogoClick}
                 onMouseEnter={() => {
+                  if (isMobile) return;
                   setIsLogoHovered(true);
                   resetShiverCycle();
                 }}
                 onMouseLeave={() => {
+                  if (isMobile) return;
                   setIsLogoHovered(false);
                   resetShiverCycle();
                 }}
               >
-                <div
-                  className={`absolute -top-8 left-1/2 transform -translate-x-1/2 transition-opacity duration-300 pointer-events-none z-50 ${
-                    shivering ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  <span className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-light whitespace-nowrap select-none block">
-                    {t('clickMe')}!
-                  </span>
-                </div>
+                {!isMobile && (
+                  <div
+                    className={`absolute -top-8 left-1/2 transform -translate-x-1/2 transition-opacity duration-300 pointer-events-none z-50 ${
+                      shivering ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <span className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-light whitespace-nowrap select-none block">
+                      {t('clickMe')}!
+                    </span>
+                  </div>
+                )}
                 <div
                   style={{
                     transform: `
@@ -304,11 +319,9 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                         brightness(${getExplosionFilter()?.brightness || 1})
                         drop-shadow(${getExplosionFilter()?.dropShadow || 'none'})
                       ` : (isMobile ? `
-                        brightness(${logoColorFilter.brightness})
-                        contrast(${logoColorFilter.contrast})
-                        saturate(${logoColorFilter.saturate})
-                        sepia(${logoColorFilter.sepia})
-                        drop-shadow(0 0 ${SHAPE_CONFIG.LOGO_GLOW_RADIUS * 0.5}px ${logoColorFilter.dropShadowColor})
+                        brightness(1.1)
+                        contrast(1.1)
+                        drop-shadow(0 0 25px rgba(218, 181, 73, 0.5))
                       ` : `
                         brightness(${logoColorFilter.brightness * (isLogoHovered ? 1.2 : 1)})
                         contrast(${logoColorFilter.contrast * (isLogoHovered ? 1.1 : 1)})
@@ -347,7 +360,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 
             <div
               ref={bottomActionsRef}
-              className={`absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6 transition-all duration-500 w-full px-6 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
+              className={`absolute bottom-24 md:bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6 transition-all duration-500 w-full px-6 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
               style={{
                 opacity: isTransitioning ? 0 : 1,
                 transform: 'translate(-50%, 0)'
@@ -357,8 +370,8 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                 onClick={triggerTransition}
                 className="group relative w-full max-w-[280px] md:w-auto md:max-w-none py-4 md:px-12 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
               >
-                <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(218,181,73,0.15)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(218,181,73,0.4)] transition-all duration-500" />
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-full group-hover:bg-primary/10 transition-all duration-500" />
+                <div className="absolute inset-0 border border-primary rounded-full shadow-[0_0_15px_rgba(218,181,73,0.15)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(218,181,73,0.4)] transition-all duration-500" />
+                <div className="absolute inset-0 bg-zinc-900/80 backdrop-blur-md rounded-full group-hover:bg-primary/10 transition-all duration-500" />
 
                 <div className="absolute inset-0 rounded-full overflow-hidden">
                   <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-sheen" />

@@ -19,18 +19,18 @@ interface OptimizedImageProps {
   blurDataURL?: string;
 }
 
-export default function OptimizedImage({ 
-  src, 
-  alt, 
-  width, 
-  height, 
-  className = '', 
+export default function OptimizedImage({
+  src,
+  alt,
+  width,
+  height,
+  className = '',
   priority = false,
   quality = 75,
   placeholder = 'blur',
   fill = false,
   sizes,
-  ...props 
+  ...props
 }: OptimizedImageProps) {
   const t = useTranslations('common');
   const [currentFormat, setCurrentFormat] = useState<string>('avif');
@@ -81,7 +81,7 @@ export default function OptimizedImage({
   // If all formats failed, show error state
   if (imageError) {
     return (
-      <div 
+      <div
         className={`bg-gray-200 flex items-center justify-center text-gray-500 ${className}`}
         style={{ width, height }}
       >
@@ -110,7 +110,8 @@ export default function OptimizedImage({
 
   // Add fill and sizes for responsive images
   if (fill) {
-    Object.assign(imageProps, { fill: true, sizes });
+    const defaultSizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw';
+    Object.assign(imageProps, { fill: true, sizes: sizes || defaultSizes });
   }
 
   return <Image {...imageProps} alt={alt || ''} />;

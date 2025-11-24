@@ -92,15 +92,21 @@ const BackgroundParticles = ({ count = 60, mounted, isMobile }: { count?: number
 interface GlobalBackgroundProps {
   mounted: boolean;
   showFullWebsite: boolean;
+  isTransitioning?: boolean;
+  isReturning?: boolean;
+  isScrolling?: boolean;
   onShapesStateChange?: (length: number, isExploding: boolean, explosionStartTime?: number) => void;
 }
 
 export interface GlobalBackgroundRef {
   handleLogoClick: () => void;
+  updateVisuals: (progress: number) => void;
+  setTransition: (transition: string) => void;
 }
 
-const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(({ mounted, showFullWebsite, onShapesStateChange }, ref) => {
+const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(({ mounted, showFullWebsite, isTransitioning, isReturning, isScrolling, onShapesStateChange }, ref) => {
   const cursorPositionRef = useRef({ x: 0, y: 0 });
+  const landingBgRef = useRef<HTMLDivElement>(null);
   const [windowSize, setWindowSize] = useState(() => {
     if (typeof window !== 'undefined') {
       return { width: window.innerWidth, height: window.innerHeight };
@@ -116,6 +122,17 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
   useImperativeHandle(ref, () => ({
     handleLogoClick: () => {
       floatingShapesRef.current?.handleLogoClick();
+    },
+    updateVisuals: (progress: number) => {
+      if (landingBgRef.current) {
+        landingBgRef.current.style.transform = `scale(${1 + progress * 0.5})`;
+        landingBgRef.current.style.opacity = `${1 - progress * 1.5}`;
+      }
+    },
+    setTransition: (transition: string) => {
+      if (landingBgRef.current) {
+        landingBgRef.current.style.transition = transition;
+      }
     }
   }));
 
@@ -179,8 +196,16 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
     <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
       {/* Landing Page Background - Fades out when full website is shown */}
       <div
-        className={`absolute inset-0 transition-opacity duration-1000 ${showFullWebsite ? 'opacity-0' : 'opacity-100'} bg-[#000000]`}
-        style={{ visibility: showFullWebsite ? 'hidden' : 'visible', transitionDelay: showFullWebsite ? '0ms' : '0ms' }}
+        ref={landingBgRef}
+        className={`absolute inset-0 bg-[#000000]`}
+        style={{
+          transition: (showFullWebsite || isTransitioning)
+            ? 'all 1s ease-in-out'
+            : (isScrolling ? 'transform 0.1s ease-out, opacity 0.1s ease-out' : 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)'),
+          opacity: (showFullWebsite || isTransitioning) && !isReturning ? 0 : undefined,
+          transform: (showFullWebsite || isTransitioning) && !isReturning ? 'scale(1.5)' : undefined,
+          visibility: (showFullWebsite && !isReturning) ? 'hidden' : 'visible'
+        }}
       >
         {!showFullWebsite && (
           <>
@@ -197,14 +222,25 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
             )}
 
             {/* 3. Large Soft Glows - The "Gold" presence */}
-            {/* Top Right - Rich Gold */}
-            <div className={`absolute top-[-20%] right-[-10%] w-[80%] h-[80%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.08)_0%,transparent_70%)] ${isMobile ? 'blur-[60px]' : 'blur-[120px]'} pointer-events-none mix-blend-screen animate-pulse-slow`}></div>
+            {isMobile ? (
+              <>
+                {/* Static Mobile Background - Optimized for performance */}
+                <div className="absolute top-[-10%] right-[-10%] w-[80vw] h-[80vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.15)_0%,transparent_70%)] blur-[80px] pointer-events-none mix-blend-screen"></div>
+                <div className="absolute bottom-[-10%] left-[-10%] w-[80vw] h-[80vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.15)_0%,transparent_70%)] blur-[80px] pointer-events-none mix-blend-screen"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.05)_0%,transparent_60%)] blur-[60px] pointer-events-none mix-blend-screen"></div>
+              </>
+            ) : (
+              <>
+                {/* Top Right - Rich Gold */}
+                <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.08)_0%,transparent_70%)] blur-[120px] pointer-events-none mix-blend-screen animate-pulse-slow"></div>
 
-            {/* Bottom Left - Deep Bronze */}
-            <div className={`absolute bottom-[-20%] left-[-10%] w-[80%] h-[80%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.1)_0%,transparent_70%)] ${isMobile ? 'blur-[60px]' : 'blur-[120px]'} pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-4000`}></div>
+                {/* Bottom Left - Deep Bronze */}
+                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.1)_0%,transparent_70%)] blur-[120px] pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-4000"></div>
 
-            {/* Center - Subtle Highlight */}
-            <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.03)_0%,transparent_60%)] ${isMobile ? 'blur-[50px]' : 'blur-[100px]'} pointer-events-none mix-blend-screen`}></div>
+                {/* Center - Subtle Highlight */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[45vw] h-[45vw] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.03)_0%,transparent_60%)] blur-[100px] pointer-events-none mix-blend-screen"></div>
+              </>
+            )}
 
             {/* 4. Floating "Gold Dust" - Replaces harsh particles */}
             {/* We keep the existing particle system but make it subtler via CSS if needed,
@@ -291,20 +327,31 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
           {!isMobile && (
             <div className="absolute inset-[-50%] w-[200%] h-[200%] animate-rotate-slow opacity-60">
                {/* Large ambient glows */}
-               <div className="absolute top-[20%] left-[20%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_70%)] blur-[120px] mix-blend-screen animate-blob"></div>
-               <div className="absolute bottom-[20%] right-[20%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_70%)] blur-[120px] mix-blend-screen animate-blob animation-delay-4000"></div>
+               <div className="absolute top-[20%] left-[20%] w-[35vw] h-[35vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_70%)] blur-[120px] mix-blend-screen animate-blob"></div>
+               <div className="absolute bottom-[20%] right-[20%] w-[35vw] h-[35vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_70%)] blur-[120px] mix-blend-screen animate-blob animation-delay-4000"></div>
             </div>
           )}
 
           {/* Active floating elements */}
-          {/* Top Left - Bright Gold */}
-          <div className={`absolute top-[5%] left-[10%] w-[35%] h-[35%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.15)_0%,transparent_60%)] ${isMobile ? 'blur-[40px]' : 'blur-[80px]'} animate-float-vertical mix-blend-screen`}></div>
+          {isMobile ? (
+             <>
+                {/* Static Mobile Background for Content */}
+                <div className="absolute top-[5%] left-[10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.2)_0%,transparent_60%)] blur-[60px] mix-blend-screen"></div>
+                <div className="absolute bottom-[10%] right-[5%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_60%)] blur-[60px] mix-blend-screen"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.15)_0%,transparent_70%)] blur-[70px] mix-blend-screen"></div>
+             </>
+          ) : (
+             <>
+                {/* Top Left - Bright Gold */}
+                <div className="absolute top-[5%] left-[10%] w-[30vw] h-[30vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.15)_0%,transparent_60%)] blur-[80px] animate-float-vertical mix-blend-screen"></div>
 
-          {/* Bottom Right - Deep Bronze */}
-          <div className={`absolute bottom-[10%] right-[5%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.15)_0%,transparent_60%)] ${isMobile ? 'blur-[45px]' : 'blur-[90px]'} animate-float-vertical animation-delay-2000 mix-blend-screen`}></div>
+                {/* Bottom Right - Deep Bronze */}
+                <div className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.15)_0%,transparent_60%)] blur-[90px] animate-float-vertical animation-delay-2000 mix-blend-screen"></div>
 
-          {/* Center - Pulsing Core */}
-          <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.12)_0%,transparent_70%)] ${isMobile ? 'blur-[50px]' : 'blur-[100px]'} animate-pulse-bright mix-blend-screen`}></div>
+                {/* Center - Pulsing Core */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.12)_0%,transparent_70%)] blur-[100px] animate-pulse-bright mix-blend-screen"></div>
+             </>
+          )}
 
           {/* Drifting Accents */}
           {!isMobile && (

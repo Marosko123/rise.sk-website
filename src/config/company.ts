@@ -36,7 +36,8 @@ export const companyConfig = {
     // Legal information
     legalName: 'rise.sk s.r.o.',
     registrationNumber: '56 911 157',
-    vatNumber: '', // Fill with VAT number when available
+    taxNumber: '2122531840',
+    vatNumber: 'SK2122531840', // Fill with VAT number when available
 
     // Business classification
     industry: 'Senior Technology Consulting & Software Development',
