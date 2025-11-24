@@ -166,14 +166,14 @@ export default function About({ id = 'about' }: { id?: string }) {
               <div className="relative bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-xl">
                 <div className="flex flex-col gap-6">
                   <p className="text-xl font-medium text-white leading-relaxed italic select-text">
-                    "{t('story.cta')}"
+                    &quot;{t('story.cta')}&quot;
                   </p>
                   <div className="flex items-center gap-4">
                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-gray-900 to-black border border-primary/30 flex items-center justify-center shadow-lg">
                         <Coffee className="w-6 h-6 text-primary" />
                      </div>
                      <div className="flex flex-col">
-                        <span className="text-sm text-gray-400 uppercase tracking-wider font-medium">Let's meet</span>
+                        <span className="text-sm text-gray-400 uppercase tracking-wider font-medium">Let&apos;s meet</span>
                         <span className="text-white font-semibold">Coffee & Code</span>
                      </div>
                   </div>
