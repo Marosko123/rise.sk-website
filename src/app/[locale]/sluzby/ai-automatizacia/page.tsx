@@ -1,5 +1,6 @@
 import ServiceDetailLayout from '@/components/layout/ServiceDetailLayout';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import { getSortedPostsData } from '@/utils/blog-server';
 import { Brain } from 'lucide-react';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
@@ -54,6 +55,10 @@ export default async function AiAutomationPage({
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, locale === 'sk' ? 'ai-automatizacia' : 'ai-automation');
 
+  const allPosts = getSortedPostsData(locale);
+  const relatedSlugs = ['ai-chat-zvysenie-dopytov', 'automatizovane-leady-z-webu'];
+  const relatedPosts = allPosts.filter(post => relatedSlugs.includes(post.slug));
+
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} page="ai-automation" />
@@ -61,6 +66,7 @@ export default async function AiAutomationPage({
         serviceId="ai"
         icon={<Brain className="w-8 h-8" />}
         breadcrumbs={breadcrumbs}
+        relatedPosts={relatedPosts}
       />
     </>
   );

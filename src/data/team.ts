@@ -16,7 +16,7 @@ export const teamMembers: TeamMember[] = [
     id: 'maros-bednar',
     name: 'Maroš Bednár',
     role: 'CEO & Lead Developer',
-    image: '/optimized/maros/maros-photo-signature-circle.avif',
+    image: '/optimized/maros/maros-laptop.webp',
     socials: {
       linkedin: 'https://www.linkedin.com/in/marosbednar/',
       instagram: 'https://www.instagram.com/bednar.maros/',

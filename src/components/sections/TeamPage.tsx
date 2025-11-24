@@ -15,12 +15,12 @@ import FadeIn from '@/components/animations/FadeIn';
 const MultiStepContactForm = dynamic(() => import('@/components/features/MultiStepContactForm'));
 
 const gradients = [
-  "from-amber-500/40 via-orange-500/20 to-yellow-500/20", // Maroš - Gold/Warm
-  "from-fuchsia-600/40 via-pink-600/20 to-purple-600/20", // Tatiana - Purple/Pink
-  "from-rose-500/40 via-orange-500/20 to-amber-500/20",
-  "from-violet-500/40 via-fuchsia-500/20 to-pink-500/20",
-  "from-cyan-500/40 via-blue-500/20 to-indigo-500/20",
-  "from-emerald-500/40 via-green-500/20 to-lime-500/20",
+  "from-primary/40 via-amber-500/20 to-yellow-500/20",
+  "from-yellow-600/40 via-primary/20 to-amber-400/20",
+  "from-amber-500/40 via-orange-500/20 to-primary/20",
+  "from-primary/40 via-yellow-500/20 to-orange-400/20",
+  "from-orange-500/40 via-primary/20 to-amber-500/20",
+  "from-yellow-500/40 via-amber-500/20 to-primary/20",
 ];
 
 export default function TeamPage() {
@@ -103,7 +103,7 @@ export default function TeamPage() {
   };
 
   return (
-    <div ref={containerRef} className="h-full overflow-y-auto snap-y snap-proximity scroll-smooth text-white relative">
+    <div ref={containerRef} className="h-full overflow-y-auto snap-y snap-proximity scroll-smooth text-white relative select-none">
       {/* Side Navigation */}
       <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-4 items-start">
         {teamMembers.map((member) => (
@@ -151,7 +151,7 @@ export default function TeamPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed select-text"
           >
             {t('subtitle')}
           </motion.p>
@@ -203,31 +203,38 @@ export default function TeamPage() {
                 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 className={cn(
-                  "absolute -inset-10 bg-gradient-to-tr rounded-full blur-3xl opacity-60",
+                  "absolute -inset-10 bg-gradient-to-tr rounded-3xl blur-3xl opacity-60",
                   gradients[index % gradients.length]
                 )}
               />
 
               {/* Decorative Ring */}
-              <motion.div
-                 animate={{ rotate: 360 }}
-                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                 className="absolute -inset-1 rounded-full border border-white/10 border-dashed opacity-50"
+              <div
+                 className="absolute -inset-1 rounded-3xl border border-white/10 border-dashed opacity-50"
               />
 
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="relative h-full w-full rounded-full overflow-hidden shadow-2xl group"
+                className="relative h-full w-full rounded-3xl overflow-hidden shadow-2xl group"
               >
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 160px, (max-width: 1200px) 300px, 350px"
-                  priority={index === 0}
-                />
+                {member.image.includes('rise-team.png') ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,215,0,0.15),transparent_70%)]" />
+                    <span className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary-light to-primary-dark font-serif z-10">
+                      {member.name.split(' ').map((n) => n[0]).join('')}
+                    </span>
+                  </div>
+                ) : (
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 160px, (max-width: 1200px) 300px, 350px"
+                    priority={index === 0}
+                  />
+                )}
 
                 {/* Subtle Inner Shadow/Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent pointer-events-none" />
@@ -245,16 +252,16 @@ export default function TeamPage() {
                 index % 2 !== 0 && "md:items-end md:text-right"
               )}
             >
-              <h2 className="text-3xl md:text-6xl font-bold mb-2 text-white">
+              <h2 className="text-3xl md:text-6xl font-bold mb-2 text-white select-text">
                 {member.name}
               </h2>
-              <p className="text-lg md:text-2xl text-primary font-medium mb-6">
+              <p className="text-lg md:text-2xl text-primary font-medium mb-6 select-text">
                 {tMembers(`${member.id}.role`)}
               </p>
 
               <div className="w-20 h-1 bg-primary mb-6 md:mb-8 mx-auto md:mx-0" />
 
-              <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6 md:mb-8 text-justify">
+              <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6 md:mb-8 text-justify select-text">
                 {tMembers(`${member.id}.bio`)}
               </p>
 
@@ -274,7 +281,7 @@ export default function TeamPage() {
                     "border-l-4 border-primary pl-4 text-left md:border-l-0 md:pl-0" // Mobile default: left border
                   )}
                 >
-                  <p className="text-xl md:text-3xl font-serif italic text-white/90 leading-relaxed whitespace-pre-line">
+                  <p className="text-xl md:text-3xl font-serif italic text-white/90 leading-relaxed whitespace-pre-line select-text">
                     {tMembers(`${member.id}.motto`)}
                   </p>
                 </FadeIn>
@@ -352,7 +359,7 @@ export default function TeamPage() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mb-12">
+            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mb-12 select-text">
               {t('joinUs.description')}
             </p>
           </FadeIn>

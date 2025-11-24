@@ -1,5 +1,6 @@
 import ServiceDetailLayout from '@/components/layout/ServiceDetailLayout';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import { getSortedPostsData } from '@/utils/blog-server';
 import { Smartphone } from 'lucide-react';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
@@ -58,6 +59,10 @@ export default async function MobileAppsPage({
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, locale === 'sk' ? 'vyvoj-mobilnych-aplikacii' : 'mobile-app-development');
 
+  const allPosts = getSortedPostsData(locale);
+  const relatedSlugs = ['kedy-mobilnu-aplikaciu', 'prepojenie-aplikacie-webu-seo'];
+  const relatedPosts = allPosts.filter(post => relatedSlugs.includes(post.slug));
+
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} page="mobile-app-development" />
@@ -65,6 +70,7 @@ export default async function MobileAppsPage({
         serviceId="mobileApps"
         icon={<Smartphone className="w-8 h-8" />}
         breadcrumbs={breadcrumbs}
+        relatedPosts={relatedPosts}
       />
     </>
   );

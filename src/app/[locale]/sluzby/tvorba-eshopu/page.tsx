@@ -1,5 +1,6 @@
 import ServiceDetailLayout from '@/components/layout/ServiceDetailLayout';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import { getSortedPostsData } from '@/utils/blog-server';
 import { ShoppingCart } from 'lucide-react';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
@@ -58,6 +59,10 @@ export default async function EcommercePage({
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, locale === 'sk' ? 'tvorba-eshopu' : 'ecommerce-development');
 
+  const allPosts = getSortedPostsData(locale);
+  const relatedSlugs = ['mobilny-eshop-buducnost', 'seo-pre-eshop-organika', 'rychlost-doveryhodnost-ux-eshopu'];
+  const relatedPosts = allPosts.filter(post => relatedSlugs.includes(post.slug));
+
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} page="ecommerce-development" />
@@ -65,6 +70,7 @@ export default async function EcommercePage({
         serviceId="ecommerce"
         icon={<ShoppingCart className="w-8 h-8" />}
         breadcrumbs={breadcrumbs}
+        relatedPosts={relatedPosts}
       />
     </>
   );

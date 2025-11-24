@@ -11,7 +11,7 @@ export default function LoadingScreen() {
   const [stage, setStage] = useState<'loading' | 'scaling' | 'complete'>('loading');
   // Initialize with a random quote immediately to avoid delay
   const [messageKey] = useState(() => {
-    const index = Math.floor(Math.random() * 15);
+    const index = Math.floor(Math.random() * 30);
     return `quotes.${index}`;
   });
 

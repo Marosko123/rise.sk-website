@@ -132,7 +132,14 @@ export function getSortedPostsData(locale: string): BlogPost[] {
     // Filter out drafts in production
     .filter(post => process.env.NODE_ENV === 'development' || !post.draft);
 
-  return allPosts.sort((a, b) => {
+  // Ensure uniqueness by slug
+  const uniquePosts = allPosts.filter((post, index, self) =>
+    index === self.findIndex((p) => (
+      p.slug === post.slug
+    ))
+  );
+
+  return uniquePosts.sort((a, b) => {
     // Sort strictly by date (newest first)
     return a.date < b.date ? 1 : -1;
   });

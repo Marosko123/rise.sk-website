@@ -1,5 +1,6 @@
 import ServiceDetailLayout from '@/components/layout/ServiceDetailLayout';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import { getSortedPostsData } from '@/utils/blog-server';
 import { Users } from 'lucide-react';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
@@ -54,6 +55,10 @@ export default async function OutsourcingPage({
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, 'it-outsourcing');
 
+  const allPosts = getSortedPostsData(locale);
+  const relatedSlugs = ['outsourcing-vyvoja-webu', 'vyber-it-partnera'];
+  const relatedPosts = allPosts.filter(post => relatedSlugs.includes(post.slug));
+
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} page="it-outsourcing" />
@@ -61,6 +66,7 @@ export default async function OutsourcingPage({
         serviceId="outsourcing"
         icon={<Users className="w-8 h-8" />}
         breadcrumbs={breadcrumbs}
+        relatedPosts={relatedPosts}
       />
     </>
   );

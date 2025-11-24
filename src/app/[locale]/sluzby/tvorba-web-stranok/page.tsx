@@ -1,5 +1,6 @@
 import ServiceDetailLayout from '@/components/layout/ServiceDetailLayout';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
+import { getSortedPostsData } from '@/utils/blog-server';
 import { Laptop } from 'lucide-react';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
@@ -58,6 +59,10 @@ export default async function WebDevelopmentPage({
   const { locale } = await params;
   const breadcrumbs = getBreadcrumbsForPage(locale, locale === 'sk' ? 'tvorba-web-stranok' : 'web-development');
 
+  const allPosts = getSortedPostsData(locale);
+  const relatedSlugs = ['responzivny-web-2025', 'rychlost-webu-a-dopyty', '10-prvkov-kvalitneho-webu'];
+  const relatedPosts = allPosts.filter(post => relatedSlugs.includes(post.slug));
+
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} page="web-development" />
@@ -65,6 +70,7 @@ export default async function WebDevelopmentPage({
         serviceId="webDevelopment"
         icon={<Laptop className="w-8 h-8" />}
         breadcrumbs={breadcrumbs}
+        relatedPosts={relatedPosts}
       />
     </>
   );

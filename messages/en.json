@@ -89,9 +89,15 @@
   },
   "about": {
     "badge": "About Rise.sk",
-    "title": "What Makes Us Different",
-    "titleHighlight": "From Other Companies",
-    "description": "We are more than just a development company. We are partners who combine technological knowledge with business thinking. We design every project for maximum scalability, security, and measurable success.",
+    "title": "Who we are and",
+    "titleHighlight": "why we do it",
+    "description": "We are a group of young people brought together by a passion for technology back at university. What started as joint studies and dreams in the dorms has grown into a strong team that today builds large applications for corporations, government administration, and investment funds.",
+    "story": {
+      "title": "From university friends to technology partners",
+      "p1": "Our journey didn't start in boardrooms, but in university labs and during long night coding sessions. We are a group of friends who believe that technology should serve people, not the other way around. We have kept our youthful drive and friendly atmosphere, but today we combine it with expertise valued by the biggest players on the market.",
+      "p2": "We help companies grow because we know what it's like to build something from scratch ourselves. We use the most modern tools because we enjoy it and because we know that they bring the best results. Whether it's a complex government system or an innovative app for a startup, we put a piece of our 'rise' spirit into every project.",
+      "cta": "We want to help you too. We are not just suppliers, we are your future technology partners. Let's meet, have a coffee, and talk about how we can grow together."
+    },
     "stats": {
       "delivery": {
         "number": "100%",
@@ -1006,7 +1012,22 @@
       "11": "\"Opportunities don't happen. You create them.\"",
       "12": "\"Great things in business are never done by one person.\"",
       "13": "\"Don't watch the clock; do what it does. Keep going.\"",
-      "14": "\"Success usually comes to those who are too busy to be looking for it.\""
+      "14": "\"Success usually comes to those who are too busy to be looking for it.\"",
+      "15": "\"Your brand is what other people say about you when you're not in the room.\"",
+      "16": "\"Marketing is no longer about the stuff that you make, but about the stories you tell.\"",
+      "17": "\"Content is king.\"",
+      "18": "\"The best advertising is done by satisfied customers.\"",
+      "19": "\"Don't find customers for your products, find products for your customers.\"",
+      "20": "\"If you can't explain it simply, you don't understand it well enough.\"",
+      "21": "\"Design is not just what it looks like and feels like. Design is how it works.\"",
+      "22": "\"Creativity is intelligence having fun.\"",
+      "23": "\"Do what you love and the money will follow.\"",
+      "24": "\"The only way to do great work is to love what you do.\"",
+      "25": "\"Business has only two functions - marketing and innovation.\"",
+      "26": "\"If you are not taking care of your customer, your competitor will.\"",
+      "27": "\"The aim of marketing is to know and understand the customer so well the product or service fits him and sells itself.\"",
+      "28": "\"Vision without execution is just hallucination.\"",
+      "29": "\"Growth is never by mere chance; it is the result of forces working together.\""
     }
   },
   "blog": {

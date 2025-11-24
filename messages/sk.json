@@ -89,9 +89,15 @@
   },
   "about": {
     "badge": "O Rise.sk",
-    "title": "Čo nás odlišuje",
-    "titleHighlight": "od ostatných firiem",
-    "description": "Nie sme iba vývojová firma. Sme partneri, ktorí kombinujú technologické znalosti s obchodným myslením. Každý projekt navrhujeme pre maximálnu škálovateľnosť, bezpečnosť a merateľný úspech.",
+    "title": "Kto sme a",
+    "titleHighlight": "prečo to robíme",
+    "description": "Sme partia mladých ľudí, ktorých spojila vášeň pre technológie už na univerzite. To, čo začalo ako spoločné štúdium a sny na internáte, prerástlo do silného tímu, ktorý dnes buduje veľké aplikácie pre korporácie, štátnu správu a investičné fondy.",
+    "story": {
+      "title": "Od kamarátov z výšky k technologickým partnerom",
+      "p1": "Naša cesta nezačala v zasadačkách, ale v univerzitných labákoch a pri dlhých nočných coding sessions. Sme skupina priateľov, ktorí veria, že technológie majú slúžiť ľuďom, nie naopak. Zachovali sme si našu mladícku dravosť a priateľskú atmosféru, no dnes ju kombinujeme s expertízou, ktorú oceňujú tí najväčší hráči na trhu.",
+      "p2": "Pomáhame firmám rásť, pretože sami vieme, aké je to budovať niečo od nuly. Používame tie najmodernejšie nástroje, pretože nás to baví a pretože vieme, že práve tie prinášajú najlepšie výsledky. Či už ide o komplexný vládny systém alebo inovatívnu appku pre startup, do každého projektu dávame kúsok nášho 'rise' ducha.",
+      "cta": "Chceme pomôcť aj vám. Nie sme len dodávatelia, sme vaši budúci technologickí partneri. Poďme sa stretnúť, dať si kávu a porozprávať sa o tom, ako môžeme spoločne vyrásť."
+    },
     "stats": {
       "delivery": {
         "number": "100 %",
@@ -1166,7 +1172,22 @@
       "11": "\"Príležitosti sa nedejú. Vy ich vytvárate.\"",
       "12": "\"Veľké veci v biznise nikdy nerobí jeden človek.\"",
       "13": "\"Nesledujte hodiny; robte to, čo robia ony. Pokračujte.\"",
-      "14": "\"Úspech zvyčajne prichádza k tým, ktorí sú príliš zaneprázdnení na to, aby ho hľadali.\""
+      "14": "\"Úspech zvyčajne prichádza k tým, ktorí sú príliš zaneprázdnení na to, aby ho hľadali.\"",
+      "15": "\"Vaša značka je to, čo o vás hovoria ľudia, keď nie ste v miestnosti.\"",
+      "16": "\"Marketing už nie je o veciach, ktoré vyrábate, ale o príbehoch, ktoré rozprávate.\"",
+      "17": "\"Obsah je kráľ.\"",
+      "18": "\"Najlepšia reklama sú spokojní zákazníci.\"",
+      "19": "\"Nehľadajte zákazníkov pre svoje produkty, hľadajte produkty pre svojich zákazníkov.\"",
+      "20": "\"Ak to neviete vysvetliť jednoducho, nerozumiete tomu dostatočne dobre.\"",
+      "21": "\"Dizajn nie je len to, ako to vyzerá a pôsobí. Dizajn je to, ako to funguje.\"",
+      "22": "\"Kreativita je inteligencia, ktorá sa zabáva.\"",
+      "23": "\"Robte to, čo milujete, a peniaze prídu samé.\"",
+      "24": "\"Jediný spôsob, ako robiť skvelú prácu, je milovať to, čo robíte.\"",
+      "25": "\"Podnikanie má len dve funkcie - marketing a inovácie.\"",
+      "26": "\"Ak sa nepostaráte o svojho zákazníka vy, postará sa o neho vaša konkurencia.\"",
+      "27": "\"Cieľom marketingu je poznať a chápať zákazníka tak dobre, že výrobok alebo služba mu sadne a predá sa sama.\"",
+      "28": "\"Vízia bez exekúcie je len halucinácia.\"",
+      "29": "\"Rast nie je nikdy dielom náhody; je výsledkom spolupráce síl.\""
     }
   },
   "blog": {

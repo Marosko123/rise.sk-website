@@ -2,6 +2,8 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, Brain, ChevronDown, Code2, Laptop, LucideIcon, Menu, ShoppingCart, Smartphone, User, Users, X } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useThrottledCallback } from 'use-debounce';
@@ -9,7 +11,6 @@ import { useThrottledCallback } from 'use-debounce';
 import { Button } from '@/components/ui/Button';
 import { teamMembers } from '@/data/team';
 import { AppPathnames, Link, usePathname, useRouter } from '@/i18n/routing';
-import { useLocale, useTranslations } from 'next-intl';
 
 import LanguageSwitcher from './LanguageSwitcher';
 import LogoAndText from './LogoAndText';
@@ -20,7 +21,7 @@ type NavLink = {
   section: string;
   isHash: boolean;
   hasDropdown?: boolean;
-  dropdownItems?: { label: string; href: AppPathnames | { pathname: AppPathnames; hash: string }; icon?: LucideIcon; description?: string }[];
+  dropdownItems?: { label: string; href: AppPathnames | { pathname: AppPathnames; hash: string }; icon?: LucideIcon; image?: string; description?: string }[];
 };
 
 interface NavigationProps {
@@ -211,6 +212,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
             label: member.name,
             href: { pathname: '/team' as AppPathnames, hash: member.id },
             icon: User,
+            image: member.image,
             description: tMembers(`${member.id}.role`)
           })),
           {
@@ -461,6 +463,8 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                 <div className='py-2'>
                                 {link.dropdownItems?.map((item, itemIndex) => {
                                   const Icon = item.icon;
+                                  const isPlaceholder = item.image?.includes('rise-team.png');
+
                                   return (
                                     <Link
                                       key={itemIndex}
@@ -472,9 +476,27 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                         setIsMenuOpen(false);
                                       }}
                                     >
-                                      <div className='p-2 rounded-lg bg-white/5 group-hover/item:bg-primary/20 transition-colors duration-200'>
-                                        {Icon && <Icon className='w-5 h-5 text-gray-300 group-hover/item:text-primary transition-colors duration-200' />}
-                                      </div>
+                                      {item.image && !isPlaceholder ? (
+                                        <div className="relative w-9 h-9 rounded-full overflow-hidden border border-white/10 flex-shrink-0">
+                                          <Image
+                                            src={item.image}
+                                            alt={item.label}
+                                            fill
+                                            className="object-cover"
+                                            sizes="36px"
+                                          />
+                                        </div>
+                                      ) : isPlaceholder ? (
+                                        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center border border-white/10 flex-shrink-0">
+                                          <span className="text-xs font-bold text-primary">
+                                            {item.label.split(' ').map(n => n[0]).join('')}
+                                          </span>
+                                        </div>
+                                      ) : (
+                                        <div className='p-2 rounded-lg bg-white/5 group-hover/item:bg-primary/20 transition-colors duration-200'>
+                                          {Icon && <Icon className='w-5 h-5 text-gray-300 group-hover/item:text-primary transition-colors duration-200' />}
+                                        </div>
+                                      )}
                                       <div className='flex-1'>
                                         <div className='text-base font-semibold text-gray-200 group-hover/item:text-white transition-colors duration-200'>
                                           {item.label}
@@ -633,6 +655,8 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                         >
                           {link.dropdownItems?.map((item, itemIndex) => {
                             const Icon = item.icon;
+                            const isPlaceholder = item.image?.includes('rise-team.png');
+
                             return (
                               <Link
                                 key={itemIndex}
@@ -644,7 +668,25 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                   setActiveDropdown(null);
                                 }}
                               >
-                                {Icon && <Icon className='w-6 h-6 flex-shrink-0' />}
+                                {item.image && !isPlaceholder ? (
+                                  <div className="relative w-9 h-9 rounded-full overflow-hidden border border-white/10 flex-shrink-0">
+                                    <Image
+                                      src={item.image}
+                                      alt={item.label}
+                                      fill
+                                      className="object-cover"
+                                      sizes="36px"
+                                    />
+                                  </div>
+                                ) : isPlaceholder ? (
+                                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center border border-white/10 flex-shrink-0">
+                                    <span className="text-xs font-bold text-primary">
+                                      {item.label.split(' ').map(n => n[0]).join('')}
+                                    </span>
+                                  </div>
+                                ) : (
+                                  Icon && <Icon className='w-6 h-6 flex-shrink-0' />
+                                )}
                                 <div className='flex-1 text-left'>
                                   <div className='font-bold text-lg'>{item.label}</div>
                                   <div className='text-sm text-gray-400 mt-1'>{item.description}</div>

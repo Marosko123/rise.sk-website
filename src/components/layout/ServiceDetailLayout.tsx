@@ -41,6 +41,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import FadeIn from '@/components/animations/FadeIn';
+import BlogCard from '@/components/blog/BlogCard';
 import MultiStepContactForm from '@/components/features/MultiStepContactForm';
 import GlobalBackground from '@/components/GlobalBackground';
 import Navigation from '@/components/layout/Navigation';
@@ -51,12 +52,14 @@ import { Button } from '@/components/ui/Button';
 import FAQAccordion from '@/components/ui/FAQAccordion';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { useTranslations } from '@/hooks/useTranslations';
+import { BlogPost } from '@/utils/blog';
 import { useLocale } from 'next-intl';
 
 interface ServiceDetailProps {
   serviceId: string; // e.g., 'webDevelopment', 'ecommerce'
   icon?: React.ReactNode;
   breadcrumbs?: { name: string; url: string }[];
+  relatedPosts?: BlogPost[];
 }
 
 const getFeatureIcon = (title: string) => {
@@ -190,7 +193,7 @@ const getAiIcon = (index: number) => {
   }
 };
 
-export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceDetailProps) {
+export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPosts }: ServiceDetailProps) {
   const t = useTranslations(`services.${serviceId}`);
   const locale = useLocale();
   const { trackServiceInterest } = useAnalytics();
@@ -574,30 +577,13 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
 
               <div className="flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
                 {techStack.recommended.map((tech, idx) => {
-                  const LogoUrl = TECH_LOGOS[tech.name];
-                  const FallbackIcon = getFeatureIcon(tech.name);
-
                   return (
                     <FadeIn
                       key={idx}
                       delay={idx * 0.1}
                       className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm min-w-[80vw] max-w-[90vw] md:min-w-0 snap-center flex-shrink-0"
                     >
-                      <div className="mb-6 p-4 rounded-2xl bg-white/5 inline-block group-hover:scale-110 transition-transform duration-500">
-                        {LogoUrl ? (
-                          <div className="relative w-12 h-12">
-                            <Image
-                              src={LogoUrl}
-                              alt={tech.name}
-                              fill
-                              sizes="48px"
-                              className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                            />
-                          </div>
-                        ) : (
-                          <FallbackIcon className="w-12 h-12 text-[var(--primary)]" />
-                        )}
-                      </div>
+                      {/* Icon removed as per request */}
 
                       <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[var(--primary)] transition-colors whitespace-normal break-words">
                         {tech.name}
@@ -870,6 +856,31 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs }: ServiceD
           </div>
         </div>
       </section>
+
+      {/* Related Posts Section */}
+      {relatedPosts && relatedPosts.length > 0 && (
+        <section className="py-24 px-6 border-t border-white/5">
+          <div className="max-w-7xl mx-auto">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                <span className="text-white">{locale === 'sk' ? 'Súvisiace ' : 'Related ' }</span>
+                <span className="gradient-text">{locale === 'sk' ? 'články' : 'Articles'}</span>
+              </h2>
+              <p className="text-[var(--muted-foreground)] text-lg">
+                {locale === 'sk' ? 'Prečítajte si viac o tejto téme' : 'Read more about this topic'}
+              </p>
+            </FadeIn>
+
+            <div className="flex overflow-x-auto pb-8 -mx-4 px-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-8 scrollbar-hide">
+              {relatedPosts.map((post) => (
+                <div key={post.slug} className="min-w-[85vw] md:min-w-0 snap-center">
+                  <BlogCard post={post} locale={locale} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Contact Section */}
       <MultiStepContactForm id={contactSectionId} />
