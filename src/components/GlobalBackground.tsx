@@ -224,23 +224,21 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
             </div>
 
             {/* 3. Rotating Conic Sheen - Metallic shimmer effect */}
-            {!isMobile && (
-              <div className="absolute inset-[-50%] w-[200%] h-[200%] animate-rotate-very-slow opacity-[0.2] pointer-events-none mix-blend-screen">
-                <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(218,181,73,0.15)_60deg,transparent_120deg,transparent_180deg,rgba(139,103,35,0.15)_240deg,transparent_300deg)] blur-[60px]"></div>
-              </div>
-            )}
+            <div className="absolute inset-[-50%] w-[200%] h-[200%] animate-rotate-very-slow opacity-[0.2] pointer-events-none mix-blend-screen">
+              <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(218,181,73,0.15)_60deg,transparent_120deg,transparent_180deg,rgba(139,103,35,0.15)_240deg,transparent_300deg)] blur-[60px]"></div>
+            </div>
 
             {/* 4. Large Premium Glows - Enhanced presence */}
             {isMobile ? (
               <>
                 {/* Mobile: Enhanced static background with richer colors */}
-                <div className="absolute top-[-15%] right-[-10%] w-[85vw] h-[85vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.28)_0%,rgba(218,181,73,0.12)_30%,transparent_70%)] blur-[70px] pointer-events-none mix-blend-screen"></div>
-                <div className="absolute bottom-[-15%] left-[-10%] w-[85vw] h-[85vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.28)_0%,rgba(139,103,35,0.12)_30%,transparent_70%)] blur-[70px] pointer-events-none mix-blend-screen"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75vw] h-[75vw] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.12)_0%,rgba(218,181,73,0.08)_40%,transparent_70%)] blur-[60px] pointer-events-none mix-blend-screen"></div>
+                <div className="absolute top-[-15%] right-[-10%] w-[85vw] h-[85vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.28)_0%,rgba(218,181,73,0.12)_30%,transparent_70%)] blur-[70px] pointer-events-none mix-blend-screen animate-pulse-slow"></div>
+                <div className="absolute bottom-[-15%] left-[-10%] w-[85vw] h-[85vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.28)_0%,rgba(139,103,35,0.12)_30%,transparent_70%)] blur-[70px] pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-2000"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75vw] h-[75vw] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.12)_0%,rgba(218,181,73,0.08)_40%,transparent_70%)] blur-[60px] pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-4000"></div>
 
                 {/* Mobile: Accent highlights */}
-                <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-[radial-gradient(circle,rgba(254,251,216,0.15)_0%,transparent_60%)] blur-[50px] pointer-events-none mix-blend-screen"></div>
-                <div className="absolute bottom-[25%] right-[15%] w-[35vw] h-[35vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.2)_0%,transparent_60%)] blur-[45px] pointer-events-none mix-blend-screen"></div>
+                <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-[radial-gradient(circle,rgba(254,251,216,0.15)_0%,transparent_60%)] blur-[50px] pointer-events-none mix-blend-screen animate-float-slow"></div>
+                <div className="absolute bottom-[25%] right-[15%] w-[35vw] h-[35vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.2)_0%,transparent_60%)] blur-[45px] pointer-events-none mix-blend-screen animate-float-slow animation-delay-2000"></div>
               </>
             ) : (
               <>
@@ -261,7 +259,7 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
             )}
 
             {/* Ambient Particles for Landing Page - Optimized for mobile */}
-            <BackgroundParticles count={isMobile ? 0 : 60} mounted={mounted} isMobile={isMobile} />
+            <BackgroundParticles count={isMobile ? 20 : 60} mounted={mounted} isMobile={false} />
 
             <FloatingShapes
               ref={floatingShapesRef}
