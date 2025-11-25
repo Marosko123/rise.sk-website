@@ -17,14 +17,17 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
   const [isTextHovered, setIsTextHovered] = useState(false);
 
   return (
-    <div className={`flex items-center space-x-3 ${className}`}>
+    <div
+      className={`flex items-center space-x-3 cursor-pointer ${className}`}
+      onClick={onClick}
+    >
       <div className='transition-transform duration-300 ease-out relative'>
         <Image
           src={companyConfig.website.logo.logoGoldTransparent}
           alt={companyConfig.company.name}
           width={50}
           height={50}
-          className='transition-all duration-300 cursor-pointer select-none'
+          className='transition-all duration-300 select-none'
           style={mounted ? {
             transform: isHovered
               ? `scale(1.2) rotate(15deg)`
@@ -39,7 +42,6 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onClick={onClick}
           draggable={false}
         />
 
@@ -68,7 +70,7 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
 
       <div className='relative'>
         <span
-          className='text-2xl font-bold text-white cursor-pointer inline-block transition-all duration-300 hover:scale-105 select-none'
+          className='text-2xl font-bold text-white inline-block transition-all duration-300 hover:scale-105 select-none'
           style={mounted ? {
             textShadow: isTextHovered
               ? '0 0 25px rgba(218, 181, 73, 0.8)'
@@ -77,7 +79,6 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
           } : {}}
           onMouseEnter={() => setIsTextHovered(true)}
           onMouseLeave={() => setIsTextHovered(false)}
-          onClick={onClick}
         >
           {companyConfig.company.domain.split('').map((letter, index) => (
             <span
