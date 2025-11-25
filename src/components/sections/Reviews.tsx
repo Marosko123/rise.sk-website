@@ -1,11 +1,11 @@
 'use client';
 
-import { useTranslations } from '@/hooks/useTranslations';
-import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-
+import { useCarousel } from '@/hooks/useCarousel';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { useSwipe } from '@/hooks/useSwipe';
+import { useTranslations } from '@/hooks/useTranslations';
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
+import { useMemo } from 'react';
 
 import { Card } from '../ui/Card';
 import { Section } from '../ui/Section';
@@ -28,8 +28,6 @@ interface ReviewsProps {
 export default function Reviews({ className, id = 'reviews' }: ReviewsProps) {
   const t = useTranslations('reviews');
   const isMobile = useIsMobile();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   // Get reviews from translations
   const reviews: Review[] = useMemo(() => {
@@ -41,36 +39,19 @@ export default function Reviews({ className, id = 'reviews' }: ReviewsProps) {
     }
   }, [t]);
 
-  // Responsive visible reviews - simplified logic
-  const visibleReviews = isMobile ? 1 : 3;
-  const maxIndex = Math.max(0, reviews.length - visibleReviews);
-
-  // Auto-play carousel
-  useEffect(() => {
-    if (isPaused || reviews.length <= visibleReviews) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isPaused, reviews.length, visibleReviews, maxIndex]);
-
-  const nextReview = useCallback(() => {
-    setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-  }, [maxIndex]);
-
-  const prevReview = useCallback(() => {
-    setCurrentIndex(prev => (prev === 0 ? maxIndex : prev - 1));
-  }, [maxIndex]);
-
-  const goToReview = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
+  const {
+    currentIndex,
+    itemsPerView,
+    maxIndex,
+    nextSlide,
+    prevSlide,
+    goToSlide,
+    setIsHovered,
+  } = useCarousel(reviews.length, { mobileItems: 1.2, autoPlayInterval: 3000 });
 
   const swipeHandlers = useSwipe({
-    onSwipedLeft: nextReview,
-    onSwipedRight: prevReview,
+    onSwipedLeft: nextSlide,
+    onSwipedRight: prevSlide,
   });
 
   // Optimized star rendering with memoization
@@ -107,22 +88,22 @@ export default function Reviews({ className, id = 'reviews' }: ReviewsProps) {
 
         {/* Reviews Container */}
         <div className="relative">
-          {/* Navigation Buttons - Only on desktop */}
-          {!isMobile && reviews.length > visibleReviews && (
+          {/* Navigation Buttons */}
+          {reviews.length > itemsPerView && (
             <>
               <button
-                onClick={prevReview}
-                className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-colors duration-200 flex items-center justify-center select-none"
+                onClick={prevSlide}
+                className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110 select-none"
                 aria-label="Previous review"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="h-6 w-6 text-[var(--primary)]" />
               </button>
               <button
-                onClick={nextReview}
-                className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-colors duration-200 flex items-center justify-center select-none"
+                onClick={nextSlide}
+                className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110 select-none"
                 aria-label="Next review"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="h-6 w-6 text-[var(--primary)]" />
               </button>
             </>
           )}
@@ -131,29 +112,28 @@ export default function Reviews({ className, id = 'reviews' }: ReviewsProps) {
           <div
             className="overflow-hidden"
             onTouchStart={(e) => {
-              setIsPaused(true);
+              setIsHovered(true);
               swipeHandlers.onTouchStart(e);
             }}
             onTouchMove={swipeHandlers.onTouchMove}
             onTouchEnd={() => {
-              setIsPaused(false);
+              setIsHovered(false);
               swipeHandlers.onTouchEnd();
             }}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             <div
               className="flex transition-transform duration-500 ease-out items-stretch"
               style={{
-                transform: `translateX(-${currentIndex * (100 / visibleReviews)}%)`,
+                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
               }}
             >
               {reviews.map((review) => (
                 <div
                   key={review.id}
-                  className={`flex-shrink-0 px-3 ${
-                    isMobile ? 'w-full' : 'w-1/3'
-                  }`}
+                  className="flex-shrink-0 px-3"
+                  style={{ width: `${100 / itemsPerView}%` }}
                 >
                   <Card
                     variant="glass"
@@ -206,16 +186,16 @@ export default function Reviews({ className, id = 'reviews' }: ReviewsProps) {
           </div>
 
           {/* Dots Indicator - Simplified */}
-          {reviews.length > visibleReviews && (
+          {reviews.length > itemsPerView && (
             <div className="flex justify-center gap-3 mt-8 mb-12">
               {Array.from({ length: maxIndex + 1 }, (_, index) => (
                 <button
                   key={index}
-                  onClick={() => goToReview(index)}
-                  className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 relative ${
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 relative ${
                     index === currentIndex
                       ? 'bg-[var(--primary)] scale-125'
-                      : 'bg-gray-600 hover:bg-gray-500'
+                      : 'bg-white/30 hover:bg-white/50'
                   }`}
                   aria-label={`Go to review ${index + 1}`}
                   style={{ minWidth: 'auto', minHeight: 'auto' }}

@@ -2,40 +2,40 @@
 
 import { motion } from 'framer-motion';
 import {
-    ArrowRight,
-    Bell,
-    Bot,
-    Box,
-    BrainCircuit,
-    CheckCircle2,
-    Cloud,
-    Code,
-    Cpu,
-    CreditCard,
-    Edit,
-    FileBarChart,
-    FileText,
-    Globe,
-    GraduationCap,
-    Image as ImageIcon,
-    Layers,
-    Link,
-    Lock,
-    Maximize,
-    Megaphone,
-    Palette,
-    PieChart,
-    Search,
-    Server,
-    Smartphone,
-    Sparkles,
-    Terminal,
-    TrendingUp,
-    UploadCloud,
-    Users,
-    WifiOff,
-    Workflow,
-    Zap
+  ArrowRight,
+  Bell,
+  Bot,
+  Box,
+  BrainCircuit,
+  CheckCircle2,
+  Cloud,
+  Code,
+  Cpu,
+  CreditCard,
+  Edit,
+  FileBarChart,
+  FileText,
+  Globe,
+  GraduationCap,
+  Image as ImageIcon,
+  Layers,
+  Link,
+  Lock,
+  Maximize,
+  Megaphone,
+  Palette,
+  PieChart,
+  Search,
+  Server,
+  Smartphone,
+  Sparkles,
+  Terminal,
+  TrendingUp,
+  UploadCloud,
+  Users,
+  WifiOff,
+  Workflow,
+  Zap
 } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -50,6 +50,7 @@ import EnhancedSchema from '@/components/seo/EnhancedSchema';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { Button } from '@/components/ui/Button';
 import FAQAccordion from '@/components/ui/FAQAccordion';
+import { MobileCarousel } from '@/components/ui/MobileCarousel';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { useTranslations } from '@/hooks/useTranslations';
 import { BlogPost } from '@/utils/blog';
@@ -274,7 +275,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
         provider: {
           "@type": "Organization",
           "name": "Rise.sk",
-          "url": "https://rise.sk"
+          "url": "https://www.rise.sk"
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
@@ -517,47 +518,93 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
               })}
             </div>
           ) : (
-            <div className="flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
-              {features.map((feature, idx) => {
-                const Icon = getFeatureIcon(feature?.title || '');
-                return (
-                  <FadeIn
-                    key={idx}
-                    delay={idx * 0.1}
-                    className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm min-w-[80vw] max-w-[90vw] md:min-w-0 snap-center flex-shrink-0"
-                  >
-                    {/* Hover Gradient Blob */}
-                    <div className="absolute -right-20 -top-20 w-64 h-64 bg-[var(--primary)]/10 rounded-full blur-[80px] group-hover:bg-[var(--primary)]/20 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+            <>
+              <div className="md:hidden">
+                <MobileCarousel className="-mx-6 px-6 pb-8">
+                  {features.map((feature, idx) => {
+                    const Icon = getFeatureIcon(feature?.title || '');
+                    return (
+                      <FadeIn
+                        key={idx}
+                        delay={idx * 0.1}
+                        className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm h-full"
+                      >
+                        {/* Hover Gradient Blob */}
+                        <div className="absolute -right-20 -top-20 w-64 h-64 bg-[var(--primary)]/10 rounded-full blur-[80px] group-hover:bg-[var(--primary)]/20 transition-all duration-500 opacity-0 group-hover:opacity-100" />
 
-                    {/* Number Background */}
-                    <div className="absolute right-4 top-4 text-8xl font-bold text-white/[0.06] select-none pointer-events-none group-hover:text-white/[0.1] transition-colors">
-                      {String(idx + 1).padStart(2, '0')}
-                    </div>
+                        {/* Number Background */}
+                        <div className="absolute right-4 top-4 text-8xl font-bold text-white/[0.06] select-none pointer-events-none group-hover:text-white/[0.1] transition-colors">
+                          {String(idx + 1).padStart(2, '0')}
+                        </div>
 
-                    <div className="relative z-10">
-                      <div className="mb-8 inline-flex p-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent border border-white/[0.05] group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/20">
-                        <Icon className="w-8 h-8 text-[var(--primary)]" />
+                        <div className="relative z-10">
+                          <div className="mb-8 inline-flex p-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent border border-white/[0.05] group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/20">
+                            <Icon className="w-8 h-8 text-[var(--primary)]" />
+                          </div>
+
+                          <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[var(--primary)] transition-colors duration-300 whitespace-normal break-words">
+                            {feature?.title}
+                          </h3>
+
+                          <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors mb-4 whitespace-normal break-words line-clamp-3">
+                            {feature?.description}
+                          </p>
+
+                          {feature?.price && (
+                            <div className="mt-auto pt-4 border-t border-white/10">
+                              <p className="text-sm text-gray-500 mb-1">Cena od</p>
+                              <p className="text-2xl font-bold text-[var(--primary)]">{feature.price}</p>
+                            </div>
+                          )}
+                        </div>
+                      </FadeIn>
+                    );
+                  })}
+                </MobileCarousel>
+              </div>
+
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
+                {features.map((feature, idx) => {
+                  const Icon = getFeatureIcon(feature?.title || '');
+                  return (
+                    <FadeIn
+                      key={idx}
+                      delay={idx * 0.1}
+                      className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm"
+                    >
+                      {/* Hover Gradient Blob */}
+                      <div className="absolute -right-20 -top-20 w-64 h-64 bg-[var(--primary)]/10 rounded-full blur-[80px] group-hover:bg-[var(--primary)]/20 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+
+                      {/* Number Background */}
+                      <div className="absolute right-4 top-4 text-8xl font-bold text-white/[0.06] select-none pointer-events-none group-hover:text-white/[0.1] transition-colors">
+                        {String(idx + 1).padStart(2, '0')}
                       </div>
 
-                      <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[var(--primary)] transition-colors duration-300 whitespace-normal break-words">
-                        {feature?.title}
-                      </h3>
-
-                      <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors mb-4 whitespace-normal break-words line-clamp-3">
-                        {feature?.description}
-                      </p>
-
-                      {feature?.price && (
-                        <div className="mt-auto pt-4 border-t border-white/10">
-                          <p className="text-sm text-gray-500 mb-1">Cena od</p>
-                          <p className="text-2xl font-bold text-[var(--primary)]">{feature.price}</p>
+                      <div className="relative z-10">
+                        <div className="mb-8 inline-flex p-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent border border-white/[0.05] group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/20">
+                          <Icon className="w-8 h-8 text-[var(--primary)]" />
                         </div>
-                      )}
-                    </div>
-                  </FadeIn>
-                );
-              })}
-            </div>
+
+                        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[var(--primary)] transition-colors duration-300 whitespace-normal break-words">
+                          {feature?.title}
+                        </h3>
+
+                        <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors mb-4 whitespace-normal break-words line-clamp-3">
+                          {feature?.description}
+                        </p>
+
+                        {feature?.price && (
+                          <div className="mt-auto pt-4 border-t border-white/10">
+                            <p className="text-sm text-gray-500 mb-1">Cena od</p>
+                            <p className="text-2xl font-bold text-[var(--primary)]">{feature.price}</p>
+                          </div>
+                        )}
+                      </div>
+                    </FadeIn>
+                  );
+                })}
+              </div>
+            </>
           )}
         </div>
       </section>
@@ -575,13 +622,35 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
                 <p className="text-[var(--muted-foreground)] text-lg">To najlepšie pre váš projekt</p>
               </FadeIn>
 
-              <div className="flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
+              <div className="md:hidden">
+                <MobileCarousel className="-mx-6 px-6 pb-8">
+                  {techStack.recommended.map((tech, idx) => (
+                    <FadeIn
+                      key={idx}
+                      delay={idx * 0.1}
+                      className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm h-full"
+                    >
+                      {/* Icon removed as per request */}
+
+                      <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[var(--primary)] transition-colors whitespace-normal break-words">
+                        {tech.name}
+                      </h3>
+
+                      <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors whitespace-normal break-words line-clamp-3">
+                        {tech.reason}
+                      </p>
+                    </FadeIn>
+                  ))}
+                </MobileCarousel>
+              </div>
+
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
                 {techStack.recommended.map((tech, idx) => {
                   return (
                     <FadeIn
                       key={idx}
                       delay={idx * 0.1}
-                      className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm min-w-[80vw] max-w-[90vw] md:min-w-0 snap-center flex-shrink-0"
+                      className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm"
                     >
                       {/* Icon removed as per request */}
 
@@ -668,7 +737,48 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
                   <p className="text-[var(--muted-foreground)] text-lg">{tools.subtitle}</p>
                 </FadeIn>
 
-                <div className="flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
+                <div className="md:hidden">
+                  <MobileCarousel className="-mx-6 px-6 pb-8">
+                    {tools.items.map((tool, idx) => {
+                      const getCategoryIcon = (name: string) => {
+                        const n = name.toLowerCase();
+                        // AI Tools
+                        if (n.includes('chatgpt') || n.includes('claude')) return <Bot className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('notebooklm')) return <FileText className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('midjourney')) return <ImageIcon className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('python')) return <Terminal className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('n8n') || n.includes('make') || n.includes('zapier')) return <Workflow className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('copilot')) return <Sparkles className="w-12 h-12 text-[var(--primary)]" />;
+
+                        // General Categories
+                        if (n.includes('mobile')) return <Smartphone className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('cloud')) return <Cloud className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('data')) return <PieChart className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('backend')) return <Server className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('frontend')) return <Palette className="w-12 h-12 text-[var(--primary)]" />;
+                        if (n.includes('qa')) return <CheckCircle2 className="w-12 h-12 text-[var(--primary)]" />;
+                        return <Code className="w-12 h-12 text-[var(--primary)]" />;
+                      };
+
+                      return (
+                        <FadeIn
+                          key={idx}
+                          delay={idx * 0.1}
+                          duration={0.6}
+                          className="p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 flex flex-col items-start h-full"
+                        >
+                          <div className="mb-6 p-3 rounded-xl bg-white/5 inline-block">
+                            {getCategoryIcon(tool.name)}
+                          </div>
+                          <h3 className="text-2xl font-bold mb-2 text-[var(--foreground)] whitespace-normal break-words">{tool.name}</h3>
+                          <p className="text-[var(--muted-foreground)] whitespace-normal break-words line-clamp-3">{tool.description}</p>
+                        </FadeIn>
+                      );
+                    })}
+                  </MobileCarousel>
+                </div>
+
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
                   {tools.items.map((tool, idx) => {
                     const getCategoryIcon = (name: string) => {
                       const n = name.toLowerCase();
@@ -695,7 +805,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
                         key={idx}
                         delay={idx * 0.1}
                         duration={0.6}
-                        className="p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 flex flex-col items-start min-w-[80vw] max-w-[90vw] md:min-w-0 snap-center flex-shrink-0"
+                        className="p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 flex flex-col items-start"
                       >
                         <div className="mb-6 p-3 rounded-xl bg-white/5 inline-block">
                           {getCategoryIcon(tool.name)}
@@ -871,9 +981,15 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
               </p>
             </FadeIn>
 
-            <div className="flex overflow-x-auto pb-8 -mx-4 px-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-8 scrollbar-hide">
+            <div className="md:hidden">
+              <MobileCarousel className="-mx-4 px-4 pb-8">
+                {relatedPosts.map((post) => <BlogCard key={post.slug} post={post} locale={locale} />)}
+              </MobileCarousel>
+            </div>
+
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedPosts.map((post) => (
-                <div key={post.slug} className="min-w-[85vw] md:min-w-0 snap-center">
+                <div key={post.slug}>
                   <BlogCard post={post} locale={locale} />
                 </div>
               ))}

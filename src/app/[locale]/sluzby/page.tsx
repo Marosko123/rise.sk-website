@@ -15,6 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const localePath = locale === 'sk' ? '/sluzby' : '/services';
   const localeCode = locale === 'sk' ? 'sk_SK' : 'en_US';
+  const baseUrl = 'https://www.rise.sk';
+  const url = locale === 'sk' ? `${baseUrl}${localePath}` : `${baseUrl}/${locale}${localePath}`;
 
   return {
     title: t('meta.title'),
@@ -23,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: t('meta.title'),
       description: t('meta.description'),
-      url: `https://rise.sk/${locale === 'sk' ? '' : locale}${localePath}`,
+      url,
       siteName: 'Rise.sk',
       locale: localeCode,
       type: 'website',
@@ -34,10 +36,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: t('meta.description'),
     },
     alternates: {
-      canonical: `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}${localePath}`,
+      canonical: url,
       languages: {
-        'sk': 'https://rise.sk/sluzby',
-        'en': 'https://rise.sk/en/services',
+        'sk': 'https://www.rise.sk/sluzby',
+        'en': 'https://www.rise.sk/en/services',
       },
     },
   };
@@ -65,7 +67,7 @@ export default async function ServicesPage({
         'position': 1,
         'item': {
           '@type': 'Service',
-          '@id': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/tvorba-web-stranok`,
+          '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/tvorba-web-stranok`,
           'name': locale === 'sk' ? 'Tvorba Web Stránok' : 'Web Development',
           'description': locale === 'sk'
             ? 'Moderné a responzívne webové stránky postavené na najnovších technológiách'
@@ -74,7 +76,7 @@ export default async function ServicesPage({
             '@type': 'Organization',
             'name': 'Rise.sk'
           },
-          'url': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/tvorba-web-stranok`
+          'url': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/tvorba-web-stranok`
         }
       },
       {
@@ -82,7 +84,7 @@ export default async function ServicesPage({
         'position': 2,
         'item': {
           '@type': 'Service',
-          '@id': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/tvorba-eshopu`,
+          '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/tvorba-eshopu`,
           'name': locale === 'sk' ? 'Tvorba E-shopu' : 'E-commerce Development',
           'description': locale === 'sk'
             ? 'Komplexné e-commerce riešenia s pokročilými funkciami a integráciami'
@@ -91,7 +93,7 @@ export default async function ServicesPage({
             '@type': 'Organization',
             'name': 'Rise.sk'
           },
-          'url': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/tvorba-eshopu`
+          'url': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/tvorba-eshopu`
         }
       },
       {
@@ -99,7 +101,7 @@ export default async function ServicesPage({
         'position': 3,
         'item': {
           '@type': 'Service',
-          '@id': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/vyvoj-mobilnych-aplikacii`,
+          '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/vyvoj-mobilnych-aplikacii`,
           'name': locale === 'sk' ? 'Vývoj Mobilných Aplikácií' : 'Mobile App Development',
           'description': locale === 'sk'
             ? 'Natívne iOS a Android aplikácie s vynikajúcim užívateľským zážitkom'
@@ -108,7 +110,7 @@ export default async function ServicesPage({
             '@type': 'Organization',
             'name': 'Rise.sk'
           },
-          'url': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/vyvoj-mobilnych-aplikacii`
+          'url': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/vyvoj-mobilnych-aplikacii`
         }
       },
       {
@@ -116,7 +118,7 @@ export default async function ServicesPage({
         'position': 4,
         'item': {
           '@type': 'Service',
-          '@id': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/softver-na-mieru`,
+          '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/softver-na-mieru`,
           'name': locale === 'sk' ? 'Softvér na Mieru' : 'Custom Software',
           'description': locale === 'sk'
             ? 'Softvérové riešenia šité presne na mieru vašim obchodným potrebám'
@@ -125,7 +127,7 @@ export default async function ServicesPage({
             '@type': 'Organization',
             'name': 'Rise.sk'
           },
-          'url': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/softver-na-mieru`
+          'url': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/softver-na-mieru`
         }
       },
       {
@@ -133,7 +135,7 @@ export default async function ServicesPage({
         'position': 5,
         'item': {
           '@type': 'Service',
-          '@id': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/kontakt`,
+          '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/kontakt`,
           'name': locale === 'sk' ? 'Testovanie Softvéru' : 'Software Testing',
           'description': locale === 'sk'
             ? 'Komplexné testovanie kvality softvéru a zabezpečenie najvyšších štandardov'
@@ -149,7 +151,7 @@ export default async function ServicesPage({
         'position': 6,
         'item': {
           '@type': 'Service',
-          '@id': `https://rise.sk${locale === 'sk' ? '' : `/${locale}`}/kontakt`,
+          '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/kontakt`,
           'name': 'Tech Audit',
           'description': locale === 'sk'
             ? 'Odborný audit vašich technológií a odporúčania pre optimalizáciu'

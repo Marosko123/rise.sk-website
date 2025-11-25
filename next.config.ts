@@ -41,20 +41,57 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   trailingSlash: false,
-  // REMOVED REDIRECT TO PREVENT LOOP WITH VERCEL
-  // Vercel is currently configured to redirect rise.sk -> www.rise.sk
-  // Our code was redirecting www.rise.sk -> rise.sk
-  // This caused an infinite loop.
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: '/:path*',
-  //       has: [{ type: 'host', value: 'www.rise.sk' }],
-  //       destination: 'https://rise.sk/:path*',
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      // Old WordPress redirects
+      {
+        source: '/product-tag/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/product-category/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/tag/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/author/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/kurzy/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/kosik',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/category/:path*',
+        destination: '/blog',
+        permanent: true,
+      },
+      // Specific old pages
+      {
+        source: '/education',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/sk/education',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -1,4 +1,5 @@
 import BlogCard from '@/components/blog/BlogCard';
+import { MobileCarousel } from '@/components/ui/MobileCarousel';
 import { getSortedPostsData } from '@/utils/blog-server';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
@@ -37,9 +38,15 @@ export default async function LatestPosts({ locale }: LatestPostsProps) {
           </Link>
         </div>
 
-        <div className="flex overflow-x-auto pb-8 -mx-4 px-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-8 scrollbar-hide">
+        <div className="md:hidden">
+          <MobileCarousel className="-mx-4 px-4 pb-8">
+            {posts.map((post) => <BlogCard key={post.slug} post={post} locale={locale} />)}
+          </MobileCarousel>
+        </div>
+
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
-            <div key={post.slug} className="min-w-[85vw] md:min-w-0 snap-center">
+            <div key={post.slug}>
               <BlogCard post={post} locale={locale} />
             </div>
           ))}

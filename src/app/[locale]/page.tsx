@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://rise.sk/${locale === 'sk' ? '' : locale}`,
+      url: `https://www.rise.sk/${locale === 'sk' ? '' : locale}`,
       locale: locale === 'sk' ? 'sk_SK' : 'en_US',
       type: 'website',
       siteName: 'Rise.sk',
@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: t('description'),
     },
     alternates: {
-      canonical: `https://rise.sk/${locale === 'sk' ? '' : 'en'}`,
+      canonical: `https://www.rise.sk/${locale === 'sk' ? '' : 'en'}`,
       languages: {
-        'sk': 'https://rise.sk',
-        'en': 'https://rise.sk/en',
+        'sk': 'https://www.rise.sk',
+        'en': 'https://www.rise.sk/en',
       }
     }
   };

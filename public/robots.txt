@@ -3,4 +3,4 @@ Disallow: /api/
 Disallow: /admin/
 
 # Sitemap
-Sitemap: https://rise.sk/sitemap.xml
+Sitemap: https://www.rise.sk/sitemap.xml

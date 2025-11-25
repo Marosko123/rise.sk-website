@@ -41,7 +41,7 @@ export default function ReviewSchema({ reviews, page = 'general' }: ReviewSchema
     "itemReviewed": {
       "@type": "LocalBusiness",
       "name": "Rise.sk",
-      "url": "https://rise.sk"
+      "url": "https://www.rise.sk"
     },
     "author": {
       "@type": "Person",

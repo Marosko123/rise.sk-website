@@ -1,9 +1,9 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { Facebook, Linkedin, Twitter, Link as LinkIcon, Check } from 'lucide-react';
-import { useState } from 'react';
+import { Check, Facebook, Linkedin, Link as LinkIcon, Twitter } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 interface ShareButtonsProps {
   title: string;
@@ -13,10 +13,10 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
   const t = useTranslations('blog');
   const pathname = usePathname();
   const [copied, setCopied] = useState(false);
-  
+
   // Construct full URL (assuming site is hosted at rise.sk)
   // In production, you might want to use an environment variable for the domain
-  const url = `https://rise.sk${pathname}`;
+  const url = `https://www.rise.sk${pathname}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
 

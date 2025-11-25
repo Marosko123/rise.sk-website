@@ -1,15 +1,16 @@
 'use client';
 
+import { MobileCarousel } from '@/components/ui/MobileCarousel';
 import { useTranslations } from '@/hooks/useTranslations';
 import { motion, useInView } from 'framer-motion';
 import {
-  Award,
-  CheckCircle,
-  Coffee,
-  Target,
-  TrendingUp,
-  Users,
-  Zap,
+    Award,
+    CheckCircle,
+    Coffee,
+    Target,
+    TrendingUp,
+    Users,
+    Zap,
 } from 'lucide-react';
 import { useRef } from 'react';
 
@@ -184,11 +185,34 @@ export default function About({ id = 'about' }: { id?: string }) {
         </div>
 
         {/* Values Section - Slider on mobile */}
-        <div className='flex overflow-x-auto pb-6 -mx-4 px-4 snap-x snap-mandatory md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-6 scrollbar-hide'>
+        <div className="md:hidden">
+          <MobileCarousel className="-mx-4 px-4 pb-8">
+            {values.map((value, index) => (
+              <Card key={index} className='group relative h-full bg-white/5 border-white/10 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 p-6 md:p-8 overflow-hidden rounded-2xl'>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className='relative z-10 flex items-start'>
+                  <div className='mb-4 p-3 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-dark/20 border border-primary/30 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(255,215,0,0.1)] mr-4 shrink-0'>
+                    <value.icon className='w-6 h-6 text-primary' />
+                  </div>
+                  <div>
+                    <h3 className='text-lg md:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300'>
+                      {value.title}
+                    </h3>
+                    <p className='text-gray-400 group-hover:text-gray-300 leading-relaxed text-sm md:text-base transition-colors duration-300 select-text'>
+                      {value.description}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </MobileCarousel>
+        </div>
+
+        <div className='hidden md:grid md:grid-cols-3 gap-6'>
           {values.map((value, index) => (
             <motion.div
               key={index}
-              className="min-w-[85vw] md:min-w-0 snap-center"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}

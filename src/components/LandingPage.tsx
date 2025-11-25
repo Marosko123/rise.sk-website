@@ -285,8 +285,8 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
               </p>
             </div>
 
-            {/* Button - Absolute positioning at bottom to match Overlay */}
-            <div className='absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6'>
+            {/* Button - In flow */}
+            <div className='mt-12 lg:mt-32 flex justify-center'>
               <button
                 className="group relative px-12 py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
                 onClick={() => {
@@ -304,14 +304,16 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
                   {t('discoverMore')}
                 </span>
               </button>
-
-              {/* Scroll Indicator Placeholder to match spacing */}
-              <div className="w-[24px] h-[40px] rounded-full border-2 border-primary/60 flex justify-center p-1.5 shadow-[0_0_15px_rgba(212,175,55,0.15)] opacity-80">
-                <div className="w-1 h-1.5 bg-primary rounded-full" />
-              </div>
             </div>
           </div>
         </section>
+
+        {/* Scroll Indicator - Absolute at bottom */}
+        <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 pointer-events-auto">
+          <div className="w-[24px] h-[40px] rounded-full border-2 border-primary/60 flex justify-center p-1.5 shadow-[0_0_15px_rgba(212,175,55,0.15)] opacity-80">
+            <div className="w-1 h-1.5 bg-primary rounded-full" />
+          </div>
+        </div>
 
         {/* Footer - Absolute positioning to match Overlay */}
         <div className='absolute bottom-0 left-0 right-0 z-20 p-6 text-center'>

@@ -54,7 +54,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
       }
       if (bottomActionsRef.current) {
         bottomActionsRef.current.style.opacity = `${1 - progress * 2}`;
-        bottomActionsRef.current.style.transform = `translate(-50%, ${progress * 50}px)`;
+        bottomActionsRef.current.style.transform = `translate(0, ${progress * 50}px)`;
       }
     }
   }));
@@ -333,19 +333,11 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
+              className="mt-12 lg:mt-32 flex justify-center"
             >
-              <div
-                ref={bottomActionsRef}
-                className={`flex flex-col items-center gap-6 transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
-                style={{
-                  opacity: isTransitioning ? 0 : 1,
-                  // transform is handled by scroll logic
-                }}
-              >
                 <button
                   onClick={triggerTransition}
                   className="group relative px-12 py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
@@ -361,19 +353,31 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                     {t('discoverMore')}
                   </span>
                 </button>
-
-                <div
-                  className="flex flex-col items-center gap-2 cursor-pointer group/scroll"
-                  onClick={triggerTransition}
-                >
-                  <div className="w-[24px] h-[40px] rounded-full border-2 border-primary/60 flex justify-center p-1.5 shadow-[0_0_15px_rgba(218,181,73,0.15)] group-hover/scroll:border-primary group-hover/scroll:shadow-[0_0_20px_rgba(218,181,73,0.3)] transition-all duration-300">
-                    <div className="w-1 h-1.5 bg-primary rounded-full animate-bounce group-hover/scroll:bg-white transition-colors duration-300" />
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
-        </section>        <div className="absolute bottom-0 left-0 right-0 z-20 p-6 text-center pointer-events-auto">
+        </section>
+
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 pointer-events-auto"
+        >
+            <div
+                ref={bottomActionsRef}
+                className={`flex flex-col items-center gap-2 cursor-pointer group/scroll transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'}`}
+                onClick={triggerTransition}
+                style={{
+                  opacity: isTransitioning ? 0 : 1,
+                }}
+            >
+                <div className="w-[24px] h-[40px] rounded-full border-2 border-primary/60 flex justify-center p-1.5 shadow-[0_0_15px_rgba(218,181,73,0.15)] group-hover/scroll:border-primary group-hover/scroll:shadow-[0_0_20px_rgba(218,181,73,0.3)] transition-all duration-300">
+                    <div className="w-1 h-1.5 bg-primary rounded-full animate-bounce group-hover/scroll:bg-white transition-colors duration-300" />
+                </div>
+            </div>
+        </motion.div>
+
+        <div className="absolute bottom-0 left-0 right-0 z-20 p-6 text-center pointer-events-auto">
           <p className="text-white/60 text-sm select-none">
             © 2025 Rise.sk s.r.o. Všetky práva vyhradené.
           </p>

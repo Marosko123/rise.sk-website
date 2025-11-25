@@ -1,27 +1,42 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export function useCarousel(totalItems: number) {
+export function useCarousel(
+  totalItems: number,
+  options: {
+    mobileItems?: number;
+    tabletItems?: number;
+    desktopItems?: number;
+    autoPlayInterval?: number;
+  } = {}
+) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
   const [isHovered, setIsHovered] = useState(false);
 
+  const {
+    mobileItems = 1,
+    tabletItems = 2,
+    desktopItems = 3,
+    autoPlayInterval = 5000
+  } = options;
+
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth < 768) {
-        setItemsPerView(1);
+        setItemsPerView(mobileItems);
       } else if (window.innerWidth < 1024) {
-        setItemsPerView(2);
+        setItemsPerView(tabletItems);
       } else {
-        setItemsPerView(3);
+        setItemsPerView(desktopItems);
       }
     };
 
     updateItemsPerView();
     window.addEventListener('resize', updateItemsPerView);
     return () => window.removeEventListener('resize', updateItemsPerView);
-  }, []);
+  }, [mobileItems, tabletItems, desktopItems]);
 
-  const maxIndex = Math.max(0, totalItems - itemsPerView);
+  const maxIndex = Math.max(0, totalItems - Math.floor(itemsPerView));
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
@@ -37,9 +52,9 @@ export function useCarousel(totalItems: number) {
 
   useEffect(() => {
     if (isHovered) return;
-    const interval = setInterval(nextSlide, 5000);
+    const interval = setInterval(nextSlide, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [nextSlide, isHovered]);
+  }, [nextSlide, isHovered, autoPlayInterval]);
 
   return {
     currentIndex,

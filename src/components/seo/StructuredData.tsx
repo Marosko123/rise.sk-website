@@ -6,8 +6,8 @@ export default function StructuredData() {
     "@type": ["Organization", "LocalBusiness"],
     "name": "Rise.sk",
     "legalName": "rise.sk s.r.o.",
-    "url": "https://rise.sk",
-    "logo": "https://rise.sk/rise/gradient/Rise_logo_circle.png",
+    "url": "https://www.rise.sk",
+    "logo": "https://www.rise.sk/rise/gradient/Rise_logo_circle.png",
     "description": "Expert programming teams and custom software development company in Slovakia. Quick delivery, reliable code, professional IT solutions.",
     "address": {
       "@type": "PostalAddress",
@@ -157,7 +157,7 @@ export default function StructuredData() {
       "provider": {
         "@type": "LocalBusiness",
         "name": "Rise.sk",
-        "url": "https://rise.sk"
+        "url": "https://www.rise.sk"
       },
       "serviceType": "Software Development",
       "areaServed": {

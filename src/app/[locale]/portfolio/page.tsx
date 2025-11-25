@@ -16,9 +16,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const localePath = '/portfolio';
   const localeCode = locale === 'sk' ? 'sk_SK' : 'en_US';
+  const baseUrl = 'https://www.rise.sk';
   const canonicalUrl = locale === 'sk'
-    ? 'https://rise.sk/portfolio'
-    : `https://rise.sk/${locale}${localePath}`;
+    ? `${baseUrl}${localePath}`
+    : `${baseUrl}/${locale}${localePath}`;
 
   return {
     title: t('meta.title'),
@@ -40,8 +41,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'sk': 'https://rise.sk/portfolio',
-        'en': 'https://rise.sk/en/portfolio',
+        'sk': 'https://www.rise.sk/portfolio',
+        'en': 'https://www.rise.sk/en/portfolio',
       },
     },
   };
@@ -82,7 +83,7 @@ export default async function PortfolioPage({
         data={{
           name: t('meta.title'),
           description: t('meta.description'),
-          url: locale === 'sk' ? 'https://rise.sk/portfolio' : 'https://rise.sk/en/portfolio',
+          url: locale === 'sk' ? 'https://www.rise.sk/portfolio' : 'https://www.rise.sk/en/portfolio',
           items: projects
         }}
       />

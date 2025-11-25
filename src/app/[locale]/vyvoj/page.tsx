@@ -19,6 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const localePath = locale === 'sk' ? '/vyvoj' : '/development';
   const localeCode = locale === 'sk' ? 'sk_SK' : 'en_US';
+  const baseUrl = 'https://www.rise.sk';
+  const url = locale === 'sk' ? `${baseUrl}${localePath}` : `${baseUrl}/${locale}${localePath}`;
 
   return {
     title: t('meta.title'),
@@ -27,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: t('meta.title'),
       description: t('meta.description'),
-      url: `https://rise.sk/${locale}${localePath}`,
+      url,
       siteName: 'Rise.sk',
       locale: localeCode,
       type: 'website',
@@ -38,10 +40,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: t('meta.description'),
     },
     alternates: {
-      canonical: `https://rise.sk/${locale}${localePath}`,
+      canonical: url,
       languages: {
-        'sk': 'https://rise.sk/vyvoj',
-        'en': 'https://rise.sk/en/development',
+        'sk': 'https://www.rise.sk/vyvoj',
+        'en': 'https://www.rise.sk/en/development',
       },
     },
   };

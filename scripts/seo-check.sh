@@ -7,7 +7,7 @@ echo "🚀 Rise.sk SEO Validation Script"
 echo "================================"
 
 BASE_URL="http://localhost:3000"
-PROD_URL="https://rise.sk"
+PROD_URL="https://www.rise.sk"
 
 # Check if development server is running
 echo ""

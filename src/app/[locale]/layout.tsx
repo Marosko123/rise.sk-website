@@ -16,6 +16,7 @@ import ThemeProvider from '@/components/providers/ThemeProvider';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
 import LoadingScreen from '@/components/ui/LoadingScreen';
+import PullToRefresh from '@/components/ui/PullToRefresh';
 import SkipLink from '@/components/ui/SkipLink';
 import { routing } from '@/i18n/routing';
 
@@ -29,7 +30,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rise.sk'),
+  metadataBase: new URL('https://www.rise.sk'),
   title: {
     default: 'Rise.sk | Premium Software Development & Tech Consulting',
     template: '%s | Rise.sk'
@@ -86,11 +87,11 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   alternates: {
-    canonical: 'https://rise.sk',
+    canonical: 'https://www.rise.sk',
     languages: {
-      'sk': 'https://rise.sk',
-      'en': 'https://rise.sk/en',
-      'x-default': 'https://rise.sk',
+      'sk': 'https://www.rise.sk',
+      'en': 'https://www.rise.sk/en',
+      'x-default': 'https://www.rise.sk',
     }
   },
   robots: {
@@ -108,7 +109,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'sk_SK',
     alternateLocale: 'en_US',
-    url: 'https://rise.sk',
+    url: 'https://www.rise.sk',
     siteName: 'Rise.sk',
     title: 'Rise.sk | Premium Software Development & Tech Consulting',
     description: 'We build high-performance web & mobile applications. Hire expert programming teams in Slovakia delivering scalable solutions for ambitious companies.',
@@ -175,6 +176,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <AnimationProvider>
+              <PullToRefresh />
               {children}
             </AnimationProvider>
             <ServiceWorkerRegistration />

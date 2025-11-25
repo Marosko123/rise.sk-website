@@ -24,7 +24,7 @@ export default function Portfolio({ id = 'portfolio' }: { id?: string }) {
     prevSlide,
     goToSlide,
     setIsHovered,
-  } = useCarousel(portfolioProjects.length);
+  } = useCarousel(portfolioProjects.length, { mobileItems: 1.2, autoPlayInterval: 3000 });
 
   const swipeHandlers = useSwipe({
     onSwipedLeft: nextSlide,
