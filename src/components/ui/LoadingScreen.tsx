@@ -19,6 +19,16 @@ export default function LoadingScreen() {
     // Prevent scrolling while loading
     document.body.style.overflow = 'hidden';
 
+    // Prevent all scroll interactions
+    const preventDefault = (e: Event) => {
+      e.preventDefault();
+    };
+
+    // Add listeners with passive: false to allow preventing default
+    window.addEventListener('wheel', preventDefault, { passive: false });
+    window.addEventListener('touchmove', preventDefault, { passive: false });
+    window.addEventListener('scroll', preventDefault, { passive: false });
+
     // Phase 1: Loading (2.3s)
     const loadingTimer = setTimeout(() => {
       setStage('scaling');
@@ -29,19 +39,27 @@ export default function LoadingScreen() {
       setStage('complete');
       document.body.style.overflow = '';
       document.body.classList.add('loaded');
+
+      // Remove listeners
+      window.removeEventListener('wheel', preventDefault);
+      window.removeEventListener('touchmove', preventDefault);
+      window.removeEventListener('scroll', preventDefault);
     }, 3100); // 2300 + 800
 
     return () => {
       clearTimeout(loadingTimer);
       clearTimeout(completeTimer);
       document.body.style.overflow = '';
+      window.removeEventListener('wheel', preventDefault);
+      window.removeEventListener('touchmove', preventDefault);
+      window.removeEventListener('scroll', preventDefault);
     };
   }, []);
 
   if (stage === 'complete') return null;
 
   return (
-    <div className={`fixed inset-0 h-[100dvh] w-screen z-[9999] flex items-center justify-center overflow-hidden ${stage === 'loading' ? 'pointer-events-auto' : 'pointer-events-none'}`}>
+    <div className={`fixed inset-0 h-[100dvh] w-screen z-[9999] flex items-center justify-center overflow-hidden touch-none ${stage === 'loading' ? 'pointer-events-auto' : 'pointer-events-none'}`}>
       {/* Background - Fades out during scaling */}
       <motion.div
         className="absolute inset-0 bg-[#050505]"

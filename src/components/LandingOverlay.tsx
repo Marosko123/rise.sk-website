@@ -54,6 +54,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
         // Only fade out the content container, not the background
         containerRef.current.style.opacity = `${1 - progress * 1.5}`;
         containerRef.current.style.transform = `scale(${1 + progress * 0.5})`;
+        containerRef.current.style.filter = `blur(${progress * 10}px)`;
         containerRef.current.style.pointerEvents = progress > 0.5 ? 'none' : 'auto';
       }
       if (bottomActionsRef.current) {
@@ -244,7 +245,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   return (
     <div
       ref={containerRef}
-      className={`fixed inset-0 overflow-hidden ${
+      className={`${isMobile ? 'absolute top-0 left-0 right-0 h-[100dvh]' : 'fixed inset-0'} overflow-hidden ${
         showFullWebsite
           ? 'opacity-0 pointer-events-none'
           : 'opacity-100 pointer-events-none z-50'
@@ -255,6 +256,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
             : (isScrolling ? 'all 0.1s ease-out' : 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)'),
           opacity: (showFullWebsite || isTransitioning) && !isReturning ? 0 : undefined,
           transform: (showFullWebsite || isTransitioning) && !isReturning ? 'scale(1.5)' : undefined,
+          filter: (showFullWebsite || isTransitioning) && !isReturning ? 'blur(10px)' : undefined,
           pointerEvents: showFullWebsite ? 'none' : undefined,
           visibility: (showFullWebsite && !isReturning) ? 'hidden' : 'visible'
       }}

@@ -40,6 +40,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
   const allowReturnRef = useRef(false);
   const isAtTopRef = useRef(true);
+  const justTransitionedRef = useRef(false);
 
   const scrollAccumulator = useRef(0);
   const scrollTarget = useRef(0);
@@ -57,29 +58,6 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
   const handleLogoClick = useCallback(() => {
     globalBackgroundRef.current?.handleLogoClick();
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isAtTop = window.scrollY <= 5;
-
-      if (!isAtTop) {
-        isAtTopRef.current = false;
-        allowReturnRef.current = false;
-      } else {
-        if (!isAtTopRef.current) {
-          // Just arrived at top
-          isAtTopRef.current = true;
-          // Set timeout to allow return - prevents momentum scrolling from triggering return
-          setTimeout(() => {
-            allowReturnRef.current = true;
-          }, 500);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Dynamic section mappings based on language
@@ -110,8 +88,6 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   // Linear interpolation helper
   const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
 
-
-
   const updateVisuals = useCallback((progress: number) => {
     landingOverlayRef.current?.updateVisuals(progress);
     globalBackgroundRef.current?.updateVisuals(progress);
@@ -135,6 +111,25 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     }
   }, []);
 
+  const startAnimationLoop = useCallback(() => {
+      if (requestRef.current) return;
+
+      const loop = () => {
+          const diff = scrollTarget.current - scrollCurrent.current;
+          if (Math.abs(diff) > 0.0001 || isScrolling) {
+              scrollCurrent.current = lerp(scrollCurrent.current, scrollTarget.current, 0.15);
+              updateVisuals(scrollCurrent.current);
+              requestRef.current = requestAnimationFrame(loop);
+          } else {
+              requestRef.current = null;
+              // Ensure final state is exact
+              scrollCurrent.current = scrollTarget.current;
+              updateVisuals(scrollCurrent.current);
+          }
+      };
+      requestRef.current = requestAnimationFrame(loop);
+  }, [updateVisuals, isScrolling]);
+
   // Animation Loop
   useEffect(() => {
     let animationFrameId: number;
@@ -157,34 +152,10 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       }
     };
 
-    // Start animation if target changes (we can just run this loop when needed,
-    // but for simplicity let's trigger it from the event handlers)
-    // Actually, better to have a running loop or trigger it.
-    // Let's expose a trigger function.
-
     return () => {
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, [updateVisuals]);
-
-  const startAnimationLoop = useCallback(() => {
-      if (requestRef.current) return;
-
-      const loop = () => {
-          const diff = scrollTarget.current - scrollCurrent.current;
-          if (Math.abs(diff) > 0.0001 || isScrolling) {
-              scrollCurrent.current = lerp(scrollCurrent.current, scrollTarget.current, 0.15);
-              updateVisuals(scrollCurrent.current);
-              requestRef.current = requestAnimationFrame(loop);
-          } else {
-              requestRef.current = null;
-              // Ensure final state is exact
-              scrollCurrent.current = scrollTarget.current;
-              updateVisuals(scrollCurrent.current);
-          }
-      };
-      requestRef.current = requestAnimationFrame(loop);
-  }, [updateVisuals, isScrolling]);
 
   // Trigger loop when scrolling state changes
   useEffect(() => {
@@ -205,11 +176,63 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   const triggerTransition = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
+    justTransitionedRef.current = true;
+
+    // Lock scroll to kill momentum
+    document.body.style.overflow = 'hidden';
 
     setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
       window.location.hash = sectionMap.development;
     }, 800); // 800ms animation
   }, [isTransitioning, sectionMap.development]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isAtTop = window.scrollY <= 5;
+
+      // On mobile, trigger transition when scrolling down on landing page
+      if (!showFullWebsite && isMobile) {
+        const triggerThreshold = 250; // Threshold to trigger transition
+        const animationRange = 400; // Range for full animation effect
+
+        // Drive animation based on scroll
+        const progress = Math.min(window.scrollY / animationRange, 1);
+
+        // Update visuals directly for responsiveness
+        // Only update if NOT transitioning. If transitioning, let CSS take over.
+        if (!isTransitioning) {
+             updateVisuals(progress);
+        }
+
+        // Update refs so other logic knows current state
+        scrollCurrent.current = progress;
+        scrollTarget.current = progress;
+
+        if (window.scrollY > triggerThreshold && !isTransitioning) {
+          triggerTransition();
+          return;
+        }
+      }
+
+      if (!isAtTop) {
+        isAtTopRef.current = false;
+        allowReturnRef.current = false;
+      } else {
+        if (!isAtTopRef.current) {
+          // Just arrived at top
+          isAtTopRef.current = true;
+          // Set timeout to allow return - prevents momentum scrolling from triggering return
+          setTimeout(() => {
+            allowReturnRef.current = true;
+          }, 500);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showFullWebsite, isMobile, isTransitioning, triggerTransition]);
 
   useEffect(() => {
     if (isTransitioning) return;
@@ -322,10 +345,13 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     const handleTouchMove = (e: TouchEvent) => {
       const touchEndY = e.touches[0].clientY;
       const deltaY = touchStartY - touchEndY;
-      const threshold = 250; // Increased mobile threshold
+      const threshold = 400; // Increased mobile threshold for bigger range
 
       if (!showFullWebsite) {
-        if (e.cancelable) e.preventDefault();
+        // Allow native scroll on mobile to trigger transition via scroll listener
+        // if (e.cancelable) e.preventDefault();
+
+        if (isMobile) return; // Let handleScroll handle it
 
         if (deltaY > 0) {
           if (!isScrolling) {
@@ -382,12 +408,31 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
     const handleTouchEnd = () => {
       if (!isTransitioning) {
-        setIsScrolling(false);
-        setTransitions(true);
         if (!showFullWebsite) {
+            // Stop any ongoing animation loop
+            if (requestRef.current) {
+                cancelAnimationFrame(requestRef.current);
+                requestRef.current = null;
+            }
+
+            setIsScrolling(false);
+            setTransitions(true); // Enable CSS transitions for smooth return
+
             scrollTarget.current = 0;
-            startAnimationLoop();
+            scrollCurrent.current = 0;
+            updateVisuals(0); // Reset visuals immediately, letting CSS handle the transition
+
+            if (isMobile) {
+              setTimeout(() => {
+                // Check if we are still on landing page (transition didn't start)
+                if (!isTransitioning && window.scrollY < 250) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }, 50);
+            }
         } else if (isReturning) {
+            setIsScrolling(false);
+            setTransitions(true);
             setIsReturning(false);
             scrollTarget.current = 1;
             startAnimationLoop();
@@ -407,7 +452,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [showFullWebsite, isTransitioning, triggerTransition, updateVisuals, isReturning, setTransitions, startAnimationLoop, isScrolling]);
+  }, [showFullWebsite, isTransitioning, triggerTransition, updateVisuals, isReturning, setTransitions, startAnimationLoop, isScrolling, isMobile]);
 
   useEffect(() => {
     const checkHash = () => {
@@ -420,7 +465,13 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         scrollAccumulator.current = 0;
         scrollTarget.current = 0;
         scrollCurrent.current = 0;
-        document.body.style.overflow = 'hidden';
+        // Allow scroll on mobile, but hide on desktop
+        if (isMobile) {
+          document.body.style.overflowY = 'auto';
+          document.body.style.overflowX = 'hidden';
+        } else {
+          document.body.style.overflow = 'hidden';
+        }
         // Reset visuals to landing state
         if (mainContentRef.current) {
             mainContentRef.current.style.opacity = '';
@@ -432,8 +483,18 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         scrollAccumulator.current = 600; // Initialize as "full"
         scrollTarget.current = 1;
         scrollCurrent.current = 1;
+
+        // Force scroll to top BEFORE enabling overflow to prevent momentum carry-over
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
         document.body.style.overflowY = 'auto';
         document.body.style.overflowX = 'hidden';
+
+        // Force scroll to top AGAIN after enabling overflow to be absolutely sure
+        requestAnimationFrame(() => {
+             window.scrollTo({ top: 0, behavior: 'instant' });
+        });
+
         // Ensure visuals are at full state
         updateVisuals(1);
         // Initialize allowReturnRef to true since we are starting at top
@@ -445,12 +506,17 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     checkHash();
     window.addEventListener('hashchange', checkHash);
 
+    // Disable browser scroll restoration to prevent jumping
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
     return () => {
       window.removeEventListener('hashchange', checkHash);
       document.body.style.overflowY = 'auto';
       document.body.style.overflowX = 'hidden';
     };
-  }, [updateVisuals]);
+  }, [updateVisuals, isMobile]);
 
   useEffect(() => {
     if (showFullWebsite && window.location.hash) {
@@ -477,7 +543,18 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         }
 
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          // If we just transitioned to the main site, force instant scroll to top
+          // This overrides any smooth scrolling or momentum that might be lingering
+          if (justTransitionedRef.current && hash === sectionMap.development) {
+             window.scrollTo({ top: 0, behavior: 'instant' });
+             justTransitionedRef.current = false;
+          } else {
+             // Force scroll to top first to ensure we start from top
+             if (window.scrollY > 0) {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+             }
+             element.scrollIntoView({ behavior: 'smooth' });
+          }
         }
       }, 100);
 
