@@ -232,7 +232,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [showFullWebsite, isMobile, isTransitioning, triggerTransition]);
+  }, [showFullWebsite, isMobile, isTransitioning, triggerTransition, updateVisuals]);
 
   useEffect(() => {
     if (isTransitioning) return;
@@ -560,7 +560,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
       return () => clearTimeout(timer);
     }
-  }, [showFullWebsite, locale]);
+  }, [showFullWebsite, locale, sectionMap.development]);
 
   useEffect(() => {
     setMounted(true);
