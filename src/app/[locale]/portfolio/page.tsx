@@ -68,7 +68,6 @@ export default async function PortfolioPage({
     { name: 'Rise.sk Web', description: tProjects('riseWeb') },
     { name: 'Doučma', description: tProjects('doucma') },
     { name: 'Rozvoj Dopravy', description: tProjects('rozvojDopravy') },
-    { name: 'TwoRing', description: tProjects('twoRing') },
   ];
 
   return (

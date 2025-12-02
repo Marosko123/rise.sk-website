@@ -155,21 +155,4 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
       satisfaction: t('projects.rozvojDopravy.metrics.satisfaction')
     }
   },
-  {
-    id: 9,
-    slug: '2-ring',
-    title: '2 Ring',
-    descriptionKey: 'twoRing',
-    category: 'webapp',
-    image: '/portfolio/2ring.svg',
-    tags: ['C#', 'SQL', 'Vue.js', 'Enterprise'],
-    liveUrl: 'https://www.2ring.com',
-    githubUrl: null,
-    featured: true,
-    metrics: {
-      status: t('projects.twoRing.metrics.status'),
-      duration: t('projects.twoRing.metrics.duration'),
-      satisfaction: t('projects.twoRing.metrics.satisfaction')
-    }
-  },
 ];

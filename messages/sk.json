@@ -1357,13 +1357,6 @@
         "title": "Hlavné projekty",
         "description": "Naše najvýznamnejšie a najúspešnejšie realizácie"
       },
-      "twoRing": {
-        "metrics": {
-          "status": "Ukončené",
-          "duration": "24 mesiacov",
-          "satisfaction": "10/10"
-        }
-      },
       "viacAkoNick": {
         "metrics": {
           "status": "Ukončené",
@@ -1428,8 +1421,7 @@
         "trulink": "Progresívna webová aplikácia s pokročilými funkciami, ktorú vyvíjame už 2 mesiace v Next.js frameworku. Funguje na telefoóne aj na webe. Projekt zahŕňa responzívny dizajn, reálno-časové funkcie a moderné technológie. Aplikácia je navrhnutá s dôrazom na používateľské skúsenosti, bezpečnosť a kvalitné výsledky. Platforma obsahuje pokročilé algoritmy, real-time komunikáciu a moderne bezpečnostné funkcie s vynikajúcim hodnotením spokojnosti 10/10.",
         "riseWeb": "Plnohodnotná firemná webstránka pre IT spoločnosť kompletne vytvorená naším tímom za 1 mesiac. Vyvinuli sme celý design, napísali všetky texty a naprogramovali kompletný kód v Next.js frameworku s moderným designom a pokročilými funkciami. Obsahuje SEO optimalizáciu, rýchle načítavanie, responsive design a pokročilé analytické nástroje. Projekt je 100% náš - od konceptu po implementáciu.",
         "doucma": "Šesť rokov sme na tejto vzdelávacej platforme vyučovali informatiku a využívali rôzne IT technológie na zlepšenie vzdelávacieho procesu. Naša činnosť priniesla množstvo spokojných študentov a klientov, ktorí si rozšírili svoje znalosti v oblasti informatiky. Aplikovali sme moderné pedagogické prístupy kombinované s technologickými riešeniami pre efektívnejšie vzdelávanie.",
-        "rozvojDopravy": "Webová aplikácia pre optimalizáciu mestskej dopravy vyvinutá vo Vue.js a Node.js s pokročilými vizualizačnými nástrojmi. Systém analyzuje dopravné toky, generuje inteligentné grafy a reporty, a pomáha mestu Trnava optimalizovať dopravnú infrastruktúru. Obsahuje real-time monitoring, prediktívne algoritmy a interaktívne dashboard pre mestských plánovačov.",
-        "twoRing": "Dlhodobé enterprise partnerstvo na vývoji komplexných business aplikácií v C#, SQL databázach a Vue.js frontendu. Vytvárame škálovateľné riešenia pre veľké korporácie s dôrazom na bezpečnosť, výkon a používateľskú prívetivosť. Naša spolupráca zahŕňa kontinuálny vývoj, údržbu a rozširovanie funkcionality enterprise systémov pre medzinárodné trhy."
+        "rozvojDopravy": "Webová aplikácia pre optimalizáciu mestskej dopravy vyvinutá vo Vue.js a Node.js s pokročilými vizualizačnými nástrojmi. Systém analyzuje dopravné toky, generuje inteligentné grafy a reporty, a pomáha mestu Trnava optimalizovať dopravnú infrastruktúru. Obsahuje real-time monitoring, prediktívne algoritmy a interaktívne dashboard pre mestských plánovačov."
       },
       "categories": {
         "webApps": "Webové aplikácie",
