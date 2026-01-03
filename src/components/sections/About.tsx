@@ -1,8 +1,8 @@
 'use client';
 
 import { MobileCarousel } from '@/components/ui/MobileCarousel';
-import { useTranslations } from '@/hooks/useTranslations';
 import { motion, useInView } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import {
     Award,
     CheckCircle,
@@ -174,8 +174,8 @@ export default function About({ id = 'about' }: { id?: string }) {
                         <Coffee className="w-6 h-6 text-primary" />
                      </div>
                      <div className="flex flex-col">
-                        <span className="text-sm text-gray-400 uppercase tracking-wider font-medium">Let&apos;s meet</span>
-                        <span className="text-white font-semibold">Coffee & Code</span>
+                        <span className="text-sm text-gray-400 uppercase tracking-wider font-medium">{t('story.meetLabel')}</span>
+                        <span className="text-white font-semibold">{t('story.meetTitle')}</span>
                      </div>
                   </div>
                 </div>

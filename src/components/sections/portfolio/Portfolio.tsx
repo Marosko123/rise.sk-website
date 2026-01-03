@@ -3,8 +3,8 @@
 import { getPortfolioProjects } from '@/data/projects';
 import { useCarousel } from '@/hooks/useCarousel';
 import { useSwipe } from '@/hooks/useSwipe';
-import { useTranslations } from '@/hooks/useTranslations';
 import { motion, useInView } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
 import PortfolioControls from './PortfolioControls';
 import PortfolioStats from './PortfolioStats';

@@ -1,5 +1,5 @@
 import { useAnalytics } from '@/hooks/useAnalytics';
-import { useTranslations } from '@/hooks/useTranslations';
+import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 
 export interface FormData {

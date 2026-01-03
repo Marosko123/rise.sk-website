@@ -3,8 +3,8 @@
 import { useCarousel } from '@/hooks/useCarousel';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { useSwipe } from '@/hooks/useSwipe';
-import { useTranslations } from '@/hooks/useTranslations';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 
 import { Card } from '../ui/Card';

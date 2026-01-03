@@ -52,9 +52,8 @@ import { Button } from '@/components/ui/Button';
 import FAQAccordion from '@/components/ui/FAQAccordion';
 import { MobileCarousel } from '@/components/ui/MobileCarousel';
 import { useAnalytics } from '@/hooks/useAnalytics';
-import { useTranslations } from '@/hooks/useTranslations';
 import { BlogPost } from '@/utils/blog';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface ServiceDetailProps {
   serviceId: string; // e.g., 'webDevelopment', 'ecommerce'
@@ -196,6 +195,7 @@ const getAiIcon = (index: number) => {
 
 export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPosts }: ServiceDetailProps) {
   const t = useTranslations(`services.${serviceId}`);
+  const tCommon = useTranslations('common');
   const locale = useLocale();
   const { trackServiceInterest } = useAnalytics();
   const [mounted, setMounted] = useState(false);
@@ -973,11 +973,10 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
           <div className="max-w-7xl mx-auto">
             <FadeIn className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                <span className="text-white">{locale === 'sk' ? 'Súvisiace ' : 'Related ' }</span>
-                <span className="gradient-text">{locale === 'sk' ? 'články' : 'Articles'}</span>
+                <span className="gradient-text">{tCommon('relatedArticles')}</span>
               </h2>
               <p className="text-[var(--muted-foreground)] text-lg">
-                {locale === 'sk' ? 'Prečítajte si viac o tejto téme' : 'Read more about this topic'}
+                {tCommon('relatedArticlesSubtitle')}
               </p>
             </FadeIn>
 

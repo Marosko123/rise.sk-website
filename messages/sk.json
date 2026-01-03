@@ -97,7 +97,9 @@
       "title": "Od kamarátov z výšky k technologickým partnerom",
       "p1": "Naša cesta nezačala v zasadačkách, ale v univerzitných labákoch a pri dlhých nočných coding sessions. Sme skupina priateľov, ktorí veria, že technológie majú slúžiť ľuďom, nie naopak. Zachovali sme si našu mladícku dravosť a priateľskú atmosféru, no dnes ju kombinujeme s expertízou, ktorú oceňujú tí najväčší hráči na trhu.",
       "p2": "Pomáhame firmám rásť, pretože sami vieme, aké je to budovať niečo od nula. Používame tie najmodernejšie nástroje, pretože nás to baví a pretože vieme, že práve tie prinášajú najlepšie výsledky. Či už ide o komplexný vládny systém alebo inovatívnu appku pre startup, do každého projektu dávame kúsok nášho 'rise' ducha.",
-      "cta": "Chceme pomôcť aj vám. Nie sme len dodávatelia, sme vaši budúci technologickí partneri. Poďme sa stretnúť, dať si kávu a porozprávať sa o tom, ako môžeme spoločne vyrásť."
+      "cta": "Chceme pomôcť aj vám. Nie sme len dodávatelia, sme vaši budúci technologickí partneri. Poďme sa stretnúť, dať si kávu a porozprávať sa o tom, ako môžeme spoločne vyrásť.",
+      "meetLabel": "Stretnime sa",
+      "meetTitle": "Káva & Kód"
     },
     "stats": {
       "delivery": {
@@ -1841,7 +1843,20 @@
     "loading": "Načítava sa...",
     "error": "Chyba",
     "scrollToTop": "Prejsť na začiatok",
-    "skipToContent": "Preskočiť na obsah"
+    "skipToContent": "Preskočiť na obsah",
+    "learnMore": "Zistiť viac",
+    "ourServices": "Naše služby",
+    "relatedArticles": "Súvisiace články",
+    "relatedArticlesSubtitle": "Prečítajte si viac o tejto téme",
+    "allRightsReserved": "Všetky práva vyhradené",
+    "loadingSteps": {
+      "0": "Načítavam Rise.sk...",
+      "1": "Pripravujem komponenty...",
+      "2": "Optimalizujem výkon...",
+      "3": "Skoro hotovo..."
+    },
+    "loadingSubtitle": "Pripravujeme pre vás najlepší zážitok",
+    "backToHome": "← Späť na hlavnú stránku"
   },
   "loadingScreen": {
     "quotes": {
@@ -2082,6 +2097,20 @@
   "faq": {
     "showAll": "Zobraziť všetky FAQ",
     "showLess": "Zobraziť menej",
+    "title": "Často Kladené Otázky",
+    "subtitle": "Nájdite odpovede na najčastejšie otázky o našich službách, procesoch a spolupráci",
+    "categories": {
+      "all": "Všetky otázky",
+      "general": "Všeobecné",
+      "pricing": "Ceny a platby",
+      "technical": "Technické",
+      "process": "Proces a komunikácia"
+    },
+    "contact": {
+      "title": "Nenašli ste odpoveď na svoju otázku?",
+      "description": "Kontaktujte nás a radi vám poskytneme podrobnú konzultáciu a odpovieme na všetky vaše otázky.",
+      "button": "Kontaktovať nás"
+    },
     "items": [
       {
         "question": "Aké služby poskytujete?",

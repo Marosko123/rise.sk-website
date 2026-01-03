@@ -2,11 +2,11 @@
 
 import Breadcrumbs, { BreadcrumbItem } from '@/components/ui/Breadcrumbs';
 import { MobileCarousel } from '@/components/ui/MobileCarousel';
-import { useTranslations } from '@/hooks/useTranslations';
 import { AppPathnames, Link } from '@/i18n/routing';
 import { motion, useInView } from 'framer-motion';
 import Lottie from 'lottie-react';
 import { ArrowRight, Brain, Code2, Laptop, ShoppingCart, Smartphone, Users } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import React, { useEffect, useRef, useState } from 'react';
 
 interface ServicesEnhancedProps {
@@ -46,7 +46,7 @@ const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fal
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ServiceCard = ({ service }: { service: any }) => (
+const ServiceCard = ({ service, learnMoreText }: { service: any; learnMoreText: string }) => (
   <Link
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     href={service.path as any}
@@ -83,7 +83,7 @@ const ServiceCard = ({ service }: { service: any }) => (
 
         {/* Arrow Icon */}
         <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-          <span className="text-sm font-semibold">Zistiť viac</span>
+          <span className="text-sm font-semibold">{learnMoreText}</span>
           <ArrowRight className="w-4 h-4" />
         </div>
       </div>
@@ -96,6 +96,7 @@ const ServiceCard = ({ service }: { service: any }) => (
 
 const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs, id = 'services' }) => {
   const t = useTranslations('navigation');
+  const tCommon = useTranslations('common');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -192,14 +193,14 @@ const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs, id = '
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
-            Naše Služby
+            {tCommon('ourServices')}
           </h2>
         </motion.div>
 
         {/* Mobile Carousel */}
         <div className="md:hidden">
           <MobileCarousel className="-mx-4 px-4 pb-8">
-            {services.map((service) => <ServiceCard key={service.id} service={service} />)}
+            {services.map((service) => <ServiceCard key={service.id} service={service} learnMoreText={tCommon('learnMore')} />)}
           </MobileCarousel>
         </div>
 
@@ -212,7 +213,7 @@ const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs, id = '
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <ServiceCard service={service} />
+              <ServiceCard service={service} learnMoreText={tCommon('learnMore')} />
             </motion.div>
           ))}
         </div>

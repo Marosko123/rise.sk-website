@@ -34,6 +34,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   shapesState
 }, ref) => {
   const t = useTranslations('landing');
+  const tCommon = useTranslations('common');
   const { animationTime, isMobile } = useAnimation();
 
   const cursorPositionRef = useRef({ x: 0, y: 0 });
@@ -382,7 +383,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 
         <div className="absolute bottom-0 left-0 right-0 z-20 p-6 text-center pointer-events-auto">
           <p className="text-white/60 text-sm select-none">
-            © 2025 Rise.sk s.r.o. Všetky práva vyhradené.
+            © {new Date().getFullYear()} Rise.sk s.r.o. {tCommon('allRightsReserved')}.
           </p>
         </div>
     </div>

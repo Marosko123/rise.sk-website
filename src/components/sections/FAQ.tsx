@@ -1,9 +1,8 @@
 'use client';
 
-import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import EnhancedSchema from '../seo/EnhancedSchema';
 import FAQAccordion from '../ui/FAQAccordion';
@@ -93,11 +92,11 @@ const FAQ = () => {
   ];
 
   const categories = [
-    { key: 'all', label: 'Všetky otázky' },
-    { key: 'general', label: 'Všeobecné' },
-    { key: 'pricing', label: 'Ceny a platby' },
-    { key: 'technical', label: 'Technické' },
-    { key: 'process', label: 'Proces a komunikácia' }
+    { key: 'all', label: t('categories.all') },
+    { key: 'general', label: t('categories.general') },
+    { key: 'pricing', label: t('categories.pricing') },
+    { key: 'technical', label: t('categories.technical') },
+    { key: 'process', label: t('categories.process') }
   ];
 
   const filteredFAQ = activeCategory === 'all'
@@ -115,10 +114,10 @@ const FAQ = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-6">
-            Často Kladené Otázky
+            {t('title')}
           </h2>
           <p className="text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto leading-relaxed">
-            Nájdite odpovede na najčastejšie otázky o našich službách, procesoch a spolupráci
+            {t('subtitle')}
           </p>
         </div>
 
@@ -174,16 +173,16 @@ const FAQ = () => {
         <div className="mt-12 text-center">
           <div className="bg-gradient-to-r from-[var(--primary)]/10 to-[#9a7f4b]/10 rounded-2xl p-8 border border-[var(--primary)]/20">
             <h3 className="text-2xl font-bold text-[var(--foreground)] mb-4">
-              Nenašli ste odpoveď na svoju otázku?
+              {t('contact.title')}
             </h3>
             <p className="text-[var(--foreground-muted)] mb-6 max-w-2xl mx-auto">
-              Kontaktujte nás a radi vám poskytneme podrobnú konzultáciu a odpovieme na všetky vaše otázky.
+              {t('contact.description')}
             </p>
             <a
               href={`#${contactSectionId}`}
               className="inline-flex items-center px-8 py-4 bg-[var(--primary)] text-white font-semibold rounded-xl hover:bg-[#9a7f4b] transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
-              Kontaktovať nás
+              {t('contact.button')}
             </a>
           </div>
         </div>

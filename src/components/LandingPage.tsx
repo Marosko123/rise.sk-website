@@ -120,7 +120,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         }
       } else {
         if (window.scrollY <= 10 && e.deltaY < -30) {
-           window.history.pushState("", document.title, window.location.pathname + window.location.search);
+           window.history.pushState(null, document.title, window.location.pathname + window.location.search);
            window.dispatchEvent(new Event('hashchange'));
         }
       }
@@ -148,7 +148,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         }
       } else {
         if (window.scrollY <= 10 && deltaY < -50) {
-           window.history.pushState("", document.title, window.location.pathname + window.location.search);
+           window.history.pushState(null, document.title, window.location.pathname + window.location.search);
            window.dispatchEvent(new Event('hashchange'));
         }
       }

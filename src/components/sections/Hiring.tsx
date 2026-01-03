@@ -1,9 +1,8 @@
 'use client';
 
 import FadeIn from '@/components/animations/FadeIn';
-import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import {
     Bot,
     Briefcase,

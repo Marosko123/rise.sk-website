@@ -167,37 +167,37 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
             label: t('serviceItems.webDevelopment'),
             href: '/sluzby/tvorba-web-stranok' as AppPathnames,
             icon: Laptop,
-            description: locale === 'sk' ? 'Moderné a responzívne webové stránky' : 'Modern and responsive websites'
+            description: t('serviceDescriptions.webDevelopment')
           },
           {
             label: t('serviceItems.ecommerce'),
             href: '/sluzby/tvorba-eshopu' as AppPathnames,
             icon: ShoppingCart,
-            description: locale === 'sk' ? 'Komplexné e-commerce riešenia' : 'Complete e-commerce solutions'
+            description: t('serviceDescriptions.ecommerce')
           },
           {
             label: t('serviceItems.mobileApps'),
             href: '/sluzby/vyvoj-mobilnych-aplikacii' as AppPathnames,
             icon: Smartphone,
-            description: locale === 'sk' ? 'iOS a Android aplikácie' : 'iOS and Android applications'
+            description: t('serviceDescriptions.mobileApps')
           },
           {
             label: t('serviceItems.customSoftware'),
             href: '/sluzby/softver-na-mieru' as AppPathnames,
             icon: Code2,
-            description: locale === 'sk' ? 'Riešenia šité na mieru vašim potrebám' : 'Solutions tailored to your needs'
+            description: t('serviceDescriptions.customSoftware')
           },
           {
             label: t('serviceItems.ai'),
             href: '/sluzby/ai-automatizacia' as AppPathnames,
             icon: Brain,
-            description: locale === 'sk' ? 'Optimalizácia procesov a školenia' : 'Process optimization and training'
+            description: t('serviceDescriptions.ai')
           },
           {
             label: t('serviceItems.outsourcing'),
             href: '/sluzby/it-outsourcing' as AppPathnames,
             icon: Users,
-            description: locale === 'sk' ? 'Prenájom vývojárskych tímov' : 'Dedicated development teams'
+            description: t('serviceDescriptions.outsourcing')
           },
         ]
       },
@@ -393,7 +393,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                   if (isHomePage) {
                     if (window.location.hash) {
                       // Clear hash to trigger Landing Page transition
-                      window.history.pushState("", document.title, window.location.pathname + window.location.search);
+                      window.history.pushState(null, document.title, window.location.pathname + window.location.search);
                       // Dispatch hashchange event manually to notify LandingPage
                       window.dispatchEvent(new Event('hashchange'));
                     } else {

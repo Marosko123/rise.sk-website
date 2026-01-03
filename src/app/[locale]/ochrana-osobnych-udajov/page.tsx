@@ -1,5 +1,6 @@
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default async function OchranaOsobnychUdajov({
   params: Promise<{ locale: 'en' | 'sk' }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'common' });
   const breadcrumbs = getBreadcrumbsForPage(locale, 'ochrana-osobnych-udajov');
 
   return (
@@ -213,7 +215,7 @@ export default async function OchranaOsobnychUdajov({
               rel="noopener noreferrer"
               className="inline-flex items-center text-primary-dark hover:text-primary-darker font-medium"
             >
-              ← Späť na hlavnú stránku
+              {t('backToHome')}
             </Link>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { Project } from '@/data/projects';
-import { useTranslations } from '@/hooks/useTranslations';
 import { motion } from 'framer-motion';
 import { Eye, Github, Lock } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
 import OptimizedImage from '../../ui/OptimizedImage';

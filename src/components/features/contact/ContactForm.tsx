@@ -1,9 +1,9 @@
 'use client';
 
 import { useContactForm } from '@/hooks/useContactForm';
-import { useTranslations } from '@/hooks/useTranslations';
 import { AnimatePresence, motion, useInView } from 'framer-motion';
 import { AlertCircle, Building, CheckCircle, CheckCircle2, ChevronLeft, ChevronRight, MessageSquare, Send, Settings, User } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '../../ui/Button';

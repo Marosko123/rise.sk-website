@@ -97,7 +97,9 @@
       "title": "From university friends to technology partners",
       "p1": "Our journey didn't start in boardrooms, but in university labs and during long night coding sessions. We are a group of friends who believe that technology should serve people, not the other way around. We have kept our youthful drive and friendly atmosphere, but today we combine it with expertise valued by the biggest players on the market.",
       "p2": "We help companies grow because we know what it's like to build something from scratch ourselves. We use the most modern tools because we enjoy it and because we know that they bring the best results. Whether it's a complex government system or an innovative app for a startup, we put a piece of our 'rise' spirit into every project.",
-      "cta": "We want to help you too. We are not just suppliers, we are your future technology partners. Let's meet, have a coffee, and talk about how we can grow together."
+      "cta": "We want to help you too. We are not just suppliers, we are your future technology partners. Let's meet, have a coffee, and talk about how we can grow together.",
+      "meetLabel": "Let's meet",
+      "meetTitle": "Coffee & Code"
     },
     "stats": {
       "delivery": {
@@ -980,6 +982,100 @@
       }
     }
   },
+  "servicesEnhanced": {
+    "badge": "Our Services",
+    "title": "What we can",
+    "titleHighlight": "create for you",
+    "subtitle": "We are technology experts with years of experience. We create solutions that work and deliver results.",
+    "services": [
+      {
+        "title": "Modern Websites",
+        "description": "We create professional websites that attract customers and strengthen your brand.",
+        "features": [
+          "Responsive design for all devices",
+          "SEO optimization for better visibility",
+          "Fast loading and security",
+          "Integration with modern tools",
+          "CMS systems for easy management"
+        ],
+        "experience": "6+ years experience"
+      },
+      {
+        "title": "Mobile Applications",
+        "description": "We develop iOS and Android applications that simplify processes and increase user satisfaction.",
+        "features": [
+          "Native development for iOS and Android",
+          "Offline functionality and synchronization",
+          "Push notifications and real-time features",
+          "Optimized for speed and battery",
+          "Integration with cloud services"
+        ],
+        "experience": "3+ years experience"
+      },
+      {
+        "title": "Custom Software",
+        "description": "We design and implement comprehensive software solutions tailored to your needs.",
+        "features": [
+          "Process analysis and architecture design",
+          "Scalable and secure solutions",
+          "API integrations and microservices",
+          "Database design and optimization",
+          "Maintenance and long-term support"
+        ],
+        "experience": "6+ years experience"
+      },
+      {
+        "title": "E-commerce Solutions",
+        "description": "We deliver complete online stores with modern design and advanced features for maximum conversions.",
+        "features": [
+          "Optimized for conversions",
+          "Payment gateways and security",
+          "Inventory management systems",
+          "Analytics and reporting tools",
+          "Multi-platform integrations"
+        ],
+        "experience": "6+ years experience"
+      },
+      {
+        "title": "AI & Data Analytics",
+        "description": "We use artificial intelligence and advanced analytics to transform your data into a competitive advantage.",
+        "features": [
+          "Machine learning models",
+          "Predictive analytics",
+          "Process automation with AI",
+          "Real-time dashboards",
+          "Big data processing"
+        ],
+        "experience": "5+ years experience"
+      },
+      {
+        "title": "Digital Marketing Technologies",
+        "description": "We provide technical solutions for effective digital marketing and marketing process automation.",
+        "features": [
+          "Marketing automation tools",
+          "CRM integrations and workflows",
+          "A/B testing platforms",
+          "Social media management",
+          "Performance tracking systems"
+        ],
+        "experience": "2+ years experience"
+      }
+    ],
+    "labels": {
+      "expertise": "Our Expertise",
+      "features": "What's Included",
+      "scrollToSeeMore": "Scroll to see all services"
+    },
+    "buttons": {
+      "discuss": "Let's Discuss Your Project",
+      "contact": "Contact Us",
+      "references": "Our References"
+    },
+    "cta": {
+      "title": "Want to discuss your project?",
+      "description": "We'd love to talk about your needs. We have experience with various types of projects and find solutions for complex requirements."
+    }
+  },
   "portfolio": {
     "badge": "Our Work",
     "title": "Successful",
@@ -1487,7 +1583,20 @@
     "loading": "Loading...",
     "error": "Error",
     "scrollToTop": "Scroll to top",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "learnMore": "Learn more",
+    "ourServices": "Our Services",
+    "relatedArticles": "Related Articles",
+    "relatedArticlesSubtitle": "Read more about this topic",
+    "allRightsReserved": "All rights reserved",
+    "loadingSteps": {
+      "0": "Loading Rise.sk...",
+      "1": "Preparing components...",
+      "2": "Optimizing performance...",
+      "3": "Almost done..."
+    },
+    "loadingSubtitle": "Preparing the best experience for you",
+    "backToHome": "← Back to Home"
   },
   "loadingScreen": {
     "quotes": {
@@ -1728,6 +1837,20 @@
   "faq": {
     "showAll": "Show all FAQs",
     "showLess": "Show less",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to the most common questions about our services, processes, and collaboration",
+    "categories": {
+      "all": "All Questions",
+      "general": "General",
+      "pricing": "Pricing & Payments",
+      "technical": "Technical",
+      "process": "Process & Communication"
+    },
+    "contact": {
+      "title": "Didn't find an answer to your question?",
+      "description": "Contact us and we'll be happy to provide a detailed consultation and answer all your questions.",
+      "button": "Contact Us"
+    },
     "items": [
       {
         "question": "What services do you provide?",

@@ -1,4 +1,4 @@
-import { useTranslations } from '@/hooks/useTranslations';
+import { useTranslations } from 'next-intl';
 
 import FadeIn from '@/components/animations/FadeIn';
 

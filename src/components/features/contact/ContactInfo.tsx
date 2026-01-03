@@ -1,6 +1,6 @@
-import { useTranslations } from '@/hooks/useTranslations';
 import { motion, useInView } from 'framer-motion';
 import { CheckCircle, Copy, Mail, MapPin, Phone } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
 
 export default function ContactInfo() {

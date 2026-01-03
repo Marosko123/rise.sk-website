@@ -1,8 +1,8 @@
 'use client';
 
 import companyConfig from '@/config/company';
-import { useTranslations } from '@/hooks/useTranslations';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 

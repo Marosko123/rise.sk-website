@@ -2,8 +2,9 @@
 
 import companyConfig from '@/config/company';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 interface LoadingScreenProps {
   isLoading?: boolean;
@@ -11,15 +12,16 @@ interface LoadingScreenProps {
 }
 
 const LoadingScreen = ({ isLoading = true, onComplete }: LoadingScreenProps) => {
+  const t = useTranslations('common');
   const [progress, setProgress] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
 
-  const loadingSteps = [
-    'Načítavam Rise.sk...',
-    'Pripravujem komponenty...',
-    'Optimalizujem výkon...',
-    'Skoro hotovo...'
-  ];
+  const loadingSteps = useMemo(() => [
+    t('loadingSteps.0'),
+    t('loadingSteps.1'),
+    t('loadingSteps.2'),
+    t('loadingSteps.3')
+  ], [t]);
 
   useEffect(() => {
     if (!isLoading) return;
@@ -89,7 +91,7 @@ const LoadingScreen = ({ isLoading = true, onComplete }: LoadingScreenProps) => 
             {loadingSteps[currentStep]}
           </h2>
           <p className="text-slate-400">
-            Pripravujeme pre vás najlepší zážitok
+            {t('loadingSubtitle')}
           </p>
         </motion.div>
 

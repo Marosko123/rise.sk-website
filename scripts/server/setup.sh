@@ -220,6 +220,16 @@ log_info "Setting up SSL auto-renewal..."
 log_success "SSL auto-renewal configured!"
 
 # ============================================
+# 10.1 Setup Cloudflare IP Update Cron (weekly)
+# ============================================
+log_info "Setting up weekly Cloudflare IP update..."
+
+chmod +x $APP_DIR/scripts/server/update-cloudflare-ips.sh
+(crontab -l 2>/dev/null; echo "0 3 * * 0 cd $APP_DIR && bash scripts/server/update-cloudflare-ips.sh >> /var/log/cloudflare-update.log 2>&1") | crontab -
+
+log_success "Cloudflare IP auto-update configured!"
+
+# ============================================
 # 11. Setup Automatic Updates Cron
 # ============================================
 log_info "Setting up automatic security updates..."

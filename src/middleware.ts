@@ -48,9 +48,12 @@ export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Rate Limiting (Skip for static files and API routes often called by internals, but matcher handles most)
-  // We identify user by IP
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ip = (request as any).ip || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1';
+  // We identify user by IP - prioritize Cloudflare header, then x-forwarded-for, then request.ip
+  const ip = request.headers.get('cf-connecting-ip') || 
+             request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+             // eslint-disable-next-line @typescript-eslint/no-explicit-any
+             (request as any).ip || 
+             '127.0.0.1';
 
   if (!checkRateLimit(ip)) {
     return new NextResponse('Too Many Requests', { 

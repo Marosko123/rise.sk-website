@@ -3,7 +3,7 @@
 import { Link, usePathname } from '@/i18n/routing';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const languages = [
   { code: 'sk', name: 'Slovenčina', flag: '🇸🇰', nativeName: 'Slovenčina' },
@@ -14,6 +14,15 @@ export default function LanguageSwitcher({ alternateLinks }: { alternateLinks?: 
   const [isOpen, setIsOpen] = useState(false);
   const locale = useLocale();
   const pathname = usePathname();
+
+  // Sync next-intl locale with localStorage for the custom useTranslations hook
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferred-language', locale);
+      // Dispatch storage event so other tabs/components using the custom hook can update
+      window.dispatchEvent(new Event('storage'));
+    }
+  }, [locale]);
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
 

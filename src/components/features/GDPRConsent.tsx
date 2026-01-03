@@ -1,8 +1,8 @@
 'use client';
 
-import { useTranslations } from '@/hooks/useTranslations';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckCircle, Info, Settings, Shield, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 

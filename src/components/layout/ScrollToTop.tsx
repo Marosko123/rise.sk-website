@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowUp } from 'lucide-react';
-import { useTranslations } from '@/hooks/useTranslations';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 export default function ScrollToTop() {
