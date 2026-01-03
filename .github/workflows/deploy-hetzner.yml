@@ -40,10 +40,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
-          TO_EMAIL: ${{ secrets.TO_EMAIL }}
 
   # Job 2: Build and Push Docker Image
   build-docker:
@@ -89,10 +85,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          build-args: |
-            SENDGRID_API_KEY=${{ secrets.SENDGRID_API_KEY }}
-            FROM_EMAIL=${{ secrets.FROM_EMAIL }}
-            TO_EMAIL=${{ secrets.TO_EMAIL }}
 
   # Job 3: Deploy to Hetzner
   deploy:
