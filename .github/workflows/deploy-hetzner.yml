@@ -132,16 +132,25 @@ jobs:
             docker compose pull app
             
             # Restart services with zero-downtime
-            docker compose up -d --no-deps --build app
+            docker compose up -d --no-deps app
             
             # Clean up old images
             docker image prune -f
             
-            # Health check
-            sleep 10
-            curl -f http://localhost:3000/api/health || exit 1
+            # Health check with retries (app needs time to start)
+            echo "Waiting for app to start..."
+            for i in 1 2 3 4 5 6; do
+              sleep 10
+              if curl -sf http://localhost:3000/api/health > /dev/null 2>&1; then
+                echo "✅ App is healthy!"
+                exit 0
+              fi
+              echo "Attempt $i failed, retrying..."
+            done
             
-            echo "✅ Deployment successful!"
+            echo "❌ Health check failed after 60 seconds"
+            docker logs rise-app --tail 50
+            exit 1
           ENDSSH
 
       - name: Notify on success
