@@ -1,7 +1,7 @@
 'use client';
 
 import { useReportWebVitals } from 'next/web-vitals';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface WebVitalsMetric {
   id: string;
@@ -11,11 +11,38 @@ interface WebVitalsMetric {
   rating: 'good' | 'needs-improvement' | 'poor';
 }
 
+// Sampling rate to reduce Function Invocations (10% of users)
+const SAMPLING_RATE = 0.1;
+
+// Generate consistent sample ID per session to ensure same user is always sampled or not
+function getSampleId(): number {
+  if (typeof window === 'undefined') return Math.random();
+  
+  const key = 'rise_vitals_sample';
+  let sampleId = sessionStorage.getItem(key);
+  
+  if (!sampleId) {
+    sampleId = Math.random().toString();
+    sessionStorage.setItem(key, sampleId);
+  }
+  
+  return parseFloat(sampleId);
+}
+
+function shouldSample(): boolean {
+  return getSampleId() < SAMPLING_RATE;
+}
+
 function reportWebVitals(metric: WebVitalsMetric) {
   // Only report in production
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.log('📊 Web Vitals (Dev):', metric);
+    return;
+  }
+
+  // Apply sampling to reduce API calls by 90%
+  if (!shouldSample()) {
     return;
   }
 
@@ -46,37 +73,41 @@ function reportWebVitals(metric: WebVitalsMetric) {
           timestamp: Date.now(),
           userAgent: navigator.userAgent,
         }),
-      }).catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error('Vitals API error:', error);
+      }).catch(() => {
+        // Silently fail - don't spam console in production
       });
     }
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Failed to report web vitals:', error);
+  } catch {
+    // Silently fail in production
   }
 }
 
 export default function WebVitalsReporter() {
+  const hasInitialized = useRef(false);
+  
   useReportWebVitals(reportWebVitals);
 
   useEffect(() => {
+    // Prevent double initialization
+    if (hasInitialized.current) return;
+    hasInitialized.current = true;
+    
+    // Only monitor in production and for sampled users
+    if (process.env.NODE_ENV !== 'production' || !shouldSample()) {
+      return;
+    }
+
     // Additional performance monitoring
     if (typeof window !== 'undefined' && 'PerformanceObserver' in window) {
-      // Monitor Long Tasks (blocking the main thread)
+      // Monitor Long Tasks (blocking the main thread) - only report severe ones
       const observer = new PerformanceObserver((list) => {
         list.getEntries().forEach((entry) => {
-          if (entry.duration > 50) { // Task longer than 50ms
-            // eslint-disable-next-line no-console
-            console.warn(`⚠️ Long Task detected: ${Math.round(entry.duration)}ms`);
-
-            // Report long tasks in production
-            if (process.env.NODE_ENV === 'production' && typeof window.gtag !== 'undefined') {
-              window.gtag('event', 'long_task', {
-                event_category: 'Performance',
-                value: Math.round(entry.duration),
-              });
-            }
+          // Only report tasks longer than 100ms (more significant)
+          if (entry.duration > 100 && typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'long_task', {
+              event_category: 'Performance',
+              value: Math.round(entry.duration),
+            });
           }
         });
       });

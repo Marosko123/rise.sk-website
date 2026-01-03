@@ -16,6 +16,11 @@ export default function LoadingScreen() {
   });
 
   useEffect(() => {
+    // Detect mobile for faster loading
+    const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
+    const loadingDuration = isMobile ? 1200 : 2300; // Much faster on mobile
+    const totalDuration = isMobile ? 1800 : 3100;
+
     // Prevent scrolling while loading
     document.body.style.overflow = 'hidden';
 
@@ -29,12 +34,12 @@ export default function LoadingScreen() {
     window.addEventListener('touchmove', preventDefault, { passive: false });
     window.addEventListener('scroll', preventDefault, { passive: false });
 
-    // Phase 1: Loading (2.3s)
+    // Phase 1: Loading
     const loadingTimer = setTimeout(() => {
       setStage('scaling');
-    }, 2300);
+    }, loadingDuration);
 
-    // Phase 2: Scaling (0.8s after loading)
+    // Phase 2: Complete
     const completeTimer = setTimeout(() => {
       setStage('complete');
       document.body.style.overflow = '';
@@ -44,7 +49,7 @@ export default function LoadingScreen() {
       window.removeEventListener('wheel', preventDefault);
       window.removeEventListener('touchmove', preventDefault);
       window.removeEventListener('scroll', preventDefault);
-    }, 3100); // 2300 + 800
+    }, totalDuration);
 
     return () => {
       clearTimeout(loadingTimer);

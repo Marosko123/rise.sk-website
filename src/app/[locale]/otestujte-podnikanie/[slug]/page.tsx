@@ -4,8 +4,8 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-// Force dynamic rendering for this route
-export const dynamic = 'force-dynamic';
+// Use ISR instead of force-dynamic - revalidate every hour
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{

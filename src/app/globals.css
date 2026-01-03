@@ -389,7 +389,8 @@ body {
   animation-delay: -4s;
 }
 
-@keyframes float {
+/* Note: @keyframes float is defined above - using float-complex for this variant */
+@keyframes float-complex {
   0%,
   100% {
     transform: translateY(0px) rotate(0deg);
@@ -449,7 +450,7 @@ body {
 
 /* Parallax sections */
 .parallax-container {
-  height: 100vh;
+  height: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 1px;

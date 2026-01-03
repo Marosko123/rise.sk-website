@@ -3,6 +3,9 @@ import LatestPosts from '@/components/sections/LatestPosts';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
+// ISR - revalidate every hour to reduce Function Invocations
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'pages.home.meta' });

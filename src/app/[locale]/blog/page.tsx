@@ -9,6 +9,9 @@ import { getAllTags, getArchiveDates, getFilteredPosts } from '@/utils/blog-serv
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
+// ISR - revalidate every 30 minutes for blog listing
+export const revalidate = 1800;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });

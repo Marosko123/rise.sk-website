@@ -144,8 +144,8 @@ export default function RiseIconRain() {
       }
     };
 
-    // Start continuous rain generation - check frequently for smooth progression
-    const rainInterval = setInterval(addContinuousRain, 50); // Check every 50ms
+    // Start continuous rain generation - check less frequently for better performance
+    const rainInterval = setInterval(addContinuousRain, 100); // Check every 100ms instead of 50ms
 
     return () => clearInterval(rainInterval);
   }, [isRaining, inactivityStartTime, rainIntensity, generateSingleIcon]);
@@ -156,11 +156,11 @@ export default function RiseIconRain() {
 
     const cleanupInterval = setInterval(() => {
       setRainIcons(prev => {
-        // Reduced icon limits for gentler effect
-        const maxIcons = rainIntensity === 'heavy' ? 40 : rainIntensity === 'medium' ? 30 : 20;
+        // Reduced icon limits for gentler effect and better performance
+        const maxIcons = rainIntensity === 'heavy' ? 25 : rainIntensity === 'medium' ? 18 : 12;
         return prev.slice(-maxIcons);
       });
-    }, 2000); // Clean up every 2 seconds
+    }, 3000); // Clean up every 3 seconds instead of 2
 
     return () => clearInterval(cleanupInterval);
   }, [isRaining, rainIntensity]);

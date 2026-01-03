@@ -603,6 +603,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                 <button
                   onClick={toggleMenu}
                   className='p-2 rounded-md text-gray-300 hover:bg-primary hover:text-white transition-all duration-200'
+                  aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                 >
                   {isMenuOpen ? (
                     <X className='w-6 h-6' />

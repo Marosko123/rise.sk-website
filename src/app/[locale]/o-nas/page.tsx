@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 
 import Contact from '@/components/features/MultiStepContactForm';
+
+// ISR - revalidate every 2 hours
+export const revalidate = 7200;
 import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
 import Navigation from '@/components/layout/Navigation';
 import About from '@/components/sections/About';

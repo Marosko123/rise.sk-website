@@ -34,7 +34,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   shapesState
 }, ref) => {
   const t = useTranslations('landing');
-  const { animationTime } = useAnimation();
+  const { animationTime, isMobile } = useAnimation();
 
   const cursorPositionRef = useRef({ x: 0, y: 0 });
   const [shiverCycleStart, setShiverCycleStart] = useState(0);
@@ -106,6 +106,9 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
   }, []);
 
   useEffect(() => {
+    // Skip on mobile - no mouse to track
+    if (isMobile) return;
+
     let lastUpdate = 0;
     const throttleDelay = 16;
 
@@ -129,7 +132,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [getMagneticOffset]);
+  }, [getMagneticOffset, isMobile]);
 
   const logoColorFilter = useMemo(() => {
     const shapePercentage = Math.min(shapesState.length / SHAPE_CONFIG.MAX_COUNT, 1.0);
@@ -231,7 +234,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
           </div>
         </div>
 
-        <section id="hero" className='relative z-10 flex items-center justify-center px-6 min-h-screen'>
+        <section id="hero" className='relative z-10 flex items-center justify-center px-6 min-h-[100dvh]'>
           <div ref={landingContentRef} className='text-center max-w-3xl pointer-events-auto'>
             <div className='mb-8 relative'>
               <motion.div

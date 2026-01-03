@@ -59,8 +59,8 @@ export function GameCounter() {
 
     window.addEventListener('storage', handleStorageChange);
 
-    // Also check periodically for same-tab updates
-    const interval = setInterval(handleStorageChange, 500);
+    // Check less frequently for same-tab updates (1 second instead of 500ms)
+    const interval = setInterval(handleStorageChange, 1000);
 
     return () => {
       window.removeEventListener('storage', handleStorageChange);
@@ -195,30 +195,30 @@ export default function InteractiveRiseIcons() {
     };
   }, [documentHeight]);
 
-  // Spawn new icons periodically
+  // Spawn new icons periodically - reduced frequency for better performance
   useEffect(() => {
     const spawnInterval = setInterval(() => {
       setFloatingIcons(prev => {
-        // Don't spawn too many icons at once - increased limit to 16 for the mini game
-        if (prev.length >= 16) return prev;
+        // Reduced max icons for better performance
+        if (prev.length >= 10) return prev;
 
         const newIcon = generateFloatingIcon();
         return [...prev, newIcon];
       });
-    }, 3000 + Math.random() * 4000); // Spawn every 3-7 seconds
+    }, 5000 + Math.random() * 5000); // Spawn every 5-10 seconds (increased from 3-7)
 
     return () => clearInterval(spawnInterval);
   }, [generateFloatingIcon]);
 
-  // Clean up old icons that haven't been clicked
+  // Clean up old icons that haven't been clicked - less frequent cleanup
   useEffect(() => {
     const cleanupInterval = setInterval(() => {
       setFloatingIcons(prev => {
         const now = Date.now();
-        // Remove icons older than 15 seconds that haven't been clicked
-        return prev.filter(icon => now - icon.id < 15000);
+        // Remove icons older than 20 seconds that haven't been clicked
+        return prev.filter(icon => now - icon.id < 20000);
       });
-    }, 5000);
+    }, 8000); // Check every 8 seconds instead of 5
 
     return () => clearInterval(cleanupInterval);
   }, []);
