@@ -85,6 +85,13 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_wc177ok
+            NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_zg9vxxk
+            NEXT_PUBLIC_EMAILJS_AUTO_REPLY_TEMPLATE_ID=template_th3bu8n
+            NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=IJH1q9GFM4rFERGch
+            NEXT_PUBLIC_GA_MEASUREMENT_ID=G-HK4N38RLTZ
+            NEXT_PUBLIC_GTM_ID=GTM-MZFQM29H
 
   # Job 3: Deploy to Hetzner
   deploy:
