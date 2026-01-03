@@ -141,7 +141,7 @@ jobs:
             echo "Waiting for app to start..."
             for i in 1 2 3 4 5 6; do
               sleep 10
-              if curl -sf http://localhost:3000/api/health > /dev/null 2>&1; then
+              if docker exec rise-app wget -q --spider http://127.0.0.1:3000/api/health 2>/dev/null; then
                 echo "✅ App is healthy!"
                 exit 0
               fi
