@@ -3,17 +3,17 @@ import { useCallback, useEffect, useState } from 'react';
 
 // Configuration variables for floating shapes physics
 export const SHAPE_CONFIG = {
-  // Shape generation
-  INITIAL_COUNT: 7, // Initial number of floating shapes (reduced for performance)
-  MAX_COUNT: 50, // Maximum number of shapes before reset (reduced for performance)
-  MIN_SIZE: 10, // Minimum shape size in pixels
-  MAX_SIZE: 100, // Maximum shape size in pixels
+  // Shape generation - REDUCED for performance
+  INITIAL_COUNT: 5, // Initial number of floating shapes (reduced for performance)
+  MAX_COUNT: 25, // Maximum number of shapes before reset (reduced for performance)
+  MIN_SIZE: 15, // Minimum shape size in pixels
+  MAX_SIZE: 80, // Maximum shape size in pixels
 
-  // Physics
-  GRAVITY_STRENGTH: 0.0002, // How strong the pull to center is
-  DAMPING: 0.98, // Velocity damping (0.98 = slippery)
-  HOVER_PUSH_FORCE: 1.5, // Force applied when hovering
-  HOVER_RADIUS: 160, // Hover detection radius in pixels
+  // Physics - Simplified
+  GRAVITY_STRENGTH: 0.0003, // How strong the pull to center is
+  DAMPING: 0.96, // Velocity damping (lower = more drag = less movement)
+  HOVER_PUSH_FORCE: 1.0, // Force applied when hovering (reduced)
+  HOVER_RADIUS: 120, // Hover detection radius in pixels (reduced)
 
   // Collision physics
   COLLISION_ENABLED: true, // Enable collision detection for better performance

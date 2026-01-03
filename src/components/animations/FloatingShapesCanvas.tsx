@@ -166,15 +166,19 @@ const FloatingShapesCanvas = forwardRef<FloatingShapesCanvasRef, FloatingShapesC
       const canvas = canvasRef.current;
       if (!canvas) return;
 
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d', { alpha: true });
       if (!ctx) return;
 
-      // Set canvas size
-      canvas.width = windowSize.width;
-      canvas.height = windowSize.height;
+      // Set canvas size with device pixel ratio for crisp rendering
+      const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap at 2x for performance
+      canvas.width = windowSize.width * dpr;
+      canvas.height = windowSize.height * dpr;
+      canvas.style.width = `${windowSize.width}px`;
+      canvas.style.height = `${windowSize.height}px`;
+      ctx.scale(dpr, dpr);
 
       let lastFrameTime = 0;
-      const targetFPS = 30; // Lower FPS for better performance
+      const targetFPS = 24; // Lower FPS for better performance
       const frameInterval = 1000 / targetFPS;
 
       const animate = (currentTime: number) => {
@@ -186,7 +190,7 @@ const FloatingShapesCanvas = forwardRef<FloatingShapesCanvasRef, FloatingShapesC
         lastFrameTime = currentTime - (deltaTime % frameInterval);
 
         // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, windowSize.width, windowSize.height);
 
         const shapes = shapesRef.current;
         const now = Date.now();
@@ -299,14 +303,9 @@ const FloatingShapesCanvas = forwardRef<FloatingShapesCanvasRef, FloatingShapesC
           ctx.translate(screenX, screenY);
           ctx.rotate((shape.rotation * Math.PI) / 180);
 
-          // Create metallic gradient
-          const gradient = ctx.createLinearGradient(-halfSize, -halfSize, halfSize, halfSize);
-          gradient.addColorStop(0, '#8B6723');
-          gradient.addColorStop(0.5, '#DAB549');
-          gradient.addColorStop(1, '#8B6723');
-
-          ctx.fillStyle = gradient;
-          ctx.globalAlpha = shape.isStuck ? 0.5 : SHAPE_CONFIG.BASE_OPACITY;
+          // Simple solid color for better performance (no gradients)
+          ctx.fillStyle = shape.isStuck ? '#A08030' : '#B8963A';
+          ctx.globalAlpha = shape.isStuck ? 0.4 : SHAPE_CONFIG.BASE_OPACITY;
 
           // Draw rounded rectangle
           const radius = halfSize * shape.borderRadius;
@@ -322,13 +321,6 @@ const FloatingShapesCanvas = forwardRef<FloatingShapesCanvasRef, FloatingShapesC
           ctx.quadraticCurveTo(-halfSize, -halfSize, -halfSize + radius, -halfSize);
           ctx.closePath();
           ctx.fill();
-
-          // Add subtle glow effect for stuck shapes
-          if (shape.isStuck) {
-            ctx.shadowColor = 'rgba(244, 224, 122, 0.6)';
-            ctx.shadowBlur = 15;
-            ctx.fill();
-          }
 
           ctx.restore();
         }

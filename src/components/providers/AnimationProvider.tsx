@@ -1,17 +1,19 @@
 'use client';
 
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { createContext, ReactNode, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 interface AnimationContextType {
   animationTime: number;
   mounted: boolean;
   isMobile: boolean;
+  getAnimationTime: () => number;
 }
 
 const AnimationContext = createContext<AnimationContextType>({
   animationTime: 0,
   mounted: false,
-  isMobile: false
+  isMobile: false,
+  getAnimationTime: () => Date.now()
 });
 
 export const useAnimation = () => {
@@ -28,8 +30,11 @@ interface AnimationProviderProps {
 
 export function AnimationProvider({ children }: AnimationProviderProps) {
   const [mounted, setMounted] = useState(false);
-  const [animationTime, setAnimationTime] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const animationTimeRef = useRef(Date.now());
+
+  // Stable getter that doesn't cause re-renders
+  const getAnimationTime = useCallback(() => animationTimeRef.current, []);
 
   useEffect(() => {
     setMounted(true);
@@ -40,26 +45,14 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     checkMobile();
   }, []);
 
-  // Single animation loop - DISABLED on mobile for performance
+  // Update animation time ref without causing re-renders
   useEffect(() => {
-    if (!mounted) return;
-
-    // On mobile, don't run animation loop at all - just set initial time
-    if (isMobile) {
-      setAnimationTime(Date.now());
-      return;
-    }
+    if (!mounted || isMobile) return;
 
     let animationId: number;
-    let lastTime = Date.now();
 
     const updateAnimationTime = () => {
-      const now = Date.now();
-      // 30fps for desktop smooth animations
-      if (now - lastTime >= 33) {
-        setAnimationTime(now);
-        lastTime = now;
-      }
+      animationTimeRef.current = Date.now();
       animationId = requestAnimationFrame(updateAnimationTime);
     };
 
@@ -72,8 +65,16 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     };
   }, [mounted, isMobile]);
 
+  // Static value - doesn't change to avoid re-renders
+  const staticAnimationTime = mounted ? Date.now() : 0;
+
   return (
-    <AnimationContext.Provider value={{ animationTime, mounted, isMobile }}>
+    <AnimationContext.Provider value={{ 
+      animationTime: staticAnimationTime, 
+      mounted, 
+      isMobile,
+      getAnimationTime 
+    }}>
       {children}
     </AnimationContext.Provider>
   );
