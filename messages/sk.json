@@ -2143,6 +2143,22 @@
       {
         "question": "Je bezpečnosť prioritou?",
         "answer": "Bezpečnosť berieme vážne. Dodržiavame prísne štandardy ochrany dát a implementujeme moderné bezpečnostné prvky do každého projektu."
+      },
+      {
+        "question": "Ponúkate aj konzultačné služby?",
+        "answer": "Áno, ponúkame technické konzultácie, audity existujúcich systémov a strategické poradenstvo pre digitálnu transformáciu. Pomôžeme vám nájsť najlepšie riešenie pre vaše potreby."
+      },
+      {
+        "question": "Ako prebieha komunikácia počas projektu?",
+        "answer": "Komunikujeme transparentne a pravidelne. Používame moderné nástroje ako Slack, Discord alebo email. Dostávate pravidelné reporty o pokroku a máte vždy priamy kontakt na vývojový tím."
+      },
+      {
+        "question": "Môžete pomôcť s údržbou existujúcej aplikácie?",
+        "answer": "Samozrejme. Poskytujeme služby údržby, opravy bugov, aktualizácie bezpečnosti a postupné vylepšovanie existujúcich aplikácií bez ohľadu na to, kto ich vytvoril."
+      },
+      {
+        "question": "Pracujete aj s menšími projektami alebo startupmi?",
+        "answer": "Áno, radi spolupracujeme so startupmi a menšími firmami. Ponúkame flexibilné riešenia prispôsobené vášmu rozpočtu a pomáhame vám rásť od MVP po plnohodnotný produkt."
       }
     ]
   },

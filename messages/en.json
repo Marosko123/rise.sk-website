@@ -1883,6 +1883,22 @@
       {
         "question": "Is security a priority?",
         "answer": "We take security seriously. We adhere to strict data protection standards and implement modern security features in every project."
+      },
+      {
+        "question": "Do you offer consulting services?",
+        "answer": "Yes, we offer technical consultations, audits of existing systems, and strategic advice for digital transformation. We will help you find the best solution for your needs."
+      },
+      {
+        "question": "How does communication work during a project?",
+        "answer": "We communicate transparently and regularly. We use modern tools like Slack, Discord, or email. You receive regular progress reports and always have direct contact with the development team."
+      },
+      {
+        "question": "Can you help maintain an existing application?",
+        "answer": "Of course. We provide maintenance services, bug fixes, security updates, and gradual improvements to existing applications regardless of who created them."
+      },
+      {
+        "question": "Do you work with smaller projects or startups?",
+        "answer": "Yes, we love working with startups and smaller companies. We offer flexible solutions tailored to your budget and help you grow from MVP to a full-fledged product."
       }
     ]
   },
