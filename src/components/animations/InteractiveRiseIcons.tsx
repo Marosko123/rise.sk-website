@@ -127,6 +127,17 @@ export default function InteractiveRiseIcons() {
   const [gameClicks, setGameClicks] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+
+  // Pause intervals when tab is not visible (saves CPU/battery)
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden);
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, []);
 
   // Reset game state on component mount (page refresh)
   useEffect(() => {
@@ -197,6 +208,9 @@ export default function InteractiveRiseIcons() {
 
   // Spawn new icons periodically - reduced frequency for better performance
   useEffect(() => {
+    // Don't spawn icons when tab is hidden
+    if (!isVisible) return;
+
     const spawnInterval = setInterval(() => {
       setFloatingIcons(prev => {
         // Reduced max icons for better performance
@@ -208,10 +222,13 @@ export default function InteractiveRiseIcons() {
     }, 5000 + Math.random() * 5000); // Spawn every 5-10 seconds (increased from 3-7)
 
     return () => clearInterval(spawnInterval);
-  }, [generateFloatingIcon]);
+  }, [generateFloatingIcon, isVisible]);
 
   // Clean up old icons that haven't been clicked - less frequent cleanup
   useEffect(() => {
+    // Don't run cleanup when tab is hidden
+    if (!isVisible) return;
+
     const cleanupInterval = setInterval(() => {
       setFloatingIcons(prev => {
         const now = Date.now();
@@ -221,7 +238,7 @@ export default function InteractiveRiseIcons() {
     }, 8000); // Check every 8 seconds instead of 5
 
     return () => clearInterval(cleanupInterval);
-  }, []);
+  }, [isVisible]);
 
   // Handle icon click
   const handleIconClick = useCallback((iconId: number) => {

@@ -14,19 +14,31 @@ interface ServicesEnhancedProps {
   id?: string;
 }
 
+// Global cache for Lottie animations to prevent re-fetching
+const lottieCache = new Map<string, object>();
+
 const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fallbackIcon: React.ElementType, gradient?: string, speed?: number }) => {
-  const [animationData, setAnimationData] = useState<object | null>(null);
+  const [animationData, setAnimationData] = useState<object | null>(() => lottieCache.get(url) || null);
   const [error, setError] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lottieRef = useRef<any>(null);
 
   useEffect(() => {
+    // If already cached, don't fetch again
+    if (lottieCache.has(url)) {
+      setAnimationData(lottieCache.get(url)!);
+      return;
+    }
+
     fetch(url)
       .then(response => {
         if (!response.ok) throw new Error('Network response was not ok');
         return response.json();
       })
-      .then(data => setAnimationData(data))
+      .then(data => {
+        lottieCache.set(url, data); // Cache the animation
+        setAnimationData(data);
+      })
       .catch(() => setError(true));
   }, [url]);
 

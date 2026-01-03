@@ -7,8 +7,6 @@ export async function GET() {
   const response = NextResponse.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-    environment: process.env.NODE_ENV || 'development',
   });
   
   // Add cache headers

@@ -13,67 +13,86 @@ interface WebVitalsData {
   userAgent: string;
 }
 
+// Simple in-memory rate limiter for vitals endpoint
+// On Hetzner (single server), this works reliably
+const VITALS_RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const VITALS_RATE_LIMIT_MAX = 30; // 30 vitals reports per minute per IP
+const vitalsIpMap = new Map<string, { count: number; resetTime: number }>();
+
+function checkVitalsRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const record = vitalsIpMap.get(ip);
+
+  // Cleanup old entries periodically
+  if (vitalsIpMap.size > 1000) {
+    for (const [key, data] of vitalsIpMap.entries()) {
+      if (now > data.resetTime) vitalsIpMap.delete(key);
+    }
+  }
+
+  if (!record || now > record.resetTime) {
+    vitalsIpMap.set(ip, { count: 1, resetTime: now + VITALS_RATE_LIMIT_WINDOW });
+    return true;
+  }
+
+  if (record.count >= VITALS_RATE_LIMIT_MAX) {
+    return false;
+  }
+
+  record.count += 1;
+  return true;
+}
+
 export async function POST(request: NextRequest) {
+  // Get client IP - Cloudflare provides this header
+  const ip = request.headers.get('cf-connecting-ip') || 
+             request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+             'unknown';
+
+  // Rate limit check
+  if (!checkVitalsRateLimit(ip)) {
+    return NextResponse.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: { 'Retry-After': '60' } }
+    );
+  }
+
   try {
     const data: WebVitalsData = await request.json();
     
     // Validate the data
-    if (!data.metric || !data.url) {
+    if (!data.metric || !data.url || typeof data.metric.name !== 'string') {
       return NextResponse.json(
         { error: 'Invalid vitals data' },
         { status: 400 }
       );
     }
 
-    // In production, you would send this to your analytics service
-    // For now, we'll log it and could store in a database
-    
-    const vitalsEntry = {
-      ...data,
-      timestamp: new Date(data.timestamp).toISOString(),
-      // Add any additional metadata
-      environment: process.env.NODE_ENV,
-      version: process.env.npm_package_version || 'unknown',
-    };
+    // Validate metric name is one of the known vitals
+    const validMetrics = ['LCP', 'FID', 'CLS', 'FCP', 'TTFB', 'INP'];
+    if (!validMetrics.includes(data.metric.name)) {
+      return NextResponse.json(
+        { error: 'Invalid metric name' },
+        { status: 400 }
+      );
+    }
 
-    // Here you could:
-    // 1. Store in database (PostgreSQL, MongoDB, etc.)
-    // 2. Send to analytics service (Google Analytics, Mixpanel, etc.)
-    // 3. Send to monitoring service (DataDog, New Relic, etc.)
-    // 4. Store in logging service (Winston, etc.)
-    
     // For development, log the vitals
     if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
-      console.log('📊 Web Vitals Received:', {
+      console.log('📊 Web Vitals:', {
         metric: data.metric.name,
-        value: data.metric.value,
+        value: Math.round(data.metric.value),
         rating: data.metric.rating,
-        url: data.url,
-        timestamp: vitalsEntry.timestamp,
       });
     }
 
-    // TODO: Implement actual storage/forwarding logic
-    // Example implementations:
-    
-    // 1. Send to Google Analytics Measurement Protocol
-    // if (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
-    //   await sendToGoogleAnalytics(vitalsEntry);
-    // }
-    
-    // 2. Store in database
-    // await storeInDatabase(vitalsEntry);
-    
-    // 3. Send to external monitoring service
-    // await sendToMonitoringService(vitalsEntry);
+    // In production, vitals are already sent to Google Analytics via gtag
+    // This endpoint serves as a backup/custom analytics if needed
 
     return NextResponse.json({ success: true }, { status: 200 });
     
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Error processing web vitals:', error);
-    
+  } catch {
     return NextResponse.json(
       { error: 'Failed to process vitals data' },
       { status: 500 }
@@ -81,14 +100,9 @@ export async function POST(request: NextRequest) {
   }
 }
 
+// Disabled GET to not expose endpoint info
 export async function GET() {
-  // Return basic info about the vitals endpoint
-  return NextResponse.json({
-    endpoint: '/api/vitals',
-    description: 'Core Web Vitals collection endpoint',
-    methods: ['POST'],
-    version: '1.0.0',
-  });
+  return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
 }
 
 // Example function for sending to Google Analytics Measurement Protocol

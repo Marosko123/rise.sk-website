@@ -5,8 +5,8 @@ import { routing } from './i18n/routing';
 const intlMiddleware = createMiddleware(routing);
 
 // Simple in-memory rate limiter with lazy cleanup
-// Note: On Edge runtime, this Map is per-instance and won't persist across requests
-// For production, consider using Vercel KV or similar
+// On Hetzner (single server/container), this Map persists and works reliably
+// Cloudflare Free tier provides additional DDoS protection at CDN level
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const RATE_LIMIT_MAX = 150; // 150 requests per minute
 const MAX_MAP_SIZE = 10000; // Prevent unbounded growth

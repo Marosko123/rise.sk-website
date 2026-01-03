@@ -26,6 +26,17 @@ export default function RiseIconRain() {
   const [rainIntensity, setRainIntensity] = useState<RainIntensity>('light');
   const [currentWave, setCurrentWave] = useState(0);
   const [inactivityStartTime, setInactivityStartTime] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  // Pause animations when tab is not visible (saves CPU)
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden);
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, []);
 
   // Generate a single rain icon based on current intensity and progression
   const generateSingleIcon = useCallback((intensity: RainIntensity, elapsed: number) => {
@@ -104,7 +115,8 @@ export default function RiseIconRain() {
 
   // Continuous rain generation system
   useEffect(() => {
-    if (!isRaining || !inactivityStartTime) return;
+    // Don't run intervals when tab is hidden (saves CPU/battery)
+    if (!isRaining || !inactivityStartTime || !isVisible) return;
 
     let lastIconTime = 0;
 
@@ -148,11 +160,11 @@ export default function RiseIconRain() {
     const rainInterval = setInterval(addContinuousRain, 100); // Check every 100ms instead of 50ms
 
     return () => clearInterval(rainInterval);
-  }, [isRaining, inactivityStartTime, rainIntensity, generateSingleIcon]);
+  }, [isRaining, inactivityStartTime, rainIntensity, generateSingleIcon, isVisible]);
 
   // Cleanup old rain icons to prevent memory buildup
   useEffect(() => {
-    if (!isRaining) return;
+    if (!isRaining || !isVisible) return;
 
     const cleanupInterval = setInterval(() => {
       setRainIcons(prev => {
@@ -163,7 +175,7 @@ export default function RiseIconRain() {
     }, 3000); // Clean up every 3 seconds instead of 2
 
     return () => clearInterval(cleanupInterval);
-  }, [isRaining, rainIntensity]);
+  }, [isRaining, rainIntensity, isVisible]);
 
   // Inactivity detection and automatic rain
   useEffect(() => {
