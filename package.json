@@ -112,6 +112,14 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "browserslist": [
+    "chrome >= 92",
+    "safari >= 15.4",
+    "firefox >= 90",
+    "ios >= 15.4",
+    "not op_mini all",
+    "not IE 11"
+  ],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",

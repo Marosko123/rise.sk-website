@@ -27,10 +27,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: t('description'),
     },
     alternates: {
-      canonical: `https://www.rise.sk/${locale === 'sk' ? '' : 'en'}`,
+      canonical: locale === 'sk' ? '/' : '/en',
       languages: {
-        'sk': 'https://www.rise.sk',
-        'en': 'https://www.rise.sk/en',
+        'sk': '/',
+        'en': '/en',
+        'x-default': '/',
       }
     }
   };

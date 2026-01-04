@@ -35,6 +35,7 @@ export default function StepPersonalInfo({ formData, handleChange, isSubmitting 
             disabled={isSubmitting}
             className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
             placeholder={t('placeholders.name')}
+            autoComplete="name"
           />
         </div>
         <div>
@@ -50,6 +51,7 @@ export default function StepPersonalInfo({ formData, handleChange, isSubmitting 
             disabled={isSubmitting}
             className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
             placeholder={t('placeholders.company')}
+            autoComplete="organization"
           />
         </div>
       </div>
@@ -69,6 +71,7 @@ export default function StepPersonalInfo({ formData, handleChange, isSubmitting 
             disabled={isSubmitting}
             className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
             placeholder={t('placeholders.email')}
+            autoComplete="email"
           />
         </div>
         <div>
@@ -85,6 +88,7 @@ export default function StepPersonalInfo({ formData, handleChange, isSubmitting 
             disabled={isSubmitting}
             className='w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:border-transparent transition-colors duration-150 disabled:opacity-50'
             placeholder={t('placeholders.phone')}
+            autoComplete="tel"
           />
         </div>
       </div>

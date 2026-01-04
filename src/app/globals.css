@@ -179,6 +179,67 @@ body {
   }
 }
 
+/* Gentle floating animations for text - performant CSS-only */
+@keyframes gentle-float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes gentle-float-y-alt {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-gentle-float {
+  animation: gentle-float-y 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-gentle-float-alt {
+  animation: gentle-float-y-alt 3.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+  will-change: transform;
+}
+
+/* Logo floating and bobbing animation - playful and pleasant */
+@keyframes logo-float-bob {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) translateX(3px) rotate(1.5deg);
+  }
+  50% {
+    transform: translateY(-2px) translateX(-2px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-8px) translateX(1px) rotate(2deg);
+  }
+}
+
+@keyframes logo-gentle-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 25px rgba(176, 145, 85, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(176, 145, 85, 0.6));
+  }
+}
+
+.animate-logo-float {
+  animation: logo-float-bob 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animation-paused {
+  animation-play-state: paused !important;
+}
+
+.animate-logo-pulse-glow {
+  animation: logo-gentle-pulse 3s ease-in-out infinite;
+  will-change: filter;
+}
+
 @keyframes float {
   0%,
   100% {
@@ -373,6 +434,18 @@ body {
 
   50% {
     background-position: 100% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .gradient-text-animated {
+    animation: none;
+    background-size: 200% auto; /* Simplify background for mobile */
+  }
+
+  .animate-logo-float,
+  .animate-logo-pulse-glow {
+    animation: none !important;
   }
 }
 
@@ -676,15 +749,18 @@ body {
 }
 
 .animate-blob {
-  animation: blob 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  animation: blob 6s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .animate-drift-slow {
-  animation: drift-slow 20s ease-in-out infinite;
+  animation: drift-slow 8s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow-subtle 8s ease-in-out infinite;
+  animation: pulse-glow-subtle 3s ease-in-out infinite;
+  will-change: opacity, transform;
 }
 
 .animation-delay-2000 {
@@ -740,19 +816,23 @@ body {
 }
 
 .animate-float-vertical {
-  animation: float-vertical 12s ease-in-out infinite;
+  animation: float-vertical 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
 }
 
 .animate-float-horizontal {
-  animation: float-horizontal 15s ease-in-out infinite;
+  animation: float-horizontal 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
 }
 
 .animate-pulse-bright {
-  animation: pulse-bright 6s ease-in-out infinite;
+  animation: pulse-bright 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity, filter;
 }
 
 .animate-rotate-slow {
-  animation: rotate-slow 60s linear infinite;
+  animation: rotate-slow 15s linear infinite;
+  will-change: transform;
 }
 
 @keyframes float-particle {

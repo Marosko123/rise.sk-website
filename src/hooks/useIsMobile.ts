@@ -1,19 +1,40 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function useIsMobile(breakpoint: number = 768): boolean {
   const [isMobile, setIsMobile] = useState(false);
+  const lastWidthRef = useRef<number>(0);
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < breakpoint);
+      const currentWidth = window.innerWidth;
+
+      // Only update if width actually changed (ignore height-only changes from mobile toolbar)
+      // This prevents re-renders when Chrome mobile toolbar hides/shows during scroll
+      if (lastWidthRef.current !== currentWidth) {
+        lastWidthRef.current = currentWidth;
+        setIsMobile(currentWidth < breakpoint);
+      }
     };
 
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
+    // Initial check
+    lastWidthRef.current = window.innerWidth;
+    setIsMobile(window.innerWidth < breakpoint);
 
-    return () => window.removeEventListener('resize', checkIsMobile);
+    // Debounced resize handler to prevent excessive updates
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+    const debouncedCheck = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkIsMobile, 150);
+    };
+
+    window.addEventListener('resize', debouncedCheck);
+
+    return () => {
+      window.removeEventListener('resize', debouncedCheck);
+      clearTimeout(resizeTimeout);
+    };
   }, [breakpoint]);
 
   return isMobile;

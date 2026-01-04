@@ -3,17 +3,15 @@
 import { createContext, ReactNode, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 interface AnimationContextType {
-  animationTime: number;
-  mounted: boolean;
-  isMobile: boolean;
   getAnimationTime: () => number;
+  mounted: boolean;
+  subscribe: (callback: () => void) => () => void;
 }
 
 const AnimationContext = createContext<AnimationContextType>({
-  animationTime: 0,
+  getAnimationTime: () => 0,
   mounted: false,
-  isMobile: false,
-  getAnimationTime: () => Date.now()
+  subscribe: () => () => {}
 });
 
 export const useAnimation = () => {
@@ -24,35 +22,56 @@ export const useAnimation = () => {
   return context;
 };
 
+// Custom hook for components that need the animation time - only those components will re-render
+export const useAnimationTime = () => {
+  const { getAnimationTime, subscribe } = useAnimation();
+  const [, forceUpdate] = useState(0);
+
+  useEffect(() => {
+    return subscribe(() => forceUpdate(n => n + 1));
+  }, [subscribe]);
+
+  return getAnimationTime();
+};
+
 interface AnimationProviderProps {
   children: ReactNode;
 }
 
 export function AnimationProvider({ children }: AnimationProviderProps) {
   const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const animationTimeRef = useRef(Date.now());
-
-  // Stable getter that doesn't cause re-renders
-  const getAnimationTime = useCallback(() => animationTimeRef.current, []);
+  const animationTimeRef = useRef(0);
+  const subscribersRef = useRef<Set<() => void>>(new Set());
 
   useEffect(() => {
     setMounted(true);
-    // Detect mobile once on mount
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
-    };
-    checkMobile();
   }, []);
 
-  // Update animation time ref without causing re-renders
+  const getAnimationTime = useCallback(() => animationTimeRef.current, []);
+
+  const subscribe = useCallback((callback: () => void) => {
+    subscribersRef.current.add(callback);
+    return () => {
+      subscribersRef.current.delete(callback);
+    };
+  }, []);
+
+  // Single animation loop - uses ref to avoid triggering re-renders
   useEffect(() => {
-    if (!mounted || isMobile) return;
+    if (!mounted) return;
 
     let animationId: number;
+    let lastTime = Date.now();
 
     const updateAnimationTime = () => {
-      animationTimeRef.current = Date.now();
+      const now = Date.now();
+      // 60fps for smooth animations
+      if (now - lastTime >= 16) {
+        animationTimeRef.current = now;
+        // Notify only subscribed components
+        subscribersRef.current.forEach(cb => cb());
+        lastTime = now;
+      }
       animationId = requestAnimationFrame(updateAnimationTime);
     };
 
@@ -63,18 +82,10 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
         cancelAnimationFrame(animationId);
       }
     };
-  }, [mounted, isMobile]);
-
-  // Static value - doesn't change to avoid re-renders
-  const staticAnimationTime = mounted ? Date.now() : 0;
+  }, [mounted]);
 
   return (
-    <AnimationContext.Provider value={{ 
-      animationTime: staticAnimationTime, 
-      mounted, 
-      isMobile,
-      getAnimationTime 
-    }}>
+    <AnimationContext.Provider value={{ getAnimationTime, mounted, subscribe }}>
       {children}
     </AnimationContext.Provider>
   );

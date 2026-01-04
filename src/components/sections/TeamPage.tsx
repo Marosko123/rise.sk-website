@@ -138,35 +138,26 @@ export default function TeamPage() {
       {/* Hero Section */}
       <section className="min-h-[100dvh] md:h-full snap-start flex flex-col items-center justify-center relative overflow-hidden px-4 pb-32">
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+          <h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight"
           >
             {t('title')} <span className="gradient-text">{t('titleHighlight')}</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+          <p
             className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed select-text"
           >
             {t('subtitle')}
-          </motion.p>
+          </p>
         </div>
 
-        <motion.button
+        <button
           onClick={scrollToFirstMember}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
           className="absolute bottom-24 md:bottom-12 left-1/2 -translate-x-1/2 text-gray-300 hover:text-primary transition-colors flex flex-col items-center gap-2"
         >
           <span className="text-sm uppercase tracking-widest font-medium">{t('scrollDown')}</span>
           <ArrowDown className="animate-bounce w-6 h-6" />
-        </motion.button>
+        </button>
       </section>
 
       {/* Team Members */}
@@ -228,7 +219,7 @@ export default function TeamPage() {
                 ) : (
                   <Image
                     src={member.image}
-                    alt={member.name}
+                    alt=""
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     sizes="(max-width: 768px) 160px, (max-width: 1200px) 300px, 350px"

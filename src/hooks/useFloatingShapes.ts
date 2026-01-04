@@ -1,29 +1,28 @@
-import { useAnimation } from '@/components/providers/AnimationProvider';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // Configuration variables for floating shapes physics
 export const SHAPE_CONFIG = {
-  // Shape generation - REDUCED for performance
+  // Shape generation
   INITIAL_COUNT: 5, // Initial number of floating shapes (reduced for performance)
   MAX_COUNT: 25, // Maximum number of shapes before reset (reduced for performance)
   MIN_SIZE: 15, // Minimum shape size in pixels
   MAX_SIZE: 80, // Maximum shape size in pixels
 
-  // Physics - Simplified
+  // Physics
   GRAVITY_STRENGTH: 0.0003, // How strong the pull to center is
-  DAMPING: 0.96, // Velocity damping (lower = more drag = less movement)
-  HOVER_PUSH_FORCE: 1.0, // Force applied when hovering (reduced)
-  HOVER_RADIUS: 120, // Hover detection radius in pixels (reduced)
+  DAMPING: 0.96, // Velocity damping (0.96 = more momentum)
+  HOVER_PUSH_FORCE: 4.0, // Force applied when hovering (increased for reactivity)
+  HOVER_RADIUS: 200, // Hover detection radius in pixels (increased)
 
   // Collision physics
   COLLISION_ENABLED: true, // Enable collision detection for better performance
-  COLLISION_DAMPING: 0.8, // How much velocity is retained after collision (0-1)
-  COLLISION_REPULSION: 0.5, // How much shapes repel each other during collision
+  COLLISION_DAMPING: 0.85, // How much velocity is retained after collision (0-1)
+  COLLISION_REPULSION: 0.8, // How much shapes repel each other during collision
 
   // Animation
-  FLOAT_SPEED: 0.001, // Speed of natural floating motion
-  FLOAT_AMPLITUDE: 0.8, // Amplitude of floating motion
-  ROTATION_SPEED: 0.02, // Speed of shape rotation
+  FLOAT_SPEED: 0.002, // Speed of natural floating motion (doubled)
+  FLOAT_AMPLITUDE: 1.5, // Amplitude of floating motion (doubled)
+  ROTATION_SPEED: 0.05, // Speed of shape rotation (faster)
 
   // Visual
   BASE_OPACITY: 0.15, // Base opacity of shapes
@@ -70,6 +69,35 @@ export interface FloatingShape {
   isStuck?: boolean;
 }
 
+// Helper to create shapes - pure function now
+const createFloatingShape = (id: number, totalCount: number, isInitial: boolean = false): FloatingShape => {
+  let originalX, originalY;
+  if (isInitial) {
+      const angle = (id / totalCount) * 2 * Math.PI;
+      const radius = SHAPE_CONFIG.CIRCLE_RADIUS * 0.5;
+      originalX = SHAPE_CONFIG.CENTER_X + Math.cos(angle) * radius;
+      originalY = SHAPE_CONFIG.CENTER_Y + Math.sin(angle) * radius;
+  } else {
+      const angle = Math.random() * 2 * Math.PI;
+      const radius = SHAPE_CONFIG.CIRCLE_RADIUS * Math.random();
+      originalX = SHAPE_CONFIG.CENTER_X + Math.cos(angle) * radius;
+      originalY = SHAPE_CONFIG.CENTER_Y + Math.sin(angle) * radius;
+  }
+
+  return {
+    id: Date.now() + Math.random(),
+    x: originalX,
+    y: originalY,
+    originalX,
+    originalY,
+    size: SHAPE_CONFIG.MIN_SIZE + Math.random() * (SHAPE_CONFIG.MAX_SIZE - SHAPE_CONFIG.MIN_SIZE),
+    rotation: Math.random() * 360,
+    speed: 1,
+    vx: 0,
+    vy: 0,
+  };
+};
+
 interface UseFloatingShapesProps {
   cursorPositionRef: React.MutableRefObject<{ x: number; y: number }>;
   windowSize: { width: number; height: number };
@@ -77,454 +105,243 @@ interface UseFloatingShapesProps {
   isMobile?: boolean;
 }
 
-export function useFloatingShapes({ cursorPositionRef, windowSize, mounted, isMobile = false }: UseFloatingShapesProps) {
-  const { animationTime } = useAnimation();
-
+export function useFloatingShapes({ cursorPositionRef, windowSize, mounted, isMobile = false, shapeRefs }: UseFloatingShapesProps & { shapeRefs: React.MutableRefObject<Map<number, HTMLDivElement>> }) {
   // Adjust config based on device
   const initialCount = isMobile ? 3 : SHAPE_CONFIG.INITIAL_COUNT;
   const maxCount = isMobile ? 15 : SHAPE_CONFIG.MAX_COUNT;
   const collisionEnabled = isMobile ? false : SHAPE_CONFIG.COLLISION_ENABLED;
 
-  const [shapeCount, setShapeCount] = useState(initialCount);
-  const [floatingShapes, setFloatingShapes] = useState<FloatingShape[]>([]);
+  // Render shapes state - ONLY for adding/removing DOM nodes
+  const [renderShapes, setRenderShapes] = useState<FloatingShape[]>([]);
+  // Physics state - purely internal, no re-renders
+  const physicsShapesRef = useRef<FloatingShape[]>([]);
+  const shapeCountRef = useRef(initialCount);
+
   const [isExploding, setIsExploding] = useState(false);
   const [explosionStartTime, setExplosionStartTime] = useState(0);
 
+  // Initialize shapes
+  useEffect(() => {
+    if (mounted && physicsShapesRef.current.length === 0) {
+      const shapes = Array.from({ length: initialCount }, (_, i) =>
+        createFloatingShape(i, initialCount, true)
+      );
+      physicsShapesRef.current = shapes;
+      setRenderShapes(shapes);
+      shapeCountRef.current = initialCount;
+    }
+  }, [mounted, initialCount]);
+
   // Collision detection function with performance optimization
   const detectAndResolveCollisions = useCallback((shapes: FloatingShape[], windowWidth: number, windowHeight: number, frameCount: number) => {
-    if (!collisionEnabled) return shapes;
+    if (!collisionEnabled) return;
 
     // Skip collision detection occasionally for better performance
-    const skipFrame = frameCount % 2; // Only run collision detection every other frame (~30fps for collisions)
-    if (skipFrame !== 0) return shapes;
+    const skipFrame = frameCount % 2;
+    if (skipFrame !== 0) return;
 
-    const updatedShapes = [...shapes];
+    for (let i = 0; i < shapes.length; i++) {
+        for (let j = i + 1; j < shapes.length; j++) {
+            const shape1 = shapes[i];
+            const shape2 = shapes[j];
+            const roughDistance = Math.abs(shape1.x - shape2.x) + Math.abs(shape1.y - shape2.y);
+            if (roughDistance > 20) continue;
 
-    for (let i = 0; i < updatedShapes.length; i++) {
-      for (let j = i + 1; j < updatedShapes.length; j++) {
-        const shape1 = updatedShapes[i];
-        const shape2 = updatedShapes[j];
+            const shape1X = (shape1.x / 100) * windowWidth;
+            const shape1Y = (shape1.y / 100) * windowHeight;
+            const shape2X = (shape2.x / 100) * windowWidth;
+            const shape2Y = (shape2.y / 100) * windowHeight;
 
-        // Quick distance check - skip expensive calculations if shapes are far apart
-        const roughDistance = Math.abs(shape1.x - shape2.x) + Math.abs(shape1.y - shape2.y);
-        if (roughDistance > 20) continue; // Skip if roughly more than 20% screen distance apart
+            const deltaX = shape2X - shape1X;
+            const deltaY = shape2Y - shape1Y;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            const minDistance = (shape1.size + shape2.size) / 2;
 
-        // Convert percentage positions to screen coordinates
-        const shape1X = (shape1.x / 100) * windowWidth;
-        const shape1Y = (shape1.y / 100) * windowHeight;
-        const shape2X = (shape2.x / 100) * windowWidth;
-        const shape2Y = (shape2.y / 100) * windowHeight;
+            if (distance < minDistance && distance > 0) {
+               const normalX = deltaX / distance;
+               const normalY = deltaY / distance;
+               const overlap = minDistance - distance;
 
-        // Calculate distance between shape centers
-        const deltaX = shape2X - shape1X;
-        const deltaY = shape2Y - shape1Y;
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+               const separationX = (overlap / 2) * normalX;
+               const separationY = (overlap / 2) * normalY;
+               const sepPctX = (separationX / windowWidth) * 100;
+               const sepPctY = (separationY / windowHeight) * 100;
 
-        // Calculate minimum distance for collision (sum of radii)
-        const minDistance = (shape1.size + shape2.size) / 2;
-
-        // Check for collision
-        if (distance < minDistance && distance > 0) {
-          // If both are stuck, don't move either
-          if (shape1.isStuck && shape2.isStuck) {
-            continue;
-          }
-
-          // Calculate collision normal (unit vector from shape1 to shape2)
-          const normalX = deltaX / distance;
-          const normalY = deltaY / distance;
-
-          // Calculate overlap amount
-          const overlap = minDistance - distance;
-
-          // If one is stuck, only move the other one
-          if (shape1.isStuck) {
-             // Move shape2 away from shape1
-             const separationX = overlap * normalX;
-             const separationY = overlap * normalY;
-
-             const separationPercentX2 = (separationX / windowWidth) * 100;
-             const separationPercentY2 = (separationY / windowHeight) * 100;
-
-             updatedShapes[j] = {
-                ...shape2,
-                x: shape2.x + separationPercentX2,
-                y: shape2.y + separationPercentY2,
-                // Bounce shape2
-                vx: shape2.vx + normalX * 2, // Add some bounce
-                vy: shape2.vy + normalY * 2
-             };
-             continue;
-          }
-
-          if (shape2.isStuck) {
-             // Move shape1 away from shape2
-             const separationX = overlap * normalX;
-             const separationY = overlap * normalY;
-
-             const separationPercentX1 = -(separationX / windowWidth) * 100;
-             const separationPercentY1 = -(separationY / windowHeight) * 100;
-
-             updatedShapes[i] = {
-                ...shape1,
-                x: shape1.x + separationPercentX1,
-                y: shape1.y + separationPercentY1,
-                // Bounce shape1
-                vx: shape1.vx - normalX * 2, // Add some bounce
-                vy: shape1.vy - normalY * 2
-             };
-             continue;
-          }
-
-          // Separate the shapes by moving them apart
-          const separationX = (overlap / 2) * normalX;
-          const separationY = (overlap / 2) * normalY;
-
-          // Convert back to percentage coordinates for separation
-          const separationPercentX1 = -(separationX / windowWidth) * 100;
-          const separationPercentY1 = -(separationY / windowHeight) * 100;
-          const separationPercentX2 = (separationX / windowWidth) * 100;
-          const separationPercentY2 = (separationY / windowHeight) * 100;
-
-          updatedShapes[i] = {
-            ...shape1,
-            x: shape1.x + separationPercentX1,
-            y: shape1.y + separationPercentY1
-          };
-
-          updatedShapes[j] = {
-            ...shape2,
-            x: shape2.x + separationPercentX2,
-            y: shape2.y + separationPercentY2
-          };
-
-          // Calculate relative velocity in collision normal direction
-          const relativeVelX = shape2.vx - shape1.vx;
-          const relativeVelY = shape2.vy - shape1.vy;
-          const velocityAlongNormal = relativeVelX * normalX + relativeVelY * normalY;
-
-          // Don't resolve if velocities are separating
-          if (velocityAlongNormal > 0) {
-            continue;
-          }
-
-          // Calculate restitution (bounciness)
-          const restitution = 0.8;
-
-          // Calculate impulse scalar
-          const impulse = -(1 + restitution) * velocityAlongNormal;
-
-          // Apply impulse to velocities
-          updatedShapes[i] = {
-            ...updatedShapes[i],
-            vx: shape1.vx - impulse * normalX,
-            vy: shape1.vy - impulse * normalY
-          };
-
-          updatedShapes[j] = {
-            ...updatedShapes[j],
-            vx: shape2.vx + impulse * normalX,
-            vy: shape2.vy + impulse * normalY
-          };
+               if (!shape1.isStuck) {
+                 shape1.x -= sepPctX;
+                 shape1.y -= sepPctY;
+                 shape1.vx -= normalX * 0.5;
+                 shape1.vy -= normalY * 0.5;
+               }
+               if (!shape2.isStuck) {
+                 shape2.x += sepPctX;
+                 shape2.y += sepPctY;
+                 shape2.vx += normalX * 0.5;
+                 shape2.vy += normalY * 0.5;
+               }
+            }
         }
-      }
     }
-
-    return updatedShapes;
   }, [collisionEnabled]);
 
-  // Animate floating shapes with gravity and mouse interaction - dedicated 60fps loop
+  // Animate floating shapes - MAIN LOOP
   useEffect(() => {
-    if (!mounted || floatingShapes.length === 0 || !windowSize.width || !windowSize.height) {
-      return;
-    }
+    if (!mounted || !windowSize.width || !windowSize.height) return;
 
     let animationId: number;
     let frameCount = 0;
 
     const animateShapes = () => {
       frameCount++;
+      const shapes = physicsShapesRef.current;
 
-      setFloatingShapes(prev => {
-        // First, update all shapes with physics
-        const updatedShapes = prev.map(shape => {
-          // During explosion, skip all physics except position updates
+      // PHYSICS UPDATE
+      shapes.forEach(shape => {
           if (isExploding) {
-            // Update position based on velocity only
             const velocityScaleX = 100 / windowSize.width;
             const velocityScaleY = 100 / windowSize.height;
             shape.x += shape.vx * velocityScaleX;
             shape.y += shape.vy * velocityScaleY;
+            shape.rotation += SHAPE_CONFIG.ROTATION_SPEED * 2;
+          } else if (!shape.isStuck) {
+             const shapeScreenX = (shape.x / 100) * windowSize.width;
+             const shapeScreenY = (shape.y / 100) * windowSize.height;
+             const deltaX = cursorPositionRef.current.x - shapeScreenX;
+             const deltaY = cursorPositionRef.current.y - shapeScreenY;
+             const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-            return {
-              ...shape,
-              rotation: shape.rotation + SHAPE_CONFIG.ROTATION_SPEED * 2, // Faster rotation during explosion
-            };
+             if (distance < SHAPE_CONFIG.HOVER_RADIUS && distance > 0) {
+                 const angle = Math.atan2(deltaY, deltaX);
+                 const force = (SHAPE_CONFIG.HOVER_RADIUS - distance) / SHAPE_CONFIG.HOVER_RADIUS;
+                 shape.vx += -Math.cos(angle) * force * SHAPE_CONFIG.HOVER_PUSH_FORCE;
+                 shape.vy += -Math.sin(angle) * force * SHAPE_CONFIG.HOVER_PUSH_FORCE;
+             }
+
+             const targetScreenX = (shape.originalX / 100) * windowSize.width;
+             const targetScreenY = (shape.originalY / 100) * windowSize.height;
+             const gravityDeltaX = targetScreenX - shapeScreenX;
+             const gravityDeltaY = targetScreenY - shapeScreenY;
+             const gravityDistance = Math.sqrt(gravityDeltaX * gravityDeltaX + gravityDeltaY * gravityDeltaY);
+
+             if (gravityDistance > 0) {
+                 const gravityForce = SHAPE_CONFIG.GRAVITY_STRENGTH * gravityDistance;
+                 shape.vx += (gravityDeltaX / gravityDistance) * gravityForce;
+                 shape.vy += (gravityDeltaY / gravityDistance) * gravityForce;
+             }
+
+             shape.vx *= SHAPE_CONFIG.DAMPING;
+             shape.vy *= SHAPE_CONFIG.DAMPING;
+
+             const velocityScaleX = 100 / windowSize.width;
+             const velocityScaleY = 100 / windowSize.height;
+             shape.x += shape.vx * velocityScaleX;
+             shape.y += shape.vy * velocityScaleY;
+
+             if (shape.x < 0) { shape.x = 0; shape.vx *= -1; }
+             if (shape.x > 100) { shape.x = 100; shape.vx *= -1; }
+             if (shape.y < 0) { shape.y = 0; shape.vy *= -1; }
+             if (shape.y > 100) { shape.y = 100; shape.vy *= -1; }
+
+             const floatTime = Date.now() * SHAPE_CONFIG.FLOAT_SPEED;
+             shape.x += Math.sin(floatTime + shape.id) * SHAPE_CONFIG.FLOAT_AMPLITUDE * 0.1;
+             shape.y += Math.cos(floatTime * 1.3 + shape.id) * SHAPE_CONFIG.FLOAT_AMPLITUDE * 0.07;
+             shape.rotation += SHAPE_CONFIG.ROTATION_SPEED;
           }
-
-          // If stuck, stay stuck
-          if (shape.isStuck) {
-             return shape;
-          }
-
-          // Normal physics when not exploding
-          // Calculate distance from mouse to shape center
-          const shapeScreenX = (shape.x / 100) * windowSize.width;
-          const shapeScreenY = (shape.y / 100) * windowSize.height;
-          const deltaX = cursorPositionRef.current.x - shapeScreenX;
-          const deltaY = cursorPositionRef.current.y - shapeScreenY;
-          const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-          // Mouse hover push effect
-          if (distance < SHAPE_CONFIG.HOVER_RADIUS && distance > 0) {
-            const angle = Math.atan2(deltaY, deltaX);
-            const force = (SHAPE_CONFIG.HOVER_RADIUS - distance) / SHAPE_CONFIG.HOVER_RADIUS;
-            const pushX = -Math.cos(angle) * force * SHAPE_CONFIG.HOVER_PUSH_FORCE;
-            const pushY = -Math.sin(angle) * force * SHAPE_CONFIG.HOVER_PUSH_FORCE;
-
-            shape.vx += pushX;
-            shape.vy += pushY;
-          }
-
-          // Gravity: Pull towards circular formation center
-          const targetScreenX = (shape.originalX / 100) * windowSize.width;
-          const targetScreenY = (shape.originalY / 100) * windowSize.height;
-
-          // Calculate gravity force towards original position in circle
-          const gravityDeltaX = targetScreenX - shapeScreenX;
-          const gravityDeltaY = targetScreenY - shapeScreenY;
-          const gravityDistance = Math.sqrt(gravityDeltaX * gravityDeltaX + gravityDeltaY * gravityDeltaY);
-
-          if (gravityDistance > 0) {
-            const gravityForce = SHAPE_CONFIG.GRAVITY_STRENGTH * gravityDistance;
-            shape.vx += (gravityDeltaX / gravityDistance) * gravityForce;
-            shape.vy += (gravityDeltaY / gravityDistance) * gravityForce;
-          }
-
-          // Apply damping
-          shape.vx *= SHAPE_CONFIG.DAMPING;
-          shape.vy *= SHAPE_CONFIG.DAMPING;
-
-          // Update position based on velocity
-          const velocityScaleX = 100 / windowSize.width; // Convert px velocity to % velocity
-          const velocityScaleY = 100 / windowSize.height;
-
-          let newX = shape.x + shape.vx * velocityScaleX;
-          let newY = shape.y + shape.vy * velocityScaleY;
-
-          // Wall Sticking Logic
-          const sizePercentX = (shape.size / windowSize.width) * 100;
-          const sizePercentY = (shape.size / windowSize.height) * 100;
-          const halfSizeX = sizePercentX / 2;
-          const halfSizeY = sizePercentY / 2;
-
-          let isStuck = false;
-
-          if (newX < halfSizeX) { newX = halfSizeX; isStuck = true; }
-          if (newX > 100 - halfSizeX) { newX = 100 - halfSizeX; isStuck = true; }
-          if (newY < halfSizeY) { newY = halfSizeY; isStuck = true; }
-          if (newY > 100 - halfSizeY) { newY = 100 - halfSizeY; isStuck = true; }
-
-          if (isStuck) {
-             return {
-                 ...shape,
-                 x: newX,
-                 y: newY,
-                 vx: 0,
-                 vy: 0,
-                 isStuck: true
-             };
-          }
-
-          // Add subtle floating animation using current time
-          const floatTime = Date.now() * SHAPE_CONFIG.FLOAT_SPEED;
-          const floatOffsetX = Math.sin(floatTime + shape.id) * SHAPE_CONFIG.FLOAT_AMPLITUDE;
-          const floatOffsetY = Math.cos(floatTime * 1.3 + shape.id) * SHAPE_CONFIG.FLOAT_AMPLITUDE * 0.7;
-
-          return {
-            ...shape,
-            x: newX + floatOffsetX * 0.1, // Small floating motion
-            y: newY + floatOffsetY * 0.1,
-            rotation: shape.rotation + SHAPE_CONFIG.ROTATION_SPEED,
-          };
-        });
-
-        // Skip collision detection during explosion
-        if (isExploding) {
-          return updatedShapes;
-        }
-
-        // Then apply collision detection and resolution (only when not exploding)
-        return detectAndResolveCollisions(updatedShapes, windowSize.width, windowSize.height, frameCount);
       });
 
-      // Continue the animation loop at 60fps
+      // COLLISIONS
+      if (!isExploding) {
+          detectAndResolveCollisions(shapes, windowSize.width, windowSize.height, frameCount);
+      }
+
+      // DOM UPDATE (Direct Manipulation - High Performance)
+      shapes.forEach(shape => {
+          const el = shapeRefs.current.get(shape.id);
+          if (el) {
+              const xPos = (shape.x / 100) * windowSize.width;
+              const yPos = (shape.y / 100) * windowSize.height;
+              // Use transform for everything to avoid reflows
+              const x = xPos.toFixed(1);
+              const y = yPos.toFixed(1);
+              const r = shape.rotation.toFixed(1);
+              el.style.transform = `translate3d(calc(${x}px - 50%), calc(${y}px - 50%), 0) rotate(${r}deg)`;
+          }
+      });
+
       animationId = requestAnimationFrame(animateShapes);
     };
 
-    // Start the animation loop
     animationId = requestAnimationFrame(animateShapes);
+    return () => cancelAnimationFrame(animationId);
+  }, [mounted, windowSize.width, windowSize.height, isExploding, detectAndResolveCollisions, cursorPositionRef, shapeRefs]);
 
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [mounted, windowSize.width, windowSize.height, floatingShapes.length, isExploding, detectAndResolveCollisions, cursorPositionRef]);
-
-  // Function to create a new floating shape
-  const createFloatingShape = (id: number, totalCount: number, isInitial: boolean = false): FloatingShape => {
-    let originalX, originalY;
-
-    if (isInitial) {
-      // Initial shapes: Create circular distribution around center point
-      const angle = (id / totalCount) * 2 * Math.PI + (Math.random() - 0.5) * 0.8;
-      const radius = SHAPE_CONFIG.CIRCLE_RADIUS * (0.3 + Math.random() * 0.7);
-
-      originalX = SHAPE_CONFIG.CENTER_X + Math.cos(angle) * radius;
-      originalY = SHAPE_CONFIG.CENTER_Y + Math.sin(angle) * radius;
-
-      // Add some additional random offset for more organic look
-      const randomOffsetX = (Math.random() - 0.5) * 10;
-      const randomOffsetY = (Math.random() - 0.5) * 10;
-
-      originalX += randomOffsetX;
-      originalY += randomOffsetY;
-    } else {
-      // New shapes: Place within the same circular area as initial shapes
-      const angle = Math.random() * 2 * Math.PI; // Random angle
-      const radius = SHAPE_CONFIG.CIRCLE_RADIUS * (0.2 + Math.random() * 0.8); // Random radius within circle
-
-      originalX = SHAPE_CONFIG.CENTER_X + Math.cos(angle) * radius;
-      originalY = SHAPE_CONFIG.CENTER_Y + Math.sin(angle) * radius;
-
-      // Add some random offset for variety
-      const randomOffsetX = (Math.random() - 0.5) * 15;
-      const randomOffsetY = (Math.random() - 0.5) * 15;
-
-      originalX += randomOffsetX;
-      originalY += randomOffsetY;
-    }
-
-    return {
-      id: Date.now() + Math.random(), // Ensure unique ID
-      x: originalX,
-      y: originalY,
-      originalX,
-      originalY,
-      size: SHAPE_CONFIG.MIN_SIZE + Math.random() * (SHAPE_CONFIG.MAX_SIZE - SHAPE_CONFIG.MIN_SIZE),
-      rotation: Math.random() * 360,
-      speed: 0.5 + Math.random() * 1.5,
-      vx: 0,
-      vy: 0,
-    };
-  };
-
-  // Initialize floating shapes
-  useEffect(() => {
-    if (mounted) {
-      const shapes = Array.from({ length: initialCount }, (_, i) =>
-        createFloatingShape(i, initialCount, true) // Pass true for initial shapes
-      );
-      setFloatingShapes(shapes);
-    }
-  }, [mounted, initialCount]);
-
-  // Function to trigger explosion
   const triggerExplosion = useCallback(() => {
     if (!isExploding) {
-      setIsExploding(true);
-      setExplosionStartTime(animationTime);
-
-      // Apply explosion force to all shapes
-      setFloatingShapes(prev => prev.map(shape => {
-        const centerX = SHAPE_CONFIG.CENTER_X;
-        const centerY = SHAPE_CONFIG.CENTER_Y;
-
-        // Calculate direction from center to shape
-        const deltaX = shape.x - centerX;
-        const deltaY = shape.y - centerY;
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-        if (distance > 0) {
-          // Use direct explosion force without distance division for more dramatic effect
-          const force = SHAPE_CONFIG.EXPLOSION_FORCE;
-          const directionX = deltaX / distance;
-          const directionY = deltaY / distance;
-
-          return {
-            ...shape,
-            vx: directionX * force * SHAPE_CONFIG.EXPLOSION_VELOCITY_MULTIPLIER,
-            vy: directionY * force * SHAPE_CONFIG.EXPLOSION_VELOCITY_MULTIPLIER
-          };
-        } else {
-          // If shape is exactly at center, give it a random direction
-          const randomAngle = Math.random() * 2 * Math.PI;
-          const force = SHAPE_CONFIG.EXPLOSION_FORCE;
-
-          return {
-            ...shape,
-            vx: Math.cos(randomAngle) * force * SHAPE_CONFIG.EXPLOSION_VELOCITY_MULTIPLIER,
-            vy: Math.sin(randomAngle) * force * SHAPE_CONFIG.EXPLOSION_VELOCITY_MULTIPLIER
-          };
-        }
-      }));
+       setIsExploding(true);
+       setExplosionStartTime(Date.now());
+       physicsShapesRef.current.forEach(shape => {
+           const dx = shape.x - SHAPE_CONFIG.CENTER_X;
+           const dy = shape.y - SHAPE_CONFIG.CENTER_Y;
+           const mag = Math.sqrt(dx*dx + dy*dy) || 1;
+           shape.vx = (dx/mag) * SHAPE_CONFIG.EXPLOSION_FORCE * 3;
+           shape.vy = (dy/mag) * SHAPE_CONFIG.EXPLOSION_FORCE * 3;
+       });
     }
-  }, [isExploding, animationTime]);
+  }, [isExploding]);
 
-  // Handle explosion when reaching maximum shapes
+  // Handle explosion cleanup and auto-trigger
   useEffect(() => {
-    if (!mounted) return;
+     if (physicsShapesRef.current.length >= maxCount && !isExploding) {
+         triggerExplosion();
+     }
 
-    // Trigger explosion when reaching MAX_COUNT
-    if (floatingShapes.length >= maxCount && !isExploding) {
-      triggerExplosion();
-    }
+     if (isExploding) {
+        // Cleanup check animation - using Timeout is simpler here than requestAnimationFrame + recursion for this specific check
+        // Or we can rely on the main loop? Main loop logic is separate.
+        // Let's stick to the previous logic but inside rAF if needed, OR just a timeout?
+        // Timeout is fine for cleanup event.
+        // But we want to continuously check.
+        // Let's use a timeout for the EXACT time.
+        const cleanupDelay = SHAPE_CONFIG.EXPLOSION_CLEANUP_TIME;
+        const timeSinceExplosion = Date.now() - explosionStartTime;
+        const remainingTime = Math.max(0, cleanupDelay - timeSinceExplosion);
 
-    // Check for win condition (all stuck)
-    if (floatingShapes.length > 0 && !isExploding) {
-        const allStuck = floatingShapes.every(s => s.isStuck);
-        if (allStuck) {
-            triggerExplosion();
-        }
-    }
+        const timer = setTimeout(() => {
+             physicsShapesRef.current = [];
+             setRenderShapes([]);
+             shapeCountRef.current = 0;
+             setIsExploding(false);
 
-    // Clean up shapes after explosion
-    if (isExploding && (animationTime - explosionStartTime) >= SHAPE_CONFIG.EXPLOSION_CLEANUP_TIME) {
-      setFloatingShapes([]);
-      setShapeCount(0);
-      setIsExploding(false);
-    }
+             setTimeout(() => {
+                 const shapes = Array.from({ length: initialCount }, (_, i) => createFloatingShape(i, initialCount, true));
+                 physicsShapesRef.current = shapes;
+                 setRenderShapes(shapes);
+                 shapeCountRef.current = initialCount;
+             }, 1000);
+        }, remainingTime);
 
-    // Restart with new shapes after a brief pause with 0 objects
-    if (!isExploding && floatingShapes.length === 0 && shapeCount === 0 && (animationTime - explosionStartTime) >= (SHAPE_CONFIG.EXPLOSION_CLEANUP_TIME + 1000)) {
-      const shapes = Array.from({ length: initialCount }, (_, i) =>
-        createFloatingShape(i, initialCount, true)
-      );
-      setFloatingShapes(shapes);
-      setShapeCount(initialCount);
-    }
-  }, [animationTime, mounted, isExploding, explosionStartTime, floatingShapes, shapeCount, triggerExplosion, maxCount, initialCount]);
+        return () => clearTimeout(timer);
+     }
+  }, [isExploding, explosionStartTime, maxCount, initialCount, triggerExplosion]);
 
-  // Handle logo click to add/remove shapes
   const handleLogoClick = useCallback(() => {
-    if (shapeCount >= maxCount) {
-      // Reset to 0 shapes when reaching maximum
-      setFloatingShapes([]);
-      setShapeCount(0);
-    } else {
-      // Add one more shape (not in circular formation, but randomly placed)
-      const newShape = createFloatingShape(shapeCount, shapeCount + 1, false); // Pass false for new shapes
-      setFloatingShapes(prev => [...prev, newShape]);
-      setShapeCount(prev => prev + 1);
-    }
-  }, [shapeCount, maxCount]);
+      if (shapeCountRef.current >= maxCount) {
+          physicsShapesRef.current = [];
+          setRenderShapes([]);
+          shapeCountRef.current = 0;
+      } else {
+          const newShape = createFloatingShape(shapeCountRef.current, shapeCountRef.current + 1, false);
+          physicsShapesRef.current.push(newShape);
+          setRenderShapes([...physicsShapesRef.current]);
+          shapeCountRef.current++;
+      }
+  }, [maxCount]);
 
   return {
-    floatingShapes,
+    floatingShapes: renderShapes,
     isExploding,
     handleLogoClick,
-    shapeCount,
+    shapeCount: shapeCountRef.current,
     createFloatingShape,
     explosionStartTime
   };

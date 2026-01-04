@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
 import { BlogPost, formatDate } from '@/utils/blog';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 import { cn } from '@/utils/cn';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -46,10 +46,10 @@ export default function BlogCard({ post, locale, priority = false }: BlogCardPro
           </div>
         )}
       </Link>
-      
+
       <div className="p-6 flex flex-col flex-grow">
         <div className="flex items-center gap-3 text-xs font-medium text-gray-400 mb-3">
-          <Link 
+          <Link
             href={`/${locale}/blog?date=${new Date(post.date).toISOString().slice(0, 7)}`}
             className="flex items-center gap-1.5 hover:text-primary transition-colors"
           >
@@ -65,8 +65,8 @@ export default function BlogCard({ post, locale, priority = false }: BlogCardPro
               <span className="w-1 h-1 rounded-full bg-gray-600" />
               <div className="flex flex-wrap gap-2">
                 {post.tags.slice(0, 2).map((tag) => (
-                  <Link 
-                    key={tag} 
+                  <Link
+                    key={tag}
                     href={`/${locale}/blog?tag=${encodeURIComponent(tag)}`}
                     className="text-primary bg-primary/10 px-2 py-0.5 rounded text-[11px] font-semibold hover:bg-primary hover:text-black transition-colors"
                   >
@@ -77,20 +77,20 @@ export default function BlogCard({ post, locale, priority = false }: BlogCardPro
             </>
           )}
         </div>
-        
+
         <Link href={postUrl} className="block mb-3">
           <h2 className="text-xl font-bold text-white group-hover:text-primary transition-colors line-clamp-2 leading-tight">
             {post.title}
           </h2>
         </Link>
-        
+
         <p className="text-gray-400 line-clamp-3 mb-6 flex-grow text-sm leading-relaxed">
           {post.excerpt}
         </p>
 
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
           {post.author && (
-            <Link 
+            <Link
               href={authorUrl}
               className="flex items-center gap-2 group/author hover:bg-white/5 pr-3 py-1.5 -ml-1.5 rounded-full transition-colors"
             >
@@ -98,7 +98,7 @@ export default function BlogCard({ post, locale, priority = false }: BlogCardPro
                 {post.author.avatar ? (
                   <Image
                     src={post.author.avatar}
-                    alt={post.author.name}
+                    alt=""
                     fill
                     sizes="32px"
                     className="object-cover"
@@ -115,11 +115,11 @@ export default function BlogCard({ post, locale, priority = false }: BlogCardPro
             </Link>
           )}
 
-          <Link 
+          <Link
             href={postUrl}
             className="flex items-center text-sm font-bold text-primary group-hover:translate-x-1 transition-transform duration-300 ml-auto"
           >
-            {t('readMore')} 
+            {t('readMore')}
             <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

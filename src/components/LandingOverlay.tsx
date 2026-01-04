@@ -7,9 +7,11 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRe
 
 import companyConfig from '@/config/company';
 import { SHAPE_CONFIG } from '@/hooks/useFloatingShapes';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import { cn } from '@/utils/cn';
 import LanguageSwitcher from './layout/LanguageSwitcher';
 import LogoAndText from './layout/LogoAndText';
-import { useAnimation } from './providers/AnimationProvider';
+import { useAnimationTime } from './providers/AnimationProvider';
 
 interface LandingOverlayProps {
   showFullWebsite: boolean;
@@ -35,7 +37,8 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 }, ref) => {
   const t = useTranslations('landing');
   const tCommon = useTranslations('common');
-  const { animationTime, isMobile } = useAnimation();
+  const animationTime = useAnimationTime();
+  const isMobile = useIsMobile();
 
   const cursorPositionRef = useRef({ x: 0, y: 0 });
   const [shiverCycleStart, setShiverCycleStart] = useState(0);
@@ -110,25 +113,19 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
     // Skip on mobile - no mouse to track
     if (isMobile) return;
 
-    let lastUpdate = 0;
-    const throttleDelay = 16;
-
+    // No throttling - instant response
     const handleMouseMove = (e: MouseEvent) => {
-      const now = Date.now();
-      if (now - lastUpdate < throttleDelay) return;
-      lastUpdate = now;
-
       cursorPositionRef.current = { x: e.clientX, y: e.clientY };
 
       if (logoContainerRef.current) {
           const centerX = window.innerWidth / 2;
           const centerY = window.innerHeight / 2 - 100;
-          const offset = getMagneticOffset(centerX, centerY);
+          const offset = getMagneticOffset(centerX, centerY, 50); // Stronger magnetic effect
           logoContainerRef.current.style.transform = `translate(${offset.x}px, ${offset.y}px)`;
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -224,8 +221,8 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
             opacity: 0,
           } : {}),
           transition: (showFullWebsite || isTransitioning)
-            ? 'all 1s ease-in-out'
-            : (isScrolling ? 'all 0.1s ease-out' : 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)')
+            ? 'all 0.4s ease-out'
+            : (isScrolling ? 'all 0.1s ease-out' : 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)')
       }}
     >
         <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-6 pointer-events-auto">
@@ -239,9 +236,9 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
           <div ref={landingContentRef} className='text-center max-w-3xl pointer-events-auto'>
             <div className='mb-8 relative'>
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 <div
                   ref={logoContainerRef}
@@ -269,13 +266,16 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                     </span>
                   </div>
                   <div
+                    className={cn(
+                      'animate-logo-float',
+                      shapesState.isExploding && 'animation-paused'
+                    )}
                     style={{
                       transform: `
                         scale(${calculateLogoScale() + (isLogoHovered ? 0.2 : 0)})
-                        rotate(${isLogoHovered ? 5 : (shapesState.isExploding ? getExplosionRotation() : (isShivering() ? Math.sin(animationTime * 0.02) * 12 : 0))}deg)
-                        translateX(${Math.sin(animationTime * 0.003) * 3}px)
+                        rotate(${isLogoHovered ? 5 : (shapesState.isExploding ? getExplosionRotation() : (isShivering() ? Math.sin(Date.now() * 0.008) * 8 : 0))}deg)
                       `,
-                      transition: shapesState.isExploding ? 'none' : 'transform 0.2s ease-out',
+                      transition: shapesState.isExploding ? 'none' : 'transform 0.15s ease-out',
                     }}
                   >
                     <Image
@@ -283,6 +283,8 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                       alt={companyConfig.company.name}
                       width={120}
                       height={120}
+                      priority
+                      fetchPriority="high"
                       className='mx-auto cursor-pointer select-none'
                       style={{
                         filter: shapesState.isExploding ? `
@@ -308,12 +310,11 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
               >
                 <h1
-                  className='text-4xl md:text-5xl font-bold text-white mb-4 transition-all duration-500 select-none'
+                  className='text-4xl md:text-5xl font-bold text-white mb-4 select-none animate-gentle-float'
                   style={{
-                    transform: `translateY(${Math.sin(animationTime * 0.001) * 3}px)`,
                     textShadow: '0 0 30px rgba(176, 145, 85, 0.3)',
                   }}
                 >
@@ -323,13 +324,10 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
               >
                 <p
-                  className='text-xl text-white/80 font-light transition-all duration-700 select-none'
-                  style={{
-                    transform: `translateY(${Math.sin(animationTime * 0.001 + 1) * 2}px)`,
-                  }}
+                  className='text-xl text-white/80 font-light select-none animate-gentle-float-alt'
                 >
                   {t('description')}
                 </p>
@@ -339,15 +337,15 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
               className="mt-12 lg:mt-32 flex justify-center"
             >
                 <button
                   onClick={triggerTransition}
-                  className="group relative px-12 py-4 overflow-hidden rounded-full transition-all duration-500 hover:scale-105 focus:outline-none"
+                  className="group relative px-12 py-4 overflow-hidden rounded-full transition-all duration-300 hover:scale-105 focus:outline-none"
                 >
-                  <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.15)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-500" />
-                  <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-full group-hover:bg-primary/10 transition-all duration-500" />
+                  <div className="absolute inset-0 border border-primary/70 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.15)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300" />
+                  <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-full group-hover:bg-primary/10 transition-all duration-300" />
 
                   <div className="absolute inset-0 rounded-full overflow-hidden">
                     <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-sheen" />
@@ -364,7 +362,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
             className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 pointer-events-auto"
         >
             <div

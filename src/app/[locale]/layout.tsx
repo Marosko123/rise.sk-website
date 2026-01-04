@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { type ReactNode } from 'react';
 
@@ -28,7 +29,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.rise.sk'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rise.sk'),
   title: {
     default: 'Rise.sk | Premium Software Development & Tech Consulting',
     template: '%s | Rise.sk'
@@ -85,11 +86,11 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   alternates: {
-    canonical: 'https://www.rise.sk',
+    canonical: '/',
     languages: {
-      'sk': 'https://www.rise.sk',
-      'en': 'https://www.rise.sk/en',
-      'x-default': 'https://www.rise.sk',
+      'sk': '/',
+      'en': '/en',
+      'x-default': '/',
     }
   },
   robots: {
@@ -150,14 +151,16 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
+  const headersList = await headers();
+  const nonce = headersList.get('x-nonce') || '';
 
   const breadcrumbs = getBreadcrumbsForPage(locale as 'en' | 'sk', 'home');
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
-        <GoogleTagManager />
-        <GoogleAnalytics />
+        <GoogleTagManager nonce={nonce} />
+        <GoogleAnalytics nonce={nonce} />
         <EnhancedSchema type="Organization" />
         <EnhancedSchema type="LocalBusiness" />
         <EnhancedSchema type="WebSite" />
@@ -175,7 +178,9 @@ export default async function LocaleLayout({ children, params }: Props) {
           <ThemeProvider>
             <AnimationProvider>
               <PullToRefresh />
-              {children}
+              <main id="main-content" tabIndex={-1} className="focus:outline-none">
+                {children}
+              </main>
             </AnimationProvider>
             <ServiceWorkerRegistration />
             <WebVitalsReporter />

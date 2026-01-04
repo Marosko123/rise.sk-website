@@ -6,7 +6,6 @@ import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useThrottledCallback } from 'use-debounce';
 
 import { Button } from '@/components/ui/Button';
 import { teamMembers } from '@/data/team';
@@ -250,103 +249,88 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
     ];
   }, [t, tMembers, tTeam, locale, getSectionMappings]);
 
-    const handleScrollBasedSection = useThrottledCallback(() => {
-      const sectionMap = getSectionMappings(locale);
-      const sections = [
-        sectionMap.development,
-        sectionMap.about,
-        sectionMap.services,
-        sectionMap.portfolio,
-        sectionMap.reviews,
-        sectionMap.contact
-      ];
-      const sectionElements = sections.map(section => document.getElementById(section));
+  // Intersection Observer for active section tracking
+  useEffect(() => {
+    if (!mounted || !isHomePage) return;
 
-      // Find which section is currently in view
-      let currentSection = '';
-      // Use navigation bar height (80px) plus small buffer for detection
-      const navOffset = 100;
-      const scrollPosition = window.scrollY + navOffset;
+    const sectionMap = getSectionMappings(locale);
+    const sections = [
+      sectionMap.development,
+      sectionMap.about,
+      sectionMap.services,
+      sectionMap.portfolio,
+      sectionMap.reviews,
+      sectionMap.contact
+    ];
 
-      // Check if we're at the very top (landing area)
-      if (window.scrollY < 50) {
-        // Only default to development if no initial hash was provided
-        if (initialHashHandled) {
-          currentSection = sectionMap.development;
-        }
-      } else {
-        sectionElements.forEach((element, index) => {
-          if (element) {
-            const { offsetTop, offsetHeight } = element;
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Active when element is in the top part of the screen
+      threshold: 0
+    };
 
-            // Better section detection: section is active when we're past its start
-            // and before the next section's start
-            if (scrollPosition >= offsetTop - 50 && scrollPosition < offsetTop + offsetHeight - 50) {
-              currentSection = sections[index];
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const newSection = entry.target.id;
+
+          // Only update if it's different and we are confirmed ensuring it's a valid section
+          if (newSection !== activeSection) {
+            setActiveSection(newSection);
+
+            // Update URL hash safely if initial hash is handled
+            if (initialHashHandled && window.location.hash !== `#${newSection}`) {
+               // Use replaceState to avoid history stack pollution
+               window.history.replaceState(null, '', `#${newSection}`);
             }
           }
-        });
-      }
-
-      // Update active section and URL hash
-      if (currentSection !== activeSection) {
-        setActiveSection(currentSection);
-
-        // Update URL hash without triggering page reload (only if initial hash has been handled)
-        if (currentSection && window.location.hash !== `#${currentSection}` && initialHashHandled) {
-          window.history.replaceState(null, '', `#${currentSection}`);
         }
-      }
-    }, 100);
+      });
+    };
 
-  // Scroll tracking effect to highlight active section
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [mounted, isHomePage, locale, getSectionMappings, initialHashHandled, activeSection]); // Include activeSection to avoid stale closures if needed, though observer callback usually fresh? No, it's defined inside.
+
+  // Simple scroll listener JUST for the transparent background toggle
   useEffect(() => {
-    if (!mounted) return;
-
-    // Check if we're on a page route first
-    const checkActivePage = () => {
-      // If we're on the main page, use scroll-based detection
-      if (isHomePage) {
-        handleScrollBasedSection();
-        return;
-      }
-
-      // Default: no active section
-      setActiveSection('');
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
     };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    // Initial check
-    checkActivePage();
+  // Hash handling
+  useEffect(() => {
+     if (!mounted) return;
 
-    // Add hash change listener to re-enable scroll detection
-    const handleHashChange = () => {
-      checkActivePage();
-      // Mark that we've handled the initial hash
-      if (!initialHashHandled) {
-        setTimeout(() => setInitialHashHandled(true), 1000); // Allow 1 second for scrolling
-      }
-    };
+     const handleHashChange = () => {
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+            setActiveSection(hash);
+        }
+     };
 
-    // For main page with hash (full website mode), add scroll listener
-    const hasHash = window.location.hash.length > 0;
+     // Initial hash
+     if (window.location.hash && !initialHashHandled) {
+         const hash = window.location.hash.replace('#', '');
+         setActiveSection(hash);
+         setTimeout(() => setInitialHashHandled(true), 1000);
+     } else if (!window.location.hash && !initialHashHandled) {
+         setInitialHashHandled(true);
+     }
 
-    if (isHomePage) {
-      window.addEventListener('scroll', handleScrollBasedSection);
-
-      // Handle initial hash if not yet handled
-      if (!initialHashHandled && hasHash) {
-        setTimeout(() => setInitialHashHandled(true), 1000); // Allow 1 second for initial scrolling
-      }
-    }
-
-    // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-
-    return () => {
-      window.removeEventListener('scroll', handleScrollBasedSection);
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, [mounted, activeSection, pathname, locale, getSectionMappings, initialHashHandled, isHomePage, handleScrollBasedSection]);
+     window.addEventListener('hashchange', handleHashChange);
+     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [mounted, initialHashHandled]);
 
   // Function to check if a nav link is active
   const isLinkActive = (link: NavLink) => {
@@ -373,16 +357,18 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
   return (
     <>
     <motion.nav
-      className={`sticky top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-        (transparent && !isScrolled)
-          ? 'bg-transparent border-transparent'
-          : 'bg-black/95 backdrop-blur-xl border-b border-white/10'
-      }`}
+      className={`sticky top-0 left-0 right-0 z-[100]`}
       style={{ position: 'sticky', top: 0 }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Optimized Background Layer - uses opacity to avoid layout thrashing */}
+      <div
+         className={`absolute inset-0 z-0 transition-opacity duration-300 bg-black/95 backdrop-blur-xl border-b border-white/10 pointer-events-none ${
+            (transparent && !isScrolled) ? 'opacity-0' : 'opacity-100'
+         }`}
+      />
       <div className='w-full px-0 relative'>
         <div className='flex items-center justify-between h-20 px-0'>
           {/* Left Side - Logo & Company Name (absolutely flush left) */}

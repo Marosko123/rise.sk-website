@@ -8,8 +8,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import companyConfig from '@/config/company';
 import { SHAPE_CONFIG } from '@/hooks/useFloatingShapes';
-import GlobalBackground, { GlobalBackgroundRef } from './GlobalBackground';
+// Types only
+import { GlobalBackgroundRef } from './GlobalBackground';
 import LandingOverlay, { LandingOverlayRef } from './LandingOverlay';
+// Components will be dynamic
+
 import LanguageSwitcher from './layout/LanguageSwitcher';
 
 // Dynamic imports for better performance
@@ -23,6 +26,12 @@ const Navigation = dynamic(() => import('./layout/Navigation'));
 const Portfolio = dynamic(() => import('./sections/Portfolio'));
 const Reviews = dynamic(() => import('./sections/Reviews'));
 const ServicesEnhanced = dynamic(() => import('./sections/ServicesEnhanced'));
+
+// Heavy visual components - Lazy loaded
+const GlobalBackground = dynamic(() => import('./GlobalBackground'), {
+  ssr: false,
+  loading: () => null
+});
 
 interface LandingPageProps {
   latestPosts?: React.ReactNode;
@@ -87,7 +96,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
     setTimeout(() => {
       window.location.hash = sectionMap.development;
-    }, 800); // 800ms animation
+    }, 400); // Faster 400ms transition
   }, [isTransitioning, sectionMap.development]);
 
   useEffect(() => {
@@ -101,7 +110,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     const handleWheel = (e: WheelEvent) => {
       if (!showFullWebsite) {
         scrollAccumulator.current = Math.max(0, scrollAccumulator.current + e.deltaY);
-        const threshold = 400;
+        const threshold = 700; // Increased from 400 for more deliberate transition
         const progress = Math.min(scrollAccumulator.current / threshold, 1);
 
         updateVisuals(progress);
@@ -116,7 +125,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
             setIsScrolling(false);
             updateVisuals(0);
             scrollAccumulator.current = 0;
-          }, 150);
+          }, 300); // Increased from 150 for smoother reset
         }
       } else {
         if (window.scrollY <= 10 && e.deltaY < -30) {
@@ -138,7 +147,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
       if (!showFullWebsite) {
         if (deltaY > 0) {
-          const threshold = 200;
+          const threshold = 300; // Increased from 200 for mobile
           const progress = Math.min(deltaY / threshold, 1);
           updateVisuals(progress);
 
@@ -221,7 +230,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
 
   if (!mounted) {
     return (
-      <div className='min-h-screen relative overflow-hidden bg-[#1a1a1a]'>
+      <div className='min-h-[100dvh] relative overflow-hidden bg-[#1a1a1a]'>
         {/* Background Logo - Matching Overlay */}
         <div className='absolute inset-0 flex items-center justify-center pointer-events-none'>
           <Image
@@ -232,6 +241,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
             className='select-none opacity-[0.04]'
             draggable={false}
             priority
+            fetchPriority="high"
           />
         </div>
 
@@ -259,7 +269,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         </div>
 
         {/* Main Content - Centered exactly like Overlay */}
-        <section className='relative z-10 flex items-center justify-center px-6 min-h-screen'>
+        <section className='relative z-10 flex items-center justify-center px-6 min-h-[100dvh]'>
           <div className='text-center max-w-3xl'>
             <div className='mb-8'>
               <Image
@@ -273,6 +283,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
                   filter: 'drop-shadow(0 0 30px rgba(176, 145, 85, 0.4))'
                 }}
                 priority
+                fetchPriority="high"
               />
             </div>
 
@@ -326,7 +337,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   }
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-[100dvh] relative overflow-x-hidden">
       <GlobalBackground
         ref={globalBackgroundRef}
         mounted={mounted}
@@ -336,7 +347,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         onShapesStateChange={handleShapesStateChange}
       />
 
-      <div className={`sticky top-0 left-0 right-0 z-[100] transition-opacity duration-700 ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`sticky top-0 left-0 right-0 z-[100] transition-opacity duration-400 ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <Navigation transparent={true} hideLinks={!showFullWebsite} />
       </div>
 
@@ -351,7 +362,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         shapesState={shapesState}
       />
 
-      <div className={`relative transition-all duration-1000 ease-in-out ${showFullWebsite ? 'opacity-100 blur-0' : 'opacity-0 blur-xl pointer-events-none'}`}>
+      <div className={`relative transition-all duration-500 ease-out ${showFullWebsite ? 'opacity-100 blur-0' : 'opacity-0 blur-xl pointer-events-none'}`}>
           <>
             <div id={sectionMap.development}>
               <Hero />

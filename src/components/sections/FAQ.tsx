@@ -110,7 +110,7 @@ const FAQ = () => {
   return (
     <section className="py-12 bg-transparent">
       <EnhancedSchema type="FAQPage" data={{ faqs: faqData }} />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-6 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-6">
@@ -130,7 +130,7 @@ const FAQ = () => {
               className={`
                 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300
                 ${activeCategory === category.key
-                  ? 'bg-[var(--primary)] text-white shadow-lg'
+                  ? 'bg-[var(--primary)] text-slate-900 shadow-lg'
                   : 'bg-slate-800/50 text-[var(--foreground-muted)] hover:bg-slate-700/50 hover:text-white'
                 }
               `}
@@ -180,7 +180,7 @@ const FAQ = () => {
             </p>
             <a
               href={`#${contactSectionId}`}
-              className="inline-flex items-center px-8 py-4 bg-[var(--primary)] text-white font-semibold rounded-xl hover:bg-[#9a7f4b] transition-colors duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-8 py-4 bg-[var(--primary)] text-slate-900 font-semibold rounded-xl hover:bg-[#9a7f4b] transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               {t('contact.button')}
             </a>

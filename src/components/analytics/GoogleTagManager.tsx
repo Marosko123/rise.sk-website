@@ -2,14 +2,14 @@
 
 import Script from 'next/script';
 
-export default function GoogleTagManager() {
+export default function GoogleTagManager({ nonce }: { nonce?: string }) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   if (!gtmId) return null;
 
   return (
     <>
-      <Script id="gtm-script" strategy="afterInteractive">
+      <Script id="gtm-script" strategy="afterInteractive" nonce={nonce}>
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

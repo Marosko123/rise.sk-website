@@ -179,7 +179,7 @@ export default async function BlogPost({ params }: Props) {
                 {post.author?.avatar ? (
                   <Image
                     src={post.author.avatar}
-                    alt={post.author.name}
+                    alt=""
                     fill
                     className="object-cover"
                   />

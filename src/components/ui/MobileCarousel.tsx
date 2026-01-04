@@ -53,9 +53,10 @@ export function MobileCarousel({
       onTouchMove={swipeHandlers.onTouchMove}
       onTouchEnd={handleTouchEnd}
     >
+      {/* Navigation Arrows - hidden on very small screens, visible from 400px+ */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110 select-none"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110 select-none hidden min-[400px]:flex items-center justify-center"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-6 w-6 text-[var(--primary)]" />
@@ -63,7 +64,7 @@ export function MobileCarousel({
 
       <button
         onClick={nextSlide}
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110 select-none"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-[var(--primary)]/20 backdrop-blur-sm hover:bg-[var(--primary)]/40 p-3 rounded-full transition-all duration-300 hover:scale-110 select-none hidden min-[400px]:flex items-center justify-center"
         aria-label="Next slide"
       >
         <ChevronRight className="h-6 w-6 text-[var(--primary)]" />
@@ -84,21 +85,23 @@ export function MobileCarousel({
           </div>
         ))}
       </motion.div>
-      {/* Dots */}
+
+      {/* Dots - increased size for better touch targets */}
       <div className="flex justify-center gap-3 mt-8">
         {items.map((_, idx) => (
             <button
                 key={idx}
                 onClick={() => goToSlide(idx)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 relative ${
+                className={`w-4 h-4 rounded-full transition-all duration-300 relative ${
                     idx === currentIndex
                     ? 'bg-[var(--primary)] scale-125'
                     : 'bg-white/30 hover:bg-white/50'
                 }`}
-                style={{ minWidth: 'auto', minHeight: 'auto' }}
+                style={{ minWidth: '16px', minHeight: '16px' }}
                 aria-label={`Go to slide ${idx + 1}`}
             >
-                <span className="absolute -inset-2" />
+                {/* Extended touch area for accessibility (44px minimum) */}
+                <span className="absolute -inset-3" />
             </button>
         ))}
       </div>

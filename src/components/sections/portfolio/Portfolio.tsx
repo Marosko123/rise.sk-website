@@ -60,7 +60,7 @@ export default function Portfolio({ id = 'portfolio' }: { id?: string }) {
       ref={ref}
       className="py-16 relative overflow-hidden"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial="hidden"

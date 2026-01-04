@@ -18,7 +18,7 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
 }
 
 const buttonVariants = {
-  primary: 'bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white hover:shadow-lg hover:shadow-[var(--primary)]/25',
+  primary: 'bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-slate-900 hover:shadow-lg hover:shadow-[var(--primary)]/25',
   secondary: 'bg-white/10 text-white hover:bg-white/20 border border-white/20 backdrop-blur-sm',
   outline: 'border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white',
   ghost: 'text-white hover:bg-white/10'

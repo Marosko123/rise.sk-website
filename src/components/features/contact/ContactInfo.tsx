@@ -62,6 +62,7 @@ export default function ContactInfo() {
               target={item.href.startsWith('http') ? '_blank' : undefined}
               rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               className='flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-200'
+              aria-label={item.label}
             >
               <item.icon className='w-6 h-6 text-white' />
             </a>

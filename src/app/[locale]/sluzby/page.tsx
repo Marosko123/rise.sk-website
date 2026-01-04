@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 
 import MultiStepContactForm from '@/components/features/MultiStepContactForm';
-
-// ISR - revalidate every 2 hours
-export const revalidate = 7200;
 import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
@@ -11,6 +8,9 @@ import LatestPosts from '@/components/sections/LatestPosts';
 import ServicesEnhanced from '@/components/sections/ServicesEnhanced';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import { getTranslations } from 'next-intl/server';
+
+// ISR - revalidate every 2 hours
+export const revalidate = 7200;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -152,6 +152,40 @@ export default async function ServicesPage({
       {
         '@type': 'ListItem',
         'position': 6,
+        'item': {
+          '@type': 'Service',
+          '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/ai-automatizacia`,
+          'name': locale === 'sk' ? 'AI Automatizácia' : 'AI Automation',
+          'description': locale === 'sk'
+            ? 'Zefektívnite svoje procesy pomocou umelej inteligencie a automatizácie'
+            : 'Streamline your processes using artificial intelligence and automation',
+          'provider': {
+            '@type': 'Organization',
+            'name': 'Rise.sk'
+          },
+          'url': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/ai-automatizacia`
+        }
+      },
+      {
+        '@type': 'ListItem',
+        'position': 7,
+        'item': {
+          '@type': 'Service',
+          '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/it-outsourcing`,
+          'name': locale === 'sk' ? 'IT Outsourcing' : 'IT Outsourcing',
+          'description': locale === 'sk'
+            ? 'Prenajmite si celý tím špecialistov pre váš projekt'
+            : 'Hire a full team of specialists for your project',
+          'provider': {
+            '@type': 'Organization',
+            'name': 'Rise.sk'
+          },
+          'url': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/sluzby/it-outsourcing`
+        }
+      },
+      {
+        '@type': 'ListItem',
+        'position': 8,
         'item': {
           '@type': 'Service',
           '@id': `https://www.rise.sk${locale === 'sk' ? '' : `/${locale}`}/kontakt`,

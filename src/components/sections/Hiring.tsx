@@ -2,7 +2,6 @@
 
 import FadeIn from '@/components/animations/FadeIn';
 import { motion } from 'framer-motion';
-import { useLocale, useTranslations } from 'next-intl';
 import {
     Bot,
     Briefcase,
@@ -12,6 +11,7 @@ import {
     Palette,
     Users,
 } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { Card } from '../ui/Card';
@@ -69,7 +69,7 @@ export default function Hiring() {
       background="transparent"
       className="relative overflow-hidden"
     >
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+      <div className='max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 relative z-10'>
         {/* Header */}
         <FadeIn
           duration={0.8}
@@ -128,7 +128,7 @@ export default function Hiring() {
                         .map((skill: string, skillIndex: number) => (
                           <span
                             key={skillIndex}
-                            className='px-2 py-1 bg-white/10 text-gray-300 text-xs rounded-lg'
+                            className='px-2 py-1 bg-white/15 text-white text-xs rounded-lg border border-white/10'
                           >
                             {skill.trim()}
                           </span>

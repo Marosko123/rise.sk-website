@@ -2,7 +2,6 @@
 
 import { MobileCarousel } from '@/components/ui/MobileCarousel';
 import { motion, useInView } from 'framer-motion';
-import { useTranslations } from 'next-intl';
 import {
     Award,
     CheckCircle,
@@ -12,6 +11,7 @@ import {
     Users,
     Zap,
 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
 
 import { Card } from '../ui/Card';
@@ -74,7 +74,7 @@ export default function About({ id = 'about' }: { id?: string }) {
       background="transparent"
       className="relative overflow-hidden select-none"
     >
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+      <div className='max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 relative z-10'>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

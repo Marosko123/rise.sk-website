@@ -1,7 +1,7 @@
 'use client';
 
 import { SHAPE_CONFIG, useFloatingShapes } from '@/hooks/useFloatingShapes';
-import { forwardRef, useEffect, useImperativeHandle } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 
 interface FloatingShapesProps {
   cursorPositionRef: React.MutableRefObject<{ x: number; y: number }>;
@@ -17,12 +17,17 @@ export interface FloatingShapesRef {
   floatingShapesLength: number;
 }
 
+
 const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cursorPositionRef, windowSize, mounted, onStateChange, isMobile = false }, ref) => {
+  // Store refs to DOM elements for direct manipulation
+  const shapeRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+
   const { floatingShapes, isExploding, handleLogoClick, explosionStartTime } = useFloatingShapes({
     cursorPositionRef,
     windowSize,
     mounted,
-    isMobile
+    isMobile,
+    shapeRefs
   });
 
   useEffect(() => {
@@ -42,13 +47,19 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
       {floatingShapes.map((shape) => (
         <div
           key={shape.id}
+          ref={(el) => {
+              if (el) shapeRefs.current.set(shape.id, el);
+              else shapeRefs.current.delete(shape.id);
+          }}
           className={`absolute select-none will-change-transform ${shape.isStuck ? 'pointer-events-none' : 'cursor-pointer'}`}
           style={{
-            left: `${shape.x}%`,
-            top: `${shape.y}%`,
+            // Initial positioning
+            left: '0',
+            top: '0',
             width: `${shape.size}px`,
             height: `${shape.size}px`,
-            transform: `translate3d(-50%, -50%, 0) rotate(${shape.rotation}deg)`,
+            // transform will be set by the animation loop immediately
+            transform: `translate3d(calc(${(shape.x / 100) * windowSize.width}px - 50%), calc(${(shape.y / 100) * windowSize.height}px - 50%), 0) rotate(${shape.rotation}deg)`,
             zIndex: 1,
           }}
         >

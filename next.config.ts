@@ -6,7 +6,7 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig: NextConfig = {
   // Enable standalone output for Docker deployment
   output: 'standalone',
-  
+
   images: {
     // Prefer AVIF for better compression, reduce variants
     formats: ['image/avif', 'image/webp'],
@@ -44,7 +44,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react'],
   },
-  compress: true,
+  compress: process.env.NODE_ENV === 'production',
   poweredByHeader: false,
   trailingSlash: false,
   async redirects() {
@@ -133,8 +133,12 @@ const nextConfig: NextConfig = {
             value: 'camera=(), microphone=(), geolocation=()'
           },
           {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://rise.sk https://www.rise.sk; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data: https://*.googletagmanager.com https://*.google-analytics.com https://cdn.jsdelivr.net https://www.vectorlogo.zone https://upload.wikimedia.org https://images.unsplash.com https://plus.unsplash.com https://rise.sk https://www.rise.sk; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.emailjs.com https://lottie.host https://*.lottiefiles.com https://rise.sk https://www.rise.sk; frame-src 'self';"
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload'
+          },
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin'
           },
           {
             key: 'Vary',
@@ -170,6 +174,16 @@ const nextConfig: NextConfig = {
           }
         ]
       },
+      // Manifest - Aggressive caching
+      {
+        source: '/manifest.json',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
       // Pages - CDN caching with stale-while-revalidate
       {
         source: '/((?!api|_next|_vercel|keystatic).*)',
@@ -181,6 +195,21 @@ const nextConfig: NextConfig = {
         ]
       }
     ];
+  },
+  webpack: (config, { webpack }) => {
+    config.output.environment = {
+      ...config.output.environment,
+      arrowFunction: true,
+      asyncFunction: true,
+      const: true,
+      destructuring: true,
+      dynamicImport: true,
+      forOf: true,
+      module: true,
+      optionalChaining: true,
+      templateLiteral: true,
+    };
+    return config;
   },
 };
 

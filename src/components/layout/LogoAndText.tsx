@@ -4,7 +4,8 @@ import companyConfig from '@/config/company';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-import { useAnimation } from '../providers/AnimationProvider';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import { useAnimation, useAnimationTime } from '../providers/AnimationProvider';
 
 interface LogoAndTextProps {
   className?: string;
@@ -12,7 +13,9 @@ interface LogoAndTextProps {
 }
 
 function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
-  const { animationTime, mounted } = useAnimation();
+  const animationTime = useAnimationTime();
+  const { mounted } = useAnimation();
+  const isMobile = useIsMobile();
   const [isHovered, setIsHovered] = useState(false);
   const [isTextHovered, setIsTextHovered] = useState(false);
 
@@ -31,10 +34,14 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
           style={mounted ? {
             transform: isHovered
               ? `scale(1.2) rotate(15deg)`
-              : `rotate(${Math.sin(animationTime * 0.001) * 5}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.07})`,
+              : isMobile
+                ? 'rotate(0deg) scale(1)'
+                : `rotate(${Math.sin(animationTime * 0.001) * 5}deg) scale(${1 + Math.sin(animationTime * 0.0015) * 0.07})`,
             filter: isHovered
               ? `brightness(1.2) contrast(1.1) saturate(1.1) drop-shadow(0 0 45px rgba(218, 181, 73, 0.8))`
-              : `drop-shadow(0 0 10px rgba(218, 181, 73, ${0.5 + Math.sin(animationTime * 0.002) * 0.1}))`,
+              : isMobile
+                ? 'drop-shadow(0 0 5px rgba(218, 181, 73, 0.5))'
+                : `drop-shadow(0 0 10px rgba(218, 181, 73, ${0.5 + Math.sin(animationTime * 0.002) * 0.1}))`,
             transition: 'transform 0.3s ease-out, filter 0.3s ease-out',
           } : {
             transform: 'rotate(0deg) scale(1)',
@@ -43,10 +50,12 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           draggable={false}
+          priority
         />
 
         {/* Floating elements around logo */}
-        {mounted && (
+        {/* Floating elements around logo - disable on mobile */}
+        {mounted && !isMobile && (
           <>
             <div
               className='absolute w-1 h-1 bg-yellow-400 rounded-full opacity-60 select-none pointer-events-none'
@@ -84,7 +93,7 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
             <span
               key={index}
               className='inline-block transition-all duration-200 select-none'
-              style={mounted ? {
+              style={mounted && !isMobile ? {
                 transform: `translateY(${Math.sin(animationTime * 0.004 + index * 0.5) * 1}px)`,
                 animationDelay: `${index * 100}ms`,
               } : {}}
@@ -103,7 +112,7 @@ function LogoAndText({ className = '', onClick }: LogoAndTextProps) {
         </span>
 
         {/* Animated golden line under text - matching original */}
-        {mounted && (
+        {mounted && !isMobile && (
           <div
             className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-60 select-none pointer-events-none'
             style={{

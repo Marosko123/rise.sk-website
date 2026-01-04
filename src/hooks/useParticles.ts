@@ -1,4 +1,4 @@
-import { useAnimation } from '@/components/providers/AnimationProvider';
+import { useAnimationTime } from '@/components/providers/AnimationProvider';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export interface Particle {
@@ -14,14 +14,14 @@ export interface Particle {
 export function useParticles() {
   const [particles, setParticles] = useState<Particle[]>([]);
   const particleIdRef = useRef(0);
-  const { animationTime } = useAnimation();
+  const animationTime = useAnimationTime();
 
   // Animate particles using shared animation context
   useEffect(() => {
     const animate = () => {
       setParticles(prev => {
         if (prev.length === 0) return prev;
-        
+
         return prev
           .map(particle => ({
             ...particle,
