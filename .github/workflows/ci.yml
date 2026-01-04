@@ -1,5 +1,5 @@
-# GitHub Actions workflow for CI/CD
-name: CI/CD Pipeline
+# GitHub Actions workflow for CI
+name: CI Pipeline
 
 on:
   push:
@@ -114,22 +114,3 @@ jobs:
           sleep 10
           npm run health || echo "Health check skipped on ${{ matrix.os }}"
         shell: bash
-
-  # Deploy to Vercel (only on main branch)
-  deploy:
-    name: Deploy to Vercel
-    runs-on: ubuntu-latest
-    needs: [quality, build]
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: "--prod"

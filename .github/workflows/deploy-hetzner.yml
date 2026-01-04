@@ -18,7 +18,7 @@ jobs:
   build-and-test:
     name: Build & Test
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -49,10 +49,10 @@ jobs:
     permissions:
       contents: read
       packages: write
-    
+
     outputs:
       image-tag: ${{ steps.meta.outputs.tags }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -99,44 +99,64 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-docker
     environment: production
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup SSH
+        env:
+          HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
+          HETZNER_HOST: ${{ secrets.HETZNER_HOST }}
         run: |
+          # Validate required secrets
+          if [ -z "$HETZNER_SSH_KEY" ]; then
+            echo "❌ Error: HETZNER_SSH_KEY secret is not set"
+            exit 1
+          fi
+          if [ -z "$HETZNER_HOST" ]; then
+            echo "❌ Error: HETZNER_HOST secret is not set"
+            exit 1
+          fi
+
           mkdir -p ~/.ssh
-          echo "${{ secrets.HETZNER_SSH_KEY }}" > ~/.ssh/hetzner
+          echo "$HETZNER_SSH_KEY" > ~/.ssh/hetzner
           chmod 600 ~/.ssh/hetzner
-          ssh-keyscan -H ${{ secrets.HETZNER_HOST }} >> ~/.ssh/known_hosts
+
+          # Add host to known_hosts with timeout
+          ssh-keyscan -T 10 -H "$HETZNER_HOST" >> ~/.ssh/known_hosts 2>/dev/null || {
+            echo "⚠️ Warning: ssh-keyscan failed, adding host manually"
+            echo "# Host added manually due to keyscan failure" >> ~/.ssh/known_hosts
+          }
 
       - name: Deploy to server
         env:
           HOST: ${{ secrets.HETZNER_HOST }}
           USER: ${{ secrets.HETZNER_USER }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_ACTOR: ${{ github.actor }}
         run: |
-          ssh -i ~/.ssh/hetzner $USER@$HOST << 'ENDSSH'
+          ssh -o ConnectTimeout=30 -o StrictHostKeyChecking=accept-new -i ~/.ssh/hetzner $USER@$HOST << ENDSSH
             set -e
-            
+
             # Navigate to project directory
             cd /opt/rise
-            
+
             # Pull latest code
             git pull origin master
-            
+
             # Login to GitHub Container Registry
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            
+            echo "$GH_TOKEN" | docker login ghcr.io -u $GH_ACTOR --password-stdin
+
             # Pull latest image
             docker compose pull app
-            
+
             # Restart services with zero-downtime
             docker compose up -d --no-deps app
-            
+
             # Clean up old images
             docker image prune -f
-            
+
             # Health check with retries (app needs time to start)
             echo "Waiting for app to start..."
             for i in 1 2 3 4 5 6; do
@@ -145,9 +165,9 @@ jobs:
                 echo "✅ App is healthy!"
                 exit 0
               fi
-              echo "Attempt $i failed, retrying..."
+              echo "Attempt \$i failed, retrying..."
             done
-            
+
             echo "❌ Health check failed after 60 seconds"
             docker logs rise-app --tail 50
             exit 1

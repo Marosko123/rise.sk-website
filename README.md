@@ -115,8 +115,7 @@ npm run health       # Check server health
 ### Deployment
 
 ```bash
-npm run deploy:vercel        # Deploy to Vercel (production)
-npm run deploy:vercel:preview # Deploy preview to Vercel
+npm run deploy        # Shows deployment instructions (use GitHub Actions)
 ```
 
 ## 🌍 Internationalization
@@ -248,7 +247,7 @@ npm run bimi:svgo && echo "BIMI SVG is compliant"
 - **Format**: SVG Tiny P/S (no scripts, fonts, or external references)
 - **Size**: 512x512 pixels
 - **Background**: White for email client compatibility
-- **Content-Type**: `image/svg+xml` (configured via Vercel)
+- **Content-Type**: `image/svg+xml` (configured via nginx)
 
 ## �🔒 Security
 
@@ -259,10 +258,16 @@ npm run bimi:svgo && echo "BIMI SVG is compliant"
 
 ## 🚢 Deployment
 
-### Vercel (Recommended)
+### Hetzner (Production)
+
+Deployment is automated via GitHub Actions:
+
+1. Push to `master` branch to trigger automatic deployment
+2. GitHub Actions builds Docker image and deploys to Hetzner server
 
 ```bash
-npm run deploy:vercel
+# View deployment status
+npm run deploy
 ```
 
 ### Static Export
@@ -311,12 +316,12 @@ This project is private and proprietary.
 **🎯 Status: Production-Ready** _Complete cross-platform development environment with zero-error
 setup across macOS, Linux, and Windows._
 
-## Deploy on Vercel
+## Deploy to Hetzner
 
-The easiest way to deploy your Next.js app is to use the
-[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
+This project is deployed to a Hetzner server using Docker and GitHub Actions.
 
-Check out our
-[Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying)
-for more details.
+1. Push to `master` branch triggers the deployment workflow
+2. GitHub Actions builds a Docker image and pushes to GHCR
+3. The image is pulled and deployed on the Hetzner server
+
+Check out the [GitHub Actions Workflow](.github/workflows/deploy-hetzner.yml) for details.

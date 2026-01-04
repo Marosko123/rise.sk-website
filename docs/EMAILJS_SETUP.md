@@ -85,7 +85,7 @@ NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id_here
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_here
 ```
 
-3. For production (Vercel), add these as environment variables in your Vercel dashboard
+3. For production (Hetzner), add these as build args in the GitHub Actions workflow
 
 ## Step 6: Test the Setup
 
@@ -145,14 +145,14 @@ emailjs.send(
 
 ## Production Deployment
 
-When deploying to Vercel:
+When deploying to Hetzner:
 
-1. Add environment variables in Vercel dashboard:
+1. Environment variables are configured in GitHub Actions workflow as build-args:
 
-   - Go to Project Settings → Environment Variables
-   - Add the three EmailJS variables
+   - See `.github/workflows/deploy-hetzner.yml`
+   - Variables are baked into the Docker image at build time
 
-2. Redeploy the application
+2. Push to `master` branch to trigger deployment
 
 ## Security Notes
 
