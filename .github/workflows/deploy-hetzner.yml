@@ -142,8 +142,9 @@ jobs:
             # Navigate to project directory
             cd /opt/rise
 
-            # Pull latest code
-            git pull origin master
+            # Discard any local changes and pull latest code
+            git fetch origin master
+            git reset --hard origin/master
 
             # Login to GitHub Container Registry
             echo "$GH_TOKEN" | docker login ghcr.io -u $GH_ACTOR --password-stdin
