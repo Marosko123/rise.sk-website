@@ -275,7 +275,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
         provider: {
           "@type": "Organization",
           "name": "Rise.sk",
-          "url": "https://www.rise.sk"
+          "url": "https://rise.sk"
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",

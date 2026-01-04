@@ -141,7 +141,7 @@ export const setupBusinessTracking = () => {
 
       // Conversion linker for cross-domain tracking
       linker: {
-        domains: ['rise.sk', 'www.rise.sk']
+        domains: ['rise.sk', 'rise.sk']
       },
 
       // Enhanced measurement

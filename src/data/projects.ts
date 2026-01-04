@@ -112,7 +112,7 @@ export const getPortfolioProjects = (t: (key: string) => string): Project[] => [
     category: 'corporate',
     image: '/rise/gradient/Rise_logo.svg',
     tags: ['Next.js', 'Website', 'IT Company'],
-    liveUrl: 'https://www.rise.sk',
+    liveUrl: 'https://rise.sk',
     githubUrl: null,
     featured: true,
     metrics: {

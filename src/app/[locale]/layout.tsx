@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rise.sk'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://rise.sk'),
   title: {
     default: 'Rise.sk | Premium Software Development & Tech Consulting',
     template: '%s | Rise.sk'
@@ -108,11 +108,18 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'sk_SK',
     alternateLocale: 'en_US',
-    url: 'https://www.rise.sk',
+    url: 'https://rise.sk',
     siteName: 'Rise.sk',
     title: 'Rise.sk | Premium Software Development & Tech Consulting',
     description: 'We build high-performance web & mobile applications. Hire expert programming teams in Slovakia delivering scalable solutions for ambitious companies.',
-    // images: handled automatically by opengraph-image.tsx
+    images: [
+      {
+        url: 'https://rise.sk/rise/gradient/Rise_logo_text_rectangle.png',
+        width: 1200,
+        height: 630,
+        alt: 'Rise.sk - Expert Programming Teams',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -120,7 +127,7 @@ export const metadata: Metadata = {
     creator: '@rise_sk',
     title: 'Rise.sk | Premium Software Development & Tech Consulting',
     description: 'We build high-performance web & mobile applications. Hire expert programming teams in Slovakia delivering scalable solutions for ambitious companies.',
-    // images: handled automatically by opengraph-image.tsx
+    images: ['https://rise.sk/rise/gradient/Rise_logo_text_rectangle.png'],
   },
   other: {
     'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION || '',

@@ -153,7 +153,7 @@ export const companyConfig = {
   website: {
     // Domain and URLs
     domain: 'rise.sk',
-    url: 'https://www.rise.sk',
+    url: 'https://rise.sk',
 
     // SEO and meta
     defaultTitle: 'Rise.sk | Premium Software Development & Tech Consulting',

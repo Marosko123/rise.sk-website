@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props) {
     description: t('description'),
     keywords: t('keywords'),
     alternates: {
-      canonical: locale === 'sk' ? 'https://www.rise.sk/tim' : 'https://www.rise.sk/en/team',
+      canonical: locale === 'sk' ? 'https://rise.sk/tim' : 'https://rise.sk/en/team',
       languages: {
-        sk: 'https://www.rise.sk/tim',
-        en: 'https://www.rise.sk/en/team',
+        sk: 'https://rise.sk/tim',
+        en: 'https://rise.sk/en/team',
       },
     },
   };
@@ -35,7 +35,7 @@ export default async function Page({ params }: Props) {
   const teamSchemaData = {
     title: "Our Team | Rise.sk",
     description: "Meet the team behind Rise.sk. Experienced developers, designers, and marketing experts.",
-    url: `https://www.rise.sk/${locale === 'sk' ? 'tim' : 'en/team'}`,
+    url: `https://rise.sk/${locale === 'sk' ? 'tim' : 'en/team'}`,
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: teamMembers.map((member, index) => ({
@@ -44,7 +44,7 @@ export default async function Page({ params }: Props) {
         name: member.name,
         jobTitle: t(`${member.id}.role`),
         description: t(`${member.id}.bio`),
-        image: `https://www.rise.sk${member.image}`,
+        image: `https://rise.sk${member.image}`,
       }))
     }
   };

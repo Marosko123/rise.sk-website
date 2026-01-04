@@ -42,7 +42,7 @@ export function getBreadcrumbsForPage(
   locale: 'en' | 'sk',
   page: string
 ): BreadcrumbItem[] {
-  const baseUrl = 'https://www.rise.sk';
+  const baseUrl = 'https://rise.sk';
 
   const breadcrumbs: BreadcrumbItem[] = [
     {

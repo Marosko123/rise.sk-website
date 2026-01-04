@@ -3,6 +3,7 @@ import TableOfContents from '@/components/blog/TableOfContents';
 import GlobalBackgroundWrapper from '@/components/GlobalBackgroundWrapper';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
+import EnhancedSchema from '@/components/seo/EnhancedSchema';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { formatDate, getPostData, getRelatedPosts, getSortedPostsData, getTranslatedSlug } from '@/utils/blog-server';
 import { cn } from '@/utils/cn';
@@ -127,8 +128,21 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen relative">
-      <GlobalBackgroundWrapper showFullWebsite={true} />
+    <>
+      <EnhancedSchema
+        type="Article"
+        data={{
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: post.date,
+          dateModified: post.date,
+          author: post.author?.name || 'Rise.sk Team',
+          image: post.coverImage ? `https://rise.sk${post.coverImage}` : undefined,
+          url: `https://rise.sk/${locale}/blog/${slug}`,
+        }}
+      />
+      <main className="min-h-screen relative">
+        <GlobalBackgroundWrapper showFullWebsite={true} />
       <div className="sticky top-0 z-[100]">
         <Navigation />
       </div>
@@ -384,7 +398,8 @@ export default async function BlogPost({ params }: Props) {
         </section>
       )}
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 }

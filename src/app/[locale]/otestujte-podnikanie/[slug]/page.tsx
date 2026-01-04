@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: 'article',
-      url: `https://www.rise.sk${baseUrl}/${slug}`,
+      url: `https://rise.sk${baseUrl}/${slug}`,
       siteName: 'Rise.sk',
       locale: locale === 'sk' ? 'sk_SK' : 'en_US',
       images: [
@@ -74,10 +74,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: ['/opengraph-image.png'],
     },
     alternates: {
-      canonical: `https://www.rise.sk${baseUrl}/${slug}`,
+      canonical: `https://rise.sk${baseUrl}/${slug}`,
       languages: {
-        'sk': `https://www.rise.sk/otestujte-podnikanie/${skSlug}`,
-        'en': `https://www.rise.sk/en/test-your-business/${enSlug}`,
+        'sk': `https://rise.sk/otestujte-podnikanie/${skSlug}`,
+        'en': `https://rise.sk/en/test-your-business/${enSlug}`,
       },
     },
   };

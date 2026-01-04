@@ -3,7 +3,7 @@ import { getSortedPostsData } from '@/utils/blog-server'
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.rise.sk'
+  const baseUrl = 'https://rise.sk'
   const lastModified = new Date()
 
   // Define all routes and their priorities

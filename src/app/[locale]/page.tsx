@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.rise.sk/${locale === 'sk' ? '' : locale}`,
+      url: `https://rise.sk/${locale === 'sk' ? '' : locale}`,
       locale: locale === 'sk' ? 'sk_SK' : 'en_US',
       type: 'website',
       siteName: 'Rise.sk',

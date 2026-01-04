@@ -16,7 +16,7 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
 
   // Construct full URL (assuming site is hosted at rise.sk)
   // In production, you might want to use an environment variable for the domain
-  const url = `https://www.rise.sk${pathname}`;
+  const url = `https://rise.sk${pathname}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
 

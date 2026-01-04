@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: `${t('title')} | Rise.sk`,
       description: t('subtitle'),
-      url: `https://www.rise.sk/${locale}/recenzie`,
+      url: `https://rise.sk/${locale}/recenzie`,
       siteName: 'Rise.sk',
       locale,
       type: 'website',
@@ -49,7 +49,7 @@ export default function ReviewsPage() {
           data={{
             name: t('title'),
             description: t('subtitle'),
-            url: "https://www.rise.sk/recenzie"
+            url: "https://rise.sk/recenzie"
           }}
         />
 

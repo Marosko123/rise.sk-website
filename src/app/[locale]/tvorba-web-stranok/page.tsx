@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const localePath = locale === 'sk' ? '/tvorba-web-stranok' : '/web-development';
   const localeCode = locale === 'sk' ? 'sk_SK' : 'en_US';
-  const baseUrl = 'https://www.rise.sk';
+  const baseUrl = 'https://rise.sk';
   const url = locale === 'sk' ? `${baseUrl}${localePath}` : `${baseUrl}/${locale}${localePath}`;
 
   return {
@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       canonical: url,
       languages: {
-        'sk': 'https://www.rise.sk/tvorba-web-stranok',
-        'en': 'https://www.rise.sk/en/web-development',
+        'sk': 'https://rise.sk/tvorba-web-stranok',
+        'en': 'https://rise.sk/en/web-development',
       }
     }
   };

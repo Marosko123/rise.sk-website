@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const localePath = locale === 'sk' ? '/o-nas' : '/about';
   const localeCode = locale === 'sk' ? 'sk_SK' : 'en_US';
-  const baseUrl = 'https://www.rise.sk';
+  const baseUrl = 'https://rise.sk';
   const url = locale === 'sk' ? `${baseUrl}${localePath}` : `${baseUrl}/${locale}${localePath}`;
 
   return {
@@ -74,8 +74,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       canonical: url,
       languages: {
-        'sk': 'https://www.rise.sk/o-nas',
-        'en': 'https://www.rise.sk/en/about',
+        'sk': 'https://rise.sk/o-nas',
+        'en': 'https://rise.sk/en/about',
       },
     },
   };

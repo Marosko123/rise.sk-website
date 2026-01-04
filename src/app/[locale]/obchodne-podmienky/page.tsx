@@ -63,7 +63,7 @@ export default async function ObchodnePodmienky({
                 <p><strong>DIČ:</strong> 2122 587 890</p>
                 <p><strong>Email:</strong> rise@rise.sk</p>
                 <p><strong>Telefón:</strong> +421 911 670 188</p>
-                <p><strong>Web:</strong> www.rise.sk</p>
+                <p><strong>Web:</strong> rise.sk</p>
               </div>
             </section>
 
