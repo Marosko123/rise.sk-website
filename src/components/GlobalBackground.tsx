@@ -140,22 +140,30 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
 
   useEffect(() => {
     let resizeTimeout: NodeJS.Timeout;
+    const initialHeight = window.innerHeight;
     let lastWidth = window.innerWidth;
 
     const updateWindowSize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         const currentWidth = window.innerWidth;
+        const currentHeight = window.innerHeight;
 
-        // On mobile, ignore height-only changes (caused by browser toolbar hide/show during scroll)
-        // Only update if width changed significantly (more than 50px to handle edge cases)
-        if (isMobile && Math.abs(currentWidth - lastWidth) < 50) {
-          return;
+        // On mobile, ignore height-only changes caused by browser toolbar hide/show during scroll
+        // Only update if width actually changed
+        if (isMobile) {
+          if (currentWidth === lastWidth) {
+            return; // Height-only change from browser chrome, ignore
+          }
         }
 
         lastWidth = currentWidth;
-        setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-      }, 150); // Increased debounce for mobile
+        // On mobile, use initial height to prevent jank from browser chrome resizing
+        setWindowSize({
+          width: currentWidth,
+          height: isMobile ? initialHeight : currentHeight
+        });
+      }, 150);
     };
 
     window.addEventListener('resize', updateWindowSize);

@@ -41,9 +41,21 @@ export function SmoothScrollProvider({
 
     rafId = requestAnimationFrame(raf);
 
-    // Handle resize events
+    // Handle resize events - debounced and mobile-aware
+    let lastWidth = window.innerWidth;
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+
     const handleResize = () => {
-      lenis.resize();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const currentWidth = window.innerWidth;
+        // On mobile, ignore height-only changes from browser chrome hide/show
+        if (isMobile && currentWidth === lastWidth) {
+          return;
+        }
+        lastWidth = currentWidth;
+        lenis.resize();
+      }, 150);
     };
 
     window.addEventListener('resize', handleResize, { passive: true });
@@ -51,6 +63,7 @@ export function SmoothScrollProvider({
     return () => {
       lenis.destroy();
       window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
