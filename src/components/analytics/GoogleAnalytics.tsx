@@ -19,6 +19,16 @@ export default function GoogleAnalytics({ nonce }: { nonce?: string }) {
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
+
+          // Default consent to denied to avoid "Third-party cookies" warning
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted'
+          });
+
           gtag('js', new Date());
 
           gtag('config', '${gaId}', {

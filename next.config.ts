@@ -4,6 +4,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  // Enable source maps for production to resolve Lighthouse "Missing source maps" warning
+  productionBrowserSourceMaps: true,
+
   // Enable standalone output for Docker deployment
   output: 'standalone',
 

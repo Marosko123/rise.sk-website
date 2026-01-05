@@ -127,6 +127,11 @@ export default function middleware(request: NextRequest) {
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https://*.googletagmanager.com https://*.google-analytics.com https://cdn.jsdelivr.net https://www.vectorlogo.zone https://upload.wikimedia.org https://images.unsplash.com https://plus.unsplash.com https://rise.sk;
     font-src 'self' data: https://fonts.gstatic.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'self';
+    upgrade-insecure-requests;
     connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.emailjs.com https://lottie.host https://*.lottiefiles.com https://rise.sk;
     frame-src 'self';
   `.replace(/\s{2,}/g, ' ').trim();
@@ -143,7 +148,7 @@ export default function middleware(request: NextRequest) {
   response.headers.set('x-nonce', nonce); // Optional: if client needs it
 
   // Security headers
-  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   response.headers.set('X-Frame-Options', 'SAMEORIGIN');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
