@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic';
 import React, { useEffect, useRef, useState } from 'react';
 
 // Lazy load Lottie - only loads when component is rendered (~50KB saved from initial bundle)
-const Lottie = dynamic(() => import('lottie-react'), {
+const Lottie = dynamic(() => import('lottie-react').then(mod => mod.default), {
   ssr: false,
   loading: () => null // Fallback icon will show while loading
 });
