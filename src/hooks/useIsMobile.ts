@@ -2,11 +2,20 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * Hydration-safe hook for detecting mobile devices.
+ * Returns false during SSR and initial hydration to prevent mismatch.
+ */
 export function useIsMobile(breakpoint: number = 768): boolean {
+  // Start with false to match server-rendered HTML
   const [isMobile, setIsMobile] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
   const lastWidthRef = useRef<number>(0);
 
   useEffect(() => {
+    // Mark as hydrated after first client render
+    setIsHydrated(true);
+
     const checkIsMobile = () => {
       const currentWidth = window.innerWidth;
 
@@ -36,6 +45,11 @@ export function useIsMobile(breakpoint: number = 768): boolean {
       clearTimeout(resizeTimeout);
     };
   }, [breakpoint]);
+
+  // During SSR and initial hydration, return false to match server
+  if (!isHydrated) {
+    return false;
+  }
 
   return isMobile;
 }

@@ -1,5 +1,11 @@
+'use client';
+
 import { useCallback, useEffect, useState } from 'react';
 
+/**
+ * Hydration-safe carousel hook.
+ * Uses desktopItems as default during SSR to prevent hydration mismatch.
+ */
 export function useCarousel(
   totalItems: number,
   options: {
@@ -9,10 +15,6 @@ export function useCarousel(
     autoPlayInterval?: number;
   } = {}
 ) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(3);
-  const [isHovered, setIsHovered] = useState(false);
-
   const {
     mobileItems = 1,
     tabletItems = 2,
@@ -20,7 +22,13 @@ export function useCarousel(
     autoPlayInterval = 5000
   } = options;
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  // Use desktopItems as default to match server-rendered HTML (prevents hydration mismatch)
+  const [itemsPerView, setItemsPerView] = useState(desktopItems);
+  const [isHovered, setIsHovered] = useState(false);
+
   useEffect(() => {
+
     const updateItemsPerView = () => {
       if (window.innerWidth < 768) {
         setItemsPerView(mobileItems);
