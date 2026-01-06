@@ -73,6 +73,9 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/src/content ./src/content
 COPY --from=builder /app/messages ./messages
 
+# Copy critical CSS for InlineCriticalCSS component (reads at runtime)
+COPY --from=builder /app/src/app/critical.css ./src/app/critical.css
+
 # Set correct permissions
 RUN chown -R nextjs:nodejs /app
 
