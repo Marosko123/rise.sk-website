@@ -2,7 +2,7 @@
 
 import companyConfig from '@/config/company';
 import { useIsMobile } from '@/hooks/useIsMobile';
-import { motion, MotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
+import { m, MotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
@@ -36,7 +36,7 @@ const ParallaxParticle = ({ particle, scrollY }: { particle: Particle, scrollY: 
   const y = useTransform(scrollY, (val: number) => -(val * particle.depth));
 
   return (
-    <motion.div
+    <m.div
       className="absolute"
       style={{
         top: particle.top,
@@ -56,7 +56,7 @@ const ParallaxParticle = ({ particle, scrollY }: { particle: Particle, scrollY: 
           '--ty': particle.ty,
         } as React.CSSProperties}
       />
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -288,10 +288,11 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
             >
               <Image
                 src={companyConfig.website.logo.logoGoldTransparent}
-                alt={companyConfig.company.name}
+                alt=""
                 width={600}
                 height={600}
-                priority
+                loading="lazy"
+                aria-hidden="true"
                 className='select-none pointer-events-none'
                 style={{
                   opacity: 0.02, // Even more subtle

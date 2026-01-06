@@ -1,4 +1,5 @@
 {
+
   "landing": {
     "tagline": {
       "weAre": "Sme",
@@ -1065,6 +1066,44 @@
           ]
         }
       ],
+      "techStack": {
+        "recommended": [
+          {
+            "name": "ChatGPT & Claude",
+            "reason": "Najvýkonnejšie LLM modely pre komplexnú analýzu a tvorbu obsahu."
+          },
+          {
+            "name": "Python & LangChain",
+            "reason": "Zlatý štandard pre vývoj vlastných AI aplikácií a agentov."
+          },
+          {
+            "name": "N8n.com / Make.com / Zapier",
+            "reason": "Pokročilá automatizácia procesov bez nutnosti zložitého programovania."
+          },
+          {
+            "name": "Midjourney",
+            "reason": "Špičková generatívna AI pre tvorbu fotorealistických vizuálov."
+          },
+          {
+            "name": "OpenAI API",
+            "reason": "Integrácia GPT modelov priamo do vašich firemných systémov."
+          },
+          {
+            "name": "Copilot",
+            "reason": "AI asistent integrovaný priamo do Microsoft 365 a GitHub."
+          }
+        ],
+        "others": [
+          "Gemini",
+          "PC/Mac Hardware",
+          "Hugging Face",
+          "Llama 3",
+          "AutoGPT",
+          "Pinecone",
+          "TensorFlow",
+          "PyTorch"
+        ]
+      },
       "tools": {
         "title": "Nástroje, ktoré učíme a používame",
         "subtitle": "Pracujeme s najlepšími AI modelmi na trhu",
@@ -1839,6 +1878,11 @@
     }
   },
   "common": {
+    "techStack": {
+      "recommendedTitle": "Odporúčané technológie",
+      "recommendedSubtitle": "To najlepšie pre váš projekt",
+      "othersTitle": "Taktiež dodávame"
+    },
     "imageNotAvailable": "Obrázok nie je dostupný",
     "loading": "Načítava sa...",
     "error": "Chyba",

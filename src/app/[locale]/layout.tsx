@@ -10,15 +10,20 @@ import GoogleTagManager from '@/components/analytics/GoogleTagManager';
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter';
 import GDPRConsent from '@/components/features/GDPRConsent';
 import ServiceWorkerRegistration from '@/components/features/ServiceWorkerRegistration';
+import NavigationProgress from '@/components/layout/NavigationProgress';
+import InlineCriticalCSS from '@/components/performance/InlineCriticalCSS';
 import { AnimationProvider } from '@/components/providers/AnimationProvider';
+import LazyMotionProvider from '@/components/providers/LazyMotionProvider';
 import ThemeProvider from '@/components/providers/ThemeProvider';
 import BreadcrumbSchema, { getBreadcrumbsForPage } from '@/components/seo/BreadcrumbSchema';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
+import DeferredStyles from '@/components/ui/DeferredStyles';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import PullToRefresh from '@/components/ui/PullToRefresh';
 import SkipLink from '@/components/ui/SkipLink';
 import { routing } from '@/i18n/routing';
 
+import '../animations.css';
 import '../globals.css';
 
 export const viewport: Viewport = {
@@ -86,12 +91,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   alternates: {
-    canonical: '/',
-    languages: {
-      'sk': '/',
-      'en': '/en',
-      'x-default': '/',
-    }
+    canonical: './',
   },
   robots: {
     index: true,
@@ -166,6 +166,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <InlineCriticalCSS />
         <GoogleTagManager nonce={nonce} />
         <GoogleAnalytics nonce={nonce} />
         <EnhancedSchema type="Organization" />
@@ -179,21 +180,25 @@ export default async function LocaleLayout({ children, params }: Props) {
         <BreadcrumbSchema items={breadcrumbs} page="home" />
       </head>
       <body>
-        <LoadingScreen />
-        <SkipLink />
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider>
-            <AnimationProvider>
-              <PullToRefresh />
-              <main id="main-content" tabIndex={-1} className="focus:outline-none">
-                {children}
-              </main>
-            </AnimationProvider>
-            <ServiceWorkerRegistration />
-            <WebVitalsReporter />
-            <GDPRConsent />
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <LazyMotionProvider>
+          <NavigationProgress />
+          <LoadingScreen />
+          <SkipLink />
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider>
+              <AnimationProvider>
+                <PullToRefresh />
+                <main id="main-content" tabIndex={-1} className="focus:outline-none">
+                  {children}
+                </main>
+              </AnimationProvider>
+              <ServiceWorkerRegistration />
+              <WebVitalsReporter />
+              <GDPRConsent />
+              <DeferredStyles />
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </LazyMotionProvider>
       </body>
     </html>
   );

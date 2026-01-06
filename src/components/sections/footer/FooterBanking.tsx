@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Banknote, Check, Copy, CreditCard, Hash } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 

@@ -3,7 +3,7 @@
 import Footer from '@/components/sections/Footer';
 import { teamMembers } from '@/data/team';
 import { cn } from '@/utils/cn';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { ArrowDown, Facebook, Github, Instagram, Linkedin } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';

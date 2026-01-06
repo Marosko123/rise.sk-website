@@ -118,6 +118,7 @@ export default function BlogCard({ post, locale, priority = false }: BlogCardPro
           <Link
             href={postUrl}
             className="flex items-center text-sm font-bold text-primary group-hover:translate-x-1 transition-transform duration-300 ml-auto"
+            aria-label={`${t('readMore')} - ${post.title}`}
           >
             {t('readMore')}
             <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

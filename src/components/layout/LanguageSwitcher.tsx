@@ -1,7 +1,7 @@
 'use client';
 
 import { Link, usePathname } from '@/i18n/routing';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { useEffect, useState } from 'react';
 

@@ -1,5 +1,5 @@
 import { Project } from '@/data/projects';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Eye, Github, Lock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';

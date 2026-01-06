@@ -16,16 +16,19 @@ import LandingOverlay, { LandingOverlayRef } from './LandingOverlay';
 import LanguageSwitcher from './layout/LanguageSwitcher';
 
 // Dynamic imports for better performance
-const About = dynamic(() => import('./sections/About'));
-const FAQ = dynamic(() => import('./sections/FAQ'));
-const Footer = dynamic(() => import('./sections/Footer'));
+// Above-the-fold - keep SSR for SEO
 const Hero = dynamic(() => import('./sections/Hero'));
-const Hiring = dynamic(() => import('./sections/Hiring'));
-const MultiStepContactForm = dynamic(() => import('./features/MultiStepContactForm'));
 const Navigation = dynamic(() => import('./layout/Navigation'));
-const Portfolio = dynamic(() => import('./sections/Portfolio'));
-const Reviews = dynamic(() => import('./sections/Reviews'));
-const ServicesEnhanced = dynamic(() => import('./sections/ServicesEnhanced'));
+
+// Below-the-fold - disable SSR for faster initial load
+const About = dynamic(() => import('./sections/About'), { ssr: false });
+const FAQ = dynamic(() => import('./sections/FAQ'), { ssr: false });
+const Footer = dynamic(() => import('./sections/Footer'), { ssr: false });
+const Hiring = dynamic(() => import('./sections/Hiring'), { ssr: false });
+const MultiStepContactForm = dynamic(() => import('./features/MultiStepContactForm'), { ssr: false });
+const Portfolio = dynamic(() => import('./sections/Portfolio'), { ssr: false });
+const Reviews = dynamic(() => import('./sections/Reviews'), { ssr: false });
+const ServicesEnhanced = dynamic(() => import('./sections/ServicesEnhanced'), { ssr: false });
 
 // Heavy visual components - Lazy loaded
 const GlobalBackground = dynamic(() => import('./GlobalBackground'), {

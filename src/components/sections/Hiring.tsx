@@ -1,7 +1,7 @@
 'use client';
 
 import FadeIn from '@/components/animations/FadeIn';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import {
     Bot,
     Briefcase,

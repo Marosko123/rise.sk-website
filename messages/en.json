@@ -1,4 +1,5 @@
 {
+
   "landing": {
     "tagline": {
       "weAre": "We are",
@@ -156,7 +157,8 @@
       "serviceType": "Web Development",
       "meta": {
         "title": "Custom Website Development | Modern Websites - Rise.sk",
-        "description": "Professional custom website development. Fast, secure, and SEO-optimized websites for businesses. Get a quote for a new website today."
+        "description": "Professional custom website development. Fast, secure, and SEO-optimized websites for businesses. Get a quote for a new website today.",
+        "keywords": "custom website development, web design, website creation, next.js development, seo optimization, fast websites, modern web design"
       },
       "featuresTitle": "Why choose us for web development?",
       "features": [
@@ -234,6 +236,46 @@
           "description": "We test functionality, speed, and launch the website on your domain."
         }
       ],
+      "techStack": {
+        "recommended": [
+          {
+            "name": "Next.js",
+            "reason": "Best framework for SEO and extremely fast loading."
+          },
+          {
+            "name": "React",
+            "reason": "Allows creating interactive and dynamic user interfaces."
+          },
+          {
+            "name": "TypeScript",
+            "reason": "Ensures bug-free code and easier project maintenance."
+          },
+          {
+            "name": "Tailwind CSS",
+            "reason": "Modern design approach for pixel-perfect results."
+          },
+          {
+            "name": "Node.js",
+            "reason": "Fast and scalable backend for demanding applications."
+          },
+          {
+            "name": "PostgreSQL",
+            "reason": "Most reliable database for your valuable data."
+          }
+        ],
+        "others": [
+          "WordPress",
+          "Figma",
+          "Docker",
+          "AWS",
+          "Google Analytics",
+          "Svelte",
+          "Nuxt.js",
+          "Vercel",
+          "Redis",
+          "Elasticsearch"
+        ]
+      },
       "faq": [
         {
           "question": "How much does a website cost?",
@@ -263,7 +305,8 @@
       "serviceType": "E-commerce Development",
       "meta": {
         "title": "Custom E-shop Development | E-commerce Solutions - Rise.sk",
-        "description": "Professional custom e-shop development. Increase your sales with a fast and secure online store. Payment and shipping integration."
+        "description": "Professional custom e-shop development. Increase your sales with a fast and secure online store. Payment and shipping integration.",
+        "keywords": "e-shop development, custom online store, woocommerce, shopify, e-commerce solutions, online sales, e-shop creation"
       },
       "featuresTitle": "Features for successful online sales",
       "features": [
@@ -292,6 +335,46 @@
           "description": "Discount codes, newsletters, upsell and cross-sell functions directly in the system."
         }
       ],
+      "techStack": {
+        "recommended": [
+          {
+            "name": "WooCommerce",
+            "reason": "Most flexible platform for e-shops with endless customization possibilities."
+          },
+          {
+            "name": "Shopify",
+            "reason": "Stable and secure solution for fast sales launch."
+          },
+          {
+            "name": "Stripe",
+            "reason": "Global standard for secure and fast card payments."
+          },
+          {
+            "name": "Next.js",
+            "reason": "For headless e-shops where speed is key."
+          },
+          {
+            "name": "Redis",
+            "reason": "Instant product loading thanks to advanced caching."
+          },
+          {
+            "name": "Elasticsearch",
+            "reason": "Intelligent search capable of finding products even with typos."
+          }
+        ],
+        "others": [
+          "PayPal",
+          "Google Analytics",
+          "Magento",
+          "PrestaShop",
+          "Docker",
+          "AWS",
+          "React",
+          "PostgreSQL",
+          "Figma",
+          "Tailwind CSS"
+        ]
+      },
       "tools": {
         "title": "Technologies and Integrations",
         "subtitle": "We use proven platforms and payment systems",
@@ -371,7 +454,8 @@
       "serviceType": "Mobile App Development",
       "meta": {
         "title": "Mobile App Development iOS and Android | Rise.sk",
-        "description": "Comprehensive custom mobile app development. iOS, Android, Flutter, and React Native. From design to publication in stores."
+        "description": "Comprehensive custom mobile app development. iOS, Android, Flutter, and React Native. From design to publication in stores.",
+        "keywords": "mobile app development, app creation, ios apps, android apps, react native, flutter, custom mobile apps"
       },
       "featuresTitle": "Top mobile technologies",
       "features": [
@@ -400,6 +484,43 @@
           "description": "We cover the entire approval process in the App Store and Google Play."
         }
       ],
+      "techStack": {
+        "recommended": [
+          {
+            "name": "React Native",
+            "reason": "Develop for iOS and Android simultaneously with a single codebase."
+          },
+          {
+            "name": "Flutter",
+            "reason": "Google technology for beautiful and fluid user interfaces."
+          },
+          {
+            "name": "Swift",
+            "reason": "Native language for maximum performance on Apple devices."
+          },
+          {
+            "name": "Kotlin",
+            "reason": "Modern standard for robust Android applications."
+          },
+          {
+            "name": "Firebase",
+            "reason": "Complete backend, database, and analytics in one."
+          },
+          {
+            "name": "Expo",
+            "reason": "Accelerates development and enables instant app updates."
+          }
+        ],
+        "others": [
+          "TypeScript",
+          "Figma",
+          "iOS",
+          "Android",
+          "Node.js",
+          "Python",
+          "Google Analytics"
+        ]
+      },
       "tools": {
         "title": "Technologies We Master",
         "subtitle": "We use cutting-edge tools to build top-tier applications",
@@ -793,6 +914,44 @@
           ]
         }
       ],
+      "techStack": {
+        "recommended": [
+          {
+            "name": "ChatGPT & Claude",
+            "reason": "Most powerful LLMs for complex reasoning and content generation."
+          },
+          {
+            "name": "Python & LangChain",
+            "reason": "Gold standard for building custom AI apps and agents."
+          },
+          {
+            "name": "N8n.com / Make.com / Zapier",
+            "reason": "Advanced process automation without complex coding."
+          },
+          {
+            "name": "Midjourney",
+            "reason": "Top-tier generative AI for photorealistic visuals."
+          },
+          {
+            "name": "OpenAI API",
+            "reason": "Integrate raw GPT power directly into your business systems."
+          },
+          {
+            "name": "Copilot",
+            "reason": "AI assistant integrated right into Microsoft 365 and GitHub."
+          }
+        ],
+        "others": [
+          "Gemini",
+          "PC/Mac Hardware",
+          "Hugging Face",
+          "Llama 3",
+          "AutoGPT",
+          "Pinecone",
+          "TensorFlow",
+          "PyTorch"
+        ]
+      },
       "tools": {
         "title": "Tools we teach and use",
         "subtitle": "We work with the best AI models on the market",
@@ -1579,6 +1738,11 @@
     }
   },
   "common": {
+    "techStack": {
+      "recommendedTitle": "Recommended technologies",
+      "recommendedSubtitle": "The best for your project",
+      "othersTitle": "We also deliver"
+    },
     "imageNotAvailable": "Image not available",
     "loading": "Loading...",
     "error": "Error",

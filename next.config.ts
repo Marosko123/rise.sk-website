@@ -45,8 +45,14 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react'],
+    // Optimize package imports for tree-shaking
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'lottie-react'],
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
   },
+  // Transpile only what's necessary for modern browsers
+  transpilePackages: [],
   compress: process.env.NODE_ENV === 'production',
   poweredByHeader: false,
   trailingSlash: false,
@@ -199,7 +205,7 @@ const nextConfig: NextConfig = {
       }
     ];
   },
-  webpack: (config, { webpack }) => {
+  webpack: (config, { webpack, isServer }) => {
     config.output.environment = {
       ...config.output.environment,
       arrowFunction: true,
@@ -212,6 +218,12 @@ const nextConfig: NextConfig = {
       optionalChaining: true,
       templateLiteral: true,
     };
+
+    if (!isServer) {
+        config.resolve.alias['next/dist/build/polyfills/polyfill-module'] = false;
+        config.resolve.alias['next/dist/build/polyfills/polyfill-module.js'] = false;
+    }
+
     return config;
   },
 };

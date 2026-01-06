@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import { ArrowRight, Brain, ChevronDown, Code2, Laptop, LucideIcon, Menu, ShoppingCart, Smartphone, User, Users, X } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -43,6 +43,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [initialHashHandled, setInitialHashHandled] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [clickedLink, setClickedLink] = useState<string | null>(null); // Pre vizuálnu spätnú väzbu
   const { hasClicked: hasClickedCheckup, handleClick: handleCheckupClickInternal } = usePersistentClick('rise_has_clicked_checkup');
   const { hasClicked: hasClickedStartProject, handleClick: handleStartProjectClickInternal } = usePersistentClick('rise_has_clicked_start_project');
   const pathname = usePathname();
@@ -468,11 +469,13 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                       key={itemIndex}
                                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                       href={item.href as any}
-                                      className='flex items-center gap-4 px-5 py-4 hover:bg-white/5 transition-colors duration-200 group/item'
+                                      className='flex items-center gap-4 px-5 py-4 hover:bg-white/5 active:bg-primary/20 active:scale-[0.98] transition-all duration-150 group/item'
                                       onMouseEnter={() => prefetchRoute(item.href)}
                                       onClick={() => {
+                                        setClickedLink(item.label);
                                         setActiveDropdown(null);
                                         setIsMenuOpen(false);
+                                        setTimeout(() => setClickedLink(null), 300);
                                       }}
                                     >
                                       {item.image && !isPlaceholder ? (
@@ -519,11 +522,19 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                       key={index}
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       href={link.href as any}
-                      className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap ${
-                        isActive ? 'text-primary' : 'text-gray-300 hover:text-primary'
+                      className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-150 relative select-none whitespace-nowrap ${
+                        clickedLink === link.section
+                          ? 'text-primary scale-95 opacity-70'
+                          : isActive
+                            ? 'text-primary'
+                            : 'text-gray-300 hover:text-primary active:scale-95 active:opacity-70'
                       }`}
                       onMouseEnter={() => prefetchRoute(link.href)}
                       onClick={(e) => {
+                        // Okamžitá vizuálna spätná väzba
+                        setClickedLink(link.section);
+                        setTimeout(() => setClickedLink(null), 300);
+
                         if (isHomePage && link.isHash) {
                           e.preventDefault();
                           const element = document.getElementById(link.section);
@@ -678,11 +689,13 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                 key={itemIndex}
                                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                 href={item.href as any}
-                                className='flex items-center gap-4 px-6 py-5 text-gray-200 hover:bg-primary hover:text-white transition-colors duration-200 border-b border-white/5 last:border-b-0'
+                                className='flex items-center gap-4 px-6 py-5 text-gray-200 hover:bg-primary hover:text-white active:bg-primary/80 active:scale-[0.98] transition-all duration-150 border-b border-white/5 last:border-b-0'
                                 onMouseEnter={() => prefetchRoute(item.href)}
                                 onClick={() => {
+                                  setClickedLink(item.label);
                                   setIsMenuOpen(false);
                                   setActiveDropdown(null);
+                                  setTimeout(() => setClickedLink(null), 300);
                                 }}
                               >
                                 {item.image && !isPlaceholder ? (
@@ -724,11 +737,18 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                   key={index}
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   href={link.href as any}
-                  className={`px-4 py-3 text-xl font-bold transition-all duration-300 relative select-none w-full text-center ${
-                    isActive ? 'text-primary' : 'text-white hover:text-primary'
+                  className={`px-4 py-3 text-xl font-bold transition-all duration-150 relative select-none w-full text-center ${
+                    clickedLink === link.section
+                      ? 'text-primary scale-95 opacity-70'
+                      : isActive
+                        ? 'text-primary'
+                        : 'text-white hover:text-primary active:scale-95 active:opacity-70'
                   }`}
                   onMouseEnter={() => prefetchRoute(link.href)}
                   onClick={(e) => {
+                    // Okamžitá vizuálna spätná väzba
+                    setClickedLink(link.section);
+
                     if (isHomePage && link.isHash) {
                       e.preventDefault();
                       const element = document.getElementById(link.section);
@@ -746,6 +766,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                     } else {
                       setIsMenuOpen(false);
                     }
+                    setTimeout(() => setClickedLink(null), 300);
                   }}
                 >
                   {link.label}

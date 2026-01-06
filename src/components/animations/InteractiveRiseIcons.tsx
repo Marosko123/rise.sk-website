@@ -1,7 +1,7 @@
 'use client';
 
 import { companyConfig } from '@/config/company';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -134,7 +134,7 @@ export default function InteractiveRiseIcons() {
     const handleVisibilityChange = () => {
       setIsVisible(!document.hidden);
     };
-    
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
   }, []);

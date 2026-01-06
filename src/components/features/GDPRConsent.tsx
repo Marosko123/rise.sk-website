@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import { CheckCircle, Info, Settings, Shield, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
@@ -142,7 +142,7 @@ const GDPRConsent = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-t border-white/10 gdpr-modal-mobile"
-          style={{ 
+          style={{
             paddingBottom: 'max(1rem, env(safe-area-inset-bottom))',
           }}
         >

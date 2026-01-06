@@ -1,6 +1,6 @@
 import { getFooterLinks } from '@/data/footer-data';
 import { AppPathnames, Link } from '@/i18n/routing';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 export default function FooterLinks() {

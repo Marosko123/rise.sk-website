@@ -2,7 +2,7 @@
 
 import companyConfig from '@/config/company';
 import { useTranslations } from '@/hooks/useTranslations';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -18,8 +18,8 @@ export default function LoadingScreen() {
   useEffect(() => {
     // Detect mobile for faster loading
     const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
-    const loadingDuration = isMobile ? 1200 : 2300; // Much faster on mobile
-    const totalDuration = isMobile ? 1800 : 3100;
+    const loadingDuration = isMobile ? 200 : 400; // Drastically reduced for instant feel
+    const totalDuration = isMobile ? 400 : 700;
 
     // Prevent scrolling while loading
     document.body.style.overflow = 'hidden';
@@ -107,7 +107,7 @@ export default function LoadingScreen() {
             className="absolute inset-0"
             initial={{ clipPath: "inset(100% 0 0 0)" }}
             animate={{ clipPath: "inset(0% 0 0 0)" }}
-            transition={{ duration: 1.8, ease: "easeInOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <Image
               src={companyConfig.website.logo.logoGoldTransparent}

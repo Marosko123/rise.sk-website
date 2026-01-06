@@ -1,13 +1,13 @@
 'use client';
 
 import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  useVelocity,
+    m as motion,
+    useScroll,
+    useSpring,
+    useTransform,
+    useVelocity,
 } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // Scroll-based section navigation with active indicators
 export function ScrollSectionNavigator({

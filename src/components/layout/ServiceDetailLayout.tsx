@@ -1,59 +1,65 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import {
-  ArrowRight,
-  Bell,
-  Bot,
-  Box,
-  BrainCircuit,
-  CheckCircle2,
-  Cloud,
-  Code,
-  Cpu,
-  CreditCard,
-  Edit,
-  FileBarChart,
-  FileText,
-  Globe,
-  GraduationCap,
-  Image as ImageIcon,
-  Layers,
-  Link,
-  Lock,
-  Maximize,
-  Megaphone,
-  Palette,
-  PieChart,
-  Search,
-  Server,
-  Smartphone,
-  Sparkles,
-  Terminal,
-  TrendingUp,
-  UploadCloud,
-  Users,
-  WifiOff,
-  Workflow,
-  Zap
+    ArrowRight,
+    Bell,
+    Bot,
+    Box,
+    BrainCircuit,
+    CheckCircle2,
+    Cloud,
+    Code,
+    Cpu,
+    CreditCard,
+    Edit,
+    FileBarChart,
+    FileText,
+    Globe,
+    GraduationCap,
+    Image as ImageIcon,
+    Layers,
+    Link,
+    Lock,
+    Maximize,
+    Megaphone,
+    Palette,
+    PieChart,
+    Search,
+    Server,
+    Smartphone,
+    Sparkles,
+    Terminal,
+    TrendingUp,
+    UploadCloud,
+    Users,
+    WifiOff,
+    Workflow,
+    Zap
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import FadeIn from '@/components/animations/FadeIn';
 import BlogCard from '@/components/blog/BlogCard';
-import MultiStepContactForm from '@/components/features/MultiStepContactForm';
 import GlobalBackground from '@/components/GlobalBackground';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/sections/Footer';
 import EnhancedSchema from '@/components/seo/EnhancedSchema';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { Button } from '@/components/ui/Button';
-import FAQAccordion from '@/components/ui/FAQAccordion';
 import { MobileCarousel } from '@/components/ui/MobileCarousel';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { BlogPost } from '@/utils/blog';
 import { useLocale, useTranslations } from 'next-intl';
+
+const MultiStepContactForm = dynamic(() => import('@/components/features/MultiStepContactForm'), {
+  loading: () => <div className="min-h-[600px] flex items-center justify-center"><div className="w-8 h-8 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin" /></div>
+});
+
+const FAQAccordion = dynamic(() => import('@/components/ui/FAQAccordion'));
 
 interface ServiceDetailProps {
   serviceId: string; // e.g., 'webDevelopment', 'ecommerce'
@@ -91,95 +97,96 @@ const getFeatureIcon = (title: string) => {
 };
 
 const TECH_LOGOS: Record<string, string> = {
-  'Next.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-  'React': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-  'Vue.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-  'Angular': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
-  'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-  'Node.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-  'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-  'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-  '.NET': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg',
-  'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
-  'React Native': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-  'Flutter': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',
-  'Swift': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
-  'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
-  'AWS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
-  'Azure': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-  'Google Cloud': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-  'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-  'Kubernetes': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
-  'TensorFlow': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg',
-  'SQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-  'NoSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-  'PowerBI': 'https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg',
-  'Cypress': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg',
-  'Selenium': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg',
-  'Tailwind CSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
-  'Framer Motion': 'https://www.vectorlogo.zone/logos/framer/framer-icon.svg',
-  'WordPress': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg',
-  'Firebase': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
-  'Expo': 'https://www.vectorlogo.zone/logos/expoio/expoio-icon.svg',
-  'Android': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg',
-  'iOS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg',
-  'ChatGPT & Claude': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg',
-  'OpenAI API': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg',
-  'Midjourney': 'https://www.vectorlogo.zone/logos/midjourney/midjourney-icon.svg',
-  'Python & LangChain': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-  'N8n.com / Make.com / Zapier': 'https://www.vectorlogo.zone/logos/zapier/zapier-icon.svg',
-  'Copilot': 'https://www.vectorlogo.zone/logos/github/github-icon.svg',
-  'Stripe': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/stripe/stripe-original.svg',
-  'PayPal': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/paypal/paypal-original.svg',
-  'WooCommerce': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/woocommerce/woocommerce-original.svg',
-  'Shopify': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/shopify/shopify-original.svg',
-  'Magento': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/magento/magento-original.svg',
-  'PrestaShop': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prestashop/prestashop-original.svg',
-  'Google Analytics': 'https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg',
-  'PostgreSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-  'MySQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-  'MongoDB': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-  'Redis': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
-  'Elasticsearch': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg',
-  'Oracle': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
-  'MSSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg',
-  'DynamoDB': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dynamodb/dynamodb-original.svg',
-  'Cassandra': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachecassandra/apachecassandra-original.svg',
-  'Salesforce': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg',
-  'SAP': 'https://www.vectorlogo.zone/logos/sap/sap-icon.svg',
-  'Jira': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
-  'Slack': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg',
-  'Figma': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-  'Terraform': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg',
-  'Ansible': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg',
-  'Jenkins': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg',
-  'GitLab': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg',
-  'CircleCI': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/circleci/circleci-plain.svg',
-  'Datadog': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/datadog/datadog-original.svg',
-  'Prometheus': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg',
-  'Grafana': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg',
-  'Go': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg',
-  'Rust': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',
-  'Scala': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg',
-  'Ruby': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg',
-  'Svelte': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg',
-  'Nuxt.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
-  'Pandas': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg',
-  'Apache Spark': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg',
-  'Hadoop': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hadoop/hadoop-original.svg',
-  'Kafka': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg',
-  'Snowflake': 'https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg',
-  'Databricks': 'https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg',
-  'Tableau': 'https://www.vectorlogo.zone/logos/tableau/tableau-icon.svg',
-  'Linux': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
-  'Nginx': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg',
-  'Git': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-  'Spring Boot': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
-  'Django': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
-  'FastAPI': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',
-  'Laravel': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',
-  'Symfony': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg',
-  'Vercel': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg',
+  // Self-hosted icons to avoid jsDelivr service worker deprecation
+  'Next.js': '/icons/tech/nextjs.svg',
+  'React': '/icons/tech/react.svg',
+  'Vue.js': '/icons/tech/vuejs.svg',
+  'Angular': '/icons/tech/angular.svg',
+  'TypeScript': '/icons/tech/typescript.svg',
+  'Node.js': '/icons/tech/nodejs.svg',
+  'Python': '/icons/tech/python.svg',
+  'Java': '/icons/tech/java.svg',
+  '.NET': '/icons/tech/dotnetcore.svg',
+  'PHP': '/icons/tech/php.svg',
+  'React Native': '/icons/tech/react.svg',
+  'Flutter': '/icons/tech/flutter.svg',
+  'Swift': '/icons/tech/swift.svg',
+  'Kotlin': '/icons/tech/kotlin.svg',
+  'AWS': '/icons/tech/aws.svg',
+  'Azure': '/icons/tech/azure.svg',
+  'Google Cloud': '/icons/tech/googlecloud.svg',
+  'Docker': '/icons/tech/docker.svg',
+  'Kubernetes': '/icons/tech/kubernetes.svg',
+  'TensorFlow': '/icons/tech/tensorflow.svg',
+  'SQL': '/icons/tech/postgresql.svg',
+  'NoSQL': '/icons/tech/mongodb.svg',
+  'PowerBI': '/icons/tech/powerbi.svg',
+  'Cypress': '/icons/tech/cypress.svg',
+  'Selenium': '/icons/tech/selenium.svg',
+  'Tailwind CSS': '/icons/tech/tailwindcss.svg',
+  'Framer Motion': '/icons/tech/framer.svg',
+  'WordPress': '/icons/tech/wordpress.svg',
+  'Firebase': '/icons/tech/firebase.svg',
+  'Expo': '/icons/tech/expo.svg',
+  'Android': '/icons/tech/android.svg',
+  'iOS': '/icons/tech/apple.svg',
+  'ChatGPT & Claude': '/icons/tech/openai.svg',
+  'OpenAI API': '/icons/tech/openai.svg',
+  'Midjourney': '/icons/tech/midjourney.svg',
+  'Python & LangChain': '/icons/tech/python.svg',
+  'N8n.com / Make.com / Zapier': '/icons/tech/zapier.svg',
+  'Copilot': '/icons/tech/github.svg',
+  'Stripe': '/icons/tech/stripe.svg',
+  'PayPal': '/icons/tech/paypal.svg',
+  'WooCommerce': '/icons/tech/woocommerce.svg',
+  'Shopify': '/icons/tech/shopify.svg',
+  'Magento': '/icons/tech/magento.svg',
+  'PrestaShop': '/icons/tech/prestashop.svg',
+  'Google Analytics': '/icons/tech/google-analytics.svg',
+  'PostgreSQL': '/icons/tech/postgresql.svg',
+  'MySQL': '/icons/tech/mysql.svg',
+  'MongoDB': '/icons/tech/mongodb.svg',
+  'Redis': '/icons/tech/redis.svg',
+  'Elasticsearch': '/icons/tech/elasticsearch.svg',
+  'Oracle': '/icons/tech/oracle.svg',
+  'MSSQL': '/icons/tech/mssql.svg',
+  'DynamoDB': '/icons/tech/dynamodb.svg',
+  'Cassandra': '/icons/tech/cassandra.svg',
+  'Salesforce': '/icons/tech/salesforce.svg',
+  'SAP': '/icons/tech/sap.svg',
+  'Jira': '/icons/tech/jira.svg',
+  'Slack': '/icons/tech/slack.svg',
+  'Figma': '/icons/tech/figma.svg',
+  'Terraform': '/icons/tech/terraform.svg',
+  'Ansible': '/icons/tech/ansible.svg',
+  'Jenkins': '/icons/tech/jenkins.svg',
+  'GitLab': '/icons/tech/gitlab.svg',
+  'CircleCI': '/icons/tech/circleci.svg',
+  'Datadog': '/icons/tech/datadog.svg',
+  'Prometheus': '/icons/tech/prometheus.svg',
+  'Grafana': '/icons/tech/grafana.svg',
+  'Go': '/icons/tech/go.svg',
+  'Rust': '/icons/tech/rust.svg',
+  'Scala': '/icons/tech/scala.svg',
+  'Ruby': '/icons/tech/ruby.svg',
+  'Svelte': '/icons/tech/svelte.svg',
+  'Nuxt.js': '/icons/tech/nuxtjs.svg',
+  'Pandas': '/icons/tech/pandas.svg',
+  'Apache Spark': '/icons/tech/spark.svg',
+  'Hadoop': '/icons/tech/hadoop.svg',
+  'Kafka': '/icons/tech/kafka.svg',
+  'Snowflake': '/icons/tech/snowflake.svg',
+  'Databricks': '/icons/tech/databricks.svg',
+  'Tableau': '/icons/tech/tableau.svg',
+  'Linux': '/icons/tech/linux.svg',
+  'Nginx': '/icons/tech/nginx.svg',
+  'Git': '/icons/tech/git.svg',
+  'Spring Boot': '/icons/tech/spring.svg',
+  'Django': '/icons/tech/django.svg',
+  'FastAPI': '/icons/tech/fastapi.svg',
+  'Laravel': '/icons/tech/laravel.svg',
+  'Symfony': '/icons/tech/symfony.svg',
+  'Vercel': '/icons/tech/vercel.svg',
 };
 
 const getAiIcon = (index: number) => {
@@ -198,6 +205,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
   const tCommon = useTranslations('common');
   const locale = useLocale();
   const { trackServiceInterest } = useAnalytics();
+  const isMobile = useIsMobile();
   const [mounted, setMounted] = useState(false);
 
   const contactSectionId = locale === 'sk' ? 'kontakt' : 'contact';
@@ -231,26 +239,16 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
     { Icon: Zap, delay: 1, x: -30, y: 20 },
   ];
 
-  const allTechnologies = tools?.items?.flatMap(item =>
-    item.description.split(',').map(t => {
-      const trimmed = t.trim();
-      const match = trimmed.match(/(.*?)\s*\((.*?)\)/);
-      return match ? match[2] : trimmed;
-    })
-  ).filter((v, i, a) => a.indexOf(v) === i && TECH_LOGOS[v])
-   .sort((a, b) => a.localeCompare(b)) || [];
-
-  // Debug logging
-  useEffect(() => {
-    // console.log('ServiceDetailLayout Debug:', {
-    //   serviceId,
-    //   title: t('title'),
-    //   description: t('description'),
-    //   featuresLength: features.length,
-    //   processLength: processSteps.length,
-    //   faqsLength: faqs.length
-    // });
-  }, [serviceId, t, features.length, processSteps.length, faqs.length]);
+  const allTechnologies = useMemo(() => {
+    return tools?.items?.flatMap(item =>
+      item.description.split(',').map(t => {
+        const trimmed = t.trim();
+        const match = trimmed.match(/(.*?)\s*\((.*?)\)/);
+        return match ? match[2] : trimmed;
+      })
+    ).filter((v, i, a) => a.indexOf(v) === i && TECH_LOGOS[v])
+     .sort((a, b) => a.localeCompare(b)) || [];
+  }, [tools]);
 
   if (!mounted) {
     return null; // Avoid SSR mismatch
@@ -310,50 +308,44 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] hidden sm:block" />
 
         {/* Floating Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {floatingIcons.map(({ Icon, delay, x, y }, index) => (
-            <motion.div
-              key={index}
-              className="absolute opacity-10"
-              initial={{ opacity: 0, x: 0, y: 0 }}
-              animate={{
-                opacity: [0.1, 0.3, 0.1],
-                x: [0, x, 0],
-                y: [0, y, 0],
-              }}
-              transition={{
-                duration: 4,
-                delay,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              style={{
-                left: `${20 + index * 25}%`,
-                top: `${30 + index * 15}%`,
-              }}
-            >
-              <Icon size={120} className="text-[var(--primary)]" />
-            </motion.div>
-          ))}
-        </div>
+        {!isMobile && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {floatingIcons.map(({ Icon, delay, x, y }, index) => (
+              <motion.div
+                key={index}
+                className="absolute opacity-10"
+                initial={{ opacity: 0, x: 0, y: 0 }}
+                animate={{
+                  opacity: [0.1, 0.3, 0.1],
+                  x: [0, x, 0],
+                  y: [0, y, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  delay,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                style={{
+                  left: `${20 + index * 25}%`,
+                  top: `${30 + index * 15}%`,
+                }}
+              >
+                <Icon size={120} className="text-[var(--primary)]" />
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex-1 flex flex-col">
           {breadcrumbs && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="py-8 md:py-12 flex justify-center md:justify-start relative z-20"
-            >
+            <div className="py-8 md:py-12 flex justify-center md:justify-start relative z-20">
               <Breadcrumbs items={breadcrumbs} className="justify-center md:justify-start" />
-            </motion.div>
+            </div>
           )}
 
           <div className="flex-1 flex flex-col justify-center">
-            <FadeIn
-              duration={0.8}
-              className="text-center w-full mx-auto"
-            >
+            <div className="text-center w-full mx-auto">
               {/* Icon removed as per request */}
 
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight select-none">
@@ -361,11 +353,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
                 <span className="gradient-text">{t('title').split(' ').slice(1).join(' ')}</span>
               </h1>
 
-              <FadeIn
-                delay={0.4}
-                duration={0.8}
-                className="mb-12 max-w-4xl mx-auto"
-              >
+              <div className="mb-12 max-w-4xl mx-auto">
                 {tagline && (
                   <p className="text-xl md:text-2xl text-[var(--neutral-dark)] leading-relaxed mb-6">
                     {tagline}
@@ -374,10 +362,10 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
                 <p className="text-lg text-[var(--accent)] leading-relaxed">
                   {t('description')}
                 </p>
-              </FadeIn>
+              </div>
 
               <FadeIn
-                delay={0.6}
+                delay={0.2}
                 duration={0.6}
                 className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
               >
@@ -403,7 +391,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
               </FadeIn>
 
               {/* Trust Badges removed as per request */}
-            </FadeIn>
+            </div>
           </div>
         </div>
       </section>
@@ -411,10 +399,12 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
       {/* Features Grid */}
       <section className="py-32 px-6 relative overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
-            <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-[var(--primary)]/5 rounded-full blur-[100px]" />
-        </div>
+        {!isMobile && (
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+              <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
+              <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-[var(--primary)]/5 rounded-full blur-[100px]" />
+          </div>
+        )}
 
         <div className="max-w-7xl mx-auto relative z-10">
           <FadeIn className="text-center mb-20">
@@ -616,10 +606,10 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
             <div className="max-w-7xl mx-auto">
               <FadeIn className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                  <span className="text-white">Odporúčané </span>
-                  <span className="gradient-text">technológie</span>
+                  <span className="text-white">{tCommon('techStack.recommendedTitle').split(' ')[0]} </span>
+                  <span className="gradient-text">{tCommon('techStack.recommendedTitle').split(' ').slice(1).join(' ')}</span>
                 </h2>
-                <p className="text-[var(--muted-foreground)] text-lg">To najlepšie pre váš projekt</p>
+                <p className="text-[var(--muted-foreground)] text-lg">{tCommon('techStack.recommendedSubtitle')}</p>
               </FadeIn>
 
               <div className="md:hidden">
@@ -630,7 +620,20 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
                       delay={idx * 0.1}
                       className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm h-full"
                     >
-                      {/* Icon removed as per request */}
+                      {TECH_LOGOS[tech.name] ? (
+                        <div className="mb-6 relative w-12 h-12">
+                          <Image
+                            src={TECH_LOGOS[tech.name]}
+                            alt={tech.name}
+                            fill
+                            className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                          />
+                        </div>
+                      ) : (
+                        <div className="mb-6 p-3 rounded-xl bg-white/5 inline-block">
+                          <Code className="w-8 h-8 text-[var(--primary)]" />
+                        </div>
+                      )}
 
                       <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[var(--primary)] transition-colors whitespace-normal break-words">
                         {tech.name}
@@ -652,7 +655,20 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
                       delay={idx * 0.1}
                       className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden backdrop-blur-sm"
                     >
-                      {/* Icon removed as per request */}
+                      {TECH_LOGOS[tech.name] ? (
+                        <div className="mb-6 relative w-12 h-12">
+                          <Image
+                            src={TECH_LOGOS[tech.name]}
+                            alt={tech.name}
+                            fill
+                            className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                          />
+                        </div>
+                      ) : (
+                        <div className="mb-6 p-3 rounded-xl bg-white/5 inline-block">
+                          <Code className="w-8 h-8 text-[var(--primary)]" />
+                        </div>
+                      )}
 
                       <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[var(--primary)] transition-colors whitespace-normal break-words">
                         {tech.name}
@@ -673,8 +689,8 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
             <div className="max-w-7xl mx-auto">
               <FadeIn className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  <span className="text-white">Taktiež </span>
-                  <span className="gradient-text">dodávame</span>
+                  <span className="text-white">{tCommon('techStack.othersTitle').split(' ')[0]} </span>
+                  <span className="gradient-text">{tCommon('techStack.othersTitle').split(' ').slice(1).join(' ')}</span>
                 </h2>
               </FadeIn>
 
@@ -882,10 +898,12 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
       {/* Process Section */}
       <section id="process" className="py-32 px-6 relative overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-[var(--primary)]/5 rounded-full blur-[120px]" />
-            <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-[var(--primary)]/5 rounded-full blur-[120px]" />
-        </div>
+        {!isMobile && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-[var(--primary)]/5 rounded-full blur-[120px]" />
+              <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-[var(--primary)]/5 rounded-full blur-[120px]" />
+          </div>
+        )}
 
         <div className="max-w-7xl mx-auto relative z-10">
           <FadeIn className="text-center mb-24">
@@ -900,12 +918,14 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
             {/* Main Connecting Line */}
             <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--primary)] via-[var(--primary)]/50 to-transparent md:-translate-x-1/2 rounded-full opacity-30" />
 
-            {/* Animated Pulse Line */}
-            <motion.div
-              className="absolute left-6 md:left-1/2 top-0 w-1 bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent md:-translate-x-1/2 h-[200px] opacity-70 blur-[1px]"
-              animate={{ top: ["-20%", "120%"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            />
+            {/* Animated Pulse Line - only desktop */}
+            {!isMobile && (
+              <motion.div
+                className="absolute left-6 md:left-1/2 top-0 w-1 bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent md:-translate-x-1/2 h-[200px] opacity-70 blur-[1px]"
+                animate={{ top: ["-20%", "120%"] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
+            )}
 
             {processSteps.map((step, idx) => (
               <FadeIn
@@ -933,6 +953,7 @@ export default function ServiceDetailLayout({ serviceId, breadcrumbs, relatedPos
                   <div className="relative p-8 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent border border-white/[0.08] hover:border-[var(--primary)]/30 transition-all duration-500 backdrop-blur-sm group hover:-translate-y-1 hover:shadow-2xl hover:shadow-[var(--primary)]/10">
 
                      {/* Desktop Connector Line */}
+                     {/* Hidden on mobile completely */}
                      <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-20 h-[2px] bg-gradient-to-r from-[var(--primary)]/50 to-transparent ${
                         idx % 2 === 0 ? '-right-20 rotate-180' : '-left-20'
                      }`} />

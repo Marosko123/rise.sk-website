@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Check, Copy, Mail, MapPin, Phone, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 

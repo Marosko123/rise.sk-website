@@ -1,7 +1,7 @@
 'use client';
 
 import Lenis from '@studio-freight/lenis';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { m as motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
 export function ParallaxBackground() {

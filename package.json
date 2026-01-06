@@ -2,6 +2,14 @@
   "name": "rise-app",
   "version": "0.1.0",
   "private": true,
+  "browserslist": [
+    "chrome >= 92",
+    "firefox >= 91",
+    "safari >= 15",
+    "edge >= 92",
+    "not dead",
+    "not op_mini all"
+  ],
   "engines": {
     "node": ">=20.0.0"
   },
@@ -89,6 +97,7 @@
     "autoprefixer": "^10.4.16",
     "commitizen": "^4.3.0",
     "cross-env": "^7.0.3",
+    "cssnano": "^7.1.2",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
@@ -112,12 +121,13 @@
     }
   },
   "browserslist": [
-    "chrome >= 92",
-    "safari >= 15.4",
-    "firefox >= 90",
-    "ios >= 15.4",
-    "not op_mini all",
-    "not IE 11"
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    "last 2 iOS versions",
+    "not dead",
+    "not op_mini all"
   ],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

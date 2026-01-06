@@ -1,5 +1,5 @@
 import { FormData } from '@/hooks/useContactForm';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 interface StepProps {

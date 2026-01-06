@@ -2,7 +2,7 @@
 
 import { useCarousel } from '@/hooks/useCarousel';
 import { useSwipe } from '@/hooks/useSwipe';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 

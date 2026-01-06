@@ -3,11 +3,17 @@
 import Breadcrumbs, { BreadcrumbItem } from '@/components/ui/Breadcrumbs';
 import { MobileCarousel } from '@/components/ui/MobileCarousel';
 import { AppPathnames, Link } from '@/i18n/routing';
-import { motion, useInView } from 'framer-motion';
-import Lottie from 'lottie-react';
+import { m as motion, useInView } from 'framer-motion';
 import { ArrowRight, Brain, Code2, Laptop, ShoppingCart, Smartphone, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import dynamic from 'next/dynamic';
 import React, { useEffect, useRef, useState } from 'react';
+
+// Lazy load Lottie - only loads when component is rendered (~50KB saved from initial bundle)
+const Lottie = dynamic(() => import('lottie-react'), {
+  ssr: false,
+  loading: () => null // Fallback icon will show while loading
+});
 
 interface ServicesEnhancedProps {
   breadcrumbs?: BreadcrumbItem[];
@@ -17,13 +23,16 @@ interface ServicesEnhancedProps {
 // Global cache for Lottie animations to prevent re-fetching
 const lottieCache = new Map<string, object>();
 
-const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fallbackIcon: React.ElementType, gradient?: string, speed?: number }) => {
+const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5, shouldLoad = true }: { url: string, fallbackIcon: React.ElementType, gradient?: string, speed?: number, shouldLoad?: boolean }) => {
   const [animationData, setAnimationData] = useState<object | null>(() => lottieCache.get(url) || null);
   const [error, setError] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lottieRef = useRef<any>(null);
 
   useEffect(() => {
+    // Don't fetch until shouldLoad is true (section is in view)
+    if (!shouldLoad) return;
+
     // If already cached, don't fetch again
     if (lottieCache.has(url)) {
       setAnimationData(lottieCache.get(url)!);
@@ -40,7 +49,7 @@ const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fal
         setAnimationData(data);
       })
       .catch(() => setError(true));
-  }, [url]);
+  }, [url, shouldLoad]);
 
   useEffect(() => {
     if (lottieRef.current) {
@@ -49,7 +58,7 @@ const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fal
   }, [animationData, speed]);
 
   if (error || !animationData) {
-    // Fallback to static icon if Lottie fails to load
+    // Fallback to static icon if Lottie fails to load or not yet loaded
     // Using text-white/90 for better visibility than gradient text on dark background
     return <Icon className="w-20 h-20 text-white/90" strokeWidth={1.5} />;
   }
@@ -58,7 +67,7 @@ const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5 }: { url: string, fal
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ServiceCard = ({ service, learnMoreText }: { service: any; learnMoreText: string }) => (
+const ServiceCard = ({ service, learnMoreText, shouldLoad = true }: { service: any; learnMoreText: string; shouldLoad?: boolean }) => (
   <Link
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     href={service.path as any}
@@ -79,7 +88,7 @@ const ServiceCard = ({ service, learnMoreText }: { service: any; learnMoreText: 
 
           {/* Icon */}
           <div className={`relative p-6 rounded-xl bg-gradient-to-br ${service.gradient} group-hover:scale-110 transition-all duration-500`}>
-            <LottieIcon url={service.lottieUrl} fallbackIcon={service.icon} gradient={service.iconGradient} speed={service.speed} />
+            <LottieIcon url={service.lottieUrl} fallbackIcon={service.icon} gradient={service.iconGradient} speed={service.speed} shouldLoad={shouldLoad} />
           </div>
         </div>
 
@@ -212,7 +221,7 @@ const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs, id = '
         {/* Mobile Carousel */}
         <div className="md:hidden">
           <MobileCarousel className="-mx-4 px-4 pb-8">
-            {services.map((service) => <ServiceCard key={service.id} service={service} learnMoreText={tCommon('learnMore')} />)}
+            {services.map((service) => <ServiceCard key={service.id} service={service} learnMoreText={tCommon('learnMore')} shouldLoad={isInView} />)}
           </MobileCarousel>
         </div>
 
@@ -225,7 +234,7 @@ const ServicesEnhanced: React.FC<ServicesEnhancedProps> = ({ breadcrumbs, id = '
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <ServiceCard service={service} learnMoreText={tCommon('learnMore')} />
+              <ServiceCard service={service} learnMoreText={tCommon('learnMore')} shouldLoad={isInView} />
             </motion.div>
           ))}
         </div>

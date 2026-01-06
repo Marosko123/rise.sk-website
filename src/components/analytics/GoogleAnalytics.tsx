@@ -13,9 +13,9 @@ export default function GoogleAnalytics({ nonce }: { nonce?: string }) {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive" nonce={nonce}>
+      <Script id="google-analytics" strategy="lazyOnload" nonce={nonce}>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -31,36 +31,28 @@ export default function GoogleAnalytics({ nonce }: { nonce?: string }) {
 
           gtag('js', new Date());
 
+          // Consolidated config - single call with all settings
           gtag('config', '${gaId}', {
             page_title: document.title,
             page_location: window.location.href,
-            // Enhanced measurement for better insights
+            send_page_view: true,
+            anonymize_ip: true,
+            cookie_flags: 'SameSite=None;Secure',
+            // Enhanced measurement
             enhanced_measurement_settings: {
               scrolls: true,
               outbound_links: true,
               site_search: true,
               video_engagement: true,
-              file_downloads: true,
+              file_downloads: true
             },
-            // Custom parameters for better tracking
+            // Custom dimensions and metrics
             custom_map: {
-              'metric_rating': 'metric_rating'
-            }
-          });
-
-          // Track Core Web Vitals automatically
-          gtag('config', '${gaId}', {
-            custom_map: {
+              'metric_rating': 'metric_rating',
               'metric_id': 'metric_id',
               'metric_value': 'metric_value',
               'metric_delta': 'metric_delta'
             }
-          });
-
-          // Enhanced ecommerce for tracking conversions
-          gtag('config', '${gaId}', {
-            // Track contact form submissions as conversions
-            send_page_view: true
           });
         `}
       </Script>
