@@ -10,10 +10,29 @@ import dynamic from 'next/dynamic';
 import React, { useEffect, useRef, useState } from 'react';
 
 // Lazy load Lottie - only loads when component is rendered (~50KB saved from initial bundle)
-const Lottie = dynamic(() => import('lottie-react').then(mod => mod.default), {
-  ssr: false,
-  loading: () => null // Fallback icon will show while loading
-});
+// Lazy load Lottie with robust error handling to prevent React error #306
+const Lottie = dynamic(
+  () => import('lottie-react').then(mod => {
+    // 1. Handle default export safely
+    const Component = mod.default || mod;
+    // 2. Validate it's a valid component (function or class)
+    if (typeof Component !== 'function') {
+      // eslint-disable-next-line no-console
+      console.warn('lottie-react module loaded without valid export:', mod);
+      // Return a dummy component that renders nothing instead of crashing
+      return function LottieFallback() { return null; };
+    }
+    return Component;
+  }).catch(err => {
+    // eslint-disable-next-line no-console
+    console.error('Failed to load lottie-react:', err);
+    return function LottieError() { return null; };
+  }),
+  {
+    ssr: false,
+    loading: () => null
+  }
+);
 
 interface ServicesEnhancedProps {
   breadcrumbs?: BreadcrumbItem[];
@@ -57,7 +76,7 @@ const LottieIcon = ({ url, fallbackIcon: Icon, speed = 0.5, shouldLoad = true }:
     }
   }, [animationData, speed]);
 
-  if (error || !animationData) {
+  if (error || !animationData || !Lottie) {
     // Fallback to static icon if Lottie fails to load or not yet loaded
     // Using text-white/90 for better visibility than gradient text on dark background
     return <Icon className="w-20 h-20 text-white/90" strokeWidth={1.5} />;
