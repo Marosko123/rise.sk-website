@@ -10,24 +10,9 @@ import dynamic from 'next/dynamic';
 import React, { useEffect, useRef, useState } from 'react';
 
 // Lazy load Lottie - only loads when component is rendered (~50KB saved from initial bundle)
-// Lazy load Lottie with robust error handling to prevent React error #306
+// Use dynamic import with ssr: false to prevent hydration issues
 const Lottie = dynamic(
-  () => import('lottie-react').then(mod => {
-    // 1. Handle default export safely
-    const Component = mod.default || mod;
-    // 2. Validate it's a valid component (function or class)
-    if (typeof Component !== 'function') {
-      // eslint-disable-next-line no-console
-      console.warn('lottie-react module loaded without valid export:', mod);
-      // Return a dummy component that renders nothing instead of crashing
-      return function LottieFallback() { return null; };
-    }
-    return Component;
-  }).catch(err => {
-    // eslint-disable-next-line no-console
-    console.error('Failed to load lottie-react:', err);
-    return function LottieError() { return null; };
-  }),
+  () => import('lottie-react').then(mod => mod.default),
   {
     ssr: false,
     loading: () => null

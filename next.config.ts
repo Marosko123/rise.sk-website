@@ -46,7 +46,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     // Optimize package imports for tree-shaking
-    optimizePackageImports: ['framer-motion', 'lucide-react', 'lottie-react'],
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
     serverActions: {
       bodySizeLimit: '2mb',
     },
