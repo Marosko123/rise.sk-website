@@ -51,14 +51,21 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 
   useImperativeHandle(ref, () => ({
     updateVisuals: (progress: number) => {
+      // Apply easing for smoother animation (ease-out cubic)
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
       if (containerRef.current) {
-        containerRef.current.style.transform = `scale(${1 + progress * 0.15})`;
-        containerRef.current.style.filter = `blur(${progress * 2}px)`;
-        containerRef.current.style.opacity = `${1 - progress * 0.2}`;
+        // More dramatic scale effect (1.0 → 1.25)
+        containerRef.current.style.transform = `scale(${1 + easedProgress * 0.25})`;
+        // Smoother blur progression
+        containerRef.current.style.filter = `blur(${easedProgress * 8}px)`;
+        // Faster fade for cleaner transition
+        containerRef.current.style.opacity = `${1 - easedProgress * 0.6}`;
       }
       if (bottomActionsRef.current) {
-        bottomActionsRef.current.style.opacity = `${1 - progress * 2}`;
-        bottomActionsRef.current.style.transform = `translate(0, ${progress * 50}px)`;
+        // Bottom actions fade out faster
+        bottomActionsRef.current.style.opacity = `${1 - progress * 3}`;
+        bottomActionsRef.current.style.transform = `translate(0, ${easedProgress * 30}px)`;
       }
     }
   }));

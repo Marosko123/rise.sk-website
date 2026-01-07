@@ -125,10 +125,14 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
       floatingShapesRef.current?.handleLogoClick();
     },
     updateVisuals: (progress: number) => {
+      // Apply easing for smoother animation (ease-out cubic)
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
       if (landingBgRef.current) {
-        landingBgRef.current.style.transform = `scale(${1 + progress * 0.5})`;
-        landingBgRef.current.style.opacity = `${1 - progress * 1.5}`;
-        landingBgRef.current.style.filter = `blur(${progress * 10}px)`;
+        // More dramatic zoom-out effect
+        landingBgRef.current.style.transform = `scale(${1 + easedProgress * 0.3})`;
+        landingBgRef.current.style.opacity = `${1 - easedProgress * 0.8}`;
+        landingBgRef.current.style.filter = `blur(${easedProgress * 6}px)`;
       }
     },
     setTransition: (transition: string) => {
@@ -322,7 +326,7 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
 
       {/* Main Content Background - Fades in when full website is shown */}
       <div
-        className={`absolute inset-0 transition-opacity duration-1000 ${showFullWebsite ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 transition-opacity duration-300 ${showFullWebsite ? 'opacity-100' : 'opacity-0'}`}
       >
         {/* Deep base background */}
         <div className="absolute inset-0 bg-[#030303]"></div>

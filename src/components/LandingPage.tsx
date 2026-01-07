@@ -17,7 +17,19 @@ import LanguageSwitcher from './layout/LanguageSwitcher';
 
 // Dynamic imports for better performance
 // Above-the-fold - keep SSR for SEO
-const Hero = dynamic(() => import('./sections/Hero'));
+const Hero = dynamic(() => import('./sections/Hero'), {
+  loading: () => (
+    <div className="min-h-[calc(100dvh+80px)] flex items-center justify-center pt-32 mt-[-80px]">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="animate-pulse">
+          <div className="h-16 bg-white/10 rounded-lg mb-8 w-3/4 mx-auto" />
+          <div className="h-8 bg-white/5 rounded mb-4 w-2/3 mx-auto" />
+          <div className="h-8 bg-white/5 rounded w-1/2 mx-auto" />
+        </div>
+      </div>
+    </div>
+  )
+});
 const Navigation = dynamic(() => import('./layout/Navigation'));
 
 // Below-the-fold - disable SSR for faster initial load
@@ -113,7 +125,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     const handleWheel = (e: WheelEvent) => {
       if (!showFullWebsite) {
         scrollAccumulator.current = Math.max(0, scrollAccumulator.current + e.deltaY);
-        const threshold = 700; // Increased from 400 for more deliberate transition
+        const threshold = 350; // Reduced for easier transition on desktop
         const progress = Math.min(scrollAccumulator.current / threshold, 1);
 
         updateVisuals(progress);
@@ -163,7 +175,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         // Use cumulative tracking like wheel handler
         scrollAccumulator.current = Math.max(0, scrollAccumulator.current + incrementalDelta);
 
-        const threshold = 150; // Balanced threshold for easier entry
+        const threshold = 100; // Reduced for easier swipe on mobile
         const progress = Math.min(scrollAccumulator.current / threshold, 1);
         updateVisuals(progress);
 
@@ -381,7 +393,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         shapesState={shapesState}
       />
 
-      <div className={`relative transition-all duration-500 ease-out ${showFullWebsite ? 'opacity-100 blur-0' : 'opacity-0 blur-xl pointer-events-none'}`}>
+      <div className={`relative z-10 transition-all duration-300 ease-out ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <>
             <div id={sectionMap.development}>
               <Hero />
