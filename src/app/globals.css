@@ -5,6 +5,14 @@
 /* Critical CSS is inlined in layout - this imports core non-animation styles */
 /* Animation styles are loaded asynchronously via DeferredStyles component */
 
+/* Base styles that must be included - wrapped in @layer base for Tailwind */
+@layer base {
+  /* Prevent browser pull-to-refresh on mobile */
+  html, body {
+    overscroll-behavior-y: contain;
+  }
+}
+
 /* Enhanced mobile touch support */
 .touch-manipulation {
   touch-action: manipulation;

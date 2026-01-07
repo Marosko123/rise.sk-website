@@ -139,27 +139,40 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     };
 
     let touchStartY = 0;
+    let lastTouchDeltaY = 0;
+
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
+      lastTouchDeltaY = 0;
+      scrollAccumulator.current = 0; // Reset accumulator on new touch
       if (!showFullWebsite) setIsScrolling(true);
     };
 
     const handleTouchMove = (e: TouchEvent) => {
       const touchEndY = e.touches[0].clientY;
       const deltaY = touchStartY - touchEndY;
+      const incrementalDelta = deltaY - lastTouchDeltaY;
+      lastTouchDeltaY = deltaY;
 
       if (!showFullWebsite) {
-        if (deltaY > 0) {
-          const threshold = 300; // Increased from 200 for mobile
-          const progress = Math.min(deltaY / threshold, 1);
-          updateVisuals(progress);
+        // Prevent native pull-to-refresh when swiping
+        if (deltaY !== 0) {
+          e.preventDefault();
+        }
 
-          if (progress >= 1) {
-            triggerTransition();
-          }
+        // Use cumulative tracking like wheel handler
+        scrollAccumulator.current = Math.max(0, scrollAccumulator.current + incrementalDelta);
+
+        const threshold = 150; // Balanced threshold for easier entry
+        const progress = Math.min(scrollAccumulator.current / threshold, 1);
+        updateVisuals(progress);
+
+        if (scrollAccumulator.current >= threshold) {
+          triggerTransition();
         }
       } else {
-        if (window.scrollY <= 10 && deltaY < -50) {
+        // Return to landing - require more deliberate gesture (100px)
+        if (window.scrollY <= 10 && deltaY < -100) {
            window.history.pushState(null, document.title, window.location.pathname + window.location.search);
            window.dispatchEvent(new Event('hashchange'));
         }
@@ -169,13 +182,16 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     const handleTouchEnd = () => {
       if (!isTransitioning && !showFullWebsite) {
         setIsScrolling(false);
+        // Smooth reset
+        scrollAccumulator.current = 0;
         updateVisuals(0);
       }
+      lastTouchDeltaY = 0;
     };
 
     window.addEventListener('wheel', handleWheel);
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('touchend', handleTouchEnd);
 
     return () => {

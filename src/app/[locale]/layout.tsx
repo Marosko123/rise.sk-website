@@ -164,7 +164,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const breadcrumbs = getBreadcrumbsForPage(locale as 'en' | 'sk', 'home');
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning style={{ overscrollBehaviorY: 'contain' }}>
       <head>
         <InlineCriticalCSS />
         <GoogleTagManager nonce={nonce} />
@@ -179,7 +179,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         }} />
         <BreadcrumbSchema items={breadcrumbs} page="home" />
       </head>
-      <body>
+      <body style={{ overscrollBehaviorY: 'contain' }}>
         <LazyMotionProvider>
           <NavigationProgress />
           <LoadingScreen />
