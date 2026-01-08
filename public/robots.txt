@@ -1,0 +1,54 @@
+# robots.txt pre rise.sk
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
+# ===========================================
+# VSEOBECNE PRAVIDLA - VYHLADAVACE
+# ===========================================
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /keystatic/
+
+# ===========================================
+# AI CRAWLERY - EXPLICITNE POVOLENIA
+# Chceme byt vo vysledkoch AI chatov
+# ===========================================
+
+# OpenAI - ChatGPT a ChatGPT Search
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Google Gemini AI
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity AI vyhladavac
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI (Facebook)
+User-agent: FacebookBot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# ===========================================
+# SITEMAP
+# ===========================================
+Sitemap: https://rise.sk/sitemap.xml
