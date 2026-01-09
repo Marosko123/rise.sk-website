@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 const EVENT_KEY = 'rise_persistent_click_update';
@@ -6,6 +8,9 @@ export function usePersistentClick(key: string) {
   const [hasClicked, setHasClicked] = useState(false);
 
   useEffect(() => {
+    // Guard against SSR - only run on client
+    if (typeof window === 'undefined') return;
+
     // Initial check
     const checkStorage = () => {
       const stored = localStorage.getItem(key);
@@ -41,6 +46,7 @@ export function usePersistentClick(key: string) {
   }, [key]);
 
   const handleClick = () => {
+    if (typeof window === 'undefined') return;
     localStorage.setItem(key, 'true');
     setHasClicked(true);
 

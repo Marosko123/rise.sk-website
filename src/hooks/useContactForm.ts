@@ -1,3 +1,5 @@
+'use client';
+
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
@@ -40,6 +42,8 @@ export function useContactForm() {
 
   // Read localStorage and prefill form
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const loadStoredData = () => {
       const storedData = localStorage.getItem('contactFormData');
       if (storedData) {

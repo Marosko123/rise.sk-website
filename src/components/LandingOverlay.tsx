@@ -60,7 +60,7 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
         // Smoother blur progression
         containerRef.current.style.filter = `blur(${easedProgress * 8}px)`;
         // Faster fade for cleaner transition
-        containerRef.current.style.opacity = `${1 - easedProgress * 0.6}`;
+        containerRef.current.style.opacity = `${1 - easedProgress * 0.2}`;
       }
       if (bottomActionsRef.current) {
         // Bottom actions fade out faster

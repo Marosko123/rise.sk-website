@@ -23,6 +23,7 @@ export function GameCounter() {
 
   // Load game state from localStorage on mount
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const savedGameState = localStorage.getItem('riseIconGame');
     if (savedGameState) {
       try {
@@ -39,6 +40,8 @@ export function GameCounter() {
 
   // Listen for storage changes to sync state across tabs
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const handleStorageChange = () => {
       const savedGameState = localStorage.getItem('riseIconGame');
       if (savedGameState) {
@@ -141,6 +144,7 @@ export default function InteractiveRiseIcons() {
 
   // Reset game state on component mount (page refresh)
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     localStorage.removeItem('riseIconGame');
     setGameClicks(0);
     setGameStarted(false);
@@ -149,6 +153,8 @@ export default function InteractiveRiseIcons() {
 
   // Save game state to localStorage whenever it changes (only for GameCounter component to read)
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const gameState = {
       clicks: gameClicks,
       started: gameStarted,

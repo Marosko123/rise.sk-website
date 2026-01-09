@@ -65,6 +65,8 @@ export default function AuditDetailLayout({
 
   // Load saved state on mount
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     setMounted(true);
 
     // Initialize confetti with useWorker: false to avoid CSP issues

@@ -14,6 +14,7 @@ import LandingOverlay, { LandingOverlayRef } from './LandingOverlay';
 // Components will be dynamic
 
 import LanguageSwitcher from './layout/LanguageSwitcher';
+import Navigation from './layout/Navigation';
 
 // Dynamic imports for better performance
 // Above-the-fold - keep SSR for SEO
@@ -30,7 +31,6 @@ const Hero = dynamic(() => import('./sections/Hero'), {
     </div>
   )
 });
-const Navigation = dynamic(() => import('./layout/Navigation'));
 
 // Below-the-fold - disable SSR for faster initial load
 const About = dynamic(() => import('./sections/About'), { ssr: false });
@@ -66,6 +66,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
   const scrollResetTimer = useRef<NodeJS.Timeout | null>(null);
   const landingOverlayRef = useRef<LandingOverlayRef>(null);
   const globalBackgroundRef = useRef<GlobalBackgroundRef>(null);
+  const mainContentRef = useRef<HTMLDivElement>(null);
 
   // Dynamic section mappings based on language
   const getSectionMappings = (lang: string) => {
@@ -125,7 +126,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
     const handleWheel = (e: WheelEvent) => {
       if (!showFullWebsite) {
         scrollAccumulator.current = Math.max(0, scrollAccumulator.current + e.deltaY);
-        const threshold = 350; // Reduced for easier transition on desktop
+        const threshold = 500; // Balanced threshold
         const progress = Math.min(scrollAccumulator.current / threshold, 1);
 
         updateVisuals(progress);
@@ -140,7 +141,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
             setIsScrolling(false);
             updateVisuals(0);
             scrollAccumulator.current = 0;
-          }, 300); // Increased from 150 for smoother reset
+          }, 300); // 300ms reset delay
         }
       } else {
         if (window.scrollY <= 10 && e.deltaY < -30) {
@@ -175,7 +176,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         // Use cumulative tracking like wheel handler
         scrollAccumulator.current = Math.max(0, scrollAccumulator.current + incrementalDelta);
 
-        const threshold = 100; // Reduced for easier swipe on mobile
+        const threshold = 200; // Balanced touch threshold
         const progress = Math.min(scrollAccumulator.current / threshold, 1);
         updateVisuals(progress);
 
@@ -222,11 +223,13 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       if (!hasHash) {
         setIsTransitioning(false);
         document.body.style.overflow = 'hidden';
+        globalBackgroundRef.current?.resetVisuals();
         globalBackgroundRef.current?.setTransition('reset');
       } else {
         setIsTransitioning(false);
         document.body.style.overflowY = 'auto';
         document.body.style.overflowX = 'hidden';
+        globalBackgroundRef.current?.resetVisuals();
         globalBackgroundRef.current?.setTransition('complete');
       }
     };
@@ -393,7 +396,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         shapesState={shapesState}
       />
 
-      <div className={`relative z-10 transition-all duration-300 ease-out ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div ref={mainContentRef} className={`relative z-10 transition-all duration-300 ease-out ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <>
             <div id={sectionMap.development}>
               <Hero />

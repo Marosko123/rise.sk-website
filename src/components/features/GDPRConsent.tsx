@@ -18,6 +18,8 @@ const GDPRConsent = () => {
   });
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     // Check if user has already given consent
     const savedConsent = localStorage.getItem('gdpr-consent');
     if (!savedConsent) {

@@ -3,6 +3,18 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
+// Fix for "TypeError: localStorage.getItem is not a function" in development
+// Some dependency or tool injects a broken localStorage implementation (empty object) into the global scope on the server.
+// This breaks SSR rendering because it bypasses "if (typeof localStorage !== 'undefined')" checks but fails on method calls.
+if (
+  typeof global !== 'undefined' &&
+  (global as any).localStorage &&
+  typeof (global as any).localStorage.getItem !== 'function'
+) {
+  // Remove the broken polyfill so that standard specific window checks work correctly
+  delete (global as any).localStorage;
+}
+
 const nextConfig: NextConfig = {
   // Enable source maps for production to resolve Lighthouse "Missing source maps" warning
   productionBrowserSourceMaps: true,

@@ -360,9 +360,6 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
     <motion.nav
       className={`sticky top-0 left-0 right-0 z-[100]`}
       style={{ position: 'sticky', top: 0 }}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
     >
       {/* Optimized Background Layer - uses opacity to avoid layout thrashing */}
       <div

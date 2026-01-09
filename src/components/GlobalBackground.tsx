@@ -104,6 +104,7 @@ export interface GlobalBackgroundRef {
   handleLogoClick: () => void;
   updateVisuals: (progress: number) => void;
   setTransition: (transition: string) => void;
+  resetVisuals: () => void;
 }
 
 const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(({ mounted, showFullWebsite, isTransitioning, isReturning, isScrolling, onShapesStateChange }, ref) => {
@@ -117,6 +118,7 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
   });
   const floatingShapesRef = useRef<FloatingShapesRef>(null);
   const backgroundLogoRef = useRef<HTMLDivElement>(null);
+  const mainBgRef = useRef<HTMLDivElement>(null);
 
   const isMobile = useIsMobile();
 
@@ -131,13 +133,21 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
       if (landingBgRef.current) {
         // More dramatic zoom-out effect
         landingBgRef.current.style.transform = `scale(${1 + easedProgress * 0.3})`;
-        landingBgRef.current.style.opacity = `${1 - easedProgress * 0.8}`;
+        landingBgRef.current.style.opacity = `${1 - easedProgress * 0.1}`; // Minimal fade to avoid black void
         landingBgRef.current.style.filter = `blur(${easedProgress * 6}px)`;
       }
     },
     setTransition: (transition: string) => {
       if (landingBgRef.current) {
         landingBgRef.current.style.transition = transition;
+      }
+    },
+    resetVisuals: () => {
+      if (landingBgRef.current) {
+        landingBgRef.current.style.opacity = '';
+        landingBgRef.current.style.transform = '';
+        landingBgRef.current.style.filter = '';
+        landingBgRef.current.style.transition = '';
       }
     }
   }));
@@ -223,7 +233,7 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
           opacity: (showFullWebsite || isTransitioning) && !isReturning ? 0 : undefined,
           transform: (showFullWebsite || isTransitioning) && !isReturning ? 'scale(1.5)' : undefined,
           filter: (showFullWebsite || isTransitioning) && !isReturning ? 'blur(10px)' : undefined,
-          visibility: (showFullWebsite && !isReturning) ? 'hidden' : 'visible'
+          pointerEvents: (showFullWebsite && !isReturning) ? 'none' : undefined
         }}
       >
         {!showFullWebsite && (
