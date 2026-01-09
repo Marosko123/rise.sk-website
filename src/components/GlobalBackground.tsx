@@ -118,7 +118,7 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
   });
   const floatingShapesRef = useRef<FloatingShapesRef>(null);
   const backgroundLogoRef = useRef<HTMLDivElement>(null);
-  const mainBgRef = useRef<HTMLDivElement>(null);
+  // const mainBgRef = useRef<HTMLDivElement>(null);
 
   const isMobile = useIsMobile();
 
