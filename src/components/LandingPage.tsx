@@ -221,14 +221,19 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       setShowFullWebsite(hasHash);
 
       if (!hasHash) {
+        // Landing page - hide scrollbar, prevent scrolling
         setIsTransitioning(false);
         document.body.style.overflow = 'hidden';
+        document.body.classList.add('scrollbar-hide');
         globalBackgroundRef.current?.resetVisuals();
         globalBackgroundRef.current?.setTransition('reset');
       } else {
+        // Main page - ALWAYS scroll to top first, then allow scrolling
+        window.scrollTo({ top: 0, behavior: 'instant' });
         setIsTransitioning(false);
         document.body.style.overflowY = 'auto';
         document.body.style.overflowX = 'hidden';
+        document.body.classList.remove('scrollbar-hide');
         globalBackgroundRef.current?.resetVisuals();
         globalBackgroundRef.current?.setTransition('complete');
       }
@@ -241,20 +246,18 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
       window.removeEventListener('hashchange', checkHash);
       document.body.style.overflowY = 'auto';
       document.body.style.overflowX = 'hidden';
+      document.body.classList.remove('scrollbar-hide');
     };
   }, []);
 
   useEffect(() => {
-    if (showFullWebsite && window.location.hash) {
-      const timer = setTimeout(() => {
-        const hash = window.location.hash.substring(1);
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-
-      return () => clearTimeout(timer);
+    // When transitioning to main page, ALWAYS reset scroll to top immediately
+    // so user sees the Hero entrance animation from the very beginning
+    if (showFullWebsite) {
+      // Use requestAnimationFrame to ensure DOM is ready
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      });
     }
   }, [showFullWebsite]);
 
@@ -396,7 +399,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         shapesState={shapesState}
       />
 
-      <div ref={mainContentRef} className={`relative z-10 transition-all duration-300 ease-out ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div ref={mainContentRef} className={`relative z-10 transition-all duration-300 ease-out ${(showFullWebsite || isTransitioning) ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <>
             <div id={sectionMap.development}>
               <Hero />

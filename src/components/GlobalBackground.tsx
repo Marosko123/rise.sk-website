@@ -2,7 +2,6 @@
 
 import companyConfig from '@/config/company';
 import { useIsMobile } from '@/hooks/useIsMobile';
-import { m, MotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
@@ -29,41 +28,11 @@ interface Particle {
   depth: number;
 }
 
-const ParallaxParticle = ({ particle, scrollY }: { particle: Particle, scrollY: MotionValue<number> }) => {
-  // Parallax effect: move particles up as we scroll down
-  // depth factor determines speed: higher depth = faster movement (closer)
-  // We use negative value to move up
-  const y = useTransform(scrollY, (val: number) => -(val * particle.depth));
-
-  return (
-    <m.div
-      className="absolute"
-      style={{
-        top: particle.top,
-        left: particle.left,
-        width: particle.size,
-        height: particle.size,
-        y
-      }}
-    >
-      <div
-        className="w-full h-full rounded-full bg-[#DAB549] animate-float-particle"
-        style={{
-          '--particle-opacity': particle.opacity,
-          '--duration': particle.duration,
-          '--delay': particle.delay,
-          '--tx': particle.tx,
-          '--ty': particle.ty,
-        } as React.CSSProperties}
-      />
-    </m.div>
-  );
-};
-
+// Optimized: Single container with CSS transform instead of individual Framer Motion transforms
 const BackgroundParticles = ({ count = 60, mounted, isMobile }: { count?: number; mounted: boolean; isMobile: boolean }) => {
-  const { scrollY } = useScroll();
-  const smoothScrollY = useSpring(scrollY, { stiffness: 50, damping: 20, restDelta: 0.001 });
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  // Generate particles once
   const particles = useMemo(() => {
     if (!mounted || isMobile) return [];
     return Array.from({ length: count }).map((_, i) => ({
@@ -76,17 +45,92 @@ const BackgroundParticles = ({ count = 60, mounted, isMobile }: { count?: number
       delay: `${random(0, 10)}s`,
       tx: `${random(-30, 30)}px`,
       ty: `${random(-30, 30)}px`,
-      depth: random(0.2, 1.5), // Increased depth range for more 3D feel
+      depth: random(0.2, 1.5),
     }));
   }, [count, mounted, isMobile]);
 
+  // Group particles by depth layer for batch parallax (3 layers instead of 60 individual)
+  const particleLayers = useMemo(() => {
+    if (!particles.length) return { slow: [], medium: [], fast: [] };
+    return {
+      slow: particles.filter(p => p.depth < 0.6),
+      medium: particles.filter(p => p.depth >= 0.6 && p.depth < 1.0),
+      fast: particles.filter(p => p.depth >= 1.0),
+    };
+  }, [particles]);
+
+  // Simple passive scroll listener with RAF for smooth performance
+  useEffect(() => {
+    if (!mounted || isMobile) return;
+
+    let rafId: number;
+    let lastScrollY = 0;
+
+    const handleScroll = () => {
+      if (rafId) return; // Skip if already scheduled
+
+      rafId = requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        if (Math.abs(scrollY - lastScrollY) < 1) {
+          rafId = 0;
+          return;
+        }
+        lastScrollY = scrollY;
+
+        // Apply transforms to layer containers instead of individual particles
+        const slowLayer = document.getElementById('particles-slow');
+        const mediumLayer = document.getElementById('particles-medium');
+        const fastLayer = document.getElementById('particles-fast');
+
+        if (slowLayer) slowLayer.style.transform = `translate3d(0, ${-scrollY * 0.3}px, 0)`;
+        if (mediumLayer) mediumLayer.style.transform = `translate3d(0, ${-scrollY * 0.6}px, 0)`;
+        if (fastLayer) fastLayer.style.transform = `translate3d(0, ${-scrollY * 1.0}px, 0)`;
+
+        rafId = 0;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [mounted, isMobile]);
+
   if (!mounted || isMobile) return null;
 
+  const renderParticles = (layerParticles: Particle[]) =>
+    layerParticles.map((p) => (
+      <div
+        key={p.id}
+        className="absolute w-full h-full rounded-full bg-[#DAB549] animate-float-particle"
+        style={{
+          top: p.top,
+          left: p.left,
+          width: p.size,
+          height: p.size,
+          '--particle-opacity': p.opacity,
+          '--duration': p.duration,
+          '--delay': p.delay,
+          '--tx': p.tx,
+          '--ty': p.ty,
+        } as React.CSSProperties}
+      />
+    ));
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((p) => (
-        <ParallaxParticle key={p.id} particle={p} scrollY={smoothScrollY} />
-      ))}
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* 3 layers instead of 60 individual transforms - massive performance gain */}
+      <div id="particles-slow" className="absolute inset-0 will-change-transform" style={{ transform: 'translate3d(0,0,0)' }}>
+        {renderParticles(particleLayers.slow)}
+      </div>
+      <div id="particles-medium" className="absolute inset-0 will-change-transform" style={{ transform: 'translate3d(0,0,0)' }}>
+        {renderParticles(particleLayers.medium)}
+      </div>
+      <div id="particles-fast" className="absolute inset-0 will-change-transform" style={{ transform: 'translate3d(0,0,0)' }}>
+        {renderParticles(particleLayers.fast)}
+      </div>
     </div>
   );
 };
@@ -127,14 +171,23 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
       floatingShapesRef.current?.handleLogoClick();
     },
     updateVisuals: (progress: number) => {
-      // Apply easing for smoother animation (ease-out cubic)
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      // Exponential easing for immersive "pull-in" feel
+      const easedProgress = Math.pow(progress, 2.5);
 
       if (landingBgRef.current) {
-        // More dramatic zoom-out effect
-        landingBgRef.current.style.transform = `scale(${1 + easedProgress * 0.3})`;
-        landingBgRef.current.style.opacity = `${1 - easedProgress * 0.1}`; // Minimal fade to avoid black void
-        landingBgRef.current.style.filter = `blur(${easedProgress * 6}px)`;
+        // IMMERSIVE BACKGROUND PULL-IN:
+        // - Strong zoom creates depth illusion
+        // - Rotation adds cinematic feel
+        // - Blur mimics depth-of-field as "camera" moves
+        const scale = 1 + easedProgress * 0.8; // Zoom in (1.0 → 1.8)
+        const rotateZ = easedProgress * 3; // Subtle rotation for dynamism
+
+        landingBgRef.current.style.transform = `
+          scale(${scale})
+          rotate(${rotateZ}deg)
+        `;
+        landingBgRef.current.style.opacity = `${1 - easedProgress * 0.98}`;
+        landingBgRef.current.style.filter = `blur(${easedProgress * 15}px)`;
       }
     },
     setTransition: (transition: string) => {
@@ -230,9 +283,9 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
           transition: (showFullWebsite || isTransitioning)
             ? 'all 1s ease-in-out'
             : (isScrolling ? 'transform 0.1s ease-out, opacity 0.1s ease-out, filter 0.1s ease-out' : 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)'),
-          opacity: (showFullWebsite || isTransitioning) && !isReturning ? 0 : undefined,
-          transform: (showFullWebsite || isTransitioning) && !isReturning ? 'scale(1.5)' : undefined,
-          filter: (showFullWebsite || isTransitioning) && !isReturning ? 'blur(10px)' : undefined,
+          opacity: showFullWebsite && !isReturning ? 0 : undefined,
+          transform: showFullWebsite && !isReturning ? 'scale(1.5)' : undefined,
+          filter: showFullWebsite && !isReturning ? 'blur(10px)' : undefined,
           pointerEvents: (showFullWebsite && !isReturning) ? 'none' : undefined
         }}
       >

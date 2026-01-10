@@ -51,21 +51,40 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
 
   useImperativeHandle(ref, () => ({
     updateVisuals: (progress: number) => {
-      // Apply easing for smoother animation (ease-out cubic)
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      // Enhanced easing - exponential for dramatic "pull-in" effect
+      // Starts slow, accelerates dramatically as user commits to scroll
+      const easedProgress = Math.pow(progress, 2.5);
+
+      // Secondary easing for subtle elements (more linear)
+      const subtleEase = 1 - Math.pow(1 - progress, 2);
 
       if (containerRef.current) {
-        // More dramatic scale effect (1.0 → 1.25)
-        containerRef.current.style.transform = `scale(${1 + easedProgress * 0.25})`;
-        // Smoother blur progression
-        containerRef.current.style.filter = `blur(${easedProgress * 8}px)`;
-        // Faster fade for cleaner transition
-        containerRef.current.style.opacity = `${1 - easedProgress * 0.2}`;
+        // IMMERSIVE PULL-IN EFFECT:
+        // - Scale zooms toward user (1.0 → 2.0) like diving into the screen
+        // - Perspective adds 3D depth as content "falls away"
+        // - Blur increases dramatically as content recedes
+        const scale = 1 + easedProgress * 1.0; // More dramatic zoom (1.0 → 2.0)
+        const translateZ = easedProgress * 200; // 3D depth movement
+        const rotateX = easedProgress * -5; // Subtle tilt adds dimension
+
+        containerRef.current.style.transform = `
+          perspective(1000px)
+          scale(${scale})
+          translateZ(${translateZ}px)
+          rotateX(${rotateX}deg)
+        `;
+
+        // Progressive blur - subtle at first, intense at end
+        containerRef.current.style.filter = `blur(${easedProgress * 20}px)`;
+
+        // Opacity fades more dramatically toward the end
+        containerRef.current.style.opacity = `${1 - easedProgress * 0.9}`;
       }
+
       if (bottomActionsRef.current) {
-        // Bottom actions fade out faster
-        bottomActionsRef.current.style.opacity = `${1 - progress * 3}`;
-        bottomActionsRef.current.style.transform = `translate(0, ${easedProgress * 30}px)`;
+        // Bottom actions disappear quickly with elegant slide-down
+        bottomActionsRef.current.style.opacity = `${1 - progress * 2.5}`;
+        bottomActionsRef.current.style.transform = `translateY(${subtleEase * 50}px) scale(${1 - subtleEase * 0.2})`;
       }
     }
   }));
