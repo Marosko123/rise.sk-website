@@ -1,5 +1,6 @@
 'use client';
 
+import { PerformanceConfig } from '@/hooks/useDevicePerformance';
 import { SHAPE_CONFIG, useFloatingShapes } from '@/hooks/useFloatingShapes';
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 
@@ -9,6 +10,8 @@ interface FloatingShapesProps {
   mounted: boolean;
   onStateChange?: (length: number, isExploding: boolean, explosionStartTime?: number) => void;
   isMobile?: boolean;
+  performanceConfig?: PerformanceConfig;
+  recordFrame?: () => void;
 }
 
 export interface FloatingShapesRef {
@@ -18,7 +21,7 @@ export interface FloatingShapesRef {
 }
 
 
-const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cursorPositionRef, windowSize, mounted, onStateChange, isMobile = false }, ref) => {
+const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cursorPositionRef, windowSize, mounted, onStateChange, isMobile = false, performanceConfig, recordFrame }, ref) => {
   // Store refs to DOM elements for direct manipulation
   const shapeRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
@@ -27,7 +30,9 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
     windowSize,
     mounted,
     isMobile,
-    shapeRefs
+    shapeRefs,
+    performanceConfig,
+    recordFrame
   });
 
   useEffect(() => {
@@ -66,36 +71,41 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
           <div
             className='w-full h-full transition-all duration-300 ease-out'
             style={{
-              opacity: shape.isStuck ? 0.5 : SHAPE_CONFIG.BASE_OPACITY,
-              // Metallic Gradient: Dark Bronze -> Gold -> Dark Bronze
-              background: 'linear-gradient(135deg, #8B6723 0%, #DAB549 50%, #8B6723 100%)',
+              opacity: shape.isStuck ? 0.6 : SHAPE_CONFIG.BASE_OPACITY,
+              // Rich Gold Metallic Gradient with balanced contrast
+              background: 'linear-gradient(135deg, #725A1E 0%, #C9A227 35%, #E8D47A 50%, #C9A227 65%, #725A1E 100%)',
               borderRadius: Math.floor(shape.id) % 4 === 0 ? '50%' :
                            Math.floor(shape.id) % 3 === 0 ? '0%' :
                            Math.floor(shape.id) % 2 === 0 ? '20%' : '10%',
-              // Inner glow + Drop shadow for 3D metallic effect
+              // Subtle glow + 3D metallic effect - less intense
               boxShadow: isMobile ? 'none' : (shape.isStuck ? `
-                0 0 15px rgba(244, 224, 122, 0.6),
-                inset 0 0 15px rgba(255, 255, 255, 0.4),
-                inset 2px 2px 5px rgba(255, 255, 255, 0.4),
-                inset -2px -2px 5px rgba(0, 0, 0, 0.4)
+                0 0 15px rgba(212, 175, 55, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.25),
+                inset 0 0 12px rgba(255, 255, 255, 0.4),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.4),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.3)
               ` : `
-                0 10px 25px rgba(0, 0, 0, 0.5),
-                inset 0 0 15px rgba(255, 255, 255, 0.4),
-                inset 2px 2px 5px rgba(255, 255, 255, 0.4),
-                inset -2px -2px 5px rgba(0, 0, 0, 0.4)
+                0 0 12px rgba(212, 175, 55, 0.35),
+                0 0 25px rgba(212, 175, 55, 0.15),
+                0 8px 20px rgba(0, 0, 0, 0.5),
+                inset 0 0 10px rgba(255, 255, 255, 0.3),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.35)
               `),
-              border: shape.isStuck ? '2px solid rgba(244, 224, 122, 0.8)' : '1px solid rgba(255, 255, 255, 0.4)',
-              filter: isMobile ? 'none' : (shape.isStuck ? 'brightness(1.2)' : 'none'),
+              border: shape.isStuck ? '2px solid rgba(244, 226, 122, 0.7)' : '1px solid rgba(212, 175, 55, 0.45)',
+              filter: isMobile ? 'none' : (shape.isStuck ? 'brightness(1.15)' : 'none'),
             }}
             onMouseEnter={(e) => {
               if (shape.isStuck || isMobile) return;
               e.currentTarget.style.opacity = SHAPE_CONFIG.HOVER_OPACITY.toString();
-              e.currentTarget.style.transform = 'scale(1.2) rotate(15deg)';
+              e.currentTarget.style.transform = 'scale(1.15) rotate(12deg)';
               e.currentTarget.style.boxShadow = `
-                0 15px 35px rgba(212, 175, 55, 0.4),
-                inset 0 0 20px rgba(255, 255, 255, 0.6),
-                inset 2px 2px 5px rgba(255, 255, 255, 0.6),
-                inset -2px -2px 5px rgba(0, 0, 0, 0.2)
+                0 0 20px rgba(212, 175, 55, 0.5),
+                0 0 40px rgba(244, 226, 122, 0.3),
+                0 12px 30px rgba(0, 0, 0, 0.45),
+                inset 0 0 15px rgba(255, 255, 255, 0.45),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.45),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.25)
               `;
             }}
             onMouseLeave={(e) => {
@@ -103,10 +113,12 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
               e.currentTarget.style.opacity = SHAPE_CONFIG.BASE_OPACITY.toString();
               e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
               e.currentTarget.style.boxShadow = `
-                0 10px 25px rgba(0, 0, 0, 0.5),
-                inset 0 0 15px rgba(255, 255, 255, 0.4),
-                inset 2px 2px 5px rgba(255, 255, 255, 0.4),
-                inset -2px -2px 5px rgba(0, 0, 0, 0.4)
+                0 0 12px rgba(212, 175, 55, 0.35),
+                0 0 25px rgba(212, 175, 55, 0.15),
+                0 8px 20px rgba(0, 0, 0, 0.5),
+                inset 0 0 10px rgba(255, 255, 255, 0.3),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.35)
               `;
             }}
           />

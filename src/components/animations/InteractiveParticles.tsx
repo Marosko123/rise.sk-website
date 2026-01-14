@@ -29,12 +29,12 @@ export default function InteractiveParticles({ mounted, isMobile }: InteractiveP
       {particles.map((particle) => (
         <div
           key={particle.id}
-          className='absolute w-1 h-1 rounded-full pointer-events-none select-none will-change-transform'
+          className='absolute w-1.5 h-1.5 rounded-full pointer-events-none select-none will-change-transform'
           style={{
             transform: `translate3d(${particle.x}px, ${particle.y}px, 0) scale(${particle.life / particle.maxLife})`,
             backgroundColor: '#DAB549',
-            opacity: (particle.life / particle.maxLife) * 0.4, // Reduced opacity for "dust" look
-            boxShadow: '0 0 2px rgba(218, 181, 73, 0.4)',
+            opacity: (particle.life / particle.maxLife) * 0.65, // Higher opacity for better visibility
+            boxShadow: '0 0 6px rgba(218, 181, 73, 0.5), 0 0 12px rgba(218, 181, 73, 0.3)', // Enhanced glow
           }}
         />
       ))}

@@ -24,10 +24,10 @@ export const SHAPE_CONFIG = {
   FLOAT_AMPLITUDE: 1.5, // Amplitude of floating motion (doubled)
   ROTATION_SPEED: 0.05, // Speed of shape rotation (faster)
 
-  // Visual
-  BASE_OPACITY: 0.15, // Base opacity of shapes
-  HOVER_OPACITY: 0.35, // Opacity when hovered
-  GLOW_INTENSITY: 0.4, // Intensity of glow effect
+  // Visual - Balanced visibility for all displays
+  BASE_OPACITY: 0.40, // Balanced opacity - visible but not too bright
+  HOVER_OPACITY: 0.70, // Hover opacity - enhanced but subtle
+  GLOW_INTENSITY: 0.5, // Moderate glow effect
 
   // Circle formation
   CIRCLE_RADIUS: 25, // Percentage of screen for circle formation (25% = quarter screen)
@@ -98,18 +98,22 @@ const createFloatingShape = (id: number, totalCount: number, isInitial: boolean 
   };
 };
 
+import { PerformanceConfig } from './useDevicePerformance';
+
 interface UseFloatingShapesProps {
   cursorPositionRef: React.MutableRefObject<{ x: number; y: number }>;
   windowSize: { width: number; height: number };
   mounted: boolean;
   isMobile?: boolean;
+  performanceConfig?: PerformanceConfig;
+  recordFrame?: () => void;
 }
 
-export function useFloatingShapes({ cursorPositionRef, windowSize, mounted, isMobile = false, shapeRefs }: UseFloatingShapesProps & { shapeRefs: React.MutableRefObject<Map<number, HTMLDivElement>> }) {
-  // Adjust config based on device
-  const initialCount = isMobile ? 3 : SHAPE_CONFIG.INITIAL_COUNT;
-  const maxCount = isMobile ? 15 : SHAPE_CONFIG.MAX_COUNT;
-  const collisionEnabled = isMobile ? false : SHAPE_CONFIG.COLLISION_ENABLED;
+export function useFloatingShapes({ cursorPositionRef, windowSize, mounted, isMobile = false, shapeRefs, performanceConfig, recordFrame }: UseFloatingShapesProps & { shapeRefs: React.MutableRefObject<Map<number, HTMLDivElement>> }) {
+  // Use performance config if provided, otherwise fall back to defaults
+  const initialCount = isMobile ? 3 : (performanceConfig?.initialShapes ?? SHAPE_CONFIG.INITIAL_COUNT);
+  const maxCount = isMobile ? 15 : (performanceConfig?.maxShapes ?? SHAPE_CONFIG.MAX_COUNT);
+  const collisionEnabled = isMobile ? false : (performanceConfig?.collisionEnabled ?? SHAPE_CONFIG.COLLISION_ENABLED);
 
   // Render shapes state - ONLY for adding/removing DOM nodes
   const [renderShapes, setRenderShapes] = useState<FloatingShape[]>([]);
@@ -268,12 +272,15 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted, isMo
           }
       });
 
+      // Record frame for FPS monitoring
+      recordFrame?.();
+
       animationId = requestAnimationFrame(animateShapes);
     };
 
     animationId = requestAnimationFrame(animateShapes);
     return () => cancelAnimationFrame(animationId);
-  }, [mounted, windowSize.width, windowSize.height, isExploding, detectAndResolveCollisions, cursorPositionRef, shapeRefs]);
+  }, [mounted, windowSize.width, windowSize.height, isExploding, detectAndResolveCollisions, cursorPositionRef, shapeRefs, recordFrame]);
 
   const triggerExplosion = useCallback(() => {
     if (!isExploding) {

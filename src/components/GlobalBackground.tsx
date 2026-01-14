@@ -1,6 +1,7 @@
 'use client';
 
 import companyConfig from '@/config/company';
+import { useDevicePerformance } from '@/hooks/useDevicePerformance';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -39,8 +40,8 @@ const BackgroundParticles = ({ count = 60, mounted, isMobile }: { count?: number
       id: i,
       top: `${random(0, 100)}%`,
       left: `${random(0, 100)}%`,
-      size: `${random(1, 4)}px`,
-      opacity: random(0.1, 0.6),
+      size: `${random(2, 6)}px`, // Larger particles for better visibility
+      opacity: random(0.2, 0.85), // Higher opacity for better visibility on all displays
       duration: `${random(20, 40)}s`,
       delay: `${random(0, 10)}s`,
       tx: `${random(-30, 30)}px`,
@@ -115,6 +116,7 @@ const BackgroundParticles = ({ count = 60, mounted, isMobile }: { count?: number
           '--delay': p.delay,
           '--tx': p.tx,
           '--ty': p.ty,
+          boxShadow: `0 0 ${parseInt(p.size) * 2}px rgba(218, 181, 73, ${p.opacity * 0.6})`, // Subtle glow for better visibility
         } as React.CSSProperties}
       />
     ));
@@ -165,6 +167,7 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
   // const mainBgRef = useRef<HTMLDivElement>(null);
 
   const isMobile = useIsMobile();
+  const { config: performanceConfig, recordFrame } = useDevicePerformance();
 
   useImperativeHandle(ref, () => ({
     handleLogoClick: () => {
@@ -293,14 +296,14 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
           <>
             {/* --- ENHANCED RISE GRADIENT SYSTEM --- */}
 
-            {/* 1. Warm Rich Base - Deep bronze to black gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#2a1f0f_0%,#0a0705_50%,#000000_100%)] opacity-90 pointer-events-none"></div>
+            {/* 1. Deep Black Base with subtle warm tint for better gold contrast */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#1a1409_0%,#050403_40%,#000000_100%)] opacity-100 pointer-events-none"></div>
 
-            {/* 2. Animated Mesh Gradient Overlay */}
-            <div className="absolute inset-0 opacity-60 pointer-events-none mix-blend-screen">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(218,181,73,0.25)_0%,transparent_50%)] animate-pulse-slow"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,103,35,0.25)_0%,transparent_50%)] animate-pulse-slow animation-delay-2000"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(254,251,216,0.15)_0%,transparent_40%)] animate-pulse-slow animation-delay-4000"></div>
+            {/* 2. Animated Mesh Gradient Overlay - Enhanced visibility */}
+            <div className="absolute inset-0 opacity-75 pointer-events-none mix-blend-screen">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(218,181,73,0.32)_0%,transparent_50%)] animate-pulse-slow"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,103,35,0.32)_0%,transparent_50%)] animate-pulse-slow animation-delay-2000"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(254,251,216,0.2)_0%,transparent_40%)] animate-pulse-slow animation-delay-4000"></div>
             </div>
 
             {/* 3. Static Conic Sheen - Metallic shimmer effect (removed rotation for performance) */}
@@ -318,24 +321,24 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
               </>
             ) : (
               <>
-                {/* Desktop: Rich animated glows */}
-                <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.18)_0%,rgba(218,181,73,0.08)_40%,transparent_70%)] blur-[80px] pointer-events-none mix-blend-screen animate-pulse-slow"></div>
-                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,rgba(139,103,35,0.1)_40%,transparent_70%)] blur-[80px] pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-4000"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.08)_0%,rgba(254,251,216,0.04)_50%,transparent_70%)] blur-[70px] pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-6000"></div>
+                {/* Desktop: Rich animated glows - Enhanced visibility */}
+                <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.25)_0%,rgba(218,181,73,0.12)_40%,transparent_70%)] blur-[80px] pointer-events-none mix-blend-screen animate-pulse-slow"></div>
+                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.28)_0%,rgba(139,103,35,0.14)_40%,transparent_70%)] blur-[80px] pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-4000"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(255,250,205,0.12)_0%,rgba(254,251,216,0.06)_50%,transparent_70%)] blur-[70px] pointer-events-none mix-blend-screen animate-pulse-slow animation-delay-6000"></div>
               </>
             )}
 
-            {/* 5. Floating Accent Orbs - Dynamic movement */}
+            {/* 5. Floating Accent Orbs - Dynamic movement with enhanced visibility */}
             {!isMobile && (
               <>
-                <div className="absolute top-[20%] left-[20%] w-[30%] h-[30%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.12)_0%,transparent_70%)] blur-[60px] animate-float-slow pointer-events-none"></div>
-                <div className="absolute bottom-[30%] right-[20%] w-[25%] h-[25%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.12)_0%,transparent_70%)] blur-[60px] animate-float-slow animation-delay-2000 pointer-events-none"></div>
-                <div className="absolute top-[40%] right-[30%] w-[20%] h-[20%] rounded-full bg-[radial-gradient(circle,rgba(254,251,216,0.1)_0%,transparent_70%)] blur-[50px] animate-float-slow animation-delay-3000 pointer-events-none"></div>
+                <div className="absolute top-[20%] left-[20%] w-[30%] h-[30%] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.18)_0%,transparent_70%)] blur-[60px] animate-float-slow pointer-events-none"></div>
+                <div className="absolute bottom-[30%] right-[20%] w-[25%] h-[25%] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.18)_0%,transparent_70%)] blur-[60px] animate-float-slow animation-delay-2000 pointer-events-none"></div>
+                <div className="absolute top-[40%] right-[30%] w-[20%] h-[20%] rounded-full bg-[radial-gradient(circle,rgba(254,251,216,0.15)_0%,transparent_70%)] blur-[50px] animate-float-slow animation-delay-3000 pointer-events-none"></div>
               </>
             )}
 
-            {/* Ambient Particles for Landing Page - Optimized for mobile */}
-            <BackgroundParticles count={isMobile ? 20 : 60} mounted={mounted} isMobile={false} />
+            {/* Ambient Particles for Landing Page - Adaptive based on performance */}
+            <BackgroundParticles count={isMobile ? 20 : performanceConfig.particleCount} mounted={mounted} isMobile={false} />
 
             <FloatingShapes
               ref={floatingShapesRef}
@@ -344,6 +347,8 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
               mounted={mounted}
               isMobile={isMobile}
               onStateChange={onShapesStateChange}
+              performanceConfig={performanceConfig}
+              recordFrame={recordFrame}
             />
 
             <div
