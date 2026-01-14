@@ -358,8 +358,7 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
   return (
     <>
     <motion.nav
-      className={`sticky top-0 left-0 right-0 z-[100]`}
-      style={{ position: 'sticky', top: 0 }}
+      className={`relative w-full z-[100]`}
     >
       {/* Optimized Background Layer - uses opacity to avoid layout thrashing */}
       <div
@@ -409,15 +408,18 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                         }}
                         onMouseLeave={() => setActiveDropdown(null)}
                       >
-                        <motion.div
-                          className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap flex items-center gap-1 cursor-pointer ${
+                        <Link
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          href={link.href as any}
+                          className={`px-1.5 xl:px-2 py-2 text-sm xl:text-base font-bold transition-all duration-300 relative select-none whitespace-nowrap flex items-center gap-1 ${
                             isActive || activeDropdown === link.section
                               ? 'text-primary'
                               : 'text-gray-300 hover:text-primary'
                           }`}
-                        >
-                          <span onClick={() => {
+                          onClick={(e) => {
+                            // On homepage, scroll to section instead of navigating
                             if (isHomePage) {
+                              e.preventDefault();
                               const element = document.getElementById(link.section);
                               if (element) {
                                 const navHeight = 80;
@@ -429,20 +431,13 @@ export default function Navigation({ alternateLinks, transparent, hideLinks }: N
                                   behavior: 'smooth'
                                 });
                               }
-                            } else {
-                              if (typeof link.href === 'object' && 'pathname' in link.href) {
-                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                router.push(`${link.href.pathname}#${link.href.hash}` as any);
-                              } else {
-                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                router.push(link.href as any);
-                              }
                             }
-                          }}>
-                            {link.label}
-                          </span>
+                            // On other pages, let the Link navigate normally
+                          }}
+                        >
+                          {link.label}
                           <ChevronDown className='w-4 h-4' />
-                        </motion.div>
+                        </Link>
 
                         {/* Simple Dropdown Menu */}
                         <AnimatePresence>

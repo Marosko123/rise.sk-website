@@ -384,7 +384,7 @@ export default function LandingPage({ latestPosts }: LandingPageProps) {
         onShapesStateChange={handleShapesStateChange}
       />
 
-      <div className={`sticky top-0 left-0 right-0 z-[100] transition-opacity duration-400 ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed top-0 left-0 right-0 w-full z-[100] transition-opacity duration-400 ${showFullWebsite ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <Navigation transparent={true} hideLinks={!showFullWebsite} />
       </div>
 
