@@ -282,7 +282,7 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted, isMo
     return () => cancelAnimationFrame(animationId);
   }, [mounted, windowSize.width, windowSize.height, isExploding, detectAndResolveCollisions, cursorPositionRef, shapeRefs, recordFrame]);
 
-  const triggerExplosion = useCallback(() => {
+  const _triggerExplosion = useCallback(() => {
     if (!isExploding) {
        setIsExploding(true);
        setExplosionStartTime(Date.now());
