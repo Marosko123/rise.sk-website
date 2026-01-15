@@ -45,7 +45,7 @@ const FloatingShapes = forwardRef<FloatingShapesRef, FloatingShapesProps>(({ cur
     floatingShapesLength: floatingShapes.length
   }));
 
-  if (!mounted || isMobile) return null;
+  if (!mounted) return null;
 
   return (
     <>

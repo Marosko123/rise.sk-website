@@ -282,51 +282,48 @@ const LandingOverlay = forwardRef<LandingOverlayRef, LandingOverlayProps>(({
                     resetShiverCycle();
                   }}
                 >
-                  {/* Pulsing ring effect - shows when shivering or hovered */}
-                  <div
-                    className={`absolute inset-0 -m-4 rounded-full transition-all duration-500 ${
-                      isShivering() || isLogoHovered
-                        ? 'opacity-100 scale-110'
-                        : 'opacity-0 scale-100'
-                    }`}
-                    style={{
-                      border: '2px solid rgba(212, 175, 55, 0.4)',
-                      boxShadow: '0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.1)',
-                      animation: isShivering() ? 'pulse 1.5s ease-in-out infinite' : 'none',
-                    }}
-                  />
-                  {/* Second ring for layered effect */}
-                  <div
-                    className={`absolute inset-0 -m-8 rounded-full transition-all duration-700 delay-100 ${
-                      isShivering()
-                        ? 'opacity-60 scale-115'
-                        : 'opacity-0 scale-100'
-                    }`}
-                    style={{
-                      border: '1px solid rgba(212, 175, 55, 0.25)',
-                      animation: isShivering() ? 'pulse 2s ease-in-out infinite 0.3s' : 'none',
-                    }}
-                  />
-                  {/* Enhanced hint text */}
-                  <div
-                    className={`absolute -top-10 left-1/2 transform -translate-x-1/2 transition-all duration-500 pointer-events-none z-50 ${
-                      isShivering() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-                    }`}
-                  >
-                    <span className="text-xs text-primary/90 uppercase tracking-[0.15em] font-medium whitespace-nowrap select-none block px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm border border-primary/30">
-                      ✨ {t('clickMe')}!
-                    </span>
-                  </div>
-                  {/* Hover hint - always visible on hover */}
-                  <div
-                    className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-300 pointer-events-none z-50 ${
-                      isLogoHovered && !isShivering() ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  >
-                    <span className="text-sm text-primary/80 whitespace-nowrap select-none">
-                      ◆ + ◆
-                    </span>
-                  </div>
+                  {/* Pulsing ring effect - shows when shivering or hovered (desktop only) */}
+                  {!isMobile && (
+                    <div
+                      className={`absolute inset-0 -m-4 rounded-full transition-all duration-500 ${
+                        isShivering() || isLogoHovered
+                          ? 'opacity-100 scale-110'
+                          : 'opacity-0 scale-100'
+                      }`}
+                      style={{
+                        border: '2px solid rgba(212, 175, 55, 0.4)',
+                        boxShadow: '0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.1)',
+                        animation: isShivering() ? 'pulse 1.5s ease-in-out infinite' : 'none',
+                      }}
+                    />
+                  )}
+                  {/* Second ring for layered effect (desktop only) */}
+                  {!isMobile && (
+                    <div
+                      className={`absolute inset-0 -m-8 rounded-full transition-all duration-700 delay-100 ${
+                        isShivering()
+                          ? 'opacity-60 scale-115'
+                          : 'opacity-0 scale-100'
+                      }`}
+                      style={{
+                        border: '1px solid rgba(212, 175, 55, 0.25)',
+                        animation: isShivering() ? 'pulse 2s ease-in-out infinite 0.3s' : 'none',
+                      }}
+                    />
+                  )}
+                  {/* Enhanced hint text (desktop only) */}
+                  {!isMobile && (
+                    <div
+                      className={`absolute -top-10 left-1/2 transform -translate-x-1/2 transition-all duration-500 pointer-events-none z-50 ${
+                        isShivering() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                      }`}
+                    >
+                      <span className="text-xs text-primary/90 uppercase tracking-[0.15em] font-medium whitespace-nowrap select-none block px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm border border-primary/30">
+                        ✨ {t('clickMe')}!
+                      </span>
+                    </div>
+                  )}
+
                   <div
                     className={cn(
                       'animate-logo-float',

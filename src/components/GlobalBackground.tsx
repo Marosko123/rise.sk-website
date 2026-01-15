@@ -299,12 +299,22 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
             {/* 1. Deep Black Base with subtle warm tint for better gold contrast */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#1a1409_0%,#050403_40%,#000000_100%)] opacity-100 pointer-events-none"></div>
 
-            {/* 2. Animated Mesh Gradient Overlay - Enhanced visibility */}
-            <div className="absolute inset-0 opacity-75 pointer-events-none mix-blend-screen">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(218,181,73,0.32)_0%,transparent_50%)] animate-pulse-slow"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,103,35,0.32)_0%,transparent_50%)] animate-pulse-slow animation-delay-2000"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(254,251,216,0.2)_0%,transparent_40%)] animate-pulse-slow animation-delay-4000"></div>
-            </div>
+            {/* 2. Mesh Gradient Overlay - Different animations for mobile vs desktop */}
+            {isMobile ? (
+              /* Mobile: Gentle drift without opacity changes */
+              <div className="absolute inset-0 opacity-75 pointer-events-none mix-blend-screen">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(218,181,73,0.32)_0%,transparent_50%)] animate-gentle-drift-1"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,103,35,0.32)_0%,transparent_50%)] animate-gentle-drift-2"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(254,251,216,0.2)_0%,transparent_40%)] animate-gentle-drift-3"></div>
+              </div>
+            ) : (
+              /* Desktop: Animated with pulse for dynamic feel */
+              <div className="absolute inset-0 opacity-75 pointer-events-none mix-blend-screen">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(218,181,73,0.32)_0%,transparent_50%)] animate-pulse-slow"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,103,35,0.32)_0%,transparent_50%)] animate-pulse-slow animation-delay-2000"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(254,251,216,0.2)_0%,transparent_40%)] animate-pulse-slow animation-delay-4000"></div>
+              </div>
+            )}
 
             {/* 3. Static Conic Sheen - Metallic shimmer effect (removed rotation for performance) */}
             <div className="absolute inset-[-50%] w-[200%] h-[200%] opacity-[0.15] pointer-events-none mix-blend-screen">
@@ -413,10 +423,10 @@ const GlobalBackground = forwardRef<GlobalBackgroundRef, GlobalBackgroundProps>(
           {/* Active floating elements */}
           {isMobile ? (
              <>
-                {/* Static Mobile Background for Content - reduced blur for performance */}
-                <div className="absolute top-[5%] left-[10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.2)_0%,transparent_60%)] blur-[40px] mix-blend-screen"></div>
-                <div className="absolute bottom-[10%] right-[5%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_60%)] blur-[40px] mix-blend-screen"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.15)_0%,transparent_70%)] blur-[50px] mix-blend-screen"></div>
+                {/* Mobile Background - Gentle drifting elements, always visible */}
+                <div className="absolute top-[5%] left-[10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.2)_0%,transparent_60%)] blur-[40px] mix-blend-screen animate-gentle-drift-1"></div>
+                <div className="absolute bottom-[10%] right-[5%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(139,103,35,0.2)_0%,transparent_60%)] blur-[40px] mix-blend-screen animate-gentle-drift-2"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(218,181,73,0.15)_0%,transparent_70%)] blur-[50px] mix-blend-screen animate-gentle-drift-3"></div>
              </>
           ) : (
              <>

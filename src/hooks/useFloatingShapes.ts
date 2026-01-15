@@ -296,52 +296,19 @@ export function useFloatingShapes({ cursorPositionRef, windowSize, mounted, isMo
     }
   }, [isExploding]);
 
-  // Handle explosion cleanup and auto-trigger
-  useEffect(() => {
-     if (physicsShapesRef.current.length >= maxCount && !isExploding) {
-         triggerExplosion();
-     }
-
-     if (isExploding) {
-        // Cleanup check animation - using Timeout is simpler here than requestAnimationFrame + recursion for this specific check
-        // Or we can rely on the main loop? Main loop logic is separate.
-        // Let's stick to the previous logic but inside rAF if needed, OR just a timeout?
-        // Timeout is fine for cleanup event.
-        // But we want to continuously check.
-        // Let's use a timeout for the EXACT time.
-        const cleanupDelay = SHAPE_CONFIG.EXPLOSION_CLEANUP_TIME;
-        const timeSinceExplosion = Date.now() - explosionStartTime;
-        const remainingTime = Math.max(0, cleanupDelay - timeSinceExplosion);
-
-        const timer = setTimeout(() => {
-             physicsShapesRef.current = [];
-             setRenderShapes([]);
-             shapeCountRef.current = 0;
-             setIsExploding(false);
-
-             setTimeout(() => {
-                 const shapes = Array.from({ length: initialCount }, (_, i) => createFloatingShape(i, initialCount, true));
-                 physicsShapesRef.current = shapes;
-                 setRenderShapes(shapes);
-                 shapeCountRef.current = initialCount;
-             }, 1000);
-        }, remainingTime);
-
-        return () => clearTimeout(timer);
-     }
-  }, [isExploding, explosionStartTime, maxCount, initialCount, triggerExplosion]);
+  // No auto-explosion - shapes stay permanently visible
+  // The explosion feature is disabled for a cleaner, calmer experience
+  // Shapes just float gently without ever disappearing
 
   const handleLogoClick = useCallback(() => {
-      if (shapeCountRef.current >= maxCount) {
-          physicsShapesRef.current = [];
-          setRenderShapes([]);
-          shapeCountRef.current = 0;
-      } else {
+      // Only add new shapes if not at max - never reset/delete shapes
+      if (shapeCountRef.current < maxCount) {
           const newShape = createFloatingShape(shapeCountRef.current, shapeCountRef.current + 1, false);
           physicsShapesRef.current.push(newShape);
           setRenderShapes([...physicsShapesRef.current]);
           shapeCountRef.current++;
       }
+      // At max count, do nothing - shapes stay visible forever
   }, [maxCount]);
 
   return {

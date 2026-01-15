@@ -129,25 +129,36 @@ export default function Hero({ contactSectionId = 'contact' }: HeroProps) {
               className='absolute'
               initial={{ opacity: 0, scale: 0, rotate: -180 }}
               animate={{
-                opacity: [0, 0.3, 0.15],
-                scale: [0, 1.2, 1],
-                rotate: [shouldReduceMotion ? 0 : -180, 0, 0],
-                x: [0, x, 0],
-                y: [0, y, 0],
+                opacity: 0.15,
+                scale: 1,
+                rotate: shouldReduceMotion ? 0 : -10, // Slight static rotation
               }}
               transition={{
-                duration: shouldReduceMotion ? 0.5 : 2.5,
+                duration: 1.5,
                 delay: shouldReduceMotion ? 0 : delay,
-                repeat: Infinity,
-                repeatDelay: 2,
-                ease: 'easeInOut',
+                ease: 'easeOut',
               }}
               style={{
                 left: `${20 + index * 25}%`,
                 top: `${30 + index * 15}%`,
               }}
             >
-              <Icon size={120} className='text-[var(--primary)]' />
+              {/* Nested div for continuous floating motion */}
+              <m.div
+                animate={{
+                  x: [0, x, 0],
+                  y: [0, y, 0],
+                  rotate: [0, 5, 0], // Gentle rotation wobble
+                }}
+                transition={{
+                  duration: shouldReduceMotion ? 0 : 6, // Slower, smoother float
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: 'easeInOut',
+                }}
+              >
+                <Icon size={120} className='text-[var(--primary)]' />
+              </m.div>
             </m.div>
           ))}
         </div>
