@@ -60,7 +60,8 @@ export default async function ObchodnePodmienky({
                 <p><strong>Názov:</strong> Rise.sk s.r.o.</p>
                 <p><strong>Sídlo:</strong> Bratislava, Slovenská republika</p>
                 <p><strong>IČO:</strong> 56 911 157</p>
-                <p><strong>DIČ:</strong> 2122 587 890</p>
+                <p><strong>DIČ:</strong> 2122 531 840</p>
+                <p><strong>IČ DPH:</strong> SK2122531840</p>
                 <p><strong>Email:</strong> rise@rise.sk</p>
                 <p><strong>Telefón:</strong> +421 911 670 188</p>
                 <p><strong>Web:</strong> rise.sk</p>

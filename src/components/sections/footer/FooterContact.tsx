@@ -27,7 +27,7 @@ export default function FooterContact({ copyToClipboard, copiedField }: FooterCo
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.executives')}
           </div>
-          <div className='text-white font-medium text-sm'>
+          <div className='text-white font-medium text-sm select-text'>
             {companyInfo('executives')}
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function FooterContact({ copyToClipboard, copiedField }: FooterCo
           </div>
           <a
             href={`tel:${companyInfo('phone').replace(/\s/g, '')}`}
-            className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm'
+            className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm select-text'
           >
             {companyInfo('phone')}
           </a>
@@ -88,7 +88,7 @@ export default function FooterContact({ copyToClipboard, copiedField }: FooterCo
           </div>
           <a
             href={`mailto:${t('contact.values.email')}`}
-            className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm'
+            className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm select-text'
           >
             {t('contact.values.email')}
           </a>
@@ -121,7 +121,7 @@ export default function FooterContact({ copyToClipboard, copiedField }: FooterCo
             href={`https://maps.google.com/?q=${encodeURIComponent(companyInfo('address'))}`}
             target='_blank'
             rel='noopener noreferrer'
-            className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm leading-relaxed'
+            className='text-white hover:text-primary transition-colors duration-300 font-medium text-sm leading-relaxed select-text'
           >
             {companyInfo('address')}
           </a>

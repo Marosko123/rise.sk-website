@@ -69,7 +69,7 @@ export default function Footer() {
                         : undefined
                     }
                     whileHover={{ x: 5 }}
-                    className='flex items-center text-gray-300 hover:text-primary transition-all duration-300 group select-none'
+                    className='flex items-center text-gray-300 hover:text-primary transition-all duration-300 group select-text'
                   >
                     <div className='w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300'>
                       <item.icon className='w-5 h-5' />

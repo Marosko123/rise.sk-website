@@ -27,7 +27,7 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.businessId')}
           </div>
-          <div className='text-white font-mono text-sm'>
+          <div className='text-white font-mono text-sm select-text'>
             {companyInfo('businessId')}
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.taxId')}
           </div>
-          <div className='text-white font-mono text-sm'>
+          <div className='text-white font-mono text-sm select-text'>
             {companyInfo('taxId')}
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.vatId')}
           </div>
-          <div className='text-white font-mono text-sm'>
+          <div className='text-white font-mono text-sm select-text'>
             {companyInfo('vatId')}
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.vatStatus')}
           </div>
-          <div className='text-white text-sm font-medium'>
+          <div className='text-white text-sm font-medium select-text'>
             {companyInfo('vatStatus')}
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function FooterBilling({ copyToClipboard, copiedField }: FooterBi
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.registration')}
           </div>
-          <div className='text-white text-sm leading-relaxed'>
+          <div className='text-white text-sm leading-relaxed select-text'>
             {companyInfo('registration')}
           </div>
         </div>

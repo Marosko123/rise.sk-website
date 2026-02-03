@@ -27,7 +27,7 @@ export default function FooterBanking({ copyToClipboard, copiedField }: FooterBa
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.bank')}
           </div>
-          <div className='text-white font-medium text-sm'>
+          <div className='text-white font-medium text-sm select-text'>
             {companyInfo('banking.bank')}
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function FooterBanking({ copyToClipboard, copiedField }: FooterBa
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.swift')}
           </div>
-          <div className='text-white font-mono text-sm'>
+          <div className='text-white font-mono text-sm select-text'>
             {companyInfo('banking.swift')}
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function FooterBanking({ copyToClipboard, copiedField }: FooterBa
           <div className='text-primary text-xs font-semibold uppercase tracking-wide'>
             {companyInfo('labels.iban')}
           </div>
-          <div className='text-white font-mono text-sm'>
+          <div className='text-white font-mono text-sm select-text'>
             {companyInfo('banking.iban')}
           </div>
         </div>
